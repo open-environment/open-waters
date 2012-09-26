@@ -1,0 +1,565 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:typens="http://www.exchangenetwork.net/schema/node/2" xmlns:tns="http://www.exchangenetwork.net/wsdl/node/2" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" name="NetworkNode2" targetNamespace="http://www.exchangenetwork.net/wsdl/node/2" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <xsd:schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:xmime="http://www.w3.org/2005/05/xmlmime" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" elementFormDefault="qualified" targetNamespace="http://www.exchangenetwork.net/schema/node/2">
+      <xsd:import schemaLocation="http://www.w3.org/2005/05/xmlmime" namespace="http://www.w3.org/2005/05/xmlmime" />
+      <xsd:simpleType name="DocumentFormatType">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="XML" />
+          <xsd:enumeration value="FLAT" />
+          <xsd:enumeration value="BIN" />
+          <xsd:enumeration value="ZIP" />
+          <xsd:enumeration value="ODF" />
+          <xsd:enumeration value="OTHER" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="EncodingType">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="Base64" />
+          <xsd:enumeration value="ZIP" />
+          <xsd:enumeration value="Encrypt" />
+          <xsd:enumeration value="Digest" />
+          <xsd:enumeration value="XML" />
+          <xsd:enumeration value="None" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="NotificationMessageCategoryType">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="Event" />
+          <xsd:enumeration value="Status" />
+          <xsd:enumeration value="Document" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="NotificationTypeCode">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="Warning" />
+          <xsd:enumeration value="Error" />
+          <xsd:enumeration value="Status" />
+          <xsd:enumeration value="All" />
+          <xsd:enumeration value="None" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:complexType name="NotificationURIType">
+        <xsd:simpleContent>
+          <xsd:extension base="xsd:string">
+            <xsd:attribute name="notificationType" type="typens:NotificationTypeCode" use="optional" />
+          </xsd:extension>
+        </xsd:simpleContent>
+      </xsd:complexType>
+      <xsd:simpleType name="TransactionStatusCode">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="Received" />
+          <xsd:enumeration value="Processing" />
+          <xsd:enumeration value="Pending" />
+          <xsd:enumeration value="Failed" />
+          <xsd:enumeration value="Cancelled" />
+          <xsd:enumeration value="Approved" />
+          <xsd:enumeration value="Processed" />
+          <xsd:enumeration value="Completed" />
+          <xsd:enumeration value="Unknown" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="NodeStatusCode">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="Ready" />
+          <xsd:enumeration value="Offline" />
+          <xsd:enumeration value="Busy" />
+          <xsd:enumeration value="Unknown" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="ErrorCodeList">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="E_UnknownUser" />
+          <xsd:enumeration value="E_InvalidCredential" />
+          <xsd:enumeration value="E_TransactionId" />
+          <xsd:enumeration value="E_UnknownMethod" />
+          <xsd:enumeration value="E_ServiceUnavailable" />
+          <xsd:enumeration value="E_AccessDenied" />
+          <xsd:enumeration value="E_InvalidToken" />
+          <xsd:enumeration value="E_FileNotFound" />
+          <xsd:enumeration value="E_TokenExpired" />
+          <xsd:enumeration value="E_ValidationFailed" />
+          <xsd:enumeration value="E_ServerBusy" />
+          <xsd:enumeration value="E_RowIdOutofRange" />
+          <xsd:enumeration value="E_FeatureUnsupported" />
+          <xsd:enumeration value="E_VersionMismatch" />
+          <xsd:enumeration value="E_InvalidFileName" />
+          <xsd:enumeration value="E_InvalidFileType" />
+          <xsd:enumeration value="E_InvalidDataflow" />
+          <xsd:enumeration value="E_InvalidParameter" />
+          <xsd:enumeration value="E_AuthMethod" />
+          <xsd:enumeration value="E_Unknown" />
+          <xsd:enumeration value="E_QueryReturnSetTooBig" />
+          <xsd:enumeration value="E_DBMSError" />
+          <xsd:enumeration value="E_RecipientNotSupported" />
+          <xsd:enumeration value="E_NotificationURINotSupported" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:element name="NodeFaultDetailType">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="errorCode" type="typens:ErrorCodeList" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="description" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:complexType xmime:expectedContentTypes="*/*" name="AttachmentType">
+        <xsd:simpleContent>
+          <xsd:extension base="xsd:base64Binary">
+            <xsd:attribute ref="xmime:contentType" use="required" />
+          </xsd:extension>
+        </xsd:simpleContent>
+      </xsd:complexType>
+      <xsd:complexType name="NodeDocumentType">
+        <xsd:sequence>
+          <xsd:element name="documentName" type="xsd:string" />
+          <xsd:element name="documentFormat" type="typens:DocumentFormatType" />
+          <xsd:element name="documentContent" type="typens:AttachmentType" />
+        </xsd:sequence>
+        <xsd:attribute name="documentId" type="xsd:ID" use="optional" />
+      </xsd:complexType>
+      <xsd:complexType name="ParameterType">
+        <xsd:simpleContent>
+          <xsd:extension base="xsd:string">
+            <xsd:attribute name="parameterName" type="xsd:string" use="required" />
+            <xsd:attribute name="parameterType" type="xsd:QName" use="optional" />
+            <xsd:attribute default="None" name="parameterEncoding" type="typens:EncodingType" use="optional" />
+          </xsd:extension>
+        </xsd:simpleContent>
+      </xsd:complexType>
+      <xsd:simpleType name="allNNI">
+        <xsd:union memberTypes="xsd:nonNegativeInteger">
+          <xsd:simpleType>
+            <xsd:restriction base="xsd:string">
+              <xsd:enumeration value="unbounded" />
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:union>
+      </xsd:simpleType>
+      <xsd:complexType name="GenericXmlType" mixed="true">
+        <xsd:sequence>
+          <xsd:any minOccurs="1" maxOccurs="1" namespace="##any" processContents="lax" />
+        </xsd:sequence>
+        <xsd:attribute default="XML" name="format" type="typens:DocumentFormatType" use="optional" />
+      </xsd:complexType>
+      <xsd:complexType name="ResultSetType">
+        <xsd:sequence>
+          <xsd:element name="rowId" type="xsd:integer" />
+          <xsd:element name="rowCount" type="xsd:integer" />
+          <xsd:element name="lastSet" type="xsd:boolean" />
+          <xsd:element name="results" type="typens:GenericXmlType" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="StatusResponseType">
+        <xsd:sequence>
+          <xsd:element name="transactionId" type="xsd:string" />
+          <xsd:element name="status" type="typens:TransactionStatusCode" />
+          <xsd:element name="statusDetail" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="NotificationMessageType">
+        <xsd:sequence>
+          <xsd:element name="messageCategory" type="typens:NotificationMessageCategoryType" />
+          <xsd:element name="messageName" type="xsd:string" />
+          <xsd:element name="status" type="typens:TransactionStatusCode" />
+          <xsd:element name="statusDetail" type="xsd:string" />
+        </xsd:sequence>
+        <xsd:attribute name="objectId" type="xsd:ID" use="required" />
+      </xsd:complexType>
+      <xsd:simpleType name="PasswordType">
+        <xsd:restriction base="xsd:string" />
+      </xsd:simpleType>
+      <xsd:element name="Authenticate">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="userId" type="xsd:string" />
+            <xsd:element name="credential" type="xsd:string" />
+            <xsd:element name="domain" nillable="true" type="xsd:string" />
+            <xsd:element name="authenticationMethod" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="AuthenticateResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="securityToken" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="Submit">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="securityToken" type="xsd:string" />
+            <xsd:element name="transactionId" type="xsd:string" />
+            <xsd:element name="dataflow" type="xsd:NCName" />
+            <xsd:element name="flowOperation" type="xsd:string" />
+            <xsd:element minOccurs="0" maxOccurs="unbounded" name="recipient" type="xsd:string" />
+            <xsd:element minOccurs="0" maxOccurs="unbounded" name="notificationURI" type="typens:NotificationURIType" />
+            <xsd:element minOccurs="1" maxOccurs="unbounded" name="documents" type="typens:NodeDocumentType" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="SubmitResponse" type="typens:StatusResponseType" />
+      <xsd:element name="Query">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="securityToken" type="xsd:string" />
+            <xsd:element name="dataflow" type="xsd:NCName" />
+            <xsd:element name="request" type="xsd:string" />
+            <xsd:element name="rowId" type="xsd:integer" />
+            <xsd:element name="maxRows" type="xsd:integer" />
+            <xsd:element minOccurs="0" maxOccurs="unbounded" name="parameters" type="typens:ParameterType" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="QueryResponse" type="typens:ResultSetType" />
+      <xsd:element name="Solicit">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="securityToken" type="xsd:string" />
+            <xsd:element name="dataflow" type="xsd:NCName" />
+            <xsd:element name="request" type="xsd:string" />
+            <xsd:element minOccurs="0" maxOccurs="unbounded" name="recipient" type="xsd:string" />
+            <xsd:element minOccurs="0" maxOccurs="unbounded" name="notificationURI" type="typens:NotificationURIType" />
+            <xsd:element minOccurs="0" maxOccurs="unbounded" name="parameters" type="typens:ParameterType" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="SolicitResponse" type="typens:StatusResponseType" />
+      <xsd:element name="GetStatus">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="securityToken" type="xsd:string" />
+            <xsd:element name="transactionId" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetStatusResponse" type="typens:StatusResponseType" />
+      <xsd:element name="Download">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="securityToken" type="xsd:string" />
+            <xsd:element name="dataflow" type="xsd:NCName" />
+            <xsd:element name="transactionId" type="xsd:string" />
+            <xsd:element minOccurs="0" maxOccurs="unbounded" name="documents" type="typens:NodeDocumentType" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="DownloadResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="unbounded" name="documents" type="typens:NodeDocumentType" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="Notify">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="securityToken" type="xsd:string" />
+            <xsd:element name="nodeAddress" type="xsd:string" />
+            <xsd:element name="dataflow" type="xsd:NCName" />
+            <xsd:element minOccurs="1" maxOccurs="unbounded" name="messages" type="typens:NotificationMessageType" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="NotifyResponse" type="typens:StatusResponseType" />
+      <xsd:element name="GetServices">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="securityToken" type="xsd:string" />
+            <xsd:element name="serviceCategory" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetServicesResponse" type="typens:GenericXmlType" />
+      <xsd:element name="NodePing">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="hello" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="NodePingResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="nodeStatus" type="typens:NodeStatusCode" />
+            <xsd:element name="statusDetail" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="Execute">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="securityToken" type="xsd:string" />
+            <xsd:element name="interfaceName" type="xsd:string" />
+            <xsd:element name="methodName" type="xsd:string" />
+            <xsd:element minOccurs="0" maxOccurs="unbounded" name="parameters" type="typens:ParameterType" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ExecuteResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="transactionId" type="xsd:string" />
+            <xsd:element name="status" type="typens:TransactionStatusCode" />
+            <xsd:element name="results" type="typens:GenericXmlType" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+  </types>
+  <message name="Authenticate">
+    <part name="parameter" element="typens:Authenticate" />
+  </message>
+  <message name="AuthenticateResponse">
+    <part name="return" element="typens:AuthenticateResponse" />
+  </message>
+  <message name="Query">
+    <part name="parameter" element="typens:Query" />
+  </message>
+  <message name="QueryResponse">
+    <part name="return" element="typens:QueryResponse" />
+  </message>
+  <message name="Execute">
+    <part name="parameter" element="typens:Execute" />
+  </message>
+  <message name="ExecuteResponse">
+    <part name="return" element="typens:ExecuteResponse" />
+  </message>
+  <message name="Submit">
+    <part name="parameter" element="typens:Submit" />
+  </message>
+  <message name="SubmitResponse">
+    <part name="return" element="typens:SubmitResponse" />
+  </message>
+  <message name="Solicit">
+    <part name="parameter" element="typens:Solicit" />
+  </message>
+  <message name="SolicitResponse">
+    <part name="return" element="typens:SolicitResponse" />
+  </message>
+  <message name="GetStatus">
+    <part name="parameter" element="typens:GetStatus" />
+  </message>
+  <message name="GetStatusResponse">
+    <part name="return" element="typens:GetStatusResponse" />
+  </message>
+  <message name="Download">
+    <part name="parameter" element="typens:Download" />
+  </message>
+  <message name="DownloadResponse">
+    <part name="documents" element="typens:DownloadResponse" />
+  </message>
+  <message name="Notify">
+    <part name="parameter" element="typens:Notify" />
+  </message>
+  <message name="NotifyResponse">
+    <part name="return" element="typens:NotifyResponse" />
+  </message>
+  <message name="NodePing">
+    <part name="parameter" element="typens:NodePing" />
+  </message>
+  <message name="NodePingResponse">
+    <part name="return" element="typens:NodePingResponse" />
+  </message>
+  <message name="GetServices">
+    <part name="parameter" element="typens:GetServices" />
+  </message>
+  <message name="GetServicesResponse">
+    <part name="return" element="typens:GetServicesResponse" />
+  </message>
+  <message name="NodeFaultMessage">
+    <part name="fault" element="typens:NodeFaultDetailType" />
+  </message>
+  <portType name="NetworkNodePortType2">
+    <operation name="Authenticate">
+      <documentation>User authentication method, must be called initially.</documentation>
+      <input message="tns:Authenticate" />
+      <output message="tns:AuthenticateResponse" />
+      <fault name="NodeFaultDetail" message="tns:NodeFaultMessage" />
+    </operation>
+    <operation name="Submit">
+      <documentation>Submit one or more documents to the node.</documentation>
+      <input message="tns:Submit" />
+      <output message="tns:SubmitResponse" />
+      <fault name="NodeFaultDetail" message="tns:NodeFaultMessage" />
+    </operation>
+    <operation name="GetStatus">
+      <documentation>Check the status of a transaction</documentation>
+      <input message="tns:GetStatus" />
+      <output message="tns:GetStatusResponse" />
+      <fault name="NodeFaultDetail" message="tns:NodeFaultMessage" />
+    </operation>
+    <operation name="Notify">
+      <documentation>Notify document availability, network events, submission statuses</documentation>
+      <input message="tns:Notify" />
+      <output message="tns:NotifyResponse" />
+      <fault name="NodeFaultDetail" message="tns:NodeFaultMessage" />
+    </operation>
+    <operation name="Download">
+      <documentation>Download one or more documents from the node</documentation>
+      <input message="tns:Download" />
+      <output message="tns:DownloadResponse" />
+      <fault name="NodeFaultDetail" message="tns:NodeFaultMessage" />
+    </operation>
+    <operation name="Query">
+      <documentation>Execute a database query</documentation>
+      <input message="tns:Query" />
+      <output message="tns:QueryResponse" />
+      <fault name="NodeFaultDetail" message="tns:NodeFaultMessage" />
+    </operation>
+    <operation name="Solicit">
+      <documentation>Solicit a lengthy database operation.</documentation>
+      <input message="tns:Solicit" />
+      <output message="tns:SolicitResponse" />
+      <fault name="NodeFaultDetail" message="tns:NodeFaultMessage" />
+    </operation>
+    <operation name="Execute">
+      <documentation>Request the node to invoke a specified web services.</documentation>
+      <input message="tns:Execute" />
+      <output message="tns:ExecuteResponse" />
+      <fault name="NodeFaultDetail" message="tns:NodeFaultMessage" />
+    </operation>
+    <operation name="NodePing">
+      <documentation>Check the status of the service</documentation>
+      <input message="tns:NodePing" />
+      <output message="tns:NodePingResponse" />
+      <fault name="NodeFaultDetail" message="tns:NodeFaultMessage" />
+    </operation>
+    <operation name="GetServices">
+      <documentation>Query services offered by the node</documentation>
+      <input message="tns:GetServices" />
+      <output message="tns:GetServicesResponse" />
+      <fault name="NodeFaultDetail" message="tns:NodeFaultMessage" />
+    </operation>
+  </portType>
+  <binding name="NetworkNodeBinding2" type="tns:NetworkNodePortType2">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="Authenticate">
+      <soap12:operation soapAction="" />
+      <input>
+        <soap12:body use="literal" namespace="http://www.exchangenetwork.net/schema/node/2" />
+      </input>
+      <output>
+        <soap12:body use="literal" namespace="http://www.exchangenetwork.net/schema/node/2" />
+      </output>
+      <fault name="NodeFaultDetail">
+        <soap12:fault use="literal" name="NodeFaultDetail" namespace="http://www.exchangenetwork.net/schema/node/2" />
+      </fault>
+    </operation>
+    <operation name="Submit">
+      <soap12:operation soapAction="" />
+      <input>
+        <soap12:body use="literal" namespace="http://www.exchangenetwork.net/schema/node/2" />
+      </input>
+      <output>
+        <soap12:body use="literal" namespace="http://www.exchangenetwork.net/schema/node/2" />
+      </output>
+      <fault name="NodeFaultDetail">
+        <soap12:fault use="literal" name="NodeFaultDetail" namespace="http://www.exchangenetwork.net/schema/node/2" />
+      </fault>
+    </operation>
+    <operation name="GetStatus">
+      <soap12:operation soapAction="" />
+      <input>
+        <soap12:body use="literal" namespace="http://www.exchangenetwork.net/schema/node/2" />
+      </input>
+      <output>
+        <soap12:body use="literal" namespace="http://www.exchangenetwork.net/schema/node/2" />
+      </output>
+      <fault name="NodeFaultDetail">
+        <soap12:fault use="literal" name="NodeFaultDetail" namespace="http://www.exchangenetwork.net/schema/node/2" />
+      </fault>
+    </operation>
+    <operation name="Download">
+      <soap12:operation soapAction="" />
+      <input>
+        <soap12:body use="literal" namespace="http://www.exchangenetwork.net/schema/node/2" />
+      </input>
+      <output>
+        <soap12:body use="literal" namespace="http://www.exchangenetwork.net/schema/node/2" />
+      </output>
+      <fault name="NodeFaultDetail">
+        <soap12:fault use="literal" name="NodeFaultDetail" namespace="http://www.exchangenetwork.net/schema/node/2" />
+      </fault>
+    </operation>
+    <operation name="Notify">
+      <soap12:operation soapAction="" />
+      <input>
+        <soap12:body use="literal" namespace="http://www.exchangenetwork.net/schema/node/2" />
+      </input>
+      <output>
+        <soap12:body use="literal" namespace="http://www.exchangenetwork.net/schema/node/2" />
+      </output>
+      <fault name="NodeFaultDetail">
+        <soap12:fault use="literal" name="NodeFaultDetail" namespace="http://www.exchangenetwork.net/schema/node/2" />
+      </fault>
+    </operation>
+    <operation name="Query">
+      <soap12:operation soapAction="" />
+      <input>
+        <soap12:body use="literal" namespace="http://www.exchangenetwork.net/schema/node/2" />
+      </input>
+      <output>
+        <soap12:body use="literal" namespace="http://www.exchangenetwork.net/schema/node/2" />
+      </output>
+      <fault name="NodeFaultDetail">
+        <soap12:fault use="literal" name="NodeFaultDetail" namespace="http://www.exchangenetwork.net/schema/node/2" />
+      </fault>
+    </operation>
+    <operation name="Execute">
+      <soap12:operation soapAction="" />
+      <input>
+        <soap12:body use="literal" namespace="http://www.exchangenetwork.net/schema/node/2" />
+      </input>
+      <output>
+        <soap12:body use="literal" namespace="http://www.exchangenetwork.net/schema/node/2" />
+      </output>
+      <fault name="NodeFaultDetail">
+        <soap12:fault use="literal" name="NodeFaultDetail" namespace="http://www.exchangenetwork.net/schema/node/2" />
+      </fault>
+    </operation>
+    <operation name="Solicit">
+      <soap12:operation soapAction="" />
+      <input>
+        <soap12:body use="literal" namespace="http://www.exchangenetwork.net/schema/node/2" />
+      </input>
+      <output>
+        <soap12:body use="literal" namespace="http://www.exchangenetwork.net/schema/node/2" />
+      </output>
+      <fault name="NodeFaultDetail">
+        <soap12:fault use="literal" name="NodeFaultDetail" namespace="http://www.exchangenetwork.net/schema/node/2" />
+      </fault>
+    </operation>
+    <operation name="NodePing">
+      <soap12:operation soapAction="" />
+      <input>
+        <soap12:body use="literal" namespace="http://www.exchangenetwork.net/schema/node/2" />
+      </input>
+      <output>
+        <soap12:body use="literal" namespace="http://www.exchangenetwork.net/schema/node/2" />
+      </output>
+      <fault name="NodeFaultDetail">
+        <soap12:fault use="literal" name="NodeFaultDetail" namespace="http://www.exchangenetwork.net/schema/node/2" />
+      </fault>
+    </operation>
+    <operation name="GetServices">
+      <soap12:operation soapAction="" />
+      <input>
+        <soap12:body use="literal" namespace="http://www.exchangenetwork.net/schema/node/2" />
+      </input>
+      <output>
+        <soap12:body use="literal" namespace="http://www.exchangenetwork.net/schema/node/2" />
+      </output>
+      <fault name="NodeFaultDetail">
+        <soap12:fault use="literal" name="NodeFaultDetail" namespace="http://www.exchangenetwork.net/schema/node/2" />
+      </fault>
+    </operation>
+  </binding>
+  <service name="NetworkNode2">
+    <documentation>Network Node 2.0 definitions for the Environmental Information Exchange Network</documentation>
+    <port name="NetworkNodePort2" binding="tns:NetworkNodeBinding2">
+      <soap12:address location="https://test.epacdxnode.net:443/cdx-enws20/services/NetworkNode2ConditionalMtom" />
+    </port>
+  </service>
+</definitions>
