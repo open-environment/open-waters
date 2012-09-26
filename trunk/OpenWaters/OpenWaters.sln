@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Web Developer Express 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenWaters", "OpenEnvironment\OpenWaters.csproj", "{8F34E29C-B9D1-44F7-BC6C-EABDE6871B75}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenWaters", "OpenWaters\OpenWaters.csproj", "{8F34E29C-B9D1-44F7-BC6C-EABDE6871B75}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
