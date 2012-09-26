@@ -1,0 +1,70 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="SiteAuth.master.cs" Inherits="OpenEnvironment.SiteAuth" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>Open Waters - Environmental Data Management</title>
+    <link href="~/Styles/Site.css" rel="stylesheet" type="text/css" />
+    <asp:ContentPlaceHolder ID="head" runat="server"></asp:ContentPlaceHolder>
+</head>
+<body style="min-width:900px">
+    <form id="form1" runat="server">
+    <div class="page">
+        <asp:Table ID="Table1" runat="server" BackColor="Black" CellPadding="0" CellSpacing="0" Width="100%">
+            <asp:TableRow>
+                <asp:TableCell Width="600px" VerticalAlign="Top" >
+                    <asp:Image ID="img1" runat="server" ImageUrl="~/App_Images/header-left.png" AlternateText="Logo Left" />
+                </asp:TableCell>
+                <asp:TableCell HorizontalAlign="Right">
+                    <asp:Image ID="img2" runat="server" ImageUrl="~/App_Images/header.png" AlternateText="Logo" />
+                </asp:TableCell>
+            </asp:TableRow>
+        </asp:Table>
+        <asp:ObjectDataSource ID="dsOrg" runat="server" SelectMethod="GetWQX_ORGANIZATION" TypeName="OpenEnvironment.App_Logic.DataAccessLayer.db_WQX"></asp:ObjectDataSource>
+        <div class="clear hideSkiplink">
+            <table class="Z">
+                <tr>
+                    <td>
+                        <asp:Menu ID="NavigationMenu" runat="server" IncludeStyleBlock="false" CssClass="menu" Orientation="Horizontal"  >
+                            <StaticHoverStyle BackColor="#666666" />
+                            <StaticMenuItemStyle HorizontalPadding="8px" VerticalPadding="4px" CssClass="menuitem" />
+                            <Items>
+                                <asp:MenuItem NavigateUrl="~/App_Pages/Secure/WQXMonLoc.aspx" Text="Water Quality" />
+                                <asp:MenuItem NavigateUrl="~/App_Pages/Secure/RefData.aspx" Text="Reference Data" />
+                                <asp:MenuItem NavigateUrl="~/App_Pages/Secure/AppSettings.aspx" Text="Administration" />
+                                <asp:MenuItem NavigateUrl="~/App_Pages/Secure/MyAccount.aspx" Text="My Account" />
+                            </Items>
+                        </asp:Menu>
+                    </td>
+                    <td>
+                        <asp:ImageButton ID="imgHelp" runat="server" ImageUrl="~/App_Images/ico_book.png" onclick="imgHelp_Click" ToolTip="User's Guide" />
+                    </td>
+                    <td>
+                        <span style="color: #e2e2e2">Organization:</span>
+                        <asp:DropDownList ID="ddlOrg" runat="server" CssClass="textEntry" AutoPostBack="true" OnSelectedIndexChanged="ddlOrg_SelectedIndexChanged">
+                        </asp:DropDownList>
+                    </td>
+                    <td>
+                        <div class="topLogin">
+                            <asp:LoginView ID="HeadLoginView" runat="server" EnableViewState="false">
+                                <LoggedInTemplate>
+                                    Welcome <span class="bold"><asp:LoginName ID="HeadLoginName" runat="server" /></span>
+                                    [<asp:LoginStatus ID="HeadLoginStatus" runat="server" LogoutAction="Redirect" LogoutPageUrl="~/" LogoutText="Log Out" />]
+                                </LoggedInTemplate>
+                            </asp:LoginView>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+
+        </div>
+        <div style="min-height:400px">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server"></asp:ContentPlaceHolder>
+        </div>
+    </div>
+    <div class="footer">
+        Copyright ©2012 open-environment.org |  
+        <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/App_Pages/Public/License.aspx" Text="License"></asp:HyperLink>
+    </div>
+    </form>
+</body>
+</html>
