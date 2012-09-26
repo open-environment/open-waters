@@ -1,0 +1,105 @@
+﻿/* GENERAL
+----------------------------------------------------------*/
+body { background: #b6b7bc; font-size: .80em; font-family:Tahoma; margin: 0px; padding: 0px; color: #696969; }
+img { border-width:0; vertical-align:middle; text-align: center;}
+img[alt='Skip Navigation Links'] { display: none;}   /* needed for Chrome compatibility  */
+p { margin-bottom: 6px; line-height: 1.6em; }
+a:link, a:visited { color: #003300; }
+a:hover { color: #003300; text-decoration: none;}
+a:active { color: #006600; text-decoration: none;}
+.Z { margin:0px; padding:0px; width:100%; }
+.clear { clear: both; }
+.failureNotification { font-size: 1.2em; color: Red; }
+.bold { font-weight: bold; }
+
+/* HEADINGS   
+----------------------------------------------------------*/
+h1, h2 { color: #666666; font-variant: small-caps; font-weight: 600; margin-bottom: 0px; padding-bottom: 0px; }
+h1 { font-size: 1.6em; }
+h2 { font-size: 1.5em; }
+
+/* PRIMARY LAYOUT ELEMENTS   
+----------------------------------------------------------*/
+.page { width: 98%; background-color: #fff; margin: 10px auto 0px auto; border: 1px solid #696969; }
+.header { position: relative; margin: 0px; padding: 0px; background: #4b6c9e; width: 100%;}
+.footer { color: #4e5766; padding: 8px 0px 0px 0px; margin: 0px auto; text-align: center; line-height: normal;}
+
+/* TOP TAB MENU   
+----------------------------------------------------------*/
+div.hideSkiplink { background-image: url('../App_Images/menubg.jpg'); width:100%; }
+.menuitem { border-right-style: solid; border-right-width: 2px; border-right-color: #e2e2e2; }
+a:link.menuitem, a:visited.menuitem { color: #e2e2e2;} 
+.topLogin { text-align: right; padding: 0px; color: #e2e2e2;  }
+.topLogin a { color: #33cc33;  }
+
+
+/* BUTTONS   
+----------------------------------------------------------*/
+.btn { color: #fff; font:bold 8pt Tahoma; padding:4px; background-image:url(../App_Images/grd_head.png); 
+       border-style:solid; border:1px solid #ccc; min-width:60px }
+.btn:hover { color: #99ccff; }
+.btn[disabled] { color:Gray; } /* needed for Chrome compatibility  */
+.btnRibbon { border-radius:5px; clear:both; margin:3px 0; padding:4px 10px; background-color:#e9e9e9; border:1px dotted #7a97d2; }
+
+
+/* FORM ELEMENTS (default from MS)   
+----------------------------------------------------------*/
+fieldset { margin: 1em 0px; padding: 1em; border: 1px solid #ccc; }
+fieldset p  { margin: 2px 12px 10px 10px; }
+fieldset.login label, fieldset.register label, fieldset.changePassword label { display: block; }
+fieldset label.inline {display: inline;}
+legend  { font-size: 1.1em; font-weight: 600; padding: 2px 4px 8px 4px; }
+.row { clear: both; padding: 5px;}
+.fldLbl { float: left; width:150px; height: 5px;}
+.fldTxt { float: left; font-family:Tahoma; color: #404040;  }
+.fldTxt:focus {background-color: #ccff99;}
+
+
+/* GRIDVIEW
+----------------------------------------------------------*/
+.grd { width: 100%; background-color: #fff; margin: 5px 0 10px 0; border: solid 1px #525252; border-collapse:collapse; }
+    .grd td { padding: 2px; border: solid 1px #c1c1c1; color: #696969; }
+    .grd th { padding: 4px 2px; color: #fff; background: #424242 url(../App_Images/grd_head.png) repeat-x top; border-left: solid 1px #525252; font-size: 0.9em; }
+    .grd th a { color: #fff;  }
+.grd .alt { background: #fcfcfc url(../App_Images/grd_alt.png) repeat-x top; }
+.grd .pgr {background: #424242 url(../App_Images/grd_pgr.png) repeat-x top; }
+    .grd .pgr table { margin: 5px 0; }
+    .grd .pgr td { border-width: 0; padding: 0 6px; border-left: solid 1px #666; font-weight: bold; color: #fff; line-height: 12px; }   
+    .grd .pgr a { color: #666; text-decoration: none; }
+    .grd .pgr a:hover { color: #000; text-decoration: none; }
+.grdCtrl {color: #696969; font-size: 0.9em; }  
+
+
+/*  STYLED DIVS
+----------------------------------------------------------*/
+.divBrdr { border:1px solid #cccccc; border-radius: 30px 10px / 30px 10px; }
+.divTitle { font:bold; background-image:url(../App_Images/grd_head.png); color:#ffffff; padding:2px 8px; }
+.divBody { border:1px solid #ffffff; background-color:#ffffff; padding:2px;  } 
+.divBody a { display:block; text-decoration: none;  } 
+.divBody a:hover { border:1px solid #009900; border-radius: 5px; background:#a6f7b0; } 
+.divBody a.sel { display:block; text-decoration: none; font-weight:bold; border:1px solid #009900; border-radius: 5px; background:#a6f7b0; } 
+.divBody a span {  padding: 3px 3px 3px 8px; display:block; } 
+.divHelp { border: 1px dotted #999999; margin: 8px 0px 8px 0px; padding: 8px 8px; font: 8pt Tahoma; font-style:italic; background: #CCCCCC; border-radius: 5px;}
+
+/*  DATAGRID FILTER PANELS
+----------------------------------------------------------*/
+.fltBox { margin:0px auto; border:1px; border-style:solid; margin:5px;  background-color:#e2e2e2; border-radius: 5px; }
+.fltTitle { background-color:#cccccc; padding:3px; font-weight:bold;}
+.fltMain { padding:3px; }
+
+/*  LEFT MENUS
+----------------------------------------------------------*/
+.leftMenu { vertical-align: top; background-color: #efefef; margin:18px 8px 8px 8px; border:2px solid #dddddd; width:150px; }
+.leftLnk { margin:4px; padding:4px;}
+
+/*  MAIN CONTENT PANEL
+----------------------------------------------------------*/
+.mainPnl { vertical-align: top; padding: 0px 10px 10px 10px; min-height:400px; width: 98%;}
+
+
+/* MODAL POPUP PANEL  
+----------------------------------------------------------*/
+.pbHdPnl {clear:both; font:bold 8pt Tahoma; color:#666; display:block; margin:5px 0; padding:5px 10px; border-bottom:1px dotted #7a97d2;  background-color:#def;}
+.modalWindow { border: 1px solid #98B9DB; background:#f0f0f0; padding: 0px 0px 0px 0px; position:absolute; top:-1000px; }
+.modalBackground { background-color:Gray; filter: alpha(opacity=70); opacity:0.7; }
+.modalTitle { clear: both; background-color:#666666; padding: 3px 8px; font: bold 9pt Tahoma; color: #FFFFFF; margin: 3px 0 0 0;}

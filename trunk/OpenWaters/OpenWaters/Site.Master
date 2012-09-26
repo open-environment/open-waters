@@ -1,0 +1,44 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.Master.cs" Inherits="OpenEnvironment.SiteMaster" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>Open Waters - Environmental Data Management</title>
+    <link href="~/Styles/Site.css" rel="stylesheet" type="text/css" />
+    <asp:ContentPlaceHolder ID="HeadContent" runat="server"></asp:ContentPlaceHolder>
+</head>
+<body>
+    <form runat="server">
+    <div class="page">
+        <asp:Table ID="Table1" runat="server" BackColor="Black" CellPadding="0" CellSpacing="0" Width="100%">
+            <asp:TableRow>
+                <asp:TableCell Width="600px" VerticalAlign="Top" >
+                    <asp:Image ID="img1" runat="server" ImageUrl="~/App_Images/header-left.png" AlternateText="Logo Left" />
+                </asp:TableCell>
+                <asp:TableCell HorizontalAlign="Right">
+                    <asp:Image ID="img2" runat="server" ImageUrl="~/App_Images/header.png" AlternateText="Logo" />
+                </asp:TableCell>
+            </asp:TableRow>
+        </asp:Table>
+        <div class="clear hideSkiplink">
+            <asp:Menu ID="NavigationMenu" runat="server" IncludeStyleBlock="false" CssClass="menu" Orientation="Horizontal">
+                <StaticHoverStyle BackColor="#666666" />
+                <StaticMenuItemStyle HorizontalPadding="12px" VerticalPadding="8px" CssClass="menuitem"  />
+                <Items>
+                    <asp:MenuItem NavigateUrl="~/Account/ResetPassword.aspx" Text="Forgot Password"/>
+                </Items>
+            </asp:Menu>
+        </div>
+        <div class="mainPnl">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server"/>
+        </div>
+        <div class="clear">
+        </div>
+    </div>
+    <div class="footer">
+        Copyright ©2012 open-environment.org | 
+        Version: <asp:Label ID="lblVer" runat="server"></asp:Label> | 
+        <asp:HyperLink runat="server" NavigateUrl="~/App_Pages/Public/License.aspx" Text="License"></asp:HyperLink> 
+    </div>
+    </form>
+</body>
+</html>

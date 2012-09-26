@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<?xml-stylesheet type="text/xsl" href="http://www.epa.gov/storet/download/domain_value_use.xsl"?>
+<WQXDomainValueList xmlns="http://www.exchangenetwork.net/schema/wqx/2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.exchangenetwork.net/schema/wqx/2 http://www.exchangenetwork.net/schema/wqx/2/index.xsd">
+<WQXElement>
+<WQXElementName>TimeZone</WQXElementName>
+<WQXElementRow>
+<WQXElementRowColumn  colname="UniqueIdentifier" value="5"></WQXElementRowColumn>
+<WQXElementRowColumn  colname="Code" value="ADT"></WQXElementRowColumn>
+<WQXElementRowColumn  colname="Name" value="Atlantic Daylight Time"></WQXElementRowColumn>
+<WQXElementRowColumn  colname="Offset" value="-3"></WQXElementRowColumn>
+<WQXElementRowColumn  colname="LastChangeDate" value="2006-08-11T10:57:00-04:00"></WQXElementRowColumn>
+</WQXElementRow>
+<WQXElementRow>
+<WQXElementRowColumn  colname="UniqueIdentifier" value="3"></WQXElementRowColumn>
+<WQXElementRowColumn  colname="Code" value="AHST"></WQXElementRowColumn>
+<WQXElementRowColumn  colname="Name" value="Alaska-Hawaii Standard Time (*retired: &gt;1983 use AKST)"></WQXElementRowColumn>
+<WQXElementRowColumn  colname="Offset" value="-10"></WQXElementRowColumn>
+<WQXElementRowColumn  colname="LastChangeDate" value="2006-08-11T10:57:00-04:00"></WQXElementRowColumn>
+</WQXElementRow>
+<WQXElementRow>
+<WQXElementRowColumn  colname="UniqueIdentifier" value="1"></WQXElementRowColumn>
+<WQXElementRowColumn  colname="Code" value="AKDT"></WQXElementRowColumn>
+<WQXElementRowColumn  colname="Name" value="Alaska Daylight Time"></WQXElementRowColumn>
+<WQXElementRowColumn  colname="Offset" value="-8"></WQXElementRowColumn>
+<WQXElementRowColumn  colname="LastChangeDate" value="2006-08-11T10:57:00-04:00"></WQXElementRowColumn>
+</WQXElementRow>
+<WQXElementRow>
+<WQXElementRowColumn  colname="UniqueIdentifier" value="2"></WQXElementRowColumn>
+<WQXElementRowColumn  colname="Code" value="AKST"></WQXElementRowColumn>
+<WQXElementRowColumn  colname="Name" value="Alaska Standard Time"></WQXElementRowColumn>
+<WQXElementRowColumn  colname="Offset" value="-9"></WQXElementRowColumn>
+<WQXElementRowColumn  colname="LastChangeDate" value="2006-08-11T10:57:00-04:00"></WQXElementRowColumn>
+</WQXElementRow>
+<WQXElementRow>
+<WQXElementRowColumn  colname="UniqueIdentifier" value="6"></WQXElementRowColumn>
+<WQXElementRowColumn  colname="Code" value="AST"></WQXElementRowColumn>
+<WQXElementRowColumn  colname="Name" value="Atlantic Standard Time"></WQXElementRowColumn>
+<WQXElementRowColumn  colname="Offset" value="-4"></WQXElementRowColumn>
+<WQXElementRowColumn  colname="LastChangeDate" value="2006-08-11T10:57:00-04:00"></WQXElementRowColumn>
+</WQXElementRow>
+<WQXElementRow>
+<WQXElementRowColumn  colname="UniqueIdentifier" value="7"></WQXElementRowColumn>
+<WQXElementRowColumn  colname="Code" value="BST"></WQXElementRowColumn>
+<WQXElementRowColumn  colname="Name" value="Bering Standard Time (*retired: &gt;1983 use HAST)"></WQXElementRowColumn>
+<WQXElementRowColumn  colname="Offset" value="-11"></WQXElementRowColumn>
+<WQXElementRowColumn  colname="LastChangeDate" value="2006-08-11T10:57:00-04:00"></WQXElementRowColumn>
+</WQXElementRow>
+<WQXElementRow>
+<WQXElementRowColumn  colname="UniqueIdentifier" value="8"></WQXElementRowColumn>
+<WQXElementRowColumn  colname="Code" value="CDT"></WQXElementRowColumn>
+<WQXElementRowColumn  colname="Name" value="Central Daylight Time"></WQXElementRowColumn>
+<WQXElementRowColumn  colname="Offset" value="-5"></WQXElementRowColumn>
+<WQXElementRowColumn  colname="LastChangeDate" value="2006-08-11T10:57:00-04:00"></WQXElementRowColumn>
+</WQXElementRow>
+<WQXElementRow>
+<WQXElementRowColumn  colname="UniqueIdentifier" value="9"></WQXElementRowColumn>
+<WQXElementRowColumn  colname="Code" value="CST"></WQXElementRowColumn>
+<WQXElementRowColumn  colname="Name" value="Central Standard Time"></WQXElementRowColumn>
+<WQXElementRowColumn  colname="Offset" value="-6"></WQXElementRowColumn>
+<WQXElementRowColumn  colname="LastChangeDate" value="2006-08-11T10:57:00-04:00"></WQXElementRowColumn>
+</WQXElementRow>
+<WQXElementRow>
+<WQXElementRowColumn  colname="UniqueIdentifier" value="10"></WQXElementRowColumn>
+<WQXElementRowColumn  colname="Code" value="EDT"></WQXElementRowColumn>
+<WQXElementRowColumn  colname="Name" value="Eastern Daylight Time"></WQXElementRowColumn>
+<WQXElementRowColumn  colname="Offset" value="-4"></WQXElementRowColumn>
+<WQXElementRowColumn  colname="LastChangeDate" value="2006-08-11T10:57:00-04:00"></WQXElementRowColumn>
+</WQXElementRow>
+<WQXElementRow>
+<WQXElementRowColumn  colname="UniqueIdentifier" value="11"></WQXElementRowColumn>
+<WQXElementRowColumn  colname="Code" value="EST"></WQXElementRowColumn>
+<WQXElementRowColumn  colname="Name" value="Eastern Standard Time"></WQXElementRowColumn>
+<WQXElementRowColumn  colname="Offset" value="-5"></WQXElementRowColumn>
+<WQXElementRowColumn  colname="LastChangeDate" value="2006-08-11T10:57:00-04:00"></WQXElementRowColumn>
+</WQXElementRow>
+<WQXElementRow>
+<WQXElementRowColumn  colname="UniqueIdentifier" value="23"></WQXElementRowColumn>
+<WQXElementRowColumn  colname="Code" value="GMT"></WQXElementRowColumn>
+<WQXElementRowColumn  colname="Name" value="Greenwich Mean Time "></WQXElementRowColumn>
+<WQXElementRowColumn  colname="Offset" value="0"></WQXElementRowColumn>
+<WQXElementRowColumn  colname="LastChangeDate" value="2009-06-19T11:19:00-04:00"></WQXElementRowColumn>
+</WQXElementRow>
+<WQXElementRow>
+<WQXElementRowColumn  colname="UniqueIdentifier" value="12"></WQXElementRowColumn>
+<WQXElementRowColumn  colname="Code" value="GST"></WQXElementRowColumn>
+<WQXElementRowColumn  colname="Name" value="Guam Standard Time Zone (also Chamorro Standard Time)"></WQXElementRowColumn>
+<WQXElementRowColumn  colname="Offset" value="10"></WQXElementRowColumn>
+<WQXElementRowColumn  colname="LastChangeDate" value="2006-08-11T10:57:00-04:00"></WQXElementRowColumn>
+</WQXElementRow>
+<WQXElementRow>
+<WQXElementRowColumn  colname="UniqueIdentifier" value="13"></WQXElementRowColumn>
+<WQXElementRowColumn  colname="Code" value="HADT"></WQXElementRowColumn>
+<WQXElementRowColumn  colname="Name" value="Hawaii-Aleutian Daylight Time"></WQXElementRowColumn>
+<WQXElementRowColumn  colname="Offset" value="-9"></WQXElementRowColumn>
+<WQXElementRowColumn  colname="LastChangeDate" value="2006-08-11T10:57:00-04:00"></WQXElementRowColumn>
+</WQXElementRow>
+<WQXElementRow>
+<WQXElementRowColumn  colname="UniqueIdentifier" value="14"></WQXElementRowColumn>
+<WQXElementRowColumn  colname="Code" value="HAST"></WQXElementRowColumn>
+<WQXElementRowColumn  colname="Name" value="Hawaii-Aleutian Standard Time"></WQXElementRowColumn>
+<WQXElementRowColumn  colname="Offset" value="-10"></WQXElementRowColumn>
+<WQXElementRowColumn  colname="LastChangeDate" value="2006-08-11T10:57:00-04:00"></WQXElementRowColumn>
+</WQXElementRow>
+<WQXElementRow>
+<WQXElementRowColumn  colname="UniqueIdentifier" value="15"></WQXElementRowColumn>
+<WQXElementRowColumn  colname="Code" value="MDT"></WQXElementRowColumn>
+<WQXElementRowColumn  colname="Name" value="Mountain Daylight Time"></WQXElementRowColumn>
+<WQXElementRowColumn  colname="Offset" value="-6"></WQXElementRowColumn>
+<WQXElementRowColumn  colname="LastChangeDate" value="2006-08-11T10:57:00-04:00"></WQXElementRowColumn>
+</WQXElementRow>
+<WQXElementRow>
+<WQXElementRowColumn  colname="UniqueIdentifier" value="16"></WQXElementRowColumn>
+<WQXElementRowColumn  colname="Code" value="MST"></WQXElementRowColumn>
+<WQXElementRowColumn  colname="Name" value="Mountain Standard Time"></WQXElementRowColumn>
+<WQXElementRowColumn  colname="Offset" value="-7"></WQXElementRowColumn>
+<WQXElementRowColumn  colname="LastChangeDate" value="2006-08-11T10:57:00-04:00"></WQXElementRowColumn>
+</WQXElementRow>
+<WQXElementRow>
+<WQXElementRowColumn  colname="UniqueIdentifier" value="17"></WQXElementRowColumn>
+<WQXElementRowColumn  colname="Code" value="NDT"></WQXElementRowColumn>
+<WQXElementRowColumn  colname="Name" value="Newfoundland Daylight Time"></WQXElementRowColumn>
+<WQXElementRowColumn  colname="Offset" value="-2.50"></WQXElementRowColumn>
+<WQXElementRowColumn  colname="LastChangeDate" value="2006-08-11T10:57:00-04:00"></WQXElementRowColumn>
+</WQXElementRow>
+<WQXElementRow>
+<WQXElementRowColumn  colname="UniqueIdentifier" value="18"></WQXElementRowColumn>
+<WQXElementRowColumn  colname="Code" value="NST"></WQXElementRowColumn>
+<WQXElementRowColumn  colname="Name" value="Newfoundland Standard Time"></WQXElementRowColumn>
+<WQXElementRowColumn  colname="Offset" value="-3.50"></WQXElementRowColumn>
+<WQXElementRowColumn  colname="LastChangeDate" value="2006-08-11T10:57:00-04:00"></WQXElementRowColumn>
+</WQXElementRow>
+<WQXElementRow>
+<WQXElementRowColumn  colname="UniqueIdentifier" value="19"></WQXElementRowColumn>
+<WQXElementRowColumn  colname="Code" value="PDT"></WQXElementRowColumn>
+<WQXElementRowColumn  colname="Name" value="Pacific Daylight Time"></WQXElementRowColumn>
+<WQXElementRowColumn  colname="Offset" value="-7"></WQXElementRowColumn>
+<WQXElementRowColumn  colname="LastChangeDate" value="2006-08-11T10:57:00-04:00"></WQXElementRowColumn>
+</WQXElementRow>
+<WQXElementRow>
+<WQXElementRowColumn  colname="UniqueIdentifier" value="20"></WQXElementRowColumn>
+<WQXElementRowColumn  colname="Code" value="PST"></WQXElementRowColumn>
+<WQXElementRowColumn  colname="Name" value="Pacific Standard Time"></WQXElementRowColumn>
+<WQXElementRowColumn  colname="Offset" value="-8"></WQXElementRowColumn>
+<WQXElementRowColumn  colname="LastChangeDate" value="2006-08-11T10:57:00-04:00"></WQXElementRowColumn>
+</WQXElementRow>
+<WQXElementRow>
+<WQXElementRowColumn  colname="UniqueIdentifier" value="4"></WQXElementRowColumn>
+<WQXElementRowColumn  colname="Code" value="SST"></WQXElementRowColumn>
+<WQXElementRowColumn  colname="Name" value="American Samoa Standard Time"></WQXElementRowColumn>
+<WQXElementRowColumn  colname="Offset" value="-11"></WQXElementRowColumn>
+<WQXElementRowColumn  colname="LastChangeDate" value="2006-08-11T10:57:00-04:00"></WQXElementRowColumn>
+</WQXElementRow>
+<WQXElementRow>
+<WQXElementRowColumn  colname="UniqueIdentifier" value="22"></WQXElementRowColumn>
+<WQXElementRowColumn  colname="Code" value="UTC"></WQXElementRowColumn>
+<WQXElementRowColumn  colname="Name" value="Coordinated Universal Time"></WQXElementRowColumn>
+<WQXElementRowColumn  colname="Offset" value="0"></WQXElementRowColumn>
+<WQXElementRowColumn  colname="LastChangeDate" value="2010-01-15T01:10:00-05:00"></WQXElementRowColumn>
+</WQXElementRow>
+<WQXElementRow>
+<WQXElementRowColumn  colname="UniqueIdentifier" value="21"></WQXElementRowColumn>
+<WQXElementRowColumn  colname="Code" value="YST"></WQXElementRowColumn>
+<WQXElementRowColumn  colname="Name" value="Yukon Standard Time: U.S.-Yukatat (*retired: &gt;1983 use AKST)"></WQXElementRowColumn>
+<WQXElementRowColumn  colname="Offset" value="-9"></WQXElementRowColumn>
+<WQXElementRowColumn  colname="LastChangeDate" value="2006-08-11T10:57:00-04:00"></WQXElementRowColumn>
+</WQXElementRow>
+</WQXElement>
+</WQXDomainValueList>

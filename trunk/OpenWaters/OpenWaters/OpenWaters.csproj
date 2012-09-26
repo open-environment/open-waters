@@ -1,0 +1,526 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{8F34E29C-B9D1-44F7-BC6C-EABDE6871B75}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>OpenEnvironment</RootNamespace>
+    <AssemblyName>OpenEnvironment</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <UseIISExpress>false</UseIISExpress>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PackageAsSingleFile>false</PackageAsSingleFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AjaxControlToolkit, Version=4.1.60501.0, Culture=neutral, PublicKeyToken=28f01b0e84b6d53e, processorArchitecture=MSIL">
+      <HintPath>..\packages\AjaxControlToolkit.4.1.60501\lib\40\AjaxControlToolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="AntiXSSLibrary, Version=4.2.0.0, Culture=neutral, PublicKeyToken=d127efab8a9c114f, processorArchitecture=MSIL">
+      <HintPath>..\packages\AjaxControlToolkit.4.1.60501\lib\40\SanitizerProviders\AntiXSSLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="HtmlSanitizationLibrary, Version=4.2.0.0, Culture=neutral, PublicKeyToken=d127efab8a9c114f, processorArchitecture=MSIL">
+      <HintPath>..\packages\AjaxControlToolkit.4.1.60501\lib\40\SanitizerProviders\HtmlSanitizationLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="Ionic.Zip.Reduced, Version=1.9.1.8, Culture=neutral, PublicKeyToken=edbe51ad942a3f5c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Ionic.Zip.Reduced.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="SanitizerProviders, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\AjaxControlToolkit.4.1.60501\lib\40\SanitizerProviders\SanitizerProviders.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.Web.DataVisualization" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Account\ChangePassword.aspx" />
+    <Content Include="Account\ChangePasswordSuccess.aspx" />
+    <Content Include="Account\Login.aspx" />
+    <Content Include="Account\Register.aspx" />
+    <Content Include="App_Data\Create_DB.sql" />
+    <Content Include="App_Images\ico_book.png" />
+    <Content Include="App_Images\ico_save2.png" />
+    <Content Include="App_Pages\Secure\Charting.aspx" />
+    <Content Include="App_Pages\Secure\WQXOrgEdit.aspx" />
+    <Content Include="Account\UserEdit.aspx" />
+    <Content Include="Error.aspx" />
+    <Content Include="Account\ResetPassword.aspx" />
+    <None Include="App_Data\CreekData.sql" />
+    <Content Include="App_Images\0.png" />
+    <Content Include="App_Images\grd_alt.png" />
+    <Content Include="App_Images\grd_head.png" />
+    <Content Include="App_Images\grd_pgr.png" />
+    <Content Include="App_Images\header-left.png" />
+    <Content Include="App_Images\header.png" />
+    <Content Include="App_Images\ico_alert.png" />
+    <Content Include="App_Images\ico_arrow_r.png" />
+    <Content Include="App_Images\ico_del.png" />
+    <Content Include="App_Images\ico_edit.png" />
+    <Content Include="App_Images\ico_fail.png" />
+    <Content Include="App_Images\ico_info.png" />
+    <Content Include="App_Images\ico_map.png" />
+    <Content Include="App_Images\ico_pass.png" />
+    <Content Include="App_Images\ico_plus.png" />
+    <Content Include="App_Images\ico_resize.png" />
+    <Content Include="App_Images\ico_save.png" />
+    <Content Include="App_Images\ico_config.png" />
+    <Content Include="App_Images\ico_xls.png" />
+    <Content Include="App_Images\menubg.jpg" />
+    <Content Include="App_Images\progress.gif" />
+    <Content Include="App_Pages\Secure\RefData.aspx" />
+    <Content Include="App_Pages\Secure\WQXActivityEdit.aspx" />
+    <Content Include="App_Pages\Secure\WQXImport.aspx" />
+    <Content Include="Styles\Site.css" />
+    <Content Include="Default.aspx" />
+    <Content Include="Global.asax" />
+    <Content Include="Scripts\jquery-1.4.1-vsdoc.js" />
+    <Content Include="Scripts\jquery-1.4.1.js" />
+    <Content Include="Scripts\jquery-1.4.1.min.js" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="App_Pages\Public\License.aspx" />
+    <Content Include="App_Pages\Secure\Dashboard.aspx" />
+    <Content Include="App_Pages\Secure\WQXMonLoc.aspx" />
+    <Content Include="App_Pages\Secure\WQX_Hist.aspx" />
+    <Content Include="App_Pages\Secure\MyAccount.aspx" />
+    <Content Include="App_Pages\Secure\AppSettings.aspx" />
+    <Content Include="App_Pages\Secure\WQXMonLocEdit.aspx" />
+    <Content Include="Account\UserList.aspx" />
+    <Content Include="Account\RoleList.aspx" />
+    <Content Include="App_Pages\Public\AccessDenied.aspx" />
+    <Content Include="Account\RoleEdit.aspx" />
+    <Content Include="Account\RoleAdd.aspx" />
+    <Content Include="App_Pages\Secure\WQXOrg.aspx" />
+    <Content Include="App_Pages\Secure\WQXProject.aspx" />
+    <Content Include="App_Pages\Secure\WQXActivity.aspx" />
+    <Content Include="App_Pages\Secure\WQX_Mgmt.aspx" />
+    <Content Include="App_Pages\Secure\WQXProjectEdit.aspx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Account\ChangePassword.aspx.cs">
+      <DependentUpon>ChangePassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\ChangePassword.aspx.designer.cs">
+      <DependentUpon>ChangePassword.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\ChangePasswordSuccess.aspx.cs">
+      <DependentUpon>ChangePasswordSuccess.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\ChangePasswordSuccess.aspx.designer.cs">
+      <DependentUpon>ChangePasswordSuccess.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\CustomMembership.cs" />
+    <Compile Include="Account\CustomRoleProvider.cs" />
+    <Compile Include="Account\Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\Register.aspx.cs">
+      <DependentUpon>Register.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\Register.aspx.designer.cs">
+      <DependentUpon>Register.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Logic\BusinessLogicLayer\Utils.cs" />
+    <Compile Include="App_Logic\BusinessLogicLayer\WQXSubmit.cs" />
+    <Compile Include="App_Logic\DataAccessLayer\db_Accounts.cs" />
+    <Compile Include="App_Logic\DataAccessLayer\db_model.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>db_model.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Logic\DataAccessLayer\db_Ref.cs" />
+    <Compile Include="App_Logic\DataAccessLayer\db_WQX.cs" />
+    <Compile Include="Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="MasterAdmin.master.cs">
+      <DependentUpon>MasterAdmin.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterAdmin.master.designer.cs">
+      <DependentUpon>MasterAdmin.master</DependentUpon>
+    </Compile>
+    <Compile Include="MasterWQX.master.cs">
+      <DependentUpon>MasterWQX.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterWQX.master.designer.cs">
+      <DependentUpon>MasterWQX.master</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Site.Master.cs">
+      <DependentUpon>Site.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Site.Master.designer.cs">
+      <DependentUpon>Site.Master</DependentUpon>
+    </Compile>
+    <Compile Include="SiteAuth.Master.cs">
+      <DependentUpon>SiteAuth.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SiteAuth.Master.designer.cs">
+      <DependentUpon>SiteAuth.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\gov.epa.cdx\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\net.epacdxnode.test\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="App_Pages\Public\License.aspx.cs">
+      <DependentUpon>License.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Pages\Public\License.aspx.designer.cs">
+      <DependentUpon>License.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Pages\Secure\Dashboard.aspx.cs">
+      <DependentUpon>Dashboard.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Pages\Secure\Dashboard.aspx.designer.cs">
+      <DependentUpon>Dashboard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Pages\Secure\WQXMonLoc.aspx.cs">
+      <DependentUpon>WQXMonLoc.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Pages\Secure\WQXMonLoc.aspx.designer.cs">
+      <DependentUpon>WQXMonLoc.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Pages\Secure\WQX_Hist.aspx.cs">
+      <DependentUpon>WQX_Hist.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Pages\Secure\WQX_Hist.aspx.designer.cs">
+      <DependentUpon>WQX_Hist.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Pages\Secure\MyAccount.aspx.cs">
+      <DependentUpon>MyAccount.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Pages\Secure\MyAccount.aspx.designer.cs">
+      <DependentUpon>MyAccount.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Pages\Secure\RefData.aspx.cs">
+      <DependentUpon>RefData.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Pages\Secure\RefData.aspx.designer.cs">
+      <DependentUpon>RefData.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Pages\Secure\AppSettings.aspx.cs">
+      <DependentUpon>AppSettings.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Pages\Secure\AppSettings.aspx.designer.cs">
+      <DependentUpon>AppSettings.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Pages\Secure\WQXMonLocEdit.aspx.cs">
+      <DependentUpon>WQXMonLocEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Pages\Secure\WQXMonLocEdit.aspx.designer.cs">
+      <DependentUpon>WQXMonLocEdit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\UserList.aspx.cs">
+      <DependentUpon>UserList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\UserList.aspx.designer.cs">
+      <DependentUpon>UserList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\RoleList.aspx.cs">
+      <DependentUpon>RoleList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\RoleList.aspx.designer.cs">
+      <DependentUpon>RoleList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Pages\Public\AccessDenied.aspx.cs">
+      <DependentUpon>AccessDenied.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Pages\Public\AccessDenied.aspx.designer.cs">
+      <DependentUpon>AccessDenied.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\RoleEdit.aspx.cs">
+      <DependentUpon>RoleEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\RoleEdit.aspx.designer.cs">
+      <DependentUpon>RoleEdit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\RoleAdd.aspx.cs">
+      <DependentUpon>RoleAdd.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\RoleAdd.aspx.designer.cs">
+      <DependentUpon>RoleAdd.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Pages\Secure\WQXOrg.aspx.cs">
+      <DependentUpon>WQXOrg.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Pages\Secure\WQXOrg.aspx.designer.cs">
+      <DependentUpon>WQXOrg.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Pages\Secure\WQXProject.aspx.cs">
+      <DependentUpon>WQXProject.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Pages\Secure\WQXProject.aspx.designer.cs">
+      <DependentUpon>WQXProject.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Pages\Secure\WQXActivity.aspx.cs">
+      <DependentUpon>WQXActivity.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Pages\Secure\WQXActivity.aspx.designer.cs">
+      <DependentUpon>WQXActivity.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Pages\Secure\WQXActivityEdit.aspx.cs">
+      <DependentUpon>WQXActivityEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Pages\Secure\WQXActivityEdit.aspx.designer.cs">
+      <DependentUpon>WQXActivityEdit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Pages\Secure\WQXImport.aspx.cs">
+      <DependentUpon>WQXImport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Pages\Secure\WQXImport.aspx.designer.cs">
+      <DependentUpon>WQXImport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Pages\Secure\WQX_Mgmt.aspx.cs">
+      <DependentUpon>WQX_Mgmt.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Pages\Secure\WQX_Mgmt.aspx.designer.cs">
+      <DependentUpon>WQX_Mgmt.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Pages\Secure\WQXProjectEdit.aspx.cs">
+      <DependentUpon>WQXProjectEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Pages\Secure\WQXProjectEdit.aspx.designer.cs">
+      <DependentUpon>WQXProjectEdit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Pages\Secure\Charting.aspx.cs">
+      <DependentUpon>Charting.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Pages\Secure\Charting.aspx.designer.cs">
+      <DependentUpon>Charting.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Pages\Secure\WQXOrgEdit.aspx.cs">
+      <DependentUpon>WQXOrgEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Pages\Secure\WQXOrgEdit.aspx.designer.cs">
+      <DependentUpon>WQXOrgEdit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\UserEdit.aspx.cs">
+      <DependentUpon>UserEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\UserEdit.aspx.designer.cs">
+      <DependentUpon>UserEdit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Error.aspx.cs">
+      <DependentUpon>Error.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Error.aspx.designer.cs">
+      <DependentUpon>Error.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\ResetPassword.aspx.cs">
+      <DependentUpon>ResetPassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\ResetPassword.aspx.designer.cs">
+      <DependentUpon>ResetPassword.aspx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Site.Master" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferences Include="Web References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="App_Logic\DataAccessLayer\db_model.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>db_model.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="MasterAdmin.master" />
+    <Content Include="MasterWQX.master" />
+    <Content Include="packages.config" />
+    <Content Include="App_Docs\UsersGuide.docx" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Content Include="SiteAuth.Master" />
+    <None Include="Web References\gov.epa.cdx\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\gov.epa.cdx\services.wsdl" />
+    <None Include="Web References\net.epacdxnode.test\AuthenticateResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\net.epacdxnode.test\ExecuteResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\net.epacdxnode.test\GenericXmlType.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\net.epacdxnode.test\NetworkNode2.wsdl" />
+    <None Include="Web References\net.epacdxnode.test\NodeDocumentType.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\net.epacdxnode.test\NodePingResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\net.epacdxnode.test\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\net.epacdxnode.test\ResultSetType.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\net.epacdxnode.test\StatusResponseType.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\net.epacdxnode.test\xmlmime.xsd" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferenceUrl Include="http://cdx.epa.gov/WQXWeb/services.asmx%3fWSDL">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\gov.epa.cdx\</RelPath>
+      <UpdateFromURL>http://cdx.epa.gov/WQXWeb/services.asmx%3fWSDL</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>OpenEnvironment_gov_epa_cdx_Domain_x0020_Values_x0020_Service</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="https://test.epacdxnode.net/cdx-enws20/services/NetworkNode2%3fwsdl">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\net.epacdxnode.test\</RelPath>
+      <UpdateFromURL>https://test.epacdxnode.net/cdx-enws20/services/NetworkNode2%3fwsdl</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>OpenEnvironment_net_epacdxnode_test_NetworkNode2</CachedSettingsPropName>
+    </WebReferenceUrl>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="tmp\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>59412</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>
+          </IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

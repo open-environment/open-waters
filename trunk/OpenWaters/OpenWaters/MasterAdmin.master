@@ -1,0 +1,24 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/SiteAuth.Master" AutoEventWireup="true" CodeBehind="MasterAdmin.master.cs" Inherits="OpenEnvironment.MasterAdmin" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+    <table cellpadding="0" cellspacing="0">
+        <tr>
+            <td style="vertical-align: top; background-color: #efefef; width:180px;" >
+                <div class="leftMenu">
+                    <div class="divTitle">Admin</div>
+                    <div class="divBody">
+                        <asp:HyperLink runat="server" ID="lnkUserList" CssClass="leftLnk" NavigateUrl="~/Account/UserList.aspx">&middot; User Management</asp:HyperLink>
+                        <asp:HyperLink runat="server" ID="lnkRoleList" CssClass="leftLnk" NavigateUrl="~/Account/RoleList.aspx">&middot; Role Management</asp:HyperLink>
+                        <asp:HyperLink runat="server" ID="lnkAppSettings" CssClass="leftLnk" NavigateUrl="~/App_Pages/Secure/AppSettings.aspx">&middot; App Settings</asp:HyperLink>
+                        <asp:HyperLink runat="server" ID="lnkWQXList" CssClass="leftLnk" NavigateUrl="~/App_Pages/Secure/WQX_Mgmt.aspx">&middot; WQX Management</asp:HyperLink>
+                    </div>
+                </div>
+            </td>
+            <!-- body portion --> 
+            <td class="mainPnl">
+                <asp:ContentPlaceHolder ID="MainContent" runat="server" />
+            </td>
+        </tr>
+    </table>
+</asp:Content>
