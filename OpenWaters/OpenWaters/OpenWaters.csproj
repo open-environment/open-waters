@@ -24,7 +24,8 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <PackageAsSingleFile>false</PackageAsSingleFile>
+    <PackageAsSingleFile>true</PackageAsSingleFile>
+    <DesktopBuildPackageLocation>..\..\..\..\..\..\..\..\..\..\..\tmp\OpenWaters.zip</DesktopBuildPackageLocation>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -172,6 +173,7 @@
     <Compile Include="Account\Register.aspx.designer.cs">
       <DependentUpon>Register.aspx</DependentUpon>
     </Compile>
+    <Compile Include="App_Logic\BusinessLogicLayer\Logging.cs" />
     <Compile Include="App_Logic\BusinessLogicLayer\Utils.cs" />
     <Compile Include="App_Logic\BusinessLogicLayer\WQXSubmit.cs" />
     <Compile Include="App_Logic\DataAccessLayer\db_Accounts.cs" />
@@ -493,6 +495,7 @@
     </WebReferenceUrl>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Logs\" />
     <Folder Include="tmp\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
