@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Web.Security;
-
+using OpenEnvironment.App_Logic.BusinessLogicLayer;
 
 namespace OpenEnvironment
 {
@@ -36,9 +36,11 @@ namespace OpenEnvironment
                 else
                     lblMsg.Text = "User does not exist.";
             }
-            catch
+            catch (Exception ex)
             {
-                lblMsg.Text = "Error resetting account password.";
+                Logging Err = new Logging();
+                Err.ErrorLog(Server.MapPath("~/Logs/ErrorLog"), ex.Message);
+                lblMsg.Text = "Error resetting account password. " + ex.Message;
             }
 
         }
