@@ -100,7 +100,20 @@ namespace OpenEnvironment.App_Logic.BusinessLogicLayer
             }
             catch
             {
-                return false;
+                try
+                {
+                    var client = new System.Net.Mail.SmtpClient("smtp.gmail.com", 587)
+                    {
+                        Credentials = new System.Net.NetworkCredential("openwaters.noreply@gmail.com", "environmentl"),
+                        EnableSsl = true
+                    };
+                    client.Send(from, to, subj, body);
+                    return true;
+                }
+                catch
+                {
+                    return false;
+                }
             }
         }
 
@@ -372,9 +385,6 @@ namespace OpenEnvironment.App_Logic.BusinessLogicLayer
                 }
             }
         }
-
-
-
 
     }
 }
