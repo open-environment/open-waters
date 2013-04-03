@@ -31,15 +31,22 @@
             <asp:Parameter DefaultValue="true" Name="UsedInd" Type="Boolean" />
         </SelectParameters>
     </asp:ObjectDataSource>
+    <asp:ObjectDataSource ID="dsProject" runat="server" SelectMethod="GetWQX_PROJECT" TypeName="OpenEnvironment.App_Logic.DataAccessLayer.db_WQX">
+        <SelectParameters>
+            <asp:Parameter DefaultValue="true" Name="ActInd" Type="Boolean" />
+            <asp:SessionParameter DefaultValue="" Name="OrgID" SessionField="OrgID" Type="String" />
+            <asp:Parameter DefaultValue="false" Name="WQXPending" Type="Boolean" />
+        </SelectParameters>
+    </asp:ObjectDataSource>
 
     <h1>
         Activities (Samples)
     </h1>
     <asp:Panel ID="pnlFilter" CssClass="fltBox" runat="server" DefaultButton="btnFilter">
-        <div class="fltTitle">Filter</div>
+        <div class="fltTitle">Data Filters</div>
         <div class="fltMain">
             <div class="row">
-                <div style="width:420px; float:left"> 
+                <div style="width:360px; float:left"> 
                     <span class="fldLbl">Monitoring Location:</span>
                     <asp:DropDownList CssClass="fldTxt" ID="ddlMonLoc" runat="server"></asp:DropDownList>
                 </div>
@@ -48,26 +55,33 @@
                     <asp:DropDownList CssClass="fldTxt" ID="ddlActType" runat="server" ></asp:DropDownList>
                 </div>
             </div>
-            <div class="row" style="margin-bottom:5px">
-                <span class="fldLbl">Date Range:</span>
-                <asp:TextBox ID="txtStartDt" runat="server" Width="80px" CssClass="fldTxt"></asp:TextBox>
-                <ajaxToolkit:MaskedEditExtender ID="txtStartDt_MaskedEditExtender" runat="server"
-                    Enabled="True" TargetControlID="txtStartDt" MaskType="Date" UserDateFormat="MonthDayYear"
-                    Mask="99/99/9999">
-                </ajaxToolkit:MaskedEditExtender>
-                <ajaxToolkit:CalendarExtender ID="txtStartDt_CalendarExtender" runat="server" Enabled="True"
-                    TargetControlID="txtStartDt">
-                </ajaxToolkit:CalendarExtender>
-                <span class="fldLbl" style="width:20px; margin:0 4px 0 4px;">to</span>
-                <asp:TextBox ID="txtEndDt" runat="server" Width="80px" CssClass="fldTxt" ></asp:TextBox>
-                &nbsp;&nbsp;
-                <ajaxToolkit:MaskedEditExtender ID="txtEndDt_MaskedEditExtender" runat="server"
-                    Enabled="True" TargetControlID="txtEndDt" MaskType="Date" UserDateFormat="MonthDayYear" Mask="99/99/9999">
-                </ajaxToolkit:MaskedEditExtender>
-                <ajaxToolkit:CalendarExtender ID="txtEndDt_CalExtender" runat="server" Enabled="True"
-                    TargetControlID="txtEndDt">
-                </ajaxToolkit:CalendarExtender>
+            <div class="row" style="margin-bottom:5px" >
+                <div style="width:360px; float:left"> 
+                    <span class="fldLbl">Date Range:</span>
+                    <asp:TextBox ID="txtStartDt" runat="server" Width="80px" CssClass="fldTxt"></asp:TextBox>
+                    <ajaxToolkit:MaskedEditExtender ID="txtStartDt_MaskedEditExtender" runat="server"
+                        Enabled="True" TargetControlID="txtStartDt" MaskType="Date" UserDateFormat="MonthDayYear"
+                        Mask="99/99/9999">
+                    </ajaxToolkit:MaskedEditExtender>
+                    <ajaxToolkit:CalendarExtender ID="txtStartDt_CalendarExtender" runat="server" Enabled="True"
+                        TargetControlID="txtStartDt">
+                    </ajaxToolkit:CalendarExtender>
+                    <span class="fldLbl" style="width:20px; margin:0 4px 0 4px;">to</span>
+                    <asp:TextBox ID="txtEndDt" runat="server" Width="80px" CssClass="fldTxt" ></asp:TextBox>
+                    &nbsp;&nbsp;
+                    <ajaxToolkit:MaskedEditExtender ID="txtEndDt_MaskedEditExtender" runat="server"
+                        Enabled="True" TargetControlID="txtEndDt" MaskType="Date" UserDateFormat="MonthDayYear" Mask="99/99/9999">
+                    </ajaxToolkit:MaskedEditExtender>
+                    <ajaxToolkit:CalendarExtender ID="txtEndDt_CalExtender" runat="server" Enabled="True"
+                        TargetControlID="txtEndDt">
+                    </ajaxToolkit:CalendarExtender>
+                </div>                
+                <div style="float:left"> 
+                    <span class="fldLbl" >Project:</span>
+                    <asp:DropDownList CssClass="fldTxt" ID="ddlProject" runat="server" ></asp:DropDownList>
+                </div>
                 <asp:Button ID="btnFilter" runat="server" CssClass="btn" style="float:right" Text="Apply" onclick="btnFilter_Click" />
+         <br />
             </div>
         </div>
     </asp:Panel>

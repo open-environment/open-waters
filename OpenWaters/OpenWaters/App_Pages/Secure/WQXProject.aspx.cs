@@ -68,7 +68,8 @@ namespace OpenEnvironment
 
         protected void btnAdd_Click(object sender, EventArgs e)
         {
-
+            Session.Add("ProjectIDX", 0);
+            Response.Redirect("~/App_Pages/Secure/WQXProjectEdit.aspx");
         }
 
         protected void btnConfigSave_Click(object sender, EventArgs e)
@@ -95,8 +96,15 @@ namespace OpenEnvironment
 
             if (e.CommandName == "Deletes")
             {
-                db_WQX.InsertOrUpdateWQX_PROJECT(ProjectID, null, null, null, null, null, null, null, null, null, false, null, User.Identity.Name);
-                FillGrid();
+                List<T_WQX_ACTIVITY> a = db_WQX.GetWQX_ACTIVITY(false, Session["OrgID"].ConvertOrDefault<string>(), null, null, null, null, false, ProjectID);
+                if (a.Count==0)
+                {
+                    db_WQX.DeleteT_WQX_PROJECT(ProjectID);
+                    lblMsg.Text = "";
+                    FillGrid();
+                }
+                else
+                    lblMsg.Text = "You cannot delete a project that has samples/activities. You can instead make the project inactive at the project details screen.";
             }
 
             if (e.CommandName == "WQX")

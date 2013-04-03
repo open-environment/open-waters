@@ -58,6 +58,15 @@ namespace OpenEnvironment {
         protected global::System.Web.UI.WebControls.ObjectDataSource dsActType;
         
         /// <summary>
+        /// dsProject control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ObjectDataSource dsProject;
+        
+        /// <summary>
         /// pnlFilter control.
         /// </summary>
         /// <remarks>
@@ -137,6 +146,15 @@ namespace OpenEnvironment {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::AjaxControlToolkit.CalendarExtender txtEndDt_CalExtender;
+        
+        /// <summary>
+        /// ddlProject control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlProject;
         
         /// <summary>
         /// btnFilter control.
