@@ -32,6 +32,7 @@
             <asp:AsyncPostBackTrigger ControlID="Timer1" EventName="Tick" />
         </Triggers>
         <ContentTemplate>
+            <asp:Label ID="lblMsg" runat="server" CssClass="failureNotification"></asp:Label>
             <asp:GridView ID="grdProject" runat="server" GridLines="None" CssClass="grd" PagerStyle-CssClass="pgr"
                 AutoGenerateColumns="False" AlternatingRowStyle-CssClass="alt" 
                 onrowcommand="grdProject_RowCommand" 

@@ -23,6 +23,7 @@ namespace OpenEnvironment
                 //populate drop-downs                
                 Utils.BindList(ddlMonLoc, dsMonLoc, "MONLOC_IDX", "MONLOC_ID");
                 Utils.BindList(ddlActType, dsActType, "VALUE", "VALUE");
+                Utils.BindList(ddlProject, dsProject, "PROJECT_IDX", "PROJECT_ID"); 
 
                 if (Session["filtMonLoc"] != null)
                     ddlMonLoc.SelectedValue = Session["filtMonLoc"].ToString();
@@ -134,7 +135,9 @@ namespace OpenEnvironment
 
         public void FillGrid()
         {
-            grdActivity.DataSource = db_WQX.GetWQX_ACTIVITY(true, Session["OrgID"].ConvertOrDefault<string>(), ddlMonLoc.SelectedValue.ConvertOrDefault<int?>(), txtStartDt.Text.ConvertOrDefault<DateTime?>(), txtEndDt.Text.ConvertOrDefault<DateTime?>(), ddlActType.SelectedValue == "" ? null : ddlActType.SelectedValue, false);
+            grdActivity.DataSource = db_WQX.GetWQX_ACTIVITY(true, Session["OrgID"].ConvertOrDefault<string>(), ddlMonLoc.SelectedValue.ConvertOrDefault<int?>(), 
+                txtStartDt.Text.ConvertOrDefault<DateTime?>(), txtEndDt.Text.ConvertOrDefault<DateTime?>(), 
+                ddlActType.SelectedValue == "" ? null : ddlActType.SelectedValue, false, ddlProject.SelectedValue.ConvertOrDefault<int?>());
             grdActivity.DataBind();
 
             Session["filtMonLoc"] = ddlMonLoc.SelectedValue;

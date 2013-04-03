@@ -39,6 +39,10 @@ namespace OpenEnvironment
                     if (m.ACT_IND != null)
                         chkActInd.Checked = (bool)m.ACT_IND;
                 }
+                else
+                {
+                    lblProjectIDX.Text = "";
+                }
 
                 //set focus on first form element
                 txtProjID.Focus();

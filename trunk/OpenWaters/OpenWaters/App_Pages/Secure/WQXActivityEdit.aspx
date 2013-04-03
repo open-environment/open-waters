@@ -2,6 +2,7 @@
     CodeBehind="WQXActivityEdit.aspx.cs" Inherits="OpenEnvironment.WQXActivityEdit" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="BodyContent" runat="server">
+    <script src="../../Scripts/jquery-1.4.1.js" type="text/javascript"></script>
     <script type="text/javascript">
         function GetConfirmation() {
             var reply = confirm("WARNING: This will delete the result - are you sure you want to continue?");
@@ -12,6 +13,15 @@
                 return false;
             }
         }
+    </script>
+    <script type="text/javascript">
+        function SyncTextBoxes(txt, txt2) {
+            var t = $(txt).val();
+            var z = $("input[id$=" + txt2 + "]").val();
+            if (z == "") {
+                $("input[id$=" + txt2 + "]").val(t);
+            }
+        } 
     </script>
     <asp:ScriptManager ID="ScriptManager1" runat="server" EnablePartialRendering="true" />
     <asp:ObjectDataSource ID="dsRefData" runat="server" SelectMethod="GetT_WQX_REF_DATA" TypeName="OpenEnvironment.App_Logic.DataAccessLayer.db_Ref">
@@ -51,47 +61,47 @@
         <asp:Label ID="lblMsg" runat="server" CssClass="failureNotification"></asp:Label>
         <asp:Label ID="lblActivityIDX" runat="server" Style="display: none" />
     </p>
-    <asp:Panel ID="Panel1" runat="server" DefaultButton="btnSave" >
+    <asp:Panel ID="Panel1" runat="server" DefaultButton="btnSave" style="min-width:800px" >
         <div class="row">
             <span class="fldLbl">Activity ID:</span>
-            <asp:TextBox ID="txtActivityID" runat="server" MaxLength="35" Width="250px" CssClass="fldTxt"></asp:TextBox>
+            <asp:TextBox ID="txtActivityID" runat="server" MaxLength="35" Width="200px" CssClass="fldTxt"></asp:TextBox>
             <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtActivityID" ErrorMessage="Required"  
             CssClass="failureNotification"></asp:RequiredFieldValidator>
         </div>
         <div class="row">
-            <div style="width:420px; float:left"> 
+            <div style="width:380px; float:left"> 
                 <span class="fldLbl">Monitoring Location:</span>
-                <asp:DropDownList ID="ddlMonLoc" runat="server" CssClass="fldTxt" Width="255px"></asp:DropDownList>
+                <asp:DropDownList ID="ddlMonLoc" runat="server" CssClass="fldTxt" Width="205px"></asp:DropDownList>
                 <asp:RequiredFieldValidator Display="Dynamic" ID="RequiredFieldValidator2" runat="server" ControlToValidate="ddlMonLoc" ErrorMessage="Required"  
                 CssClass="failureNotification"></asp:RequiredFieldValidator>
             </div>
-            <div style="width:420px; float:left"> 
+            <div style="width:380px; float:left"> 
                 <span class="fldLbl">Project:</span>
-                <asp:DropDownList ID="ddlProject" runat="server" CssClass="fldTxt" Width="255px"></asp:DropDownList>
+                <asp:DropDownList ID="ddlProject" runat="server" CssClass="fldTxt" Width="205px"></asp:DropDownList>
                 <asp:RequiredFieldValidator Display="Dynamic" ID="RequiredFieldValidator3" runat="server" ControlToValidate="ddlProject" ErrorMessage="Required"  
                 CssClass="failureNotification"></asp:RequiredFieldValidator>
             </div>
         </div>
         <div class="row">
             <span class="fldLbl">Activity Type:</span>
-            <asp:DropDownList ID="ddlActivityType" runat="server" CssClass="fldTxt" Width="255px"></asp:DropDownList>
+            <asp:DropDownList ID="ddlActivityType" runat="server" CssClass="fldTxt" Width="205px"></asp:DropDownList>
             <asp:RequiredFieldValidator Display="Dynamic" ID="RequiredFieldValidator4" runat="server" ControlToValidate="ddlActivityType" ErrorMessage="Required"  
             CssClass="failureNotification"></asp:RequiredFieldValidator>
         </div>
         <div class="row">
-            <div style="width:420px; float:left"> 
+            <div style="width:380px; float:left"> 
                 <span class="fldLbl">Activity Media:</span>
-                <asp:DropDownList ID="ddlActMedia" runat="server" CssClass="fldTxt" Width="255px"></asp:DropDownList>
+                <asp:DropDownList ID="ddlActMedia" runat="server" CssClass="fldTxt" Width="205px"></asp:DropDownList>
                 <asp:RequiredFieldValidator Display="Dynamic" ID="RequiredFieldValidator5" runat="server" ControlToValidate="ddlActMedia" ErrorMessage="Required"  
                 CssClass="failureNotification"></asp:RequiredFieldValidator>
             </div>
-            <span class="fldLbl">Activity Submedia</span>
+            <span class="fldLbl">Activity Submedia:</span>
             <asp:DropDownList ID="ddlActSubMedia" runat="server" CssClass="fldTxt" Width="255px"></asp:DropDownList>
         </div>
         <div class="row">
-            <div style="width:420px; float:left"> 
-                <span class="fldLbl">Activity Date:</span>
-                <asp:TextBox ID="txtStartDate" runat="server" Width="240px" CssClass="fldTxt"></asp:TextBox>
+            <div style="width:380px; float:left"> 
+                <span class="fldLbl">Activity Date/Time:</span>
+                <asp:TextBox ID="txtStartDate" runat="server" Width="200px" CssClass="fldTxt" onblur="SyncTextBoxes(this, 'txtEndDate')"  ></asp:TextBox>
                 <ajaxToolkit:MaskedEditExtender ID="MaskedEditExtender2" runat="server" AutoComplete="true" AutoCompleteValue="false"
                     Enabled="True" TargetControlID="txtStartDate" MaskType="DateTime" AcceptAMPM="true" Mask="99/99/9999 99:99">
                 </ajaxToolkit:MaskedEditExtender>
@@ -110,7 +120,7 @@
                 Width="660px" CssClass="fldTxt"></asp:TextBox>            
         </div>
         <div class="row">
-            <div style="width:420px; float:left"> 
+            <div style="width:380px; float:left"> 
                 <span class="fldLbl">Active?</span>
                 <asp:CheckBox ID="chkActInd" runat="server" CssClass="fldTxt" Checked="True" />
             </div>
@@ -119,14 +129,14 @@
         </div>
         <br />
         <div class="btnRibbon">
-            <asp:Button ID="btnSave" runat="server" CssClass="btn" Text="Save &amp; Exit" onclick="btnSave_Click" />
-            <asp:Button ID="btnCancel" runat="server" CssClass="btn" Text="Exit" onclick="btnCancel_Click" />
+            <asp:Button ID="btnSave" runat="server" CssClass="btn" Text="Save" onclick="btnSave_Click" />
+            <asp:Button ID="btnCancel" runat="server" CssClass="btn" Text="Exit" onclick="btnCancel_Click" CausesValidation="false" />
         </div>
     </asp:Panel>
 
-    <h2>Results</h2>
     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
         <ContentTemplate>
+            <h2>Results</h2>
             <asp:Label ID="lblMsgDtl" runat="server" CssClass="failureNotification"></asp:Label>
             <asp:GridView ID="grdResults" runat="server" GridLines="None" CssClass="grd" PagerStyle-CssClass="pgr"
                 AutoGenerateColumns="False" AlternatingRowStyle-CssClass="alt" DataKeyNames="RESULT_IDX, CHAR_NAME, RESULT_MSR_UNIT"
@@ -229,13 +239,13 @@
             </asp:GridView>
         </ContentTemplate>
     </asp:UpdatePanel>
-    <div class="btnRibbon">
+    <asp:Panel ID="pnlResultBtn" runat="server" CssClass="btnRibbon">
         <asp:Button ID="btnAdd" runat="server" CssClass="btn" Text="Add Result" OnClick="btnAdd_Click" />
         <asp:ImageButton ID="btnExcel" runat="server" Height="24px" Style="float: right;" ImageUrl="~/App_Images/ico_xls.png" OnClick="btnExcel_Click" />
-    </div>
-    <h2>Activity Metrics</h2>
+    </asp:Panel>
     <asp:UpdatePanel ID="pnlMetrics" runat="server" Visible="false">
         <ContentTemplate>
+            <h2>Activity Metrics</h2>
             <asp:GridView ID="grdMetrics" runat="server" GridLines="None" CssClass="grd" PagerStyle-CssClass="pgr" AutoGenerateEditButton="true" 
             AutoGenerateColumns="False" AlternatingRowStyle-CssClass="alt" DataKeyNames="ACTIVITY_METRIC_IDX" DataSourceID="dsMetric" >
                 <AlternatingRowStyle CssClass="alt" />

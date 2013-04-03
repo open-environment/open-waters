@@ -78,6 +78,13 @@ namespace OpenEnvironment
                     if (a.WQX_IND != null) chkWQXInd.Checked = (bool)a.WQX_IND;
 
                 }
+                else
+                {
+                    UpdatePanel1.Visible = false;
+                    pnlMetrics.Visible = false;
+
+                    pnlResultBtn.Visible = false;
+                }
 
 
                 if (ddlActivityType.SelectedValue == "Field Msr/Obs-Habitat Assessment")
@@ -321,7 +328,11 @@ namespace OpenEnvironment
                 ddlActMedia.SelectedValue, ddlActSubMedia.SelectedValue, txtStartDate.Text.ConvertOrDefault<DateTime?>(), txtEndDate.Text.ConvertOrDefault<DateTime?>(), "", txtActComments.Text, "U", chkActInd.Checked, chkWQXInd.Checked, User.Identity.Name);
 
             if (SuccID > 0)
-                Response.Redirect("~/App_Pages/Secure/WQXActivity.aspx");
+            {
+                lblMsg.Text = "Sample saved successfully.";
+                UpdatePanel1.Visible = true;
+                Session.Add("ActivityIDX", SuccID);
+            }
             else
                 lblMsg.Text = "Error updating record.";
         }
