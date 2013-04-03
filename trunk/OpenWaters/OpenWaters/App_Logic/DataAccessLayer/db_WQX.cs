@@ -274,6 +274,27 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             }
         }
 
+        public static int DeleteT_WQX_PROJECT(int ProjectIDX)
+        {
+            using (OpenEnvironmentEntities ctx = new OpenEnvironmentEntities())
+            {
+                try
+                {
+                    T_WQX_PROJECT r = new T_WQX_PROJECT();
+                    r = (from c in ctx.T_WQX_PROJECT where c.PROJECT_IDX == ProjectIDX select c).FirstOrDefault();
+                    ctx.DeleteObject(r);
+                    ctx.SaveChanges();
+                    return 1;
+                }
+                catch
+                {
+                    return 0;
+                }
+            }
+
+        }
+
+
 
         // *************************** ACTIVITY **********************************
         // *********************************************************************
@@ -340,7 +361,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             }
         }
 
-        public static List<T_WQX_ACTIVITY> GetWQX_ACTIVITY(bool ActInd, string OrgID, int? MonLocIDX, DateTime? startDt, DateTime? endDt, string ActType, bool WQXPending)
+        public static List<T_WQX_ACTIVITY> GetWQX_ACTIVITY(bool ActInd, string OrgID, int? MonLocIDX, DateTime? startDt, DateTime? endDt, string ActType, bool WQXPending, int? ProjectIDX)
         {
             using (OpenEnvironmentEntities ctx = new OpenEnvironmentEntities())
             {
@@ -355,6 +376,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
                             && (startDt == null ? true : a.ACT_START_DT >= startDt)
                             && (endDt == null ? true : a.ACT_START_DT <= endDt)
                             && (ActType == null ? true : a.ACT_TYPE == ActType)
+                            && (ProjectIDX == null ? true : a.PROJECT_IDX == ProjectIDX)
                             orderby a.ACT_END_DT descending
                             select a).ToList();
                 }

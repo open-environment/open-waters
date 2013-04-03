@@ -235,7 +235,7 @@ namespace OpenEnvironment.App_Logic.BusinessLogicLayer
                     WQX_Submit_OneByOne("PROJ", p.PROJECT_IDX);
 
                 //Loop through all pending projects and submit one at a time
-                List<T_WQX_ACTIVITY> as1 = db_WQX.GetWQX_ACTIVITY(true, OrgID, null, null, null, null, true);
+                List<T_WQX_ACTIVITY> as1 = db_WQX.GetWQX_ACTIVITY(true, OrgID, null, null, null, null, true, null);
                 foreach (T_WQX_ACTIVITY a in as1)
                     WQX_Submit_OneByOne("ACT", a.ACTIVITY_IDX);
 
