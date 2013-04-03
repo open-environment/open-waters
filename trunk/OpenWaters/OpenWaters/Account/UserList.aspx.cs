@@ -20,13 +20,6 @@ namespace OpenEnvironment
             }
         }
 
-
-        protected void btnAdd_Click(object sender, EventArgs e)
-        {
-            Session.Add("UserEditID", -1);
-            Response.Redirect("~/Account/UserEdit.aspx");
-        }
-
         protected void grdUsers_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             if (e.CommandName == "Edits")
@@ -37,6 +30,12 @@ namespace OpenEnvironment
                     Response.Redirect("~/Account/UserEdit.aspx");
                 }
             }
+        }
+
+        protected void btnAdd_Click1(object sender, EventArgs e)
+        {
+            Session.Add("UserEditID", -1);
+            Response.Redirect("~/Account/UserEdit.aspx");
         }
     }
 }

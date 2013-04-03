@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
+using System.Web.Security;
 using System.Web.UI.WebControls;
 using OpenEnvironment.App_Logic.DataAccessLayer;
 
@@ -37,11 +38,13 @@ namespace OpenEnvironment
                     txtPhone.Text = u.PHONE;
                     txtPhoneExt.Text = u.PHONE_EXT;
                     chkActive.Checked = u.ACT_IND;
+                    txtPassword.Visible = false;
                 }
                 else //add new case
                 {
                     txtUserID.Enabled = true;
                     btnDelete.Visible = false;
+                    txtPassword.Visible = true;
                 }
             }
         }
@@ -57,10 +60,31 @@ namespace OpenEnvironment
             {
                 int SuccID;
 
-                if (txtUserIDX.Text.Length>0)
+                if (txtUserIDX.Text.Length > 0)
                     SuccID = db_Accounts.UpdateT_OE_USERS(int.Parse(txtUserIDX.Text), null, null, txtFName.Text, txtLName.Text, txtEmail.Text, chkActive.Checked, null, null, null, txtPhone.Text, txtPhoneExt.Text, User.Identity.Name);
                 else
-                    SuccID = db_Accounts.CreateT_OE_USERS(txtUserID.Text, null, null, txtFName.Text, txtLName.Text, txtEmail.Text, true, true, null, txtPhone.Text, txtPhoneExt.Text, User.Identity.Name);
+                {
+                    if (txtPassword.Text.Length == 0 || txtFName.Text.Length==0 || txtLName.Text.Length==0 || txtUserID.Text.Length==0)
+                    {
+                        lblMsg.Text = "You must supply a user ID, user's name, and password.";
+                        return;
+                    }
+
+                    //first create user 
+                    MembershipCreateStatus t;
+                    Membership.CreateUser(txtUserID.Text, txtPassword.Text, txtEmail.Text, null, null, true, out t);
+                    if (t == MembershipCreateStatus.InvalidPassword)
+                    {
+                        lblMsg.Text = "Invalid password. Password must be at least 8 characters long.";
+                        return;
+                    }
+
+                    T_OE_USERS u = db_Accounts.GetT_OE_USERSByID(txtUserID.Text);
+                    if (u != null)
+                        SuccID = db_Accounts.UpdateT_OE_USERS(u.USER_IDX, null, null, txtFName.Text, txtLName.Text, txtEmail.Text, true, false, System.DateTime.Now, null, txtPhone.Text, txtPhoneExt.Text, User.Identity.Name);
+                    else
+                        SuccID = 0;
+                }
 
                 if (SuccID == 1)
                     lblMsg.Text = "User updated successfully.";
