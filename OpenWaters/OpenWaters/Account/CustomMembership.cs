@@ -49,7 +49,7 @@ namespace OpenEnvironment.Account
             _MaxInvalidPasswordAttempts = 5;
             _PasswordAttemptWindow = 10;
             _MinRequiredPasswordLength = 8;
-            _MinRequiredNonalphanumericCharacters = 1;
+            _MinRequiredNonalphanumericCharacters = 0;
             _PasswordFormat = MembershipPasswordFormat.Hashed;
 
         }
@@ -57,7 +57,7 @@ namespace OpenEnvironment.Account
         public override bool ChangePassword(string username, string oldPassword, string newPassword)
         {
             //validate new password length
-            if (!Utils.ValidateParameter(ref newPassword, true, true, false, 0, 8))
+            if (!Utils.ValidateParameter(ref newPassword, true, true, false, 0, _MinRequiredPasswordLength))
                 return false;
 
             //Validate Non-AlphaNumeric characters
@@ -104,7 +104,7 @@ namespace OpenEnvironment.Account
         public override MembershipUser CreateUser(string username, string password, string email, string passwordQuestion, string passwordAnswer, bool isApproved, object providerUserKey, out MembershipCreateStatus status)
         {
             //validate username and password length
-            if (!Utils.ValidateParameter(ref password, true, true, false, 0, 8))
+            if (!Utils.ValidateParameter(ref password, true, true, false, 0, _MinRequiredPasswordLength))
             {
                 status = MembershipCreateStatus.InvalidPassword;
                 return null;
@@ -152,7 +152,7 @@ namespace OpenEnvironment.Account
                         string message = "Welcome to the Open Waters. Open Waters allows you to manage and submit water quality data. \r\n\r\n Your account details are listed below: \r\n\r\n Username: " + username.ToUpper() + "\r\n\r\n Temporary password: " + password + "\r\n\r\n (Note: You will be prompted to change your password when you log in for the first time.)";
                         Utils.SendEmail(null, email, "Welcome to Open Waters", message);
                         //Add user to PUBLIC Role
-                        db_Accounts.CreateT_VCCB_USER_ROLE(5, createUser, "system");
+                        db_Accounts.CreateT_VCCB_USER_ROLE(3, createUser, "system");
 
                         return new MembershipUser(this.Name, username, createUser, email, passwordQuestion, null, isApproved, false, System.DateTime.Now, System.DateTime.Now, System.DateTime.Now, System.DateTime.Now, System.DateTime.Now);
                     }

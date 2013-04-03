@@ -11,10 +11,8 @@
 	<div class="divHelp">	
 		This page lists all application securty roles. Security Roles define a set of security privileges within the system.
 	</div>
-    <asp:GridView ID="grdRoles" runat="server" CssClass="grd" 
-    PagerStyle-CssClass="pgr"  AlternatingRowStyle-CssClass="alt"  
-        AllowSorting="True" DataSourceID="dsRoles" 
-        AutoGenerateColumns="False" onrowcommand="grdRoles_RowCommand" >
+    <asp:GridView ID="grdRoles" runat="server" CssClass="grd" PagerStyle-CssClass="pgr"  AlternatingRowStyle-CssClass="alt"  
+        AllowSorting="True" DataSourceID="dsRoles" AutoGenerateColumns="False" onrowcommand="grdRoles_RowCommand" >
             <Columns>
                 <asp:TemplateField HeaderText="Edit">
                     <ItemStyle HorizontalAlign="Center" />
@@ -33,8 +31,6 @@
     </asp:GridView>
     <br />
    	<div class="btnRibbon">
-        <asp:Button ID="btnAdd" runat="server" CssClass="btn" Text="Add New" 
-            onclick="btnAdd_Click" />
+        <asp:Button ID="btnAdd" runat="server" CssClass="btn" Text="Add New" onclick="btnAdd_Click" />
     </div>
-
 </asp:Content>

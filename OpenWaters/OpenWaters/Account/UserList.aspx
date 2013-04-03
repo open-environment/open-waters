@@ -11,11 +11,9 @@
 	<div class="divHelp">	
 		This page lists all application users and allows you to add new users or edit an existing user.
 	</div>
-    <asp:GridView ID="grdUsers" runat="server" GridLines="None" CssClass="grd" PagerStyle-CssClass="pgr"
-                AutoGenerateColumns="false" AlternatingRowStyle-CssClass="alt"   
-        AllowSorting="True" DataKeyNames="USER_IDX" 
-        DataSourceID="dsUsers" AllowPaging="True" PageSize="20" 
-    onrowcommand="grdUsers_RowCommand">
+    <asp:GridView ID="grdUsers" runat="server" GridLines="None" CssClass="grd" PagerStyle-CssClass="pgr" AutoGenerateColumns="false" 
+            AlternatingRowStyle-CssClass="alt" AllowSorting="True" DataKeyNames="USER_IDX" DataSourceID="dsUsers" AllowPaging="True" 
+            PageSize="20" onrowcommand="grdUsers_RowCommand">
             <Columns>
                 <asp:TemplateField HeaderText="Edit">
                     <ItemStyle HorizontalAlign="Center" />
@@ -38,4 +36,7 @@
                 <asp:BoundField DataField="MODIFY_DT" HeaderText="Modified Date" SortExpression="MODIFY_DT" />
             </Columns>
     </asp:GridView>
+   	<div class="btnRibbon">
+        <asp:Button ID="btnAdd" runat="server" CssClass="btn" Text="Add New" onclick="btnAdd_Click1" />
+    </div>
 </asp:Content>

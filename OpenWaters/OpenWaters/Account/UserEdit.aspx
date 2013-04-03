@@ -29,6 +29,10 @@
             <asp:TextBox ID="txtUserID" runat="server" MaxLength="25" CssClass="fldTxt" Enabled="False"></asp:TextBox>
             <asp:CheckBox ID="chkActive" CssClass="fldTxt" runat="server" Text="Active" />
         </div>
+        <asp:Panel ID="pnlPwd" runat="server" CssClass="row">
+            <span class="fldLbl">Password</span>
+            <asp:TextBox ID="txtPassword" runat="server" CssClass="fldTxt" Width="200px" MaxLength="40"></asp:TextBox>
+        </asp:Panel>
         <div class="row">
             <span class="fldLbl">First Name</span>
             <asp:TextBox ID="txtFName" runat="server" CssClass="fldTxt" Width="200px" MaxLength="40"></asp:TextBox>
@@ -43,7 +47,8 @@
         </div>
         <div class="row">
             <span class="fldLbl">Phone</span>
-            <asp:TextBox ID="txtPhone" runat="server" CssClass="fldTxt" Width="200px" MaxLength="12"></asp:TextBox>
+            <asp:TextBox ID="txtPhone" runat="server" CssClass="fldTxt" Width="100px" MaxLength="12"></asp:TextBox>
+            <span class="fldLbl" style="width:10px" ></span>
             <span class="fldLbl" style="width:75px" >Extention</span>
             <asp:TextBox ID="txtPhoneExt" runat="server" CssClass="fldTxt"  Width="50px" MaxLength="4"></asp:TextBox>
         </div>
