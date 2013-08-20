@@ -16,7 +16,7 @@ namespace OpenEnvironment
                 //display left menu as selected
                 ContentPlaceHolder cp = this.Master.Master.FindControl("MainContent") as ContentPlaceHolder;
                 HyperLink hl = (HyperLink)cp.FindControl("lnkAppSettings");
-                if (hl != null) hl.CssClass = "divBody sel";
+                if (hl != null) hl.CssClass = "leftMnuBody sel";
             }
 
         }

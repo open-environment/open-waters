@@ -1,12 +1,12 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="SiteAuth.master.cs" Inherits="OpenEnvironment.SiteAuth" %>
+﻿ <%@ Master Language="C#" AutoEventWireup="true" CodeBehind="SiteAuth.master.cs" Inherits="OpenEnvironment.SiteAuth" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml" >
 <head runat="server">
     <title>Open Waters - Environmental Data Management</title>
     <link href="~/Styles/Site.css" rel="stylesheet" type="text/css" />
     <asp:ContentPlaceHolder ID="head" runat="server"></asp:ContentPlaceHolder>
 </head>
-<body style="min-width:900px">
+<body id="body1" >
     <form id="form1" runat="server">
     <div class="page">
         <asp:Table ID="Table1" runat="server" BackColor="Black" CellPadding="0" CellSpacing="0" Width="100%">
@@ -32,11 +32,11 @@
                                 <asp:MenuItem NavigateUrl="~/App_Pages/Secure/RefData.aspx" Text="Reference Data" />
                                 <asp:MenuItem NavigateUrl="~/App_Pages/Secure/AppSettings.aspx" Text="Administration" />
                                 <asp:MenuItem NavigateUrl="~/App_Pages/Secure/MyAccount.aspx" Text="My Account" />
+                                <asp:MenuItem NavigateUrl="~/App_Docs/UsersGuide.docx" Text="Help" />
                             </Items>
                         </asp:Menu>
                     </td>
                     <td>
-                        <asp:ImageButton ID="imgHelp" runat="server" ImageUrl="~/App_Images/ico_book.png" onclick="imgHelp_Click" ToolTip="User's Guide" />
                     </td>
                     <td>
                         <span style="color: #e2e2e2">Organization:</span>
@@ -57,7 +57,7 @@
             </table>
 
         </div>
-        <div style="min-height:400px">
+        <div >
             <asp:ContentPlaceHolder ID="MainContent" runat="server"></asp:ContentPlaceHolder>
         </div>
     </div>

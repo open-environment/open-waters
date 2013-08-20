@@ -26,6 +26,36 @@
           <EntitySet Name="T_WQX_REF_LAB" EntityType="OpenEnvironmentModel.Store.T_WQX_REF_LAB" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="T_WQX_RESULT" EntityType="OpenEnvironmentModel.Store.T_WQX_RESULT" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="T_WQX_TRANSACTION_LOG" EntityType="OpenEnvironmentModel.Store.T_WQX_TRANSACTION_LOG" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="V_WQX_ACTIVITY_LATEST" EntityType="OpenEnvironmentModel.Store.V_WQX_ACTIVITY_LATEST" store:Type="Views" store:Schema="dbo" store:Name="V_WQX_ACTIVITY_LATEST">
+            <DefiningQuery>SELECT 
+      [V_WQX_ACTIVITY_LATEST].[ACTIVITY_IDX] AS [ACTIVITY_IDX], 
+      [V_WQX_ACTIVITY_LATEST].[ORG_ID] AS [ORG_ID], 
+      [V_WQX_ACTIVITY_LATEST].[PROJECT_IDX] AS [PROJECT_IDX], 
+      [V_WQX_ACTIVITY_LATEST].[MONLOC_IDX] AS [MONLOC_IDX], 
+      [V_WQX_ACTIVITY_LATEST].[MONLOC_NAME] AS [MONLOC_NAME], 
+      [V_WQX_ACTIVITY_LATEST].[ACTIVITY_ID] AS [ACTIVITY_ID], 
+      [V_WQX_ACTIVITY_LATEST].[ACT_TYPE] AS [ACT_TYPE], 
+      [V_WQX_ACTIVITY_LATEST].[ACT_START_DT] AS [ACT_START_DT], 
+      [V_WQX_ACTIVITY_LATEST].[WQX_IND] AS [WQX_IND], 
+      [V_WQX_ACTIVITY_LATEST].[CREATE_DT] AS [CREATE_DT], 
+      [V_WQX_ACTIVITY_LATEST].[CREATE_USERID] AS [CREATE_USERID], 
+      [V_WQX_ACTIVITY_LATEST].[ACT_COMMENT] AS [ACT_COMMENT], 
+      [V_WQX_ACTIVITY_LATEST].[Alkalinity, total] AS [Alkalinity, total], 
+      [V_WQX_ACTIVITY_LATEST].[Ammonia] AS [Ammonia], 
+      [V_WQX_ACTIVITY_LATEST].[Dissolved oxygen (DO)] AS [Dissolved oxygen (DO)], 
+      [V_WQX_ACTIVITY_LATEST].[Escherichia coli] AS [Escherichia coli], 
+      [V_WQX_ACTIVITY_LATEST].[Nitrate] AS [Nitrate], 
+      [V_WQX_ACTIVITY_LATEST].[Nitrite] AS [Nitrite], 
+      [V_WQX_ACTIVITY_LATEST].[pH] AS [pH], 
+      [V_WQX_ACTIVITY_LATEST].[Phosphorus] AS [Phosphorus], 
+      [V_WQX_ACTIVITY_LATEST].[Salinity] AS [Salinity], 
+      [V_WQX_ACTIVITY_LATEST].[Specific Conductance] AS [Specific Conductance], 
+      [V_WQX_ACTIVITY_LATEST].[Temperature, air] AS [Temperature, air], 
+      [V_WQX_ACTIVITY_LATEST].[Temperature, water] AS [Temperature, water], 
+      [V_WQX_ACTIVITY_LATEST].[Total Dissolved Solids] AS [Total Dissolved Solids], 
+      [V_WQX_ACTIVITY_LATEST].[Turbidity] AS [Turbidity]
+      FROM [dbo].[V_WQX_ACTIVITY_LATEST] AS [V_WQX_ACTIVITY_LATEST]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="V_WQX_TRANSACTION_LOG" EntityType="OpenEnvironmentModel.Store.V_WQX_TRANSACTION_LOG" store:Type="Views" store:Schema="dbo" store:Name="V_WQX_TRANSACTION_LOG">
             <DefiningQuery>SELECT 
       [V_WQX_TRANSACTION_LOG].[LOG_ID] AS [LOG_ID], 
@@ -40,71 +70,71 @@
       [V_WQX_TRANSACTION_LOG].[RECORD] AS [RECORD]
       FROM [dbo].[V_WQX_TRANSACTION_LOG] AS [V_WQX_TRANSACTION_LOG]</DefiningQuery>
           </EntitySet>
-          <AssociationSet Name="FK__T_OE_USER__ROLE___07F6335A" Association="OpenEnvironmentModel.Store.FK__T_OE_USER__ROLE___07F6335A">
+          <AssociationSet Name="FK__T_OE_USER__ROLE___52593CB8" Association="OpenEnvironmentModel.Store.FK__T_OE_USER__ROLE___52593CB8">
             <End Role="T_OE_ROLES" EntitySet="T_OE_ROLES" />
             <End Role="T_OE_USER_ROLES" EntitySet="T_OE_USER_ROLES" />
           </AssociationSet>
-          <AssociationSet Name="FK__T_OE_USER__USER___08EA5793" Association="OpenEnvironmentModel.Store.FK__T_OE_USER__USER___08EA5793">
+          <AssociationSet Name="FK__T_OE_USER__USER___534D60F1" Association="OpenEnvironmentModel.Store.FK__T_OE_USER__USER___534D60F1">
             <End Role="T_OE_USERS" EntitySet="T_OE_USERS" />
             <End Role="T_OE_USER_ROLES" EntitySet="T_OE_USER_ROLES" />
           </AssociationSet>
-          <AssociationSet Name="FK__T_WQX_ACT__ACTIV__22AA2996" Association="OpenEnvironmentModel.Store.FK__T_WQX_ACT__ACTIV__22AA2996">
+          <AssociationSet Name="FK__T_WQX_ACT__ACTIV__6D0D32F4" Association="OpenEnvironmentModel.Store.FK__T_WQX_ACT__ACTIV__6D0D32F4">
             <End Role="T_WQX_ACTIVITY" EntitySet="T_WQX_ACTIVITY" />
             <End Role="T_WQX_ACTIVITY_METRIC" EntitySet="T_WQX_ACTIVITY_METRIC" />
           </AssociationSet>
-          <AssociationSet Name="FK__T_WQX_ACT__BIO_H__239E4DCF" Association="OpenEnvironmentModel.Store.FK__T_WQX_ACT__BIO_H__239E4DCF">
+          <AssociationSet Name="FK__T_WQX_ACT__BIO_H__6E01572D" Association="OpenEnvironmentModel.Store.FK__T_WQX_ACT__BIO_H__6E01572D">
             <End Role="T_WQX_BIO_HABITAT_INDEX" EntitySet="T_WQX_BIO_HABITAT_INDEX" />
             <End Role="T_WQX_ACTIVITY_METRIC" EntitySet="T_WQX_ACTIVITY_METRIC" />
           </AssociationSet>
-          <AssociationSet Name="FK__T_WQX_ACT__MONLO__1B0907CE" Association="OpenEnvironmentModel.Store.FK__T_WQX_ACT__MONLO__1B0907CE">
+          <AssociationSet Name="FK__T_WQX_ACT__MONLO__656C112C" Association="OpenEnvironmentModel.Store.FK__T_WQX_ACT__MONLO__656C112C">
             <End Role="T_WQX_MONLOC" EntitySet="T_WQX_MONLOC" />
             <End Role="T_WQX_ACTIVITY" EntitySet="T_WQX_ACTIVITY" />
           </AssociationSet>
-          <AssociationSet Name="FK__T_WQX_ACT__ORG_I__1BFD2C07" Association="OpenEnvironmentModel.Store.FK__T_WQX_ACT__ORG_I__1BFD2C07">
+          <AssociationSet Name="FK__T_WQX_ACT__ORG_I__66603565" Association="OpenEnvironmentModel.Store.FK__T_WQX_ACT__ORG_I__66603565">
             <End Role="T_WQX_ORGANIZATION" EntitySet="T_WQX_ORGANIZATION" />
             <End Role="T_WQX_ACTIVITY" EntitySet="T_WQX_ACTIVITY" />
           </AssociationSet>
-          <AssociationSet Name="FK__T_WQX_ACT__PROJE__1A14E395" Association="OpenEnvironmentModel.Store.FK__T_WQX_ACT__PROJE__1A14E395">
+          <AssociationSet Name="FK__T_WQX_ACT__PROJE__6477ECF3" Association="OpenEnvironmentModel.Store.FK__T_WQX_ACT__PROJE__6477ECF3">
             <End Role="T_WQX_PROJECT" EntitySet="T_WQX_PROJECT" />
             <End Role="T_WQX_ACTIVITY" EntitySet="T_WQX_ACTIVITY" />
           </AssociationSet>
-          <AssociationSet Name="FK__T_WQX_BIO__MONLO__1ED998B2" Association="OpenEnvironmentModel.Store.FK__T_WQX_BIO__MONLO__1ED998B2">
+          <AssociationSet Name="FK__T_WQX_BIO__MONLO__693CA210" Association="OpenEnvironmentModel.Store.FK__T_WQX_BIO__MONLO__693CA210">
             <End Role="T_WQX_MONLOC" EntitySet="T_WQX_MONLOC" />
             <End Role="T_WQX_BIO_HABITAT_INDEX" EntitySet="T_WQX_BIO_HABITAT_INDEX" />
           </AssociationSet>
-          <AssociationSet Name="FK__T_WQX_BIO__ORG_I__1FCDBCEB" Association="OpenEnvironmentModel.Store.FK__T_WQX_BIO__ORG_I__1FCDBCEB">
+          <AssociationSet Name="FK__T_WQX_BIO__ORG_I__6A30C649" Association="OpenEnvironmentModel.Store.FK__T_WQX_BIO__ORG_I__6A30C649">
             <End Role="T_WQX_ORGANIZATION" EntitySet="T_WQX_ORGANIZATION" />
             <End Role="T_WQX_BIO_HABITAT_INDEX" EntitySet="T_WQX_BIO_HABITAT_INDEX" />
           </AssociationSet>
-          <AssociationSet Name="FK__T_WQX_IMP__ORG_I__30F848ED" Association="OpenEnvironmentModel.Store.FK__T_WQX_IMP__ORG_I__30F848ED">
+          <AssociationSet Name="FK__T_WQX_IMP__ORG_I__7E37BEF6" Association="OpenEnvironmentModel.Store.FK__T_WQX_IMP__ORG_I__7E37BEF6">
             <End Role="T_WQX_ORGANIZATION" EntitySet="T_WQX_ORGANIZATION" />
             <End Role="T_WQX_IMPORT_LOG" EntitySet="T_WQX_IMPORT_LOG" />
           </AssociationSet>
-          <AssociationSet Name="FK__T_WQX_MON__ORG_I__173876EA" Association="OpenEnvironmentModel.Store.FK__T_WQX_MON__ORG_I__173876EA">
+          <AssociationSet Name="FK__T_WQX_MON__ORG_I__619B8048" Association="OpenEnvironmentModel.Store.FK__T_WQX_MON__ORG_I__619B8048">
             <End Role="T_WQX_ORGANIZATION" EntitySet="T_WQX_ORGANIZATION" />
             <End Role="T_WQX_MONLOC" EntitySet="T_WQX_MONLOC" />
           </AssociationSet>
-          <AssociationSet Name="FK__T_WQX_ORG__ORG_I__117F9D94" Association="OpenEnvironmentModel.Store.FK__T_WQX_ORG__ORG_I__117F9D94">
+          <AssociationSet Name="FK__T_WQX_ORG__ORG_I__5BE2A6F2" Association="OpenEnvironmentModel.Store.FK__T_WQX_ORG__ORG_I__5BE2A6F2">
             <End Role="T_WQX_ORGANIZATION" EntitySet="T_WQX_ORGANIZATION" />
             <End Role="T_WQX_ORG_ADDRESS" EntitySet="T_WQX_ORG_ADDRESS" />
           </AssociationSet>
-          <AssociationSet Name="FK__T_WQX_PRO__ORG_I__145C0A3F" Association="OpenEnvironmentModel.Store.FK__T_WQX_PRO__ORG_I__145C0A3F">
+          <AssociationSet Name="FK__T_WQX_PRO__ORG_I__5EBF139D" Association="OpenEnvironmentModel.Store.FK__T_WQX_PRO__ORG_I__5EBF139D">
             <End Role="T_WQX_ORGANIZATION" EntitySet="T_WQX_ORGANIZATION" />
             <End Role="T_WQX_PROJECT" EntitySet="T_WQX_PROJECT" />
           </AssociationSet>
-          <AssociationSet Name="FK__T_WQX_REF__CHAR___46E78A0C" Association="OpenEnvironmentModel.Store.FK__T_WQX_REF__CHAR___46E78A0C">
+          <AssociationSet Name="FK__T_WQX_REF__CHAR___797309D9" Association="OpenEnvironmentModel.Store.FK__T_WQX_REF__CHAR___797309D9">
             <End Role="T_WQX_REF_CHARACTERISTIC" EntitySet="T_WQX_REF_CHARACTERISTIC" />
             <End Role="T_WQX_REF_CHAR_LIMITS" EntitySet="T_WQX_REF_CHAR_LIMITS" />
           </AssociationSet>
-          <AssociationSet Name="FK__T_WQX_RES__ACTIV__267ABA7A" Association="OpenEnvironmentModel.Store.FK__T_WQX_RES__ACTIV__267ABA7A">
+          <AssociationSet Name="FK__T_WQX_RES__ACTIV__70DDC3D8" Association="OpenEnvironmentModel.Store.FK__T_WQX_RES__ACTIV__70DDC3D8">
             <End Role="T_WQX_ACTIVITY" EntitySet="T_WQX_ACTIVITY" />
             <End Role="T_WQX_RESULT" EntitySet="T_WQX_RESULT" />
           </AssociationSet>
-          <AssociationSet Name="FK__T_WQX_RES__ANALY__286302EC" Association="OpenEnvironmentModel.Store.FK__T_WQX_RES__ANALY__286302EC">
+          <AssociationSet Name="FK__T_WQX_RES__ANALY__72C60C4A" Association="OpenEnvironmentModel.Store.FK__T_WQX_RES__ANALY__72C60C4A">
             <End Role="T_WQX_REF_ANAL_METHOD" EntitySet="T_WQX_REF_ANAL_METHOD" />
             <End Role="T_WQX_RESULT" EntitySet="T_WQX_RESULT" />
           </AssociationSet>
-          <AssociationSet Name="FK__T_WQX_RES__LAB_I__276EDEB3" Association="OpenEnvironmentModel.Store.FK__T_WQX_RES__LAB_I__276EDEB3">
+          <AssociationSet Name="FK__T_WQX_RES__LAB_I__71D1E811" Association="OpenEnvironmentModel.Store.FK__T_WQX_RES__LAB_I__71D1E811">
             <End Role="T_WQX_REF_LAB" EntitySet="T_WQX_REF_LAB" />
             <End Role="T_WQX_RESULT" EntitySet="T_WQX_RESULT" />
           </AssociationSet>
@@ -554,6 +584,46 @@
           <Property Name="CDX_SUBMIT_STATUS" Type="varchar" MaxLength="20" />
         </EntityType>
         <!--Errors Found During Generation:
+      warning 6002: The table/view 'OpenEnvironment.dbo.V_WQX_ACTIVITY_LATEST' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="V_WQX_ACTIVITY_LATEST">
+          <Key>
+            <PropertyRef Name="ACTIVITY_IDX" />
+            <PropertyRef Name="ORG_ID" />
+            <PropertyRef Name="PROJECT_IDX" />
+            <PropertyRef Name="MONLOC_NAME" />
+            <PropertyRef Name="ACTIVITY_ID" />
+            <PropertyRef Name="ACT_TYPE" />
+            <PropertyRef Name="ACT_START_DT" />
+          </Key>
+          <Property Name="ACTIVITY_IDX" Type="int" Nullable="false" />
+          <Property Name="ORG_ID" Type="varchar" Nullable="false" MaxLength="30" />
+          <Property Name="PROJECT_IDX" Type="int" Nullable="false" />
+          <Property Name="MONLOC_IDX" Type="int" />
+          <Property Name="MONLOC_NAME" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="ACTIVITY_ID" Type="varchar" Nullable="false" MaxLength="35" />
+          <Property Name="ACT_TYPE" Type="varchar" Nullable="false" MaxLength="70" />
+          <Property Name="ACT_START_DT" Type="datetime" Nullable="false" />
+          <Property Name="WQX_IND" Type="bit" />
+          <Property Name="CREATE_DT" Type="datetime" />
+          <Property Name="CREATE_USERID" Type="varchar" MaxLength="25" />
+          <Property Name="ACT_COMMENT" Type="varchar" MaxLength="4000" />
+          <Property Name="Alkalinity, total" Type="varchar" MaxLength="60" />
+          <Property Name="Ammonia" Type="varchar" MaxLength="60" />
+          <Property Name="Dissolved oxygen (DO)" Type="varchar" MaxLength="60" />
+          <Property Name="Escherichia coli" Type="varchar" MaxLength="60" />
+          <Property Name="Nitrate" Type="varchar" MaxLength="60" />
+          <Property Name="Nitrite" Type="varchar" MaxLength="60" />
+          <Property Name="pH" Type="varchar" MaxLength="60" />
+          <Property Name="Phosphorus" Type="varchar" MaxLength="60" />
+          <Property Name="Salinity" Type="varchar" MaxLength="60" />
+          <Property Name="Specific Conductance" Type="varchar" MaxLength="60" />
+          <Property Name="Temperature, air" Type="varchar" MaxLength="60" />
+          <Property Name="Temperature, water" Type="varchar" MaxLength="60" />
+          <Property Name="Total Dissolved Solids" Type="varchar" MaxLength="60" />
+          <Property Name="Turbidity" Type="varchar" MaxLength="60" />
+        </EntityType>
+        <!--Errors Found During Generation:
       warning 6002: The table/view 'OpenEnvironment.dbo.V_WQX_TRANSACTION_LOG' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
       -->
         <EntityType Name="V_WQX_TRANSACTION_LOG">
@@ -575,7 +645,7 @@
           <Property Name="CDX_SUBMIT_STATUS" Type="varchar" MaxLength="20" />
           <Property Name="RECORD" Type="varchar" MaxLength="35" />
         </EntityType>
-        <Association Name="FK__T_OE_USER__ROLE___07F6335A">
+        <Association Name="FK__T_OE_USER__ROLE___52593CB8">
           <End Role="T_OE_ROLES" Type="OpenEnvironmentModel.Store.T_OE_ROLES" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
@@ -589,7 +659,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__T_OE_USER__USER___08EA5793">
+        <Association Name="FK__T_OE_USER__USER___534D60F1">
           <End Role="T_OE_USERS" Type="OpenEnvironmentModel.Store.T_OE_USERS" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
@@ -603,7 +673,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__T_WQX_ACT__ACTIV__22AA2996">
+        <Association Name="FK__T_WQX_ACT__ACTIV__6D0D32F4">
           <End Role="T_WQX_ACTIVITY" Type="OpenEnvironmentModel.Store.T_WQX_ACTIVITY" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
@@ -617,7 +687,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__T_WQX_ACT__BIO_H__239E4DCF">
+        <Association Name="FK__T_WQX_ACT__BIO_H__6E01572D">
           <End Role="T_WQX_BIO_HABITAT_INDEX" Type="OpenEnvironmentModel.Store.T_WQX_BIO_HABITAT_INDEX" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
           </End>
@@ -631,7 +701,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__T_WQX_ACT__MONLO__1B0907CE">
+        <Association Name="FK__T_WQX_ACT__MONLO__656C112C">
           <End Role="T_WQX_MONLOC" Type="OpenEnvironmentModel.Store.T_WQX_MONLOC" Multiplicity="0..1" />
           <End Role="T_WQX_ACTIVITY" Type="OpenEnvironmentModel.Store.T_WQX_ACTIVITY" Multiplicity="*" />
           <ReferentialConstraint>
@@ -643,7 +713,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__T_WQX_ACT__ORG_I__1BFD2C07">
+        <Association Name="FK__T_WQX_ACT__ORG_I__66603565">
           <End Role="T_WQX_ORGANIZATION" Type="OpenEnvironmentModel.Store.T_WQX_ORGANIZATION" Multiplicity="1" />
           <End Role="T_WQX_ACTIVITY" Type="OpenEnvironmentModel.Store.T_WQX_ACTIVITY" Multiplicity="*" />
           <ReferentialConstraint>
@@ -655,7 +725,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__T_WQX_ACT__PROJE__1A14E395">
+        <Association Name="FK__T_WQX_ACT__PROJE__6477ECF3">
           <End Role="T_WQX_PROJECT" Type="OpenEnvironmentModel.Store.T_WQX_PROJECT" Multiplicity="1" />
           <End Role="T_WQX_ACTIVITY" Type="OpenEnvironmentModel.Store.T_WQX_ACTIVITY" Multiplicity="*" />
           <ReferentialConstraint>
@@ -667,7 +737,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__T_WQX_BIO__MONLO__1ED998B2">
+        <Association Name="FK__T_WQX_BIO__MONLO__693CA210">
           <End Role="T_WQX_MONLOC" Type="OpenEnvironmentModel.Store.T_WQX_MONLOC" Multiplicity="0..1" />
           <End Role="T_WQX_BIO_HABITAT_INDEX" Type="OpenEnvironmentModel.Store.T_WQX_BIO_HABITAT_INDEX" Multiplicity="*" />
           <ReferentialConstraint>
@@ -679,7 +749,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__T_WQX_BIO__ORG_I__1FCDBCEB">
+        <Association Name="FK__T_WQX_BIO__ORG_I__6A30C649">
           <End Role="T_WQX_ORGANIZATION" Type="OpenEnvironmentModel.Store.T_WQX_ORGANIZATION" Multiplicity="1" />
           <End Role="T_WQX_BIO_HABITAT_INDEX" Type="OpenEnvironmentModel.Store.T_WQX_BIO_HABITAT_INDEX" Multiplicity="*" />
           <ReferentialConstraint>
@@ -691,7 +761,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__T_WQX_IMP__ORG_I__30F848ED">
+        <Association Name="FK__T_WQX_IMP__ORG_I__7E37BEF6">
           <End Role="T_WQX_ORGANIZATION" Type="OpenEnvironmentModel.Store.T_WQX_ORGANIZATION" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
@@ -705,7 +775,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__T_WQX_MON__ORG_I__173876EA">
+        <Association Name="FK__T_WQX_MON__ORG_I__619B8048">
           <End Role="T_WQX_ORGANIZATION" Type="OpenEnvironmentModel.Store.T_WQX_ORGANIZATION" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
@@ -719,7 +789,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__T_WQX_ORG__ORG_I__117F9D94">
+        <Association Name="FK__T_WQX_ORG__ORG_I__5BE2A6F2">
           <End Role="T_WQX_ORGANIZATION" Type="OpenEnvironmentModel.Store.T_WQX_ORGANIZATION" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
@@ -733,7 +803,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__T_WQX_PRO__ORG_I__145C0A3F">
+        <Association Name="FK__T_WQX_PRO__ORG_I__5EBF139D">
           <End Role="T_WQX_ORGANIZATION" Type="OpenEnvironmentModel.Store.T_WQX_ORGANIZATION" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
@@ -747,7 +817,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__T_WQX_REF__CHAR___46E78A0C">
+        <Association Name="FK__T_WQX_REF__CHAR___797309D9">
           <End Role="T_WQX_REF_CHARACTERISTIC" Type="OpenEnvironmentModel.Store.T_WQX_REF_CHARACTERISTIC" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
@@ -761,7 +831,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__T_WQX_RES__ACTIV__267ABA7A">
+        <Association Name="FK__T_WQX_RES__ACTIV__70DDC3D8">
           <End Role="T_WQX_ACTIVITY" Type="OpenEnvironmentModel.Store.T_WQX_ACTIVITY" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
@@ -775,7 +845,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__T_WQX_RES__ANALY__286302EC">
+        <Association Name="FK__T_WQX_RES__ANALY__72C60C4A">
           <End Role="T_WQX_REF_ANAL_METHOD" Type="OpenEnvironmentModel.Store.T_WQX_REF_ANAL_METHOD" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
           </End>
@@ -789,7 +859,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__T_WQX_RES__LAB_I__276EDEB3">
+        <Association Name="FK__T_WQX_RES__LAB_I__71D1E811">
           <End Role="T_WQX_REF_LAB" Type="OpenEnvironmentModel.Store.T_WQX_REF_LAB" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
           </End>
@@ -921,6 +991,7 @@
             <End Role="T_WQX_REF_CHARACTERISTIC" EntitySet="T_WQX_REF_CHARACTERISTIC" />
             <End Role="T_WQX_REF_CHAR_LIMITS" EntitySet="T_WQX_REF_CHAR_LIMITS" />
           </AssociationSet>
+          <EntitySet Name="V_WQX_ACTIVITY_LATEST" EntityType="OpenEnvironmentModel.V_WQX_ACTIVITY_LATEST" />
           </EntityContainer>
         <EntityType Name="T_OE_APP_SETTINGS">
           <Key>
@@ -1631,6 +1702,43 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="V_WQX_ACTIVITY_LATEST">
+          <Key>
+            <PropertyRef Name="ACTIVITY_IDX" />
+            <PropertyRef Name="ORG_ID" />
+            <PropertyRef Name="PROJECT_IDX" />
+            <PropertyRef Name="MONLOC_NAME" />
+            <PropertyRef Name="ACTIVITY_ID" />
+            <PropertyRef Name="ACT_TYPE" />
+            <PropertyRef Name="ACT_START_DT" />
+          </Key>
+          <Property Type="Int32" Name="ACTIVITY_IDX" Nullable="false" />
+          <Property Type="String" Name="ORG_ID" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="PROJECT_IDX" Nullable="false" />
+          <Property Type="Int32" Name="MONLOC_IDX" />
+          <Property Type="String" Name="MONLOC_NAME" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ACTIVITY_ID" Nullable="false" MaxLength="35" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ACT_TYPE" Nullable="false" MaxLength="70" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="ACT_START_DT" Nullable="false" />
+          <Property Type="Boolean" Name="WQX_IND" />
+          <Property Type="DateTime" Name="CREATE_DT" />
+          <Property Type="String" Name="CREATE_USERID" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ACT_COMMENT" MaxLength="4000" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Alkalinity__total" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Ammonia" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Dissolved_oxygen__DO_" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Escherichia_coli" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Nitrate" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Nitrite" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="pH" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Phosphorus" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Salinity" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Specific_Conductance" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Temperature__air" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Temperature__water" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Total_Dissolved_Solids" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Turbidity" MaxLength="60" FixedLength="false" Unicode="false" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -2128,6 +2236,38 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="V_WQX_ACTIVITY_LATEST">
+            <EntityTypeMapping TypeName="OpenEnvironmentModel.V_WQX_ACTIVITY_LATEST">
+              <MappingFragment StoreEntitySet="V_WQX_ACTIVITY_LATEST">
+                <ScalarProperty Name="Turbidity" ColumnName="Turbidity" />
+                <ScalarProperty Name="Total_Dissolved_Solids" ColumnName="Total Dissolved Solids" />
+                <ScalarProperty Name="Temperature__water" ColumnName="Temperature, water" />
+                <ScalarProperty Name="Temperature__air" ColumnName="Temperature, air" />
+                <ScalarProperty Name="Specific_Conductance" ColumnName="Specific Conductance" />
+                <ScalarProperty Name="Salinity" ColumnName="Salinity" />
+                <ScalarProperty Name="Phosphorus" ColumnName="Phosphorus" />
+                <ScalarProperty Name="pH" ColumnName="pH" />
+                <ScalarProperty Name="Nitrite" ColumnName="Nitrite" />
+                <ScalarProperty Name="Nitrate" ColumnName="Nitrate" />
+                <ScalarProperty Name="Escherichia_coli" ColumnName="Escherichia coli" />
+                <ScalarProperty Name="Dissolved_oxygen__DO_" ColumnName="Dissolved oxygen (DO)" />
+                <ScalarProperty Name="Ammonia" ColumnName="Ammonia" />
+                <ScalarProperty Name="Alkalinity__total" ColumnName="Alkalinity, total" />
+                <ScalarProperty Name="ACT_COMMENT" ColumnName="ACT_COMMENT" />
+                <ScalarProperty Name="CREATE_USERID" ColumnName="CREATE_USERID" />
+                <ScalarProperty Name="CREATE_DT" ColumnName="CREATE_DT" />
+                <ScalarProperty Name="WQX_IND" ColumnName="WQX_IND" />
+                <ScalarProperty Name="ACT_START_DT" ColumnName="ACT_START_DT" />
+                <ScalarProperty Name="ACT_TYPE" ColumnName="ACT_TYPE" />
+                <ScalarProperty Name="ACTIVITY_ID" ColumnName="ACTIVITY_ID" />
+                <ScalarProperty Name="MONLOC_NAME" ColumnName="MONLOC_NAME" />
+                <ScalarProperty Name="MONLOC_IDX" ColumnName="MONLOC_IDX" />
+                <ScalarProperty Name="PROJECT_IDX" ColumnName="PROJECT_IDX" />
+                <ScalarProperty Name="ORG_ID" ColumnName="ORG_ID" />
+                <ScalarProperty Name="ACTIVITY_IDX" ColumnName="ACTIVITY_IDX" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -2242,6 +2382,7 @@
           <ConnectorPoint PointX="2.25" PointY="9.9324446614583337" />
           <ConnectorPoint PointX="3" PointY="9.9324446614583337" />
         </AssociationConnector>
+        <EntityTypeShape EntityType="OpenEnvironmentModel.V_WQX_ACTIVITY_LATEST" Width="1.5" PointX="5.375" PointY="8.75" Height="6.0186165364583246" />
       </Diagram>
     </Diagrams>
   </Designer>

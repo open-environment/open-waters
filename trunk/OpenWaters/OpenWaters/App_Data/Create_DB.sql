@@ -586,6 +586,37 @@ SELECT L.*,
 GO
 
 
+create view V_WQX_ACTIVITY_LATEST as
+select A.ACTIVITY_IDX, A.ORG_ID, A.PROJECT_IDX, A.MONLOC_IDX, MM.MONLOC_NAME, A.ACTIVITY_ID, A.ACT_TYPE, A.ACT_START_DT, A.WQX_IND, A.CREATE_DT, A.CREATE_USERID, A.ACT_COMMENT
+,(select top 1 R.RESULT_MSR from T_WQX_RESULT R where R.ACTIVITY_IDX=A.ACTIVITY_IDX and R.CHAR_NAME='Alkalinity, total') AS 'Alkalinity, total'
+,(select top 1 R.RESULT_MSR from T_WQX_RESULT R where R.ACTIVITY_IDX=A.ACTIVITY_IDX and R.CHAR_NAME='Ammonia') AS 'Ammonia'
+,(select top 1 R.RESULT_MSR from T_WQX_RESULT R where R.ACTIVITY_IDX=A.ACTIVITY_IDX and R.CHAR_NAME='Dissolved oxygen (DO)') AS 'Dissolved oxygen (DO)'
+,(select top 1 R.RESULT_MSR from T_WQX_RESULT R where R.ACTIVITY_IDX=A.ACTIVITY_IDX and R.CHAR_NAME='Escherichia coli') AS 'Escherichia coli'
+,(select top 1 R.RESULT_MSR from T_WQX_RESULT R where R.ACTIVITY_IDX=A.ACTIVITY_IDX and R.CHAR_NAME='Nitrate') AS 'Nitrate'
+,(select top 1 R.RESULT_MSR from T_WQX_RESULT R where R.ACTIVITY_IDX=A.ACTIVITY_IDX and R.CHAR_NAME='Nitrite') AS 'Nitrite'
+,(select top 1 R.RESULT_MSR from T_WQX_RESULT R where R.ACTIVITY_IDX=A.ACTIVITY_IDX and R.CHAR_NAME='pH') AS 'pH'
+,(select top 1 R.RESULT_MSR from T_WQX_RESULT R where R.ACTIVITY_IDX=A.ACTIVITY_IDX and R.CHAR_NAME='Phosphorus') AS 'Phosphorus'
+,(select top 1 R.RESULT_MSR from T_WQX_RESULT R where R.ACTIVITY_IDX=A.ACTIVITY_IDX and R.CHAR_NAME='Salinity') AS 'Salinity'
+,(select top 1 R.RESULT_MSR from T_WQX_RESULT R where R.ACTIVITY_IDX=A.ACTIVITY_IDX and R.CHAR_NAME='Specific Conductance') AS 'Specific Conductance'
+,(select top 1 R.RESULT_MSR from T_WQX_RESULT R where R.ACTIVITY_IDX=A.ACTIVITY_IDX and R.CHAR_NAME='Temperature, air') AS 'Temperature, air'
+,(select top 1 R.RESULT_MSR from T_WQX_RESULT R where R.ACTIVITY_IDX=A.ACTIVITY_IDX and R.CHAR_NAME='Temperature, water') AS 'Temperature, water'
+,(select top 1 R.RESULT_MSR from T_WQX_RESULT R where R.ACTIVITY_IDX=A.ACTIVITY_IDX and R.CHAR_NAME='Total Dissolved Solids') AS 'Total Dissolved Solids'
+,(select top 1 R.RESULT_MSR from T_WQX_RESULT R where R.ACTIVITY_IDX=A.ACTIVITY_IDX and R.CHAR_NAME='Turbidity') AS 'Turbidity'
+from T_WQX_ACTIVITY A
+ inner join 
+    (
+        Select max(ACT_START_DT) as LatestDate, MONLOC_IDX
+        from T_WQX_ACTIVITY
+        Group by MONLOC_IDX
+    ) SubMax
+    on A.MONLOC_IDX = SubMax.MONLOC_IDX and a.ACT_START_DT = SubMax.LatestDate
+inner join T_WQX_MONLOC MM on A.MONLOC_IDX = MM.MONLOC_IDX
+where MM.ACT_IND=1;
+
+GO
+
+
+
 
 -- ****************************************************************************************************************************************
 -- ************************* [STORED PROCS]*********************************************************************************

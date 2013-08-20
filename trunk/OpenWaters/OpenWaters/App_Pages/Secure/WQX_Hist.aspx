@@ -8,21 +8,15 @@
         <Columns>
             <asp:TemplateField HeaderText="View">
                 <ItemTemplate>
-                    <asp:LinkButton ID="lbGetFile" runat="server" CommandName="GetFile" CommandArgument='<%#Eval("LOG_ID") %>'
-                        Text="View File"></asp:LinkButton>
+                    <asp:LinkButton ID="lbGetFile" runat="server" CommandName="GetFile" CommandArgument='<%#Eval("LOG_ID") %>' Text="View File"></asp:LinkButton>
                 </ItemTemplate>
             </asp:TemplateField>
 
-            <asp:BoundField DataField="LOG_ID" HeaderText="ID" 
-                SortExpression="LOG_ID" />
-            <asp:BoundField DataField="SUBMIT_DT" HeaderText="Submission Date" 
-                SortExpression="SUBMIT_DT" />
-            <asp:BoundField DataField="SUBMIT_TYPE" HeaderText="Submission Type" 
-                SortExpression="SUBMIT_TYPE" />
-            <asp:BoundField DataField="CDX_SUBMIT_TRANSID" HeaderText="CDX Transaction ID" 
-                SortExpression="CDX_SUBMIT_TRANSID" />
-            <asp:BoundField DataField="CDX_SUBMIT_STATUS" HeaderText="CDX Status" 
-                SortExpression="CDX_SUBMIT_STATUS" />
+            <asp:BoundField DataField="LOG_ID" HeaderText="ID" SortExpression="LOG_ID" />
+            <asp:BoundField DataField="SUBMIT_DT" HeaderText="Submission Date" SortExpression="SUBMIT_DT" />
+            <asp:BoundField DataField="SUBMIT_TYPE" HeaderText="Submission Type" SortExpression="SUBMIT_TYPE" />
+            <asp:BoundField DataField="CDX_SUBMIT_TRANSID" HeaderText="CDX Transaction ID" SortExpression="CDX_SUBMIT_TRANSID" />
+            <asp:BoundField DataField="CDX_SUBMIT_STATUS" HeaderText="CDX Status" SortExpression="CDX_SUBMIT_STATUS" />
         </Columns>
     </asp:GridView>
     <div class="btnRibbon">

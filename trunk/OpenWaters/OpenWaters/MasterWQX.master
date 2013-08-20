@@ -5,20 +5,21 @@
     <table cellpadding="0" cellspacing="0">
         <tr>
             <td style="vertical-align: top; background-color: #efefef; width:180px;" >
-                <div class="leftMenu">
-                    <div class="divTitle">Water Quality</div>
-                    <div class="divBody">
-                        <asp:HyperLink runat="server" ID="lnkOrgList" CssClass="leftLnk" NavigateUrl="~/App_Pages/Secure/WQXOrg.aspx">&middot; Organizations</asp:HyperLink>
-                        <asp:HyperLink runat="server" ID="lnkMonLocList" CssClass="leftLnk" NavigateUrl="~/App_Pages/Secure/WQXMonLoc.aspx">&middot; Monitoring Locs</asp:HyperLink>
-                        <asp:HyperLink runat="server" ID="lnkProjectList" CssClass="leftLnk" NavigateUrl="~/App_Pages/Secure/WQXProject.aspx">&middot; Projects</asp:HyperLink>
-                        <asp:HyperLink runat="server" ID="lnkActivityList" CssClass="leftLnk" NavigateUrl="~/App_Pages/Secure/WQXActivity.aspx">&middot; Activities</asp:HyperLink>
-                        <asp:HyperLink runat="server" ID="lnkImport" CssClass="leftLnk" NavigateUrl="~/App_Pages/Secure/WQXImport.aspx">&middot; Import</asp:HyperLink>
+                <div class="leftMnu">
+                    <div class="leftMnuTitle">Water Quality</div>
+                    <div class="leftMnuBody">
+                        <asp:HyperLink runat="server" ID="lnkOrgList" NavigateUrl="~/App_Pages/Secure/WQXOrg.aspx">&bull;  Organizations</asp:HyperLink>
+                        <asp:HyperLink runat="server" ID="lnkMonLocList" NavigateUrl="~/App_Pages/Secure/WQXMonLoc.aspx">&bull; Monitoring Locs</asp:HyperLink>
+                        <asp:HyperLink runat="server" ID="lnkProjectList" NavigateUrl="~/App_Pages/Secure/WQXProject.aspx">&bull; Projects</asp:HyperLink>
+                        <asp:HyperLink runat="server" ID="lnkActivityList" NavigateUrl="~/App_Pages/Secure/WQXActivity.aspx">&bull; Activities</asp:HyperLink>
+                        <asp:HyperLink runat="server" ID="lnkImport" NavigateUrl="~/App_Pages/Secure/WQXImport.aspx">&bull; Import</asp:HyperLink>
                     </div>
                 </div>
-                <div class="leftMenu">
-                    <div class="divTitle">Data Analysis</div>
-                    <div class="divBody">
-                        <asp:HyperLink runat="server" ID="lnkChart" CssClass="leftLnk" NavigateUrl="~/App_Pages/Secure/Charting.aspx">&middot; Graphs</asp:HyperLink>
+                <div class="leftMnu">
+                    <div class="leftMnuTitle">Data Analysis</div>
+                    <div class="leftMnuBody">
+                        <asp:HyperLink runat="server" ID="lnkMap" NavigateUrl="~/App_Pages/Secure/Maps.aspx">&bull; Map</asp:HyperLink>
+                        <asp:HyperLink runat="server" ID="lnkChart" NavigateUrl="~/App_Pages/Secure/Charting.aspx">&bull; Graphs</asp:HyperLink>
                     </div>
                 </div>
             </td>

@@ -79,13 +79,16 @@
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\Register.aspx" />
     <Content Include="App_Data\Create_DB.sql" />
-    <Content Include="App_Images\ico_book.png" />
+    <Content Include="App_Images\green.png" />
+    <Content Include="App_Images\ico_chart.png" />
     <Content Include="App_Images\ico_save2.png" />
+    <Content Include="PubMap.aspx" />
     <Content Include="App_Pages\Secure\Charting.aspx" />
     <Content Include="App_Pages\Secure\WQXOrgEdit.aspx" />
     <Content Include="Account\UserEdit.aspx" />
     <Content Include="Error.aspx" />
     <Content Include="Account\ResetPassword.aspx" />
+    <Content Include="App_Pages\Secure\Maps.aspx" />
     <None Include="App_Data\CreekData.sql" />
     <Content Include="App_Images\0.png" />
     <Content Include="App_Images\grd_alt.png" />
@@ -184,6 +187,13 @@
     </Compile>
     <Compile Include="App_Logic\DataAccessLayer\db_Ref.cs" />
     <Compile Include="App_Logic\DataAccessLayer\db_WQX.cs" />
+    <Compile Include="PubMap.aspx.cs">
+      <DependentUpon>PubMap.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PubMap.aspx.designer.cs">
+      <DependentUpon>PubMap.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -412,6 +422,13 @@
     </Compile>
     <Compile Include="Account\ResetPassword.aspx.designer.cs">
       <DependentUpon>ResetPassword.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Pages\Secure\Maps.aspx.cs">
+      <DependentUpon>Maps.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Pages\Secure\Maps.aspx.designer.cs">
+      <DependentUpon>Maps.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
