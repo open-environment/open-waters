@@ -18,7 +18,7 @@ namespace OpenEnvironment
                 //display left menu as selected
                 ContentPlaceHolder cp = this.Master.Master.FindControl("MainContent") as ContentPlaceHolder;
                 HyperLink hl = (HyperLink)cp.FindControl("lnkWQXList");
-                if (hl != null) hl.CssClass = "divBody sel";
+                if (hl != null) hl.CssClass = "leftMnuBody sel";
 
             
                 T_OE_APP_TASKS t = db_Ref.GetT_OE_APP_TASKS_ByName("WQXSubmit");

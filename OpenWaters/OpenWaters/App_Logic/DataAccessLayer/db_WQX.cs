@@ -584,6 +584,25 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             }
         }
 
+        public static int GetT_WQX_RESULTCount(string OrgID)
+        {
+            using (OpenEnvironmentEntities ctx = new OpenEnvironmentEntities())
+            {
+                try
+                {
+                    return (from r in ctx.T_WQX_RESULT
+                            join a in ctx.T_WQX_ACTIVITY on r.ACTIVITY_IDX equals a.ACTIVITY_IDX
+                            where a.ORG_ID == OrgID
+                            select r).Count();
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+        }
+
+
         public static int DeleteT_WQX_RESULT(int ResultIDX)
         {
             using (OpenEnvironmentEntities ctx = new OpenEnvironmentEntities())
@@ -793,6 +812,39 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             }
         }
 
+
+        public static List<V_WQX_ACTIVITY_LATEST> GetV_WQX_ACTIVITY_LATEST()
+        {
+            using (OpenEnvironmentEntities ctx = new OpenEnvironmentEntities())
+            {
+                try
+                {
+                    return (from a in ctx.V_WQX_ACTIVITY_LATEST
+                            select a).ToList();
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+        }
+
+        public static V_WQX_ACTIVITY_LATEST GetV_WQX_ACTIVITY_LATESTByMonLocID(int MonLocIDX)
+        {
+            using (OpenEnvironmentEntities ctx = new OpenEnvironmentEntities())
+            {
+                try
+                {
+                    return (from a in ctx.V_WQX_ACTIVITY_LATEST
+                            where a.MONLOC_IDX == MonLocIDX
+                            select a).FirstOrDefault();
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+        }
 
     }
 }

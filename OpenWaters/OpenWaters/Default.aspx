@@ -2,10 +2,11 @@
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
 </asp:Content>
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
-    <div class="divBrdr" style="width:500px; margin: 100px auto">
-        <div style="color: #cccccc; border-top-left-radius: 30px;  border-top-right-radius: 10px;
-            background-color: #003300; font-size: 11pt; font-weight: bold; padding: 6px; text-align: center">
-            Login
+    <div class="brdr-green" style="width: 500px; margin: 100px auto">
+        <div class="ie9roundedgradient" style="width:100%" >
+            <div class="rndPnlTop-green">
+                Login to Open Waters
+            </div>
         </div>
         <div style="padding: 10px 10px;">
             <asp:Login ID="LoginUser" runat="server" EnableViewState="false" RenderOuterTable="true" OnLoggedIn="LoginUser_LoggedIn" OnLoginError="LoginUser_LoginError">
@@ -34,5 +35,4 @@
             </asp:Login>
         </div>
     </div>
-   <br /><br /><br /> 
 </asp:Content>

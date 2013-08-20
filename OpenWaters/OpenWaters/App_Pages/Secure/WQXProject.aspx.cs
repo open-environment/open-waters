@@ -23,7 +23,7 @@ namespace OpenEnvironment
                 //display left menu as selected
                 ContentPlaceHolder cp = this.Master.Master.FindControl("MainContent") as ContentPlaceHolder;
                 HyperLink hl = (HyperLink)cp.FindControl("lnkProjectList");
-                if (hl != null) hl.CssClass = "divBody sel";
+                if (hl != null) hl.CssClass = "leftMnuBody sel";
 
 
                 grdProject.Columns[4].Visible = (Session["PROJ_SAMP_DESIGN_TYPE_CD"].ConvertOrDefault<Boolean>());

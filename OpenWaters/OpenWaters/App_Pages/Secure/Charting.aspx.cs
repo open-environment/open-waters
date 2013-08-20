@@ -19,11 +19,19 @@ namespace OpenEnvironment
                 //display left menu as selected
                 ContentPlaceHolder cp = this.Master.Master.FindControl("MainContent") as ContentPlaceHolder;
                 HyperLink hl = (HyperLink)cp.FindControl("lnkChart");
-                if (hl != null) hl.CssClass = "divBody sel";
+                if (hl != null) hl.CssClass = "leftMnuBody sel";
 
                 //populate drop-downs                
                 Utils.BindList(ddlMonLoc, dsMonLoc, "MONLOC_IDX", "MONLOC_NAME");
                 Utils.BindList(ddlCharacteristic, dsChar, "CHAR_NAME", "CHAR_NAME");
+
+
+                if (Session["filtMonLoc"] != null)
+                {
+                    ddlMonLoc.SelectedValue = Session["filtMonLoc"].ToString();
+                    ddlCharacteristic.SelectedIndex = ddlCharacteristic.Items.IndexOf(ddlCharacteristic.Items[1]);
+                    DisplayChart();
+                }
 
             }
         }
