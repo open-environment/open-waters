@@ -9,7 +9,7 @@
     </h1>
             <asp:GridView ID="grdOrg" runat="server" GridLines="None" 
         CssClass="grd" PagerStyle-CssClass="pgr" AutoGenerateColumns="False" AlternatingRowStyle-CssClass="alt" 
-        onrowcommand="grdOrg_RowCommand" DataSourceID="dsOrg" >
+        onrowcommand="grdOrg_RowCommand" >
                 <Columns>
                     <asp:TemplateField HeaderText="Edit">
                         <ItemStyle HorizontalAlign="Center" Width="60px" />
