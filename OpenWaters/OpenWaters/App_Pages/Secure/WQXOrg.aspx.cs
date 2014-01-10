@@ -1,10 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using OpenEnvironment.App_Logic.BusinessLogicLayer;
+using OpenEnvironment.App_Logic.DataAccessLayer;
 
 namespace OpenEnvironment
 {
@@ -19,11 +18,21 @@ namespace OpenEnvironment
                 HyperLink hl = (HyperLink)cp.FindControl("lnkOrgList");
                 if (hl != null) hl.CssClass = "leftMnuBody sel";
 
+                //populate grid
+                if (HttpContext.Current.User.IsInRole("ADMINS"))
+                    grdOrg.DataSource = dsOrg;
+                else
+                    grdOrg.DataSource = db_WQX.GetWQX_USER_ORGS_ByUserIDX(Session["UserIDX"].ConvertOrDefault<int>());
+
+                grdOrg.DataBind();
+
                 if (HttpContext.Current.User.IsInRole("READONLY"))
                 {
                     btnAdd.Enabled = false;
                     grdOrg.Columns[0].Visible = false;
                 }
+
+                btnAdd.Visible = HttpContext.Current.User.IsInRole("ADMINS");
             }
 
         }

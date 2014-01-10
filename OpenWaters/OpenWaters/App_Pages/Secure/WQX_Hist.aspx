@@ -29,8 +29,7 @@
         TypeName="OpenEnvironment.App_Logic.DataAccessLayer.db_Ref">
         <SelectParameters>
             <asp:Parameter DefaultValue="MLOC" Name="TableCD" Type="String" />
-            <asp:SessionParameter DefaultValue="" Name="TableIdx" SessionField="MonLocIDX" 
-                Type="Int32" /> 
+            <asp:SessionParameter DefaultValue="" Name="TableIdx" SessionField="MonLocIDX" Type="Int32" /> 
         </SelectParameters>
     </asp:ObjectDataSource>
 

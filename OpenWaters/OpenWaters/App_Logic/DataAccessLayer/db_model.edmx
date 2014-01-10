@@ -21,11 +21,13 @@
           <EntitySet Name="T_WQX_PROJECT" EntityType="OpenEnvironmentModel.Store.T_WQX_PROJECT" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="T_WQX_REF_ANAL_METHOD" EntityType="OpenEnvironmentModel.Store.T_WQX_REF_ANAL_METHOD" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="T_WQX_REF_CHAR_LIMITS" EntityType="OpenEnvironmentModel.Store.T_WQX_REF_CHAR_LIMITS" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="T_WQX_REF_CHAR_ORG" EntityType="OpenEnvironmentModel.Store.T_WQX_REF_CHAR_ORG" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="T_WQX_REF_CHARACTERISTIC" EntityType="OpenEnvironmentModel.Store.T_WQX_REF_CHARACTERISTIC" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="T_WQX_REF_DATA" EntityType="OpenEnvironmentModel.Store.T_WQX_REF_DATA" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="T_WQX_REF_LAB" EntityType="OpenEnvironmentModel.Store.T_WQX_REF_LAB" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="T_WQX_RESULT" EntityType="OpenEnvironmentModel.Store.T_WQX_RESULT" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="T_WQX_TRANSACTION_LOG" EntityType="OpenEnvironmentModel.Store.T_WQX_TRANSACTION_LOG" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="T_WQX_USER_ORGS" EntityType="OpenEnvironmentModel.Store.T_WQX_USER_ORGS" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="V_WQX_ACTIVITY_LATEST" EntityType="OpenEnvironmentModel.Store.V_WQX_ACTIVITY_LATEST" store:Type="Views" store:Schema="dbo" store:Name="V_WQX_ACTIVITY_LATEST">
             <DefiningQuery>SELECT 
       [V_WQX_ACTIVITY_LATEST].[ACTIVITY_IDX] AS [ACTIVITY_IDX], 
@@ -122,9 +124,17 @@
             <End Role="T_WQX_ORGANIZATION" EntitySet="T_WQX_ORGANIZATION" />
             <End Role="T_WQX_PROJECT" EntitySet="T_WQX_PROJECT" />
           </AssociationSet>
+          <AssociationSet Name="FK__T_WQX_REF__CHAR___19DFD96B" Association="OpenEnvironmentModel.Store.FK__T_WQX_REF__CHAR___19DFD96B">
+            <End Role="T_WQX_REF_CHARACTERISTIC" EntitySet="T_WQX_REF_CHARACTERISTIC" />
+            <End Role="T_WQX_REF_CHAR_ORG" EntitySet="T_WQX_REF_CHAR_ORG" />
+          </AssociationSet>
           <AssociationSet Name="FK__T_WQX_REF__CHAR___797309D9" Association="OpenEnvironmentModel.Store.FK__T_WQX_REF__CHAR___797309D9">
             <End Role="T_WQX_REF_CHARACTERISTIC" EntitySet="T_WQX_REF_CHARACTERISTIC" />
             <End Role="T_WQX_REF_CHAR_LIMITS" EntitySet="T_WQX_REF_CHAR_LIMITS" />
+          </AssociationSet>
+          <AssociationSet Name="FK__T_WQX_REF__ORG_I__18EBB532" Association="OpenEnvironmentModel.Store.FK__T_WQX_REF__ORG_I__18EBB532">
+            <End Role="T_WQX_ORGANIZATION" EntitySet="T_WQX_ORGANIZATION" />
+            <End Role="T_WQX_REF_CHAR_ORG" EntitySet="T_WQX_REF_CHAR_ORG" />
           </AssociationSet>
           <AssociationSet Name="FK__T_WQX_RES__ACTIV__70DDC3D8" Association="OpenEnvironmentModel.Store.FK__T_WQX_RES__ACTIV__70DDC3D8">
             <End Role="T_WQX_ACTIVITY" EntitySet="T_WQX_ACTIVITY" />
@@ -137,6 +147,14 @@
           <AssociationSet Name="FK__T_WQX_RES__LAB_I__71D1E811" Association="OpenEnvironmentModel.Store.FK__T_WQX_RES__LAB_I__71D1E811">
             <End Role="T_WQX_REF_LAB" EntitySet="T_WQX_REF_LAB" />
             <End Role="T_WQX_RESULT" EntitySet="T_WQX_RESULT" />
+          </AssociationSet>
+          <AssociationSet Name="FK__T_WQX_USE__ORG_I__0D7A0286" Association="OpenEnvironmentModel.Store.FK__T_WQX_USE__ORG_I__0D7A0286">
+            <End Role="T_WQX_ORGANIZATION" EntitySet="T_WQX_ORGANIZATION" />
+            <End Role="T_WQX_USER_ORGS" EntitySet="T_WQX_USER_ORGS" />
+          </AssociationSet>
+          <AssociationSet Name="FK__T_WQX_USE__USER___0E6E26BF" Association="OpenEnvironmentModel.Store.FK__T_WQX_USE__USER___0E6E26BF">
+            <End Role="T_OE_USERS" EntitySet="T_OE_USERS" />
+            <End Role="T_WQX_USER_ORGS" EntitySet="T_WQX_USER_ORGS" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="T_OE_APP_SETTINGS">
@@ -206,6 +224,7 @@
           <Property Name="CREATE_DT" Type="datetime2" Precision="0" />
           <Property Name="MODIFY_USERID" Type="varchar" MaxLength="25" />
           <Property Name="MODIFY_DT" Type="datetime2" Precision="0" />
+          <Property Name="DEFAULT_ORG_ID" Type="varchar" MaxLength="30" />
         </EntityType>
         <EntityType Name="T_WQX_ACTIVITY">
           <Key>
@@ -473,6 +492,16 @@
           <Property Name="UPDATE_DT" Type="datetime" />
           <Property Name="UPDATE_USERID" Type="varchar" MaxLength="25" />
         </EntityType>
+        <EntityType Name="T_WQX_REF_CHAR_ORG">
+          <Key>
+            <PropertyRef Name="CHAR_NAME" />
+            <PropertyRef Name="ORG_ID" />
+          </Key>
+          <Property Name="CHAR_NAME" Type="varchar" Nullable="false" MaxLength="120" />
+          <Property Name="ORG_ID" Type="varchar" Nullable="false" MaxLength="30" />
+          <Property Name="CREATE_USERID" Type="varchar" MaxLength="25" />
+          <Property Name="CREATE_DT" Type="datetime2" Precision="0" />
+        </EntityType>
         <EntityType Name="T_WQX_REF_CHARACTERISTIC">
           <Key>
             <PropertyRef Name="CHAR_NAME" />
@@ -582,6 +611,17 @@
           <Property Name="RESPONSE_TXT" Type="varchar(max)" />
           <Property Name="CDX_SUBMIT_TRANSID" Type="varchar" MaxLength="100" />
           <Property Name="CDX_SUBMIT_STATUS" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="T_WQX_USER_ORGS">
+          <Key>
+            <PropertyRef Name="USER_IDX" />
+            <PropertyRef Name="ORG_ID" />
+          </Key>
+          <Property Name="USER_IDX" Type="int" Nullable="false" />
+          <Property Name="ORG_ID" Type="varchar" Nullable="false" MaxLength="30" />
+          <Property Name="ROLE_CD" Type="varchar" MaxLength="2" />
+          <Property Name="CREATE_USERID" Type="varchar" MaxLength="25" />
+          <Property Name="CREATE_DT" Type="datetime2" Precision="0" />
         </EntityType>
         <!--Errors Found During Generation:
       warning 6002: The table/view 'OpenEnvironment.dbo.V_WQX_ACTIVITY_LATEST' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
@@ -817,6 +857,20 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__T_WQX_REF__CHAR___19DFD96B">
+          <End Role="T_WQX_REF_CHARACTERISTIC" Type="OpenEnvironmentModel.Store.T_WQX_REF_CHARACTERISTIC" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="T_WQX_REF_CHAR_ORG" Type="OpenEnvironmentModel.Store.T_WQX_REF_CHAR_ORG" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_WQX_REF_CHARACTERISTIC">
+              <PropertyRef Name="CHAR_NAME" />
+            </Principal>
+            <Dependent Role="T_WQX_REF_CHAR_ORG">
+              <PropertyRef Name="CHAR_NAME" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__T_WQX_REF__CHAR___797309D9">
           <End Role="T_WQX_REF_CHARACTERISTIC" Type="OpenEnvironmentModel.Store.T_WQX_REF_CHARACTERISTIC" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -828,6 +882,20 @@
             </Principal>
             <Dependent Role="T_WQX_REF_CHAR_LIMITS">
               <PropertyRef Name="CHAR_NAME" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__T_WQX_REF__ORG_I__18EBB532">
+          <End Role="T_WQX_ORGANIZATION" Type="OpenEnvironmentModel.Store.T_WQX_ORGANIZATION" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="T_WQX_REF_CHAR_ORG" Type="OpenEnvironmentModel.Store.T_WQX_REF_CHAR_ORG" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_WQX_ORGANIZATION">
+              <PropertyRef Name="ORG_ID" />
+            </Principal>
+            <Dependent Role="T_WQX_REF_CHAR_ORG">
+              <PropertyRef Name="ORG_ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -870,6 +938,34 @@
             </Principal>
             <Dependent Role="T_WQX_RESULT">
               <PropertyRef Name="LAB_IDX" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__T_WQX_USE__ORG_I__0D7A0286">
+          <End Role="T_WQX_ORGANIZATION" Type="OpenEnvironmentModel.Store.T_WQX_ORGANIZATION" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="T_WQX_USER_ORGS" Type="OpenEnvironmentModel.Store.T_WQX_USER_ORGS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_WQX_ORGANIZATION">
+              <PropertyRef Name="ORG_ID" />
+            </Principal>
+            <Dependent Role="T_WQX_USER_ORGS">
+              <PropertyRef Name="ORG_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__T_WQX_USE__USER___0E6E26BF">
+          <End Role="T_OE_USERS" Type="OpenEnvironmentModel.Store.T_OE_USERS" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="T_WQX_USER_ORGS" Type="OpenEnvironmentModel.Store.T_WQX_USER_ORGS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_OE_USERS">
+              <PropertyRef Name="USER_IDX" />
+            </Principal>
+            <Dependent Role="T_WQX_USER_ORGS">
+              <PropertyRef Name="USER_IDX" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -992,6 +1088,24 @@
             <End Role="T_WQX_REF_CHAR_LIMITS" EntitySet="T_WQX_REF_CHAR_LIMITS" />
           </AssociationSet>
           <EntitySet Name="V_WQX_ACTIVITY_LATEST" EntityType="OpenEnvironmentModel.V_WQX_ACTIVITY_LATEST" />
+          <EntitySet Name="T_WQX_USER_ORGS" EntityType="OpenEnvironmentModel.T_WQX_USER_ORGS" />
+          <AssociationSet Name="FK__T_WQX_USE__USER___0E6E26BF" Association="OpenEnvironmentModel.FK__T_WQX_USE__USER___0E6E26BF">
+            <End Role="T_OE_USERS" EntitySet="T_OE_USERS" />
+            <End Role="T_WQX_USER_ORGS" EntitySet="T_WQX_USER_ORGS" />
+          </AssociationSet>
+          <AssociationSet Name="FK__T_WQX_USE__ORG_I__0D7A0286" Association="OpenEnvironmentModel.FK__T_WQX_USE__ORG_I__0D7A0286">
+            <End Role="T_WQX_ORGANIZATION" EntitySet="T_WQX_ORGANIZATION" />
+            <End Role="T_WQX_USER_ORGS" EntitySet="T_WQX_USER_ORGS" />
+          </AssociationSet>
+          <EntitySet Name="T_WQX_REF_CHAR_ORG" EntityType="OpenEnvironmentModel.T_WQX_REF_CHAR_ORG" />
+          <AssociationSet Name="FK__T_WQX_REF__ORG_I__18EBB532" Association="OpenEnvironmentModel.FK__T_WQX_REF__ORG_I__18EBB532">
+            <End Role="T_WQX_ORGANIZATION" EntitySet="T_WQX_ORGANIZATION" />
+            <End Role="T_WQX_REF_CHAR_ORG" EntitySet="T_WQX_REF_CHAR_ORG" />
+          </AssociationSet>
+          <AssociationSet Name="FK__T_WQX_REF__CHAR___19DFD96B" Association="OpenEnvironmentModel.FK__T_WQX_REF__CHAR___19DFD96B">
+            <End Role="T_WQX_REF_CHARACTERISTIC" EntitySet="T_WQX_REF_CHARACTERISTIC" />
+            <End Role="T_WQX_REF_CHAR_ORG" EntitySet="T_WQX_REF_CHAR_ORG" />
+          </AssociationSet>
           </EntityContainer>
         <EntityType Name="T_OE_APP_SETTINGS">
           <Key>
@@ -1064,6 +1178,8 @@
           <Property Type="String" Name="MODIFY_USERID" MaxLength="25" FixedLength="false" Unicode="false" />
           <Property Type="DateTime" Name="MODIFY_DT" />
           <NavigationProperty Name="T_OE_USER_ROLES" Relationship="OpenEnvironmentModel.FK__T_OE_USER__USER___08EA5793" FromRole="T_OE_USERS" ToRole="T_OE_USER_ROLES" />
+          <Property Type="String" Name="DEFAULT_ORG_ID" MaxLength="30" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="T_WQX_USER_ORGS" Relationship="OpenEnvironmentModel.FK__T_WQX_USE__USER___0E6E26BF" FromRole="T_OE_USERS" ToRole="T_WQX_USER_ORGS" />
         </EntityType>
         <EntityType Name="T_WQX_ACTIVITY">
           <Key>
@@ -1303,6 +1419,8 @@
           <NavigationProperty Name="T_WQX_MONLOC" Relationship="OpenEnvironmentModel.FK__T_WQX_MON__ORG_I__173876EA" FromRole="T_WQX_ORGANIZATION" ToRole="T_WQX_MONLOC" />
           <NavigationProperty Name="T_WQX_ORG_ADDRESS" Relationship="OpenEnvironmentModel.FK__T_WQX_ORG__ORG_I__117F9D94" FromRole="T_WQX_ORGANIZATION" ToRole="T_WQX_ORG_ADDRESS" />
           <NavigationProperty Name="T_WQX_PROJECT" Relationship="OpenEnvironmentModel.FK__T_WQX_PRO__ORG_I__145C0A3F" FromRole="T_WQX_ORGANIZATION" ToRole="T_WQX_PROJECT" />
+          <NavigationProperty Name="T_WQX_USER_ORGS" Relationship="OpenEnvironmentModel.FK__T_WQX_USE__ORG_I__0D7A0286" FromRole="T_WQX_ORGANIZATION" ToRole="T_WQX_USER_ORGS" />
+          <NavigationProperty Name="T_WQX_REF_CHAR_ORG" Relationship="OpenEnvironmentModel.FK__T_WQX_REF__ORG_I__18EBB532" FromRole="T_WQX_ORGANIZATION" ToRole="T_WQX_REF_CHAR_ORG" />
         </EntityType>
         <EntityType Name="T_WQX_PROJECT">
           <Key>
@@ -1665,6 +1783,7 @@
           <Property Type="Boolean" Name="ACT_IND" />
           <Property Type="DateTime" Name="UPDATE_DT" />
           <NavigationProperty Name="T_WQX_REF_CHAR_LIMITS" Relationship="OpenEnvironmentModel.FK__T_WQX_REF__CHAR___46E78A0C" FromRole="T_WQX_REF_CHARACTERISTIC" ToRole="T_WQX_REF_CHAR_LIMITS" />
+          <NavigationProperty Name="T_WQX_REF_CHAR_ORG" Relationship="OpenEnvironmentModel.FK__T_WQX_REF__CHAR___19DFD96B" FromRole="T_WQX_REF_CHARACTERISTIC" ToRole="T_WQX_REF_CHAR_ORG" />
         </EntityType>
         <ComplexType Name="WQXAnalysis_Result">
           <Property Type="String" Name="MONLOC_NAME" Nullable="true" MaxLength="255" />
@@ -1739,6 +1858,79 @@
           <Property Type="String" Name="Total_Dissolved_Solids" MaxLength="60" FixedLength="false" Unicode="false" />
           <Property Type="String" Name="Turbidity" MaxLength="60" FixedLength="false" Unicode="false" />
         </EntityType>
+        <EntityType Name="T_WQX_USER_ORGS">
+          <Key>
+            <PropertyRef Name="USER_IDX" />
+            <PropertyRef Name="ORG_ID" />
+          </Key>
+          <Property Type="Int32" Name="USER_IDX" Nullable="false" />
+          <Property Type="String" Name="ORG_ID" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ROLE_CD" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CREATE_USERID" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="CREATE_DT" />
+          <NavigationProperty Name="T_OE_USERS" Relationship="OpenEnvironmentModel.FK__T_WQX_USE__USER___0E6E26BF" FromRole="T_WQX_USER_ORGS" ToRole="T_OE_USERS" />
+          <NavigationProperty Name="T_WQX_ORGANIZATION" Relationship="OpenEnvironmentModel.FK__T_WQX_USE__ORG_I__0D7A0286" FromRole="T_WQX_USER_ORGS" ToRole="T_WQX_ORGANIZATION" />
+        </EntityType>
+        <Association Name="FK__T_WQX_USE__USER___0E6E26BF">
+          <End Type="OpenEnvironmentModel.T_OE_USERS" Role="T_OE_USERS" Multiplicity="1" />
+          <End Type="OpenEnvironmentModel.T_WQX_USER_ORGS" Role="T_WQX_USER_ORGS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_OE_USERS">
+              <PropertyRef Name="USER_IDX" />
+            </Principal>
+            <Dependent Role="T_WQX_USER_ORGS">
+              <PropertyRef Name="USER_IDX" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__T_WQX_USE__ORG_I__0D7A0286">
+          <End Type="OpenEnvironmentModel.T_WQX_ORGANIZATION" Role="T_WQX_ORGANIZATION" Multiplicity="1" />
+          <End Type="OpenEnvironmentModel.T_WQX_USER_ORGS" Role="T_WQX_USER_ORGS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_WQX_ORGANIZATION">
+              <PropertyRef Name="ORG_ID" />
+            </Principal>
+            <Dependent Role="T_WQX_USER_ORGS">
+              <PropertyRef Name="ORG_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="T_WQX_REF_CHAR_ORG">
+          <Key>
+            <PropertyRef Name="CHAR_NAME" />
+            <PropertyRef Name="ORG_ID" />
+          </Key>
+          <Property Type="String" Name="CHAR_NAME" Nullable="false" MaxLength="120" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ORG_ID" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CREATE_USERID" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="CREATE_DT" />
+          <NavigationProperty Name="T_WQX_ORGANIZATION" Relationship="OpenEnvironmentModel.FK__T_WQX_REF__ORG_I__18EBB532" FromRole="T_WQX_REF_CHAR_ORG" ToRole="T_WQX_ORGANIZATION" />
+          <NavigationProperty Name="T_WQX_REF_CHARACTERISTIC" Relationship="OpenEnvironmentModel.FK__T_WQX_REF__CHAR___19DFD96B" FromRole="T_WQX_REF_CHAR_ORG" ToRole="T_WQX_REF_CHARACTERISTIC" />
+        </EntityType>
+        <Association Name="FK__T_WQX_REF__ORG_I__18EBB532">
+          <End Type="OpenEnvironmentModel.T_WQX_ORGANIZATION" Role="T_WQX_ORGANIZATION" Multiplicity="1" />
+          <End Type="OpenEnvironmentModel.T_WQX_REF_CHAR_ORG" Role="T_WQX_REF_CHAR_ORG" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_WQX_ORGANIZATION">
+              <PropertyRef Name="ORG_ID" />
+            </Principal>
+            <Dependent Role="T_WQX_REF_CHAR_ORG">
+              <PropertyRef Name="ORG_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__T_WQX_REF__CHAR___19DFD96B">
+          <End Type="OpenEnvironmentModel.T_WQX_REF_CHARACTERISTIC" Role="T_WQX_REF_CHARACTERISTIC" Multiplicity="1" />
+          <End Type="OpenEnvironmentModel.T_WQX_REF_CHAR_ORG" Role="T_WQX_REF_CHAR_ORG" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_WQX_REF_CHARACTERISTIC">
+              <PropertyRef Name="CHAR_NAME" />
+            </Principal>
+            <Dependent Role="T_WQX_REF_CHAR_ORG">
+              <PropertyRef Name="CHAR_NAME" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1799,6 +1991,7 @@
           <EntitySetMapping Name="T_OE_USERS">
             <EntityTypeMapping TypeName="OpenEnvironmentModel.T_OE_USERS">
               <MappingFragment StoreEntitySet="T_OE_USERS">
+                <ScalarProperty Name="DEFAULT_ORG_ID" ColumnName="DEFAULT_ORG_ID" />
                 <ScalarProperty Name="MODIFY_DT" ColumnName="MODIFY_DT" />
                 <ScalarProperty Name="MODIFY_USERID" ColumnName="MODIFY_USERID" />
                 <ScalarProperty Name="CREATE_DT" ColumnName="CREATE_DT" />
@@ -2268,6 +2461,27 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="T_WQX_USER_ORGS">
+            <EntityTypeMapping TypeName="OpenEnvironmentModel.T_WQX_USER_ORGS">
+              <MappingFragment StoreEntitySet="T_WQX_USER_ORGS">
+                <ScalarProperty Name="CREATE_DT" ColumnName="CREATE_DT" />
+                <ScalarProperty Name="CREATE_USERID" ColumnName="CREATE_USERID" />
+                <ScalarProperty Name="ROLE_CD" ColumnName="ROLE_CD" />
+                <ScalarProperty Name="ORG_ID" ColumnName="ORG_ID" />
+                <ScalarProperty Name="USER_IDX" ColumnName="USER_IDX" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_WQX_REF_CHAR_ORG">
+            <EntityTypeMapping TypeName="OpenEnvironmentModel.T_WQX_REF_CHAR_ORG">
+              <MappingFragment StoreEntitySet="T_WQX_REF_CHAR_ORG">
+                <ScalarProperty Name="CREATE_DT" ColumnName="CREATE_DT" />
+                <ScalarProperty Name="CREATE_USERID" ColumnName="CREATE_USERID" />
+                <ScalarProperty Name="ORG_ID" ColumnName="ORG_ID" />
+                <ScalarProperty Name="CHAR_NAME" ColumnName="CHAR_NAME" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -2327,12 +2541,12 @@
         </AssociationConnector>
         <AssociationConnector Association="OpenEnvironmentModel.FK__T_WQX_ACT__ORG_I__1BFD2C07">
           <ConnectorPoint PointX="18" PointY="8.125" />
-          <ConnectorPoint PointX="18" PointY="0.78125" />
-          <ConnectorPoint PointX="28" PointY="0.78125" />
+          <ConnectorPoint PointX="18" PointY="0.78124999999999956" />
+          <ConnectorPoint PointX="28" PointY="0.78124999999999956" />
         </AssociationConnector>
         <AssociationConnector Association="OpenEnvironmentModel.FK__T_WQX_ACT__PROJE__1A14E395">
-          <ConnectorPoint PointX="21.625" PointY="12.222921549479167" />
-          <ConnectorPoint PointX="28" PointY="12.222921549479167" />
+          <ConnectorPoint PointX="21.625" PointY="11.451569010416662" />
+          <ConnectorPoint PointX="28" PointY="11.451569010416662" />
         </AssociationConnector>
         <AssociationConnector Association="OpenEnvironmentModel.FK__T_WQX_RES__ACTIV__267ABA7A">
           <ConnectorPoint PointX="29.5" PointY="6.2160953776041623" />
@@ -2347,26 +2561,28 @@
           <ConnectorPoint PointX="21.875" PointY="4.9227604166666623" />
         </AssociationConnector>
         <AssociationConnector Association="OpenEnvironmentModel.FK__T_WQX_BIO__ORG_I__1FCDBCEB">
-          <ConnectorPoint PointX="18.4062525" PointY="8.125" />
-          <ConnectorPoint PointX="18.4062525" PointY="4.4227604166666623" />
-          <ConnectorPoint PointX="20.375" PointY="4.4227604166666623" />
+          <ConnectorPoint PointX="18.75" PointY="8.5478515625" />
+          <ConnectorPoint PointX="21.78125" PointY="8.5478515625" />
+          <ConnectorPoint PointX="21.78125" PointY="7.7205208333333246" />
         </AssociationConnector>
         <AssociationConnector Association="OpenEnvironmentModel.FK__T_WQX_IMP__ORG_I__2F10007B">
           <ConnectorPoint PointX="17.25" PointY="10.845896809895834" />
           <ConnectorPoint PointX="16.375" PointY="10.845896809895834" />
         </AssociationConnector>
         <AssociationConnector Association="OpenEnvironmentModel.FK__T_WQX_MON__ORG_I__173876EA">
-          <ConnectorPoint PointX="18.75" PointY="8.46875" />
-          <ConnectorPoint PointX="22.75" PointY="8.46875" />
+          <ConnectorPoint PointX="18.75" PointY="8.27392578125" />
+          <ConnectorPoint PointX="21.697916666666668" PointY="8.27392578125" />
+          <ConnectorPoint PointX="21.864583333333332" PointY="8.27392578125" />
+          <ConnectorPoint PointX="22.75" PointY="8.27392578125" />
         </AssociationConnector>
         <AssociationConnector Association="OpenEnvironmentModel.FK__T_WQX_ORG__ORG_I__117F9D94">
-          <ConnectorPoint PointX="17.25" PointY="8.71875" />
-          <ConnectorPoint PointX="16.46875" PointY="8.71875" />
+          <ConnectorPoint PointX="17.25" PointY="8.865234375" />
+          <ConnectorPoint PointX="16.46875" PointY="8.865234375" />
           <ConnectorPoint PointX="16.46875" PointY="7.9609993489583246" />
         </AssociationConnector>
         <AssociationConnector Association="OpenEnvironmentModel.FK__T_WQX_PRO__ORG_I__145C0A3F">
-          <ConnectorPoint PointX="18.75" PointY="10.836253255208334" />
-          <ConnectorPoint PointX="20.125" PointY="10.836253255208334" />
+          <ConnectorPoint PointX="18.75" PointY="11.0285546875" />
+          <ConnectorPoint PointX="20.125" PointY="11.0285546875" />
         </AssociationConnector>
         <AssociationConnector Association="OpenEnvironmentModel.FK__T_WQX_RES__ANALY__286302EC">
           <ConnectorPoint PointX="31.5" PointY="1.7785953776041623" />
@@ -2379,10 +2595,37 @@
         <EntityTypeShape EntityType="OpenEnvironmentModel.T_WQX_REF_CHARACTERISTIC" Width="1.5" PointX="0.75" PointY="8.75" Height="2.1725878906250031" />
         <EntityTypeShape EntityType="OpenEnvironmentModel.T_WQX_REF_CHAR_LIMITS" Width="1.5" PointX="3" PointY="8.5" Height="2.9417936197916674" />
         <AssociationConnector Association="OpenEnvironmentModel.FK__T_WQX_REF__CHAR___46E78A0C" >
-          <ConnectorPoint PointX="2.25" PointY="9.9324446614583337" />
-          <ConnectorPoint PointX="3" PointY="9.9324446614583337" />
+          <ConnectorPoint PointX="2.25" PointY="10.028595377604166" />
+          <ConnectorPoint PointX="3" PointY="10.028595377604166" />
         </AssociationConnector>
         <EntityTypeShape EntityType="OpenEnvironmentModel.V_WQX_ACTIVITY_LATEST" Width="1.5" PointX="5.375" PointY="8.75" Height="6.0186165364583246" />
+        <EntityTypeShape EntityType="OpenEnvironmentModel.T_WQX_USER_ORGS" Width="1.5" PointX="12.5" PointY="6.75" Height="2.3648893229166674" />
+        <AssociationConnector Association="OpenEnvironmentModel.FK__T_WQX_USE__USER___0E6E26BF" >
+          <ConnectorPoint PointX="11.625" PointY="5.9898079427083326" />
+          <ConnectorPoint PointX="11.625" PointY="7.9324446614583337" />
+          <ConnectorPoint PointX="12.5" PointY="7.9324446614583337" />
+        </AssociationConnector>
+        <AssociationConnector Association="OpenEnvironmentModel.FK__T_WQX_USE__ORG_I__0D7A0286" >
+          <ConnectorPoint PointX="17.25" PointY="8.4326171875" />
+          <ConnectorPoint PointX="16.552083333333332" PointY="8.4326171875" />
+          <ConnectorPoint PointX="16.385416666666668" PointY="8.4326171875" />
+          <ConnectorPoint PointX="14" PointY="8.4326171875" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="OpenEnvironmentModel.T_WQX_REF_CHAR_ORG" Width="1.5" PointX="22.5" PointY="12.625" Height="2.1725878906250102" />
+        <AssociationConnector Association="OpenEnvironmentModel.FK__T_WQX_REF__ORG_I__18EBB532" >
+          <ConnectorPoint PointX="18" PointY="13.182109375" />
+          <ConnectorPoint PointX="18" PointY="14.10764648437501" />
+          <ConnectorPoint PointX="22.041666666666668" PointY="14.10764648437501" />
+          <ConnectorPoint PointX="22.208333333333332" PointY="14.10764648437501" />
+          <ConnectorPoint PointX="22.5" PointY="14.10764648437501" />
+        </AssociationConnector>
+        <AssociationConnector Association="OpenEnvironmentModel.FK__T_WQX_REF__CHAR___19DFD96B" >
+          <ConnectorPoint PointX="1.5" PointY="11.307190755208334" />
+          <ConnectorPoint PointX="1.5" PointY="15.018616536458325" />
+          <ConnectorPoint PointX="22.125" PointY="15.018616536458325" />
+          <ConnectorPoint PointX="22.125" PointY="13.33507124218751" />
+          <ConnectorPoint PointX="22.5" PointY="13.33507124218751" />
+        </AssociationConnector>
       </Diagram>
     </Diagrams>
   </Designer>

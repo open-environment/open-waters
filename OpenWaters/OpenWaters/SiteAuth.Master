@@ -19,7 +19,11 @@
                 </asp:TableCell>
             </asp:TableRow>
         </asp:Table>
-        <asp:ObjectDataSource ID="dsOrg" runat="server" SelectMethod="GetWQX_ORGANIZATION" TypeName="OpenEnvironment.App_Logic.DataAccessLayer.db_WQX"></asp:ObjectDataSource>
+        <asp:ObjectDataSource ID="dsOrg" runat="server" SelectMethod="GetWQX_USER_ORGS_ByUserIDX" TypeName="OpenEnvironment.App_Logic.DataAccessLayer.db_WQX">
+        <SelectParameters>
+            <asp:SessionParameter DefaultValue="" Name="UserIDX" SessionField="UserIDX" Type="Int32" />
+        </SelectParameters>
+        </asp:ObjectDataSource>
         <div class="clear hideSkiplink">
             <table class="Z">
                 <tr>
@@ -62,7 +66,7 @@
         </div>
     </div>
     <div class="footer">
-        Copyright ©2013 open-environment.org |  
+        Copyright ©2014 open-environment.org |  
         <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/App_Pages/Public/License.aspx" Text="License"></asp:HyperLink>
     </div>
     </form>

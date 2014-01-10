@@ -31,6 +31,9 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
                         a = (from c in ctx.T_WQX_MONLOC
                              where c.MONLOC_IDX == mONLOC_IDX
                              select c).FirstOrDefault();
+                    else
+                        insInd = true;
+
                     if (a == null) //insert case
                     {
                         a = new T_WQX_MONLOC();
@@ -172,6 +175,27 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
                 }
             }
         }
+
+        public static int DeleteT_WQX_MONLOC(int monLocIDX)
+        {
+            using (OpenEnvironmentEntities ctx = new OpenEnvironmentEntities())
+            {
+                try
+                {
+                    T_WQX_MONLOC r = new T_WQX_MONLOC();
+                    r = (from c in ctx.T_WQX_MONLOC where c.MONLOC_IDX == monLocIDX  select c).FirstOrDefault();
+                    ctx.DeleteObject(r);
+                    ctx.SaveChanges();
+                    return 1;
+                }
+                catch
+                {
+                    return 0;
+                }
+            }
+
+        }
+
 
 
         // *************************** PROJECT *********************************
@@ -448,7 +472,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
                         insInd = true;
                     }
 
-                    if (aCTIVITY_IDX != null) a.ACTIVITY_IDX = aCTIVITY_IDX;
+                    a.ACTIVITY_IDX = aCTIVITY_IDX;
                     if (mETRIC_TYPE_ID != null) a.METRIC_TYPE_ID= mETRIC_TYPE_ID;
                     if (mETRIC_TYPE_ID_CONTEXT != null) a.METRIC_TYPE_ID_CONTEXT = mETRIC_TYPE_ID_CONTEXT;
                     if (mETRIC_TYPE_NAME != null) a.METRIC_TYPE_NAME = mETRIC_TYPE_NAME;
@@ -777,6 +801,123 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
         }
 
 
+        // *************************** USER ORGANIZATION************************
+        // *********************************************************************
+        public static List<T_WQX_ORGANIZATION> GetWQX_USER_ORGS_ByUserIDX(int UserIDX)
+        {
+            using (OpenEnvironmentEntities ctx = new OpenEnvironmentEntities())
+            {
+                try
+                {
+                    return (from a in ctx.T_WQX_USER_ORGS
+                            join b in ctx.T_WQX_ORGANIZATION on a.ORG_ID equals b.ORG_ID
+                            where a.USER_IDX == UserIDX
+                            select b).ToList();
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+        }
+
+        public static int InsertT_WQX_USER_ORGS(global::System.String oRG_ID, global::System.Int32 uSER_IDX, string rOLE_CD, String cREATE_USER = "system")
+        {
+            using (OpenEnvironmentEntities ctx = new OpenEnvironmentEntities())
+            {
+                try
+                {
+                    T_WQX_USER_ORGS a = new T_WQX_USER_ORGS();
+
+                    a.ORG_ID = oRG_ID;
+                    a.USER_IDX = uSER_IDX;
+                    if (rOLE_CD != null) a.ROLE_CD = rOLE_CD;
+                    a.CREATE_USERID = cREATE_USER.ToUpper();
+                    a.CREATE_DT = System.DateTime.Now;
+
+                    ctx.AddToT_WQX_USER_ORGS(a);
+                    ctx.SaveChanges();
+
+                    return 1;
+                }
+                catch (Exception ex)
+                {
+                    return 0;
+                }
+            }
+        }
+
+        public static int DeleteT_WQX_USER_ORGS(global::System.String oRG_ID, global::System.Int32 uSER_IDX)
+        {
+            using (OpenEnvironmentEntities ctx = new OpenEnvironmentEntities())
+            {
+                try
+                {
+                    T_WQX_USER_ORGS r = new T_WQX_USER_ORGS();
+                    r = (from c in ctx.T_WQX_USER_ORGS where c.USER_IDX == uSER_IDX && c.ORG_ID == oRG_ID  select c).FirstOrDefault();
+                    ctx.DeleteObject(r);
+                    ctx.SaveChanges();
+                    return 1;
+                }
+                catch
+                {
+                    return 0;
+                }
+            }
+
+        }
+
+        public static List<T_OE_USERS> GetT_OE_USERSInOrganization(string OrgID)
+        {
+            using (OpenEnvironmentEntities ctx = new OpenEnvironmentEntities())
+            {
+                try
+                {
+                    var users = from itemA in ctx.T_OE_USERS
+                                join itemB in ctx.T_WQX_USER_ORGS on itemA.USER_IDX equals itemB.USER_IDX
+                                where itemB.ORG_ID == OrgID
+                                orderby itemA.USER_ID
+                                select itemA;
+
+                    return users.ToList();
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+        }
+
+        public static List<T_OE_USERS> GetT_OE_USERSNotInOrganization(string OrgID)
+        {
+            using (OpenEnvironmentEntities ctx = new OpenEnvironmentEntities())
+            {
+                try
+                {
+                    //first get all users 
+                    var allUsers = (from itemA in ctx.T_OE_USERS select itemA);
+
+                    //next get all users in role
+                    var UsersInRole = (from itemA in ctx.T_OE_USERS
+                                       join itemB in ctx.T_WQX_USER_ORGS on itemA.USER_IDX equals itemB.USER_IDX
+                                       where itemB.ORG_ID == OrgID
+                                       select itemA);
+
+                    //then get exclusions
+                    var usersNotInRole = allUsers.Except(UsersInRole);
+
+                    return usersNotInRole.OrderBy(a => a.USER_ID).ToList();
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+        }
+
+
+
+
         // *************************** XML GENERATION *****************************
         // *********************************************************************
         public static string SP_GenWQXXML(string TypeText, int MonLocIDX)
@@ -812,14 +953,14 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             }
         }
 
-
-        public static List<V_WQX_ACTIVITY_LATEST> GetV_WQX_ACTIVITY_LATEST()
+        public static List<V_WQX_ACTIVITY_LATEST> GetV_WQX_ACTIVITY_LATEST(string OrgID)
         {
             using (OpenEnvironmentEntities ctx = new OpenEnvironmentEntities())
             {
                 try
                 {
                     return (from a in ctx.V_WQX_ACTIVITY_LATEST
+                            where a.ORG_ID == OrgID
                             select a).ToList();
                 }
                 catch (Exception ex)

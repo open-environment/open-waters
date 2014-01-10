@@ -29,8 +29,7 @@
                          TypeName="OpenEnvironment.App_Logic.DataAccessLayer.db_WQX">
                          <SelectParameters>
                              <asp:Parameter DefaultValue="true" Name="ActInd" Type="Boolean" />
-                             <asp:SessionParameter DefaultValue="" Name="OrgID" SessionField="OrgID" 
-                                 Type="String" />
+                             <asp:SessionParameter DefaultValue="" Name="OrgID" SessionField="OrgID" Type="String" />
                              <asp:Parameter DefaultValue="false" Name="WQXPending" Type="Boolean" />
                          </SelectParameters>
                      </asp:ObjectDataSource>

@@ -40,6 +40,24 @@ namespace OpenEnvironment {
         protected global::System.Web.UI.WebControls.EntityDataSource dsRefGen;
         
         /// <summary>
+        /// grdChar control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView grdChar;
+        
+        /// <summary>
+        /// dsChar control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.EntityDataSource dsChar;
+        
+        /// <summary>
         /// btnGetRefData control.
         /// </summary>
         /// <remarks>

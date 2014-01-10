@@ -45,10 +45,9 @@
             <asp:SessionParameter DefaultValue="" Name="OrgID" SessionField="OrgID" Type="String" />
         </selectparameters>
     </asp:ObjectDataSource>
-    <asp:ObjectDataSource ID="dsChar" runat="server" SelectMethod="GetT_WQX_REF_CHARACTERISTIC"  TypeName="OpenEnvironment.App_Logic.DataAccessLayer.db_Ref" >
+    <asp:ObjectDataSource ID="dsChar" runat="server" SelectMethod="GetT_WQX_REF_CHARACTERISTIC_ByOrg"  TypeName="OpenEnvironment.App_Logic.DataAccessLayer.db_Ref" >
         <selectparameters>
-            <asp:Parameter DefaultValue="true" Name="ActInd" Type="Boolean" />
-            <asp:Parameter DefaultValue="true" Name="onlyUsedInd" Type="Boolean" />
+            <asp:SessionParameter DefaultValue="" Name="OrgID" SessionField="OrgID" Type="String" />
         </selectparameters>
     </asp:ObjectDataSource>
     <asp:ObjectDataSource ID="dsAnalMethod" runat="server" SelectMethod="GetT_WQX_REF_ANAL_METHOD"  TypeName="OpenEnvironment.App_Logic.DataAccessLayer.db_Ref" >

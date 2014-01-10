@@ -30,7 +30,8 @@ namespace OpenEnvironment
                     
                     //set important session variables
                     Session["UserIDX"] = u.USER_IDX;
-                    Session["OrgID"] = db_Ref.GetT_OE_APP_SETTING("Default Org ID");
+                    //Session["OrgID"] = db_Ref.GetT_OE_APP_SETTING("Default Org ID"); 
+                    Session["OrgID"] = u.DEFAULT_ORG_ID; //added 1/6/2014
                     Session["MLOC_HUC_EIGHT"] = false;
                     Session["MLOC_HUC_TWELVE"] = false;
                     Session["MLOC_TRIBAL_LAND"] = false;

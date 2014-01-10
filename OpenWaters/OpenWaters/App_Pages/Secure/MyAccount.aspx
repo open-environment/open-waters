@@ -38,6 +38,11 @@
                 <asp:ListBox ID="lbRoleList" Width="150px" CssClass="fldTxt" runat="server" ></asp:ListBox>
                 <br />
             </div>
+            <div class="row">
+                <span class="fldLbl">Organizations:</span>
+                <asp:ListBox ID="lblOrgList" Width="150px" CssClass="fldTxt" runat="server" ></asp:ListBox>
+                <br />
+            </div>
             <br />
             <div class="btnRibbon">
                 <asp:Button ID="btnSave" runat="server" CssClass="btn" Text="Save" OnClick="btnSave_Click" />

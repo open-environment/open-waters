@@ -82,8 +82,14 @@ namespace OpenEnvironment
 
             if (e.CommandName == "Deletes")
             {
-                db_WQX.InsertOrUpdateWQX_MONLOC(MonLocID, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null,
-                     null, null, null, null, null, null, null, null, "U", null, false, null, User.Identity.Name);
+                //check to see if there are any activities under the monitoring location - if yes then just make it inactive, otherwise delete
+                V_WQX_ACTIVITY_LATEST mm = db_WQX.GetV_WQX_ACTIVITY_LATESTByMonLocID(MonLocID);
+                if (mm == null)
+                    db_WQX.DeleteT_WQX_MONLOC(MonLocID);
+                else
+                    db_WQX.InsertOrUpdateWQX_MONLOC(MonLocID, null, null, null, null, null, null, null, null, null, null, null, null, null,
+                        null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, "U", null, false, null,
+                        User.Identity.Name);
 
                 FillGrid();
             }

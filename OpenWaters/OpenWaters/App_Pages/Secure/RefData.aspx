@@ -77,7 +77,32 @@
                 <asp:ControlParameter ControlID="ddlRef" DbType="String" DefaultValue="" Name="tbl" PropertyName="SelectedValue" />
             </WhereParameters>
         </asp:EntityDataSource>
-
+        <asp:GridView ID="grdChar" runat="server" CssClass="grd" PagerStyle-CssClass="pgr" AlternatingRowStyle-CssClass="alt" PageSize="500" AllowPaging="True"
+            AutoGenerateColumns="False" DataKeyNames="CHAR_NAME" DataSourceID="dsChar" onpageindexchanging="grdChar_PageIndexChanging" onrowcommand="grdChar_RowCommand" >
+            <Columns>
+                <asp:TemplateField HeaderText="Edit">
+                    <ItemStyle HorizontalAlign="Center" Width="60px" />
+                    <ItemTemplate>
+                        <asp:ImageButton ID="EditButton" runat="server" CausesValidation="False" CommandName="Edit"
+                            CommandArgument='<%# Eval("CHAR_NAME") %>' ImageUrl="~/App_Images/ico_edit.png" ToolTip="Edit" />
+                        <asp:ImageButton ID="DelButton" runat="server" CausesValidation="False" CommandName="Deletes"
+                            CommandArgument='<%# Eval("CHAR_NAME") %>' ImageUrl="~/App_Images/ico_del.png" ToolTip="Delete" />
+                    </ItemTemplate>
+                    <EditItemTemplate>
+                        <asp:ImageButton ID="UpdateButton" ImageUrl="~/App_Images/ico_save.png" CommandName="Update" runat="server" /> 
+                        <asp:ImageButton ID="CancelButton" ImageUrl="~/App_Images/ico_del.png" CommandName="Cancel" runat="server" /> 
+                    </EditItemTemplate>
+                </asp:TemplateField>
+                <asp:BoundField DataField="CHAR_NAME" HeaderText="Characteristic" SortExpression="CHAR_NAME" ControlStyle-Width="98%" />
+                <asp:BoundField DataField="DEFAULT_DETECT_LIMIT" HeaderText="Detection Limit" SortExpression="DEFAULT_DETECT_LIMIT" ControlStyle-Width="98%" />
+                <asp:BoundField DataField="DEFAULT_UNIT" HeaderText="Default Unit" SortExpression="DEFAULT_UNIT" />
+                <asp:BoundField DataField="ACT_IND" HeaderText="Active" SortExpression="ACT_IND" ReadOnly="true" />
+                <asp:BoundField DataField="UPDATE_DT" HeaderText="Last Updated" SortExpression="UPDATE_DT" ReadOnly="true" />
+            </Columns>
+        </asp:GridView>
+        <asp:EntityDataSource ID="dsChar" runat="server"  EnableUpdate="true" ConnectionString="name=OpenEnvironmentEntities" 
+            DefaultContainerName="OpenEnvironmentEntities" EnableFlattening="False" EntitySetName="T_WQX_REF_CHARACTERISTIC" >  
+        </asp:EntityDataSource>
         <div class="btnRibbon">
         <asp:Button ID="btnGetRefData" runat="server" CssClass="btn" OnClick="btnGetRefData_Click"
             Text="Sync Ref Data from EPA" />

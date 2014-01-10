@@ -165,6 +165,7 @@
                 </asp:GridView>
                 <asp:ObjectDataSource ID="dsMonLoc" runat="server" SelectMethod="GetV_WQX_ACTIVITY_LATEST" TypeName="OpenEnvironment.App_Logic.DataAccessLayer.db_WQX">
                     <SelectParameters>
+                        <asp:SessionParameter DefaultValue="" Name="OrgID" SessionField="OrgID" Type="String" />                        
                     </SelectParameters>
                 </asp:ObjectDataSource>
             </td>

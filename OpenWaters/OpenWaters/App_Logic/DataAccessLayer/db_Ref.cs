@@ -336,6 +336,106 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             }
         }
 
+        public static List<T_WQX_REF_CHARACTERISTIC> GetT_WQX_REF_CHARACTERISTIC_ByOrg(string OrgID)
+        {
+            using (OpenEnvironmentEntities ctx = new OpenEnvironmentEntities())
+            {
+                try
+                {
+                    return (from a in ctx.T_WQX_REF_CHARACTERISTIC
+                            join b in ctx.T_WQX_REF_CHAR_ORG on a.CHAR_NAME equals b.CHAR_NAME
+                            where b.ORG_ID == OrgID
+                            select a).ToList();
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+        }
+
+
+
+        //******************REF CHAR_ORG ****************************************
+        public static List<T_WQX_REF_CHAR_ORG> GetT_WQX_REF_CHAR_ORG(string orgName)
+        {
+            using (OpenEnvironmentEntities ctx = new OpenEnvironmentEntities())
+            {
+                try
+                {
+                    return (from a in ctx.T_WQX_REF_CHAR_ORG
+                            where a.ORG_ID == orgName
+                            select a).ToList();
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+        }
+
+        public static int DeleteT_WQX_REF_CHAR_ORG(string orgName, string charName)
+        {
+            using (OpenEnvironmentEntities ctx = new OpenEnvironmentEntities())
+            {
+                try
+                {
+                    T_WQX_REF_CHAR_ORG r = new T_WQX_REF_CHAR_ORG();
+                    r = (from c in ctx.T_WQX_REF_CHAR_ORG
+                         where c.ORG_ID == orgName 
+                         && c.CHAR_NAME == charName
+                         select c).FirstOrDefault();
+                    ctx.DeleteObject(r);
+                    ctx.SaveChanges();
+                    return 1;
+                }
+                catch
+                {
+                    return 0;
+                }
+            }
+
+        }
+
+        public static int InsertOrUpdateT_WQX_REF_CHAR_ORG(global::System.String cHAR_NAME, global::System.String oRG_NAME, global::System.String cREATE_USER_ID)
+        {
+            using (OpenEnvironmentEntities ctx = new OpenEnvironmentEntities())
+            {
+                try
+                {
+                    Boolean insInd = true;
+                    T_WQX_REF_CHAR_ORG a = new T_WQX_REF_CHAR_ORG();
+
+                    if (ctx.T_WQX_REF_CHAR_ORG.Any(o => o.CHAR_NAME == cHAR_NAME && o.ORG_ID == oRG_NAME))
+                    {
+                        //update case
+                        a = (from c in ctx.T_WQX_REF_CHAR_ORG
+                             where c.CHAR_NAME == cHAR_NAME
+                             && c.ORG_ID == oRG_NAME
+                             select c).FirstOrDefault();
+                        insInd = false;
+                    }
+
+                    a.CHAR_NAME = cHAR_NAME;
+                    a.ORG_ID = oRG_NAME;
+
+                    if (insInd) //insert case
+                    {
+                        a.CREATE_DT = System.DateTime.Now;
+                        a.CREATE_USERID = cREATE_USER_ID;
+                        ctx.AddToT_WQX_REF_CHAR_ORG(a);
+                    }
+                    ctx.SaveChanges();
+                    return 1;
+                }
+                catch (Exception ex)
+                {
+                    return 0;
+                }
+            }
+        }
+
+
         //******************REF CHAR LIMIT****************************************
         public static T_WQX_REF_CHAR_LIMITS GetT_WQX_REF_CHAR_LIMITS_ByNameUnit(string CharName, string UnitName)
         {
@@ -393,7 +493,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
                     if (oRG_ID != null) t.ORG_ID = oRG_ID;
                     if (tYPE_CD != null) t.TYPE_CD = tYPE_CD.Substring(0,5);
                     if (fILE_NAME!= null) t.FILE_NAME = fILE_NAME;
-                    if (fILE_SIZE!= null) t.FILE_SIZE = fILE_SIZE;
+                    t.FILE_SIZE = fILE_SIZE;
                     if (iMPORT_STATUS != null) t.IMPORT_STATUS = iMPORT_STATUS;
                     if (iMPORT_FILE != null) t.IMPORT_FILE = iMPORT_FILE;
                     if (uSER_ID != null) t.CREATE_USERID = uSER_ID;                   

@@ -28,10 +28,17 @@ namespace OpenEnvironment
                 }
 
 
+                //populate listing of Roles
                 lbRoleList.Items.Clear();
                 string[] rolelist = System.Web.Security.Roles.GetRolesForUser();
                 foreach (string s in rolelist)
                     lbRoleList.Items.Add(s);
+
+                //populate listing of Organizations
+                lblOrgList.Items.Clear();
+                List<T_WQX_ORGANIZATION> orgs = db_WQX.GetWQX_USER_ORGS_ByUserIDX(Session["UserIDX"].ConvertOrDefault<int>());
+                foreach (T_WQX_ORGANIZATION org in orgs)
+                    lblOrgList.Items.Add(org.ORG_FORMAL_NAME);
             
             }
         }

@@ -79,11 +79,16 @@ namespace OpenEnvironment
         {
             grdRef.PageIndex = 0;
 
-            //todo: display characteristic
-            if (ddlRef.SelectedValue != "Characteristic")
-            { }
+            if (ddlRef.SelectedValue != "Characteristic")            
+            {
+                grdRef.Visible = true;
+                grdChar.Visible = false;
+            }
             else
-            { }
+            {
+                grdRef.Visible = false;
+                grdChar.Visible = true;
+            }
         }
 
         protected void GetAndStoreRefTable(string tableName, string ValueString, string TextString, string CustomParseName)
@@ -126,7 +131,7 @@ namespace OpenEnvironment
             }
 
 
-            // ***************** DEFAULT PARSING **************************************
+            // ***************** CUSTOM PARSING for CHARACTERSTIC **************************************
             if (CustomParseName == "Characteristic")
             {
                 var lv1s = from lv1 in xdoc.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}WQXElementRow")
@@ -147,6 +152,22 @@ namespace OpenEnvironment
         protected void grdRef_PageIndexChanging(object sender, System.Web.UI.WebControls.GridViewPageEventArgs e)
         {
             grdRef.PageIndex = e.NewPageIndex;
+        }
+
+        protected void grdChar_RowCommand(object sender, System.Web.UI.WebControls.GridViewCommandEventArgs e)
+        {
+            string charName = e.CommandArgument.ToString();
+
+            if (e.CommandName == "Deletes")
+            {
+                db_Ref.InsertOrUpdateT_WQX_REF_CHARACTERISTIC(charName, null, null, null, false);
+            }
+
+        }
+
+        protected void grdChar_PageIndexChanging(object sender, System.Web.UI.WebControls.GridViewPageEventArgs e)
+        {
+            grdChar.PageIndex = e.NewPageIndex;
         }
 
     }
