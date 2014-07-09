@@ -161,6 +161,28 @@ namespace OpenEnvironment
                         db_Ref.InsertOrUpdateT_WQX_REF_CHARACTERISTIC(lv1.ID.Value, null, null, null, true);
                     }
                 }
+
+                // ***************** CUSTOM PARSING for COUNTY **************************************
+                if (CustomParseName == "County")
+                {
+                    string StateVal = db_Ref.GetT_OE_APP_SETTING("Default State");
+                    var lv1s = from lv1 in xdoc.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}WQXElementRow")
+                               select new
+                               {
+                                   ID = lv1.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}WQXElementRowColumn").First(ID2 => ID2.Attribute("colname").Value == "CountyFIPSCode").Attribute("value"),
+                                   Text = lv1.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}WQXElementRowColumn").First(Text2 => Text2.Attribute("colname").Value == "CountyName").Attribute("value"),
+                                   State = lv1.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}WQXElementRowColumn").First(Text2 => Text2.Attribute("colname").Value == "StateCode").Attribute("value"),
+                               };
+
+
+                    foreach (var lv1 in lv1s)
+                    {
+                        if (lv1.State.Value == StateVal)
+                            db_Ref.InsertOrUpdateT_WQX_REF_DATA(tableName, lv1.ID.Value, lv1.Text.Value, null);
+                    }
+                }
+                
+                
                 return 1;
             }
             catch (Exception e)
