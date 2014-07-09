@@ -19,6 +19,14 @@ namespace OpenEnvironment
             if (Session["MonLocIDX"] == null)
                 Response.Redirect("~/App_Pages/Secure/WQXMonLoc.aspx");
 
+            if (Session["OrgID"] == null)
+            {
+                lblMsg.Text = "Please select or create an organization first.";
+                btnSave.Visible = false;
+                return;
+            }
+
+
             //read session variables
             MonLocIDX = Int32.Parse(Session["MonLocIDX"].ToString());
 
@@ -43,7 +51,7 @@ namespace OpenEnvironment
                 dsRefData.SelectParameters["tABLE"].DefaultValue = "VerticalCoordinateReferenceSystemDatum";
                 Utils.BindList(ddlVertDatum, dsRefData, "VALUE", "VALUE");
                 dsRefData.SelectParameters["tABLE"].DefaultValue = "County";
-                Utils.BindList(ddlCounty, dsRefData, "VALUE", "VALUE");
+                Utils.BindList(ddlCounty, dsRefData, "VALUE", "TEXT");
                 dsRefData.SelectParameters["tABLE"].DefaultValue = "State";
                 Utils.BindList(ddlState, dsRefData, "VALUE", "VALUE");
                 dsRefData.SelectParameters["tABLE"].DefaultValue = "Country";
