@@ -14,6 +14,9 @@ namespace OpenEnvironment
         {
             if (!IsPostBack)
             {
+                if (Session["UserIDX"] == null)
+                    Response.Redirect("~/Default.aspx");
+
                 //populate drop-down lists
                 Utils.BindList(ddlOrg, dsOrg, "ORG_ID", "ORG_FORMAL_NAME");
 
