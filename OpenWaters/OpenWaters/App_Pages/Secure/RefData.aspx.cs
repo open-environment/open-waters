@@ -19,8 +19,14 @@ namespace OpenEnvironment
                 
         protected void btnGetRefData_Click(object sender, EventArgs e)
         {
+            lblMsg.Text = "";
+
             //******* ORGANIZATION LEVEL *********************
-            GetAndStoreRefTable("Tribe", "Code", "Name", null);
+            int SuccID = GetAndStoreRefTable("Tribe", "Code", "Name", null);
+
+            //if it fails on the first, it will likely fail for all - so exit code
+            if (SuccID == 0)
+                return;
 
             //******* PROJECT LEVEL *********************
             GetAndStoreRefTable("SamplingDesignType", "Code", "Code", null);
@@ -77,75 +83,91 @@ namespace OpenEnvironment
 
         protected void ddlRef_SelectedIndexChanged(object sender, EventArgs e)
         {
-            grdRef.PageIndex = 0;
+            try
+            {
+                lblMsg.Text = "";
+                grdRef.PageIndex = 0;
 
-            if (ddlRef.SelectedValue != "Characteristic")            
-            {
-                grdRef.Visible = true;
-                grdChar.Visible = false;
+                if (ddlRef.SelectedValue != "Characteristic")
+                {
+                    grdRef.Visible = true;
+                    grdChar.Visible = false;
+                }
+                else
+                {
+                    grdRef.Visible = false;
+                    grdChar.Visible = true;
+                }
             }
-            else
+            catch (Exception ex)
             {
-                grdRef.Visible = false;
-                grdChar.Visible = true;
+                lblMsg.Text = ex.Message;
             }
         }
 
-        protected void GetAndStoreRefTable(string tableName, string ValueString, string TextString, string CustomParseName)
+        protected int GetAndStoreRefTable(string tableName, string ValueString, string TextString, string CustomParseName)
         {
             //get file
             DomainValuesService d = new DomainValuesService();
-            byte[] b = d.GetDomainValues(tableName);
 
-            //cleanup any previous files
-            if (File.Exists(Server.MapPath("~/tmp/Results.xml")))
-                File.Delete(Server.MapPath("~/tmp/Results.xml"));
-
-            using (System.IO.Stream stream = new System.IO.MemoryStream(b))
+            try
             {
-                using (var zip = ZipFile.Read(stream))
+                byte[] b = d.GetDomainValues(tableName);
+                //cleanup any previous files
+                if (File.Exists(Server.MapPath("~/tmp/Results.xml")))
+                    File.Delete(Server.MapPath("~/tmp/Results.xml"));
+
+                using (System.IO.Stream stream = new System.IO.MemoryStream(b))
                 {
-                    foreach (var entry in zip)
+                    using (var zip = ZipFile.Read(stream))
                     {
-                        entry.Extract(Server.MapPath("~/tmp"));
+                        foreach (var entry in zip)
+                        {
+                            entry.Extract(Server.MapPath("~/tmp"));
+                        }
                     }
                 }
-            }
 
-            XDocument xdoc = XDocument.Load(Server.MapPath("~/tmp/Results.xml"));
+                XDocument xdoc = XDocument.Load(Server.MapPath("~/tmp/Results.xml"));
 
-            // ***************** DEFAULT PARSING **************************************
-            if (CustomParseName == null)
-            {
-                var lv1s = from lv1 in xdoc.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}WQXElementRow")
-                            select new
-                            {
-                                ID = lv1.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}WQXElementRowColumn").First(ID2 => ID2.Attribute("colname").Value == ValueString).Attribute("value"),
-                                Text = lv1.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}WQXElementRowColumn").First(Text2 => Text2.Attribute("colname").Value == TextString).Attribute("value"),
-                            };
-
-                foreach (var lv1 in lv1s)
+                // ***************** DEFAULT PARSING **************************************
+                if (CustomParseName == null)
                 {
-                    db_Ref.InsertOrUpdateT_WQX_REF_DATA(tableName, lv1.ID.Value, lv1.Text.Value, null);
+                    var lv1s = from lv1 in xdoc.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}WQXElementRow")
+                                select new
+                                {
+                                    ID = lv1.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}WQXElementRowColumn").First(ID2 => ID2.Attribute("colname").Value == ValueString).Attribute("value"),
+                                    Text = lv1.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}WQXElementRowColumn").First(Text2 => Text2.Attribute("colname").Value == TextString).Attribute("value"),
+                                };
+
+                    foreach (var lv1 in lv1s)
+                    {
+                        db_Ref.InsertOrUpdateT_WQX_REF_DATA(tableName, lv1.ID.Value, lv1.Text.Value, null);
+                    }
                 }
-            }
 
 
-            // ***************** CUSTOM PARSING for CHARACTERSTIC **************************************
-            if (CustomParseName == "Characteristic")
-            {
-                var lv1s = from lv1 in xdoc.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}WQXElementRow")
-                           select new
-                           {
-                               ID = lv1.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}WQXElementRowColumn").First(ID2 => ID2.Attribute("colname").Value == ValueString).Attribute("value"),
-                           };
-
-                foreach (var lv1 in lv1s)
+                // ***************** CUSTOM PARSING for CHARACTERSTIC **************************************
+                if (CustomParseName == "Characteristic")
                 {
-                    db_Ref.InsertOrUpdateT_WQX_REF_CHARACTERISTIC(lv1.ID.Value, null, null, null, true);
-                }
-            }
+                    var lv1s = from lv1 in xdoc.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}WQXElementRow")
+                               select new
+                               {
+                                   ID = lv1.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}WQXElementRowColumn").First(ID2 => ID2.Attribute("colname").Value == ValueString).Attribute("value"),
+                               };
 
+                    foreach (var lv1 in lv1s)
+                    {
+                        db_Ref.InsertOrUpdateT_WQX_REF_CHARACTERISTIC(lv1.ID.Value, null, null, null, true);
+                    }
+                }
+                return 1;
+            }
+            catch (Exception e)
+            {
+                lblMsg.Text = e.Message;
+                return 0;
+            }
 
         }
 
