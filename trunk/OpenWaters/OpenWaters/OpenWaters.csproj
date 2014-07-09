@@ -21,6 +21,10 @@
     <UpgradeBackupLocation>
     </UpgradeBackupLocation>
     <OldToolsVersion>4.0</OldToolsVersion>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -86,6 +90,7 @@
     <Content Include="Account\Register.aspx" />
     <Content Include="App_Data\Create_DB.sql" />
     <Content Include="App_Data\DatabasePatch_v1.3.sql" />
+    <Content Include="App_Data\DatabasePatch_v1.4.sql" />
     <Content Include="App_Images\green.png" />
     <Content Include="App_Images\ico_chart.png" />
     <Content Include="App_Images\ico_save2.png" />
