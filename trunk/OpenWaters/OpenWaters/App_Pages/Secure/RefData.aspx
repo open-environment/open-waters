@@ -48,7 +48,9 @@
             <asp:ListItem Text="TimeZone" Value="TimeZone"></asp:ListItem>
         </asp:DropDownList>
         </div>
-        <br />
+    <p>
+        <asp:Label ID="lblMsg" runat="server" CssClass="failureNotification"></asp:Label>
+    </p>
         <asp:GridView ID="grdRef" runat="server" CssClass="grd" PagerStyle-CssClass="pgr" AlternatingRowStyle-CssClass="alt" PageSize="100" AllowPaging="True"
             AutoGenerateColumns="False" DataKeyNames="REF_DATA_IDX" DataSourceID="dsRefGen" onpageindexchanging="grdRef_PageIndexChanging" onrowcommand="grdRef_RowCommand" >
             <Columns>
