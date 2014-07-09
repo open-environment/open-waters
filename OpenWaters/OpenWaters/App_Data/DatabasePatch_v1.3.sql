@@ -1,8 +1,13 @@
 ﻿--run this script to apply changes for Open Waters v1.3 patch (upgrading from v1.2 or earlier)
+--this patch assumes an organization record has already been created in the database. 
 
 alter table T_OE_USERS add DEFAULT_ORG_ID varchar(30);
 
+GO
+
 update T_OE_USERS set DEFAULT_ORG_ID = (select top 1 org_id from T_WQX_ORGANIZATION);
+
+GO
 
 CREATE TABLE [dbo].[T_WQX_USER_ORGS](
 	[USER_IDX] [int] NOT NULL,
