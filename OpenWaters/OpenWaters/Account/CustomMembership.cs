@@ -20,7 +20,6 @@ namespace OpenEnvironment.Account
         private bool _RequiresQuestionAndAnswer = false;
         private bool _RequiresUniqueEmail;
 
-
         public override bool EnablePasswordRetrieval { get { return _EnablePasswordRetrieval; } }
         public override bool EnablePasswordReset { get { return _EnablePasswordReset; } }
         public override int MaxInvalidPasswordAttempts { get { return _MaxInvalidPasswordAttempts; } }

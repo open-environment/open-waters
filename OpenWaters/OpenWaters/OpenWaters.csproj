@@ -465,6 +465,7 @@
     <Content Include="MasterWQX.master" />
     <Content Include="packages.config" />
     <Content Include="App_Docs\UsersGuide.docx" />
+    <None Include="Properties\PublishProfiles\Profile1.pubxml" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

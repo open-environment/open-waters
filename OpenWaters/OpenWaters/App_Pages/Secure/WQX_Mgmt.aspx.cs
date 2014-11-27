@@ -25,11 +25,8 @@ namespace OpenEnvironment
                 if (t != null)
                 {
                     lblStatus.Text = t.TASK_STATUS;
-                }
-            
+                }            
             }
-
-
         }
 
         protected void btnSubmit_Click(object sender, EventArgs e)
@@ -40,12 +37,20 @@ namespace OpenEnvironment
                 return;
             }
 
+            //submit each record individually
             if (rbSubmit.Items[0].Selected)
                 WQXSubmit.WQX_Master(Session["OrgID"].ToString());
 
-            if (rbSubmit.Items[1].Selected)
-                WQXSubmit.WQX_Submit_OneByOne("", 0);
+            //submit all pending data in one large batch
+            if (rbSubmit.Items[1].Selected){
+                //get CDX username, password, and CDX destination URL
+                string userID;
+                string credential;
+                string NodeURL;
+                WQXSubmit.GetCDXSubmitCredentials(Session["OrgID"].ToString(), out userID, out credential, out NodeURL);
 
+                WQXSubmit.WQX_Submit_OneByOne("", 0, userID, credential, NodeURL);
+            }
         }
 
         protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)

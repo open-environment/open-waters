@@ -71,6 +71,14 @@
             <asp:TextBox ID="txtOrgPhoneExt" runat="server" Width="250px" MaxLength="6" CssClass="fldTxt"></asp:TextBox>
         </div>
         <div class="row">
+            <span class="fldLbl">CDX Submitter:</span>
+            <asp:TextBox ID="txtCDX" runat="server" Width="250px" MaxLength="100" CssClass="fldTxt"></asp:TextBox>
+        </div>
+        <div class="row">
+            <span class="fldLbl">CDX Submitter Password:</span>
+            <asp:TextBox ID="txtCDXPwd" runat="server" Width="250px" TextMode="Password" MaxLength="100" CssClass="fldTxt"></asp:TextBox>
+        </div>        
+        <div class="row">
             <table>
                 <tr>
                     <td>

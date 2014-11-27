@@ -7,6 +7,8 @@ using System.Data;
 using System.Data.SqlClient;
 using OpenWatersSvc.net.epacdxnode.test;
 using OpenEnvironment;
+using OpenEnvironment.App_Logic.DataAccessLayer;
+using System.Collections.Generic;
 
 namespace OpenWatersSvc
 {
@@ -61,7 +63,7 @@ namespace OpenWatersSvc
 
             try
             { 
-                //Reset the Open Waters service status so it will run again (in case it 
+                //Reset the Open Waters service status so it will run again (in case it failed previously)
                 int SuccID = OpenEnvironment.App_Logic.DataAccessLayer.db_Ref.UpdateT_OE_APP_TASKS("WQXSubmit", "STOPPED", null, "TASK");
                 if (SuccID > 0)
                 {
@@ -87,8 +89,7 @@ namespace OpenWatersSvc
         {
             try
             {
-                OpenEnvironment.App_Logic.BusinessLogicLayer.WQXSubmit.WQX_Master("MCNCREEK_WQX");
-               
+                OpenEnvironment.App_Logic.BusinessLogicLayer.WQXSubmit.WQX_MasterAllOrgs();
                 EventLog.WriteEntry("Submission attempt completed");
             }
             catch (Exception ex)

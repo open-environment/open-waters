@@ -31,9 +31,8 @@
                 </Columns>
             </asp:GridView>
     <div class="btnRibbon">
-        <asp:Button ID="btnAdd" runat="server" CssClass="btn" Text="Add New" 
-            onclick="btnAdd_Click" />
-        <asp:ImageButton ID="btnExcel" runat="server" Height="24px" style="float:right; " ImageUrl="~/App_Images/ico_xls.png" onclick="btnExcel_Click" />
+        <asp:Button ID="btnAdd" runat="server" CssClass="btn" Text="Add New" onclick="btnAdd_Click" />
+        <asp:ImageButton ID="btnExcel" runat="server" Height="24px" style="float:right; " ImageUrl="~/App_Images/ico_xls.png" onclick="btnExcel_Click" ToolTip="Export to Excel" />
     </div>
 
 </asp:Content>
