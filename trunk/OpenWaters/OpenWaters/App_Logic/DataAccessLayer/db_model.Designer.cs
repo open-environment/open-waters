@@ -679,36 +679,6 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
         /// No Metadata Documentation available.
         /// </summary>
         /// <param name="typeText">No Metadata Documentation available.</param>
-        /// <param name="recordIDX">No Metadata Documentation available.</param>
-        public ObjectResult<global::System.String> GenWQXXML(global::System.String typeText, Nullable<global::System.Int32> recordIDX)
-        {
-            ObjectParameter typeTextParameter;
-            if (typeText != null)
-            {
-                typeTextParameter = new ObjectParameter("TypeText", typeText);
-            }
-            else
-            {
-                typeTextParameter = new ObjectParameter("TypeText", typeof(global::System.String));
-            }
-    
-            ObjectParameter recordIDXParameter;
-            if (recordIDX.HasValue)
-            {
-                recordIDXParameter = new ObjectParameter("RecordIDX", recordIDX);
-            }
-            else
-            {
-                recordIDXParameter = new ObjectParameter("RecordIDX", typeof(global::System.Int32));
-            }
-    
-            return base.ExecuteFunction<global::System.String>("GenWQXXML", typeTextParameter, recordIDXParameter);
-        }
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        /// <param name="typeText">No Metadata Documentation available.</param>
         /// <param name="orgID">No Metadata Documentation available.</param>
         /// <param name="monLocID">No Metadata Documentation available.</param>
         /// <param name="charName">No Metadata Documentation available.</param>
@@ -777,6 +747,55 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             }
     
             return base.ExecuteFunction<WQXAnalysis_Result>("WQXAnalysis", typeTextParameter, orgIDParameter, monLocIDParameter, charNameParameter, startDtParameter, endDtParameter);
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        /// <param name="typeText">No Metadata Documentation available.</param>
+        /// <param name="recordIDX">No Metadata Documentation available.</param>
+        public ObjectResult<global::System.String> GenWQXXML_Single(global::System.String typeText, Nullable<global::System.Int32> recordIDX)
+        {
+            ObjectParameter typeTextParameter;
+            if (typeText != null)
+            {
+                typeTextParameter = new ObjectParameter("TypeText", typeText);
+            }
+            else
+            {
+                typeTextParameter = new ObjectParameter("TypeText", typeof(global::System.String));
+            }
+    
+            ObjectParameter recordIDXParameter;
+            if (recordIDX.HasValue)
+            {
+                recordIDXParameter = new ObjectParameter("RecordIDX", recordIDX);
+            }
+            else
+            {
+                recordIDXParameter = new ObjectParameter("RecordIDX", typeof(global::System.Int32));
+            }
+    
+            return base.ExecuteFunction<global::System.String>("GenWQXXML_Single", typeTextParameter, recordIDXParameter);
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        /// <param name="orgID">No Metadata Documentation available.</param>
+        public ObjectResult<global::System.String> GenWQXXML_Org(global::System.String orgID)
+        {
+            ObjectParameter orgIDParameter;
+            if (orgID != null)
+            {
+                orgIDParameter = new ObjectParameter("OrgID", orgID);
+            }
+            else
+            {
+                orgIDParameter = new ObjectParameter("OrgID", typeof(global::System.String));
+            }
+    
+            return base.ExecuteFunction<global::System.String>("GenWQXXML_Org", orgIDParameter);
         }
 
         #endregion
@@ -7368,6 +7387,78 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
         private global::System.String _UPDATE_USERID;
         partial void OnUPDATE_USERIDChanging(global::System.String value);
         partial void OnUPDATE_USERIDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String CDX_SUBMITTER_ID
+        {
+            get
+            {
+                return _CDX_SUBMITTER_ID;
+            }
+            set
+            {
+                OnCDX_SUBMITTER_IDChanging(value);
+                ReportPropertyChanging("CDX_SUBMITTER_ID");
+                _CDX_SUBMITTER_ID = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("CDX_SUBMITTER_ID");
+                OnCDX_SUBMITTER_IDChanged();
+            }
+        }
+        private global::System.String _CDX_SUBMITTER_ID;
+        partial void OnCDX_SUBMITTER_IDChanging(global::System.String value);
+        partial void OnCDX_SUBMITTER_IDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String CDX_SUBMITTER_PWD_HASH
+        {
+            get
+            {
+                return _CDX_SUBMITTER_PWD_HASH;
+            }
+            set
+            {
+                OnCDX_SUBMITTER_PWD_HASHChanging(value);
+                ReportPropertyChanging("CDX_SUBMITTER_PWD_HASH");
+                _CDX_SUBMITTER_PWD_HASH = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("CDX_SUBMITTER_PWD_HASH");
+                OnCDX_SUBMITTER_PWD_HASHChanged();
+            }
+        }
+        private global::System.String _CDX_SUBMITTER_PWD_HASH;
+        partial void OnCDX_SUBMITTER_PWD_HASHChanging(global::System.String value);
+        partial void OnCDX_SUBMITTER_PWD_HASHChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String CDX_SUBMITTER_PWD_SALT
+        {
+            get
+            {
+                return _CDX_SUBMITTER_PWD_SALT;
+            }
+            set
+            {
+                OnCDX_SUBMITTER_PWD_SALTChanging(value);
+                ReportPropertyChanging("CDX_SUBMITTER_PWD_SALT");
+                _CDX_SUBMITTER_PWD_SALT = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("CDX_SUBMITTER_PWD_SALT");
+                OnCDX_SUBMITTER_PWD_SALTChanged();
+            }
+        }
+        private global::System.String _CDX_SUBMITTER_PWD_SALT;
+        partial void OnCDX_SUBMITTER_PWD_SALTChanging(global::System.String value);
+        partial void OnCDX_SUBMITTER_PWD_SALTChanged();
 
         #endregion
 

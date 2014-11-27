@@ -54,8 +54,7 @@ namespace OpenEnvironment.App_Logic.BusinessLogicLayer
                 sub1.securityToken = secToken;
                 sub1.transactionId = "";
                 sub1.dataflow = dataFlow;
-//                sub1.flowOperation = flowOperation;
-                sub1.flowOperation = "default";
+                sub1.flowOperation = flowOperation;
                 sub1.documents = docArray;
                 NetworkNode2 nn = new NetworkNode2();
                 nn.SoapVersion = SoapProtocolVersion.Soap12;
@@ -104,31 +103,71 @@ namespace OpenEnvironment.App_Logic.BusinessLogicLayer
 
         }
 
-        internal static void WQX_Submit_OneByOne(string typeText, int RecordIDX)
+        /// <summary>
+        /// Scans database for all pending data for the selected organization and submits pending data to EPA one record at a time
+        /// </summary>
+        public static void WQX_Master(string OrgID)
         {
-            string userID = db_Ref.GetT_OE_APP_SETTING("CDX Submitter");
-            string credential = db_Ref.GetT_OE_APP_SETTING("CDX Submitter Password");
-            string NodeURL = db_Ref.GetT_OE_APP_SETTING("CDX Submission URL");
+            T_OE_APP_TASKS t = db_Ref.GetT_OE_APP_TASKS_ByName("WQXSubmit");
+            if (t.TASK_STATUS == "STOPPED")
+            {
+                //set status to RUNNING so tasks won't execute simultaneously
+                db_Ref.UpdateT_OE_APP_TASKS("WQXSubmit", "RUNNING", null, "SYSTEM");
 
-            //production
-            //    nn.Url = "https://cdxnodengn.epa.gov/ngn-enws20/services/NetworkNode2ServiceConditionalMTOM"; //new 2.1
-            //    nn.Url = "https://cdxnodengn.epa.gov/ngn-enws20/services/NetworkNode2Service"; //new 2.0
-            //test
-            //    nn.Url = "https://testngn.epacdxnode.net/ngn-enws20/services/NetworkNode2ServiceConditionalMTOM"; //new 2.1
-            //    nn.Url = "https://testngn.epacdxnode.net/ngn-enws20/services/NetworkNode2Service";  //new 2.0
-            //    nn.Url = "https://test.epacdxnode.net/cdx-enws20/services/NetworkNode2ConditionalMtom"; //old 2.1
+                //get CDX username, password, and CDX destination URL
+                string userID;
+                string credential;
+                string NodeURL;
+                GetCDXSubmitCredentials(OrgID, out userID, out credential, out NodeURL);
 
+                //Loop through all pending monitoring locations and submit one at a time
+                List<T_WQX_MONLOC> ms = db_WQX.GetWQX_MONLOC(true, OrgID, true);
+                foreach (T_WQX_MONLOC m in ms)
+                    WQX_Submit_OneByOne("MLOC", m.MONLOC_IDX, userID, credential, NodeURL);
+
+                //Loop through all pending projects and submit one at a time
+                List<T_WQX_PROJECT> ps = db_WQX.GetWQX_PROJECT(true, OrgID, true);
+                foreach (T_WQX_PROJECT p in ps)
+                    WQX_Submit_OneByOne("PROJ", p.PROJECT_IDX, userID, credential, NodeURL);
+
+                //Loop through all pending activities and submit one at a time
+                List<T_WQX_ACTIVITY> as1 = db_WQX.GetWQX_ACTIVITY(true, OrgID, null, null, null, null, true, null);
+                foreach (T_WQX_ACTIVITY a in as1)
+                    WQX_Submit_OneByOne("ACT", a.ACTIVITY_IDX, userID, credential, NodeURL);
+
+                //when done, update status back to stopped
+                db_Ref.UpdateT_OE_APP_TASKS("WQXSubmit", "STOPPED", null, "SYSTEM");
+            }
+        }
+
+        /// <summary>
+        /// This is the service called by the Windows service 
+        /// </summary>
+        public static void WQX_MasterAllOrgs()
+        {
+            //loop through all registered organizations and submit pending for each
+            List<T_WQX_ORGANIZATION> orgs = db_WQX.GetWQX_ORGANIZATION();
+            foreach (T_WQX_ORGANIZATION org in orgs)
+            {
+                WQX_Master(org.ORG_ID);
+            }
+        }
+
+
+
+        internal static void WQX_Submit_OneByOne(string typeText, int RecordIDX, string userID, string credential, string NodeURL)
+        {
             try
             {
                 //*******AUTHENTICATE***********************************
                 string token = AuthHelper(userID, credential,  "Password", "default", NodeURL);
 
                 //*******SUBMIT*****************************************
-                string requestXml = db_WQX.SP_GenWQXXML(typeText, RecordIDX);   //get XML from DB stored procedure
+                string requestXml = db_WQX.SP_GenWQXXML_Single(typeText, RecordIDX);   //get XML from DB stored procedure
                 byte[] bytes = Utils.StrToByteArray(requestXml);
                 if (bytes == null) return;
                 
-                StatusResponseType subStatus = SubmitHelper(NodeURL, token, "WQX", "", bytes, "submit.xml", DocumentFormatType.XML, "1");
+                StatusResponseType subStatus = SubmitHelper(NodeURL, token, "WQX", "default", bytes, "submit.xml", DocumentFormatType.XML, "1");
 
                 if (subStatus != null)
                 {
@@ -212,56 +251,37 @@ namespace OpenEnvironment.App_Logic.BusinessLogicLayer
             }
         }
 
-        /// <summary>
-        /// Submits data to EPA one record at a time
-        /// </summary>
-        /// <param name="OrgID"></param>
-        public static void WQX_Master(string OrgID)
+        public static void GetCDXSubmitCredentials(string OrgID, out string userID, out string credential, out string NodeURL)
         {
-            T_OE_APP_TASKS t = db_Ref.GetT_OE_APP_TASKS_ByName("WQXSubmit");
-            if (t.TASK_STATUS == "STOPPED")
+            //production
+            //    NodeURL = "https://cdxnodengn.epa.gov/ngn-enws20/services/NetworkNode2ServiceConditionalMTOM"; //new 2.1
+            //    NodeURL = "https://cdxnodengn.epa.gov/ngn-enws20/services/NetworkNode2Service"; //new 2.0
+            //test
+            //    NodeURL = "https://testngn.epacdxnode.net/ngn-enws20/services/NetworkNode2ServiceConditionalMTOM"; //new 2.1
+            //    NodeURL = "https://testngn.epacdxnode.net/ngn-enws20/services/NetworkNode2Service";  //new 2.0
+            //    NodeURL = "https://test.epacdxnode.net/cdx-enws20/services/NetworkNode2ConditionalMtom"; //old 2.1
+
+            NodeURL = db_Ref.GetT_OE_APP_SETTING("CDX Submission URL");
+
+            //get submission credentials for the given organization
+            userID = "";
+            credential = "";
+
+            T_WQX_ORGANIZATION org = db_WQX.GetWQX_ORGANIZATION_ByID(OrgID);
+            if (org != null)
             {
-                //set status to RUNNING so tasks won't execute simultaneously
-                db_Ref.UpdateT_OE_APP_TASKS("WQXSubmit", "RUNNING", null, "SYSTEM");
-
-                //Loop through all pending monitoring locations and submit one at a time
-                List<T_WQX_MONLOC> ms = db_WQX.GetWQX_MONLOC(true, OrgID, true);
-                foreach (T_WQX_MONLOC m in ms)
-                    WQX_Submit_OneByOne("MLOC", m.MONLOC_IDX);
-
-                //Loop through all pending projects and submit one at a time
-                List<T_WQX_PROJECT> ps = db_WQX.GetWQX_PROJECT(true, OrgID, true);
-                foreach (T_WQX_PROJECT p in ps)
-                    WQX_Submit_OneByOne("PROJ", p.PROJECT_IDX);
-
-                //Loop through all pending projects and submit one at a time
-                List<T_WQX_ACTIVITY> as1 = db_WQX.GetWQX_ACTIVITY(true, OrgID, null, null, null, null, true, null);
-                foreach (T_WQX_ACTIVITY a in as1)
-                    WQX_Submit_OneByOne("ACT", a.ACTIVITY_IDX);
-
-                //when done, update status back to stopped
-                db_Ref.UpdateT_OE_APP_TASKS("WQXSubmit", "STOPPED", null, "SYSTEM");
-            }
-        }
-
-
-        public static byte[] WQX_PublishMaster(string typeText)
-        {
-            try 
-            {
-                //*******SUBMIT*****************************************
-                string requestXml = db_WQX.SP_GenWQXXML(typeText, 0);   //get XML from DB stored procedure
-                byte[] bytes = Utils.StrToByteArray(requestXml);
-                if (bytes == null)
-                    return null;
+                if (org.CDX_SUBMITTER_ID != null && org.CDX_SUBMITTER_PWD_HASH != null)
+                {
+                    userID = org.CDX_SUBMITTER_ID;
+                    credential = org.CDX_SUBMITTER_PWD_HASH;
+                }
                 else
-                    return bytes;
-
-            }
-            catch
-            {
-                return null;
+                {
+                    userID = db_Ref.GetT_OE_APP_SETTING("CDX Submitter");
+                    credential = db_Ref.GetT_OE_APP_SETTING("CDX Submitter Password");
+                }
             }
         }
+
     }
 }

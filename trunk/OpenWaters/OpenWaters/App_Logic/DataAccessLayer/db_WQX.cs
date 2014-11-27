@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using OpenEnvironment.App_Logic.BusinessLogicLayer;
+//using System.Web.Security;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace OpenEnvironment.App_Logic.DataAccessLayer
 {
@@ -747,7 +750,8 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
 
         public static int InsertOrUpdateT_WQX_ORGANIZATION(global::System.String oRG_ID, global::System.String oRG_NAME, global::System.String oRG_DESC,
             global::System.String tRIBAL_CODE, global::System.String eLECTRONIC_ADDRESS, global::System.String eLECTRONICADDRESSTYPE,
-            global::System.String tELEPHONE_NUM, global::System.String tELEPHONE_NUM_TYPE, global::System.String TELEPHONE_EXT, String cREATE_USER = "system")
+            global::System.String tELEPHONE_NUM, global::System.String tELEPHONE_NUM_TYPE, global::System.String TELEPHONE_EXT, global::System.String cDX_SUBMITTER_ID, 
+            global::System.String cDX_SUBMITTER_PWD, String cREATE_USER = "system")
         {
             using (OpenEnvironmentEntities ctx = new OpenEnvironmentEntities())
             {
@@ -776,6 +780,16 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
                     if (tELEPHONE_NUM != null) a.TELEPHONE_NUM = tELEPHONE_NUM;
                     if (tELEPHONE_NUM_TYPE != null) a.TELEPHONE_NUM_TYPE = tELEPHONE_NUM_TYPE;
                     if (TELEPHONE_EXT != null) a.TELEPHONE_EXT = TELEPHONE_EXT;
+                    if (cDX_SUBMITTER_ID != null) a.CDX_SUBMITTER_ID = cDX_SUBMITTER_ID;
+
+                    if (cDX_SUBMITTER_PWD != null && cDX_SUBMITTER_PWD != "--------")
+                    {
+                        string salt = GenerateSalt();
+                        string hashpass = HashPassword(cDX_SUBMITTER_PWD, salt);
+
+                        a.CDX_SUBMITTER_PWD_HASH = hashpass;
+                        a.CDX_SUBMITTER_PWD_SALT = salt;
+                    }
 
                     if (insInd) //insert case
                     {
@@ -920,13 +934,13 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
 
         // *************************** XML GENERATION *****************************
         // *********************************************************************
-        public static string SP_GenWQXXML(string TypeText, int MonLocIDX)
+        public static string SP_GenWQXXML_Single(string TypeText, int recordIDX)
         {
             using (OpenEnvironmentEntities ctx = new OpenEnvironmentEntities())
             {
                 try
                 {
-                    return ctx.GenWQXXML(TypeText ,MonLocIDX).First();
+                    return ctx.GenWQXXML_Single(TypeText, recordIDX).First();
                 }
                 catch (Exception ex)
                 {
@@ -935,7 +949,21 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             }
         }
 
-        
+        public static string SP_GenWQXXML_Org(string orgID)
+        {
+            using (OpenEnvironmentEntities ctx = new OpenEnvironmentEntities())
+            {
+                try
+                {
+                    return ctx.GenWQXXML_Org(orgID).First();
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+        }
+
 
         // *************************** ANALYSIS *********************************
         public static List<WQXAnalysis_Result> SP_WQXAnalysis(string TypeText, string OrgID, int? MonLocIDX, string charName, DateTime? startDt, DateTime? endDt)
@@ -986,6 +1014,24 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
                 }
             }
         }
+
+        private static string GenerateSalt()
+        {
+            byte[] buf = new byte[32];
+            (new RNGCryptoServiceProvider()).GetBytes(buf);
+            return Convert.ToBase64String(buf);
+        }
+
+        private static string HashPassword(string pass, string salt)
+        {
+            SHA256Managed hash = new SHA256Managed();
+            byte[] utf8 = UTF8Encoding.UTF8.GetBytes(pass + salt);
+            StringBuilder s = new StringBuilder(hash.ComputeHash(utf8).Length * 2);
+            foreach (byte b in hash.ComputeHash(utf8))
+                s.Append(b.ToString("x2"));
+            return s.ToString();
+        }
+
 
     }
 }
