@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterWQX.master" AutoEventWireup="true" CodeBehind="Maps.aspx.cs" Inherits="OpenEnvironment.Map2" %>
+﻿<%@ Page Title="Open Waters - Map" Language="C#" MasterPageFile="~/MasterWQX.master" AutoEventWireup="true" CodeBehind="Maps.aspx.cs" Inherits="OpenEnvironment.Map2" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="BodyContent" runat="server" >
     <script src="../../Scripts/jquery-1.4.1.js" type="text/javascript"></script>
     <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
@@ -126,7 +126,7 @@
     <table style="width:100%; height:100%; padding:0; margin:0;">
         <tr>
             <td>
-                <div id="over_map">Muscogee Creek Nation - Water Quality Map</div>
+                <div id="over_map">Water Quality Map</div>
                 <div id="over_map_right">
                     <input type='button' id='hideshow' value='Full Screen' class="btn" />
                 </div>

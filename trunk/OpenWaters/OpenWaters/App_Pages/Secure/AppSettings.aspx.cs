@@ -11,6 +11,10 @@ namespace OpenEnvironment
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            // forms-based authorization
+            if (!HttpContext.Current.User.IsInRole("ADMINS"))
+                Response.Redirect("~/App_Pages/Public/AccessDenied.aspx");
+
             if (!IsPostBack)
             {
                 //display left menu as selected

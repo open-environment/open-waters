@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterWQX.master" AutoEventWireup="true" CodeBehind="Charting.aspx.cs" Inherits="OpenEnvironment.Charting" %>
+﻿<%@ Page Title="Open Waters - Graphs" Language="C#" MasterPageFile="~/MasterWQX.master" AutoEventWireup="true" CodeBehind="Charting.aspx.cs" Inherits="OpenEnvironment.Charting" %>
 <%@ Register assembly="System.Web.DataVisualization, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" namespace="System.Web.UI.DataVisualization.Charting" tagprefix="asp" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="BodyContent" runat="server">
     <asp:ScriptManager ID="ScriptManager1" runat="server" EnablePartialRendering="true" />
@@ -19,10 +19,8 @@
             <asp:SessionParameter DefaultValue="" Name="OrgID" SessionField="OrgID" Type="String" />
         </selectparameters>
     </asp:ObjectDataSource>
-    <asp:ObjectDataSource ID="dsChar" runat="server" SelectMethod="GetT_WQX_REF_CHARACTERISTIC"  TypeName="OpenEnvironment.App_Logic.DataAccessLayer.db_Ref" >
+    <asp:ObjectDataSource ID="dsChar" runat="server" SelectMethod="GetT_WQX_RESULT_SampledCharacteristics"  TypeName="OpenEnvironment.App_Logic.DataAccessLayer.db_WQX" >
         <selectparameters>
-            <asp:Parameter DefaultValue="true" Name="ActInd" Type="Boolean" />
-            <asp:Parameter DefaultValue="true" Name="onlyUsedInd" Type="Boolean" />
         </selectparameters>
     </asp:ObjectDataSource>
     <asp:Panel ID="pnlFilter" CssClass="fltBox" runat="server" DefaultButton="btnChart">

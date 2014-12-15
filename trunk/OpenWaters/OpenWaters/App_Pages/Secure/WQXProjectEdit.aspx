@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterWQX.master" AutoEventWireup="true" CodeBehind="WQXProjectEdit.aspx.cs" Inherits="OpenEnvironment.WQXProjectEdit" %>
+﻿<%@ Page Title="Open Waters - Project Details" Language="C#" MasterPageFile="~/MasterWQX.master" AutoEventWireup="true" CodeBehind="WQXProjectEdit.aspx.cs" Inherits="OpenEnvironment.WQXProjectEdit" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="BodyContent" runat="server">
     <asp:ObjectDataSource ID="dsRefData" runat="server" SelectMethod="GetT_WQX_REF_DATA" TypeName="OpenEnvironment.App_Logic.DataAccessLayer.db_Ref">
         <SelectParameters>
@@ -28,7 +28,7 @@
             <asp:TextBox ID="txtProjDesc" runat="server" MaxLength="4000" TextMode="MultiLine" Rows="3" Width="250px"  CssClass="fldTxt"></asp:TextBox>
         </div>
         <div class="row">
-            <span class="fldLbl">Sampling Design Type Code</span>
+            <span class="fldLbl">Sampling Design Type</span>
             <asp:DropDownList ID="ddlSampDesignTypeCode" runat="server" CssClass="fldTxt" Width="250px"></asp:DropDownList>
         </div>
         <div class="row">

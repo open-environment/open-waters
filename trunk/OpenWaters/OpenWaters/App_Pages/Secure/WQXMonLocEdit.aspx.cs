@@ -92,6 +92,12 @@ namespace OpenEnvironment
 
                     btnMap.PostBackUrl = "http://maps.google.com/?q=" + m.LATITUDE_MSR + "," + m.LONGITUDE_MSR;
                 }
+                else
+                {
+                    chkActInd.Checked = true;
+                    chkWQXInd.Checked = true;
+                    btnMap.Visible = false;
+                }
             }
         }
 

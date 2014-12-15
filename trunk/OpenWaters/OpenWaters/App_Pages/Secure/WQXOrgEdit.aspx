@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterWQX.master" AutoEventWireup="true" CodeBehind="WQXOrgEdit.aspx.cs" Inherits="OpenEnvironment.WQXOrgEdit" %>
+﻿<%@ Page Title="Open Waters - Organization Details" Language="C#" MasterPageFile="~/MasterWQX.master" AutoEventWireup="true" CodeBehind="WQXOrgEdit.aspx.cs" Inherits="OpenEnvironment.WQXOrgEdit" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="BodyContent" runat="server">
     <script type="text/javascript">
         function GetConfirmation() {
@@ -78,7 +78,7 @@
             <span class="fldLbl">CDX Submitter Password:</span>
             <asp:TextBox ID="txtCDXPwd" runat="server" Width="250px" TextMode="Password" MaxLength="100" CssClass="fldTxt"></asp:TextBox>
         </div>        
-        <div class="row">
+        <asp:Panel ID="pnlRoles" runat="server" CssClass="row">
             <table>
                 <tr>
                     <td>
@@ -87,8 +87,8 @@
                         </asp:ListBox>
                     </td>
                     <td>
-                        <asp:Button ID="btnAdd" CssClass="btn" Width="180px" runat="server" Text="Add User to Role &gt;&gt;" OnClick="btnAdd_Click" /><br />
-                        <asp:Button ID="btnRemove" CssClass="btn" Width="180px" runat="server" Text="&lt;&lt; Remove User From Role" OnClick="btnRemove_Click" />
+                        <asp:Button ID="btnAdd" CssClass="btn" Width="180px" runat="server" Text="Add User to Org &gt;&gt;" OnClick="btnAdd_Click" /><br />
+                        <asp:Button ID="btnRemove" CssClass="btn" Width="180px" runat="server" Text="&lt;&lt; Remove User From Org" OnClick="btnRemove_Click" />
                     </td>
                     <td>
                         Users in Organization<br />
@@ -97,12 +97,12 @@
                     </td>
                 </tr>
             </table>
-        </div>
+        </asp:Panel>
         <div class="btnRibbon">
             <asp:Button ID="btnSave" runat="server" CssClass="btn" Text="Save &amp; Exit" onclick="btnSave_Click" />
             <asp:Button ID="btnCancel" runat="server" CssClass="btn" Text="Cancel" onclick="btnCancel_Click" />
         </div>
-        <div class="row">
+        <asp:Panel ID="pnlChars" runat="server" CssClass="row">
             <h2>Characteristics Used</h2>
             <asp:DropDownList ID="ddlChar" runat="server" CssClass="chosen"></asp:DropDownList>
             <asp:Button ID="btnAddChar" runat="server" CssClass="btn" Text="Add Characteristic" onclick="btnAddChar_Click"/>
@@ -122,7 +122,7 @@
                     <asp:BoundField DataField="CREATE_USERID" HeaderText="Created By" SortExpression="CREATE_USERID" />
                 </Columns>
             </asp:GridView>
-        </div>
+        </asp:Panel>
     </asp:Panel>
 
 </asp:Content>

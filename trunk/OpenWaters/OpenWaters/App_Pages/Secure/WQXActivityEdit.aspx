@@ -1,5 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterWQX.master" AutoEventWireup="true"
-    CodeBehind="WQXActivityEdit.aspx.cs" Inherits="OpenEnvironment.WQXActivityEdit" %>
+﻿<%@ Page Title="Open Waters - Activity Details" Language="C#" MasterPageFile="~/MasterWQX.master" AutoEventWireup="true" CodeBehind="WQXActivityEdit.aspx.cs" Inherits="OpenEnvironment.WQXActivityEdit" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="BodyContent" runat="server">
     <script src="../../Scripts/jquery-1.4.1.js" type="text/javascript"></script>
@@ -135,7 +134,7 @@
 
     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
         <ContentTemplate>
-            <h2>Results</h2>
+            <div style="display:inline;"><h2 style="display:inline;">Results</h2> (click row to edit)</div> 
             <asp:Label ID="lblMsgDtl" runat="server" CssClass="failureNotification"></asp:Label>
             <asp:GridView ID="grdResults" runat="server" GridLines="None" CssClass="grd" PagerStyle-CssClass="pgr"
                 AutoGenerateColumns="False" AlternatingRowStyle-CssClass="alt" DataKeyNames="RESULT_IDX, CHAR_NAME, RESULT_MSR_UNIT"

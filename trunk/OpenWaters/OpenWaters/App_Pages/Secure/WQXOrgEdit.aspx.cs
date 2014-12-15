@@ -64,9 +64,13 @@ namespace OpenEnvironment
                     lbAllUsers.Items.Add(li);
                 }
 
+
                 //populate Org Characteristics grid
                 PopulateCharGrid();
 
+                //only make visible if editing existing organization
+                pnlRoles.Visible = (OrgEditID != "-1");
+                pnlChars.Visible = (OrgEditID != "-1");
             }
         }
 
@@ -85,7 +89,7 @@ namespace OpenEnvironment
         {
             //save updates to Organization
             int SuccID = db_WQX.InsertOrUpdateT_WQX_ORGANIZATION(txtOrgID.Text, txtOrgName.Text, txtOrgDesc.Text, ddlTribalCode.SelectedValue.ToString(), 
-                txtOrgEmail.Text, "Email", txtOrgPhone.Text, "Office", txtOrgPhoneExt.Text, txtCDX.Text, txtCDXPwd.Text, User.Identity.Name);
+                txtOrgEmail.Text, "Email", txtOrgPhone.Text, "Office", txtOrgPhoneExt.Text, txtCDX.Text, txtCDXPwd.Text, null, User.Identity.Name);
 
             if (SuccID > 0)
                 Response.Redirect("~/App_Pages/Secure/WQXOrg.aspx");
