@@ -1,21 +1,196 @@
-﻿--run this script to apply changes for Open Waters v1.4 patch (upgrading from v1.3)
+﻿--Only run this script if you are upgrading a previous installation of Open Waters (v1.3 or earlier) to v1.5 or later
+
 
 INSERT INTO T_OE_APP_SETTINGS ([SETTING_NAME],[SETTING_VALUE],[MODIFY_USERID],[MODIFY_DT]) VALUES ('Default State','OK','SYSTEM',GetDate());
+DELETE FROM T_OE_APP_SETTINGS where SETTING_NAME = 'Default Org ID';
+INSERT INTO [dbo].[T_OE_APP_SETTINGS] ([SETTING_NAME],[SETTING_VALUE],[MODIFY_USERID],[MODIFY_DT]) VALUES ('EMAIL PORT','25','SYSTEM',GetDate());
+INSERT INTO [dbo].[T_OE_APP_SETTINGS] ([SETTING_NAME],[SETTING_VALUE],[MODIFY_USERID],[MODIFY_DT]) VALUES ('EMAIL SECURE USER','','SYSTEM',GetDate());
+INSERT INTO [dbo].[T_OE_APP_SETTINGS] ([SETTING_NAME],[SETTING_VALUE],[MODIFY_USERID],[MODIFY_DT]) VALUES ('EMAIL SECURE PWD','','SYSTEM',GetDate());
 
 --moving CDX account into from app level from global or org level to support multiple submitters
 alter table T_WQX_ORGANIZATION add CDX_SUBMITTER_ID varchar(100);
 alter table T_WQX_ORGANIZATION add CDX_SUBMITTER_PWD_HASH varchar(100);
 alter table T_WQX_ORGANIZATION add CDX_SUBMITTER_PWD_SALT varchar(100);
+alter table T_WQX_ORGANIZATION add CDX_SUBMIT_IND bit default 1;
 
 GO
 
 update T_WQX_ORGANIZATION set CDX_SUBMITTER_ID = (select SETTING_VALUE from T_OE_APP_SETTINGS where SETTING_NAME='CDX Submitter');
 update T_WQX_ORGANIZATION set CDX_SUBMITTER_PWD_HASH = (select SETTING_VALUE from T_OE_APP_SETTINGS where SETTING_NAME='CDX Submitter Password');
 
+
+alter table T_WQX_TRANSACTION_LOG add ORG_ID varchar(30) NULL;
+
+GO
+
+update T_WQX_TRANSACTION_LOG set ORG_ID = (select top 1 ORG_ID from T_WQX_ORGANIZATION);
+
+drop view v_wqx_transaction_log;
+
+GO
+
+CREATE VIEW V_WQX_TRANSACTION_LOG
+AS
+SELECT L.*,
+      isnull(isnull((select MONLOC_ID from T_WQX_MONLOC M where M.MONLOC_IDX = L.TABLE_IDX and L.TABLE_CD='MLOC'),
+                      (select PROJECT_ID from T_WQX_PROJECT P where P.PROJECT_IDX = L.TABLE_IDX)),
+               (select ACTIVITY_ID from T_WQX_ACTIVITY A where A.ACTIVITY_IDX = L.TABLE_IDX)) as RECORD      
+  FROM T_WQX_TRANSACTION_LOG L;  
+
+GO
+
+
 DROP PROCEDURE GenWQXXML;
 
 GO
 
+
+CREATE TABLE [dbo].[T_WQX_IMPORT_TEMPLATE](
+	[TEMPLATE_ID] [int] NOT NULL IDENTITY(1,1),
+	[ORG_ID] [varchar](30) NOT NULL,
+	[TYPE_CD] [varchar](5) NOT NULL,
+	[TEMPLATE_NAME] [varchar](150) NOT NULL,
+	[CREATE_DT] [datetime] NULL,
+	[CREATE_USERID] [varchar](25) NULL,
+ CONSTRAINT [PK_WQX_IMPORT_TEMPLATE] PRIMARY KEY CLUSTERED ([TEMPLATE_ID] ASC),
+ FOREIGN KEY (ORG_ID) references T_WQX_ORGANIZATION (ORG_ID) ON UPDATE CASCADE ON DELETE CASCADE
+) ON [PRIMARY]
+
+GO
+
+
+CREATE TABLE [dbo].[T_WQX_IMPORT_TEMPLATE_DTL](
+	[TEMPLATE_DTL_ID] [int] NOT NULL IDENTITY(1,1),
+	[TEMPLATE_ID] [int] NOT NULL,
+	[COL_NUM] [int] NOT NULL,
+	[FIELD_MAP] [varchar](50) NULL,
+	[CHAR_NAME] [varchar](120) NULL,
+	[CHAR_DEFAULT_UNIT] [varchar](12) NULL,
+	[CREATE_DT] [datetime] NULL,
+	[CREATE_USERID] [varchar](25) NULL,
+ CONSTRAINT [PK_WQX_IMPORT_TEMPLATE_DTL] PRIMARY KEY CLUSTERED ([TEMPLATE_DTL_ID] ASC),
+ FOREIGN KEY ([TEMPLATE_ID]) references [T_WQX_IMPORT_TEMPLATE] ([TEMPLATE_ID]) ON UPDATE CASCADE ON DELETE CASCADE
+) ON [PRIMARY]
+
+
+CREATE TABLE [dbo].[T_WQX_IMPORT_TEMP_SAMPLE](
+	[TEMP_SAMPLE_IDX] [int] NOT NULL IDENTITY(1,1),
+	[USER_ID] [varchar](25) NOT NULL,
+	[ORG_ID] [varchar](30) NULL,
+	[PROJECT_IDX] [int] NULL,
+	[PROJECT_ID] [varchar](35) NULL,
+	[MONLOC_IDX] [int] NULL,
+	[MONLOC_ID] [varchar](35) NULL,
+	[ACTIVITY_IDX] [int] NULL,
+	[ACTIVITY_ID] [varchar](35) NULL,
+	[ACT_TYPE] [varchar](70) NOT NULL,
+	[ACT_MEDIA] [varchar](20) NOT NULL,
+	[ACT_SUBMEDIA] [varchar](45) NULL,
+	[ACT_START_DT] [datetime] NULL,
+	[ACT_END_DT] [datetime] NULL,
+	[ACT_TIME_ZONE] [varchar](4) NULL,
+	[ACT_COMMENT] [varchar](1000) NULL,
+	[IMPORT_STATUS_CD] [varchar](1) NULL,
+	[IMPORT_STATUS_DESC] [varchar](100) NULL,
+ CONSTRAINT [PK_WQX_IMPORT_TEMP_SAMPLE] PRIMARY KEY CLUSTERED ([TEMP_SAMPLE_IDX] ASC)
+) ON [PRIMARY]
+
+GO
+
+
+CREATE TABLE [dbo].[T_WQX_IMPORT_TEMP_RESULT](
+	[TEMP_RESULT_IDX] [int] NOT NULL IDENTITY(1,1),
+	[TEMP_SAMPLE_IDX] [int] NOT NULL,
+	[RESULT_IDX] [int] NULL,
+	[DATA_LOGGER_LINE] [varchar](15) NULL,
+	[RESULT_DETECT_CONDITION] [varchar](35) NULL,
+	[CHAR_NAME] [varchar](120) NULL,
+	[METHOD_SPECIATION_NAME] [varchar](20) NULL,
+	[RESULT_SAMP_FRACTION] [varchar](25) NULL,
+	[RESULT_MSR] [varchar](60) NULL,
+	[RESULT_MSR_UNIT] [varchar](12) NULL,
+	[RESULT_MSR_QUAL] [varchar](5) NULL,
+	[RESULT_STATUS] [varchar](12) NULL,
+	[STATISTIC_BASE_CODE] [varchar](25) NULL,
+	[RESULT_VALUE_TYPE] [varchar](20) NULL,
+	[WEIGHT_BASIS] [varchar](15) NULL,
+	[TIME_BASIS] [varchar](12) NULL,
+	[TEMP_BASIS] [varchar](12) NULL,
+	[PARTICLESIZE_BASIS] [varchar](15) NULL,
+	[PRECISION_VALUE] [varchar](60) NULL,
+	[BIAS_VALUE] [varchar](60) NULL,
+	[CONFIDENCE_INTERVAL_VALUE] [varchar](15) NULL,
+	[UPPER_CONFIDENCE_LIMIT] [varchar](15) NULL,
+	[LOWER_CONFIDENCE_LIMIT] [varchar](15) NULL,
+	[RESULT_COMMENT] [varchar](4000) NULL,
+	[DEPTH_HEIGHT_MSR] [varchar](12) NULL,
+	[DEPTH_HEIGHT_MSR_UNIT] [varchar](12) NULL,
+	[DEPTHALTITUDEREFPOINT] [varchar](125) NULL,
+	[ANALYTIC_METHOD_ID] [varchar](20) NULL,
+	[LAB_IDX] [int] NULL,
+	[LAB_ANALYSIS_START_DT] [datetime] NULL,
+	[LAB_ANALYSIS_END_DT] [datetime] NULL,
+	[LAB_ANALYSIS_TIMEZONE] [varchar](4) NULL,
+	[RESULT_LAB_COMMENT_CODE] [varchar](3) NULL,
+	[DETECTION_LIMIT_TYPE] [varchar](35) NULL,
+	[DETECTION_LIMIT] [varchar](12) NULL,
+	[IMPORT_STATUS_CD] [varchar](1) NULL,
+	[IMPORT_STATUS_DESC] [varchar](100) NULL,
+ CONSTRAINT [PK_WQX_IMPORT_TEMP_RESULT] PRIMARY KEY CLUSTERED ([TEMP_RESULT_IDX] ASC),
+ FOREIGN KEY ([TEMP_SAMPLE_IDX]) references [T_WQX_IMPORT_TEMP_SAMPLE] ([TEMP_SAMPLE_IDX]) ON UPDATE CASCADE ON DELETE CASCADE
+) ON [PRIMARY]
+
+GO
+
+CREATE TABLE [dbo].[T_WQX_IMPORT_TEMP_MONLOC](
+	[TEMP_MONLOC_IDX] [int] NOT NULL IDENTITY(1,1),
+	[USER_ID] [varchar](25) NOT NULL,
+	[MONLOC_IDX] [int] NULL ,
+	[ORG_ID] [varchar](30) NULL,
+	[MONLOC_ID] [varchar](35) NULL,
+	[MONLOC_NAME] [varchar](255) NULL,
+	[MONLOC_TYPE] [varchar](45) NULL,
+	[MONLOC_DESC] [varchar](1999) NULL,
+	[HUC_EIGHT] [varchar](8) NULL,
+	[HUC_TWELVE] [varchar](12) NULL,
+	[TRIBAL_LAND_IND] [char](1) NULL,
+	[TRIBAL_LAND_NAME] [varchar](200) NULL,
+	[LATITUDE_MSR] [varchar](30) NOT NULL,
+	[LONGITUDE_MSR] [varchar](30) NOT NULL,
+	[SOURCE_MAP_SCALE] [int] NULL,
+	[HORIZ_ACCURACY] [varchar](12) NULL,
+	[HORIZ_ACCURACY_UNIT] [varchar](12) NULL,
+	[HORIZ_COLL_METHOD] [varchar](150) NULL,
+	[HORIZ_REF_DATUM] [varchar](6) NULL,
+	[VERT_MEASURE] [varchar](12) NULL,
+	[VERT_MEASURE_UNIT] [varchar](12) NULL,
+	[VERT_COLL_METHOD] [varchar](50) NULL,
+	[VERT_REF_DATUM] [varchar](10) NULL,
+	[COUNTRY_CODE] [varchar](2) NULL,
+	[STATE_CODE] [varchar](2) NULL,
+	[COUNTY_CODE] [varchar](3) NULL,
+	[WELL_TYPE] [varchar](255) NULL,
+	[AQUIFER_NAME] [varchar](120) NULL,
+	[FORMATION_TYPE] [varchar](50) NULL,
+	[WELLHOLE_DEPTH_MSR] [varchar](12) NULL,
+	[WELLHOLE_DEPTH_MSR_UNIT] [varchar](12) NULL,
+	[IMPORT_STATUS_CD] [varchar](1) NULL,
+	[IMPORT_STATUS_DESC] [varchar](100) NULL,
+ CONSTRAINT [PK_WQX_IMPORT_TEMP_MONLOC] PRIMARY KEY CLUSTERED  ([TEMP_MONLOC_IDX] ASC)
+) ON [PRIMARY]
+
+GO
+
+CREATE TABLE [dbo].[T_OE_SYS_LOG](
+	[SYS_LOG_ID] [int] IDENTITY(1,1) NOT NULL,
+	[LOG_DT] [datetime2](0) NOT NULL,
+	[LOG_USERIDX] [int] NULL,
+	[LOG_TYPE] [varchar](15) NULL,
+	[LOG_MSG] [varchar](2000) NULL,
+ CONSTRAINT [PK_T_REF_SYS_LOG] PRIMARY KEY CLUSTERED  (SYS_LOG_ID ASC)
+) ON [PRIMARY]
+
+GO
 
 
 -- ****************************************************************************************************************************************
