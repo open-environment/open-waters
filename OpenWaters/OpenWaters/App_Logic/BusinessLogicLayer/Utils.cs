@@ -82,38 +82,69 @@ namespace OpenEnvironment.App_Logic.BusinessLogicLayer
         {
             try
             {
-                //get system app settings
+                //*************SET MESSAGE CONTENTS *********************
                 if (from == null)
                     from = db_Ref.GetT_OE_APP_SETTING("EMAIL FROM");
-
-                string mailServer = db_Ref.GetT_OE_APP_SETTING("EMAIL SERVER");
 
                 System.Net.Mail.MailMessage message = new System.Net.Mail.MailMessage();
                 message.From = new System.Net.Mail.MailAddress(from);
                 message.To.Add(to);
                 message.Subject = subj;
                 message.Body = body;
-                System.Net.Mail.SmtpClient smtp = new System.Net.Mail.SmtpClient(mailServer);
-                smtp.Send(message);
 
-                return true;
-            }
-            catch
-            {
-                try
+
+                //***************SET SMTP SERVER *************************
+                string mailServer = System.Configuration.ConfigurationManager.AppSettings["emailServer"];
+                if (mailServer == null || mailServer == "")
+                    mailServer = db_Ref.GetT_OE_APP_SETTING("EMAIL SERVER");
+
+                string Port = System.Configuration.ConfigurationManager.AppSettings["emailPort"];
+                if (Port == null || Port == "")
+                    Port = db_Ref.GetT_OE_APP_SETTING("EMAIL PORT");
+
+                string smtpUser = System.Configuration.ConfigurationManager.AppSettings["emailUser"];
+                if (smtpUser == null || smtpUser == "")
+                    smtpUser = db_Ref.GetT_OE_APP_SETTING("EMAIL SECURE USER");
+
+                string smtpUserPwd = System.Configuration.ConfigurationManager.AppSettings["emailUser"];
+                if (smtpUserPwd == null || smtpUser == "")
+                    smtpUserPwd = db_Ref.GetT_OE_APP_SETTING("EMAIL SECURE PWD");
+
+                if (string.IsNullOrEmpty(smtpUser) == false)  //smtp server requires authentication
                 {
-                    var client = new System.Net.Mail.SmtpClient("smtp.gmail.com", 587)
+                    var smtp = new System.Net.Mail.SmtpClient(mailServer, Port.ConvertOrDefault<int>())
                     {
-                        Credentials = new System.Net.NetworkCredential("openwaters.noreply@gmail.com", "environmentl"),
+                        Credentials = new System.Net.NetworkCredential(smtpUser, smtpUserPwd),
                         EnableSsl = true
                     };
-                    client.Send(from, to, subj, body);
+                    smtp.Send(message);
                     return true;
                 }
-                catch
+                else
                 {
-                    return false;
+                    System.Net.Mail.SmtpClient smtp = new System.Net.Mail.SmtpClient(mailServer);
+                    smtp.Send(message);
+                    return true;
                 }
+
+            }
+            catch (Exception ex)
+            {
+                if (ex.InnerException != null)
+                    db_Ref.InsertT_OE_SYS_LOG("EMAIL ERR", ex.InnerException.ToString());
+                else if (ex.Message != null)
+                    db_Ref.InsertT_OE_SYS_LOG("EMAIL ERR", ex.Message.ToString());
+                else
+                    db_Ref.InsertT_OE_SYS_LOG("EMAIL ERR", "Unknown error");
+
+                return false;
+
+                    //var client = new System.Net.Mail.SmtpClient("smtp.gmail.com", 587)
+                    //{
+                    //    Credentials = new System.Net.NetworkCredential("openwaters.noreply@gmail.com", "environmentl"),
+                    //    EnableSsl = true
+                    //};
+                    //client.Send(from, to, subj, body);
             }
         }
 

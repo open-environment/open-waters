@@ -9,6 +9,27 @@ using System.Text;
 
 namespace OpenEnvironment.App_Logic.DataAccessLayer
 {
+    public class ImportSampleResultDisplay
+    {
+        public int TEMP_SAMPLE_IDX { get; set; }
+        public string ORG_ID { get; set; }
+        public string PROJECT_ID { get; set; }
+        public string MONLOC_ID { get; set; }
+        public string ACTIVITY_ID { get; set; }
+        public DateTime? ACT_START_DT { get; set; }
+        public int TEMP_RESULT_IDX { get; set; }
+        public string CHAR_NAME { get; set; }
+        public string RESULT_MSR { get; set; }
+        public string RESULT_MSR_UNIT { get; set; }
+        public string IMPORT_STATUS_CD { get; set; }
+        public string IMPORT_STATUS_DESC { get; set; }
+    }
+
+    public class CharDisplay
+    {
+        public string CHAR_NAME { get; set; }
+    }
+
     public class db_WQX
     {
 
@@ -113,7 +134,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
                             where (!ActInd.HasValue ? true : a.ACT_IND == true)
                             && (!WQXPending.HasValue ? true : a.WQX_SUBMIT_STATUS == "U")
                             && (!WQXPending.HasValue ? true : a.WQX_IND == true)
-                            && a.ORG_ID == OrgID
+                            && (OrgID == null ? true : a.ORG_ID == OrgID)
                             orderby a.MONLOC_ID
                             select a).ToList();
                 }
@@ -161,6 +182,24 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             }
         }
 
+        public static T_WQX_MONLOC GetWQX_MONLOC_ByIDString(string orgID, string MonLocID)
+        {
+            using (OpenEnvironmentEntities ctx = new OpenEnvironmentEntities())
+            {
+                try
+                {
+                    return (from a in ctx.T_WQX_MONLOC
+                            where a.MONLOC_ID == MonLocID
+                            && a.ORG_ID == orgID
+                            select a).FirstOrDefault();
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+        }
+
         public static bool GetT_WQX_MONLOC_PendingInd(string OrgID)
         {
             using (OpenEnvironmentEntities ctx = new OpenEnvironmentEntities())
@@ -185,11 +224,21 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 try
                 {
-                    T_WQX_MONLOC r = new T_WQX_MONLOC();
-                    r = (from c in ctx.T_WQX_MONLOC where c.MONLOC_IDX == monLocIDX  select c).FirstOrDefault();
-                    ctx.DeleteObject(r);
-                    ctx.SaveChanges();
-                    return 1;
+                    //check to see if there are any activities under the monitoring location - if yes then just make it inactive, otherwise delete
+                    int iActCount = db_WQX.GetWQX_ACTIVITYByMonLocID(monLocIDX);
+                    if (iActCount == 0)
+                    {
+                        string sql = "DELETE FROM T_WQX_MONLOC WHERE MONLOC_IDX = " + monLocIDX;
+                        ctx.ExecuteStoreCommand(sql);
+                        return 1;
+                    }
+                    else
+                    {
+                        db_WQX.InsertOrUpdateWQX_MONLOC(monLocIDX, null, null, null, null, null, null, null, null, null, null, null, null, null,
+                            null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, "U", null, false, null,
+                            "system");
+                        return -1;
+                    }
                 }
                 catch
                 {
@@ -449,6 +498,22 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             }
         }
 
+        public static int GetWQX_ACTIVITYByMonLocID(int MonLocIDX)
+        {
+            using (OpenEnvironmentEntities ctx = new OpenEnvironmentEntities())
+            {
+                try
+                {
+                    return (from a in ctx.T_WQX_ACTIVITY
+                            where a.MONLOC_IDX == MonLocIDX
+                            select a).Count();
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+        }
 
         // *************************** ACTIVITY METRICS*************************
         // *********************************************************************
@@ -629,7 +694,6 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             }
         }
 
-
         public static int DeleteT_WQX_RESULT(int ResultIDX)
         {
             using (OpenEnvironmentEntities ctx = new OpenEnvironmentEntities())
@@ -709,6 +773,25 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
         }
 
 
+        public static List<CharDisplay> GetT_WQX_RESULT_SampledCharacteristics()
+        {
+            using (OpenEnvironmentEntities ctx = new OpenEnvironmentEntities())
+            {
+                try
+                {
+                    return (from r in ctx.T_WQX_RESULT
+                            select new CharDisplay{
+                            CHAR_NAME = r.CHAR_NAME
+                            }).Distinct().ToList();
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+        }
+
+
         // *************************** ORGANIZATION*****************************
         // *********************************************************************
         public static List<T_WQX_ORGANIZATION> GetWQX_ORGANIZATION()
@@ -727,6 +810,26 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
                 }
             }
         }
+
+        public static List<T_WQX_ORGANIZATION> GetWQX_ORGANIZATIONCanSubmit()
+        {
+            using (OpenEnvironmentEntities ctx = new OpenEnvironmentEntities())
+            {
+                try
+                {
+                    return (from a in ctx.T_WQX_ORGANIZATION
+                            where a.CDX_SUBMIT_IND == true
+                            orderby a.ORG_FORMAL_NAME
+                            select a).ToList();
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+        }
+
+
 
         /// <summary>
         /// Returns single Organization record based on ID.
@@ -751,7 +854,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
         public static int InsertOrUpdateT_WQX_ORGANIZATION(global::System.String oRG_ID, global::System.String oRG_NAME, global::System.String oRG_DESC,
             global::System.String tRIBAL_CODE, global::System.String eLECTRONIC_ADDRESS, global::System.String eLECTRONICADDRESSTYPE,
             global::System.String tELEPHONE_NUM, global::System.String tELEPHONE_NUM_TYPE, global::System.String TELEPHONE_EXT, global::System.String cDX_SUBMITTER_ID, 
-            global::System.String cDX_SUBMITTER_PWD, String cREATE_USER = "system")
+            global::System.String cDX_SUBMITTER_PWD, global::System.Boolean? cDX_SUBMIT_IND, String cREATE_USER = "system")
         {
             using (OpenEnvironmentEntities ctx = new OpenEnvironmentEntities())
             {
@@ -781,14 +884,14 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
                     if (tELEPHONE_NUM_TYPE != null) a.TELEPHONE_NUM_TYPE = tELEPHONE_NUM_TYPE;
                     if (TELEPHONE_EXT != null) a.TELEPHONE_EXT = TELEPHONE_EXT;
                     if (cDX_SUBMITTER_ID != null) a.CDX_SUBMITTER_ID = cDX_SUBMITTER_ID;
-
+                    if (cDX_SUBMIT_IND != null) a.CDX_SUBMIT_IND = cDX_SUBMIT_IND;
                     if (cDX_SUBMITTER_PWD != null && cDX_SUBMITTER_PWD != "--------")
                     {
-                        string salt = GenerateSalt();
-                        string hashpass = HashPassword(cDX_SUBMITTER_PWD, salt);
-
-                        a.CDX_SUBMITTER_PWD_HASH = hashpass;
-                        a.CDX_SUBMITTER_PWD_SALT = salt;
+                        //encrypt CDX submitter password for increased security
+                        string encryptOauth = new SimpleAES().Encrypt(cDX_SUBMITTER_PWD);
+                        encryptOauth = System.Web.HttpUtility.UrlEncode(encryptOauth);
+                        a.CDX_SUBMITTER_PWD_HASH = encryptOauth;
+                        a.CDX_SUBMIT_IND = true;
                     }
 
                     if (insInd) //insert case
@@ -929,11 +1032,705 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             }
         }
 
+        public static List<T_OE_USERS> GetWQX_USER_ORGS_AdminsByOrg(string OrgID)
+        {
+            using (OpenEnvironmentEntities ctx = new OpenEnvironmentEntities())
+            {
+                try
+                {
+                    return (from a in ctx.T_WQX_USER_ORGS
+                            join b in ctx.T_OE_USERS on a.USER_IDX equals b.USER_IDX
+                            where a.ORG_ID == OrgID
+                            select b).ToList();
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+        }
 
 
 
-        // *************************** XML GENERATION *****************************
-        // *********************************************************************
+        // *************************** IMPORT_TEMPLATE    ******************************
+        // *****************************************************************************
+        public static int InsertOrUpdateWQX_IMPORT_TEMPLATE(global::System.Int32? tEMPLATE_ID, global::System.String oRG_ID, string tYPE_CD, string tEMPLATE_NAME, String cREATE_USER = "system")
+        {
+            using (OpenEnvironmentEntities ctx = new OpenEnvironmentEntities())
+            {
+                Boolean insInd = false;
+                try
+                {
+                    T_WQX_IMPORT_TEMPLATE a = new T_WQX_IMPORT_TEMPLATE();
+
+                    if (tEMPLATE_ID != null)
+                        a = (from c in ctx.T_WQX_IMPORT_TEMPLATE
+                             where c.TEMPLATE_ID == tEMPLATE_ID
+                             select c).FirstOrDefault();
+
+                    if (tEMPLATE_ID == null) //insert case
+                        insInd = true;
+
+                    if (oRG_ID != null) a.ORG_ID = oRG_ID;
+                    if (tYPE_CD != null) a.TYPE_CD = tYPE_CD;
+                    if (tEMPLATE_NAME != null) a.TEMPLATE_NAME = tEMPLATE_NAME;
+
+                    if (insInd) //insert case
+                    {
+                        a.CREATE_DT = System.DateTime.Now;
+                        a.CREATE_USERID = cREATE_USER;
+                        ctx.AddToT_WQX_IMPORT_TEMPLATE(a);
+                    }
+
+                    ctx.SaveChanges();
+
+                    return a.TEMPLATE_ID;
+                }
+                catch (Exception ex)
+                {
+                    return 0;
+                }
+            }
+        }
+                
+        public static List<T_WQX_IMPORT_TEMPLATE> GetWQX_IMPORT_TEMPLATE(string OrgID)
+        {
+            using (OpenEnvironmentEntities ctx = new OpenEnvironmentEntities())
+            {
+                try
+                {
+                    return (from a in ctx.T_WQX_IMPORT_TEMPLATE
+                            where a.ORG_ID == OrgID
+                            orderby a.TEMPLATE_ID
+                            select a).ToList();
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+        }
+
+        public static int DeleteT_WQX_IMPORT_TEMPLATE(int TemplateID)
+        {
+            using (OpenEnvironmentEntities ctx = new OpenEnvironmentEntities())
+            {
+                try
+                {
+                    string sql = "DELETE FROM T_WQX_IMPORT_TEMPLATE WHERE TEMPLATE_ID = " + TemplateID;
+                    ctx.ExecuteStoreCommand(sql);
+                    return 1;
+                }
+                catch
+                {
+                    return 0;
+                }
+            }
+
+        }
+
+
+        // *************************** IMPORT_TEMPLATE_DTL    ******************************
+        // *****************************************************************************
+        public static T_WQX_IMPORT_TEMPLATE_DTL GetWQX_IMPORT_TEMPLATE_DTL_byFieldMap(int TemplateID, string FieldMap)
+        {
+            using (OpenEnvironmentEntities ctx = new OpenEnvironmentEntities())
+            {
+                try
+                {
+                    return (from a in ctx.T_WQX_IMPORT_TEMPLATE_DTL
+                            where a.TEMPLATE_ID == TemplateID
+                            && a.FIELD_MAP == FieldMap
+                            select a).FirstOrDefault();
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+        }
+        
+        public static List<T_WQX_IMPORT_TEMPLATE_DTL> GetWQX_IMPORT_TEMPLATE_DTL_CharsByTemplateID(int TemplateID)
+        {
+            using (OpenEnvironmentEntities ctx = new OpenEnvironmentEntities())
+            {
+                try
+                {
+                    return (from a in ctx.T_WQX_IMPORT_TEMPLATE_DTL
+                            where a.TEMPLATE_ID == TemplateID
+                            && a.FIELD_MAP == "CHAR"
+                            select a).ToList();
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+        }
+
+        public static List<T_WQX_IMPORT_TEMPLATE_DTL> GetWQX_IMPORT_TEMPLATE_DTL_DynamicByTemplateID(int TemplateID)
+        {
+            using (OpenEnvironmentEntities ctx = new OpenEnvironmentEntities())
+            {
+                try
+                {
+                    return (from a in ctx.T_WQX_IMPORT_TEMPLATE_DTL
+                            where a.TEMPLATE_ID == TemplateID
+                            && a.COL_NUM > 0
+                            orderby a.COL_NUM
+                            select a).ToList();
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+        }
+
+        public static List<T_WQX_IMPORT_TEMPLATE_DTL> GetWQX_IMPORT_TEMPLATE_DTL_HardCodeByTemplateID(int TemplateID)
+        {
+            using (OpenEnvironmentEntities ctx = new OpenEnvironmentEntities())
+            {
+                try
+                {
+                    return (from a in ctx.T_WQX_IMPORT_TEMPLATE_DTL
+                            where a.TEMPLATE_ID == TemplateID
+                            && a.COL_NUM == 0
+                            orderby a.TEMPLATE_DTL_ID
+                            select a).ToList();
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+        }
+
+        public static int DeleteT_WQX_IMPORT_TEMPLATE_DTL(int TemplateDtlID)
+        {
+            using (OpenEnvironmentEntities ctx = new OpenEnvironmentEntities())
+            {
+                try
+                {
+                    string sql = "DELETE FROM T_WQX_IMPORT_TEMPLATE_DTL WHERE TEMPLATE_DTL_ID = " + TemplateDtlID;
+                    ctx.ExecuteStoreCommand(sql);
+                    return 1;
+                }
+                catch
+                {
+                    return 0;
+                }
+            }
+
+        }
+
+        public static int InsertOrUpdateWQX_IMPORT_TEMPLATE_DTL(global::System.Int32? tEMPLATE_DTL_ID, global::System.Int32? tEMPLATE_ID, global::System.Int32? cOL_NUM, global::System.String fIELD_MAP,
+            string cHAR_NAME, string cHAR_DEFAULT_UNIT, String cREATE_USER = "system")
+        {
+            using (OpenEnvironmentEntities ctx = new OpenEnvironmentEntities())
+            {
+                Boolean insInd = false;
+                try
+                {
+                    T_WQX_IMPORT_TEMPLATE_DTL a = new T_WQX_IMPORT_TEMPLATE_DTL();
+
+                    if (tEMPLATE_ID != null)
+                        a = (from c in ctx.T_WQX_IMPORT_TEMPLATE_DTL
+                             where c.TEMPLATE_DTL_ID == tEMPLATE_DTL_ID
+                             select c).FirstOrDefault();
+
+                    if (a == null) //insert case
+                    {
+                        insInd = true;
+                        a = new T_WQX_IMPORT_TEMPLATE_DTL();
+                    }
+
+                    if (tEMPLATE_ID != null) a.TEMPLATE_ID = tEMPLATE_ID.ConvertOrDefault<int>();
+                    if (cOL_NUM != null) a.COL_NUM = cOL_NUM.ConvertOrDefault<int>();
+                    if (fIELD_MAP != null) a.FIELD_MAP = fIELD_MAP;
+                    if (cHAR_NAME != null) a.CHAR_NAME = cHAR_NAME;
+                    if (cHAR_DEFAULT_UNIT != null) a.CHAR_DEFAULT_UNIT = cHAR_DEFAULT_UNIT;
+
+                    if (insInd) //insert case
+                    {
+                        a.CREATE_DT = System.DateTime.Now;
+                        a.CREATE_USERID = cREATE_USER;
+                        ctx.AddToT_WQX_IMPORT_TEMPLATE_DTL(a);
+                    }
+
+                    ctx.SaveChanges();
+
+                    return a.TEMPLATE_DTL_ID;
+                }
+                catch (Exception ex)
+                {
+                    return 0;
+                }
+            }
+        }
+                
+
+
+        // *************************** IMPORT_DATA    ******************************
+        // *****************************************************************************
+        public static int InsertOrUpdateWQX_IMPORT_TEMP_SAMPLE(global::System.Int32? tEMP_SAMPLE_IDX, string uSER_ID, global::System.String oRG_ID, global::System.Int32? pROJECT_IDX,
+            string pROJECT_ID, global::System.Int32? mONLOC_IDX, string mONLOC_ID, global::System.Int32? aCTIVITY_IDX, global::System.String aCTIVITY_ID,
+            global::System.String aCT_TYPE, global::System.String aCT_MEDIA, global::System.String aCT_SUBMEDIA, global::System.DateTime? aCT_START_DT, global::System.DateTime? aCT_END_DT,
+            global::System.String aCT_TIME_ZONE, global::System.String aCT_COMMENT, string sTATUS_CD, string sTATUS_DESC)
+        {
+            using (OpenEnvironmentEntities ctx = new OpenEnvironmentEntities())
+            {
+                Boolean insInd = false;
+                try
+                {
+                    T_WQX_IMPORT_TEMP_SAMPLE a = new T_WQX_IMPORT_TEMP_SAMPLE();
+
+                    if (tEMP_SAMPLE_IDX != null)
+                        a = (from c in ctx.T_WQX_IMPORT_TEMP_SAMPLE
+                             where c.TEMP_SAMPLE_IDX == tEMP_SAMPLE_IDX
+                             select c).FirstOrDefault();
+
+                    if (tEMP_SAMPLE_IDX == null) //insert case
+                        insInd = true;
+
+                    if (uSER_ID != null) a.USER_ID = uSER_ID;
+                    if (oRG_ID != null) a.ORG_ID = oRG_ID;
+                    if (pROJECT_IDX != null) a.PROJECT_IDX = pROJECT_IDX;
+                    if (pROJECT_ID != null) a.PROJECT_ID = pROJECT_ID;
+                    if (mONLOC_IDX != null) a.MONLOC_IDX = mONLOC_IDX;
+                    if (mONLOC_ID != null) a.MONLOC_ID = mONLOC_ID;
+                    if (aCTIVITY_IDX != null) a.ACTIVITY_IDX = aCTIVITY_IDX;
+                    if (aCTIVITY_ID != null) a.ACTIVITY_ID = aCTIVITY_ID;
+                    if (aCT_TYPE != null) a.ACT_TYPE = aCT_TYPE;
+                    if (aCT_MEDIA != null) a.ACT_MEDIA = aCT_MEDIA;
+                    if (aCT_SUBMEDIA != null) a.ACT_SUBMEDIA = aCT_SUBMEDIA;
+                    if (aCT_START_DT != null) a.ACT_START_DT = aCT_START_DT;
+                    if (aCT_END_DT != null) a.ACT_END_DT = (DateTime)aCT_END_DT;
+                    if (aCT_TIME_ZONE != null) a.ACT_TIME_ZONE = aCT_TIME_ZONE;
+                    //put in Timezone if missing
+                    if (a.ACT_TIME_ZONE == null)
+                        a.ACT_TIME_ZONE = Utils.GetTimeZone(a.ACT_START_DT.ConvertOrDefault<DateTime>(), "Central Standard Time");
+
+                    if (aCT_COMMENT != null) a.ACT_COMMENT = aCT_COMMENT;
+                    if (sTATUS_CD != null) a.IMPORT_STATUS_CD = sTATUS_CD;
+                    if (sTATUS_DESC != null) a.IMPORT_STATUS_DESC = sTATUS_DESC;
+
+                    if (insInd) //insert case
+                        ctx.AddToT_WQX_IMPORT_TEMP_SAMPLE(a);
+
+                    ctx.SaveChanges();
+
+                    return a.TEMP_SAMPLE_IDX;
+                }
+                catch (Exception ex)
+                {
+                    return 0;
+                }
+            }
+        }
+
+        public static int InsertOrUpdateWQX_IMPORT_TEMP_RESULT(global::System.Int32? tEMP_RESULT_IDX, int tEMP_SAMPLE_IDX, global::System.Int32? rESULT_IDX, string dATA_LOGGER_LINE, 
+            string rESULT_DETECT_CONDITION, global::System.String cHAR_NAME, string mETHOD_SPECIATION_NAME, string rESULT_SAMP_FRACTION, global::System.String rESULT_MSR, global::System.String rESULT_MSR_UNIT,
+            string rESULT_MSR_QUAL, string rESULT_STATUS, string sTATISTIC_BASE_CODE, string rESULT_VALUE_TYPE, string wEIGHT_BASIS, string tIME_BASIS, string tEMP_BASIS, string pARTICAL_BASIS,
+            string pRECISION_VALUE, string bIAS_VALUE, string cONFIDENCE_INTERVAL_VALUE, string rESULT_COMMENT, string dEPTH_HEIGHT_MSR, string dEPTH_HEIGHT_MSR_UNIT,
+            string aNALYTIC_METHOD_ID, global::System.String dETECTION_LIMIT_TYPE, global::System.String dETECTION_LIMIT, string sTATUS_CD, string sTATUS_DESC)
+        {
+            using (OpenEnvironmentEntities ctx = new OpenEnvironmentEntities())
+            {
+                Boolean insInd = false;
+                try
+                {
+                    T_WQX_IMPORT_TEMP_RESULT a = new T_WQX_IMPORT_TEMP_RESULT();
+
+                    if (tEMP_RESULT_IDX != null)
+                        a = (from c in ctx.T_WQX_IMPORT_TEMP_RESULT
+                             where c.TEMP_RESULT_IDX == tEMP_RESULT_IDX
+                             select c).FirstOrDefault();
+
+                    if (tEMP_RESULT_IDX == null) //insert case
+                        insInd = true;
+
+                    a.TEMP_SAMPLE_IDX = tEMP_SAMPLE_IDX;
+                    if (rESULT_IDX != null) a.RESULT_IDX = rESULT_IDX;
+                    if (dATA_LOGGER_LINE != null) a.DATA_LOGGER_LINE = dATA_LOGGER_LINE;
+                    if (rESULT_DETECT_CONDITION != null) a.RESULT_DETECT_CONDITION = rESULT_DETECT_CONDITION;
+                    if (cHAR_NAME != null) a.CHAR_NAME = cHAR_NAME;
+                    if (mETHOD_SPECIATION_NAME != null) a.METHOD_SPECIATION_NAME = mETHOD_SPECIATION_NAME;
+                    if (rESULT_SAMP_FRACTION != null) a.RESULT_SAMP_FRACTION = rESULT_SAMP_FRACTION;
+                    if (rESULT_MSR != null) a.RESULT_MSR = rESULT_MSR;
+                    if (rESULT_MSR_UNIT != null) a.RESULT_MSR_UNIT = rESULT_MSR_UNIT;
+                    if (rESULT_MSR_QUAL != null) a.RESULT_MSR_QUAL = rESULT_MSR_QUAL;
+                    if (rESULT_STATUS != null) a.RESULT_STATUS = rESULT_STATUS;
+                    if (sTATISTIC_BASE_CODE != null) a.STATISTIC_BASE_CODE = sTATISTIC_BASE_CODE;
+                    if (rESULT_VALUE_TYPE != null) a.RESULT_VALUE_TYPE = rESULT_VALUE_TYPE;
+                    if (wEIGHT_BASIS != null) a.WEIGHT_BASIS = wEIGHT_BASIS;
+                    if (tIME_BASIS != null) a.TIME_BASIS = tIME_BASIS;
+                    if (tEMP_BASIS != null) a.TEMP_BASIS = tEMP_BASIS;
+                    if (pARTICAL_BASIS != null) a.PARTICLESIZE_BASIS = pARTICAL_BASIS;
+                    if (pRECISION_VALUE != null) a.PRECISION_VALUE = pRECISION_VALUE;
+                    if (bIAS_VALUE != null) a.BIAS_VALUE = bIAS_VALUE;
+                    if (cONFIDENCE_INTERVAL_VALUE != null) a.CONFIDENCE_INTERVAL_VALUE = cONFIDENCE_INTERVAL_VALUE;
+                    if (rESULT_COMMENT != null) a.RESULT_COMMENT = rESULT_COMMENT;
+                    if (dEPTH_HEIGHT_MSR != null) a.DEPTH_HEIGHT_MSR = dEPTH_HEIGHT_MSR;
+                    if (dEPTH_HEIGHT_MSR_UNIT != null) a.DEPTH_HEIGHT_MSR_UNIT = dEPTH_HEIGHT_MSR_UNIT;
+                    //analysis method
+                    if (dETECTION_LIMIT != null) a.DETECTION_LIMIT = dETECTION_LIMIT;
+                    if (dETECTION_LIMIT_TYPE != null) a.DETECTION_LIMIT_TYPE = dETECTION_LIMIT_TYPE;
+                    if (sTATUS_CD != null) a.IMPORT_STATUS_CD = sTATUS_CD;
+                    if (sTATUS_DESC != null) a.IMPORT_STATUS_DESC = sTATUS_DESC;
+
+                    if (insInd) //insert case
+                        ctx.AddToT_WQX_IMPORT_TEMP_RESULT(a);
+
+                    ctx.SaveChanges();
+
+                    return a.TEMP_RESULT_IDX;
+                }
+                catch (Exception ex)
+                {
+                    return 0;
+                }
+            }
+        }
+
+        public static int InsertOrUpdateWQX_IMPORT_TEMP_MONLOC(global::System.Int32? tEMP_MONLOC_IDX, string uSER_ID, global::System.Int32? mONLOC_IDX, global::System.String oRG_ID, 
+            global::System.String mONLOC_ID, global::System.String mONLOC_NAME, global::System.String mONLOC_TYPE, global::System.String mONLOC_DESC, global::System.String hUC_EIGHT, 
+            global::System.String HUC_TWELVE, global::System.String tRIBAL_LAND_IND, global::System.String tRIBAL_LAND_NAME, global::System.String lATITUDE_MSR, global::System.String lONGITUDE_MSR, 
+            global::System.Int32? sOURCE_MAP_SCALE, global::System.String hORIZ_ACCURACY, global::System.String hORIZ_ACCURACY_UNIT, global::System.String hORIZ_COLL_METHOD, global::System.String hORIZ_REF_DATUM,
+            global::System.String vERT_MEASURE, global::System.String vERT_MEASURE_UNIT, global::System.String vERT_COLL_METHOD, global::System.String vERT_REF_DATUM,
+            global::System.String cOUNTRY_CODE, global::System.String sTATE_CODE, global::System.String cOUNTY_CODE, global::System.String wELL_TYPE, global::System.String aQUIFER_NAME,
+            global::System.String fORMATION_TYPE, global::System.String wELLHOLE_DEPTH_MSR, global::System.String wELLHOLE_DEPTH_MSR_UNIT, string sTATUS_CD, string sTATUS_DESC)
+        {
+            using (OpenEnvironmentEntities ctx = new OpenEnvironmentEntities())
+            {
+                Boolean insInd = false;
+                try
+                {
+                    T_WQX_IMPORT_TEMP_MONLOC a = new T_WQX_IMPORT_TEMP_MONLOC();
+
+                    if (tEMP_MONLOC_IDX != null)
+                        a = (from c in ctx.T_WQX_IMPORT_TEMP_MONLOC
+                             where c.TEMP_MONLOC_IDX == tEMP_MONLOC_IDX
+                             select c).FirstOrDefault();
+                    else
+                        insInd = true;
+
+                    if (uSER_ID != null) { 
+                        a.USER_ID = uSER_ID;
+                        if (uSER_ID.Length > 25) { sTATUS_CD = "F"; sTATUS_DESC += "User ID length exceeded. "; }
+                    }
+
+                    if (mONLOC_IDX != null) a.MONLOC_IDX = mONLOC_IDX;
+                    if (oRG_ID != null) a.ORG_ID = oRG_ID;
+
+                    if (mONLOC_ID != null) { 
+                        a.MONLOC_ID = mONLOC_ID.SubStringPlus(0,35).Trim();
+                        if (mONLOC_ID.Length > 25) { sTATUS_CD = "F"; sTATUS_DESC += "Monitoring Location ID length exceeded. "; }
+
+                        T_WQX_MONLOC mtemp = db_WQX.GetWQX_MONLOC_ByIDString(oRG_ID, mONLOC_ID);
+                        if (mtemp != null) { sTATUS_CD = "F"; sTATUS_DESC += "Monitoring Location ID already exists. ";  }
+                    }
+
+                    if (!string.IsNullOrEmpty(mONLOC_NAME))
+                    {
+                        a.MONLOC_NAME = mONLOC_NAME.SubStringPlus(0, 255).Trim();
+                        if (mONLOC_NAME.Length > 255) { sTATUS_CD = "F"; sTATUS_DESC += "Monitoring Location Name length exceeded. "; }
+                    }
+
+                    if (!string.IsNullOrEmpty(mONLOC_TYPE))
+                    {
+                        a.MONLOC_TYPE = mONLOC_TYPE.SubStringPlus(0,45);
+                        if (db_Ref.GetT_WQX_REF_DATA_ByKey("MonitoringLocationType", mONLOC_TYPE.Trim()) == false) { sTATUS_CD = "F"; sTATUS_DESC += "Monitoring Location Type not valid. "; }
+                        if (mONLOC_TYPE.Length > 45) { sTATUS_CD = "F"; sTATUS_DESC += "Monitoring Location Type length exceeded. "; }
+                    }
+
+                    if (!string.IsNullOrEmpty(mONLOC_DESC))
+                    {
+                        a.MONLOC_DESC = mONLOC_DESC.SubStringPlus(0,1999);
+                        if (mONLOC_DESC.Length > 1999) { sTATUS_CD = "F"; sTATUS_DESC += "Monitoring Location Description length exceeded. "; }
+                    }
+
+                    if (!string.IsNullOrEmpty(hUC_EIGHT))
+                    {
+                        a.HUC_EIGHT = hUC_EIGHT.Trim().SubStringPlus(0, 8);
+                        if (hUC_EIGHT.Length > 8) { sTATUS_CD = "F"; sTATUS_DESC += "HUC8 length exceeded. "; }
+                    }
+
+                    if (!string.IsNullOrEmpty(HUC_TWELVE))
+                    {
+                        a.HUC_TWELVE = HUC_TWELVE.Trim().SubStringPlus(0,12);
+                        if (HUC_TWELVE.Length > 12) { sTATUS_CD = "F"; sTATUS_DESC += "HUC12 length exceeded. "; }
+                    }
+
+                    if (!string.IsNullOrEmpty(tRIBAL_LAND_IND))
+                    { 
+                        a.TRIBAL_LAND_IND = tRIBAL_LAND_IND.SubStringPlus(0,1);
+                        if (tRIBAL_LAND_IND.Length > 1) { sTATUS_CD = "F"; sTATUS_DESC += "Tribal Land Indicator length exceeded. "; }
+                    }
+
+                    if (!string.IsNullOrEmpty(tRIBAL_LAND_NAME))
+                    { 
+                        a.TRIBAL_LAND_NAME = tRIBAL_LAND_NAME.SubStringPlus(0,200);
+                        if (tRIBAL_LAND_NAME.Length > 200) { sTATUS_CD = "F"; sTATUS_DESC += "Tribal Land Name length exceeded. "; }
+                    }
+
+                    if (!string.IsNullOrEmpty(lATITUDE_MSR))
+                    {
+                        a.LATITUDE_MSR = lATITUDE_MSR.SubStringPlus(0, 30);
+                        decimal iii = 0;
+                        if (Decimal.TryParse(lATITUDE_MSR, out iii) == false) { sTATUS_CD = "F"; sTATUS_DESC += "Latitude is not decimal format. ";  }
+                    }
+
+                    if (!string.IsNullOrEmpty(lONGITUDE_MSR))
+                    {
+                        a.LONGITUDE_MSR = lONGITUDE_MSR.SubStringPlus(0, 30);
+                        decimal iii = 0;
+                        if (Decimal.TryParse(lONGITUDE_MSR, out iii) == false) { sTATUS_CD = "F"; sTATUS_DESC += "Longitude is not decimal format. "; }
+                    }
+
+                    if (sOURCE_MAP_SCALE != null)
+                    {
+                        a.SOURCE_MAP_SCALE = sOURCE_MAP_SCALE;
+                    }
+
+                    if (!string.IsNullOrEmpty(hORIZ_COLL_METHOD))
+                    {
+                        a.HORIZ_COLL_METHOD = hORIZ_COLL_METHOD.SubStringPlus(0, 150).Trim();
+                        if (db_Ref.GetT_WQX_REF_DATA_ByKey("HorizontalCollectionMethod", hORIZ_COLL_METHOD.Trim()) == false) { sTATUS_CD = "F"; sTATUS_DESC += "Horizontal Collection Method not valid. "; }
+                    }
+
+                    if (!string.IsNullOrEmpty(hORIZ_REF_DATUM))
+                    {
+                        a.HORIZ_REF_DATUM = hORIZ_REF_DATUM.Trim().SubStringPlus(0, 6);
+                        if (db_Ref.GetT_WQX_REF_DATA_ByKey("HorizontalCoordinateReferenceSystemDatum", hORIZ_REF_DATUM.Trim()) == false) { sTATUS_CD = "F"; sTATUS_DESC += "Horizontal Collection Datum not valid. "; }
+                    }
+
+                    if (!string.IsNullOrEmpty(vERT_MEASURE))
+                    {
+                        a.VERT_MEASURE = vERT_MEASURE.Trim().SubStringPlus(0,12);
+                        if (vERT_MEASURE.Length > 12) { sTATUS_CD = "F"; sTATUS_DESC += "Vertical Measure length exceeded. "; }
+                    }
+
+                    if (!string.IsNullOrEmpty(vERT_MEASURE_UNIT))
+                    {
+                        a.VERT_MEASURE_UNIT = vERT_MEASURE_UNIT.Trim().SubStringPlus(0,12);
+                        if (db_Ref.GetT_WQX_REF_DATA_ByKey("MeasureUnit", vERT_MEASURE_UNIT.Trim()) == false) { sTATUS_CD = "F"; sTATUS_DESC += "Vertical Measure Unit not valid. "; }                   
+                    }
+
+                    if (!string.IsNullOrEmpty(vERT_COLL_METHOD))
+                    {
+                        a.VERT_COLL_METHOD = vERT_COLL_METHOD.Trim().SubStringPlus(0,50);
+                        if (db_Ref.GetT_WQX_REF_DATA_ByKey("VerticalCollectionMethod", vERT_COLL_METHOD.Trim()) == false) { sTATUS_CD = "F"; sTATUS_DESC += "Vertical Collection Method not acceptable. "; }
+                    }
+
+                    if (!string.IsNullOrEmpty(vERT_REF_DATUM))
+                    {
+                        a.VERT_REF_DATUM = vERT_REF_DATUM.Trim().SubStringPlus(0,6);
+                        if (db_Ref.GetT_WQX_REF_DATA_ByKey("VerticalCoordinateReferenceSystemDatum", vERT_REF_DATUM.Trim()) == false) { sTATUS_CD = "F"; sTATUS_DESC += "Vertical Collection Datum not acceptable. "; }
+                    }
+
+                    if (!string.IsNullOrEmpty(cOUNTRY_CODE))
+                    {
+                        a.COUNTRY_CODE = cOUNTRY_CODE.SubStringPlus(0, 2);
+                        if (cOUNTRY_CODE.Length > 2) { sTATUS_CD = "F"; sTATUS_DESC += "Country Code length exceeded. "; }
+                    }
+
+                    if (!string.IsNullOrEmpty(sTATE_CODE))
+                    {
+                        a.STATE_CODE = sTATE_CODE.SubStringPlus(0,2);
+                        if (sTATE_CODE.Length > 2) { sTATUS_CD = "F"; sTATUS_DESC += "State Code length exceeded. "; }
+                    }
+
+                    if (!string.IsNullOrEmpty(cOUNTY_CODE))
+                    {
+                        a.COUNTY_CODE = cOUNTY_CODE.SubStringPlus(0,3);
+                        if (cOUNTY_CODE.Length > 3) { sTATUS_CD = "F"; sTATUS_DESC += "County Code length exceeded. "; }
+                    }
+
+                    if (!string.IsNullOrEmpty(wELL_TYPE))
+                    {
+                        a.WELL_TYPE = wELL_TYPE.Trim().SubStringPlus(0,255);
+                    }
+
+                    if (!string.IsNullOrEmpty(aQUIFER_NAME))
+                    {
+                        a.AQUIFER_NAME = aQUIFER_NAME.Trim().SubStringPlus(0,120);
+                    }
+
+                    if (!string.IsNullOrEmpty(fORMATION_TYPE))
+                    {
+                        a.FORMATION_TYPE = fORMATION_TYPE.Trim().SubStringPlus(0,50);
+                    }
+
+                    if (!string.IsNullOrEmpty(wELLHOLE_DEPTH_MSR))
+                    {
+                        a.WELLHOLE_DEPTH_MSR = wELLHOLE_DEPTH_MSR.Trim().SubStringPlus(0,12);
+                    }
+
+                    if (!string.IsNullOrEmpty(wELLHOLE_DEPTH_MSR_UNIT))
+                    {
+                        a.WELLHOLE_DEPTH_MSR_UNIT = wELLHOLE_DEPTH_MSR_UNIT.Trim().SubStringPlus(0,12);
+                    }
+
+                    if (sTATUS_CD != null) a.IMPORT_STATUS_CD = sTATUS_CD;
+                    if (sTATUS_DESC != null) a.IMPORT_STATUS_DESC = sTATUS_DESC.SubStringPlus(0,100);
+
+                    if (insInd) //insert case
+                        ctx.AddToT_WQX_IMPORT_TEMP_MONLOC(a);
+
+                    ctx.SaveChanges();
+
+                    return a.TEMP_MONLOC_IDX;
+                }
+                catch (Exception ex)
+                {
+                    return 0;
+                }
+            }
+        }
+
+
+        public static List<T_WQX_IMPORT_TEMP_MONLOC> GetWQX_IMPORT_TEMP_MONLOC(string UserID)
+        {
+            using (OpenEnvironmentEntities ctx = new OpenEnvironmentEntities())
+            {
+                try
+                {
+                    return (from a in ctx.T_WQX_IMPORT_TEMP_MONLOC
+                            where a.USER_ID == UserID
+                            orderby a.TEMP_MONLOC_IDX
+                            select a).ToList();
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+        }
+
+        public static T_WQX_IMPORT_TEMP_MONLOC GetWQX_IMPORT_TEMP_MONLOC_ByID(int TempMonLocID)
+        {
+            using (OpenEnvironmentEntities ctx = new OpenEnvironmentEntities())
+            {
+                try
+                {
+                    return (from a in ctx.T_WQX_IMPORT_TEMP_MONLOC
+                            where a.TEMP_MONLOC_IDX == TempMonLocID
+                            select a).FirstOrDefault();
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+        }
+
+        public static int DeleteT_WQX_IMPORT_TEMP_MONLOC(global::System.String uSER_ID)
+        {
+            using (OpenEnvironmentEntities ctx = new OpenEnvironmentEntities())
+            {
+                try
+                {
+                    string sql = "DELETE FROM T_WQX_IMPORT_TEMP_MONLOC WHERE USER_ID = '" + uSER_ID + "'";
+                    ctx.ExecuteStoreCommand(sql);
+                    return 1;
+                }
+                catch
+                {
+                    return 0;
+                }
+            }
+
+        }
+
+        public static int DeleteT_WQX_IMPORT_TEMP_SAMPLE(global::System.String uSER_ID)
+        {
+            using (OpenEnvironmentEntities ctx = new OpenEnvironmentEntities())
+            {
+                try
+                {
+                    string sql = "DELETE FROM T_WQX_IMPORT_TEMP_SAMPLE WHERE USER_ID = '" + uSER_ID + "'";
+                    ctx.ExecuteStoreCommand(sql);
+                    return 1;
+                }
+                catch
+                {
+                    return 0;
+                }
+            }
+
+        }
+
+        public static T_WQX_IMPORT_TEMP_SAMPLE GetWQX_IMPORT_TEMP_SAMPLE_ByID(int TempSampleID)
+        {
+            using (OpenEnvironmentEntities ctx = new OpenEnvironmentEntities())
+            {
+                try
+                {
+                    return (from a in ctx.T_WQX_IMPORT_TEMP_SAMPLE
+                            where a.TEMP_SAMPLE_IDX == TempSampleID
+                            select a).FirstOrDefault();
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+        }
+
+        public static List<T_WQX_IMPORT_TEMP_RESULT> GetWQX_IMPORT_TEMP_RESULT_ByTempSampIDX(int TempSampIDX)
+        {
+            using (OpenEnvironmentEntities ctx = new OpenEnvironmentEntities())
+            {
+                try
+                {
+                    return (from a in ctx.T_WQX_IMPORT_TEMP_RESULT
+                            where a.TEMP_SAMPLE_IDX == TempSampIDX
+                            select a).ToList();
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+        }
+
+        public static List<ImportSampleResultDisplay> GetWQX_IMPORT_TEMP_SAMP_RESULT_Disp(string UserID)
+        {
+            using (OpenEnvironmentEntities ctx = new OpenEnvironmentEntities())
+            {
+                try
+                {
+                    return (from a in ctx.T_WQX_IMPORT_TEMP_SAMPLE
+                            join b in ctx.T_WQX_IMPORT_TEMP_RESULT on a.TEMP_SAMPLE_IDX equals b.TEMP_SAMPLE_IDX
+                            where a.USER_ID == UserID
+                            orderby b.TEMP_RESULT_IDX
+                            select new ImportSampleResultDisplay {
+                                TEMP_SAMPLE_IDX = a.TEMP_SAMPLE_IDX,
+                                ORG_ID = a.ORG_ID, 
+                                PROJECT_ID = a.PROJECT_ID,
+                                MONLOC_ID = a.MONLOC_ID, 
+                                ACTIVITY_ID = a.ACTIVITY_ID,
+                                ACT_START_DT = a.ACT_START_DT,
+                                TEMP_RESULT_IDX = b.TEMP_RESULT_IDX,
+                                CHAR_NAME = b.CHAR_NAME,
+                                RESULT_MSR = b.RESULT_MSR,
+                                RESULT_MSR_UNIT = b.RESULT_MSR_UNIT,
+                                IMPORT_STATUS_CD = a.IMPORT_STATUS_CD == "F" ? a.IMPORT_STATUS_CD : b.IMPORT_STATUS_CD,
+                                IMPORT_STATUS_DESC = a.IMPORT_STATUS_DESC + " " + b.IMPORT_STATUS_DESC
+                            }).ToList();
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+        }
+
+
+
+        // *************************** XML GENERATION ********************************
+        // ***************************************************************************
         public static string SP_GenWQXXML_Single(string TypeText, int recordIDX)
         {
             using (OpenEnvironmentEntities ctx = new OpenEnvironmentEntities())
@@ -1014,24 +1811,6 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
                 }
             }
         }
-
-        private static string GenerateSalt()
-        {
-            byte[] buf = new byte[32];
-            (new RNGCryptoServiceProvider()).GetBytes(buf);
-            return Convert.ToBase64String(buf);
-        }
-
-        private static string HashPassword(string pass, string salt)
-        {
-            SHA256Managed hash = new SHA256Managed();
-            byte[] utf8 = UTF8Encoding.UTF8.GetBytes(pass + salt);
-            StringBuilder s = new StringBuilder(hash.ComputeHash(utf8).Length * 2);
-            foreach (byte b in hash.ComputeHash(utf8))
-                s.Append(b.ToString("x2"));
-            return s.ToString();
-        }
-
 
     }
 }

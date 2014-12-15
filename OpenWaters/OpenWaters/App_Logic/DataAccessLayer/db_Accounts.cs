@@ -151,7 +151,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
                     row.MODIFY_DT = System.DateTime.Now;
 
                     ctx.SaveChanges();
-                    return 1;
+                    return row.USER_IDX;
                 }
                 catch (Exception ex)
                 {
@@ -171,6 +171,25 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
                     ctx.DeleteObject(row);
                     ctx.SaveChanges();
                     return 1;
+                }
+                catch (Exception ex)
+                {
+                    return 0;
+                }
+            }
+        }
+
+        public static int UpdateT_OE_USERSDefaultOrg(int idx, string dEFAULT_ORG_ID)
+        {
+            using (OpenEnvironmentEntities ctx = new OpenEnvironmentEntities())
+            {
+                try
+                {
+                    T_OE_USERS row = new T_OE_USERS();
+                    row = (from c in ctx.T_OE_USERS where c.USER_IDX == idx select c).First();
+                    if (dEFAULT_ORG_ID != null) row.DEFAULT_ORG_ID = dEFAULT_ORG_ID;
+                    ctx.SaveChanges();
+                    return row.USER_IDX;
                 }
                 catch (Exception ex)
                 {
