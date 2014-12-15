@@ -31,7 +31,7 @@
         </div>
         <asp:Panel ID="pnlPwd" runat="server" CssClass="row">
             <span class="fldLbl">Password</span>
-            <asp:TextBox ID="txtPassword" runat="server" CssClass="fldTxt" Width="200px" MaxLength="40"></asp:TextBox>
+            <asp:TextBox ID="txtPassword" runat="server" CssClass="fldTxt" Width="200px" TextMode="Password" MaxLength="40"></asp:TextBox>
         </asp:Panel>
         <div class="row">
             <span class="fldLbl">First Name</span>
