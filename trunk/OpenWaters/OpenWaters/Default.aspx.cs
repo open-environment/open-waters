@@ -13,6 +13,17 @@ namespace OpenEnvironment
         protected void Page_Load(object sender, EventArgs e)
         {
             SetFocus(this.LoginUser.FindControl("UserName"));
+
+            //test database connectivity
+            try
+            {
+                string env = db_Ref.GetT_OE_APP_SETTING("Log Level");
+            }
+            catch
+            {
+                lblTestWarn.Visible = true;
+                lblTestWarn.Text = "System is currently unavailable.";
+            }
         }
 
         protected void LoginUser_LoggedIn(object sender, EventArgs e)
@@ -20,17 +31,27 @@ namespace OpenEnvironment
             T_OE_USERS u = db_Accounts.GetT_OE_USERSByID(((System.Web.UI.WebControls.Login)(sender)).UserName);
             if (u != null)
             {
-                bool initFlg = u.INITAL_PWD_FLAG;
-                if (initFlg)
+                //if user only belongs to 1 org, update the default org id
+                if (u.DEFAULT_ORG_ID == null)
+                {
+                    List<T_WQX_ORGANIZATION> os = db_WQX.GetWQX_USER_ORGS_ByUserIDX(u.USER_IDX);
+                    if (os.Count == 1)
+                    {
+                        db_Accounts.UpdateT_OE_USERSDefaultOrg(u.USER_IDX, os[0].ORG_ID);
+                    }
+                }
+
+                if (u.INITAL_PWD_FLAG)
                     LoginUser.DestinationPageUrl = "~/Account/ChangePassword.aspx?t=ini";
                 else
                 {
                     LoginUser.DestinationPageUrl = "~/App_Pages/Secure/Dashboard.aspx";
+
+
                     db_Accounts.UpdateT_OE_USERS(u.USER_IDX, null, null, null, null, null, null, null, null, System.DateTime.Now, null, null, "system");
                     
                     //set important session variables
                     Session["UserIDX"] = u.USER_IDX;
-                    //Session["OrgID"] = db_Ref.GetT_OE_APP_SETTING("Default Org ID"); 
                     Session["OrgID"] = u.DEFAULT_ORG_ID; //added 1/6/2014
                     Session["MLOC_HUC_EIGHT"] = false;
                     Session["MLOC_HUC_TWELVE"] = false;

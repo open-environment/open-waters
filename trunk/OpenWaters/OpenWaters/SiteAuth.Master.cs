@@ -24,13 +24,14 @@ namespace OpenEnvironment
                     ddlOrg.SelectedValue = Session["OrgID"].ToString();
 
                 if (!HttpContext.Current.User.IsInRole("ADMINS"))
-                    NavigationMenu.Items.RemoveAt(2);
+                    NavigationMenu.Items.RemoveAt(3);
             }
         }
 
         protected void ddlOrg_SelectedIndexChanged(object sender, EventArgs e)
         {
             Session["OrgID"] = ddlOrg.SelectedValue;
+            Response.Redirect(Request.RawUrl);
         }
 
         protected void imgHelp_Click(object sender, ImageClickEventArgs e)

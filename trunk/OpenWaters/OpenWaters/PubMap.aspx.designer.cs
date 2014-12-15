@@ -31,6 +31,15 @@ namespace OpenEnvironment.App_Pages.Public {
         protected global::AjaxControlToolkit.ToolkitScriptManager scriptManager;
         
         /// <summary>
+        /// lblOrgName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblOrgName;
+        
+        /// <summary>
         /// grdMonLoc control.
         /// </summary>
         /// <remarks>
