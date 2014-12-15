@@ -13,6 +13,7 @@ a:active { color: #006600; text-decoration: none;}
 .Z { margin:0px; padding:0px; width:100%; }
 .clear { clear: both; }
 .failureNotification { font-size: 1.2em; color: Red; font-weight:bold }
+.fldErrLg { color:#003d7e; font:12pt Tahoma; vertical-align:middle; margin:1px 0; padding:2px; background:#fdd repeat-x top; border:1px solid #f00; }
 .bold { font-weight: bold; }
 .indent { clear:both; padding:2px 12px;}
 
