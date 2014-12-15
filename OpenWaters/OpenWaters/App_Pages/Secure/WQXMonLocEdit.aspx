@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterWQX.master" AutoEventWireup="true" CodeBehind="WQXMonLocEdit.aspx.cs" Inherits="OpenEnvironment.WQXMonLocEdit" %>
+﻿<%@ Page Title="Open Waters - Mon Loc Details" Language="C#" MasterPageFile="~/MasterWQX.master" AutoEventWireup="true" CodeBehind="WQXMonLocEdit.aspx.cs" Inherits="OpenEnvironment.WQXMonLocEdit" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="BodyContent" runat="server">
     <asp:ObjectDataSource ID="dsRefData" runat="server" SelectMethod="GetT_WQX_REF_DATA" TypeName="OpenEnvironment.App_Logic.DataAccessLayer.db_Ref">
         <SelectParameters>
@@ -17,19 +17,19 @@
     <asp:Panel ID="Panel1" runat="server" DefaultButton="btnSave">
         <div class="row">
             <span class="fldLbl">Mon Loc ID:</span>
-            <asp:TextBox ID="txtMonLocID" runat="server" Width="250px" CssClass="fldTxt"></asp:TextBox>
+            <asp:TextBox ID="txtMonLocID" runat="server" Width="250px" CssClass="fldTxt" MaxLength="35"></asp:TextBox>
         </div>
         <div class="row">
             <span class="fldLbl">Mon Loc Name:</span>
-            <asp:TextBox ID="txtMonLocName" Width="250px" runat="server" CssClass="fldTxt"></asp:TextBox>
+            <asp:TextBox ID="txtMonLocName" Width="250px" runat="server" CssClass="fldTxt" MaxLength="255"></asp:TextBox>
         </div>
         <div class="row">
             <span class="fldLbl">Mon Loc Type:</span>
-            <asp:DropDownList ID="ddlMonLocType" runat="server" CssClass="fldTxt"></asp:DropDownList>
+            <asp:DropDownList ID="ddlMonLocType" runat="server" CssClass="fldTxt" ></asp:DropDownList>
         </div>
         <div class="row">
             <span class="fldLbl">Mon Loc Desc:</span>
-            <asp:TextBox ID="txtMonLocDesc" runat="server" Width="250px"  CssClass="fldTxt"></asp:TextBox>
+            <asp:TextBox ID="txtMonLocDesc" runat="server" Width="250px"  CssClass="fldTxt" ></asp:TextBox>
         </div>
         <div class="row">
             <span class="fldLbl">8-Digit HUC:</span>
@@ -49,8 +49,7 @@
             <asp:TextBox ID="txtLatitude" runat="server" Width="90px" MaxLength="12"  CssClass="fldTxt"></asp:TextBox>
             <span class="fldLbl" style="width:80px">&nbsp;&nbsp;&nbsp;Longitude:</span>
             <asp:TextBox ID="txtLongitude" runat="server" Width="90px" MaxLength="14"  CssClass="fldTxt"></asp:TextBox>
-            <asp:ImageButton ID="btnMap" runat="server" ImageUrl="~/App_Images/ico_map.png" 
-                PostBackUrl="http://maps.google.com/?q=-37.866963,144.980615" />
+            <asp:ImageButton ID="btnMap" runat="server" ImageUrl="~/App_Images/ico_map.png" PostBackUrl="http://maps.google.com/?q=-37.866963,144.980615" />
         </div>
         <div class="row">
             <span class="fldLbl">Source Map Scale:</span>
@@ -58,8 +57,7 @@
         </div>
         <div class="row">
             <span class="fldLbl">Horiz. Collection Method</span>
-            <asp:DropDownList ID="ddlHorizMethod" runat="server" CssClass="fldTxt" 
-                Width="250px"></asp:DropDownList>
+            <asp:DropDownList ID="ddlHorizMethod" runat="server" CssClass="fldTxt" Width="250px"></asp:DropDownList>
         </div>
         <div class="row">
             <span class="fldLbl">Horiz. Reference Datum</span>
@@ -105,10 +103,8 @@
         </div>
         <br />
         <div class="btnRibbon">
-            <asp:Button ID="btnSave" runat="server" CssClass="btn" Text="Save &amp; Exit" 
-                onclick="btnSave_Click" />
-            <asp:Button ID="btnCancel" runat="server" CssClass="btn" Text="Cancel" 
-                onclick="btnCancel_Click" />
+            <asp:Button ID="btnSave" runat="server" CssClass="btn" Text="Save &amp; Exit" onclick="btnSave_Click" />
+            <asp:Button ID="btnCancel" runat="server" CssClass="btn" Text="Cancel" onclick="btnCancel_Click" />
         </div>
     </asp:Panel>
 </asp:Content>

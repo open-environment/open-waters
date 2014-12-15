@@ -88,16 +88,9 @@ namespace OpenEnvironment
                 lblMsg.Text = "";
                 grdRef.PageIndex = 0;
 
-                if (ddlRef.SelectedValue != "Characteristic")
-                {
-                    grdRef.Visible = true;
-                    grdChar.Visible = false;
-                }
-                else
-                {
-                    grdRef.Visible = false;
-                    grdChar.Visible = true;
-                }
+                grdRef.Visible = (ddlRef.SelectedValue != "Characteristic") && (ddlRef.SelectedValue != "AnalyticalMethod");
+                grdChar.Visible = (ddlRef.SelectedValue == "Characteristic");
+                grdAnalMethod.Visible = (ddlRef.SelectedValue == "AnalyticalMethod");
             }
             catch (Exception ex)
             {
@@ -162,6 +155,24 @@ namespace OpenEnvironment
                     }
                 }
 
+                // ***************** CUSTOM PARSING for ANALYTICAL METHOD **************************************
+                if (CustomParseName == "AnalMethod")
+                {
+                    var lv1s = from lv1 in xdoc.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}WQXElementRow")
+                               select new
+                               {
+                                   ID = lv1.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}WQXElementRowColumn").First(ID2 => ID2.Attribute("colname").Value == "ID").Attribute("value"),
+                                   Name = lv1.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}WQXElementRowColumn").First(Text2 => Text2.Attribute("colname").Value == "Name").Attribute("value"),
+                                   CTX = lv1.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}WQXElementRowColumn").First(CTX2 => CTX2.Attribute("colname").Value == "ContextCode").Attribute("value"),
+                                   Desc = lv1.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}WQXElementRowColumn").First(Desc2 => Desc2.Attribute("colname").Value == "Description").Attribute("value"),
+                               };
+
+                    foreach (var lv1 in lv1s)
+                    {
+                        db_Ref.InsertOrUpdateT_WQX_REF_ANAL_METHOD(null, lv1.ID.Value, lv1.CTX.Value, lv1.Name.Value, lv1.Desc.Value, true);
+                    }
+                }
+
                 // ***************** CUSTOM PARSING for COUNTY **************************************
                 if (CustomParseName == "County")
                 {
@@ -213,6 +224,24 @@ namespace OpenEnvironment
         {
             grdChar.PageIndex = e.NewPageIndex;
         }
+
+        protected void grdAnalMethod_RowCommand(object sender, System.Web.UI.WebControls.GridViewCommandEventArgs e)
+        {
+            int AnalIDX = e.CommandArgument.ToString().ConvertOrDefault<int>();
+
+            if (e.CommandName == "Deletes")
+            {
+                db_Ref.InsertOrUpdateT_WQX_REF_ANAL_METHOD(AnalIDX, null, null, null, null, false);
+            }
+
+        }
+
+        protected void grdAnalMethod_PageIndexChanging(object sender, System.Web.UI.WebControls.GridViewPageEventArgs e)
+        {
+            grdAnalMethod.PageIndex = e.NewPageIndex;
+        }
+
+
 
     }
 }

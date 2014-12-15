@@ -135,7 +135,7 @@ namespace OpenEnvironment
 
         public void FillGrid()
         {
-            grdActivity.DataSource = db_WQX.GetWQX_ACTIVITY(true, Session["OrgID"].ConvertOrDefault<string>(), ddlMonLoc.SelectedValue.ConvertOrDefault<int?>(), 
+            grdActivity.DataSource = db_WQX.GetWQX_ACTIVITY(!chkDeletedInd.Checked, Session["OrgID"].ConvertOrDefault<string>(), ddlMonLoc.SelectedValue.ConvertOrDefault<int?>(), 
                 txtStartDt.Text.ConvertOrDefault<DateTime?>(), txtEndDt.Text.ConvertOrDefault<DateTime?>(), 
                 ddlActType.SelectedValue == "" ? null : ddlActType.SelectedValue, false, ddlProject.SelectedValue.ConvertOrDefault<int?>());
             grdActivity.DataBind();

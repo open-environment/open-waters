@@ -39,13 +39,12 @@
             <asp:BoundField DataField="CDX_SUBMIT_STATUS" HeaderText="CDX Status" SortExpression="CDX_SUBMIT_STATUS" />
         </Columns>
     </asp:GridView>
-    <asp:ObjectDataSource ID="dsWQXHistory" runat="server" 
-        SelectMethod="GetV_WQX_TRANSACTION_LOG"
-        TypeName="OpenEnvironment.App_Logic.DataAccessLayer.db_Ref">
+    <asp:ObjectDataSource ID="dsWQXHistory" runat="server" SelectMethod="GetV_WQX_TRANSACTION_LOG" TypeName="OpenEnvironment.App_Logic.DataAccessLayer.db_Ref">
         <SelectParameters>
             <asp:Parameter DefaultValue="" Name="TableCD" Type="String" />
             <asp:Parameter Name="startDt" Type="DateTime" />
             <asp:Parameter DefaultValue="" Name="endDt" Type="DateTime" />
+            <asp:SessionParameter DefaultValue="" Name="OrgID" SessionField="OrgID" Type="String" />
         </SelectParameters>
     </asp:ObjectDataSource>
 </asp:Content>

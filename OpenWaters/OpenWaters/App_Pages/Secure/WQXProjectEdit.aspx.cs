@@ -17,6 +17,13 @@ namespace OpenEnvironment
             if (Session["ProjectIDX"] == null)
                 Response.Redirect("~/App_Pages/Secure/WQXProject.aspx");
 
+            if (Session["OrgID"] == null)
+            {
+                lblMsg.Text = "Please select or create an organization first.";
+                btnSave.Visible = false;
+                return;
+            }
+
             if (!IsPostBack)
             {
                 //populate drop-downs                
@@ -42,6 +49,8 @@ namespace OpenEnvironment
                 else
                 {
                     lblProjectIDX.Text = "";
+                    chkActInd.Checked = true;
+                    chkWQXInd.Checked = true;
                 }
 
                 //set focus on first form element

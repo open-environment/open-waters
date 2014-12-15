@@ -67,6 +67,24 @@ namespace OpenEnvironment {
         protected global::System.Web.UI.WebControls.EntityDataSource dsChar;
         
         /// <summary>
+        /// grdAnalMethod control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView grdAnalMethod;
+        
+        /// <summary>
+        /// dsAnalMethod control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.EntityDataSource dsAnalMethod;
+        
+        /// <summary>
         /// btnGetRefData control.
         /// </summary>
         /// <remarks>

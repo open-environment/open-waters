@@ -13,13 +13,13 @@ namespace OpenEnvironment {
     public partial class WQXImport {
         
         /// <summary>
-        /// dsImportLog control.
+        /// lblMsg control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ObjectDataSource dsImportLog;
+        protected global::System.Web.UI.WebControls.Label lblMsg;
         
         /// <summary>
         /// pnlFilter control.
@@ -31,13 +31,67 @@ namespace OpenEnvironment {
         protected global::System.Web.UI.WebControls.Panel pnlFilter;
         
         /// <summary>
-        /// ddlMonLoc control.
+        /// ddlImportType control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlMonLoc;
+        protected global::System.Web.UI.WebControls.DropDownList ddlImportType;
+        
+        /// <summary>
+        /// hlTemplate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink hlTemplate;
+        
+        /// <summary>
+        /// pnlImportLogic control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnlImportLogic;
+        
+        /// <summary>
+        /// ddlTemplate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlTemplate;
+        
+        /// <summary>
+        /// dsTemplate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ObjectDataSource dsTemplate;
+        
+        /// <summary>
+        /// btnNewTemplate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnNewTemplate;
+        
+        /// <summary>
+        /// pnlProject control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnlProject;
         
         /// <summary>
         /// ddlProject control.

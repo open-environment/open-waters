@@ -22,6 +22,13 @@ namespace OpenEnvironment
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["OrgID"] == null)
+            {
+                lblMsg.Text = "Please select or create an organization first.";
+                btnAdd.Visible = false;
+                return;
+            }
+
             if (!IsPostBack)
             {
                 //display left menu as selected
@@ -82,16 +89,15 @@ namespace OpenEnvironment
 
             if (e.CommandName == "Deletes")
             {
-                //check to see if there are any activities under the monitoring location - if yes then just make it inactive, otherwise delete
-                V_WQX_ACTIVITY_LATEST mm = db_WQX.GetV_WQX_ACTIVITY_LATESTByMonLocID(MonLocID);
-                if (mm == null)
-                    db_WQX.DeleteT_WQX_MONLOC(MonLocID);
-                else
-                    db_WQX.InsertOrUpdateWQX_MONLOC(MonLocID, null, null, null, null, null, null, null, null, null, null, null, null, null,
-                        null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, "U", null, false, null,
-                        User.Identity.Name);
+                int SuccID = db_WQX.DeleteT_WQX_MONLOC(MonLocID);
 
-                FillGrid();
+                if (SuccID > 0)
+                    lblMsg.Text = "";
+                else if (SuccID < 0)
+                    lblMsg.Text = "Activities found for this monitoring location - location has been set to inactive.";
+                else
+                    lblMsg.Text = "Unable to delete monitoring location";
+
             }
 
             if (e.CommandName == "WQX")
@@ -105,7 +111,7 @@ namespace OpenEnvironment
 
         public void FillGrid()
         {
-            grdMonLoc.DataSource = dsMonLoc;
+            grdMonLoc.DataSource = db_WQX.GetWQX_MONLOC(!chkDeletedInd.Checked, Session["OrgID"].ToString(), false);
             grdMonLoc.DataBind();
         }
 
@@ -170,6 +176,11 @@ namespace OpenEnvironment
         protected void btnExcel_Click(object sender, ImageClickEventArgs e)
         {
             Utils.RenderGridToExcelFormat("MonLocExport.xls", grdMonLoc);
+        }
+
+        protected void chkDeletedInd_CheckedChanged(object sender, EventArgs e)
+        {
+            FillGrid();
         } 
 
     }

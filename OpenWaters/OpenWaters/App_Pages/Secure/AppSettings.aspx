@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterAdmin.Master" AutoEventWireup="true"
+﻿<%@ Page Title="Open Waters - App Settings" Language="C#" MasterPageFile="~/MasterAdmin.Master" AutoEventWireup="true"
     CodeBehind="AppSettings.aspx.cs" Inherits="OpenEnvironment.AppSettings" %>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <asp:EntityDataSource ID="dsAppSettings" runat="server" ConnectionString="name=OpenEnvironmentEntities" 
@@ -11,7 +11,7 @@
     <div class="divHelp">
         This page allows administrators to edit global application settings.
     </div>
-    <asp:GridView ID="GridView1" runat="server" GridLines="None" CssClass="grd"
+    <asp:GridView ID="GridView1" runat="server" GridLines="None" CssClass="grd" 
     PagerStyle-CssClass="pgr" AutoGenerateColumns="false" AlternatingRowStyle-CssClass="alt" 
     DataSourceID="dsAppSettings" AutoGenerateEditButton="True" DataKeyNames="SETTING_IDX">
         <Columns>

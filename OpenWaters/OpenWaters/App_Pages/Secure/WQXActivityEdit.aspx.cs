@@ -31,6 +31,13 @@ namespace OpenEnvironment
             if (Session["ActivityIDX"] == null)
                 Response.Redirect("~/App_Pages/Secure/WQXActivity.aspx");
 
+            if (Session["OrgID"] == null)
+            {
+                lblMsg.Text = "Please select or create an organization first.";
+                btnSave.Visible = false;
+                return;
+            }
+
             if (!IsPostBack)
             {
                 //display left menu as selected
@@ -165,6 +172,7 @@ namespace OpenEnvironment
             DropDownList ddlTaxa = (DropDownList)grdResults.Rows[e.RowIndex].FindControl("ddlTaxa");
             TextBox txtResultVal = (TextBox)grdResults.Rows[e.RowIndex].FindControl("txtResultVal");
             DropDownList ddlUnit = (DropDownList)grdResults.Rows[e.RowIndex].FindControl("ddlUnit");
+            DropDownList ddlAnalMethod = (DropDownList)grdResults.Rows[e.RowIndex].FindControl("ddlAnalMethod");
 
             TextBox txtDetectLimit = (TextBox)grdResults.Rows[e.RowIndex].FindControl("txtDetectLimit");
             TextBox txtComment = (TextBox)grdResults.Rows[e.RowIndex].FindControl("txtComment");
@@ -192,7 +200,7 @@ namespace OpenEnvironment
             }
             //*********************END VALIDATION************************************
 
-            db_WQX.InsertOrUpdateT_WQX_RESULT(grdResults.DataKeys[e.RowIndex].Values[0].ConvertOrDefault<int>(), ActID, ddlChar.SelectedValue, txtResultVal.Text, ddlUnit.SelectedValue, null, txtDetectLimit.Text, txtComment.Text, null, null, ddlTaxa.SelectedValue, null, User.Identity.Name);
+            db_WQX.InsertOrUpdateT_WQX_RESULT(grdResults.DataKeys[e.RowIndex].Values[0].ConvertOrDefault<int>(), ActID, ddlChar.SelectedValue, txtResultVal.Text, ddlUnit.SelectedValue, ddlAnalMethod.SelectedValue.ConvertOrDefault<int?>(), txtDetectLimit.Text, txtComment.Text, null, null, ddlTaxa.SelectedValue, null, User.Identity.Name);
 
             //also update activity to set to "U" so it will be flagged for submission to EPA
             db_WQX.InsertOrUpdateWQX_ACTIVITY(ActID, null, null, null, null, null, null, null, null, null, null, null, "U", null, null, User.Identity.Name);
@@ -297,6 +305,10 @@ namespace OpenEnvironment
                 dsRefData.SelectParameters["tABLE"].DefaultValue = "MeasureUnit";
                 PopulateDropDown((DropDownList)e.Row.FindControl("ddlNewUnit"), dsRefData, null, "VALUE", "VALUE");
 
+                //Anal Method
+                PopulateDropDown((DropDownList)e.Row.FindControl("ddlNewAnalMethod"), dsAnalMethod, null, "ANALYTIC_METHOD_IDX", "ANALYTIC_METHOD_ID");
+
+
             }            
 
         }
@@ -360,7 +372,6 @@ namespace OpenEnvironment
             DropDownList ddlNewChar = (DropDownList)sender;
 
             T_WQX_REF_CHARACTERISTIC c = db_Ref.GetT_WQX_REF_CHARACTERISTIC_ByName(ddlNewChar.SelectedValue);
-
             if (c != null)
             {
                 if (c.DEFAULT_UNIT != null)
@@ -374,6 +385,9 @@ namespace OpenEnvironment
                     txtNewDetect.Text = c.DEFAULT_DETECT_LIMIT.ToString();
                 }
             }
+
+            TextBox txtNewResultVal = (TextBox)grdResults.FooterRow.FindControl("txtNewResultVal");
+            txtNewResultVal.Focus();
         }
 
     }

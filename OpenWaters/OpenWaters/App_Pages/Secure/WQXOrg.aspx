@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterWQX.master" AutoEventWireup="true" CodeBehind="WQXOrg.aspx.cs" Inherits="OpenEnvironment.WQXOrg" %>
+﻿<%@ Page Title="Open Waters - Organizations" Language="C#" MasterPageFile="~/MasterWQX.master" AutoEventWireup="true" CodeBehind="WQXOrg.aspx.cs" Inherits="OpenEnvironment.WQXOrg" %>
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="BodyContent" runat="server">
     <asp:ScriptManager ID="ScriptManager1" runat="server" />

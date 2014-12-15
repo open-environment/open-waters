@@ -25,14 +25,6 @@ namespace OpenEnvironment
                 Utils.BindList(ddlMonLoc, dsMonLoc, "MONLOC_IDX", "MONLOC_NAME");
                 Utils.BindList(ddlCharacteristic, dsChar, "CHAR_NAME", "CHAR_NAME");
 
-
-                if (Session["filtMonLoc"] != null)
-                {
-                    ddlMonLoc.SelectedValue = Session["filtMonLoc"].ToString();
-                    ddlCharacteristic.SelectedIndex = ddlCharacteristic.Items.IndexOf(ddlCharacteristic.Items[1]);
-                    DisplayChart();
-                }
-
             }
         }
 

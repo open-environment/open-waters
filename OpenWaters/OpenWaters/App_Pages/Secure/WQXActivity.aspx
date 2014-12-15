@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterWQX.master" AutoEventWireup="true" CodeBehind="WQXActivity.aspx.cs" Inherits="OpenEnvironment.WQXActivity" %>
+﻿<%@ Page Title="Open Waters - Activities" Language="C#" MasterPageFile="~/MasterWQX.master" AutoEventWireup="true" CodeBehind="WQXActivity.aspx.cs" Inherits="OpenEnvironment.WQXActivity" %>
 <%@ Register assembly="AjaxControlToolkit" namespace="AjaxControlToolkit" tagprefix="ajaxtoolkit" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="BodyContent" runat="server">
     <script type="text/javascript">
@@ -54,6 +54,9 @@
                     <span class="fldLbl" >Activity Type:</span>
                     <asp:DropDownList CssClass="fldTxt" ID="ddlActType" runat="server" ></asp:DropDownList>
                 </div>
+                <div style="float:right"> 
+                    <asp:CheckBox ID="chkDeletedInd" runat="server" Checked="false" Text="Display Deleted Activities" />
+                </div>
             </div>
             <div class="row" style="margin-bottom:5px" >
                 <div style="width:360px; float:left"> 
@@ -80,8 +83,9 @@
                     <span class="fldLbl" >Project:</span>
                     <asp:DropDownList CssClass="fldTxt" ID="ddlProject" runat="server" ></asp:DropDownList>
                 </div>
-                <asp:Button ID="btnFilter" runat="server" CssClass="btn" style="float:right" Text="Apply" onclick="btnFilter_Click" />
-         <br />
+            </div>
+            <div class="row">
+                <asp:Button ID="btnFilter" runat="server" CssClass="btn" Text="Apply" onclick="btnFilter_Click" />
             </div>
         </div>
     </asp:Panel>

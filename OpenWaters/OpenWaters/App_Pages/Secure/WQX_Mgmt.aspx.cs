@@ -23,9 +23,7 @@ namespace OpenEnvironment
             
                 T_OE_APP_TASKS t = db_Ref.GetT_OE_APP_TASKS_ByName("WQXSubmit");
                 if (t != null)
-                {
                     lblStatus.Text = t.TASK_STATUS;
-                }            
             }
         }
 
@@ -44,12 +42,9 @@ namespace OpenEnvironment
             //submit all pending data in one large batch
             if (rbSubmit.Items[1].Selected){
                 //get CDX username, password, and CDX destination URL
-                string userID;
-                string credential;
-                string NodeURL;
-                WQXSubmit.GetCDXSubmitCredentials(Session["OrgID"].ToString(), out userID, out credential, out NodeURL);
+                CDXCredentials cred = WQXSubmit.GetCDXSubmitCredentials2(Session["OrgID"].ToString());
 
-                WQXSubmit.WQX_Submit_OneByOne("", 0, userID, credential, NodeURL);
+                WQXSubmit.WQX_Submit_OneByOne("", 0, cred.userID, cred.credential, cred.NodeURL, Session["OrgID"].ToString());
             }
         }
 

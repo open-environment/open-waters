@@ -16,6 +16,8 @@ namespace OpenEnvironment
 
             if (Session["OrgID"] != null)
             {
+                lblOrgName.Text = db_WQX.GetWQX_ORGANIZATION_ByID(Session["OrgID"].ToString()).ORG_FORMAL_NAME;
+                pnlOrgSpecific.Visible = true;
                 lblProject2.Text = db_WQX.GetWQX_PROJECT(true, Session["OrgID"].ToString(), false).Count.ToString();
                 lblSamp.Text = db_WQX.GetWQX_ACTIVITY(true, Session["OrgID"].ToString(), null, null, null, null, false, null).Count().ToString();
                 lblSampPend2.Text = db_WQX.GetWQX_ACTIVITY(true, Session["OrgID"].ToString(), null, null, null, null, true, null).Count().ToString();
@@ -23,9 +25,7 @@ namespace OpenEnvironment
             }
             else
             {
-                lblProject2.Text = "0";
-                lblSamp.Text = "0";
-                lblResult.Text = "0";
+                pnlOrgSpecific.Visible = false;
             }
         }
     }

@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterWQX.master" AutoEventWireup="true"
+﻿<%@ Page Title="Open Waters - Monitoring Locations" Language="C#" MasterPageFile="~/MasterWQX.master" AutoEventWireup="true"
     CodeBehind="WQXMonLoc.aspx.cs" Inherits="OpenEnvironment.WQXMonLoc" %>
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
 <asp:Content ID="Content2" ContentPlaceHolderID="BodyContent" runat="server">
@@ -18,21 +18,18 @@
     <ajaxToolkit:ModalPopupExtender ID="MPE1" runat="server" TargetControlID="btnConfig"
         PopupControlID="pnlModal" CancelControlID="btnClose" BackgroundCssClass="modalBackground" PopupDragHandleControlID="pnlModTtl">
     </ajaxToolkit:ModalPopupExtender>
-    <asp:ObjectDataSource ID="dsMonLoc" runat="server" SelectMethod="GetWQX_MONLOC" TypeName="OpenEnvironment.App_Logic.DataAccessLayer.db_WQX">
-        <selectparameters>
-            <asp:Parameter DefaultValue="false" Name="ActInd" Type="Boolean" />
-            <asp:Parameter DefaultValue="false" Name="WQXPending" Type="Boolean" />
-            <asp:SessionParameter DefaultValue="" Name="OrgID" SessionField="OrgID" Type="String" />
-        </selectparameters>
-    </asp:ObjectDataSource>
-    <h1>
-        Monitoring Locations&nbsp;
-    </h1>
+    <div style="float:left; width:100%"> 
+        <h1 style="display:inline;">Monitoring Locations</h1>
+        <div style="float:right"> 
+            <asp:CheckBox ID="chkDeletedInd" runat="server" Checked="false" Text="Display Deleted Locations" AutoPostBack="True" OnCheckedChanged="chkDeletedInd_CheckedChanged" />
+        </div>
+    </div>
     <asp:UpdatePanel runat="server" ID="TimedPanel" UpdateMode="Conditional">
         <Triggers>
             <asp:AsyncPostBackTrigger ControlID="Timer1" EventName="Tick" />
         </Triggers>
         <ContentTemplate>
+            <asp:Label ID="lblMsg" runat="server" CssClass="failureNotification" ></asp:Label>
             <asp:GridView ID="grdMonLoc" runat="server" GridLines="None" CssClass="grd" PagerStyle-CssClass="pgr"
                 AutoGenerateColumns="false" AlternatingRowStyle-CssClass="alt" OnRowCommand="grdMonLoc_RowCommand">
                 <Columns>
@@ -71,7 +68,6 @@
                     <asp:BoundField DataField="FORMATION_TYPE" HeaderText="Formation" SortExpression="FORMATION_TYPE" />
                     <asp:BoundField DataField="WELLHOLE_DEPTH_MSR" HeaderText="Wellhole Depth" SortExpression="WELLHOLE_DEPTH_MSR" />
                     <asp:BoundField DataField="WELLHOLE_DEPTH_MSR_UNIT" HeaderText="Depth Unit" SortExpression="WELLHOLE_DEPTH_MSR_UNIT" />
-                    <asp:BoundField DataField="ACT_IND" HeaderText="Active" SortExpression="ACT_IND" />
                     <asp:TemplateField HeaderText="Send to EPA"> 
                         <ItemStyle HorizontalAlign="Center" />                        
                         <ItemTemplate> 

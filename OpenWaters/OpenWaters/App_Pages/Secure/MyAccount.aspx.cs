@@ -47,7 +47,7 @@ namespace OpenEnvironment
         {
             try
             {
-                if (db_Accounts.UpdateT_OE_USERS(Session["UserIDX"].ConvertOrDefault<int>(), null, null, txtFName.Text, txtLName.Text, txtEmail.Text, true, null, null, null, txtPhone.Text, null, User.Identity.Name) == 1)
+                if (db_Accounts.UpdateT_OE_USERS(Session["UserIDX"].ConvertOrDefault<int>(), null, null, txtFName.Text, txtLName.Text, txtEmail.Text, true, null, null, null, txtPhone.Text, null, User.Identity.Name) > 0)
                     lblMsg.Text = "User updated successfully.";
                 else
                     lblMsg.Text = "Error updating user.";

@@ -10,69 +10,69 @@
 namespace OpenEnvironment {
     
     
-    public partial class Dashboard {
+    public partial class WQXImportSamp {
         
         /// <summary>
-        /// lblOrg control.
+        /// lblMsg control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblOrg;
+        protected global::System.Web.UI.WebControls.Label lblMsg;
         
         /// <summary>
-        /// pnlOrgSpecific control.
+        /// pnlFilter control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel pnlOrgSpecific;
+        protected global::System.Web.UI.WebControls.Panel pnlFilter;
         
         /// <summary>
-        /// lblOrgName control.
+        /// chkWQXImport control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblOrgName;
+        protected global::System.Web.UI.WebControls.CheckBox chkWQXImport;
         
         /// <summary>
-        /// lblProject2 control.
+        /// btnImport control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblProject2;
+        protected global::System.Web.UI.WebControls.Button btnImport;
         
         /// <summary>
-        /// lblSamp control.
+        /// grdImport control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblSamp;
+        protected global::System.Web.UI.WebControls.GridView grdImport;
         
         /// <summary>
-        /// lblSampPend2 control.
+        /// btnCancel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblSampPend2;
+        protected global::System.Web.UI.WebControls.Button btnCancel;
         
         /// <summary>
-        /// lblResult control.
+        /// btnSample control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblResult;
+        protected global::System.Web.UI.WebControls.Button btnSample;
     }
 }
