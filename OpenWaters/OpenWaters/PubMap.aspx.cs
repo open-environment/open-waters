@@ -15,7 +15,11 @@ namespace OpenEnvironment.App_Pages.Public
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            //if this installation only has one organization, display on map header
+            if (db_WQX.GetWQX_ORGANIZATION().Count == 1)
+                lblOrgName.Text = db_WQX.GetWQX_ORGANIZATION().FirstOrDefault().ORG_FORMAL_NAME + " - ";
+            else
+                lblOrgName.Text = "";
         }
 
 
@@ -23,11 +27,9 @@ namespace OpenEnvironment.App_Pages.Public
         [WebMethod(EnableSession = true)]
         public static string[] GetSites()
         {
-            string _org = HttpContext.Current.Session["OrgID"].ConvertOrDefault<string>();
-            if (_org == null) _org = db_Ref.GetT_OE_APP_SETTING("Default Org ID");
             List<string> myCollection = new List<string>();
 
-            List<T_WQX_MONLOC> ms = db_WQX.GetWQX_MONLOC(true, _org, false);
+            List<T_WQX_MONLOC> ms = db_WQX.GetWQX_MONLOC(true, null, false);
 
             if (ms != null)
             {

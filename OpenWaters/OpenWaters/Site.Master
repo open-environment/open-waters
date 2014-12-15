@@ -4,6 +4,7 @@
 <head runat="server">
     <title>Open Waters - Environmental Data Management</title>
     <link href="~/Styles/Site.css" rel="stylesheet" type="text/css" />
+    <link rel="shortcut icon" type="image/x-icon" href="~/favicon.ico" />
     <asp:ContentPlaceHolder ID="HeadContent" runat="server"></asp:ContentPlaceHolder>
 </head>
 <body>
@@ -35,7 +36,7 @@
         </div>
     </div>
     <div class="footer">
-        Copyright ©2014 open-environment.org | 
+        Copyright ©2012-2015 open-environment.org | 
         Version: <asp:Label ID="lblVer" runat="server"></asp:Label> | 
         <asp:HyperLink runat="server" NavigateUrl="~/App_Pages/Public/License.aspx" Text="License"></asp:HyperLink> 
     </div>

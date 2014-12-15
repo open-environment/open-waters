@@ -67,7 +67,6 @@
         }
 
 
-
         function createMarker(lat, lng, infoTitle, infoBody) {
 
             var myLatLng = new google.maps.LatLng(lat, lng);
@@ -106,11 +105,10 @@
     <form id="form1" runat="server">
         <ajaxToolkit:ToolkitScriptManager ID="scriptManager" runat="server" AsyncPostBackTimeout="99999999" EnablePageMethods="true" />
 
-
         <table style="width:100%; height:100%; padding:0; margin:0;">
             <tr>
                 <td>
-                    <div id="over_map">Muscogee Creek Nation - Water Quality Map</div>
+                    <div id="over_map"><asp:Label ID="lblOrgName" runat="server"></asp:Label> Water Quality Map</div>
                     <div id ="map" class="mapSmall" />
                 </td>
             </tr>    

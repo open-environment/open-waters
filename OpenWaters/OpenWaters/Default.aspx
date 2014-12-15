@@ -1,7 +1,8 @@
-﻿<%@ Page Title="Home Page" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="OpenEnvironment._Default" %>
+﻿<%@ Page Title="Open Waters - Login" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="OpenEnvironment._Default" %>
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
 </asp:Content>
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
+
     <div class="brdr-green" style="width: 500px; margin: 100px auto">
         <div class="ie9roundedgradient" style="width:100%" >
             <div class="rndPnlTop-green">
@@ -9,7 +10,9 @@
             </div>
         </div>
         <div style="padding: 10px 10px;">
-            <asp:Login ID="LoginUser" runat="server" EnableViewState="false" RenderOuterTable="true" OnLoggedIn="LoginUser_LoggedIn" OnLoginError="LoginUser_LoginError">
+                    <asp:Label ID="lblTestWarn" runat="server" CssClass="fldErrLg" Text="" Visible="false" Style="margin-top:20px"></asp:Label>
+
+                <asp:Login ID="LoginUser" runat="server" EnableViewState="false" RenderOuterTable="true" OnLoggedIn="LoginUser_LoggedIn" OnLoginError="LoginUser_LoginError">
                 <LayoutTemplate>
                     <span class="failureNotification">
                         <asp:Literal ID="FailureText" runat="server"></asp:Literal>
@@ -33,6 +36,7 @@
                     &nbsp;&nbsp;<asp:HyperLink ID="lblPwd" runat="server" NavigateUrl="~/Account/ResetPassword.aspx" Text="(Forgot password)"></asp:HyperLink>
                 </LayoutTemplate>
             </asp:Login>
+
         </div>
     </div>
 </asp:Content>

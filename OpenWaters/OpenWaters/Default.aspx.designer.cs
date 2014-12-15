@@ -13,6 +13,15 @@ namespace OpenEnvironment {
     public partial class _Default {
         
         /// <summary>
+        /// lblTestWarn control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblTestWarn;
+        
+        /// <summary>
         /// LoginUser control.
         /// </summary>
         /// <remarks>

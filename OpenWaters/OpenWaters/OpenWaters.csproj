@@ -90,10 +90,13 @@
     <Content Include="Account\Register.aspx" />
     <Content Include="App_Data\Create_DB.sql" />
     <Content Include="App_Data\DatabasePatch_v1.3.sql" />
-    <Content Include="App_Data\DatabasePatch_v1.4.sql" />
+    <Content Include="App_Data\DatabasePatch_v1.5.sql" />
+    <Content Include="App_Data\SeminoleData.sql" />
     <Content Include="App_Images\green.png" />
     <Content Include="App_Images\ico_chart.png" />
     <Content Include="App_Images\ico_save2.png" />
+    <Content Include="App_Images\selectbutton.png" />
+    <Content Include="favicon.ico" />
     <Content Include="PubMap.aspx" />
     <Content Include="App_Pages\Secure\Charting.aspx" />
     <Content Include="App_Pages\Secure\WQXOrgEdit.aspx" />
@@ -101,6 +104,9 @@
     <Content Include="Error.aspx" />
     <Content Include="Account\ResetPassword.aspx" />
     <Content Include="App_Pages\Secure\Maps.aspx" />
+    <Content Include="App_Pages\Secure\WQXImportMonLoc.aspx" />
+    <Content Include="App_Pages\Secure\WQXImportSamp.aspx" />
+    <Content Include="App_Pages\Secure\WQXImportConfig.aspx" />
     <None Include="App_Data\CreekData.sql" />
     <Content Include="App_Images\0.png" />
     <Content Include="App_Images\grd_alt.png" />
@@ -192,7 +198,7 @@
     <Compile Include="Account\Register.aspx.designer.cs">
       <DependentUpon>Register.aspx</DependentUpon>
     </Compile>
-    <Compile Include="App_Logic\BusinessLogicLayer\Logging.cs" />
+    <Compile Include="App_Logic\BusinessLogicLayer\Crypto.cs" />
     <Compile Include="App_Logic\BusinessLogicLayer\Utils.cs" />
     <Compile Include="App_Logic\BusinessLogicLayer\WQXSubmit.cs" />
     <Compile Include="App_Logic\DataAccessLayer\db_Accounts.cs" />
@@ -446,6 +452,27 @@
     <Compile Include="App_Pages\Secure\Maps.aspx.designer.cs">
       <DependentUpon>Maps.aspx</DependentUpon>
     </Compile>
+    <Compile Include="App_Pages\Secure\WQXImportMonLoc.aspx.cs">
+      <DependentUpon>WQXImportMonLoc.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Pages\Secure\WQXImportMonLoc.aspx.designer.cs">
+      <DependentUpon>WQXImportMonLoc.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Pages\Secure\WQXImportSamp.aspx.cs">
+      <DependentUpon>WQXImportSamp.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Pages\Secure\WQXImportSamp.aspx.designer.cs">
+      <DependentUpon>WQXImportSamp.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Pages\Secure\WQXImportConfig.aspx.cs">
+      <DependentUpon>WQXImportConfig.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Pages\Secure\WQXImportConfig.aspx.designer.cs">
+      <DependentUpon>WQXImportConfig.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Site.Master" />
@@ -465,6 +492,10 @@
     <Content Include="MasterWQX.master" />
     <Content Include="packages.config" />
     <Content Include="App_Docs\UsersGuide.docx" />
+    <Content Include="App_Docs\MonLoc_ImportTemplate.xlsx" />
+    <Content Include="App_Docs\SampCT_ImportTemplate.xlsx" />
+    <Content Include="App_Docs\Samp_ImportTemplate.xlsx" />
+    <Content Include="App_Docs\SampBio_ImportTemplate.xlsx" />
     <None Include="Properties\PublishProfiles\Profile1.pubxml" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -535,6 +566,9 @@
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>favicon.ico</ApplicationIcon>
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />

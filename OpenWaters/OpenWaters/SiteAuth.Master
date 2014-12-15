@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml" >
 <head runat="server">
     <title>Open Waters - Environmental Data Management</title>
-    <link href="~/Styles/Site.css" rel="stylesheet" type="text/css" />
+    <link href="~/Styles/Site.css" rel="stylesheet" type="text/css" />  
+    <link rel="shortcut icon" type="image/x-icon" href="~/favicon.ico" />
     <asp:ContentPlaceHolder ID="head" runat="server"></asp:ContentPlaceHolder>
 </head>
 <body id="body1" >
@@ -32,9 +33,10 @@
                             <StaticHoverStyle BackColor="#666666" />
                             <StaticMenuItemStyle HorizontalPadding="8px" VerticalPadding="4px" CssClass="menuitem" />
                             <Items>
+                                <asp:MenuItem NavigateUrl="~/App_Pages/Secure/Dashboard.aspx" Text="Home" />
                                 <asp:MenuItem NavigateUrl="~/App_Pages/Secure/WQXMonLoc.aspx" Text="Water Quality" />
                                 <asp:MenuItem NavigateUrl="~/App_Pages/Secure/RefData.aspx" Text="Reference Data" />
-                                <asp:MenuItem NavigateUrl="~/App_Pages/Secure/AppSettings.aspx" Text="Administration" />
+                                <asp:MenuItem NavigateUrl="~/Account/UserList.aspx" Text="Administration" />
                                 <asp:MenuItem NavigateUrl="~/App_Pages/Secure/MyAccount.aspx" Text="My Account" />
                                 <asp:MenuItem NavigateUrl="~/App_Docs/UsersGuide.docx" Text="Help" />
                             </Items>
@@ -66,7 +68,7 @@
         </div>
     </div>
     <div class="footer">
-        Copyright ©2014 open-environment.org |  
+        Copyright ©2012-2015 open-environment.org |  
         <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/App_Pages/Public/License.aspx" Text="License"></asp:HyperLink>
     </div>
     </form>
