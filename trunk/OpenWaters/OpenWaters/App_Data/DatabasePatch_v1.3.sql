@@ -1,4 +1,4 @@
-﻿--run this script to apply changes for Open Waters v1.3 patch (upgrading from v1.2 or earlier)
+﻿--Only run this script if you are upgrading a previous installation of Open Waters (upgrading from v1.2 or earlier) to v1.3 or later
 --this patch assumes an organization record has already been created in the database. 
 
 alter table T_OE_USERS add DEFAULT_ORG_ID varchar(30);
