@@ -23,23 +23,26 @@ using System.Xml.Serialization;
 [assembly: EdmRelationshipAttribute("OpenEnvironmentModel", "FK__T_OE_USER__USER___08EA5793", "T_OE_USERS", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(OpenEnvironment.App_Logic.DataAccessLayer.T_OE_USERS), "T_OE_USER_ROLES", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(OpenEnvironment.App_Logic.DataAccessLayer.T_OE_USER_ROLES), true)]
 [assembly: EdmRelationshipAttribute("OpenEnvironmentModel", "FK__T_WQX_ACT__ACTIV__22AA2996", "T_WQX_ACTIVITY", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(OpenEnvironment.App_Logic.DataAccessLayer.T_WQX_ACTIVITY), "T_WQX_ACTIVITY_METRIC", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(OpenEnvironment.App_Logic.DataAccessLayer.T_WQX_ACTIVITY_METRIC), true)]
 [assembly: EdmRelationshipAttribute("OpenEnvironmentModel", "FK__T_WQX_ACT__MONLO__1B0907CE", "T_WQX_MONLOC", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(OpenEnvironment.App_Logic.DataAccessLayer.T_WQX_MONLOC), "T_WQX_ACTIVITY", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(OpenEnvironment.App_Logic.DataAccessLayer.T_WQX_ACTIVITY), true)]
-[assembly: EdmRelationshipAttribute("OpenEnvironmentModel", "FK__T_WQX_ACT__ORG_I__1BFD2C07", "T_WQX_ORGANIZATION", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(OpenEnvironment.App_Logic.DataAccessLayer.T_WQX_ORGANIZATION), "T_WQX_ACTIVITY", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(OpenEnvironment.App_Logic.DataAccessLayer.T_WQX_ACTIVITY), true)]
 [assembly: EdmRelationshipAttribute("OpenEnvironmentModel", "FK__T_WQX_ACT__PROJE__1A14E395", "T_WQX_PROJECT", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(OpenEnvironment.App_Logic.DataAccessLayer.T_WQX_PROJECT), "T_WQX_ACTIVITY", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(OpenEnvironment.App_Logic.DataAccessLayer.T_WQX_ACTIVITY), true)]
 [assembly: EdmRelationshipAttribute("OpenEnvironmentModel", "FK__T_WQX_RES__ACTIV__267ABA7A", "T_WQX_ACTIVITY", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(OpenEnvironment.App_Logic.DataAccessLayer.T_WQX_ACTIVITY), "T_WQX_RESULT", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(OpenEnvironment.App_Logic.DataAccessLayer.T_WQX_RESULT), true)]
 [assembly: EdmRelationshipAttribute("OpenEnvironmentModel", "FK__T_WQX_ACT__BIO_H__239E4DCF", "T_WQX_BIO_HABITAT_INDEX", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(OpenEnvironment.App_Logic.DataAccessLayer.T_WQX_BIO_HABITAT_INDEX), "T_WQX_ACTIVITY_METRIC", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(OpenEnvironment.App_Logic.DataAccessLayer.T_WQX_ACTIVITY_METRIC), true)]
 [assembly: EdmRelationshipAttribute("OpenEnvironmentModel", "FK__T_WQX_BIO__MONLO__1ED998B2", "T_WQX_MONLOC", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(OpenEnvironment.App_Logic.DataAccessLayer.T_WQX_MONLOC), "T_WQX_BIO_HABITAT_INDEX", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(OpenEnvironment.App_Logic.DataAccessLayer.T_WQX_BIO_HABITAT_INDEX), true)]
-[assembly: EdmRelationshipAttribute("OpenEnvironmentModel", "FK__T_WQX_BIO__ORG_I__1FCDBCEB", "T_WQX_ORGANIZATION", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(OpenEnvironment.App_Logic.DataAccessLayer.T_WQX_ORGANIZATION), "T_WQX_BIO_HABITAT_INDEX", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(OpenEnvironment.App_Logic.DataAccessLayer.T_WQX_BIO_HABITAT_INDEX), true)]
-[assembly: EdmRelationshipAttribute("OpenEnvironmentModel", "FK__T_WQX_IMP__ORG_I__2F10007B", "T_WQX_ORGANIZATION", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(OpenEnvironment.App_Logic.DataAccessLayer.T_WQX_ORGANIZATION), "T_WQX_IMPORT_LOG", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(OpenEnvironment.App_Logic.DataAccessLayer.T_WQX_IMPORT_LOG), true)]
-[assembly: EdmRelationshipAttribute("OpenEnvironmentModel", "FK__T_WQX_MON__ORG_I__173876EA", "T_WQX_ORGANIZATION", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(OpenEnvironment.App_Logic.DataAccessLayer.T_WQX_ORGANIZATION), "T_WQX_MONLOC", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(OpenEnvironment.App_Logic.DataAccessLayer.T_WQX_MONLOC), true)]
-[assembly: EdmRelationshipAttribute("OpenEnvironmentModel", "FK__T_WQX_ORG__ORG_I__117F9D94", "T_WQX_ORGANIZATION", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(OpenEnvironment.App_Logic.DataAccessLayer.T_WQX_ORGANIZATION), "T_WQX_ORG_ADDRESS", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(OpenEnvironment.App_Logic.DataAccessLayer.T_WQX_ORG_ADDRESS), true)]
-[assembly: EdmRelationshipAttribute("OpenEnvironmentModel", "FK__T_WQX_PRO__ORG_I__145C0A3F", "T_WQX_ORGANIZATION", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(OpenEnvironment.App_Logic.DataAccessLayer.T_WQX_ORGANIZATION), "T_WQX_PROJECT", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(OpenEnvironment.App_Logic.DataAccessLayer.T_WQX_PROJECT), true)]
 [assembly: EdmRelationshipAttribute("OpenEnvironmentModel", "FK__T_WQX_RES__ANALY__286302EC", "T_WQX_REF_ANAL_METHOD", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(OpenEnvironment.App_Logic.DataAccessLayer.T_WQX_REF_ANAL_METHOD), "T_WQX_RESULT", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(OpenEnvironment.App_Logic.DataAccessLayer.T_WQX_RESULT), true)]
 [assembly: EdmRelationshipAttribute("OpenEnvironmentModel", "FK__T_WQX_RES__LAB_I__276EDEB3", "T_WQX_REF_LAB", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(OpenEnvironment.App_Logic.DataAccessLayer.T_WQX_REF_LAB), "T_WQX_RESULT", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(OpenEnvironment.App_Logic.DataAccessLayer.T_WQX_RESULT), true)]
 [assembly: EdmRelationshipAttribute("OpenEnvironmentModel", "FK__T_WQX_REF__CHAR___46E78A0C", "T_WQX_REF_CHARACTERISTIC", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(OpenEnvironment.App_Logic.DataAccessLayer.T_WQX_REF_CHARACTERISTIC), "T_WQX_REF_CHAR_LIMITS", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(OpenEnvironment.App_Logic.DataAccessLayer.T_WQX_REF_CHAR_LIMITS), true)]
 [assembly: EdmRelationshipAttribute("OpenEnvironmentModel", "FK__T_WQX_USE__USER___0E6E26BF", "T_OE_USERS", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(OpenEnvironment.App_Logic.DataAccessLayer.T_OE_USERS), "T_WQX_USER_ORGS", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(OpenEnvironment.App_Logic.DataAccessLayer.T_WQX_USER_ORGS), true)]
-[assembly: EdmRelationshipAttribute("OpenEnvironmentModel", "FK__T_WQX_USE__ORG_I__0D7A0286", "T_WQX_ORGANIZATION", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(OpenEnvironment.App_Logic.DataAccessLayer.T_WQX_ORGANIZATION), "T_WQX_USER_ORGS", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(OpenEnvironment.App_Logic.DataAccessLayer.T_WQX_USER_ORGS), true)]
-[assembly: EdmRelationshipAttribute("OpenEnvironmentModel", "FK__T_WQX_REF__ORG_I__18EBB532", "T_WQX_ORGANIZATION", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(OpenEnvironment.App_Logic.DataAccessLayer.T_WQX_ORGANIZATION), "T_WQX_REF_CHAR_ORG", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(OpenEnvironment.App_Logic.DataAccessLayer.T_WQX_REF_CHAR_ORG), true)]
 [assembly: EdmRelationshipAttribute("OpenEnvironmentModel", "FK__T_WQX_REF__CHAR___19DFD96B", "T_WQX_REF_CHARACTERISTIC", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(OpenEnvironment.App_Logic.DataAccessLayer.T_WQX_REF_CHARACTERISTIC), "T_WQX_REF_CHAR_ORG", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(OpenEnvironment.App_Logic.DataAccessLayer.T_WQX_REF_CHAR_ORG), true)]
+[assembly: EdmRelationshipAttribute("OpenEnvironmentModel", "FK__T_WQX_IMP__TEMPL__66603565", "T_WQX_IMPORT_TEMPLATE", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(OpenEnvironment.App_Logic.DataAccessLayer.T_WQX_IMPORT_TEMPLATE), "T_WQX_IMPORT_TEMPLATE_DTL", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(OpenEnvironment.App_Logic.DataAccessLayer.T_WQX_IMPORT_TEMPLATE_DTL), true)]
+[assembly: EdmRelationshipAttribute("OpenEnvironmentModel", "FK__T_WQX_IMP__TEMP___29221CFB", "T_WQX_IMPORT_TEMP_SAMPLE", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(OpenEnvironment.App_Logic.DataAccessLayer.T_WQX_IMPORT_TEMP_SAMPLE), "T_WQX_IMPORT_TEMP_RESULT", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(OpenEnvironment.App_Logic.DataAccessLayer.T_WQX_IMPORT_TEMP_RESULT), true)]
+[assembly: EdmRelationshipAttribute("OpenEnvironmentModel", "FK__T_WQX_ACT__ORG_I__30F848ED", "T_WQX_ORGANIZATION", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(OpenEnvironment.App_Logic.DataAccessLayer.T_WQX_ORGANIZATION), "T_WQX_ACTIVITY", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(OpenEnvironment.App_Logic.DataAccessLayer.T_WQX_ACTIVITY), true)]
+[assembly: EdmRelationshipAttribute("OpenEnvironmentModel", "FK__T_WQX_BIO__ORG_I__34C8D9D1", "T_WQX_ORGANIZATION", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(OpenEnvironment.App_Logic.DataAccessLayer.T_WQX_ORGANIZATION), "T_WQX_BIO_HABITAT_INDEX", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(OpenEnvironment.App_Logic.DataAccessLayer.T_WQX_BIO_HABITAT_INDEX), true)]
+[assembly: EdmRelationshipAttribute("OpenEnvironmentModel", "FK__T_WQX_IMP__ORG_I__4CA06362", "T_WQX_ORGANIZATION", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(OpenEnvironment.App_Logic.DataAccessLayer.T_WQX_ORGANIZATION), "T_WQX_IMPORT_LOG", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(OpenEnvironment.App_Logic.DataAccessLayer.T_WQX_IMPORT_LOG), true)]
+[assembly: EdmRelationshipAttribute("OpenEnvironmentModel", "FK__T_WQX_IMP__ORG_I__4F7CD00D", "T_WQX_ORGANIZATION", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(OpenEnvironment.App_Logic.DataAccessLayer.T_WQX_ORGANIZATION), "T_WQX_IMPORT_TEMPLATE", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(OpenEnvironment.App_Logic.DataAccessLayer.T_WQX_IMPORT_TEMPLATE), true)]
+[assembly: EdmRelationshipAttribute("OpenEnvironmentModel", "FK__T_WQX_MON__ORG_I__2C3393D0", "T_WQX_ORGANIZATION", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(OpenEnvironment.App_Logic.DataAccessLayer.T_WQX_ORGANIZATION), "T_WQX_MONLOC", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(OpenEnvironment.App_Logic.DataAccessLayer.T_WQX_MONLOC), true)]
+[assembly: EdmRelationshipAttribute("OpenEnvironmentModel", "FK__T_WQX_ORG__ORG_I__22AA2996", "T_WQX_ORGANIZATION", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(OpenEnvironment.App_Logic.DataAccessLayer.T_WQX_ORGANIZATION), "T_WQX_ORG_ADDRESS", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(OpenEnvironment.App_Logic.DataAccessLayer.T_WQX_ORG_ADDRESS), true)]
+[assembly: EdmRelationshipAttribute("OpenEnvironmentModel", "FK__T_WQX_PRO__ORG_I__29572725", "T_WQX_ORGANIZATION", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(OpenEnvironment.App_Logic.DataAccessLayer.T_WQX_ORGANIZATION), "T_WQX_PROJECT", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(OpenEnvironment.App_Logic.DataAccessLayer.T_WQX_PROJECT), true)]
+[assembly: EdmRelationshipAttribute("OpenEnvironmentModel", "FK__T_WQX_REF__ORG_I__46E78A0C", "T_WQX_ORGANIZATION", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(OpenEnvironment.App_Logic.DataAccessLayer.T_WQX_ORGANIZATION), "T_WQX_REF_CHAR_ORG", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(OpenEnvironment.App_Logic.DataAccessLayer.T_WQX_REF_CHAR_ORG), true)]
+[assembly: EdmRelationshipAttribute("OpenEnvironmentModel", "FK__T_WQX_USE__ORG_I__25869641", "T_WQX_ORGANIZATION", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(OpenEnvironment.App_Logic.DataAccessLayer.T_WQX_ORGANIZATION), "T_WQX_USER_ORGS", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(OpenEnvironment.App_Logic.DataAccessLayer.T_WQX_USER_ORGS), true)]
 
 #endregion
 
@@ -270,22 +273,6 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        public ObjectSet<T_WQX_ORGANIZATION> T_WQX_ORGANIZATION
-        {
-            get
-            {
-                if ((_T_WQX_ORGANIZATION == null))
-                {
-                    _T_WQX_ORGANIZATION = base.CreateObjectSet<T_WQX_ORGANIZATION>("T_WQX_ORGANIZATION");
-                }
-                return _T_WQX_ORGANIZATION;
-            }
-        }
-        private ObjectSet<T_WQX_ORGANIZATION> _T_WQX_ORGANIZATION;
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
         public ObjectSet<T_WQX_PROJECT> T_WQX_PROJECT
         {
             get
@@ -366,38 +353,6 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        public ObjectSet<T_WQX_TRANSACTION_LOG> T_WQX_TRANSACTION_LOG
-        {
-            get
-            {
-                if ((_T_WQX_TRANSACTION_LOG == null))
-                {
-                    _T_WQX_TRANSACTION_LOG = base.CreateObjectSet<T_WQX_TRANSACTION_LOG>("T_WQX_TRANSACTION_LOG");
-                }
-                return _T_WQX_TRANSACTION_LOG;
-            }
-        }
-        private ObjectSet<T_WQX_TRANSACTION_LOG> _T_WQX_TRANSACTION_LOG;
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        public ObjectSet<V_WQX_TRANSACTION_LOG> V_WQX_TRANSACTION_LOG
-        {
-            get
-            {
-                if ((_V_WQX_TRANSACTION_LOG == null))
-                {
-                    _V_WQX_TRANSACTION_LOG = base.CreateObjectSet<V_WQX_TRANSACTION_LOG>("V_WQX_TRANSACTION_LOG");
-                }
-                return _V_WQX_TRANSACTION_LOG;
-            }
-        }
-        private ObjectSet<V_WQX_TRANSACTION_LOG> _V_WQX_TRANSACTION_LOG;
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
         public ObjectSet<T_WQX_REF_CHARACTERISTIC> T_WQX_REF_CHARACTERISTIC
         {
             get
@@ -474,6 +429,150 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             }
         }
         private ObjectSet<T_WQX_REF_CHAR_ORG> _T_WQX_REF_CHAR_ORG;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<T_WQX_IMPORT_TEMPLATE> T_WQX_IMPORT_TEMPLATE
+        {
+            get
+            {
+                if ((_T_WQX_IMPORT_TEMPLATE == null))
+                {
+                    _T_WQX_IMPORT_TEMPLATE = base.CreateObjectSet<T_WQX_IMPORT_TEMPLATE>("T_WQX_IMPORT_TEMPLATE");
+                }
+                return _T_WQX_IMPORT_TEMPLATE;
+            }
+        }
+        private ObjectSet<T_WQX_IMPORT_TEMPLATE> _T_WQX_IMPORT_TEMPLATE;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<T_WQX_IMPORT_TEMPLATE_DTL> T_WQX_IMPORT_TEMPLATE_DTL
+        {
+            get
+            {
+                if ((_T_WQX_IMPORT_TEMPLATE_DTL == null))
+                {
+                    _T_WQX_IMPORT_TEMPLATE_DTL = base.CreateObjectSet<T_WQX_IMPORT_TEMPLATE_DTL>("T_WQX_IMPORT_TEMPLATE_DTL");
+                }
+                return _T_WQX_IMPORT_TEMPLATE_DTL;
+            }
+        }
+        private ObjectSet<T_WQX_IMPORT_TEMPLATE_DTL> _T_WQX_IMPORT_TEMPLATE_DTL;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<T_WQX_IMPORT_TEMP_RESULT> T_WQX_IMPORT_TEMP_RESULT
+        {
+            get
+            {
+                if ((_T_WQX_IMPORT_TEMP_RESULT == null))
+                {
+                    _T_WQX_IMPORT_TEMP_RESULT = base.CreateObjectSet<T_WQX_IMPORT_TEMP_RESULT>("T_WQX_IMPORT_TEMP_RESULT");
+                }
+                return _T_WQX_IMPORT_TEMP_RESULT;
+            }
+        }
+        private ObjectSet<T_WQX_IMPORT_TEMP_RESULT> _T_WQX_IMPORT_TEMP_RESULT;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<T_WQX_IMPORT_TEMP_SAMPLE> T_WQX_IMPORT_TEMP_SAMPLE
+        {
+            get
+            {
+                if ((_T_WQX_IMPORT_TEMP_SAMPLE == null))
+                {
+                    _T_WQX_IMPORT_TEMP_SAMPLE = base.CreateObjectSet<T_WQX_IMPORT_TEMP_SAMPLE>("T_WQX_IMPORT_TEMP_SAMPLE");
+                }
+                return _T_WQX_IMPORT_TEMP_SAMPLE;
+            }
+        }
+        private ObjectSet<T_WQX_IMPORT_TEMP_SAMPLE> _T_WQX_IMPORT_TEMP_SAMPLE;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<T_WQX_IMPORT_TEMP_MONLOC> T_WQX_IMPORT_TEMP_MONLOC
+        {
+            get
+            {
+                if ((_T_WQX_IMPORT_TEMP_MONLOC == null))
+                {
+                    _T_WQX_IMPORT_TEMP_MONLOC = base.CreateObjectSet<T_WQX_IMPORT_TEMP_MONLOC>("T_WQX_IMPORT_TEMP_MONLOC");
+                }
+                return _T_WQX_IMPORT_TEMP_MONLOC;
+            }
+        }
+        private ObjectSet<T_WQX_IMPORT_TEMP_MONLOC> _T_WQX_IMPORT_TEMP_MONLOC;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<T_WQX_ORGANIZATION> T_WQX_ORGANIZATION
+        {
+            get
+            {
+                if ((_T_WQX_ORGANIZATION == null))
+                {
+                    _T_WQX_ORGANIZATION = base.CreateObjectSet<T_WQX_ORGANIZATION>("T_WQX_ORGANIZATION");
+                }
+                return _T_WQX_ORGANIZATION;
+            }
+        }
+        private ObjectSet<T_WQX_ORGANIZATION> _T_WQX_ORGANIZATION;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<T_OE_SYS_LOG> T_OE_SYS_LOG
+        {
+            get
+            {
+                if ((_T_OE_SYS_LOG == null))
+                {
+                    _T_OE_SYS_LOG = base.CreateObjectSet<T_OE_SYS_LOG>("T_OE_SYS_LOG");
+                }
+                return _T_OE_SYS_LOG;
+            }
+        }
+        private ObjectSet<T_OE_SYS_LOG> _T_OE_SYS_LOG;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<T_WQX_TRANSACTION_LOG> T_WQX_TRANSACTION_LOG
+        {
+            get
+            {
+                if ((_T_WQX_TRANSACTION_LOG == null))
+                {
+                    _T_WQX_TRANSACTION_LOG = base.CreateObjectSet<T_WQX_TRANSACTION_LOG>("T_WQX_TRANSACTION_LOG");
+                }
+                return _T_WQX_TRANSACTION_LOG;
+            }
+        }
+        private ObjectSet<T_WQX_TRANSACTION_LOG> _T_WQX_TRANSACTION_LOG;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<V_WQX_TRANSACTION_LOG> V_WQX_TRANSACTION_LOG
+        {
+            get
+            {
+                if ((_V_WQX_TRANSACTION_LOG == null))
+                {
+                    _V_WQX_TRANSACTION_LOG = base.CreateObjectSet<V_WQX_TRANSACTION_LOG>("V_WQX_TRANSACTION_LOG");
+                }
+                return _V_WQX_TRANSACTION_LOG;
+            }
+        }
+        private ObjectSet<V_WQX_TRANSACTION_LOG> _V_WQX_TRANSACTION_LOG;
 
         #endregion
 
@@ -568,14 +667,6 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
         }
     
         /// <summary>
-        /// Deprecated Method for adding a new object to the T_WQX_ORGANIZATION EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
-        /// </summary>
-        public void AddToT_WQX_ORGANIZATION(T_WQX_ORGANIZATION t_WQX_ORGANIZATION)
-        {
-            base.AddObject("T_WQX_ORGANIZATION", t_WQX_ORGANIZATION);
-        }
-    
-        /// <summary>
         /// Deprecated Method for adding a new object to the T_WQX_PROJECT EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
         /// </summary>
         public void AddToT_WQX_PROJECT(T_WQX_PROJECT t_WQX_PROJECT)
@@ -616,22 +707,6 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
         }
     
         /// <summary>
-        /// Deprecated Method for adding a new object to the T_WQX_TRANSACTION_LOG EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
-        /// </summary>
-        public void AddToT_WQX_TRANSACTION_LOG(T_WQX_TRANSACTION_LOG t_WQX_TRANSACTION_LOG)
-        {
-            base.AddObject("T_WQX_TRANSACTION_LOG", t_WQX_TRANSACTION_LOG);
-        }
-    
-        /// <summary>
-        /// Deprecated Method for adding a new object to the V_WQX_TRANSACTION_LOG EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
-        /// </summary>
-        public void AddToV_WQX_TRANSACTION_LOG(V_WQX_TRANSACTION_LOG v_WQX_TRANSACTION_LOG)
-        {
-            base.AddObject("V_WQX_TRANSACTION_LOG", v_WQX_TRANSACTION_LOG);
-        }
-    
-        /// <summary>
         /// Deprecated Method for adding a new object to the T_WQX_REF_CHARACTERISTIC EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
         /// </summary>
         public void AddToT_WQX_REF_CHARACTERISTIC(T_WQX_REF_CHARACTERISTIC t_WQX_REF_CHARACTERISTIC)
@@ -669,6 +744,78 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
         public void AddToT_WQX_REF_CHAR_ORG(T_WQX_REF_CHAR_ORG t_WQX_REF_CHAR_ORG)
         {
             base.AddObject("T_WQX_REF_CHAR_ORG", t_WQX_REF_CHAR_ORG);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the T_WQX_IMPORT_TEMPLATE EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToT_WQX_IMPORT_TEMPLATE(T_WQX_IMPORT_TEMPLATE t_WQX_IMPORT_TEMPLATE)
+        {
+            base.AddObject("T_WQX_IMPORT_TEMPLATE", t_WQX_IMPORT_TEMPLATE);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the T_WQX_IMPORT_TEMPLATE_DTL EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToT_WQX_IMPORT_TEMPLATE_DTL(T_WQX_IMPORT_TEMPLATE_DTL t_WQX_IMPORT_TEMPLATE_DTL)
+        {
+            base.AddObject("T_WQX_IMPORT_TEMPLATE_DTL", t_WQX_IMPORT_TEMPLATE_DTL);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the T_WQX_IMPORT_TEMP_RESULT EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToT_WQX_IMPORT_TEMP_RESULT(T_WQX_IMPORT_TEMP_RESULT t_WQX_IMPORT_TEMP_RESULT)
+        {
+            base.AddObject("T_WQX_IMPORT_TEMP_RESULT", t_WQX_IMPORT_TEMP_RESULT);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the T_WQX_IMPORT_TEMP_SAMPLE EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToT_WQX_IMPORT_TEMP_SAMPLE(T_WQX_IMPORT_TEMP_SAMPLE t_WQX_IMPORT_TEMP_SAMPLE)
+        {
+            base.AddObject("T_WQX_IMPORT_TEMP_SAMPLE", t_WQX_IMPORT_TEMP_SAMPLE);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the T_WQX_IMPORT_TEMP_MONLOC EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToT_WQX_IMPORT_TEMP_MONLOC(T_WQX_IMPORT_TEMP_MONLOC t_WQX_IMPORT_TEMP_MONLOC)
+        {
+            base.AddObject("T_WQX_IMPORT_TEMP_MONLOC", t_WQX_IMPORT_TEMP_MONLOC);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the T_WQX_ORGANIZATION EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToT_WQX_ORGANIZATION(T_WQX_ORGANIZATION t_WQX_ORGANIZATION)
+        {
+            base.AddObject("T_WQX_ORGANIZATION", t_WQX_ORGANIZATION);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the T_OE_SYS_LOG EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToT_OE_SYS_LOG(T_OE_SYS_LOG t_OE_SYS_LOG)
+        {
+            base.AddObject("T_OE_SYS_LOG", t_OE_SYS_LOG);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the T_WQX_TRANSACTION_LOG EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToT_WQX_TRANSACTION_LOG(T_WQX_TRANSACTION_LOG t_WQX_TRANSACTION_LOG)
+        {
+            base.AddObject("T_WQX_TRANSACTION_LOG", t_WQX_TRANSACTION_LOG);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the V_WQX_TRANSACTION_LOG EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToV_WQX_TRANSACTION_LOG(V_WQX_TRANSACTION_LOG v_WQX_TRANSACTION_LOG)
+        {
+            base.AddObject("V_WQX_TRANSACTION_LOG", v_WQX_TRANSACTION_LOG);
         }
 
         #endregion
@@ -1447,6 +1594,161 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
 
         #endregion
 
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="OpenEnvironmentModel", Name="T_OE_SYS_LOG")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class T_OE_SYS_LOG : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new T_OE_SYS_LOG object.
+        /// </summary>
+        /// <param name="sYS_LOG_ID">Initial value of the SYS_LOG_ID property.</param>
+        /// <param name="lOG_DT">Initial value of the LOG_DT property.</param>
+        public static T_OE_SYS_LOG CreateT_OE_SYS_LOG(global::System.Int32 sYS_LOG_ID, global::System.DateTime lOG_DT)
+        {
+            T_OE_SYS_LOG t_OE_SYS_LOG = new T_OE_SYS_LOG();
+            t_OE_SYS_LOG.SYS_LOG_ID = sYS_LOG_ID;
+            t_OE_SYS_LOG.LOG_DT = lOG_DT;
+            return t_OE_SYS_LOG;
+        }
+
+        #endregion
+
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 SYS_LOG_ID
+        {
+            get
+            {
+                return _SYS_LOG_ID;
+            }
+            set
+            {
+                if (_SYS_LOG_ID != value)
+                {
+                    OnSYS_LOG_IDChanging(value);
+                    ReportPropertyChanging("SYS_LOG_ID");
+                    _SYS_LOG_ID = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("SYS_LOG_ID");
+                    OnSYS_LOG_IDChanged();
+                }
+            }
+        }
+        private global::System.Int32 _SYS_LOG_ID;
+        partial void OnSYS_LOG_IDChanging(global::System.Int32 value);
+        partial void OnSYS_LOG_IDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.DateTime LOG_DT
+        {
+            get
+            {
+                return _LOG_DT;
+            }
+            set
+            {
+                OnLOG_DTChanging(value);
+                ReportPropertyChanging("LOG_DT");
+                _LOG_DT = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("LOG_DT");
+                OnLOG_DTChanged();
+            }
+        }
+        private global::System.DateTime _LOG_DT;
+        partial void OnLOG_DTChanging(global::System.DateTime value);
+        partial void OnLOG_DTChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> LOG_USERIDX
+        {
+            get
+            {
+                return _LOG_USERIDX;
+            }
+            set
+            {
+                OnLOG_USERIDXChanging(value);
+                ReportPropertyChanging("LOG_USERIDX");
+                _LOG_USERIDX = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("LOG_USERIDX");
+                OnLOG_USERIDXChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _LOG_USERIDX;
+        partial void OnLOG_USERIDXChanging(Nullable<global::System.Int32> value);
+        partial void OnLOG_USERIDXChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String LOG_TYPE
+        {
+            get
+            {
+                return _LOG_TYPE;
+            }
+            set
+            {
+                OnLOG_TYPEChanging(value);
+                ReportPropertyChanging("LOG_TYPE");
+                _LOG_TYPE = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("LOG_TYPE");
+                OnLOG_TYPEChanged();
+            }
+        }
+        private global::System.String _LOG_TYPE;
+        partial void OnLOG_TYPEChanging(global::System.String value);
+        partial void OnLOG_TYPEChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String LOG_MSG
+        {
+            get
+            {
+                return _LOG_MSG;
+            }
+            set
+            {
+                OnLOG_MSGChanging(value);
+                ReportPropertyChanging("LOG_MSG");
+                _LOG_MSG = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("LOG_MSG");
+                OnLOG_MSGChanged();
+            }
+        }
+        private global::System.String _LOG_MSG;
+        partial void OnLOG_MSGChanging(global::System.String value);
+        partial void OnLOG_MSGChanged();
+
+        #endregion
+
+    
     }
     
     /// <summary>
@@ -3694,44 +3996,6 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("OpenEnvironmentModel", "FK__T_WQX_ACT__ORG_I__1BFD2C07", "T_WQX_ORGANIZATION")]
-        public T_WQX_ORGANIZATION T_WQX_ORGANIZATION
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<T_WQX_ORGANIZATION>("OpenEnvironmentModel.FK__T_WQX_ACT__ORG_I__1BFD2C07", "T_WQX_ORGANIZATION").Value;
-            }
-            set
-            {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<T_WQX_ORGANIZATION>("OpenEnvironmentModel.FK__T_WQX_ACT__ORG_I__1BFD2C07", "T_WQX_ORGANIZATION").Value = value;
-            }
-        }
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [BrowsableAttribute(false)]
-        [DataMemberAttribute()]
-        public EntityReference<T_WQX_ORGANIZATION> T_WQX_ORGANIZATIONReference
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<T_WQX_ORGANIZATION>("OpenEnvironmentModel.FK__T_WQX_ACT__ORG_I__1BFD2C07", "T_WQX_ORGANIZATION");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<T_WQX_ORGANIZATION>("OpenEnvironmentModel.FK__T_WQX_ACT__ORG_I__1BFD2C07", "T_WQX_ORGANIZATION", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("OpenEnvironmentModel", "FK__T_WQX_ACT__PROJE__1A14E395", "T_WQX_PROJECT")]
         public T_WQX_PROJECT T_WQX_PROJECT
         {
@@ -3782,6 +4046,44 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<T_WQX_RESULT>("OpenEnvironmentModel.FK__T_WQX_RES__ACTIV__267ABA7A", "T_WQX_RESULT", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("OpenEnvironmentModel", "FK__T_WQX_ACT__ORG_I__30F848ED", "T_WQX_ORGANIZATION")]
+        public T_WQX_ORGANIZATION T_WQX_ORGANIZATION
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<T_WQX_ORGANIZATION>("OpenEnvironmentModel.FK__T_WQX_ACT__ORG_I__30F848ED", "T_WQX_ORGANIZATION").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<T_WQX_ORGANIZATION>("OpenEnvironmentModel.FK__T_WQX_ACT__ORG_I__30F848ED", "T_WQX_ORGANIZATION").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<T_WQX_ORGANIZATION> T_WQX_ORGANIZATIONReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<T_WQX_ORGANIZATION>("OpenEnvironmentModel.FK__T_WQX_ACT__ORG_I__30F848ED", "T_WQX_ORGANIZATION");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<T_WQX_ORGANIZATION>("OpenEnvironmentModel.FK__T_WQX_ACT__ORG_I__30F848ED", "T_WQX_ORGANIZATION", value);
                 }
             }
         }
@@ -5270,16 +5572,16 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("OpenEnvironmentModel", "FK__T_WQX_BIO__ORG_I__1FCDBCEB", "T_WQX_ORGANIZATION")]
+        [EdmRelationshipNavigationPropertyAttribute("OpenEnvironmentModel", "FK__T_WQX_BIO__ORG_I__34C8D9D1", "T_WQX_ORGANIZATION")]
         public T_WQX_ORGANIZATION T_WQX_ORGANIZATION
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<T_WQX_ORGANIZATION>("OpenEnvironmentModel.FK__T_WQX_BIO__ORG_I__1FCDBCEB", "T_WQX_ORGANIZATION").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<T_WQX_ORGANIZATION>("OpenEnvironmentModel.FK__T_WQX_BIO__ORG_I__34C8D9D1", "T_WQX_ORGANIZATION").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<T_WQX_ORGANIZATION>("OpenEnvironmentModel.FK__T_WQX_BIO__ORG_I__1FCDBCEB", "T_WQX_ORGANIZATION").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<T_WQX_ORGANIZATION>("OpenEnvironmentModel.FK__T_WQX_BIO__ORG_I__34C8D9D1", "T_WQX_ORGANIZATION").Value = value;
             }
         }
         /// <summary>
@@ -5291,13 +5593,13 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<T_WQX_ORGANIZATION>("OpenEnvironmentModel.FK__T_WQX_BIO__ORG_I__1FCDBCEB", "T_WQX_ORGANIZATION");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<T_WQX_ORGANIZATION>("OpenEnvironmentModel.FK__T_WQX_BIO__ORG_I__34C8D9D1", "T_WQX_ORGANIZATION");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<T_WQX_ORGANIZATION>("OpenEnvironmentModel.FK__T_WQX_BIO__ORG_I__1FCDBCEB", "T_WQX_ORGANIZATION", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<T_WQX_ORGANIZATION>("OpenEnvironmentModel.FK__T_WQX_BIO__ORG_I__34C8D9D1", "T_WQX_ORGANIZATION", value);
                 }
             }
         }
@@ -5569,16 +5871,16 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("OpenEnvironmentModel", "FK__T_WQX_IMP__ORG_I__2F10007B", "T_WQX_ORGANIZATION")]
+        [EdmRelationshipNavigationPropertyAttribute("OpenEnvironmentModel", "FK__T_WQX_IMP__ORG_I__4CA06362", "T_WQX_ORGANIZATION")]
         public T_WQX_ORGANIZATION T_WQX_ORGANIZATION
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<T_WQX_ORGANIZATION>("OpenEnvironmentModel.FK__T_WQX_IMP__ORG_I__2F10007B", "T_WQX_ORGANIZATION").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<T_WQX_ORGANIZATION>("OpenEnvironmentModel.FK__T_WQX_IMP__ORG_I__4CA06362", "T_WQX_ORGANIZATION").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<T_WQX_ORGANIZATION>("OpenEnvironmentModel.FK__T_WQX_IMP__ORG_I__2F10007B", "T_WQX_ORGANIZATION").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<T_WQX_ORGANIZATION>("OpenEnvironmentModel.FK__T_WQX_IMP__ORG_I__4CA06362", "T_WQX_ORGANIZATION").Value = value;
             }
         }
         /// <summary>
@@ -5590,13 +5892,2824 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<T_WQX_ORGANIZATION>("OpenEnvironmentModel.FK__T_WQX_IMP__ORG_I__2F10007B", "T_WQX_ORGANIZATION");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<T_WQX_ORGANIZATION>("OpenEnvironmentModel.FK__T_WQX_IMP__ORG_I__4CA06362", "T_WQX_ORGANIZATION");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<T_WQX_ORGANIZATION>("OpenEnvironmentModel.FK__T_WQX_IMP__ORG_I__2F10007B", "T_WQX_ORGANIZATION", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<T_WQX_ORGANIZATION>("OpenEnvironmentModel.FK__T_WQX_IMP__ORG_I__4CA06362", "T_WQX_ORGANIZATION", value);
+                }
+            }
+        }
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="OpenEnvironmentModel", Name="T_WQX_IMPORT_TEMP_MONLOC")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class T_WQX_IMPORT_TEMP_MONLOC : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new T_WQX_IMPORT_TEMP_MONLOC object.
+        /// </summary>
+        /// <param name="tEMP_MONLOC_IDX">Initial value of the TEMP_MONLOC_IDX property.</param>
+        /// <param name="uSER_ID">Initial value of the USER_ID property.</param>
+        /// <param name="lATITUDE_MSR">Initial value of the LATITUDE_MSR property.</param>
+        /// <param name="lONGITUDE_MSR">Initial value of the LONGITUDE_MSR property.</param>
+        public static T_WQX_IMPORT_TEMP_MONLOC CreateT_WQX_IMPORT_TEMP_MONLOC(global::System.Int32 tEMP_MONLOC_IDX, global::System.String uSER_ID, global::System.String lATITUDE_MSR, global::System.String lONGITUDE_MSR)
+        {
+            T_WQX_IMPORT_TEMP_MONLOC t_WQX_IMPORT_TEMP_MONLOC = new T_WQX_IMPORT_TEMP_MONLOC();
+            t_WQX_IMPORT_TEMP_MONLOC.TEMP_MONLOC_IDX = tEMP_MONLOC_IDX;
+            t_WQX_IMPORT_TEMP_MONLOC.USER_ID = uSER_ID;
+            t_WQX_IMPORT_TEMP_MONLOC.LATITUDE_MSR = lATITUDE_MSR;
+            t_WQX_IMPORT_TEMP_MONLOC.LONGITUDE_MSR = lONGITUDE_MSR;
+            return t_WQX_IMPORT_TEMP_MONLOC;
+        }
+
+        #endregion
+
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 TEMP_MONLOC_IDX
+        {
+            get
+            {
+                return _TEMP_MONLOC_IDX;
+            }
+            set
+            {
+                if (_TEMP_MONLOC_IDX != value)
+                {
+                    OnTEMP_MONLOC_IDXChanging(value);
+                    ReportPropertyChanging("TEMP_MONLOC_IDX");
+                    _TEMP_MONLOC_IDX = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("TEMP_MONLOC_IDX");
+                    OnTEMP_MONLOC_IDXChanged();
+                }
+            }
+        }
+        private global::System.Int32 _TEMP_MONLOC_IDX;
+        partial void OnTEMP_MONLOC_IDXChanging(global::System.Int32 value);
+        partial void OnTEMP_MONLOC_IDXChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String USER_ID
+        {
+            get
+            {
+                return _USER_ID;
+            }
+            set
+            {
+                OnUSER_IDChanging(value);
+                ReportPropertyChanging("USER_ID");
+                _USER_ID = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("USER_ID");
+                OnUSER_IDChanged();
+            }
+        }
+        private global::System.String _USER_ID;
+        partial void OnUSER_IDChanging(global::System.String value);
+        partial void OnUSER_IDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> MONLOC_IDX
+        {
+            get
+            {
+                return _MONLOC_IDX;
+            }
+            set
+            {
+                OnMONLOC_IDXChanging(value);
+                ReportPropertyChanging("MONLOC_IDX");
+                _MONLOC_IDX = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("MONLOC_IDX");
+                OnMONLOC_IDXChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _MONLOC_IDX;
+        partial void OnMONLOC_IDXChanging(Nullable<global::System.Int32> value);
+        partial void OnMONLOC_IDXChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String ORG_ID
+        {
+            get
+            {
+                return _ORG_ID;
+            }
+            set
+            {
+                OnORG_IDChanging(value);
+                ReportPropertyChanging("ORG_ID");
+                _ORG_ID = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("ORG_ID");
+                OnORG_IDChanged();
+            }
+        }
+        private global::System.String _ORG_ID;
+        partial void OnORG_IDChanging(global::System.String value);
+        partial void OnORG_IDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String MONLOC_ID
+        {
+            get
+            {
+                return _MONLOC_ID;
+            }
+            set
+            {
+                OnMONLOC_IDChanging(value);
+                ReportPropertyChanging("MONLOC_ID");
+                _MONLOC_ID = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("MONLOC_ID");
+                OnMONLOC_IDChanged();
+            }
+        }
+        private global::System.String _MONLOC_ID;
+        partial void OnMONLOC_IDChanging(global::System.String value);
+        partial void OnMONLOC_IDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String MONLOC_NAME
+        {
+            get
+            {
+                return _MONLOC_NAME;
+            }
+            set
+            {
+                OnMONLOC_NAMEChanging(value);
+                ReportPropertyChanging("MONLOC_NAME");
+                _MONLOC_NAME = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("MONLOC_NAME");
+                OnMONLOC_NAMEChanged();
+            }
+        }
+        private global::System.String _MONLOC_NAME;
+        partial void OnMONLOC_NAMEChanging(global::System.String value);
+        partial void OnMONLOC_NAMEChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String MONLOC_TYPE
+        {
+            get
+            {
+                return _MONLOC_TYPE;
+            }
+            set
+            {
+                OnMONLOC_TYPEChanging(value);
+                ReportPropertyChanging("MONLOC_TYPE");
+                _MONLOC_TYPE = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("MONLOC_TYPE");
+                OnMONLOC_TYPEChanged();
+            }
+        }
+        private global::System.String _MONLOC_TYPE;
+        partial void OnMONLOC_TYPEChanging(global::System.String value);
+        partial void OnMONLOC_TYPEChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String MONLOC_DESC
+        {
+            get
+            {
+                return _MONLOC_DESC;
+            }
+            set
+            {
+                OnMONLOC_DESCChanging(value);
+                ReportPropertyChanging("MONLOC_DESC");
+                _MONLOC_DESC = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("MONLOC_DESC");
+                OnMONLOC_DESCChanged();
+            }
+        }
+        private global::System.String _MONLOC_DESC;
+        partial void OnMONLOC_DESCChanging(global::System.String value);
+        partial void OnMONLOC_DESCChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String HUC_EIGHT
+        {
+            get
+            {
+                return _HUC_EIGHT;
+            }
+            set
+            {
+                OnHUC_EIGHTChanging(value);
+                ReportPropertyChanging("HUC_EIGHT");
+                _HUC_EIGHT = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("HUC_EIGHT");
+                OnHUC_EIGHTChanged();
+            }
+        }
+        private global::System.String _HUC_EIGHT;
+        partial void OnHUC_EIGHTChanging(global::System.String value);
+        partial void OnHUC_EIGHTChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String HUC_TWELVE
+        {
+            get
+            {
+                return _HUC_TWELVE;
+            }
+            set
+            {
+                OnHUC_TWELVEChanging(value);
+                ReportPropertyChanging("HUC_TWELVE");
+                _HUC_TWELVE = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("HUC_TWELVE");
+                OnHUC_TWELVEChanged();
+            }
+        }
+        private global::System.String _HUC_TWELVE;
+        partial void OnHUC_TWELVEChanging(global::System.String value);
+        partial void OnHUC_TWELVEChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String TRIBAL_LAND_IND
+        {
+            get
+            {
+                return _TRIBAL_LAND_IND;
+            }
+            set
+            {
+                OnTRIBAL_LAND_INDChanging(value);
+                ReportPropertyChanging("TRIBAL_LAND_IND");
+                _TRIBAL_LAND_IND = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("TRIBAL_LAND_IND");
+                OnTRIBAL_LAND_INDChanged();
+            }
+        }
+        private global::System.String _TRIBAL_LAND_IND;
+        partial void OnTRIBAL_LAND_INDChanging(global::System.String value);
+        partial void OnTRIBAL_LAND_INDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String TRIBAL_LAND_NAME
+        {
+            get
+            {
+                return _TRIBAL_LAND_NAME;
+            }
+            set
+            {
+                OnTRIBAL_LAND_NAMEChanging(value);
+                ReportPropertyChanging("TRIBAL_LAND_NAME");
+                _TRIBAL_LAND_NAME = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("TRIBAL_LAND_NAME");
+                OnTRIBAL_LAND_NAMEChanged();
+            }
+        }
+        private global::System.String _TRIBAL_LAND_NAME;
+        partial void OnTRIBAL_LAND_NAMEChanging(global::System.String value);
+        partial void OnTRIBAL_LAND_NAMEChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String LATITUDE_MSR
+        {
+            get
+            {
+                return _LATITUDE_MSR;
+            }
+            set
+            {
+                OnLATITUDE_MSRChanging(value);
+                ReportPropertyChanging("LATITUDE_MSR");
+                _LATITUDE_MSR = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("LATITUDE_MSR");
+                OnLATITUDE_MSRChanged();
+            }
+        }
+        private global::System.String _LATITUDE_MSR;
+        partial void OnLATITUDE_MSRChanging(global::System.String value);
+        partial void OnLATITUDE_MSRChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String LONGITUDE_MSR
+        {
+            get
+            {
+                return _LONGITUDE_MSR;
+            }
+            set
+            {
+                OnLONGITUDE_MSRChanging(value);
+                ReportPropertyChanging("LONGITUDE_MSR");
+                _LONGITUDE_MSR = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("LONGITUDE_MSR");
+                OnLONGITUDE_MSRChanged();
+            }
+        }
+        private global::System.String _LONGITUDE_MSR;
+        partial void OnLONGITUDE_MSRChanging(global::System.String value);
+        partial void OnLONGITUDE_MSRChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> SOURCE_MAP_SCALE
+        {
+            get
+            {
+                return _SOURCE_MAP_SCALE;
+            }
+            set
+            {
+                OnSOURCE_MAP_SCALEChanging(value);
+                ReportPropertyChanging("SOURCE_MAP_SCALE");
+                _SOURCE_MAP_SCALE = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("SOURCE_MAP_SCALE");
+                OnSOURCE_MAP_SCALEChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _SOURCE_MAP_SCALE;
+        partial void OnSOURCE_MAP_SCALEChanging(Nullable<global::System.Int32> value);
+        partial void OnSOURCE_MAP_SCALEChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String HORIZ_ACCURACY
+        {
+            get
+            {
+                return _HORIZ_ACCURACY;
+            }
+            set
+            {
+                OnHORIZ_ACCURACYChanging(value);
+                ReportPropertyChanging("HORIZ_ACCURACY");
+                _HORIZ_ACCURACY = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("HORIZ_ACCURACY");
+                OnHORIZ_ACCURACYChanged();
+            }
+        }
+        private global::System.String _HORIZ_ACCURACY;
+        partial void OnHORIZ_ACCURACYChanging(global::System.String value);
+        partial void OnHORIZ_ACCURACYChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String HORIZ_ACCURACY_UNIT
+        {
+            get
+            {
+                return _HORIZ_ACCURACY_UNIT;
+            }
+            set
+            {
+                OnHORIZ_ACCURACY_UNITChanging(value);
+                ReportPropertyChanging("HORIZ_ACCURACY_UNIT");
+                _HORIZ_ACCURACY_UNIT = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("HORIZ_ACCURACY_UNIT");
+                OnHORIZ_ACCURACY_UNITChanged();
+            }
+        }
+        private global::System.String _HORIZ_ACCURACY_UNIT;
+        partial void OnHORIZ_ACCURACY_UNITChanging(global::System.String value);
+        partial void OnHORIZ_ACCURACY_UNITChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String HORIZ_COLL_METHOD
+        {
+            get
+            {
+                return _HORIZ_COLL_METHOD;
+            }
+            set
+            {
+                OnHORIZ_COLL_METHODChanging(value);
+                ReportPropertyChanging("HORIZ_COLL_METHOD");
+                _HORIZ_COLL_METHOD = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("HORIZ_COLL_METHOD");
+                OnHORIZ_COLL_METHODChanged();
+            }
+        }
+        private global::System.String _HORIZ_COLL_METHOD;
+        partial void OnHORIZ_COLL_METHODChanging(global::System.String value);
+        partial void OnHORIZ_COLL_METHODChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String HORIZ_REF_DATUM
+        {
+            get
+            {
+                return _HORIZ_REF_DATUM;
+            }
+            set
+            {
+                OnHORIZ_REF_DATUMChanging(value);
+                ReportPropertyChanging("HORIZ_REF_DATUM");
+                _HORIZ_REF_DATUM = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("HORIZ_REF_DATUM");
+                OnHORIZ_REF_DATUMChanged();
+            }
+        }
+        private global::System.String _HORIZ_REF_DATUM;
+        partial void OnHORIZ_REF_DATUMChanging(global::System.String value);
+        partial void OnHORIZ_REF_DATUMChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String VERT_MEASURE
+        {
+            get
+            {
+                return _VERT_MEASURE;
+            }
+            set
+            {
+                OnVERT_MEASUREChanging(value);
+                ReportPropertyChanging("VERT_MEASURE");
+                _VERT_MEASURE = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("VERT_MEASURE");
+                OnVERT_MEASUREChanged();
+            }
+        }
+        private global::System.String _VERT_MEASURE;
+        partial void OnVERT_MEASUREChanging(global::System.String value);
+        partial void OnVERT_MEASUREChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String VERT_MEASURE_UNIT
+        {
+            get
+            {
+                return _VERT_MEASURE_UNIT;
+            }
+            set
+            {
+                OnVERT_MEASURE_UNITChanging(value);
+                ReportPropertyChanging("VERT_MEASURE_UNIT");
+                _VERT_MEASURE_UNIT = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("VERT_MEASURE_UNIT");
+                OnVERT_MEASURE_UNITChanged();
+            }
+        }
+        private global::System.String _VERT_MEASURE_UNIT;
+        partial void OnVERT_MEASURE_UNITChanging(global::System.String value);
+        partial void OnVERT_MEASURE_UNITChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String VERT_COLL_METHOD
+        {
+            get
+            {
+                return _VERT_COLL_METHOD;
+            }
+            set
+            {
+                OnVERT_COLL_METHODChanging(value);
+                ReportPropertyChanging("VERT_COLL_METHOD");
+                _VERT_COLL_METHOD = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("VERT_COLL_METHOD");
+                OnVERT_COLL_METHODChanged();
+            }
+        }
+        private global::System.String _VERT_COLL_METHOD;
+        partial void OnVERT_COLL_METHODChanging(global::System.String value);
+        partial void OnVERT_COLL_METHODChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String VERT_REF_DATUM
+        {
+            get
+            {
+                return _VERT_REF_DATUM;
+            }
+            set
+            {
+                OnVERT_REF_DATUMChanging(value);
+                ReportPropertyChanging("VERT_REF_DATUM");
+                _VERT_REF_DATUM = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("VERT_REF_DATUM");
+                OnVERT_REF_DATUMChanged();
+            }
+        }
+        private global::System.String _VERT_REF_DATUM;
+        partial void OnVERT_REF_DATUMChanging(global::System.String value);
+        partial void OnVERT_REF_DATUMChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String COUNTRY_CODE
+        {
+            get
+            {
+                return _COUNTRY_CODE;
+            }
+            set
+            {
+                OnCOUNTRY_CODEChanging(value);
+                ReportPropertyChanging("COUNTRY_CODE");
+                _COUNTRY_CODE = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("COUNTRY_CODE");
+                OnCOUNTRY_CODEChanged();
+            }
+        }
+        private global::System.String _COUNTRY_CODE;
+        partial void OnCOUNTRY_CODEChanging(global::System.String value);
+        partial void OnCOUNTRY_CODEChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String STATE_CODE
+        {
+            get
+            {
+                return _STATE_CODE;
+            }
+            set
+            {
+                OnSTATE_CODEChanging(value);
+                ReportPropertyChanging("STATE_CODE");
+                _STATE_CODE = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("STATE_CODE");
+                OnSTATE_CODEChanged();
+            }
+        }
+        private global::System.String _STATE_CODE;
+        partial void OnSTATE_CODEChanging(global::System.String value);
+        partial void OnSTATE_CODEChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String COUNTY_CODE
+        {
+            get
+            {
+                return _COUNTY_CODE;
+            }
+            set
+            {
+                OnCOUNTY_CODEChanging(value);
+                ReportPropertyChanging("COUNTY_CODE");
+                _COUNTY_CODE = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("COUNTY_CODE");
+                OnCOUNTY_CODEChanged();
+            }
+        }
+        private global::System.String _COUNTY_CODE;
+        partial void OnCOUNTY_CODEChanging(global::System.String value);
+        partial void OnCOUNTY_CODEChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String WELL_TYPE
+        {
+            get
+            {
+                return _WELL_TYPE;
+            }
+            set
+            {
+                OnWELL_TYPEChanging(value);
+                ReportPropertyChanging("WELL_TYPE");
+                _WELL_TYPE = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("WELL_TYPE");
+                OnWELL_TYPEChanged();
+            }
+        }
+        private global::System.String _WELL_TYPE;
+        partial void OnWELL_TYPEChanging(global::System.String value);
+        partial void OnWELL_TYPEChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String AQUIFER_NAME
+        {
+            get
+            {
+                return _AQUIFER_NAME;
+            }
+            set
+            {
+                OnAQUIFER_NAMEChanging(value);
+                ReportPropertyChanging("AQUIFER_NAME");
+                _AQUIFER_NAME = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("AQUIFER_NAME");
+                OnAQUIFER_NAMEChanged();
+            }
+        }
+        private global::System.String _AQUIFER_NAME;
+        partial void OnAQUIFER_NAMEChanging(global::System.String value);
+        partial void OnAQUIFER_NAMEChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String FORMATION_TYPE
+        {
+            get
+            {
+                return _FORMATION_TYPE;
+            }
+            set
+            {
+                OnFORMATION_TYPEChanging(value);
+                ReportPropertyChanging("FORMATION_TYPE");
+                _FORMATION_TYPE = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("FORMATION_TYPE");
+                OnFORMATION_TYPEChanged();
+            }
+        }
+        private global::System.String _FORMATION_TYPE;
+        partial void OnFORMATION_TYPEChanging(global::System.String value);
+        partial void OnFORMATION_TYPEChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String WELLHOLE_DEPTH_MSR
+        {
+            get
+            {
+                return _WELLHOLE_DEPTH_MSR;
+            }
+            set
+            {
+                OnWELLHOLE_DEPTH_MSRChanging(value);
+                ReportPropertyChanging("WELLHOLE_DEPTH_MSR");
+                _WELLHOLE_DEPTH_MSR = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("WELLHOLE_DEPTH_MSR");
+                OnWELLHOLE_DEPTH_MSRChanged();
+            }
+        }
+        private global::System.String _WELLHOLE_DEPTH_MSR;
+        partial void OnWELLHOLE_DEPTH_MSRChanging(global::System.String value);
+        partial void OnWELLHOLE_DEPTH_MSRChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String WELLHOLE_DEPTH_MSR_UNIT
+        {
+            get
+            {
+                return _WELLHOLE_DEPTH_MSR_UNIT;
+            }
+            set
+            {
+                OnWELLHOLE_DEPTH_MSR_UNITChanging(value);
+                ReportPropertyChanging("WELLHOLE_DEPTH_MSR_UNIT");
+                _WELLHOLE_DEPTH_MSR_UNIT = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("WELLHOLE_DEPTH_MSR_UNIT");
+                OnWELLHOLE_DEPTH_MSR_UNITChanged();
+            }
+        }
+        private global::System.String _WELLHOLE_DEPTH_MSR_UNIT;
+        partial void OnWELLHOLE_DEPTH_MSR_UNITChanging(global::System.String value);
+        partial void OnWELLHOLE_DEPTH_MSR_UNITChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String IMPORT_STATUS_CD
+        {
+            get
+            {
+                return _IMPORT_STATUS_CD;
+            }
+            set
+            {
+                OnIMPORT_STATUS_CDChanging(value);
+                ReportPropertyChanging("IMPORT_STATUS_CD");
+                _IMPORT_STATUS_CD = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("IMPORT_STATUS_CD");
+                OnIMPORT_STATUS_CDChanged();
+            }
+        }
+        private global::System.String _IMPORT_STATUS_CD;
+        partial void OnIMPORT_STATUS_CDChanging(global::System.String value);
+        partial void OnIMPORT_STATUS_CDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String IMPORT_STATUS_DESC
+        {
+            get
+            {
+                return _IMPORT_STATUS_DESC;
+            }
+            set
+            {
+                OnIMPORT_STATUS_DESCChanging(value);
+                ReportPropertyChanging("IMPORT_STATUS_DESC");
+                _IMPORT_STATUS_DESC = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("IMPORT_STATUS_DESC");
+                OnIMPORT_STATUS_DESCChanged();
+            }
+        }
+        private global::System.String _IMPORT_STATUS_DESC;
+        partial void OnIMPORT_STATUS_DESCChanging(global::System.String value);
+        partial void OnIMPORT_STATUS_DESCChanged();
+
+        #endregion
+
+    
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="OpenEnvironmentModel", Name="T_WQX_IMPORT_TEMP_RESULT")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class T_WQX_IMPORT_TEMP_RESULT : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new T_WQX_IMPORT_TEMP_RESULT object.
+        /// </summary>
+        /// <param name="tEMP_RESULT_IDX">Initial value of the TEMP_RESULT_IDX property.</param>
+        /// <param name="tEMP_SAMPLE_IDX">Initial value of the TEMP_SAMPLE_IDX property.</param>
+        public static T_WQX_IMPORT_TEMP_RESULT CreateT_WQX_IMPORT_TEMP_RESULT(global::System.Int32 tEMP_RESULT_IDX, global::System.Int32 tEMP_SAMPLE_IDX)
+        {
+            T_WQX_IMPORT_TEMP_RESULT t_WQX_IMPORT_TEMP_RESULT = new T_WQX_IMPORT_TEMP_RESULT();
+            t_WQX_IMPORT_TEMP_RESULT.TEMP_RESULT_IDX = tEMP_RESULT_IDX;
+            t_WQX_IMPORT_TEMP_RESULT.TEMP_SAMPLE_IDX = tEMP_SAMPLE_IDX;
+            return t_WQX_IMPORT_TEMP_RESULT;
+        }
+
+        #endregion
+
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 TEMP_RESULT_IDX
+        {
+            get
+            {
+                return _TEMP_RESULT_IDX;
+            }
+            set
+            {
+                if (_TEMP_RESULT_IDX != value)
+                {
+                    OnTEMP_RESULT_IDXChanging(value);
+                    ReportPropertyChanging("TEMP_RESULT_IDX");
+                    _TEMP_RESULT_IDX = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("TEMP_RESULT_IDX");
+                    OnTEMP_RESULT_IDXChanged();
+                }
+            }
+        }
+        private global::System.Int32 _TEMP_RESULT_IDX;
+        partial void OnTEMP_RESULT_IDXChanging(global::System.Int32 value);
+        partial void OnTEMP_RESULT_IDXChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 TEMP_SAMPLE_IDX
+        {
+            get
+            {
+                return _TEMP_SAMPLE_IDX;
+            }
+            set
+            {
+                OnTEMP_SAMPLE_IDXChanging(value);
+                ReportPropertyChanging("TEMP_SAMPLE_IDX");
+                _TEMP_SAMPLE_IDX = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("TEMP_SAMPLE_IDX");
+                OnTEMP_SAMPLE_IDXChanged();
+            }
+        }
+        private global::System.Int32 _TEMP_SAMPLE_IDX;
+        partial void OnTEMP_SAMPLE_IDXChanging(global::System.Int32 value);
+        partial void OnTEMP_SAMPLE_IDXChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> RESULT_IDX
+        {
+            get
+            {
+                return _RESULT_IDX;
+            }
+            set
+            {
+                OnRESULT_IDXChanging(value);
+                ReportPropertyChanging("RESULT_IDX");
+                _RESULT_IDX = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("RESULT_IDX");
+                OnRESULT_IDXChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _RESULT_IDX;
+        partial void OnRESULT_IDXChanging(Nullable<global::System.Int32> value);
+        partial void OnRESULT_IDXChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String DATA_LOGGER_LINE
+        {
+            get
+            {
+                return _DATA_LOGGER_LINE;
+            }
+            set
+            {
+                OnDATA_LOGGER_LINEChanging(value);
+                ReportPropertyChanging("DATA_LOGGER_LINE");
+                _DATA_LOGGER_LINE = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("DATA_LOGGER_LINE");
+                OnDATA_LOGGER_LINEChanged();
+            }
+        }
+        private global::System.String _DATA_LOGGER_LINE;
+        partial void OnDATA_LOGGER_LINEChanging(global::System.String value);
+        partial void OnDATA_LOGGER_LINEChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String RESULT_DETECT_CONDITION
+        {
+            get
+            {
+                return _RESULT_DETECT_CONDITION;
+            }
+            set
+            {
+                OnRESULT_DETECT_CONDITIONChanging(value);
+                ReportPropertyChanging("RESULT_DETECT_CONDITION");
+                _RESULT_DETECT_CONDITION = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("RESULT_DETECT_CONDITION");
+                OnRESULT_DETECT_CONDITIONChanged();
+            }
+        }
+        private global::System.String _RESULT_DETECT_CONDITION;
+        partial void OnRESULT_DETECT_CONDITIONChanging(global::System.String value);
+        partial void OnRESULT_DETECT_CONDITIONChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String CHAR_NAME
+        {
+            get
+            {
+                return _CHAR_NAME;
+            }
+            set
+            {
+                OnCHAR_NAMEChanging(value);
+                ReportPropertyChanging("CHAR_NAME");
+                _CHAR_NAME = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("CHAR_NAME");
+                OnCHAR_NAMEChanged();
+            }
+        }
+        private global::System.String _CHAR_NAME;
+        partial void OnCHAR_NAMEChanging(global::System.String value);
+        partial void OnCHAR_NAMEChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String METHOD_SPECIATION_NAME
+        {
+            get
+            {
+                return _METHOD_SPECIATION_NAME;
+            }
+            set
+            {
+                OnMETHOD_SPECIATION_NAMEChanging(value);
+                ReportPropertyChanging("METHOD_SPECIATION_NAME");
+                _METHOD_SPECIATION_NAME = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("METHOD_SPECIATION_NAME");
+                OnMETHOD_SPECIATION_NAMEChanged();
+            }
+        }
+        private global::System.String _METHOD_SPECIATION_NAME;
+        partial void OnMETHOD_SPECIATION_NAMEChanging(global::System.String value);
+        partial void OnMETHOD_SPECIATION_NAMEChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String RESULT_SAMP_FRACTION
+        {
+            get
+            {
+                return _RESULT_SAMP_FRACTION;
+            }
+            set
+            {
+                OnRESULT_SAMP_FRACTIONChanging(value);
+                ReportPropertyChanging("RESULT_SAMP_FRACTION");
+                _RESULT_SAMP_FRACTION = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("RESULT_SAMP_FRACTION");
+                OnRESULT_SAMP_FRACTIONChanged();
+            }
+        }
+        private global::System.String _RESULT_SAMP_FRACTION;
+        partial void OnRESULT_SAMP_FRACTIONChanging(global::System.String value);
+        partial void OnRESULT_SAMP_FRACTIONChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String RESULT_MSR
+        {
+            get
+            {
+                return _RESULT_MSR;
+            }
+            set
+            {
+                OnRESULT_MSRChanging(value);
+                ReportPropertyChanging("RESULT_MSR");
+                _RESULT_MSR = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("RESULT_MSR");
+                OnRESULT_MSRChanged();
+            }
+        }
+        private global::System.String _RESULT_MSR;
+        partial void OnRESULT_MSRChanging(global::System.String value);
+        partial void OnRESULT_MSRChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String RESULT_MSR_UNIT
+        {
+            get
+            {
+                return _RESULT_MSR_UNIT;
+            }
+            set
+            {
+                OnRESULT_MSR_UNITChanging(value);
+                ReportPropertyChanging("RESULT_MSR_UNIT");
+                _RESULT_MSR_UNIT = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("RESULT_MSR_UNIT");
+                OnRESULT_MSR_UNITChanged();
+            }
+        }
+        private global::System.String _RESULT_MSR_UNIT;
+        partial void OnRESULT_MSR_UNITChanging(global::System.String value);
+        partial void OnRESULT_MSR_UNITChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String RESULT_MSR_QUAL
+        {
+            get
+            {
+                return _RESULT_MSR_QUAL;
+            }
+            set
+            {
+                OnRESULT_MSR_QUALChanging(value);
+                ReportPropertyChanging("RESULT_MSR_QUAL");
+                _RESULT_MSR_QUAL = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("RESULT_MSR_QUAL");
+                OnRESULT_MSR_QUALChanged();
+            }
+        }
+        private global::System.String _RESULT_MSR_QUAL;
+        partial void OnRESULT_MSR_QUALChanging(global::System.String value);
+        partial void OnRESULT_MSR_QUALChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String RESULT_STATUS
+        {
+            get
+            {
+                return _RESULT_STATUS;
+            }
+            set
+            {
+                OnRESULT_STATUSChanging(value);
+                ReportPropertyChanging("RESULT_STATUS");
+                _RESULT_STATUS = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("RESULT_STATUS");
+                OnRESULT_STATUSChanged();
+            }
+        }
+        private global::System.String _RESULT_STATUS;
+        partial void OnRESULT_STATUSChanging(global::System.String value);
+        partial void OnRESULT_STATUSChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String STATISTIC_BASE_CODE
+        {
+            get
+            {
+                return _STATISTIC_BASE_CODE;
+            }
+            set
+            {
+                OnSTATISTIC_BASE_CODEChanging(value);
+                ReportPropertyChanging("STATISTIC_BASE_CODE");
+                _STATISTIC_BASE_CODE = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("STATISTIC_BASE_CODE");
+                OnSTATISTIC_BASE_CODEChanged();
+            }
+        }
+        private global::System.String _STATISTIC_BASE_CODE;
+        partial void OnSTATISTIC_BASE_CODEChanging(global::System.String value);
+        partial void OnSTATISTIC_BASE_CODEChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String RESULT_VALUE_TYPE
+        {
+            get
+            {
+                return _RESULT_VALUE_TYPE;
+            }
+            set
+            {
+                OnRESULT_VALUE_TYPEChanging(value);
+                ReportPropertyChanging("RESULT_VALUE_TYPE");
+                _RESULT_VALUE_TYPE = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("RESULT_VALUE_TYPE");
+                OnRESULT_VALUE_TYPEChanged();
+            }
+        }
+        private global::System.String _RESULT_VALUE_TYPE;
+        partial void OnRESULT_VALUE_TYPEChanging(global::System.String value);
+        partial void OnRESULT_VALUE_TYPEChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String WEIGHT_BASIS
+        {
+            get
+            {
+                return _WEIGHT_BASIS;
+            }
+            set
+            {
+                OnWEIGHT_BASISChanging(value);
+                ReportPropertyChanging("WEIGHT_BASIS");
+                _WEIGHT_BASIS = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("WEIGHT_BASIS");
+                OnWEIGHT_BASISChanged();
+            }
+        }
+        private global::System.String _WEIGHT_BASIS;
+        partial void OnWEIGHT_BASISChanging(global::System.String value);
+        partial void OnWEIGHT_BASISChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String TIME_BASIS
+        {
+            get
+            {
+                return _TIME_BASIS;
+            }
+            set
+            {
+                OnTIME_BASISChanging(value);
+                ReportPropertyChanging("TIME_BASIS");
+                _TIME_BASIS = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("TIME_BASIS");
+                OnTIME_BASISChanged();
+            }
+        }
+        private global::System.String _TIME_BASIS;
+        partial void OnTIME_BASISChanging(global::System.String value);
+        partial void OnTIME_BASISChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String TEMP_BASIS
+        {
+            get
+            {
+                return _TEMP_BASIS;
+            }
+            set
+            {
+                OnTEMP_BASISChanging(value);
+                ReportPropertyChanging("TEMP_BASIS");
+                _TEMP_BASIS = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("TEMP_BASIS");
+                OnTEMP_BASISChanged();
+            }
+        }
+        private global::System.String _TEMP_BASIS;
+        partial void OnTEMP_BASISChanging(global::System.String value);
+        partial void OnTEMP_BASISChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String PARTICLESIZE_BASIS
+        {
+            get
+            {
+                return _PARTICLESIZE_BASIS;
+            }
+            set
+            {
+                OnPARTICLESIZE_BASISChanging(value);
+                ReportPropertyChanging("PARTICLESIZE_BASIS");
+                _PARTICLESIZE_BASIS = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("PARTICLESIZE_BASIS");
+                OnPARTICLESIZE_BASISChanged();
+            }
+        }
+        private global::System.String _PARTICLESIZE_BASIS;
+        partial void OnPARTICLESIZE_BASISChanging(global::System.String value);
+        partial void OnPARTICLESIZE_BASISChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String PRECISION_VALUE
+        {
+            get
+            {
+                return _PRECISION_VALUE;
+            }
+            set
+            {
+                OnPRECISION_VALUEChanging(value);
+                ReportPropertyChanging("PRECISION_VALUE");
+                _PRECISION_VALUE = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("PRECISION_VALUE");
+                OnPRECISION_VALUEChanged();
+            }
+        }
+        private global::System.String _PRECISION_VALUE;
+        partial void OnPRECISION_VALUEChanging(global::System.String value);
+        partial void OnPRECISION_VALUEChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String BIAS_VALUE
+        {
+            get
+            {
+                return _BIAS_VALUE;
+            }
+            set
+            {
+                OnBIAS_VALUEChanging(value);
+                ReportPropertyChanging("BIAS_VALUE");
+                _BIAS_VALUE = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("BIAS_VALUE");
+                OnBIAS_VALUEChanged();
+            }
+        }
+        private global::System.String _BIAS_VALUE;
+        partial void OnBIAS_VALUEChanging(global::System.String value);
+        partial void OnBIAS_VALUEChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String CONFIDENCE_INTERVAL_VALUE
+        {
+            get
+            {
+                return _CONFIDENCE_INTERVAL_VALUE;
+            }
+            set
+            {
+                OnCONFIDENCE_INTERVAL_VALUEChanging(value);
+                ReportPropertyChanging("CONFIDENCE_INTERVAL_VALUE");
+                _CONFIDENCE_INTERVAL_VALUE = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("CONFIDENCE_INTERVAL_VALUE");
+                OnCONFIDENCE_INTERVAL_VALUEChanged();
+            }
+        }
+        private global::System.String _CONFIDENCE_INTERVAL_VALUE;
+        partial void OnCONFIDENCE_INTERVAL_VALUEChanging(global::System.String value);
+        partial void OnCONFIDENCE_INTERVAL_VALUEChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String UPPER_CONFIDENCE_LIMIT
+        {
+            get
+            {
+                return _UPPER_CONFIDENCE_LIMIT;
+            }
+            set
+            {
+                OnUPPER_CONFIDENCE_LIMITChanging(value);
+                ReportPropertyChanging("UPPER_CONFIDENCE_LIMIT");
+                _UPPER_CONFIDENCE_LIMIT = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("UPPER_CONFIDENCE_LIMIT");
+                OnUPPER_CONFIDENCE_LIMITChanged();
+            }
+        }
+        private global::System.String _UPPER_CONFIDENCE_LIMIT;
+        partial void OnUPPER_CONFIDENCE_LIMITChanging(global::System.String value);
+        partial void OnUPPER_CONFIDENCE_LIMITChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String LOWER_CONFIDENCE_LIMIT
+        {
+            get
+            {
+                return _LOWER_CONFIDENCE_LIMIT;
+            }
+            set
+            {
+                OnLOWER_CONFIDENCE_LIMITChanging(value);
+                ReportPropertyChanging("LOWER_CONFIDENCE_LIMIT");
+                _LOWER_CONFIDENCE_LIMIT = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("LOWER_CONFIDENCE_LIMIT");
+                OnLOWER_CONFIDENCE_LIMITChanged();
+            }
+        }
+        private global::System.String _LOWER_CONFIDENCE_LIMIT;
+        partial void OnLOWER_CONFIDENCE_LIMITChanging(global::System.String value);
+        partial void OnLOWER_CONFIDENCE_LIMITChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String RESULT_COMMENT
+        {
+            get
+            {
+                return _RESULT_COMMENT;
+            }
+            set
+            {
+                OnRESULT_COMMENTChanging(value);
+                ReportPropertyChanging("RESULT_COMMENT");
+                _RESULT_COMMENT = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("RESULT_COMMENT");
+                OnRESULT_COMMENTChanged();
+            }
+        }
+        private global::System.String _RESULT_COMMENT;
+        partial void OnRESULT_COMMENTChanging(global::System.String value);
+        partial void OnRESULT_COMMENTChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String DEPTH_HEIGHT_MSR
+        {
+            get
+            {
+                return _DEPTH_HEIGHT_MSR;
+            }
+            set
+            {
+                OnDEPTH_HEIGHT_MSRChanging(value);
+                ReportPropertyChanging("DEPTH_HEIGHT_MSR");
+                _DEPTH_HEIGHT_MSR = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("DEPTH_HEIGHT_MSR");
+                OnDEPTH_HEIGHT_MSRChanged();
+            }
+        }
+        private global::System.String _DEPTH_HEIGHT_MSR;
+        partial void OnDEPTH_HEIGHT_MSRChanging(global::System.String value);
+        partial void OnDEPTH_HEIGHT_MSRChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String DEPTH_HEIGHT_MSR_UNIT
+        {
+            get
+            {
+                return _DEPTH_HEIGHT_MSR_UNIT;
+            }
+            set
+            {
+                OnDEPTH_HEIGHT_MSR_UNITChanging(value);
+                ReportPropertyChanging("DEPTH_HEIGHT_MSR_UNIT");
+                _DEPTH_HEIGHT_MSR_UNIT = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("DEPTH_HEIGHT_MSR_UNIT");
+                OnDEPTH_HEIGHT_MSR_UNITChanged();
+            }
+        }
+        private global::System.String _DEPTH_HEIGHT_MSR_UNIT;
+        partial void OnDEPTH_HEIGHT_MSR_UNITChanging(global::System.String value);
+        partial void OnDEPTH_HEIGHT_MSR_UNITChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String DEPTHALTITUDEREFPOINT
+        {
+            get
+            {
+                return _DEPTHALTITUDEREFPOINT;
+            }
+            set
+            {
+                OnDEPTHALTITUDEREFPOINTChanging(value);
+                ReportPropertyChanging("DEPTHALTITUDEREFPOINT");
+                _DEPTHALTITUDEREFPOINT = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("DEPTHALTITUDEREFPOINT");
+                OnDEPTHALTITUDEREFPOINTChanged();
+            }
+        }
+        private global::System.String _DEPTHALTITUDEREFPOINT;
+        partial void OnDEPTHALTITUDEREFPOINTChanging(global::System.String value);
+        partial void OnDEPTHALTITUDEREFPOINTChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String ANALYTIC_METHOD_ID
+        {
+            get
+            {
+                return _ANALYTIC_METHOD_ID;
+            }
+            set
+            {
+                OnANALYTIC_METHOD_IDChanging(value);
+                ReportPropertyChanging("ANALYTIC_METHOD_ID");
+                _ANALYTIC_METHOD_ID = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("ANALYTIC_METHOD_ID");
+                OnANALYTIC_METHOD_IDChanged();
+            }
+        }
+        private global::System.String _ANALYTIC_METHOD_ID;
+        partial void OnANALYTIC_METHOD_IDChanging(global::System.String value);
+        partial void OnANALYTIC_METHOD_IDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> LAB_IDX
+        {
+            get
+            {
+                return _LAB_IDX;
+            }
+            set
+            {
+                OnLAB_IDXChanging(value);
+                ReportPropertyChanging("LAB_IDX");
+                _LAB_IDX = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("LAB_IDX");
+                OnLAB_IDXChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _LAB_IDX;
+        partial void OnLAB_IDXChanging(Nullable<global::System.Int32> value);
+        partial void OnLAB_IDXChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> LAB_ANALYSIS_START_DT
+        {
+            get
+            {
+                return _LAB_ANALYSIS_START_DT;
+            }
+            set
+            {
+                OnLAB_ANALYSIS_START_DTChanging(value);
+                ReportPropertyChanging("LAB_ANALYSIS_START_DT");
+                _LAB_ANALYSIS_START_DT = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("LAB_ANALYSIS_START_DT");
+                OnLAB_ANALYSIS_START_DTChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _LAB_ANALYSIS_START_DT;
+        partial void OnLAB_ANALYSIS_START_DTChanging(Nullable<global::System.DateTime> value);
+        partial void OnLAB_ANALYSIS_START_DTChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> LAB_ANALYSIS_END_DT
+        {
+            get
+            {
+                return _LAB_ANALYSIS_END_DT;
+            }
+            set
+            {
+                OnLAB_ANALYSIS_END_DTChanging(value);
+                ReportPropertyChanging("LAB_ANALYSIS_END_DT");
+                _LAB_ANALYSIS_END_DT = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("LAB_ANALYSIS_END_DT");
+                OnLAB_ANALYSIS_END_DTChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _LAB_ANALYSIS_END_DT;
+        partial void OnLAB_ANALYSIS_END_DTChanging(Nullable<global::System.DateTime> value);
+        partial void OnLAB_ANALYSIS_END_DTChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String LAB_ANALYSIS_TIMEZONE
+        {
+            get
+            {
+                return _LAB_ANALYSIS_TIMEZONE;
+            }
+            set
+            {
+                OnLAB_ANALYSIS_TIMEZONEChanging(value);
+                ReportPropertyChanging("LAB_ANALYSIS_TIMEZONE");
+                _LAB_ANALYSIS_TIMEZONE = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("LAB_ANALYSIS_TIMEZONE");
+                OnLAB_ANALYSIS_TIMEZONEChanged();
+            }
+        }
+        private global::System.String _LAB_ANALYSIS_TIMEZONE;
+        partial void OnLAB_ANALYSIS_TIMEZONEChanging(global::System.String value);
+        partial void OnLAB_ANALYSIS_TIMEZONEChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String RESULT_LAB_COMMENT_CODE
+        {
+            get
+            {
+                return _RESULT_LAB_COMMENT_CODE;
+            }
+            set
+            {
+                OnRESULT_LAB_COMMENT_CODEChanging(value);
+                ReportPropertyChanging("RESULT_LAB_COMMENT_CODE");
+                _RESULT_LAB_COMMENT_CODE = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("RESULT_LAB_COMMENT_CODE");
+                OnRESULT_LAB_COMMENT_CODEChanged();
+            }
+        }
+        private global::System.String _RESULT_LAB_COMMENT_CODE;
+        partial void OnRESULT_LAB_COMMENT_CODEChanging(global::System.String value);
+        partial void OnRESULT_LAB_COMMENT_CODEChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String DETECTION_LIMIT_TYPE
+        {
+            get
+            {
+                return _DETECTION_LIMIT_TYPE;
+            }
+            set
+            {
+                OnDETECTION_LIMIT_TYPEChanging(value);
+                ReportPropertyChanging("DETECTION_LIMIT_TYPE");
+                _DETECTION_LIMIT_TYPE = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("DETECTION_LIMIT_TYPE");
+                OnDETECTION_LIMIT_TYPEChanged();
+            }
+        }
+        private global::System.String _DETECTION_LIMIT_TYPE;
+        partial void OnDETECTION_LIMIT_TYPEChanging(global::System.String value);
+        partial void OnDETECTION_LIMIT_TYPEChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String DETECTION_LIMIT
+        {
+            get
+            {
+                return _DETECTION_LIMIT;
+            }
+            set
+            {
+                OnDETECTION_LIMITChanging(value);
+                ReportPropertyChanging("DETECTION_LIMIT");
+                _DETECTION_LIMIT = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("DETECTION_LIMIT");
+                OnDETECTION_LIMITChanged();
+            }
+        }
+        private global::System.String _DETECTION_LIMIT;
+        partial void OnDETECTION_LIMITChanging(global::System.String value);
+        partial void OnDETECTION_LIMITChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String IMPORT_STATUS_CD
+        {
+            get
+            {
+                return _IMPORT_STATUS_CD;
+            }
+            set
+            {
+                OnIMPORT_STATUS_CDChanging(value);
+                ReportPropertyChanging("IMPORT_STATUS_CD");
+                _IMPORT_STATUS_CD = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("IMPORT_STATUS_CD");
+                OnIMPORT_STATUS_CDChanged();
+            }
+        }
+        private global::System.String _IMPORT_STATUS_CD;
+        partial void OnIMPORT_STATUS_CDChanging(global::System.String value);
+        partial void OnIMPORT_STATUS_CDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String IMPORT_STATUS_DESC
+        {
+            get
+            {
+                return _IMPORT_STATUS_DESC;
+            }
+            set
+            {
+                OnIMPORT_STATUS_DESCChanging(value);
+                ReportPropertyChanging("IMPORT_STATUS_DESC");
+                _IMPORT_STATUS_DESC = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("IMPORT_STATUS_DESC");
+                OnIMPORT_STATUS_DESCChanged();
+            }
+        }
+        private global::System.String _IMPORT_STATUS_DESC;
+        partial void OnIMPORT_STATUS_DESCChanging(global::System.String value);
+        partial void OnIMPORT_STATUS_DESCChanged();
+
+        #endregion
+
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("OpenEnvironmentModel", "FK__T_WQX_IMP__TEMP___29221CFB", "T_WQX_IMPORT_TEMP_SAMPLE")]
+        public T_WQX_IMPORT_TEMP_SAMPLE T_WQX_IMPORT_TEMP_SAMPLE
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<T_WQX_IMPORT_TEMP_SAMPLE>("OpenEnvironmentModel.FK__T_WQX_IMP__TEMP___29221CFB", "T_WQX_IMPORT_TEMP_SAMPLE").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<T_WQX_IMPORT_TEMP_SAMPLE>("OpenEnvironmentModel.FK__T_WQX_IMP__TEMP___29221CFB", "T_WQX_IMPORT_TEMP_SAMPLE").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<T_WQX_IMPORT_TEMP_SAMPLE> T_WQX_IMPORT_TEMP_SAMPLEReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<T_WQX_IMPORT_TEMP_SAMPLE>("OpenEnvironmentModel.FK__T_WQX_IMP__TEMP___29221CFB", "T_WQX_IMPORT_TEMP_SAMPLE");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<T_WQX_IMPORT_TEMP_SAMPLE>("OpenEnvironmentModel.FK__T_WQX_IMP__TEMP___29221CFB", "T_WQX_IMPORT_TEMP_SAMPLE", value);
+                }
+            }
+        }
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="OpenEnvironmentModel", Name="T_WQX_IMPORT_TEMP_SAMPLE")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class T_WQX_IMPORT_TEMP_SAMPLE : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new T_WQX_IMPORT_TEMP_SAMPLE object.
+        /// </summary>
+        /// <param name="tEMP_SAMPLE_IDX">Initial value of the TEMP_SAMPLE_IDX property.</param>
+        /// <param name="uSER_ID">Initial value of the USER_ID property.</param>
+        /// <param name="aCT_TYPE">Initial value of the ACT_TYPE property.</param>
+        /// <param name="aCT_MEDIA">Initial value of the ACT_MEDIA property.</param>
+        public static T_WQX_IMPORT_TEMP_SAMPLE CreateT_WQX_IMPORT_TEMP_SAMPLE(global::System.Int32 tEMP_SAMPLE_IDX, global::System.String uSER_ID, global::System.String aCT_TYPE, global::System.String aCT_MEDIA)
+        {
+            T_WQX_IMPORT_TEMP_SAMPLE t_WQX_IMPORT_TEMP_SAMPLE = new T_WQX_IMPORT_TEMP_SAMPLE();
+            t_WQX_IMPORT_TEMP_SAMPLE.TEMP_SAMPLE_IDX = tEMP_SAMPLE_IDX;
+            t_WQX_IMPORT_TEMP_SAMPLE.USER_ID = uSER_ID;
+            t_WQX_IMPORT_TEMP_SAMPLE.ACT_TYPE = aCT_TYPE;
+            t_WQX_IMPORT_TEMP_SAMPLE.ACT_MEDIA = aCT_MEDIA;
+            return t_WQX_IMPORT_TEMP_SAMPLE;
+        }
+
+        #endregion
+
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 TEMP_SAMPLE_IDX
+        {
+            get
+            {
+                return _TEMP_SAMPLE_IDX;
+            }
+            set
+            {
+                if (_TEMP_SAMPLE_IDX != value)
+                {
+                    OnTEMP_SAMPLE_IDXChanging(value);
+                    ReportPropertyChanging("TEMP_SAMPLE_IDX");
+                    _TEMP_SAMPLE_IDX = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("TEMP_SAMPLE_IDX");
+                    OnTEMP_SAMPLE_IDXChanged();
+                }
+            }
+        }
+        private global::System.Int32 _TEMP_SAMPLE_IDX;
+        partial void OnTEMP_SAMPLE_IDXChanging(global::System.Int32 value);
+        partial void OnTEMP_SAMPLE_IDXChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String USER_ID
+        {
+            get
+            {
+                return _USER_ID;
+            }
+            set
+            {
+                OnUSER_IDChanging(value);
+                ReportPropertyChanging("USER_ID");
+                _USER_ID = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("USER_ID");
+                OnUSER_IDChanged();
+            }
+        }
+        private global::System.String _USER_ID;
+        partial void OnUSER_IDChanging(global::System.String value);
+        partial void OnUSER_IDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String ORG_ID
+        {
+            get
+            {
+                return _ORG_ID;
+            }
+            set
+            {
+                OnORG_IDChanging(value);
+                ReportPropertyChanging("ORG_ID");
+                _ORG_ID = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("ORG_ID");
+                OnORG_IDChanged();
+            }
+        }
+        private global::System.String _ORG_ID;
+        partial void OnORG_IDChanging(global::System.String value);
+        partial void OnORG_IDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> PROJECT_IDX
+        {
+            get
+            {
+                return _PROJECT_IDX;
+            }
+            set
+            {
+                OnPROJECT_IDXChanging(value);
+                ReportPropertyChanging("PROJECT_IDX");
+                _PROJECT_IDX = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("PROJECT_IDX");
+                OnPROJECT_IDXChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _PROJECT_IDX;
+        partial void OnPROJECT_IDXChanging(Nullable<global::System.Int32> value);
+        partial void OnPROJECT_IDXChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String PROJECT_ID
+        {
+            get
+            {
+                return _PROJECT_ID;
+            }
+            set
+            {
+                OnPROJECT_IDChanging(value);
+                ReportPropertyChanging("PROJECT_ID");
+                _PROJECT_ID = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("PROJECT_ID");
+                OnPROJECT_IDChanged();
+            }
+        }
+        private global::System.String _PROJECT_ID;
+        partial void OnPROJECT_IDChanging(global::System.String value);
+        partial void OnPROJECT_IDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> MONLOC_IDX
+        {
+            get
+            {
+                return _MONLOC_IDX;
+            }
+            set
+            {
+                OnMONLOC_IDXChanging(value);
+                ReportPropertyChanging("MONLOC_IDX");
+                _MONLOC_IDX = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("MONLOC_IDX");
+                OnMONLOC_IDXChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _MONLOC_IDX;
+        partial void OnMONLOC_IDXChanging(Nullable<global::System.Int32> value);
+        partial void OnMONLOC_IDXChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String MONLOC_ID
+        {
+            get
+            {
+                return _MONLOC_ID;
+            }
+            set
+            {
+                OnMONLOC_IDChanging(value);
+                ReportPropertyChanging("MONLOC_ID");
+                _MONLOC_ID = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("MONLOC_ID");
+                OnMONLOC_IDChanged();
+            }
+        }
+        private global::System.String _MONLOC_ID;
+        partial void OnMONLOC_IDChanging(global::System.String value);
+        partial void OnMONLOC_IDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> ACTIVITY_IDX
+        {
+            get
+            {
+                return _ACTIVITY_IDX;
+            }
+            set
+            {
+                OnACTIVITY_IDXChanging(value);
+                ReportPropertyChanging("ACTIVITY_IDX");
+                _ACTIVITY_IDX = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ACTIVITY_IDX");
+                OnACTIVITY_IDXChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _ACTIVITY_IDX;
+        partial void OnACTIVITY_IDXChanging(Nullable<global::System.Int32> value);
+        partial void OnACTIVITY_IDXChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String ACTIVITY_ID
+        {
+            get
+            {
+                return _ACTIVITY_ID;
+            }
+            set
+            {
+                OnACTIVITY_IDChanging(value);
+                ReportPropertyChanging("ACTIVITY_ID");
+                _ACTIVITY_ID = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("ACTIVITY_ID");
+                OnACTIVITY_IDChanged();
+            }
+        }
+        private global::System.String _ACTIVITY_ID;
+        partial void OnACTIVITY_IDChanging(global::System.String value);
+        partial void OnACTIVITY_IDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String ACT_TYPE
+        {
+            get
+            {
+                return _ACT_TYPE;
+            }
+            set
+            {
+                OnACT_TYPEChanging(value);
+                ReportPropertyChanging("ACT_TYPE");
+                _ACT_TYPE = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("ACT_TYPE");
+                OnACT_TYPEChanged();
+            }
+        }
+        private global::System.String _ACT_TYPE;
+        partial void OnACT_TYPEChanging(global::System.String value);
+        partial void OnACT_TYPEChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String ACT_MEDIA
+        {
+            get
+            {
+                return _ACT_MEDIA;
+            }
+            set
+            {
+                OnACT_MEDIAChanging(value);
+                ReportPropertyChanging("ACT_MEDIA");
+                _ACT_MEDIA = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("ACT_MEDIA");
+                OnACT_MEDIAChanged();
+            }
+        }
+        private global::System.String _ACT_MEDIA;
+        partial void OnACT_MEDIAChanging(global::System.String value);
+        partial void OnACT_MEDIAChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String ACT_SUBMEDIA
+        {
+            get
+            {
+                return _ACT_SUBMEDIA;
+            }
+            set
+            {
+                OnACT_SUBMEDIAChanging(value);
+                ReportPropertyChanging("ACT_SUBMEDIA");
+                _ACT_SUBMEDIA = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("ACT_SUBMEDIA");
+                OnACT_SUBMEDIAChanged();
+            }
+        }
+        private global::System.String _ACT_SUBMEDIA;
+        partial void OnACT_SUBMEDIAChanging(global::System.String value);
+        partial void OnACT_SUBMEDIAChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> ACT_START_DT
+        {
+            get
+            {
+                return _ACT_START_DT;
+            }
+            set
+            {
+                OnACT_START_DTChanging(value);
+                ReportPropertyChanging("ACT_START_DT");
+                _ACT_START_DT = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ACT_START_DT");
+                OnACT_START_DTChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _ACT_START_DT;
+        partial void OnACT_START_DTChanging(Nullable<global::System.DateTime> value);
+        partial void OnACT_START_DTChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> ACT_END_DT
+        {
+            get
+            {
+                return _ACT_END_DT;
+            }
+            set
+            {
+                OnACT_END_DTChanging(value);
+                ReportPropertyChanging("ACT_END_DT");
+                _ACT_END_DT = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ACT_END_DT");
+                OnACT_END_DTChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _ACT_END_DT;
+        partial void OnACT_END_DTChanging(Nullable<global::System.DateTime> value);
+        partial void OnACT_END_DTChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String ACT_TIME_ZONE
+        {
+            get
+            {
+                return _ACT_TIME_ZONE;
+            }
+            set
+            {
+                OnACT_TIME_ZONEChanging(value);
+                ReportPropertyChanging("ACT_TIME_ZONE");
+                _ACT_TIME_ZONE = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("ACT_TIME_ZONE");
+                OnACT_TIME_ZONEChanged();
+            }
+        }
+        private global::System.String _ACT_TIME_ZONE;
+        partial void OnACT_TIME_ZONEChanging(global::System.String value);
+        partial void OnACT_TIME_ZONEChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String ACT_COMMENT
+        {
+            get
+            {
+                return _ACT_COMMENT;
+            }
+            set
+            {
+                OnACT_COMMENTChanging(value);
+                ReportPropertyChanging("ACT_COMMENT");
+                _ACT_COMMENT = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("ACT_COMMENT");
+                OnACT_COMMENTChanged();
+            }
+        }
+        private global::System.String _ACT_COMMENT;
+        partial void OnACT_COMMENTChanging(global::System.String value);
+        partial void OnACT_COMMENTChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String IMPORT_STATUS_CD
+        {
+            get
+            {
+                return _IMPORT_STATUS_CD;
+            }
+            set
+            {
+                OnIMPORT_STATUS_CDChanging(value);
+                ReportPropertyChanging("IMPORT_STATUS_CD");
+                _IMPORT_STATUS_CD = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("IMPORT_STATUS_CD");
+                OnIMPORT_STATUS_CDChanged();
+            }
+        }
+        private global::System.String _IMPORT_STATUS_CD;
+        partial void OnIMPORT_STATUS_CDChanging(global::System.String value);
+        partial void OnIMPORT_STATUS_CDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String IMPORT_STATUS_DESC
+        {
+            get
+            {
+                return _IMPORT_STATUS_DESC;
+            }
+            set
+            {
+                OnIMPORT_STATUS_DESCChanging(value);
+                ReportPropertyChanging("IMPORT_STATUS_DESC");
+                _IMPORT_STATUS_DESC = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("IMPORT_STATUS_DESC");
+                OnIMPORT_STATUS_DESCChanged();
+            }
+        }
+        private global::System.String _IMPORT_STATUS_DESC;
+        partial void OnIMPORT_STATUS_DESCChanging(global::System.String value);
+        partial void OnIMPORT_STATUS_DESCChanged();
+
+        #endregion
+
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("OpenEnvironmentModel", "FK__T_WQX_IMP__TEMP___29221CFB", "T_WQX_IMPORT_TEMP_RESULT")]
+        public EntityCollection<T_WQX_IMPORT_TEMP_RESULT> T_WQX_IMPORT_TEMP_RESULT
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<T_WQX_IMPORT_TEMP_RESULT>("OpenEnvironmentModel.FK__T_WQX_IMP__TEMP___29221CFB", "T_WQX_IMPORT_TEMP_RESULT");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<T_WQX_IMPORT_TEMP_RESULT>("OpenEnvironmentModel.FK__T_WQX_IMP__TEMP___29221CFB", "T_WQX_IMPORT_TEMP_RESULT", value);
+                }
+            }
+        }
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="OpenEnvironmentModel", Name="T_WQX_IMPORT_TEMPLATE")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class T_WQX_IMPORT_TEMPLATE : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new T_WQX_IMPORT_TEMPLATE object.
+        /// </summary>
+        /// <param name="tEMPLATE_ID">Initial value of the TEMPLATE_ID property.</param>
+        /// <param name="oRG_ID">Initial value of the ORG_ID property.</param>
+        /// <param name="tYPE_CD">Initial value of the TYPE_CD property.</param>
+        /// <param name="tEMPLATE_NAME">Initial value of the TEMPLATE_NAME property.</param>
+        public static T_WQX_IMPORT_TEMPLATE CreateT_WQX_IMPORT_TEMPLATE(global::System.Int32 tEMPLATE_ID, global::System.String oRG_ID, global::System.String tYPE_CD, global::System.String tEMPLATE_NAME)
+        {
+            T_WQX_IMPORT_TEMPLATE t_WQX_IMPORT_TEMPLATE = new T_WQX_IMPORT_TEMPLATE();
+            t_WQX_IMPORT_TEMPLATE.TEMPLATE_ID = tEMPLATE_ID;
+            t_WQX_IMPORT_TEMPLATE.ORG_ID = oRG_ID;
+            t_WQX_IMPORT_TEMPLATE.TYPE_CD = tYPE_CD;
+            t_WQX_IMPORT_TEMPLATE.TEMPLATE_NAME = tEMPLATE_NAME;
+            return t_WQX_IMPORT_TEMPLATE;
+        }
+
+        #endregion
+
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 TEMPLATE_ID
+        {
+            get
+            {
+                return _TEMPLATE_ID;
+            }
+            set
+            {
+                if (_TEMPLATE_ID != value)
+                {
+                    OnTEMPLATE_IDChanging(value);
+                    ReportPropertyChanging("TEMPLATE_ID");
+                    _TEMPLATE_ID = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("TEMPLATE_ID");
+                    OnTEMPLATE_IDChanged();
+                }
+            }
+        }
+        private global::System.Int32 _TEMPLATE_ID;
+        partial void OnTEMPLATE_IDChanging(global::System.Int32 value);
+        partial void OnTEMPLATE_IDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String ORG_ID
+        {
+            get
+            {
+                return _ORG_ID;
+            }
+            set
+            {
+                OnORG_IDChanging(value);
+                ReportPropertyChanging("ORG_ID");
+                _ORG_ID = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("ORG_ID");
+                OnORG_IDChanged();
+            }
+        }
+        private global::System.String _ORG_ID;
+        partial void OnORG_IDChanging(global::System.String value);
+        partial void OnORG_IDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String TYPE_CD
+        {
+            get
+            {
+                return _TYPE_CD;
+            }
+            set
+            {
+                OnTYPE_CDChanging(value);
+                ReportPropertyChanging("TYPE_CD");
+                _TYPE_CD = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("TYPE_CD");
+                OnTYPE_CDChanged();
+            }
+        }
+        private global::System.String _TYPE_CD;
+        partial void OnTYPE_CDChanging(global::System.String value);
+        partial void OnTYPE_CDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String TEMPLATE_NAME
+        {
+            get
+            {
+                return _TEMPLATE_NAME;
+            }
+            set
+            {
+                OnTEMPLATE_NAMEChanging(value);
+                ReportPropertyChanging("TEMPLATE_NAME");
+                _TEMPLATE_NAME = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("TEMPLATE_NAME");
+                OnTEMPLATE_NAMEChanged();
+            }
+        }
+        private global::System.String _TEMPLATE_NAME;
+        partial void OnTEMPLATE_NAMEChanging(global::System.String value);
+        partial void OnTEMPLATE_NAMEChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> CREATE_DT
+        {
+            get
+            {
+                return _CREATE_DT;
+            }
+            set
+            {
+                OnCREATE_DTChanging(value);
+                ReportPropertyChanging("CREATE_DT");
+                _CREATE_DT = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("CREATE_DT");
+                OnCREATE_DTChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _CREATE_DT;
+        partial void OnCREATE_DTChanging(Nullable<global::System.DateTime> value);
+        partial void OnCREATE_DTChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String CREATE_USERID
+        {
+            get
+            {
+                return _CREATE_USERID;
+            }
+            set
+            {
+                OnCREATE_USERIDChanging(value);
+                ReportPropertyChanging("CREATE_USERID");
+                _CREATE_USERID = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("CREATE_USERID");
+                OnCREATE_USERIDChanged();
+            }
+        }
+        private global::System.String _CREATE_USERID;
+        partial void OnCREATE_USERIDChanging(global::System.String value);
+        partial void OnCREATE_USERIDChanged();
+
+        #endregion
+
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("OpenEnvironmentModel", "FK__T_WQX_IMP__TEMPL__66603565", "T_WQX_IMPORT_TEMPLATE_DTL")]
+        public EntityCollection<T_WQX_IMPORT_TEMPLATE_DTL> T_WQX_IMPORT_TEMPLATE_DTL
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<T_WQX_IMPORT_TEMPLATE_DTL>("OpenEnvironmentModel.FK__T_WQX_IMP__TEMPL__66603565", "T_WQX_IMPORT_TEMPLATE_DTL");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<T_WQX_IMPORT_TEMPLATE_DTL>("OpenEnvironmentModel.FK__T_WQX_IMP__TEMPL__66603565", "T_WQX_IMPORT_TEMPLATE_DTL", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("OpenEnvironmentModel", "FK__T_WQX_IMP__ORG_I__4F7CD00D", "T_WQX_ORGANIZATION")]
+        public T_WQX_ORGANIZATION T_WQX_ORGANIZATION
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<T_WQX_ORGANIZATION>("OpenEnvironmentModel.FK__T_WQX_IMP__ORG_I__4F7CD00D", "T_WQX_ORGANIZATION").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<T_WQX_ORGANIZATION>("OpenEnvironmentModel.FK__T_WQX_IMP__ORG_I__4F7CD00D", "T_WQX_ORGANIZATION").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<T_WQX_ORGANIZATION> T_WQX_ORGANIZATIONReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<T_WQX_ORGANIZATION>("OpenEnvironmentModel.FK__T_WQX_IMP__ORG_I__4F7CD00D", "T_WQX_ORGANIZATION");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<T_WQX_ORGANIZATION>("OpenEnvironmentModel.FK__T_WQX_IMP__ORG_I__4F7CD00D", "T_WQX_ORGANIZATION", value);
+                }
+            }
+        }
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="OpenEnvironmentModel", Name="T_WQX_IMPORT_TEMPLATE_DTL")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class T_WQX_IMPORT_TEMPLATE_DTL : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new T_WQX_IMPORT_TEMPLATE_DTL object.
+        /// </summary>
+        /// <param name="tEMPLATE_DTL_ID">Initial value of the TEMPLATE_DTL_ID property.</param>
+        /// <param name="tEMPLATE_ID">Initial value of the TEMPLATE_ID property.</param>
+        /// <param name="cOL_NUM">Initial value of the COL_NUM property.</param>
+        public static T_WQX_IMPORT_TEMPLATE_DTL CreateT_WQX_IMPORT_TEMPLATE_DTL(global::System.Int32 tEMPLATE_DTL_ID, global::System.Int32 tEMPLATE_ID, global::System.Int32 cOL_NUM)
+        {
+            T_WQX_IMPORT_TEMPLATE_DTL t_WQX_IMPORT_TEMPLATE_DTL = new T_WQX_IMPORT_TEMPLATE_DTL();
+            t_WQX_IMPORT_TEMPLATE_DTL.TEMPLATE_DTL_ID = tEMPLATE_DTL_ID;
+            t_WQX_IMPORT_TEMPLATE_DTL.TEMPLATE_ID = tEMPLATE_ID;
+            t_WQX_IMPORT_TEMPLATE_DTL.COL_NUM = cOL_NUM;
+            return t_WQX_IMPORT_TEMPLATE_DTL;
+        }
+
+        #endregion
+
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 TEMPLATE_DTL_ID
+        {
+            get
+            {
+                return _TEMPLATE_DTL_ID;
+            }
+            set
+            {
+                if (_TEMPLATE_DTL_ID != value)
+                {
+                    OnTEMPLATE_DTL_IDChanging(value);
+                    ReportPropertyChanging("TEMPLATE_DTL_ID");
+                    _TEMPLATE_DTL_ID = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("TEMPLATE_DTL_ID");
+                    OnTEMPLATE_DTL_IDChanged();
+                }
+            }
+        }
+        private global::System.Int32 _TEMPLATE_DTL_ID;
+        partial void OnTEMPLATE_DTL_IDChanging(global::System.Int32 value);
+        partial void OnTEMPLATE_DTL_IDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 TEMPLATE_ID
+        {
+            get
+            {
+                return _TEMPLATE_ID;
+            }
+            set
+            {
+                OnTEMPLATE_IDChanging(value);
+                ReportPropertyChanging("TEMPLATE_ID");
+                _TEMPLATE_ID = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("TEMPLATE_ID");
+                OnTEMPLATE_IDChanged();
+            }
+        }
+        private global::System.Int32 _TEMPLATE_ID;
+        partial void OnTEMPLATE_IDChanging(global::System.Int32 value);
+        partial void OnTEMPLATE_IDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 COL_NUM
+        {
+            get
+            {
+                return _COL_NUM;
+            }
+            set
+            {
+                OnCOL_NUMChanging(value);
+                ReportPropertyChanging("COL_NUM");
+                _COL_NUM = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("COL_NUM");
+                OnCOL_NUMChanged();
+            }
+        }
+        private global::System.Int32 _COL_NUM;
+        partial void OnCOL_NUMChanging(global::System.Int32 value);
+        partial void OnCOL_NUMChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String FIELD_MAP
+        {
+            get
+            {
+                return _FIELD_MAP;
+            }
+            set
+            {
+                OnFIELD_MAPChanging(value);
+                ReportPropertyChanging("FIELD_MAP");
+                _FIELD_MAP = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("FIELD_MAP");
+                OnFIELD_MAPChanged();
+            }
+        }
+        private global::System.String _FIELD_MAP;
+        partial void OnFIELD_MAPChanging(global::System.String value);
+        partial void OnFIELD_MAPChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String CHAR_NAME
+        {
+            get
+            {
+                return _CHAR_NAME;
+            }
+            set
+            {
+                OnCHAR_NAMEChanging(value);
+                ReportPropertyChanging("CHAR_NAME");
+                _CHAR_NAME = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("CHAR_NAME");
+                OnCHAR_NAMEChanged();
+            }
+        }
+        private global::System.String _CHAR_NAME;
+        partial void OnCHAR_NAMEChanging(global::System.String value);
+        partial void OnCHAR_NAMEChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String CHAR_DEFAULT_UNIT
+        {
+            get
+            {
+                return _CHAR_DEFAULT_UNIT;
+            }
+            set
+            {
+                OnCHAR_DEFAULT_UNITChanging(value);
+                ReportPropertyChanging("CHAR_DEFAULT_UNIT");
+                _CHAR_DEFAULT_UNIT = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("CHAR_DEFAULT_UNIT");
+                OnCHAR_DEFAULT_UNITChanged();
+            }
+        }
+        private global::System.String _CHAR_DEFAULT_UNIT;
+        partial void OnCHAR_DEFAULT_UNITChanging(global::System.String value);
+        partial void OnCHAR_DEFAULT_UNITChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> CREATE_DT
+        {
+            get
+            {
+                return _CREATE_DT;
+            }
+            set
+            {
+                OnCREATE_DTChanging(value);
+                ReportPropertyChanging("CREATE_DT");
+                _CREATE_DT = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("CREATE_DT");
+                OnCREATE_DTChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _CREATE_DT;
+        partial void OnCREATE_DTChanging(Nullable<global::System.DateTime> value);
+        partial void OnCREATE_DTChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String CREATE_USERID
+        {
+            get
+            {
+                return _CREATE_USERID;
+            }
+            set
+            {
+                OnCREATE_USERIDChanging(value);
+                ReportPropertyChanging("CREATE_USERID");
+                _CREATE_USERID = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("CREATE_USERID");
+                OnCREATE_USERIDChanged();
+            }
+        }
+        private global::System.String _CREATE_USERID;
+        partial void OnCREATE_USERIDChanging(global::System.String value);
+        partial void OnCREATE_USERIDChanged();
+
+        #endregion
+
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("OpenEnvironmentModel", "FK__T_WQX_IMP__TEMPL__66603565", "T_WQX_IMPORT_TEMPLATE")]
+        public T_WQX_IMPORT_TEMPLATE T_WQX_IMPORT_TEMPLATE
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<T_WQX_IMPORT_TEMPLATE>("OpenEnvironmentModel.FK__T_WQX_IMP__TEMPL__66603565", "T_WQX_IMPORT_TEMPLATE").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<T_WQX_IMPORT_TEMPLATE>("OpenEnvironmentModel.FK__T_WQX_IMP__TEMPL__66603565", "T_WQX_IMPORT_TEMPLATE").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<T_WQX_IMPORT_TEMPLATE> T_WQX_IMPORT_TEMPLATEReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<T_WQX_IMPORT_TEMPLATE>("OpenEnvironmentModel.FK__T_WQX_IMP__TEMPL__66603565", "T_WQX_IMPORT_TEMPLATE");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<T_WQX_IMPORT_TEMPLATE>("OpenEnvironmentModel.FK__T_WQX_IMP__TEMPL__66603565", "T_WQX_IMPORT_TEMPLATE", value);
                 }
             }
         }
@@ -6612,16 +9725,16 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("OpenEnvironmentModel", "FK__T_WQX_MON__ORG_I__173876EA", "T_WQX_ORGANIZATION")]
+        [EdmRelationshipNavigationPropertyAttribute("OpenEnvironmentModel", "FK__T_WQX_MON__ORG_I__2C3393D0", "T_WQX_ORGANIZATION")]
         public T_WQX_ORGANIZATION T_WQX_ORGANIZATION
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<T_WQX_ORGANIZATION>("OpenEnvironmentModel.FK__T_WQX_MON__ORG_I__173876EA", "T_WQX_ORGANIZATION").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<T_WQX_ORGANIZATION>("OpenEnvironmentModel.FK__T_WQX_MON__ORG_I__2C3393D0", "T_WQX_ORGANIZATION").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<T_WQX_ORGANIZATION>("OpenEnvironmentModel.FK__T_WQX_MON__ORG_I__173876EA", "T_WQX_ORGANIZATION").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<T_WQX_ORGANIZATION>("OpenEnvironmentModel.FK__T_WQX_MON__ORG_I__2C3393D0", "T_WQX_ORGANIZATION").Value = value;
             }
         }
         /// <summary>
@@ -6633,13 +9746,13 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<T_WQX_ORGANIZATION>("OpenEnvironmentModel.FK__T_WQX_MON__ORG_I__173876EA", "T_WQX_ORGANIZATION");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<T_WQX_ORGANIZATION>("OpenEnvironmentModel.FK__T_WQX_MON__ORG_I__2C3393D0", "T_WQX_ORGANIZATION");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<T_WQX_ORGANIZATION>("OpenEnvironmentModel.FK__T_WQX_MON__ORG_I__173876EA", "T_WQX_ORGANIZATION", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<T_WQX_ORGANIZATION>("OpenEnvironmentModel.FK__T_WQX_MON__ORG_I__2C3393D0", "T_WQX_ORGANIZATION", value);
                 }
             }
         }
@@ -7006,16 +10119,16 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("OpenEnvironmentModel", "FK__T_WQX_ORG__ORG_I__117F9D94", "T_WQX_ORGANIZATION")]
+        [EdmRelationshipNavigationPropertyAttribute("OpenEnvironmentModel", "FK__T_WQX_ORG__ORG_I__22AA2996", "T_WQX_ORGANIZATION")]
         public T_WQX_ORGANIZATION T_WQX_ORGANIZATION
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<T_WQX_ORGANIZATION>("OpenEnvironmentModel.FK__T_WQX_ORG__ORG_I__117F9D94", "T_WQX_ORGANIZATION").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<T_WQX_ORGANIZATION>("OpenEnvironmentModel.FK__T_WQX_ORG__ORG_I__22AA2996", "T_WQX_ORGANIZATION").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<T_WQX_ORGANIZATION>("OpenEnvironmentModel.FK__T_WQX_ORG__ORG_I__117F9D94", "T_WQX_ORGANIZATION").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<T_WQX_ORGANIZATION>("OpenEnvironmentModel.FK__T_WQX_ORG__ORG_I__22AA2996", "T_WQX_ORGANIZATION").Value = value;
             }
         }
         /// <summary>
@@ -7027,13 +10140,13 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<T_WQX_ORGANIZATION>("OpenEnvironmentModel.FK__T_WQX_ORG__ORG_I__117F9D94", "T_WQX_ORGANIZATION");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<T_WQX_ORGANIZATION>("OpenEnvironmentModel.FK__T_WQX_ORG__ORG_I__22AA2996", "T_WQX_ORGANIZATION");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<T_WQX_ORGANIZATION>("OpenEnvironmentModel.FK__T_WQX_ORG__ORG_I__117F9D94", "T_WQX_ORGANIZATION", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<T_WQX_ORGANIZATION>("OpenEnvironmentModel.FK__T_WQX_ORG__ORG_I__22AA2996", "T_WQX_ORGANIZATION", value);
                 }
             }
         }
@@ -7297,6 +10410,78 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
+        public global::System.String CDX_SUBMITTER_ID
+        {
+            get
+            {
+                return _CDX_SUBMITTER_ID;
+            }
+            set
+            {
+                OnCDX_SUBMITTER_IDChanging(value);
+                ReportPropertyChanging("CDX_SUBMITTER_ID");
+                _CDX_SUBMITTER_ID = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("CDX_SUBMITTER_ID");
+                OnCDX_SUBMITTER_IDChanged();
+            }
+        }
+        private global::System.String _CDX_SUBMITTER_ID;
+        partial void OnCDX_SUBMITTER_IDChanging(global::System.String value);
+        partial void OnCDX_SUBMITTER_IDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String CDX_SUBMITTER_PWD_HASH
+        {
+            get
+            {
+                return _CDX_SUBMITTER_PWD_HASH;
+            }
+            set
+            {
+                OnCDX_SUBMITTER_PWD_HASHChanging(value);
+                ReportPropertyChanging("CDX_SUBMITTER_PWD_HASH");
+                _CDX_SUBMITTER_PWD_HASH = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("CDX_SUBMITTER_PWD_HASH");
+                OnCDX_SUBMITTER_PWD_HASHChanged();
+            }
+        }
+        private global::System.String _CDX_SUBMITTER_PWD_HASH;
+        partial void OnCDX_SUBMITTER_PWD_HASHChanging(global::System.String value);
+        partial void OnCDX_SUBMITTER_PWD_HASHChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String CDX_SUBMITTER_PWD_SALT
+        {
+            get
+            {
+                return _CDX_SUBMITTER_PWD_SALT;
+            }
+            set
+            {
+                OnCDX_SUBMITTER_PWD_SALTChanging(value);
+                ReportPropertyChanging("CDX_SUBMITTER_PWD_SALT");
+                _CDX_SUBMITTER_PWD_SALT = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("CDX_SUBMITTER_PWD_SALT");
+                OnCDX_SUBMITTER_PWD_SALTChanged();
+            }
+        }
+        private global::System.String _CDX_SUBMITTER_PWD_SALT;
+        partial void OnCDX_SUBMITTER_PWD_SALTChanging(global::System.String value);
+        partial void OnCDX_SUBMITTER_PWD_SALTChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
         public Nullable<global::System.DateTime> CREATE_DT
         {
             get
@@ -7393,72 +10578,24 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public global::System.String CDX_SUBMITTER_ID
+        public Nullable<global::System.Boolean> CDX_SUBMIT_IND
         {
             get
             {
-                return _CDX_SUBMITTER_ID;
+                return _CDX_SUBMIT_IND;
             }
             set
             {
-                OnCDX_SUBMITTER_IDChanging(value);
-                ReportPropertyChanging("CDX_SUBMITTER_ID");
-                _CDX_SUBMITTER_ID = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("CDX_SUBMITTER_ID");
-                OnCDX_SUBMITTER_IDChanged();
+                OnCDX_SUBMIT_INDChanging(value);
+                ReportPropertyChanging("CDX_SUBMIT_IND");
+                _CDX_SUBMIT_IND = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("CDX_SUBMIT_IND");
+                OnCDX_SUBMIT_INDChanged();
             }
         }
-        private global::System.String _CDX_SUBMITTER_ID;
-        partial void OnCDX_SUBMITTER_IDChanging(global::System.String value);
-        partial void OnCDX_SUBMITTER_IDChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public global::System.String CDX_SUBMITTER_PWD_HASH
-        {
-            get
-            {
-                return _CDX_SUBMITTER_PWD_HASH;
-            }
-            set
-            {
-                OnCDX_SUBMITTER_PWD_HASHChanging(value);
-                ReportPropertyChanging("CDX_SUBMITTER_PWD_HASH");
-                _CDX_SUBMITTER_PWD_HASH = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("CDX_SUBMITTER_PWD_HASH");
-                OnCDX_SUBMITTER_PWD_HASHChanged();
-            }
-        }
-        private global::System.String _CDX_SUBMITTER_PWD_HASH;
-        partial void OnCDX_SUBMITTER_PWD_HASHChanging(global::System.String value);
-        partial void OnCDX_SUBMITTER_PWD_HASHChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public global::System.String CDX_SUBMITTER_PWD_SALT
-        {
-            get
-            {
-                return _CDX_SUBMITTER_PWD_SALT;
-            }
-            set
-            {
-                OnCDX_SUBMITTER_PWD_SALTChanging(value);
-                ReportPropertyChanging("CDX_SUBMITTER_PWD_SALT");
-                _CDX_SUBMITTER_PWD_SALT = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("CDX_SUBMITTER_PWD_SALT");
-                OnCDX_SUBMITTER_PWD_SALTChanged();
-            }
-        }
-        private global::System.String _CDX_SUBMITTER_PWD_SALT;
-        partial void OnCDX_SUBMITTER_PWD_SALTChanging(global::System.String value);
-        partial void OnCDX_SUBMITTER_PWD_SALTChanged();
+        private Nullable<global::System.Boolean> _CDX_SUBMIT_IND;
+        partial void OnCDX_SUBMIT_INDChanging(Nullable<global::System.Boolean> value);
+        partial void OnCDX_SUBMIT_INDChanged();
 
         #endregion
 
@@ -7471,18 +10608,18 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("OpenEnvironmentModel", "FK__T_WQX_ACT__ORG_I__1BFD2C07", "T_WQX_ACTIVITY")]
+        [EdmRelationshipNavigationPropertyAttribute("OpenEnvironmentModel", "FK__T_WQX_ACT__ORG_I__30F848ED", "T_WQX_ACTIVITY")]
         public EntityCollection<T_WQX_ACTIVITY> T_WQX_ACTIVITY
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<T_WQX_ACTIVITY>("OpenEnvironmentModel.FK__T_WQX_ACT__ORG_I__1BFD2C07", "T_WQX_ACTIVITY");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<T_WQX_ACTIVITY>("OpenEnvironmentModel.FK__T_WQX_ACT__ORG_I__30F848ED", "T_WQX_ACTIVITY");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<T_WQX_ACTIVITY>("OpenEnvironmentModel.FK__T_WQX_ACT__ORG_I__1BFD2C07", "T_WQX_ACTIVITY", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<T_WQX_ACTIVITY>("OpenEnvironmentModel.FK__T_WQX_ACT__ORG_I__30F848ED", "T_WQX_ACTIVITY", value);
                 }
             }
         }
@@ -7493,18 +10630,18 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("OpenEnvironmentModel", "FK__T_WQX_BIO__ORG_I__1FCDBCEB", "T_WQX_BIO_HABITAT_INDEX")]
+        [EdmRelationshipNavigationPropertyAttribute("OpenEnvironmentModel", "FK__T_WQX_BIO__ORG_I__34C8D9D1", "T_WQX_BIO_HABITAT_INDEX")]
         public EntityCollection<T_WQX_BIO_HABITAT_INDEX> T_WQX_BIO_HABITAT_INDEX
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<T_WQX_BIO_HABITAT_INDEX>("OpenEnvironmentModel.FK__T_WQX_BIO__ORG_I__1FCDBCEB", "T_WQX_BIO_HABITAT_INDEX");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<T_WQX_BIO_HABITAT_INDEX>("OpenEnvironmentModel.FK__T_WQX_BIO__ORG_I__34C8D9D1", "T_WQX_BIO_HABITAT_INDEX");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<T_WQX_BIO_HABITAT_INDEX>("OpenEnvironmentModel.FK__T_WQX_BIO__ORG_I__1FCDBCEB", "T_WQX_BIO_HABITAT_INDEX", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<T_WQX_BIO_HABITAT_INDEX>("OpenEnvironmentModel.FK__T_WQX_BIO__ORG_I__34C8D9D1", "T_WQX_BIO_HABITAT_INDEX", value);
                 }
             }
         }
@@ -7515,18 +10652,18 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("OpenEnvironmentModel", "FK__T_WQX_IMP__ORG_I__2F10007B", "T_WQX_IMPORT_LOG")]
+        [EdmRelationshipNavigationPropertyAttribute("OpenEnvironmentModel", "FK__T_WQX_IMP__ORG_I__4CA06362", "T_WQX_IMPORT_LOG")]
         public EntityCollection<T_WQX_IMPORT_LOG> T_WQX_IMPORT_LOG
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<T_WQX_IMPORT_LOG>("OpenEnvironmentModel.FK__T_WQX_IMP__ORG_I__2F10007B", "T_WQX_IMPORT_LOG");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<T_WQX_IMPORT_LOG>("OpenEnvironmentModel.FK__T_WQX_IMP__ORG_I__4CA06362", "T_WQX_IMPORT_LOG");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<T_WQX_IMPORT_LOG>("OpenEnvironmentModel.FK__T_WQX_IMP__ORG_I__2F10007B", "T_WQX_IMPORT_LOG", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<T_WQX_IMPORT_LOG>("OpenEnvironmentModel.FK__T_WQX_IMP__ORG_I__4CA06362", "T_WQX_IMPORT_LOG", value);
                 }
             }
         }
@@ -7537,18 +10674,40 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("OpenEnvironmentModel", "FK__T_WQX_MON__ORG_I__173876EA", "T_WQX_MONLOC")]
+        [EdmRelationshipNavigationPropertyAttribute("OpenEnvironmentModel", "FK__T_WQX_IMP__ORG_I__4F7CD00D", "T_WQX_IMPORT_TEMPLATE")]
+        public EntityCollection<T_WQX_IMPORT_TEMPLATE> T_WQX_IMPORT_TEMPLATE
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<T_WQX_IMPORT_TEMPLATE>("OpenEnvironmentModel.FK__T_WQX_IMP__ORG_I__4F7CD00D", "T_WQX_IMPORT_TEMPLATE");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<T_WQX_IMPORT_TEMPLATE>("OpenEnvironmentModel.FK__T_WQX_IMP__ORG_I__4F7CD00D", "T_WQX_IMPORT_TEMPLATE", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("OpenEnvironmentModel", "FK__T_WQX_MON__ORG_I__2C3393D0", "T_WQX_MONLOC")]
         public EntityCollection<T_WQX_MONLOC> T_WQX_MONLOC
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<T_WQX_MONLOC>("OpenEnvironmentModel.FK__T_WQX_MON__ORG_I__173876EA", "T_WQX_MONLOC");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<T_WQX_MONLOC>("OpenEnvironmentModel.FK__T_WQX_MON__ORG_I__2C3393D0", "T_WQX_MONLOC");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<T_WQX_MONLOC>("OpenEnvironmentModel.FK__T_WQX_MON__ORG_I__173876EA", "T_WQX_MONLOC", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<T_WQX_MONLOC>("OpenEnvironmentModel.FK__T_WQX_MON__ORG_I__2C3393D0", "T_WQX_MONLOC", value);
                 }
             }
         }
@@ -7559,18 +10718,18 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("OpenEnvironmentModel", "FK__T_WQX_ORG__ORG_I__117F9D94", "T_WQX_ORG_ADDRESS")]
+        [EdmRelationshipNavigationPropertyAttribute("OpenEnvironmentModel", "FK__T_WQX_ORG__ORG_I__22AA2996", "T_WQX_ORG_ADDRESS")]
         public EntityCollection<T_WQX_ORG_ADDRESS> T_WQX_ORG_ADDRESS
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<T_WQX_ORG_ADDRESS>("OpenEnvironmentModel.FK__T_WQX_ORG__ORG_I__117F9D94", "T_WQX_ORG_ADDRESS");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<T_WQX_ORG_ADDRESS>("OpenEnvironmentModel.FK__T_WQX_ORG__ORG_I__22AA2996", "T_WQX_ORG_ADDRESS");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<T_WQX_ORG_ADDRESS>("OpenEnvironmentModel.FK__T_WQX_ORG__ORG_I__117F9D94", "T_WQX_ORG_ADDRESS", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<T_WQX_ORG_ADDRESS>("OpenEnvironmentModel.FK__T_WQX_ORG__ORG_I__22AA2996", "T_WQX_ORG_ADDRESS", value);
                 }
             }
         }
@@ -7581,18 +10740,18 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("OpenEnvironmentModel", "FK__T_WQX_PRO__ORG_I__145C0A3F", "T_WQX_PROJECT")]
+        [EdmRelationshipNavigationPropertyAttribute("OpenEnvironmentModel", "FK__T_WQX_PRO__ORG_I__29572725", "T_WQX_PROJECT")]
         public EntityCollection<T_WQX_PROJECT> T_WQX_PROJECT
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<T_WQX_PROJECT>("OpenEnvironmentModel.FK__T_WQX_PRO__ORG_I__145C0A3F", "T_WQX_PROJECT");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<T_WQX_PROJECT>("OpenEnvironmentModel.FK__T_WQX_PRO__ORG_I__29572725", "T_WQX_PROJECT");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<T_WQX_PROJECT>("OpenEnvironmentModel.FK__T_WQX_PRO__ORG_I__145C0A3F", "T_WQX_PROJECT", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<T_WQX_PROJECT>("OpenEnvironmentModel.FK__T_WQX_PRO__ORG_I__29572725", "T_WQX_PROJECT", value);
                 }
             }
         }
@@ -7603,40 +10762,40 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("OpenEnvironmentModel", "FK__T_WQX_USE__ORG_I__0D7A0286", "T_WQX_USER_ORGS")]
-        public EntityCollection<T_WQX_USER_ORGS> T_WQX_USER_ORGS
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<T_WQX_USER_ORGS>("OpenEnvironmentModel.FK__T_WQX_USE__ORG_I__0D7A0286", "T_WQX_USER_ORGS");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<T_WQX_USER_ORGS>("OpenEnvironmentModel.FK__T_WQX_USE__ORG_I__0D7A0286", "T_WQX_USER_ORGS", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("OpenEnvironmentModel", "FK__T_WQX_REF__ORG_I__18EBB532", "T_WQX_REF_CHAR_ORG")]
+        [EdmRelationshipNavigationPropertyAttribute("OpenEnvironmentModel", "FK__T_WQX_REF__ORG_I__46E78A0C", "T_WQX_REF_CHAR_ORG")]
         public EntityCollection<T_WQX_REF_CHAR_ORG> T_WQX_REF_CHAR_ORG
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<T_WQX_REF_CHAR_ORG>("OpenEnvironmentModel.FK__T_WQX_REF__ORG_I__18EBB532", "T_WQX_REF_CHAR_ORG");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<T_WQX_REF_CHAR_ORG>("OpenEnvironmentModel.FK__T_WQX_REF__ORG_I__46E78A0C", "T_WQX_REF_CHAR_ORG");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<T_WQX_REF_CHAR_ORG>("OpenEnvironmentModel.FK__T_WQX_REF__ORG_I__18EBB532", "T_WQX_REF_CHAR_ORG", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<T_WQX_REF_CHAR_ORG>("OpenEnvironmentModel.FK__T_WQX_REF__ORG_I__46E78A0C", "T_WQX_REF_CHAR_ORG", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("OpenEnvironmentModel", "FK__T_WQX_USE__ORG_I__25869641", "T_WQX_USER_ORGS")]
+        public EntityCollection<T_WQX_USER_ORGS> T_WQX_USER_ORGS
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<T_WQX_USER_ORGS>("OpenEnvironmentModel.FK__T_WQX_USE__ORG_I__25869641", "T_WQX_USER_ORGS");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<T_WQX_USER_ORGS>("OpenEnvironmentModel.FK__T_WQX_USE__ORG_I__25869641", "T_WQX_USER_ORGS", value);
                 }
             }
         }
@@ -8096,16 +11255,16 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("OpenEnvironmentModel", "FK__T_WQX_PRO__ORG_I__145C0A3F", "T_WQX_ORGANIZATION")]
+        [EdmRelationshipNavigationPropertyAttribute("OpenEnvironmentModel", "FK__T_WQX_PRO__ORG_I__29572725", "T_WQX_ORGANIZATION")]
         public T_WQX_ORGANIZATION T_WQX_ORGANIZATION
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<T_WQX_ORGANIZATION>("OpenEnvironmentModel.FK__T_WQX_PRO__ORG_I__145C0A3F", "T_WQX_ORGANIZATION").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<T_WQX_ORGANIZATION>("OpenEnvironmentModel.FK__T_WQX_PRO__ORG_I__29572725", "T_WQX_ORGANIZATION").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<T_WQX_ORGANIZATION>("OpenEnvironmentModel.FK__T_WQX_PRO__ORG_I__145C0A3F", "T_WQX_ORGANIZATION").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<T_WQX_ORGANIZATION>("OpenEnvironmentModel.FK__T_WQX_PRO__ORG_I__29572725", "T_WQX_ORGANIZATION").Value = value;
             }
         }
         /// <summary>
@@ -8117,13 +11276,13 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<T_WQX_ORGANIZATION>("OpenEnvironmentModel.FK__T_WQX_PRO__ORG_I__145C0A3F", "T_WQX_ORGANIZATION");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<T_WQX_ORGANIZATION>("OpenEnvironmentModel.FK__T_WQX_PRO__ORG_I__29572725", "T_WQX_ORGANIZATION");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<T_WQX_ORGANIZATION>("OpenEnvironmentModel.FK__T_WQX_PRO__ORG_I__145C0A3F", "T_WQX_ORGANIZATION", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<T_WQX_ORGANIZATION>("OpenEnvironmentModel.FK__T_WQX_PRO__ORG_I__29572725", "T_WQX_ORGANIZATION", value);
                 }
             }
         }
@@ -8799,44 +11958,6 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("OpenEnvironmentModel", "FK__T_WQX_REF__ORG_I__18EBB532", "T_WQX_ORGANIZATION")]
-        public T_WQX_ORGANIZATION T_WQX_ORGANIZATION
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<T_WQX_ORGANIZATION>("OpenEnvironmentModel.FK__T_WQX_REF__ORG_I__18EBB532", "T_WQX_ORGANIZATION").Value;
-            }
-            set
-            {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<T_WQX_ORGANIZATION>("OpenEnvironmentModel.FK__T_WQX_REF__ORG_I__18EBB532", "T_WQX_ORGANIZATION").Value = value;
-            }
-        }
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [BrowsableAttribute(false)]
-        [DataMemberAttribute()]
-        public EntityReference<T_WQX_ORGANIZATION> T_WQX_ORGANIZATIONReference
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<T_WQX_ORGANIZATION>("OpenEnvironmentModel.FK__T_WQX_REF__ORG_I__18EBB532", "T_WQX_ORGANIZATION");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<T_WQX_ORGANIZATION>("OpenEnvironmentModel.FK__T_WQX_REF__ORG_I__18EBB532", "T_WQX_ORGANIZATION", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("OpenEnvironmentModel", "FK__T_WQX_REF__CHAR___19DFD96B", "T_WQX_REF_CHARACTERISTIC")]
         public T_WQX_REF_CHARACTERISTIC T_WQX_REF_CHARACTERISTIC
         {
@@ -8865,6 +11986,44 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<T_WQX_REF_CHARACTERISTIC>("OpenEnvironmentModel.FK__T_WQX_REF__CHAR___19DFD96B", "T_WQX_REF_CHARACTERISTIC", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("OpenEnvironmentModel", "FK__T_WQX_REF__ORG_I__46E78A0C", "T_WQX_ORGANIZATION")]
+        public T_WQX_ORGANIZATION T_WQX_ORGANIZATION
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<T_WQX_ORGANIZATION>("OpenEnvironmentModel.FK__T_WQX_REF__ORG_I__46E78A0C", "T_WQX_ORGANIZATION").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<T_WQX_ORGANIZATION>("OpenEnvironmentModel.FK__T_WQX_REF__ORG_I__46E78A0C", "T_WQX_ORGANIZATION").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<T_WQX_ORGANIZATION> T_WQX_ORGANIZATIONReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<T_WQX_ORGANIZATION>("OpenEnvironmentModel.FK__T_WQX_REF__ORG_I__46E78A0C", "T_WQX_ORGANIZATION");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<T_WQX_ORGANIZATION>("OpenEnvironmentModel.FK__T_WQX_REF__ORG_I__46E78A0C", "T_WQX_ORGANIZATION", value);
                 }
             }
         }
@@ -11282,6 +14441,30 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
         private global::System.String _CDX_SUBMIT_STATUS;
         partial void OnCDX_SUBMIT_STATUSChanging(global::System.String value);
         partial void OnCDX_SUBMIT_STATUSChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String ORG_ID
+        {
+            get
+            {
+                return _ORG_ID;
+            }
+            set
+            {
+                OnORG_IDChanging(value);
+                ReportPropertyChanging("ORG_ID");
+                _ORG_ID = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("ORG_ID");
+                OnORG_IDChanged();
+            }
+        }
+        private global::System.String _ORG_ID;
+        partial void OnORG_IDChanging(global::System.String value);
+        partial void OnORG_IDChanged();
 
         #endregion
 
@@ -11490,16 +14673,16 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("OpenEnvironmentModel", "FK__T_WQX_USE__ORG_I__0D7A0286", "T_WQX_ORGANIZATION")]
+        [EdmRelationshipNavigationPropertyAttribute("OpenEnvironmentModel", "FK__T_WQX_USE__ORG_I__25869641", "T_WQX_ORGANIZATION")]
         public T_WQX_ORGANIZATION T_WQX_ORGANIZATION
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<T_WQX_ORGANIZATION>("OpenEnvironmentModel.FK__T_WQX_USE__ORG_I__0D7A0286", "T_WQX_ORGANIZATION").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<T_WQX_ORGANIZATION>("OpenEnvironmentModel.FK__T_WQX_USE__ORG_I__25869641", "T_WQX_ORGANIZATION").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<T_WQX_ORGANIZATION>("OpenEnvironmentModel.FK__T_WQX_USE__ORG_I__0D7A0286", "T_WQX_ORGANIZATION").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<T_WQX_ORGANIZATION>("OpenEnvironmentModel.FK__T_WQX_USE__ORG_I__25869641", "T_WQX_ORGANIZATION").Value = value;
             }
         }
         /// <summary>
@@ -11511,13 +14694,13 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<T_WQX_ORGANIZATION>("OpenEnvironmentModel.FK__T_WQX_USE__ORG_I__0D7A0286", "T_WQX_ORGANIZATION");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<T_WQX_ORGANIZATION>("OpenEnvironmentModel.FK__T_WQX_USE__ORG_I__25869641", "T_WQX_ORGANIZATION");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<T_WQX_ORGANIZATION>("OpenEnvironmentModel.FK__T_WQX_USE__ORG_I__0D7A0286", "T_WQX_ORGANIZATION", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<T_WQX_ORGANIZATION>("OpenEnvironmentModel.FK__T_WQX_USE__ORG_I__25869641", "T_WQX_ORGANIZATION", value);
                 }
             }
         }
@@ -12476,6 +15659,30 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
         private global::System.String _CDX_SUBMIT_STATUS;
         partial void OnCDX_SUBMIT_STATUSChanging(global::System.String value);
         partial void OnCDX_SUBMIT_STATUSChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String ORG_ID
+        {
+            get
+            {
+                return _ORG_ID;
+            }
+            set
+            {
+                OnORG_IDChanging(value);
+                ReportPropertyChanging("ORG_ID");
+                _ORG_ID = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("ORG_ID");
+                OnORG_IDChanged();
+            }
+        }
+        private global::System.String _ORG_ID;
+        partial void OnORG_IDChanging(global::System.String value);
+        partial void OnORG_IDChanged();
     
         /// <summary>
         /// No Metadata Documentation available.

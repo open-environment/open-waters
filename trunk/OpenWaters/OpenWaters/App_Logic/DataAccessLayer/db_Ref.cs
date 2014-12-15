@@ -75,7 +75,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
 
         //*********************** WQX TRANSACTION LOG*******************************
         public static int InsertUpdateWQX_TRANSACTION_LOG(int? lOG_ID, string tABLE_CD, int tABLE_IDX, string sUBMIT_TYPE, byte[] rESPONSE_FILE, 
-            string rESPONSE_TXT, string cDX_SUBMIT_TRANS_ID, string cDX_SUBMIT_STATUS)
+            string rESPONSE_TXT, string cDX_SUBMIT_TRANS_ID, string cDX_SUBMIT_STATUS, string oRG_ID)
         {
             using (OpenEnvironmentEntities ctx = new OpenEnvironmentEntities())
             {
@@ -97,6 +97,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
                     if (rESPONSE_TXT != null) t.RESPONSE_TXT = rESPONSE_TXT;
                     if (cDX_SUBMIT_TRANS_ID != null) t.CDX_SUBMIT_TRANSID = cDX_SUBMIT_TRANS_ID;
                     if (cDX_SUBMIT_STATUS != null) t.CDX_SUBMIT_STATUS = cDX_SUBMIT_STATUS;
+                    if (oRG_ID != null) t.ORG_ID = oRG_ID;
 
                     if (lOG_ID == null) //insert case
                     {
@@ -150,14 +151,15 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             }
         }
 
-        public static List<V_WQX_TRANSACTION_LOG> GetV_WQX_TRANSACTION_LOG(string TableCD, DateTime? startDt, DateTime? endDt)
+        public static List<V_WQX_TRANSACTION_LOG> GetV_WQX_TRANSACTION_LOG(string TableCD, DateTime? startDt, DateTime? endDt, string OrgID)
         {
             using (OpenEnvironmentEntities ctx = new OpenEnvironmentEntities())
             {
                 try
                 {
                     return (from i in ctx.V_WQX_TRANSACTION_LOG
-                            where (TableCD == null ? true : i.TABLE_CD == TableCD)
+                            where i.ORG_ID == OrgID
+                            && (TableCD == null ? true : i.TABLE_CD == TableCD)
                             && (startDt == null ? true : i.SUBMIT_DT >= startDt)
                             && (endDt == null ? true : i.SUBMIT_DT <= endDt)
                             orderby i.SUBMIT_DT descending
@@ -257,6 +259,33 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
                 }
             }
         }
+
+        public static bool GetT_WQX_REF_DATA_ByKey(string tABLE, string vALUE)
+        {
+            using (OpenEnvironmentEntities ctx = new OpenEnvironmentEntities())
+            {
+                try
+                {
+                    int iCount = (from a in ctx.T_WQX_REF_DATA
+                            where (a.ACT_IND == true)
+                            && a.TABLE == tABLE
+                            && a.VALUE == vALUE
+                            orderby a.TEXT
+                            select a).Count();
+
+                    if (iCount == 0)
+                        return false;
+                    else
+                        return true;
+
+                }
+                catch (Exception ex)
+                {
+                    return false;
+                }
+            }
+        }
+
 
         //******************REF CHARACTERISTIC****************************************
         public static int InsertOrUpdateT_WQX_REF_CHARACTERISTIC(global::System.String cHAR_NAME, global::System.Decimal? dETECT_LIMIT, global::System.String dEFAULT_UNIT, global::System.Boolean? uSED_IND, 
@@ -473,6 +502,84 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             }
         }
 
+        public static int InsertOrUpdateT_WQX_REF_ANAL_METHOD(global::System.Int32? aNALYTIC_METHOD_IDX, global::System.String aNALYTIC_METHOD_ID, string aNALYTIC_METHOD_CTX, 
+            string aNALYTIC_METHOD_NAME, string aNALYTIC_METHOD_DESC, bool aCT_IND)
+        {
+            using (OpenEnvironmentEntities ctx = new OpenEnvironmentEntities())
+            {
+                try
+                {
+                    Boolean insInd = true;
+                    T_WQX_REF_ANAL_METHOD a = new T_WQX_REF_ANAL_METHOD();
+
+                    if (ctx.T_WQX_REF_ANAL_METHOD.Any(o => o.ANALYTIC_METHOD_IDX == aNALYTIC_METHOD_IDX))
+                    {
+                        //update case
+                        a = (from c in ctx.T_WQX_REF_ANAL_METHOD
+                             where c.ANALYTIC_METHOD_IDX == aNALYTIC_METHOD_IDX
+                             select c).FirstOrDefault();
+                        insInd = false;
+                    }
+                    else
+                    {
+                        if (ctx.T_WQX_REF_ANAL_METHOD.Any(o => o.ANALYTIC_METHOD_ID == aNALYTIC_METHOD_ID && o.ANALYTIC_METHOD_CTX == aNALYTIC_METHOD_CTX))
+                        {
+                            //update case
+                            a = (from c in ctx.T_WQX_REF_ANAL_METHOD
+                                 where c.ANALYTIC_METHOD_ID == aNALYTIC_METHOD_ID 
+                                 && c.ANALYTIC_METHOD_CTX == aNALYTIC_METHOD_CTX
+                                 select c).FirstOrDefault();
+                            insInd = false;
+                        }
+                    }
+
+                    if (aNALYTIC_METHOD_ID != null) a.ANALYTIC_METHOD_ID = aNALYTIC_METHOD_ID;
+                    if (aNALYTIC_METHOD_CTX != null) a.ANALYTIC_METHOD_CTX = aNALYTIC_METHOD_CTX;
+                    if (aNALYTIC_METHOD_NAME != null) a.ANALYTIC_METHOD_NAME = aNALYTIC_METHOD_NAME;
+                    if (aNALYTIC_METHOD_DESC != null) a.ANALYTIC_METHOD_DESC = aNALYTIC_METHOD_DESC;
+                    if (aCT_IND != null) a.ACT_IND = aCT_IND;
+
+                    a.UPDATE_DT = System.DateTime.Now;
+
+                    if (insInd) //insert case
+                        ctx.AddToT_WQX_REF_ANAL_METHOD(a);
+
+                    ctx.SaveChanges();
+                    return a.ANALYTIC_METHOD_IDX;
+                }
+                catch (Exception ex)
+                {
+                    return 0;
+                }
+            }
+        }
+
+
+
+        //***************** REF_SYS_LOG *********************************************
+        public static int InsertT_OE_SYS_LOG(string logType, string logMsg)
+        {
+            using (OpenEnvironmentEntities ctx = new OpenEnvironmentEntities())
+            {
+                try
+                {
+                    T_OE_SYS_LOG e = new T_OE_SYS_LOG();
+                    e.LOG_TYPE = logType;
+                    if (logMsg != null)
+                        e.LOG_MSG = logMsg.SubStringPlus(0, 1999);
+                    e.LOG_DT = System.DateTime.Now;
+
+                    ctx.AddToT_OE_SYS_LOG(e);
+                    ctx.SaveChanges();
+                    return e.SYS_LOG_ID;
+                }
+                catch
+                {
+                    return 0;
+                }
+            }
+        }
+
         //*********************** IMPORT LOG *******************************
         public static int InsertUpdateWQX_IMPORT_LOG(int? iMPORT_ID, string oRG_ID, string tYPE_CD, string fILE_NAME, int fILE_SIZE, string iMPORT_STATUS,
             byte[] iMPORT_FILE, string uSER_ID)
@@ -518,13 +625,14 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             }
         }
         
-        public static List<T_WQX_IMPORT_LOG> GetWQX_IMPORT_LOG()
+        public static List<T_WQX_IMPORT_LOG> GetWQX_IMPORT_LOG(string OrgID)
         {
             using (OpenEnvironmentEntities ctx = new OpenEnvironmentEntities())
             {
                 try
                 {
                     return (from i in ctx.T_WQX_IMPORT_LOG
+                            where i.ORG_ID == OrgID
                             select i).ToList();
                 }
                 catch (Exception ex)
