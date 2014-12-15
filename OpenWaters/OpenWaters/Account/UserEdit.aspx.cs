@@ -25,27 +25,33 @@ namespace OpenEnvironment
                 if (!HttpContext.Current.User.IsInRole("ADMINS"))
                     Response.Redirect("~/App_Pages/Public/AccessDenied.aspx");
 
-                int UserID = int.Parse(Session["UserEditID"].ToString());
+                int UserID = int.Parse((Session["UserEditID"] ?? "-1").ToString());
 
-                T_OE_USERS u = db_Accounts.GetT_OE_USERSByIDX(UserID);
-                if (u != null)
-                {
-                    txtUserIDX.Text = u.USER_IDX.ToString();
-                    txtUserID.Text = u.USER_ID;
-                    txtFName.Text = u.FNAME;
-                    txtLName.Text = u.LNAME;
-                    txtEmail.Text = u.EMAIL;
-                    txtPhone.Text = u.PHONE;
-                    txtPhoneExt.Text = u.PHONE_EXT;
-                    chkActive.Checked = u.ACT_IND;
-                    txtPassword.Visible = false;
-                }
-                else //add new case
-                {
-                    txtUserID.Enabled = true;
-                    btnDelete.Visible = false;
-                    txtPassword.Visible = true;
-                }
+                PopulateForm(UserID);
+            }
+        }
+
+        private void PopulateForm(int UserID)
+        {
+            T_OE_USERS u = db_Accounts.GetT_OE_USERSByIDX(UserID);
+            if (u != null)
+            {
+                txtUserIDX.Text = u.USER_IDX.ToString();
+                txtUserID.Text = u.USER_ID;
+                txtFName.Text = u.FNAME;
+                txtLName.Text = u.LNAME;
+                txtEmail.Text = u.EMAIL;
+                txtPhone.Text = u.PHONE;
+                txtPhoneExt.Text = u.PHONE_EXT;
+                chkActive.Checked = u.ACT_IND;
+                pnlPwd.Visible = false;
+            }
+            else //add new case
+            {
+                txtUserID.Enabled = true;
+                btnDelete.Visible = false;
+                chkActive.Checked = true;
+                pnlPwd.Visible = true;
             }
         }
 
@@ -61,10 +67,12 @@ namespace OpenEnvironment
                 int SuccID;
 
                 if (txtUserIDX.Text.Length > 0)
+                    //update existing user
                     SuccID = db_Accounts.UpdateT_OE_USERS(int.Parse(txtUserIDX.Text), null, null, txtFName.Text, txtLName.Text, txtEmail.Text, chkActive.Checked, null, null, null, txtPhone.Text, txtPhoneExt.Text, User.Identity.Name);
                 else
                 {
-                    if (txtPassword.Text.Length == 0 || txtFName.Text.Length==0 || txtLName.Text.Length==0 || txtUserID.Text.Length==0)
+                    //create new user
+                    if (txtPassword.Text.Length == 0 || txtFName.Text.Length == 0 || txtLName.Text.Length == 0 || txtUserID.Text.Length == 0)
                     {
                         lblMsg.Text = "You must supply a user ID, user's name, and password.";
                         return;
@@ -86,8 +94,11 @@ namespace OpenEnvironment
                         SuccID = 0;
                 }
 
-                if (SuccID == 1)
+                if (SuccID > 0)
+                {
                     lblMsg.Text = "User updated successfully.";
+                    PopulateForm(SuccID);
+                }
                 else
                     lblMsg.Text = "Error updating user.";
             }

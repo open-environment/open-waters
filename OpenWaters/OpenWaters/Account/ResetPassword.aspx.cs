@@ -38,9 +38,9 @@ namespace OpenEnvironment
             }
             catch (Exception ex)
             {
-                Logging Err = new Logging();
-                Err.ErrorLog(Server.MapPath("~/Logs/ErrorLog"), ex.Message);
-                lblMsg.Text = "Error resetting account password. " + ex.Message;
+                //Logging Err = new Logging();
+                //Err.ErrorLog(Server.MapPath("~/Logs/ErrorLog"), ex.Message);
+                lblMsg.Text = "Error resetting account password. ";// +ex.Message;
             }
 
         }

@@ -250,9 +250,10 @@ namespace OpenEnvironment.Account
                     //generate new password
                     string newPass = RandomString(8);
                     string salt = GenerateSalt();
+
                     string hashpass = HashPassword(newPass, _PasswordFormat, salt);
                     //save updated information
-                    if (db_Accounts.UpdateT_OE_USERS(u.USER_IDX, hashpass, salt, null, null, null, null, true, null, null, null, null, "system") == 1)
+                    if (db_Accounts.UpdateT_OE_USERS(u.USER_IDX, hashpass, salt, null, null, null, null, true, null, null, null, null, "system") > 0)
                     {
                         //send email
                         string msg = "Your password has been reset. Your new temporary password is: " + "\r\n\r\n";
