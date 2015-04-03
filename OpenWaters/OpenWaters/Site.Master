@@ -25,7 +25,7 @@
                 <StaticHoverStyle BackColor="#666666" />
                 <StaticMenuItemStyle HorizontalPadding="12px" VerticalPadding="8px" CssClass="menuitem"  />
                 <Items>
-                    <asp:MenuItem NavigateUrl="~/Account/ResetPassword.aspx" Text="Forgot Password"/>
+                    <asp:MenuItem NavigateUrl="~/Account/Register.aspx" Text="Create an Account"/>
                 </Items>
             </asp:Menu>
         </div>

@@ -28,13 +28,18 @@ namespace OpenEnvironment
 
         protected void LoginUser_LoggedIn(object sender, EventArgs e)
         {
-            T_OE_USERS u = db_Accounts.GetT_OE_USERSByID(((System.Web.UI.WebControls.Login)(sender)).UserName);
+            LogIn(((System.Web.UI.WebControls.Login)(sender)).UserName);
+        }
+
+        private void LogIn(string UserID)
+        {
+            T_OE_USERS u = db_Accounts.GetT_OE_USERSByID(UserID);
             if (u != null)
             {
                 //if user only belongs to 1 org, update the default org id
                 if (u.DEFAULT_ORG_ID == null)
                 {
-                    List<T_WQX_ORGANIZATION> os = db_WQX.GetWQX_USER_ORGS_ByUserIDX(u.USER_IDX);
+                    List<T_WQX_ORGANIZATION> os = db_WQX.GetWQX_USER_ORGS_ByUserIDX(u.USER_IDX, false);
                     if (os.Count == 1)
                     {
                         db_Accounts.UpdateT_OE_USERSDefaultOrg(u.USER_IDX, os[0].ORG_ID);
@@ -49,7 +54,7 @@ namespace OpenEnvironment
 
 
                     db_Accounts.UpdateT_OE_USERS(u.USER_IDX, null, null, null, null, null, null, null, null, System.DateTime.Now, null, null, "system");
-                    
+
                     //set important session variables
                     Session["UserIDX"] = u.USER_IDX;
                     Session["OrgID"] = u.DEFAULT_ORG_ID; //added 1/6/2014

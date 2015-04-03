@@ -13,7 +13,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>OpenEnvironment</RootNamespace>
     <AssemblyName>OpenEnvironment</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <UseIISExpress>false</UseIISExpress>
     <TargetFrameworkProfile />
     <FileUpgradeFlags>
@@ -36,6 +36,7 @@
     <WarningLevel>4</WarningLevel>
     <PackageAsSingleFile>true</PackageAsSingleFile>
     <DesktopBuildPackageLocation>..\..\..\..\..\..\..\..\..\..\..\tmp\OpenWaters.zip</DesktopBuildPackageLocation>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -44,6 +45,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="AjaxControlToolkit, Version=4.1.60501.0, Culture=neutral, PublicKeyToken=28f01b0e84b6d53e, processorArchitecture=MSIL">
@@ -62,6 +64,13 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="SanitizerProviders, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\AjaxControlToolkit.4.1.60501\lib\40\SanitizerProviders\SanitizerProviders.dll</HintPath>
+    </Reference>
+    <Reference Include="SendGrid.SmtpApi, Version=1.2.1.0, Culture=neutral, PublicKeyToken=2ae73662c35d80e4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\SendGrid.SmtpApi.1.2.1\lib\net40\SendGrid.SmtpApi.dll</HintPath>
+    </Reference>
+    <Reference Include="SendGridMail">
+      <HintPath>..\packages\Sendgrid.5.1.0\lib\SendGridMail.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -91,11 +100,20 @@
     <Content Include="App_Data\Create_DB.sql" />
     <Content Include="App_Data\DatabasePatch_v1.3.sql" />
     <Content Include="App_Data\DatabasePatch_v1.5.sql" />
+    <Content Include="App_Data\DatabasePatch_v1.6.1.sql" />
+    <Content Include="App_Data\DatabasePatch_v1.6.sql" />
     <Content Include="App_Data\SeminoleData.sql" />
+    <Content Include="App_Images\loading.gif" />
+    <Content Include="App_Images\wiz_1.png" />
+    <Content Include="App_Images\bg.png" />
+    <Content Include="App_Images\wiz_check.png" />
+    <Content Include="App_Images\wiz_cross.png" />
+    <Content Include="App_Images\wiz_cross_bw.png" />
     <Content Include="App_Images\green.png" />
     <Content Include="App_Images\ico_chart.png" />
     <Content Include="App_Images\ico_save2.png" />
     <Content Include="App_Images\selectbutton.png" />
+    <Content Include="App_Images\wiz_progress.png" />
     <Content Include="favicon.ico" />
     <Content Include="PubMap.aspx" />
     <Content Include="App_Pages\Secure\Charting.aspx" />
@@ -105,8 +123,17 @@
     <Content Include="Account\ResetPassword.aspx" />
     <Content Include="App_Pages\Secure\Maps.aspx" />
     <Content Include="App_Pages\Secure\WQXImportMonLoc.aspx" />
-    <Content Include="App_Pages\Secure\WQXImportSamp.aspx" />
+    <Content Include="App_Pages\Secure\WQXImportSample.aspx" />
     <Content Include="App_Pages\Secure\WQXImportConfig.aspx" />
+    <Content Include="App_Pages\Secure\WQXImportProject.aspx" />
+    <Content Include="App_Pages\Secure\AdmAdminTools.aspx" />
+    <Content Include="Account\Verify.aspx" />
+    <Content Include="Account\Redirect.aspx" />
+    <Content Include="App_Pages\Public\Terms.aspx" />
+    <Content Include="App_Pages\Secure\WQXOrgNew.aspx" />
+    <Content Include="App_Pages\Secure\AdmDataSynch.aspx" />
+    <Content Include="App_Pages\Secure\WQXOrgSettings.aspx" />
+    <Content Include="App_Pages\Secure\Help.aspx" />
     <None Include="App_Data\CreekData.sql" />
     <Content Include="App_Images\0.png" />
     <Content Include="App_Images\grd_alt.png" />
@@ -136,6 +163,7 @@
     <Content Include="Scripts\chosen.css" />
     <Content Include="Scripts\chosen.jquery.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <Content Include="Scripts\list.js" />
     <Content Include="Styles\Site.css" />
     <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
@@ -199,6 +227,7 @@
       <DependentUpon>Register.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Logic\BusinessLogicLayer\Crypto.cs" />
+    <Compile Include="App_Logic\BusinessLogicLayer\SendGridHelper.cs" />
     <Compile Include="App_Logic\BusinessLogicLayer\Utils.cs" />
     <Compile Include="App_Logic\BusinessLogicLayer\WQXSubmit.cs" />
     <Compile Include="App_Logic\DataAccessLayer\db_Accounts.cs" />
@@ -459,12 +488,12 @@
     <Compile Include="App_Pages\Secure\WQXImportMonLoc.aspx.designer.cs">
       <DependentUpon>WQXImportMonLoc.aspx</DependentUpon>
     </Compile>
-    <Compile Include="App_Pages\Secure\WQXImportSamp.aspx.cs">
-      <DependentUpon>WQXImportSamp.aspx</DependentUpon>
+    <Compile Include="App_Pages\Secure\WQXImportSample.aspx.cs">
+      <DependentUpon>WQXImportSample.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="App_Pages\Secure\WQXImportSamp.aspx.designer.cs">
-      <DependentUpon>WQXImportSamp.aspx</DependentUpon>
+    <Compile Include="App_Pages\Secure\WQXImportSample.aspx.designer.cs">
+      <DependentUpon>WQXImportSample.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Pages\Secure\WQXImportConfig.aspx.cs">
       <DependentUpon>WQXImportConfig.aspx</DependentUpon>
@@ -472,6 +501,69 @@
     </Compile>
     <Compile Include="App_Pages\Secure\WQXImportConfig.aspx.designer.cs">
       <DependentUpon>WQXImportConfig.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Pages\Secure\WQXImportProject.aspx.cs">
+      <DependentUpon>WQXImportProject.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Pages\Secure\WQXImportProject.aspx.designer.cs">
+      <DependentUpon>WQXImportProject.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Pages\Secure\AdmAdminTools.aspx.cs">
+      <DependentUpon>AdmAdminTools.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Pages\Secure\AdmAdminTools.aspx.designer.cs">
+      <DependentUpon>AdmAdminTools.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\Verify.aspx.cs">
+      <DependentUpon>Verify.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\Verify.aspx.designer.cs">
+      <DependentUpon>Verify.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\Redirect.aspx.cs">
+      <DependentUpon>Redirect.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\Redirect.aspx.designer.cs">
+      <DependentUpon>Redirect.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Pages\Public\Terms.aspx.cs">
+      <DependentUpon>Terms.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Pages\Public\Terms.aspx.designer.cs">
+      <DependentUpon>Terms.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Pages\Secure\WQXOrgNew.aspx.cs">
+      <DependentUpon>WQXOrgNew.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Pages\Secure\WQXOrgNew.aspx.designer.cs">
+      <DependentUpon>WQXOrgNew.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Pages\Secure\AdmDataSynch.aspx.cs">
+      <DependentUpon>AdmDataSynch.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Pages\Secure\AdmDataSynch.aspx.designer.cs">
+      <DependentUpon>AdmDataSynch.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Pages\Secure\WQXOrgSettings.aspx.cs">
+      <DependentUpon>WQXOrgSettings.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Pages\Secure\WQXOrgSettings.aspx.designer.cs">
+      <DependentUpon>WQXOrgSettings.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Pages\Secure\Help.aspx.cs">
+      <DependentUpon>Help.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Pages\Secure\Help.aspx.designer.cs">
+      <DependentUpon>Help.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using OpenEnvironment.App_Logic.BusinessLogicLayer;
+using OpenEnvironment.App_Logic.DataAccessLayer;
 
 namespace OpenEnvironment
 {
@@ -30,13 +31,17 @@ namespace OpenEnvironment
 
         protected void ddlOrg_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Session["OrgID"] = ddlOrg.SelectedValue;
-            Response.Redirect(Request.RawUrl);
-        }
+            if (ddlOrg.SelectedValue.Length > 0)
+            {
+                //update current session to set active Organization
+                Session["OrgID"] = ddlOrg.SelectedValue;
 
-        protected void imgHelp_Click(object sender, ImageClickEventArgs e)
-        {
-            Response.Redirect("~/App_Docs/UsersGuide.docx");
+                //update User record in database to set the most recent selected organization as their default organization
+                db_Accounts.UpdateT_OE_USERSDefaultOrg(Session["UserIDX"].ConvertOrDefault<int>(), ddlOrg.SelectedValue);
+                
+                //refresh page because many children pages depend on this updated information
+                Response.Redirect(Request.RawUrl);
+            }
         }
 
     }

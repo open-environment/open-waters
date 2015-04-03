@@ -12,6 +12,7 @@
                         <asp:HyperLink runat="server" ID="lnkRoleList" CssClass="leftLnk" NavigateUrl="~/Account/RoleList.aspx">&bull; Role Management</asp:HyperLink>
                         <asp:HyperLink runat="server" ID="lnkAppSettings" CssClass="leftLnk" NavigateUrl="~/App_Pages/Secure/AppSettings.aspx">&bull; App Settings</asp:HyperLink>
                         <asp:HyperLink runat="server" ID="lnkWQXList" CssClass="leftLnk" NavigateUrl="~/App_Pages/Secure/WQX_Mgmt.aspx">&bull; WQX Management</asp:HyperLink>
+                        <asp:HyperLink runat="server" ID="lnkDataMgmt" CssClass="leftLnk" NavigateUrl="~/App_Pages/Secure/AdmDataSynch.aspx">&bull; Data Synch</asp:HyperLink>
                     </div>
                 </div>
             </td>
