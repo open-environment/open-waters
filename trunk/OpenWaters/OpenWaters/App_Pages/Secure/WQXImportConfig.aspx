@@ -13,6 +13,53 @@
             }
         }
     </script>
+    <script type="text/javascript">
+        function GetConfirmationCol() {
+            var reply = confirm("WARNING: This will delete the data field - are you sure you want to continue?");
+            if (reply) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#divChar1").hide();
+            $("#divChar2").hide();
+
+            $("#ctl00_ctl00_MainContent_BodyContent_ddlFieldMap").change(function (event) {
+                if ($("#ctl00_ctl00_MainContent_BodyContent_ddlFieldMap").val() == "CHAR") {
+                    $("#divChar1").show();
+                    $("#divChar2").show();
+                }
+                else
+                {
+                    $("#divChar1").hide();
+                    $("#divChar2").hide();
+                }
+            });
+
+            $("ctl00_ctl00_MainContent_BodyContent_btnAddDynamic").click(function (event) {
+  //              alert("f");
+            });
+        });
+
+    </script>
+    <asp:ObjectDataSource ID="dsRefData" runat="server" SelectMethod="GetT_WQX_REF_DATA" TypeName="OpenEnvironment.App_Logic.DataAccessLayer.db_Ref">
+        <SelectParameters>
+            <asp:Parameter DefaultValue="MeasureUnit" Name="tABLE" Type="String" />
+            <asp:Parameter DefaultValue="true" Name="ActInd" Type="Boolean" />
+            <asp:Parameter DefaultValue="true" Name="UsedInd" Type="Boolean" />
+        </SelectParameters>
+    </asp:ObjectDataSource>
+    <asp:ObjectDataSource ID="dsChar" runat="server" SelectMethod="GetT_WQX_REF_CHARACTERISTIC"  TypeName="OpenEnvironment.App_Logic.DataAccessLayer.db_Ref" >
+        <selectparameters>
+            <asp:Parameter DefaultValue="true" Name="ActInd" Type="Boolean" />
+            <asp:Parameter DefaultValue="false" Name="onlyUsedInd" Type="Boolean" />
+        </selectparameters>
+    </asp:ObjectDataSource>
 
     <h1>
         Import Logic Templates
@@ -61,7 +108,7 @@
                             <asp:TemplateField HeaderText="Delete">
                                 <ItemStyle HorizontalAlign="Center" Width="60px" />
                                 <ItemTemplate>
-                                    <asp:ImageButton ID="DelButton" runat="server" CausesValidation="False" CommandName="Deletes" OnClientClick="return GetConfirmation();"
+                                    <asp:ImageButton ID="DelButton" runat="server" CausesValidation="False" CommandName="Deletes" OnClientClick="return GetConfirmationCol();"
                                         CommandArgument='<% #Eval("TEMPLATE_DTL_ID") %>' ImageUrl="~/App_Images/ico_del.png" ToolTip="Delete" />
                                 </ItemTemplate>
                             </asp:TemplateField>
@@ -80,7 +127,7 @@
                             <asp:TemplateField HeaderText="Delete">
                                 <ItemStyle HorizontalAlign="Center" Width="60px" />
                                 <ItemTemplate>
-                                    <asp:ImageButton ID="DelButton" runat="server" CausesValidation="False" CommandName="Deletes" OnClientClick="return GetConfirmation();"
+                                    <asp:ImageButton ID="DelButton" runat="server" CausesValidation="False" CommandName="Deletes" OnClientClick="return GetConfirmationCol();"
                                         CommandArgument='<% #Eval("TEMPLATE_DTL_ID") %>' ImageUrl="~/App_Images/ico_del.png" ToolTip="Delete" />
                                 </ItemTemplate>
                             </asp:TemplateField>
@@ -107,8 +154,8 @@
             <div class="row" >
                 <span class="fldLbl">Template Type:</span>
                 <asp:DropDownList ID="chkTemplateType" runat="server" >
-                    <asp:ListItem Value="S_CT" Text="Sample (1 row per sample)"></asp:ListItem>
-                    <asp:ListItem Value="S" Text="Sample (1 row per result)"></asp:ListItem>
+                    <asp:ListItem Value="S_CT" Text="Sample (1 row per sample)" Selected="True"></asp:ListItem>
+<%--                    <asp:ListItem Value="S" Text="Sample (1 row per result)"></asp:ListItem>--%>
                 </asp:DropDownList>
             </div>
             <div class="row" >
@@ -135,6 +182,7 @@
             <div class="row" >
                 <span class="fldLbl">Field:</span>
                 <asp:DropDownList ID="ddlFieldMapHC" runat="server" >
+                    <asp:ListItem Value="" Text=""></asp:ListItem>
                     <asp:ListItem Value="ACT_COMMENTS" Text="ACT_COMMENTS"></asp:ListItem>
                     <asp:ListItem Value="ACT_MEDIA" Text="ACT_MEDIA"></asp:ListItem>
                     <asp:ListItem Value="ACT_SUBMEDIA" Text="ACT_SUBMEDIA"></asp:ListItem>
@@ -160,7 +208,7 @@
     <ajaxToolkit:ModalPopupExtender ID="MPE_NewCol" runat="server" TargetControlID="btnAddDynamic"
         PopupControlID="pnlModalNewColumn" CancelControlID="btnCloseHC" BackgroundCssClass="modalBackground" PopupDragHandleControlID="pnlModTtl3">
     </ajaxToolkit:ModalPopupExtender>
-    <asp:Panel ID="pnlModalNewColumn" Width="500px" runat="server" CssClass="modalWindow" Style="display: none;" DefaultButton="btnAddColumn">
+    <asp:Panel ID="pnlModalNewColumn" Width="600px" runat="server" CssClass="modalWindow" Style="display: none;" DefaultButton="btnAddColumn">
         <div style="padding: 6px; background-color: #FFF; border: 1px solid #98B9DB;">
             <asp:Panel ID="pnlModTtl3" runat="server" CssClass="modalTitle" Style="cursor: move">
                 Add Mapped Column
@@ -185,13 +233,13 @@
                     <asp:ListItem Value="RESULT_STATUS" Text="RESULT_STATUS"></asp:ListItem>
                 </asp:DropDownList>
             </div>
-            <div class="row" >
+            <div class="row" id="divChar1" >
                 <span class="fldLbl">Characteristic Name:</span>
-                <asp:TextBox ID="txtColChar" runat="server"></asp:TextBox>
+                <asp:DropDownList ID="ddlColChar" runat="server" CssClass="fldTxt"  style="width:300px"></asp:DropDownList>
             </div>
-            <div class="row" >
+            <div class="row" id="divChar2" >
                 <span class="fldLbl">Characteristic Unit Code:</span>
-                <asp:TextBox ID="txtColCharUnit" runat="server" MaxLength="12"></asp:TextBox>
+                <asp:DropDownList ID="ddlColCharUnit" runat="server" CssClass="fldTxt"  style="width:300px"></asp:DropDownList>
             </div>
             <div class="btnRibbon">
                 <asp:Button ID="btnAddColumn" runat="server" Text="Save" CssClass="btn" OnClick="btnAddColumn_Click" />

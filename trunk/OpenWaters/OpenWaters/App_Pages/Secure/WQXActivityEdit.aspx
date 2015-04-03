@@ -22,6 +22,19 @@
             }
         } 
     </script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(".tabs-menu a").click(function (event) {
+                event.preventDefault();
+                $(this).parent().addClass("current");
+                $(this).parent().siblings().removeClass("current");
+                var tab = $(this).attr("href");
+                $(".tab-content").not(tab).css("display", "none");
+                $(tab).fadeIn();
+            });
+        });
+
+    </script>
     <asp:ScriptManager ID="ScriptManager1" runat="server" EnablePartialRendering="true" />
     <asp:ObjectDataSource ID="dsRefData" runat="server" SelectMethod="GetT_WQX_REF_DATA" TypeName="OpenEnvironment.App_Logic.DataAccessLayer.db_Ref">
         <SelectParameters>
@@ -47,6 +60,12 @@
     <asp:ObjectDataSource ID="dsChar" runat="server" SelectMethod="GetT_WQX_REF_CHARACTERISTIC_ByOrg"  TypeName="OpenEnvironment.App_Logic.DataAccessLayer.db_Ref" >
         <selectparameters>
             <asp:SessionParameter DefaultValue="" Name="OrgID" SessionField="OrgID" Type="String" />
+            <asp:Parameter DefaultValue="false" Name="RBPInd" Type="Boolean" />
+        </selectparameters>
+    </asp:ObjectDataSource>
+    <asp:ObjectDataSource ID="dsTaxa" runat="server" SelectMethod="GetT_WQX_REF_TAXA_ByOrg"  TypeName="OpenEnvironment.App_Logic.DataAccessLayer.db_Ref" >
+        <selectparameters>
+            <asp:SessionParameter DefaultValue="" Name="OrgID" SessionField="OrgID" Type="String" />
         </selectparameters>
     </asp:ObjectDataSource>
     <asp:ObjectDataSource ID="dsAnalMethod" runat="server" SelectMethod="GetT_WQX_REF_ANAL_METHOD"  TypeName="OpenEnvironment.App_Logic.DataAccessLayer.db_Ref" >
@@ -54,22 +73,45 @@
             <asp:Parameter DefaultValue="true" Name="ActInd" Type="Boolean" />
         </selectparameters>
     </asp:ObjectDataSource>
+    <asp:ObjectDataSource ID="dsSampColl" runat="server" SelectMethod="GetT_WQX_REF_SAMP_COL_METHOD_ByContext"  TypeName="OpenEnvironment.App_Logic.DataAccessLayer.db_Ref" >
+        <selectparameters>
+            <asp:SessionParameter DefaultValue="" Name="Context" SessionField="OrgID" Type="String" />
+        </selectparameters>
+    </asp:ObjectDataSource>
+
     <h2>Activity</h2>
     <p>
         <asp:Label ID="lblMsg" runat="server" CssClass="failureNotification"></asp:Label>
-        <asp:Label ID="lblActivityIDX" runat="server" Style="display: none" />
+        <asp:HiddenField ID="hdnActivityIDX" runat="server" />
     </p>
     <asp:Panel ID="Panel1" runat="server" DefaultButton="btnSave" style="min-width:800px" >
         <div class="row">
-            <span class="fldLbl">Activity ID:</span>
-            <asp:TextBox ID="txtActivityID" runat="server" MaxLength="35" Width="200px" CssClass="fldTxt"></asp:TextBox>
-            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtActivityID" ErrorMessage="Required"  
-            CssClass="failureNotification"></asp:RequiredFieldValidator>
+            <div style="width:380px; float:left"> 
+                <span class="fldLbl">Activity ID:</span>
+                <asp:TextBox ID="txtActivityID" runat="server" MaxLength="35" Width="210px" CssClass="fldTxt"></asp:TextBox>
+                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtActivityID" ErrorMessage="Required" Display="Dynamic"  
+                CssClass="failureNotification"></asp:RequiredFieldValidator>
+            </div>
+            <div style="width:380px; float:left"> 
+                <span class="fldLbl">Activity Date/Time:</span>
+                <asp:TextBox ID="txtStartDate" runat="server" Width="130px" CssClass="fldTxt" onblur="SyncTextBoxes(this, 'txtEndDate')"  ></asp:TextBox>
+                <ajaxToolkit:MaskedEditExtender ID="MaskedEditExtender2" runat="server" AutoComplete="true" AutoCompleteValue="false"
+                    Enabled="True" TargetControlID="txtStartDate" MaskType="DateTime" AcceptAMPM="true" Mask="99/99/9999 99:99">
+                </ajaxToolkit:MaskedEditExtender>
+                <asp:RequiredFieldValidator Display="Dynamic" ID="RequiredFieldValidator6" runat="server" ControlToValidate="txtStartDate" ErrorMessage="Required"   
+                CssClass="failureNotification"></asp:RequiredFieldValidator>
+                <asp:TextBox ID="txtTimeZone" runat="server" Width="60px" CssClass="fldTxt" Visible="false"></asp:TextBox>
+            </div>
+            <div style="width:380px; float:left"> 
+                <div style="width:380px; float:left"> 
+                    <asp:CheckBox ID="chkActInd" runat="server" CssClass="fldTxt" Checked="True" Text="Active?" />
+                </div>
+            </div>
         </div>
         <div class="row">
             <div style="width:380px; float:left"> 
                 <span class="fldLbl">Monitoring Location:</span>
-                <asp:DropDownList ID="ddlMonLoc" runat="server" CssClass="fldTxt" Width="205px"></asp:DropDownList>
+                <asp:DropDownList ID="ddlMonLoc" runat="server" CssClass="fldTxt" Width="215px"></asp:DropDownList>
                 <asp:RequiredFieldValidator Display="Dynamic" ID="RequiredFieldValidator2" runat="server" ControlToValidate="ddlMonLoc" ErrorMessage="Required"  
                 CssClass="failureNotification"></asp:RequiredFieldValidator>
             </div>
@@ -79,67 +121,126 @@
                 <asp:RequiredFieldValidator Display="Dynamic" ID="RequiredFieldValidator3" runat="server" ControlToValidate="ddlProject" ErrorMessage="Required"  
                 CssClass="failureNotification"></asp:RequiredFieldValidator>
             </div>
-        </div>
-        <div class="row">
-            <span class="fldLbl">Activity Type:</span>
-            <asp:DropDownList ID="ddlActivityType" runat="server" CssClass="fldTxt" Width="205px"></asp:DropDownList>
-            <asp:RequiredFieldValidator Display="Dynamic" ID="RequiredFieldValidator4" runat="server" ControlToValidate="ddlActivityType" ErrorMessage="Required"  
-            CssClass="failureNotification"></asp:RequiredFieldValidator>
-        </div>
-        <div class="row">
             <div style="width:380px; float:left"> 
-                <span class="fldLbl">Activity Media:</span>
-                <asp:DropDownList ID="ddlActMedia" runat="server" CssClass="fldTxt" Width="205px"></asp:DropDownList>
-                <asp:RequiredFieldValidator Display="Dynamic" ID="RequiredFieldValidator5" runat="server" ControlToValidate="ddlActMedia" ErrorMessage="Required"  
-                CssClass="failureNotification"></asp:RequiredFieldValidator>
+                <asp:CheckBox ID="chkWQXInd" runat="server" CssClass="fldTxt" Checked="True" Text="Send to EPA" />
             </div>
-            <span class="fldLbl">Activity Submedia:</span>
-            <asp:DropDownList ID="ddlActSubMedia" runat="server" CssClass="fldTxt" Width="255px"></asp:DropDownList>
         </div>
-        <div class="row">
-            <div style="width:380px; float:left"> 
-                <span class="fldLbl">Activity Date/Time:</span>
-                <asp:TextBox ID="txtStartDate" runat="server" Width="200px" CssClass="fldTxt" onblur="SyncTextBoxes(this, 'txtEndDate')"  ></asp:TextBox>
-                <ajaxToolkit:MaskedEditExtender ID="MaskedEditExtender2" runat="server" AutoComplete="true" AutoCompleteValue="false"
-                    Enabled="True" TargetControlID="txtStartDate" MaskType="DateTime" AcceptAMPM="true" Mask="99/99/9999 99:99">
-                </ajaxToolkit:MaskedEditExtender>
-                <asp:RequiredFieldValidator Display="Dynamic" ID="RequiredFieldValidator6" runat="server" ControlToValidate="txtStartDate" ErrorMessage="Required"  
-                CssClass="failureNotification"></asp:RequiredFieldValidator>
+
+        <div id="tabs-container">
+            <ul class="tabs-menu">
+                <li class="current"><a href="#tab-1">General Info</a></li>
+                <li><a href="#tab-2">Biological Info</a></li>
+            </ul>
+            <div class="tab" style="clear: both;">
+                <div id="tab-1" class="tab-content">
+
+                    <div class="row">
+                        <div style="width:380px; float:left"> 
+                            <span class="fldLbl">Activity Type:</span>
+                            <asp:DropDownList ID="ddlActivityType" runat="server" CssClass="fldTxt" Width="205px" ></asp:DropDownList>
+                            <asp:RequiredFieldValidator Display="Dynamic" ID="RequiredFieldValidator4" runat="server" ControlToValidate="ddlActivityType" ErrorMessage="Required"  
+                                CssClass="failureNotification"></asp:RequiredFieldValidator>
+                        </div>
+                        <div style="width:380px; float:left"> 
+                            <span class="fldLbl">Activity End Date:</span>
+                            <asp:TextBox ID="txtEndDate" runat="server" Width="130px" CssClass="fldTxt"></asp:TextBox>
+                            <ajaxToolkit:MaskedEditExtender ID="MaskedEditExtender1" runat="server" AutoComplete="true"  AutoCompleteValue="false"
+                                Enabled="True" TargetControlID="txtEndDate" MaskType="DateTime" AcceptAMPM="true" Mask="99/99/9999 99:99">
+                            </ajaxToolkit:MaskedEditExtender>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div style="width:380px; float:left"> 
+                            <span class="fldLbl">Activity Media:</span>
+                            <asp:DropDownList ID="ddlActMedia" runat="server" CssClass="fldTxt" Width="205px"></asp:DropDownList>
+                            <asp:RequiredFieldValidator Display="Dynamic" ID="RequiredFieldValidator5" runat="server" ControlToValidate="ddlActMedia" ErrorMessage="Required"  
+                            CssClass="failureNotification"></asp:RequiredFieldValidator>
+                        </div>
+                        <div style="width:380px; float:left"> 
+                            <span class="fldLbl">Activity Depth:</span>
+                            <asp:TextBox ID="txtDepth" runat="server" Width="130px" CssClass="fldTxt" MaxLength="12"></asp:TextBox>
+                            <asp:DropDownList ID="ddlDepthUnit" runat="server" CssClass="fldTxt" Width="45px">
+                                <asp:ListItem Value="" Text=""></asp:ListItem>
+                                <asp:ListItem Value="m" Text="m"></asp:ListItem>
+                                <asp:ListItem Value="ft" Text="ft"></asp:ListItem>
+                            </asp:DropDownList>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div style="width:380px; float:left"> 
+                            <span class="fldLbl">Activity Submedia:</span>
+                            <asp:DropDownList ID="ddlActSubMedia" runat="server" CssClass="fldTxt" Width="205px"></asp:DropDownList>
+                        </div> 
+                        <div style="width:380px; float:left"> 
+                            <span class="fldLbl">Collection Equip:</span>
+                            <asp:DropDownList ID="ddlEquip" runat="server" CssClass="fldTxt" Width="205px"></asp:DropDownList>
+                        </div> 
+                    </div>
+                    <div class="row">
+                        <div style="width:380px; float:left"> 
+                            <span class="fldLbl">Collection Method:</span>
+                            <asp:DropDownList ID="ddlSampColl" runat="server" CssClass="fldTxt" Width="205px"></asp:DropDownList>
+                        </div> 
+                    </div>
+                    <div class="row" style="padding-bottom:20px;">
+                        <span class="fldLbl">Activity Comments:</span>
+                        <asp:TextBox ID="txtActComments" TextMode="MultiLine" Rows="2" runat="server" Width="600px" CssClass="fldTxt"></asp:TextBox>            
+                    </div>
+                </div>
+                <div id="tab-2" class="tab-content">
+                    <div class="row">
+                        <div style="width:380px; float:left"> 
+                            <span class="fldLbl">Assemblage Sampled:</span>
+                            <asp:DropDownList ID="ddlAssemblage" runat="server" CssClass="fldTxt" Width="205px"></asp:DropDownList>
+                        </div>
+                        <div style="width:380px; float:left"> 
+                            <span class="fldLbl">Collection Duration:</span>
+                            <asp:TextBox ID="txtBioDuration" runat="server" Width="130px" CssClass="fldTxt" MaxLength="12"></asp:TextBox>
+                            <asp:DropDownList ID="ddlBioDurUnit" runat="server" CssClass="fldTxt" Width="45px">
+                                <asp:ListItem Value="" Text=""></asp:ListItem>
+                                <asp:ListItem Value="seconds" Text="seconds"></asp:ListItem>
+                                <asp:ListItem Value="minutes" Text="minutes"></asp:ListItem>
+                                <asp:ListItem Value="hours" Text="hours"></asp:ListItem>
+                            </asp:DropDownList>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div style="width:380px; float:left"> 
+                            <span class="fldLbl">Sampling Component:</span>
+                            <asp:TextBox ID="txtSamplingComponent" runat="server" CssClass="fldTxt" Width="205px" MaxLength="15"></asp:TextBox>
+                        </div>
+                        <div style="width:380px; float:left"> 
+                            <span class="fldLbl">Components Sequence #:</span>
+                            <asp:TextBox ID="txtSampComponentSeq" runat="server" Width="130px" CssClass="fldTxt" MaxLength="2"></asp:TextBox>
+                        </div>
+                    </div>
+
+                </div>
             </div>
-            <span class="fldLbl">Activity End Date:</span>
-            <asp:TextBox ID="txtEndDate" runat="server" Width="240px" CssClass="fldTxt"></asp:TextBox>
-                <ajaxToolkit:MaskedEditExtender ID="MaskedEditExtender1" runat="server" AutoComplete="true"  AutoCompleteValue="false"
-                    Enabled="True" TargetControlID="txtEndDate" MaskType="DateTime" AcceptAMPM="true" Mask="99/99/9999 99:99">
-                </ajaxToolkit:MaskedEditExtender>
+
         </div>
-        <div class="row">
-            <span class="fldLbl">Activity Comments:</span>
-            <asp:TextBox ID="txtActComments" TextMode="MultiLine" Rows="2" runat="server" 
-                Width="660px" CssClass="fldTxt"></asp:TextBox>            
-        </div>
-        <div class="row">
-            <div style="width:380px; float:left"> 
-                <span class="fldLbl">Active?</span>
-                <asp:CheckBox ID="chkActInd" runat="server" CssClass="fldTxt" Checked="True" />
-            </div>
-            <span class="fldLbl">Send to EPA</span>
-            <asp:CheckBox ID="chkWQXInd" runat="server" CssClass="fldTxt" Checked="True" />
-        </div>
+
+
         <br />
         <div class="btnRibbon">
-            <asp:Button ID="btnSave" runat="server" CssClass="btn" Text="Save" onclick="btnSave_Click" />
-            <asp:Button ID="btnCancel" runat="server" CssClass="btn" Text="Exit" onclick="btnCancel_Click" CausesValidation="false" />
+            <asp:Button ID="btnSave" runat="server" CssClass="btn" Text="Save" onclick="btnSave_Click" Style="float:left;" />
+            <asp:Button ID="btnCancel" runat="server" CssClass="btn" Text="Exit" onclick="btnCancel_Click" CausesValidation="false" Style="float:left;" />
+            <div style="margin-left:20px; float:left;" >Result Type:</div>
+            <asp:DropDownList ID="ddlEntryType" runat="server" CssClass="fldTxt" OnSelectedIndexChanged="ddlEntryType_SelectedIndexChanged" AutoPostBack="true">
+                <asp:ListItem Value="C" Text="Chemical (default)"></asp:ListItem>
+                <asp:ListItem Value="H" Text="Habitat Assessment"></asp:ListItem>
+                <asp:ListItem Value="T" Text="Taxonomy Counts"></asp:ListItem>
+            </asp:DropDownList>
         </div>
     </asp:Panel>
 
     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
         <ContentTemplate>
-            <div style="display:inline;"><h2 style="display:inline;">Results</h2> (click row to edit)</div> 
+            <div><h2 style="display:inline;">Results</h2> (click row to edit)</div> 
             <asp:Label ID="lblMsgDtl" runat="server" CssClass="failureNotification"></asp:Label>
-            <asp:GridView ID="grdResults" runat="server" GridLines="None" CssClass="grd" PagerStyle-CssClass="pgr"
-                AutoGenerateColumns="False" AlternatingRowStyle-CssClass="alt" DataKeyNames="RESULT_IDX, CHAR_NAME, RESULT_MSR_UNIT"
-                OnRowCommand="grdResults_RowCommand" OnRowCancelingEdit="grdResults_RowCancelingEdit"
-                OnRowEditing="grdResults_RowEditing" OnRowUpdating="grdResults_RowUpdating" OnRowDeleting="grdResults_RowDeleting"
+            <asp:GridView ID="grdResults" runat="server" GridLines="None" CssClass="grd" PagerStyle-CssClass="pgr" AutoGenerateColumns="False" AlternatingRowStyle-CssClass="alt" 
+                DataKeyNames="RESULT_IDX, CHAR_NAME, RESULT_MSR_UNIT, ANALYTIC_METHOD_IDX, RESULT_SAMP_FRACTION, RESULT_VALUE_TYPE, RESULT_STATUS, BIO_INTENT_NAME, FREQ_CLASS_CODE"
+                OnRowCommand="grdResults_RowCommand" OnRowEditing="grdResults_RowEditing" OnRowUpdating="grdResults_RowUpdating" OnRowDeleting="grdResults_RowDeleting" 
                 ShowFooter="true" OnRowDataBound="grdResults_RowDataBound">
                 <Columns>
                     <asp:BoundField DataField="RESULT_IDX" HeaderText="Name" SortExpression="RESULT_IDX" Visible="false" />
@@ -167,14 +268,15 @@
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="Result">
                         <EditItemTemplate>
-                            <asp:TextBox ID="txtResultVal" CssClass="grdCtrl" Width="98%" runat="server" Text='<%# Bind("RESULT_MSR") %>'></asp:TextBox>
+                            <asp:TextBox ID="txtResultVal" CssClass="grdCtrl" Width="98%" runat="server" Text='<%# Bind("RESULT_MSR") %>' MaxLength="12"></asp:TextBox>
                         </EditItemTemplate>
-                        <FooterTemplate>
-                            <asp:TextBox ID="txtNewResultVal" CssClass="grdCtrl" Width="98%" runat="server"></asp:TextBox>
-                        </FooterTemplate>
                         <ItemTemplate>
+                            <asp:Label ID="lblResultDetectCond" runat="server" Text='<%# Bind("RESULT_DETECT_CONDITION") %>'></asp:Label>
                             <asp:Label ID="lblResult" runat="server" Text='<%# Bind("RESULT_MSR") %>'></asp:Label>
                         </ItemTemplate>
+                        <FooterTemplate>
+                            <asp:TextBox ID="txtNewResultVal" CssClass="grdCtrl" Width="98%" runat="server" MaxLength="12"></asp:TextBox>
+                        </FooterTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="Unit" SortExpression="RESULT_MSR_UNIT">
                         <EditItemTemplate>
@@ -187,28 +289,130 @@
                             <asp:DropDownList ID="ddlNewUnit" CssClass="grdCtrl" Width="98%" runat="server" />
                         </FooterTemplate>
                     </asp:TemplateField>
-                    <asp:TemplateField HeaderText="Analytical Method" SortExpression="ANALYTIC_METHOD_IDX">
-                        <EditItemTemplate>
-                            <asp:DropDownList ID="ddlAnalMethod" CssClass="grdCtrl" Width="98%" runat="server" />
-                        </EditItemTemplate>
-                        <ItemTemplate>
-                            <asp:Label ID="lblAnalMethod" runat="server" Text='<%# Eval("ANALYTIC_METHOD_IDX") %>'></asp:Label>
-                        </ItemTemplate>
-                        <FooterTemplate>
-                            <asp:DropDownList ID="ddlNewAnalMethod" CssClass="grdCtrl" Width="98%" runat="server" />
-                        </FooterTemplate>
-                    </asp:TemplateField>
                     <asp:TemplateField HeaderText="Detection Limit" SortExpression="DETECTION_LIMIT">
                         <EditItemTemplate>
-                            <asp:TextBox ID="txtDetectLimit" CssClass="grdCtrl" Width="98%" runat="server" Text='<%# Bind("DETECTION_LIMIT") %>'></asp:TextBox>
+                            <asp:TextBox ID="txtDetectLimit" CssClass="grdCtrl" Width="98%" runat="server" Text='<%# Bind("DETECTION_LIMIT") %>' MaxLength="12"></asp:TextBox>
                         </EditItemTemplate>
                         <ItemTemplate>
                             <asp:Label ID="lblDetectLimit" runat="server" Text='<%# Eval("DETECTION_LIMIT") %>'></asp:Label>
                         </ItemTemplate>
                         <FooterTemplate>
-                            <asp:TextBox ID="txtNewDetectLimit" CssClass="grdCtrl" Width="98%" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="txtNewDetectLimit" CssClass="grdCtrl" Width="98%" runat="server" MaxLength="12"></asp:TextBox>
                         </FooterTemplate>
                     </asp:TemplateField>
+                    <asp:TemplateField HeaderText="Analytical Method" SortExpression="ANALYTIC_METHOD_IDX">
+                        <EditItemTemplate>
+                            <asp:DropDownList ID="ddlAnalMethod" CssClass="grdCtrl" Width="98%" runat="server" />
+                        </EditItemTemplate>
+                        <ItemTemplate>
+                             <asp:Literal ID="hlProgram" runat="server" Text='<%# Bind("T_WQX_REF_ANAL_METHOD.ANALYTIC_METHOD_CTX") %>' />
+                             <asp:Literal ID="Literal1" runat="server" Text='<%# Bind("T_WQX_REF_ANAL_METHOD.ANALYTIC_METHOD_ID") %>' />
+                        </ItemTemplate>
+                        <FooterTemplate>
+                            <asp:DropDownList ID="ddlNewAnalMethod" CssClass="grdCtrl" Width="98%" runat="server" />
+                        </FooterTemplate>
+                    </asp:TemplateField>                    
+                    <asp:TemplateField HeaderText="Samp Fraction" SortExpression="RESULT_SAMP_FRACTION">
+                        <EditItemTemplate>
+                            <asp:DropDownList ID="ddlSampFraction" CssClass="grdCtrl" Width="98%" runat="server" />
+                        </EditItemTemplate>
+                        <ItemTemplate>
+                            <asp:Label ID="lblSampFraction2" runat="server" Text='<%# Eval("RESULT_SAMP_FRACTION") %>'></asp:Label>
+                        </ItemTemplate>
+                        <FooterTemplate>
+                            <asp:DropDownList ID="ddlNewSampFraction" CssClass="grdCtrl" Width="98%" runat="server" />
+                        </FooterTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="Value Type" SortExpression="RESULT_VALUE_TYPE">
+                        <EditItemTemplate>
+                            <asp:DropDownList ID="ddlResultValueType" CssClass="grdCtrl" Width="98%" runat="server"  />
+                        </EditItemTemplate>
+                        <ItemTemplate>
+                            <asp:Label ID="lblResultValueType" runat="server" Text='<%# Eval("RESULT_VALUE_TYPE") %>'></asp:Label>
+                        </ItemTemplate>
+                        <FooterTemplate>
+                            <asp:DropDownList ID="ddlNewResultValueType" CssClass="grdCtrl" Width="98%" runat="server" />
+                        </FooterTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="Status" SortExpression="RESULT_STATUS">
+                        <EditItemTemplate>
+                            <asp:DropDownList ID="ddlResultStatus" CssClass="grdCtrl" Width="98%" runat="server" />
+                        </EditItemTemplate>
+                        <ItemTemplate>
+                            <asp:Label ID="lblSampFraction" runat="server" Text='<%# Eval("RESULT_STATUS") %>'></asp:Label>
+                        </ItemTemplate>
+                        <FooterTemplate>
+                            <asp:DropDownList ID="ddlNewResultStatus" CssClass="grdCtrl" Width="98%" runat="server" />
+                        </FooterTemplate>
+                    </asp:TemplateField>
+
+                    <asp:TemplateField HeaderText="Lab Analysis Date" SortExpression="LAB_ANALYSIS_START_DT">
+                        <EditItemTemplate>
+                            <asp:TextBox ID="txtAnalysisDate" CssClass="grdCtrl" Width="98%" runat="server"  Text='<%# Bind("LAB_ANALYSIS_START_DT", "{0:d}") %>' ></asp:TextBox>
+                        </EditItemTemplate>
+                        <ItemTemplate>
+                            <asp:Label ID="lblAnalysisDate" runat="server" Text='<%# Bind("LAB_ANALYSIS_START_DT", "{0:d}") %>'></asp:Label>
+                        </ItemTemplate>
+                        <FooterTemplate>
+                            <asp:TextBox ID="txtNewAnalysisDate" CssClass="grdCtrl" Width="98%" runat="server"></asp:TextBox>
+                        </FooterTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="PQL" SortExpression="PQL">
+                        <EditItemTemplate>
+                            <asp:TextBox ID="txtPQL" CssClass="grdCtrl" Width="98%" runat="server" Text='<%# Bind("PQL") %>' MaxLength="12"></asp:TextBox>
+                        </EditItemTemplate>
+                        <ItemTemplate>
+                            <asp:Label ID="lblPQL" runat="server" Text='<%# Eval("PQL") %>'></asp:Label>
+                        </ItemTemplate>
+                        <FooterTemplate>
+                            <asp:TextBox ID="txtNewPQL" CssClass="grdCtrl" Width="98%" runat="server" MaxLength="12"></asp:TextBox>
+                        </FooterTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="Lower Quant Limit" SortExpression="LOWER_QUANT_LIMIT">
+                        <EditItemTemplate>
+                            <asp:TextBox ID="txtLowerQuantLimit" CssClass="grdCtrl" Width="98%" runat="server" Text='<%# Bind("LOWER_QUANT_LIMIT") %>' MaxLength="12"></asp:TextBox>
+                        </EditItemTemplate>
+                        <ItemTemplate>
+                            <asp:Label ID="lblLowerQuantLimit" runat="server" Text='<%# Eval("LOWER_QUANT_LIMIT") %>'></asp:Label>
+                        </ItemTemplate>
+                        <FooterTemplate>
+                            <asp:TextBox ID="txtNewLowerQuantLimit" CssClass="grdCtrl" Width="98%" runat="server" MaxLength="12"></asp:TextBox>
+                        </FooterTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="Upper Quant Limit" SortExpression="UPPER_QUANT_LIMIT">
+                        <EditItemTemplate>
+                            <asp:TextBox ID="txtUpperQuantLimit" CssClass="grdCtrl" Width="98%" runat="server" Text='<%# Bind("UPPER_QUANT_LIMIT") %>' MaxLength="12"></asp:TextBox>
+                        </EditItemTemplate>
+                        <ItemTemplate>
+                            <asp:Label ID="lblUpperQuantLimit" runat="server" Text='<%# Eval("UPPER_QUANT_LIMIT") %>'></asp:Label>
+                        </ItemTemplate>
+                        <FooterTemplate>
+                            <asp:TextBox ID="txtNewUpperQuantLimit" CssClass="grdCtrl" Width="98%" runat="server" MaxLength="12"></asp:TextBox>
+                        </FooterTemplate>
+                    </asp:TemplateField>                                        
+                    <asp:TemplateField HeaderText="Biological Intent" SortExpression="BIO_INTENT_NAME">
+                        <EditItemTemplate>
+                            <asp:DropDownList ID="ddlBioIntent" CssClass="grdCtrl" Width="98%" runat="server" />
+                        </EditItemTemplate>
+                        <ItemTemplate>
+                            <asp:Label ID="lblBioIntent" runat="server" Text='<%# Eval("BIO_INTENT_NAME") %>'></asp:Label>
+                        </ItemTemplate>
+                        <FooterTemplate>
+                            <asp:DropDownList ID="ddlNewBioIntent" CssClass="grdCtrl" Width="98%" runat="server" />
+                        </FooterTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="Frequency Class" SortExpression="FREQ_CLASS_CODE">
+                        <EditItemTemplate>
+                            <asp:DropDownList ID="ddlFreqClass" CssClass="grdCtrl" Width="98%" runat="server" />
+                        </EditItemTemplate>
+                        <ItemTemplate>
+                            <asp:Label ID="lblFreqClass" runat="server" Text='<%# Eval("FREQ_CLASS_CODE") %>'></asp:Label>
+                        </ItemTemplate>
+                        <FooterTemplate>
+                            <asp:DropDownList ID="ddlNewFreqClass" CssClass="grdCtrl" Width="98%" runat="server" />
+                        </FooterTemplate>
+                    </asp:TemplateField>
+
                     <asp:TemplateField HeaderText="Comment" SortExpression="RESULT_COMMENT">
                         <EditItemTemplate>
                             <asp:TextBox ID="txtComment" CssClass="grdCtrl" Width="98%" runat="server" Text='<%# Bind("RESULT_COMMENT") %>'></asp:TextBox>
@@ -238,13 +442,12 @@
         </ContentTemplate>
     </asp:UpdatePanel>
     <asp:Panel ID="pnlResultBtn" runat="server" CssClass="btnRibbon">
-        <asp:Button ID="btnAdd" runat="server" CssClass="btn" Text="Add Result" OnClick="btnAdd_Click" />
-        <asp:ImageButton ID="btnExcel" runat="server" Height="24px" Style="float: right;" ImageUrl="~/App_Images/ico_xls.png" OnClick="btnExcel_Click" />
+        <asp:ImageButton ID="btnExcel" runat="server" Height="24px" ImageUrl="~/App_Images/ico_xls.png" OnClick="btnExcel_Click" ToolTip="Export to Excel" />
     </asp:Panel>
     <asp:UpdatePanel ID="pnlMetrics" runat="server" Visible="false">
         <ContentTemplate>
             <h2>Activity Metrics</h2>
-            <asp:GridView ID="grdMetrics" runat="server" GridLines="None" CssClass="grd" PagerStyle-CssClass="pgr" AutoGenerateEditButton="true" 
+            <asp:GridView ID="grdMetrics" runat="server" GridLines="None" CssClass="grd" PagerStyle-CssClass="pgr" AutoGenerateEditButton="true"  
             AutoGenerateColumns="False" AlternatingRowStyle-CssClass="alt" DataKeyNames="ACTIVITY_METRIC_IDX" DataSourceID="dsMetric" >
                 <AlternatingRowStyle CssClass="alt" />
                 <Columns>

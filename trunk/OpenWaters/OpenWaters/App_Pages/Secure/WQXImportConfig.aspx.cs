@@ -27,6 +27,10 @@ namespace OpenEnvironment
                     return;
                 }
 
+                //populate drop-downs
+                Utils.BindList(ddlColChar, dsChar, "CHAR_NAME", "CHAR_NAME");
+                Utils.BindList(ddlColCharUnit, dsRefData, "VALUE", "VALUE");
+
                 DisplayTemplate();
             }
 
@@ -93,7 +97,7 @@ namespace OpenEnvironment
 
             if (TemplateID > 0)
             {
-                int SuccID = db_WQX.InsertOrUpdateWQX_IMPORT_TEMPLATE_DTL(null, TemplateID, txtColumn.Text.ConvertOrDefault<int>(), ddlFieldMap.SelectedValue, txtColChar.Text, txtColCharUnit.Text, User.Identity.Name);
+                int SuccID = db_WQX.InsertOrUpdateWQX_IMPORT_TEMPLATE_DTL(null, TemplateID, txtColumn.Text.ConvertOrDefault<int>(), ddlFieldMap.SelectedValue, ddlColChar.SelectedValue, ddlColCharUnit.SelectedValue, User.Identity.Name);
                 if (SuccID > 0)
                 {
                     grdTemplateDtl.DataSource = db_WQX.GetWQX_IMPORT_TEMPLATE_DTL_DynamicByTemplateID(TemplateID);

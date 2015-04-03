@@ -17,25 +17,28 @@ namespace OpenEnvironment
     {
         protected void Page_PreRender(object o, System.EventArgs e)
         {
-            FillGrid();
+                FillGrid();
         }
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["OrgID"] == null)
-            {
-                lblMsg.Text = "Please select or create an organization first.";
-                btnAdd.Visible = false;
-                return;
-            }
-
             if (!IsPostBack)
             {
                 //display left menu as selected
                 ContentPlaceHolder cp = this.Master.Master.FindControl("MainContent") as ContentPlaceHolder;
                 HyperLink hl = (HyperLink)cp.FindControl("lnkMonLocList");
                 if (hl != null) hl.CssClass = "leftMnuBody sel";
+            }
 
+            if (Session["OrgID"] == null)
+            {
+                lblMsg.Text = "Please select or join an organization first.";
+                btnAdd.Visible = false;
+                return;
+            }
+
+            if (!IsPostBack)
+            {
                 grdMonLoc.Columns[5].Visible = (Session["MLOC_HUC_EIGHT"].ConvertOrDefault<Boolean>());
                 grdMonLoc.Columns[6].Visible = (Session["MLOC_HUC_TWELVE"].ConvertOrDefault<Boolean>());
                 grdMonLoc.Columns[7].Visible = (Session["MLOC_TRIBAL_LAND"].ConvertOrDefault<Boolean>());
@@ -70,10 +73,17 @@ namespace OpenEnvironment
                 chkFields.Items[13].Selected = (Session["MLOC_WELLHOLE_DEPTH"].ConvertOrDefault<Boolean>());
 
 
-                if (HttpContext.Current.User.IsInRole("READONLY"))
+                //ONLY ALLOW EDIT FOR AUTHORIZED USERS OF ORG
+                btnAdd.Enabled = false;
+                grdMonLoc.Columns[0].Visible = false;
+                T_WQX_USER_ORGS uo = db_WQX.GetWQX_USER_ORGS_ByUserIDX_OrgID(Session["UserIDX"].ConvertOrDefault<int>(), Session["OrgID"].ToString());
+                if (uo != null)
                 {
-                    btnAdd.Enabled = false;
-                    grdMonLoc.Columns[0].Visible = false;
+                    if (uo.ROLE_CD == "A" || uo.ROLE_CD == "U")
+                    {
+                        btnAdd.Enabled = true;
+                        grdMonLoc.Columns[0].Visible = true;
+                    }
                 }
             }
         }
@@ -89,13 +99,16 @@ namespace OpenEnvironment
 
             if (e.CommandName == "Deletes")
             {
-                int SuccID = db_WQX.DeleteT_WQX_MONLOC(MonLocID);
+                int SuccID = db_WQX.DeleteT_WQX_MONLOC(MonLocID, User.Identity.Name);
 
-                if (SuccID > 0)
-                    lblMsg.Text = "";
-                else if (SuccID < 0)
-                    lblMsg.Text = "Activities found for this monitoring location - location has been set to inactive.";
-                else
+                if (SuccID == 1)
+                {
+                    lblMsg.Text = "Record successfully deleted.";
+                    FillGrid();
+                }
+                else if (SuccID == -1)
+                    lblMsg.Text = "Activities found for this monitoring location - location cannot be deleted.";
+                else if (SuccID == 0)
                     lblMsg.Text = "Unable to delete monitoring location";
 
             }
@@ -111,8 +124,18 @@ namespace OpenEnvironment
 
         public void FillGrid()
         {
-            grdMonLoc.DataSource = db_WQX.GetWQX_MONLOC(!chkDeletedInd.Checked, Session["OrgID"].ToString(), false);
-            grdMonLoc.DataBind();
+            if (Session["OrgID"] != null)
+            {
+                grdMonLoc.DataSource = db_WQX.GetWQX_MONLOC(!chkDeletedInd.Checked, Session["OrgID"].ToString(), false);
+                grdMonLoc.DataBind();
+            }
+            else
+            {
+                lblMsg.Text = "Please select or create an organization first.";
+                btnAdd.Visible = false;
+                return;
+            }
+
         }
 
         protected void btnConfigSave_Click(object sender, EventArgs e)

@@ -36,7 +36,7 @@ namespace OpenEnvironment
 
                 //populate listing of Organizations
                 lblOrgList.Items.Clear();
-                List<T_WQX_ORGANIZATION> orgs = db_WQX.GetWQX_USER_ORGS_ByUserIDX(Session["UserIDX"].ConvertOrDefault<int>());
+                List<T_WQX_ORGANIZATION> orgs = db_WQX.GetWQX_USER_ORGS_ByUserIDX(Session["UserIDX"].ConvertOrDefault<int>(), true);
                 foreach (T_WQX_ORGANIZATION org in orgs)
                     lblOrgList.Items.Add(org.ORG_FORMAL_NAME);
             

@@ -30,8 +30,9 @@
         </Triggers>
         <ContentTemplate>
             <asp:Label ID="lblMsg" runat="server" CssClass="failureNotification" ></asp:Label>
+            <br />
             <asp:GridView ID="grdMonLoc" runat="server" GridLines="None" CssClass="grd" PagerStyle-CssClass="pgr"
-                AutoGenerateColumns="false" AlternatingRowStyle-CssClass="alt" OnRowCommand="grdMonLoc_RowCommand">
+                AutoGenerateColumns="false" AlternatingRowStyle-CssClass="alt" OnRowCommand="grdMonLoc_RowCommand" style="float:left">
                 <Columns>
                     <asp:TemplateField HeaderText="Edit">
                         <ItemStyle HorizontalAlign="Center" Width="60px" />
@@ -69,7 +70,7 @@
                     <asp:BoundField DataField="WELLHOLE_DEPTH_MSR" HeaderText="Wellhole Depth" SortExpression="WELLHOLE_DEPTH_MSR" />
                     <asp:BoundField DataField="WELLHOLE_DEPTH_MSR_UNIT" HeaderText="Depth Unit" SortExpression="WELLHOLE_DEPTH_MSR_UNIT" />
                     <asp:TemplateField HeaderText="Send to EPA"> 
-                        <ItemStyle HorizontalAlign="Center" />                        
+                        <ItemStyle HorizontalAlign="Center" Width="50px" />                        
                         <ItemTemplate> 
                             <asp:CheckBox ID="chkWQX" Enabled="false" runat="server" Checked='<% #Eval("WQX_IND") %>' />
                             <asp:ImageButton ID="WQXButton" runat="server" CausesValidation="False" CommandName="WQX"

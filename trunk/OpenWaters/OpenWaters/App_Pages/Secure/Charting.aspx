@@ -36,7 +36,7 @@
                 </div>
             </div>
             <div class="row">
-                <div style="width:420px; float:left"> 
+                <div style="width:520px; float:left"> 
                     <span class="fldLbl" >Characteristic:</span>
                     <asp:DropDownList CssClass="fldTxt" ID="ddlCharacteristic" runat="server" ></asp:DropDownList>
                 </div>
