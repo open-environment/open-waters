@@ -89,8 +89,12 @@ namespace OpenWatersSvc
         {
             try
             {
+                //submitting any pending data to EPA
                 OpenEnvironment.App_Logic.BusinessLogicLayer.WQXSubmit.WQX_MasterAllOrgs();
-                EventLog.WriteEntry("Submission attempt completed");
+                //EventLog.WriteEntry("Submission attempt completed");
+
+                //importing activity data from EPA
+                OpenEnvironment.App_Logic.BusinessLogicLayer.WQXSubmit.ImportActivityMaster();
             }
             catch (Exception ex)
             {
