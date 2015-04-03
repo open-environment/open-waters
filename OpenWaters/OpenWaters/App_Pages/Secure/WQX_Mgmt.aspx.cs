@@ -44,7 +44,7 @@ namespace OpenEnvironment
                 //get CDX username, password, and CDX destination URL
                 CDXCredentials cred = WQXSubmit.GetCDXSubmitCredentials2(Session["OrgID"].ToString());
 
-                WQXSubmit.WQX_Submit_OneByOne("", 0, cred.userID, cred.credential, cred.NodeURL, Session["OrgID"].ToString());
+                WQXSubmit.WQX_Submit_OneByOne("", 0, cred.userID, cred.credential, cred.NodeURL, Session["OrgID"].ToString(), true);
             }
         }
 

@@ -19,19 +19,19 @@
             </div>
             <div class="row">
                     <span class="fldLbl">First Name:</span>
-                    <asp:TextBox ID="txtFName" runat="server" CssClass="fldTxt"></asp:TextBox>
+                    <asp:TextBox ID="txtFName" runat="server" CssClass="fldTxt" MaxLength="40"></asp:TextBox>
             </div>
             <div class="row">
                 <span class="fldLbl">Last Name:</span>
-                <asp:TextBox ID="txtLName" runat="server" CssClass="fldTxt"></asp:TextBox>
+                <asp:TextBox ID="txtLName" runat="server" CssClass="fldTxt" MaxLength="40"></asp:TextBox>
             </div>
             <div class="row">
                     <span class="fldLbl">Email:</span>
-                    <asp:TextBox ID="txtEmail" runat="server" CssClass="fldTxt"></asp:TextBox>
+                    <asp:TextBox ID="txtEmail" runat="server" CssClass="fldTxt" MaxLength="150"></asp:TextBox>
             </div>
             <div class="row">
                     <span class="fldLbl">Phone:</span>
-                    <asp:TextBox ID="txtPhone" runat="server" CssClass="fldTxt"></asp:TextBox>
+                    <asp:TextBox ID="txtPhone" runat="server" CssClass="fldTxt" MaxLength="12"></asp:TextBox>
             </div>
             <div class="row">
                 <span class="fldLbl">Roles:</span>

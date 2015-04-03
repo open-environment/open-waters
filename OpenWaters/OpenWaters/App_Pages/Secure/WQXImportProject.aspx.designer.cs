@@ -10,7 +10,7 @@
 namespace OpenEnvironment {
     
     
-    public partial class WQXImportSamp {
+    public partial class WQXImportProject {
         
         /// <summary>
         /// lblMsg control.
@@ -67,12 +67,12 @@ namespace OpenEnvironment {
         protected global::System.Web.UI.WebControls.Button btnCancel;
         
         /// <summary>
-        /// btnSample control.
+        /// btnProject control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnSample;
+        protected global::System.Web.UI.WebControls.Button btnProject;
     }
 }

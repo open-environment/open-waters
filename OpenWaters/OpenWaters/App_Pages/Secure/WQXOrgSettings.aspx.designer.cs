@@ -10,16 +10,52 @@
 namespace OpenEnvironment {
     
     
-    public partial class WQXOrgEdit {
+    public partial class WQXOrgSettings {
         
         /// <summary>
-        /// dsRefData control.
+        /// ScriptManager1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ObjectDataSource dsRefData;
+        protected global::System.Web.UI.ScriptManager ScriptManager1;
+        
+        /// <summary>
+        /// dsChar control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ObjectDataSource dsChar;
+        
+        /// <summary>
+        /// dsTimeZone control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ObjectDataSource dsTimeZone;
+        
+        /// <summary>
+        /// dsTaxa control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ObjectDataSource dsTaxa;
+        
+        /// <summary>
+        /// dsAnalMethod control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ObjectDataSource dsAnalMethod;
         
         /// <summary>
         /// lblMsg control.
@@ -31,15 +67,6 @@ namespace OpenEnvironment {
         protected global::System.Web.UI.WebControls.Label lblMsg;
         
         /// <summary>
-        /// Panel1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel Panel1;
-        
-        /// <summary>
         /// txtOrgID control.
         /// </summary>
         /// <remarks>
@@ -49,220 +76,193 @@ namespace OpenEnvironment {
         protected global::System.Web.UI.WebControls.TextBox txtOrgID;
         
         /// <summary>
-        /// txtOrgName control.
+        /// ddlTimeZone control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtOrgName;
+        protected global::System.Web.UI.WebControls.DropDownList ddlTimeZone;
         
         /// <summary>
-        /// txtOrgDesc control.
+        /// rbType control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtOrgDesc;
+        protected global::System.Web.UI.WebControls.RadioButtonList rbType;
         
         /// <summary>
-        /// ddlTribalCode control.
+        /// UpdatePanel1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlTribalCode;
+        protected global::System.Web.UI.UpdatePanel UpdatePanel1;
         
         /// <summary>
-        /// txtOrgEmail control.
+        /// pnlChars control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtOrgEmail;
+        protected global::System.Web.UI.WebControls.Panel pnlChars;
         
         /// <summary>
-        /// txtOrgPhone control.
+        /// ddlChar control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtOrgPhone;
+        protected global::System.Web.UI.WebControls.DropDownList ddlChar;
         
         /// <summary>
-        /// txtOrgPhoneExt control.
+        /// btnAddChar control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtOrgPhoneExt;
+        protected global::System.Web.UI.WebControls.Button btnAddChar;
         
         /// <summary>
-        /// pnlCDX control.
+        /// grdChar control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel pnlCDX;
+        protected global::System.Web.UI.WebControls.GridView grdChar;
         
         /// <summary>
-        /// lblCDXSubmitInd control.
+        /// pnlTaxa control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblCDXSubmitInd;
+        protected global::System.Web.UI.WebControls.Panel pnlTaxa;
         
         /// <summary>
-        /// rbCDX control.
+        /// ddlTaxa control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButtonList rbCDX;
+        protected global::System.Web.UI.WebControls.DropDownList ddlTaxa;
         
         /// <summary>
-        /// txtCDX control.
+        /// btnAddTaxa control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCDX;
+        protected global::System.Web.UI.WebControls.Button btnAddTaxa;
         
         /// <summary>
-        /// txtCDXPwd control.
+        /// grdTaxa control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCDXPwd;
+        protected global::System.Web.UI.WebControls.GridView grdTaxa;
         
         /// <summary>
-        /// btnTestNAASLocal control.
+        /// pnlSelChar control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnTestNAASLocal;
+        protected global::System.Web.UI.WebControls.Panel pnlSelChar;
         
         /// <summary>
-        /// btnTestNAASGlobal control.
+        /// txtSelChar control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnTestNAASGlobal;
+        protected global::System.Web.UI.WebControls.TextBox txtSelChar;
         
         /// <summary>
-        /// pnlCDXResults control.
+        /// ddlUnit control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel pnlCDXResults;
+        protected global::System.Web.UI.WebControls.DropDownList ddlUnit;
         
         /// <summary>
-        /// spnAuth control.
+        /// txtDetectLimit control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl spnAuth;
+        protected global::System.Web.UI.WebControls.TextBox txtDetectLimit;
         
         /// <summary>
-        /// lblAuthResult control.
+        /// ddlAnalMethod control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblAuthResult;
+        protected global::System.Web.UI.WebControls.DropDownList ddlAnalMethod;
         
         /// <summary>
-        /// spnSubmit control.
+        /// ddlFraction control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl spnSubmit;
+        protected global::System.Web.UI.WebControls.DropDownList ddlFraction;
         
         /// <summary>
-        /// lblSubmitResult control.
+        /// ddlStatus control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblSubmitResult;
+        protected global::System.Web.UI.WebControls.DropDownList ddlStatus;
         
         /// <summary>
-        /// pnlRoles control.
+        /// ddlValueType control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel pnlRoles;
+        protected global::System.Web.UI.WebControls.DropDownList ddlValueType;
         
         /// <summary>
-        /// lbAllUsers control.
+        /// lblMsgDtl control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ListBox lbAllUsers;
+        protected global::System.Web.UI.WebControls.Label lblMsgDtl;
         
         /// <summary>
-        /// chkAdmin control.
+        /// btnSaveDtl control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox chkAdmin;
-        
-        /// <summary>
-        /// btnAdd control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnAdd;
-        
-        /// <summary>
-        /// btnRemove control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnRemove;
-        
-        /// <summary>
-        /// lbUserInRole control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ListBox lbUserInRole;
+        protected global::System.Web.UI.WebControls.Button btnSaveDtl;
         
         /// <summary>
         /// btnSave control.
@@ -281,14 +281,5 @@ namespace OpenEnvironment {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnCancel;
-        
-        /// <summary>
-        /// btnSettings control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnSettings;
     }
 }

@@ -22,6 +22,15 @@ namespace OpenEnvironment {
         protected global::System.Web.UI.WebControls.Label lblMsg;
         
         /// <summary>
+        /// txtOrgTest control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtOrgTest;
+        
+        /// <summary>
         /// pnlFilter control.
         /// </summary>
         /// <remarks>
@@ -29,6 +38,51 @@ namespace OpenEnvironment {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Panel pnlFilter;
+        
+        /// <summary>
+        /// rbImportType control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RadioButtonList rbImportType;
+        
+        /// <summary>
+        /// pnlWQX control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnlWQX;
+        
+        /// <summary>
+        /// ddlWQXImportType control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlWQXImportType;
+        
+        /// <summary>
+        /// btnWQXContinue control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnWQXContinue;
+        
+        /// <summary>
+        /// pnlLab control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnlLab;
         
         /// <summary>
         /// ddlImportType control.

@@ -17,18 +17,14 @@
     <ajaxToolkit:ModalPopupExtender ID="MPE1" runat="server" TargetControlID="btnConfig"
         PopupControlID="pnlModal" CancelControlID="btnClose" BackgroundCssClass="modalBackground" PopupDragHandleControlID="pnlModTtl">
     </ajaxToolkit:ModalPopupExtender>
-    <asp:ObjectDataSource ID="dsMonLoc" runat="server" SelectMethod="GetWQX_MONLOC" TypeName="OpenEnvironment.App_Logic.DataAccessLayer.db_WQX" >
+    <asp:ObjectDataSource ID="dsMonLoc" runat="server" SelectMethod="GetWQX_MONLOC_ByOrgID" TypeName="OpenEnvironment.App_Logic.DataAccessLayer.db_WQX" >
         <selectparameters>
-            <asp:Parameter DefaultValue="false" Name="ActInd" Type="Boolean" />
-            <asp:Parameter DefaultValue="false" Name="WQXPending" Type="Boolean" />
             <asp:SessionParameter DefaultValue="" Name="OrgID" SessionField="OrgID" Type="String" />
         </selectparameters>
     </asp:ObjectDataSource>
-    <asp:ObjectDataSource ID="dsActType" runat="server" SelectMethod="GetT_WQX_REF_DATA" TypeName="OpenEnvironment.App_Logic.DataAccessLayer.db_Ref">
+    <asp:ObjectDataSource ID="dsActType" runat="server" SelectMethod="GetT_WQX_REF_DATA_ActivityTypeUsed" TypeName="OpenEnvironment.App_Logic.DataAccessLayer.db_Ref">
         <SelectParameters>
-            <asp:Parameter DefaultValue="ActivityType" Name="tABLE" Type="String" />
-            <asp:Parameter DefaultValue="true" Name="ActInd" Type="Boolean" />
-            <asp:Parameter DefaultValue="true" Name="UsedInd" Type="Boolean" />
+            <asp:SessionParameter DefaultValue="" Name="OrgID" SessionField="OrgID" Type="String" />
         </SelectParameters>
     </asp:ObjectDataSource>
     <asp:ObjectDataSource ID="dsProject" runat="server" SelectMethod="GetWQX_PROJECT" TypeName="OpenEnvironment.App_Logic.DataAccessLayer.db_WQX">
@@ -48,11 +44,11 @@
             <div class="row">
                 <div style="width:360px; float:left"> 
                     <span class="fldLbl">Monitoring Location:</span>
-                    <asp:DropDownList CssClass="fldTxt" ID="ddlMonLoc" runat="server"></asp:DropDownList>
+                    <asp:DropDownList CssClass="fldTxt" ID="ddlMonLoc" runat="server" Width="196px"></asp:DropDownList>
                 </div>
                 <div style="float:left"> 
-                    <span class="fldLbl" >Activity Type:</span>
-                    <asp:DropDownList CssClass="fldTxt" ID="ddlActType" runat="server" ></asp:DropDownList>
+                    <span class="fldLbl"  style="width:100px" >Activity Type:</span>
+                    <asp:DropDownList CssClass="fldTxt" ID="ddlActType" runat="server" Width="250px" ></asp:DropDownList>
                 </div>
                 <div style="float:right"> 
                     <asp:CheckBox ID="chkDeletedInd" runat="server" Checked="false" Text="Display Deleted Activities" />
@@ -80,8 +76,8 @@
                     </ajaxToolkit:CalendarExtender>
                 </div>                
                 <div style="float:left"> 
-                    <span class="fldLbl" >Project:</span>
-                    <asp:DropDownList CssClass="fldTxt" ID="ddlProject" runat="server" ></asp:DropDownList>
+                    <span class="fldLbl" style="width:100px" >Project:</span>
+                    <asp:DropDownList CssClass="fldTxt" ID="ddlProject" runat="server" Width="250px"></asp:DropDownList>
                 </div>
             </div>
             <div class="row">
@@ -94,30 +90,31 @@
             <asp:AsyncPostBackTrigger ControlID="Timer1" EventName="Tick" />
         </Triggers>
         <ContentTemplate>
-            <asp:GridView ID="grdActivity" runat="server" GridLines="None" CssClass="grd" PagerStyle-CssClass="pgr"
-                AutoGenerateColumns="False" AlternatingRowStyle-CssClass="alt" onrowcommand="grdActivity_RowCommand" >
+            <asp:Label ID="lblMsg" runat="server" CssClass="failureNotification" ></asp:Label>
+            <asp:GridView ID="grdActivity" runat="server" GridLines="None" CssClass="grd" PagerStyle-CssClass="pgr" AutoGenerateColumns="False" PageSize="<%# PAGE_SIZE %>" 
+                AlternatingRowStyle-CssClass="alt" onrowcommand="grdActivity_RowCommand" AllowPaging="true" OnPageIndexChanging="grdActivity_PageIndexChanging" >
                 <Columns>
                     <asp:TemplateField HeaderText="Edit">
                         <ItemStyle HorizontalAlign="Center" Width="60px" />
                         <ItemTemplate>
                             <asp:ImageButton ID="EditButton" runat="server" CausesValidation="False" CommandName="Edits" AlternateText="Edit"
-                                CommandArgument='<% #Eval("ACTIVITY_IDX") %>' ImageUrl="~/App_Images/ico_edit.png"
-                                ToolTip="Edit" />
+                                CommandArgument='<% #Eval("ACTIVITY_IDX") %>' ImageUrl="~/App_Images/ico_edit.png" ToolTip="Edit" />
                             <asp:ImageButton ID="DelButton" runat="server" CausesValidation="False" CommandName="Deletes" OnClientClick="return GetConfirmation();"
-                                CommandArgument='<% #Eval("ACTIVITY_IDX") %>' ImageUrl="~/App_Images/ico_del.png"
-                                ToolTip="Delete" />
+                                CommandArgument='<% #Eval("ACTIVITY_IDX") %>' ImageUrl="~/App_Images/ico_del.png" ToolTip="Delete" />
                         </ItemTemplate>
                     </asp:TemplateField>
-                    <asp:BoundField DataField="ACTIVITY_ID" HeaderText="ID" SortExpression="ACTIVITY_ID" />
+                    <asp:BoundField DataField="ACTIVITY_ID" HeaderText="Activity ID" SortExpression="ACTIVITY_ID" />
+                    <asp:BoundField DataField="MONLOC_ID" HeaderText="Monitoring Loc." SortExpression="MONLOC_ID" />
+                    <asp:BoundField DataField="PROJECT_ID" HeaderText="Project" SortExpression="PROJECT_ID" />
                     <asp:BoundField DataField="ACT_TYPE" HeaderText="Type" SortExpression="ACT_TYPE" />
                     <asp:BoundField DataField="ACT_MEDIA" HeaderText="Media" SortExpression="ACT_MEDIA" />
                     <asp:BoundField DataField="ACT_SUBMEDIA" HeaderText="SubMedia" SortExpression="ACT_SUBMEDIA" />
                     <asp:BoundField DataField="ACT_START_DT" HeaderText="Sample Date" SortExpression="ACT_START_DT" />
                     <asp:BoundField DataField="ACT_END_DT" HeaderText="End Date" SortExpression="ACT_END_DT" />
-                    <asp:BoundField DataField="SAMP_COLL_METHOD_IDX" HeaderText="Sample Collection Method" SortExpression="SAMP_COLL_METHOD_IDX" />
+                    <asp:BoundField DataField="SAMP_COLL_METHOD" HeaderText="Sample Collection Method" SortExpression="SAMP_COLL_METHOD" />
                     <asp:BoundField DataField="SAMP_COLL_EQUIP" HeaderText="Collection Equipment" SortExpression="SAMP_COLL_EQUIP" />
                     <asp:BoundField DataField="SAMP_COLL_EQUIP_COMMENT" HeaderText="Equipment Comment" SortExpression="SAMP_COLL_EQUIP_COMMENT" />
-                    <asp:BoundField DataField="SAMP_PREP_IDX" HeaderText="Sample Prep Method" SortExpression="SAMP_PREP_IDX" />
+                    <asp:BoundField DataField="SAMP_PREP_METHOD" HeaderText="Sample Prep Method" SortExpression="SAMP_PREP_METHOD" />
                     <asp:BoundField DataField="ACT_DEPTHHEIGHT_MSR" HeaderText="Depth" SortExpression="ACT_DEPTHHEIGHT_MSR" />
                     <asp:BoundField DataField="TOP_DEPTHHEIGHT_MSR" HeaderText="Top Depth" SortExpression="TOP_DEPTHHEIGHT_MSR" />
                     <asp:BoundField DataField="BOT_DEPTHHEIGHT_MSR" HeaderText="Bottom Depth" SortExpression="BOT_DEPTHHEIGHT_MSR" />
@@ -126,10 +123,9 @@
                     <asp:TemplateField HeaderText="Send to EPA"> 
                         <ItemStyle HorizontalAlign="Center" />                        
                         <ItemTemplate> 
-                            <asp:CheckBox ID="chkWQX" Enabled="false" runat="server" Checked='<% #Eval("WQX_IND") %>' />
+                            <asp:CheckBox ID="chkWQX" Enabled="false" runat="server" Checked='<%# (Eval("WQX_IND") == null ? false : Eval("WQX_IND")) %>' />
                             <asp:ImageButton ID="WQXButton" runat="server" CausesValidation="False" CommandName="WQX"
-                                CommandArgument='<% #Eval("ACTIVITY_IDX") %>' ImageURL='<%# GetImage((string)Eval("WQX_SUBMIT_STATUS"),(Boolean)Eval("WQX_IND")) %>' 
-                                ToolTip="WQX History" />
+                                CommandArgument='<% #Eval("ACTIVITY_IDX") %>' ImageURL='<%# GetImage((string)Eval("WQX_SUBMIT_STATUS"),(Boolean)(Eval("WQX_IND")==null ? false : Eval("WQX_IND")) ) %>' ToolTip="WQX History" />
                         </ItemTemplate> 
                     </asp:TemplateField> 
                 </Columns>
@@ -137,10 +133,12 @@
         </ContentTemplate>
     </asp:UpdatePanel>
     <div class="btnRibbon">
-        <asp:Button ID="btnAdd" runat="server" CssClass="btn" Text="Add New" onclick="btnAdd_Click" />
-        <asp:ImageButton ID="btnExcel" runat="server" Height="24px" style="float:right; " ImageUrl="~/App_Images/ico_xls.png" onclick="btnExcel_Click" />
-        <asp:ImageButton ID="btnConfig" runat="server" Height="24px"  style="float:right; padding-right:5px; padding-left:5px" ImageUrl="~/App_Images/ico_config.png" />
+        <asp:Button ID="btnAdd" runat="server" CssClass="btn" Text="Add New" onclick="btnAdd_Click" ToolTip="Add a New Activity" />
+        <asp:ImageButton ID="btnExcel" runat="server" Height="24px" style="float:right; " ImageUrl="~/App_Images/ico_xls.png" onclick="btnExcel_Click" ToolTip="Export to Excel" />
+        <asp:ImageButton ID="btnConfig" runat="server" Height="24px"  style="float:right; padding-right:5px; padding-left:5px" ImageUrl="~/App_Images/ico_config.png" ToolTip="Show Additional Columns"/>
     </div>
+
+
     <br />
 
     <!-- ******************** MODAL PANEL -->

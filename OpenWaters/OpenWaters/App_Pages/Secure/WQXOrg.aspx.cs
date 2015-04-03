@@ -22,15 +22,9 @@ namespace OpenEnvironment
                 if (HttpContext.Current.User.IsInRole("ADMINS"))
                     grdOrg.DataSource = dsOrg;
                 else
-                    grdOrg.DataSource = db_WQX.GetWQX_USER_ORGS_ByUserIDX(Session["UserIDX"].ConvertOrDefault<int>());
+                    grdOrg.DataSource = db_WQX.GetWQX_USER_ORGS_ByUserIDX(Session["UserIDX"].ConvertOrDefault<int>(), true);
 
                 grdOrg.DataBind();
-
-                if (HttpContext.Current.User.IsInRole("READONLY"))
-                {
-                    btnAdd.Enabled = false;
-                    grdOrg.Columns[0].Visible = false;
-                }
 
                 btnAdd.Visible = HttpContext.Current.User.IsInRole("ADMINS");
             }
@@ -41,7 +35,7 @@ namespace OpenEnvironment
         {
             if (e.CommandName == "Edits")
             {
-                Session.Add("OrgEditID", e.CommandArgument.ToString());
+                Session.Add("OrgID", e.CommandArgument.ToString());
                 Response.Redirect("~/App_Pages/Secure/WQXOrgEdit.aspx");
             }
         }
@@ -53,7 +47,7 @@ namespace OpenEnvironment
 
         protected void btnAdd_Click(object sender, EventArgs e)
         {
-            Session.Add("OrgEditID", "-1");
+            Session.Add("OrgID", "-1");
             Response.Redirect("~/App_Pages/Secure/WQXOrgEdit.aspx");
         }
     }

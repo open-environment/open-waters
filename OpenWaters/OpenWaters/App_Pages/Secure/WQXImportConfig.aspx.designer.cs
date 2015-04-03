@@ -22,6 +22,24 @@ namespace OpenEnvironment {
         protected global::System.Web.UI.ScriptManager ScriptManager1;
         
         /// <summary>
+        /// dsRefData control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ObjectDataSource dsRefData;
+        
+        /// <summary>
+        /// dsChar control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ObjectDataSource dsChar;
+        
+        /// <summary>
         /// lblMsg control.
         /// </summary>
         /// <remarks>
@@ -283,22 +301,22 @@ namespace OpenEnvironment {
         protected global::System.Web.UI.WebControls.DropDownList ddlFieldMap;
         
         /// <summary>
-        /// txtColChar control.
+        /// ddlColChar control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtColChar;
+        protected global::System.Web.UI.WebControls.DropDownList ddlColChar;
         
         /// <summary>
-        /// txtColCharUnit control.
+        /// ddlColCharUnit control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtColCharUnit;
+        protected global::System.Web.UI.WebControls.DropDownList ddlColCharUnit;
         
         /// <summary>
         /// btnAddColumn control.

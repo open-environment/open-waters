@@ -24,8 +24,17 @@ namespace OpenEnvironment
                 ContentPlaceHolder cp = this.Master.Master.FindControl("MainContent") as ContentPlaceHolder;
                 HyperLink hl = (HyperLink)cp.FindControl("lnkProjectList");
                 if (hl != null) hl.CssClass = "leftMnuBody sel";
+            }
 
+            if (Session["OrgID"] == null)
+            {
+                lblMsg.Text = "Please select or join an organization first.";
+                btnAdd.Visible = false;
+                return;
+            }
 
+            if (!IsPostBack)
+            {
                 grdProject.Columns[4].Visible = (Session["PROJ_SAMP_DESIGN_TYPE_CD"].ConvertOrDefault<Boolean>());
                 grdProject.Columns[5].Visible = (Session["PROJ_QAPP_APPROVAL"].ConvertOrDefault<Boolean>());
                 grdProject.Columns[6].Visible = (Session["PROJ_QAPP_APPROVAL"].ConvertOrDefault<Boolean>());
@@ -33,10 +42,17 @@ namespace OpenEnvironment
                 chkFields.Items[0].Selected = (Session["PROJ_SAMP_DESIGN_TYPE_CD"].ConvertOrDefault<Boolean>());
                 chkFields.Items[1].Selected = (Session["PROJ_QAPP_APPROVAL"].ConvertOrDefault<Boolean>());
 
-                if (HttpContext.Current.User.IsInRole("READONLY"))
+                //ONLY ALLOW EDIT FOR AUTHORIZED USERS OF ORG
+                btnAdd.Enabled = false;
+                grdProject.Columns[0].Visible = false;
+                T_WQX_USER_ORGS uo = db_WQX.GetWQX_USER_ORGS_ByUserIDX_OrgID(Session["UserIDX"].ConvertOrDefault<int>(), Session["OrgID"].ToString());
+                if (uo != null)
                 {
-                    btnAdd.Enabled = false;
-                    grdProject.Columns[0].Visible = false;
+                    if (uo.ROLE_CD == "A" || uo.ROLE_CD == "U")
+                    {
+                        btnAdd.Enabled = true;
+                        grdProject.Columns[0].Visible = true;
+                    }
                 }
             }
 
@@ -96,15 +112,17 @@ namespace OpenEnvironment
 
             if (e.CommandName == "Deletes")
             {
-                List<T_WQX_ACTIVITY> a = db_WQX.GetWQX_ACTIVITY(false, Session["OrgID"].ConvertOrDefault<string>(), null, null, null, null, false, ProjectID);
-                if (a.Count==0)
+                int SuccID = db_WQX.DeleteT_WQX_PROJECT(ProjectID, User.Identity.Name);
+
+                if (SuccID == 1)
                 {
-                    db_WQX.DeleteT_WQX_PROJECT(ProjectID);
-                    lblMsg.Text = "";
+                    lblMsg.Text = "Record successfully deleted.";
                     FillGrid();
                 }
-                else
-                    lblMsg.Text = "You cannot delete a project that has samples/activities. You can instead make the project inactive at the project details screen.";
+                else if (SuccID == -1)
+                    lblMsg.Text = "Activities found for this project - record cannot be deleted.";
+                else if (SuccID == 0)
+                    lblMsg.Text = "Unable to delete project";
             }
 
             if (e.CommandName == "WQX")
