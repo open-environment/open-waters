@@ -1,9 +1,10 @@
-﻿using System;
+using System;
 using System.Security.Cryptography;
 using System.Text;
 using System.Web.Security;
 using OpenEnvironment.App_Logic.BusinessLogicLayer;
 using OpenEnvironment.App_Logic.DataAccessLayer;
+using System.Linq;
 
 namespace OpenEnvironment.Account
 {
@@ -83,9 +84,9 @@ namespace OpenEnvironment.Account
 
                     //generate new password
                     string salt = GenerateSalt();
-                    string hashpass = HashPassword(newPassword, _PasswordFormat, salt);
+                    string hashpass = HashPassword(newPassword, MembershipPasswordFormat.Hashed, salt);
                     //save updated information
-                    if (db_Accounts.UpdateT_OE_USERS(u.USER_IDX, hashpass, salt, null, null, null, null, false, null, null, null, null, "system") == 1)
+                    if (db_Accounts.UpdateT_OE_USERS(u.USER_IDX, hashpass, salt, null, null, null, null, false, null, null, null, null, "system") > 0)
                         return true;
                     else
                         return false;
@@ -102,66 +103,73 @@ namespace OpenEnvironment.Account
 
         public override MembershipUser CreateUser(string username, string password, string email, string passwordQuestion, string passwordAnswer, bool isApproved, object providerUserKey, out MembershipCreateStatus status)
         {
-            //validate username and password length
-            if (!Utils.ValidateParameter(ref password, true, true, false, 0, _MinRequiredPasswordLength))
-            {
-                status = MembershipCreateStatus.InvalidPassword;
-                return null;
-            }
+            status = MembershipCreateStatus.Success;
+
+            //******************************** BEGIN VALIDATION ********************************************************
+            //Validate Username Length
             if (!Utils.ValidateParameter(ref username, true, true, true, 25))
             {
                 status = MembershipCreateStatus.InvalidUserName;
                 return null;
             }
-            //Validate Non-AlphaNumeric characters
-            char[] charpwd = password.ToCharArray();
-            int pwdNonNumericCount = 0;
-            for (int i = 1; i < password.Length; i++)
-            {
-                if (!char.IsLetterOrDigit(charpwd[i]))
-                    pwdNonNumericCount += 1;
+            
+            T_OE_USERS u = db_Accounts.GetT_OE_USERSByID(username);            
+            if (u != null)            
+            {            
+                //Duplicate username found -return error                
+                status = MembershipCreateStatus.DuplicateUserName;                
+                return null;                
             }
 
-            if (pwdNonNumericCount < _MinRequiredNonalphanumericCharacters)
+            if (Utils.IsEmail(email) == false)
             {
-                status = MembershipCreateStatus.InvalidPassword;
+                status = MembershipCreateStatus.InvalidEmail;
                 return null;
             }
+            //******************************** END VALIDATION ***********************************************************
+
 
             try
             {
-                T_OE_USERS u = db_Accounts.GetT_OE_USERSByID(username);
-                if (u != null)
+                //Generate password and hash it
+                password = RandomString(10); 
+                string salt = GenerateSalt();
+                string hashpass = HashPassword(password, MembershipPasswordFormat.Hashed, salt);
+
+                //create user record
+                int createUser = db_Accounts.CreateT_OE_USERS(username, hashpass, salt, "", "", email, true, true, null, null, null, "system");
+                if (createUser > 0)  //Success
                 {
-                    //Duplicate username found -return error
-                    status = MembershipCreateStatus.DuplicateUserName;
-                    return null;
+                    //Add user to PUBLIC Role
+                    db_Accounts.CreateT_VCCB_USER_ROLE(3, createUser, "system");
+
+                    //encrypt username for email
+                    string encryptOauth = new SimpleAES().Encrypt(password + "||" + username);
+                    encryptOauth = System.Web.HttpUtility.UrlEncode(encryptOauth);
+
+                    //send verification email to user
+                    string message = "Welcome to Open Waters. Open Waters allows you to manage your water quality data and synchronize it with EPA-WQX.  "
+                        + "\r\n\r\n Your username is: " + username
+                        + "\r\n\r\n You must activate your account by clicking the following link: "
+                        + "\r\n\r\n " + db_Ref.GetT_OE_APP_SETTING("Public App Path") + "Account/Verify.aspx?oauthcrd=" + encryptOauth
+                        + "\r\n\r\n After verifying your account you will be prompted to enter a permanent password.";
+
+                    
+                    bool EmailStatus = Utils.SendEmail(null, email.Split(';').ToList(), null, null, "Confirm Your Open Waters Account", message, null);
+                    if (EmailStatus == false)
+                    {
+                        status = MembershipCreateStatus.InvalidEmail;
+                        db_Accounts.DeleteT_OE_USERS(createUser);
+                    }
+
+                    return new MembershipUser("CustMembershipProvider", username, createUser, email, passwordQuestion, null, isApproved, false, System.DateTime.Now, System.DateTime.Now, System.DateTime.Now, System.DateTime.Now, System.DateTime.Now);
                 }
                 else
                 {
-                    string salt = GenerateSalt();
-                    string hashpass = HashPassword(password, _PasswordFormat, salt);
-
-                    int createUser = db_Accounts.CreateT_OE_USERS(username, hashpass, salt, "", "", email, true, true, null, null, null, "system");
-                    if (createUser > 0)  //Success
-                    {
-                        status = MembershipCreateStatus.Success;
-
-                        //send confirmation email to user
-                        string message = "Welcome to the Open Waters. Open Waters allows you to manage and submit water quality data. \r\n\r\n Your account details are listed below: \r\n\r\n Username: " + username.ToUpper() + "\r\n\r\n Temporary password: " + password + "\r\n\r\n (Note: You will be prompted to change your password when you log in for the first time.)";
-                        Utils.SendEmail(null, email, "Welcome to Open Waters", message);
-                        //Add user to PUBLIC Role
-                        db_Accounts.CreateT_VCCB_USER_ROLE(3, createUser, "system");
-
-                        return new MembershipUser(this.Name, username, createUser, email, passwordQuestion, null, isApproved, false, System.DateTime.Now, System.DateTime.Now, System.DateTime.Now, System.DateTime.Now, System.DateTime.Now);
-                    }
-                    else
-                    {
-                        status = MembershipCreateStatus.ProviderError;
-                        return null;
-                    }
-
+                    status = MembershipCreateStatus.ProviderError;
+                    return null;
                 }
+
             }
             catch (Exception exp)
             {
@@ -261,7 +269,7 @@ namespace OpenEnvironment.Account
                         msg += "When you login for the first time you will be asked to set a permanent password.";
                         if (u.EMAIL == null)
                             return "User does not have email address.";
-                        if (Utils.SendEmail(null, u.EMAIL, "Open Waters Password Reset", msg))
+                        if (Utils.SendEmail(null, u.EMAIL.Split(';').ToList(), null, null, "Open Waters Password Reset", msg, null))
                             return "Email has been sent.";
                         else
                             return "Error in sending email";
@@ -300,12 +308,21 @@ namespace OpenEnvironment.Account
 
             if (u != null)
             {
-                if (u.ACT_IND == false) return false; //fail if user is inactive
+                if (u.ACT_IND == false) 
+                    return false; //fail if user is inactive
 
                 if (CheckPassword(password, u.PWD_HASH, u.PWD_SALT))
                     return true;
                 else
+                {
+                    //db_Accounts.UpdateT_OE_USERS(u.USER_IDX, null, null, null, null, null, null, u.LOG_ATMPT.ConvertOrDefault<int>() < MaxInvalidPasswordAttempts, null, null, null, null, null, u.LOG_ATMPT.ConvertOrDefault<int>() + 1, null, null, null);
+
+                    //user account is locked due to too many invalid login attempts
+                    //if (u.LOG_ATMPT.ConvertOrDefault<int>() + 1 > MaxInvalidPasswordAttempts)
+                    //    Utils.SendEmail(null, u.EMAIL, "Your account is locked.", "Your user account has been locked due to too many incorrect login attempts. Please contact the system administrator to reset your user account.");
+
                     return false;
+                }
             }
             else
                 return false;
@@ -355,7 +372,7 @@ namespace OpenEnvironment.Account
                 buffer[i] = _chars[_rng.Next(_chars.Length)];
 
             return new string(buffer);
-        } 
+        }
 
     }
 }
