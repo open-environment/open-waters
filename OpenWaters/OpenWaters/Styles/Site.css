@@ -1,11 +1,12 @@
 ﻿/* GENERAL
 ----------------------------------------------------------*/
 html, body { width: 100%; height: 100%; margin: 0; padding: 0; }
-body { background: #b6b7bc; font-size: .80em; font-family:Tahoma; color: #696969; } 
+body { background: #b6b7bc; font-size: .80em; font-family:Tahoma; color: #696969; margin: 0; padding: 0;} 
 img { border-width:0; vertical-align:middle; text-align: center;}
 img[alt='Skip Navigation Links'] { display: none;}   /* needed for Chrome compatibility  */
 input[disabled="disabled"] { color: #666; }   /* needed for Chrome compatibility  */
 input[type=text]::-ms-clear { display: none; } /* IE10 to remove little'x' from the textbox */
+input, select {box-sizing: border-box;}
 p { margin-bottom: 6px; line-height: 1.6em; }
 a:link, a:visited { color: #003300; }
 a:hover { color: #003300; text-decoration: none;}
@@ -14,8 +15,12 @@ a:active { color: #006600; text-decoration: none;}
 .clear { clear: both; }
 .failureNotification { font-size: 1.2em; color: Red; font-weight:bold }
 .fldErrLg { color:#003d7e; font:12pt Tahoma; vertical-align:middle; margin:1px 0; padding:2px; background:#fdd repeat-x top; border:1px solid #f00; }
+.fldErr { color:#003d7e; font:10pt Tahoma; vertical-align:middle; margin:1px 0; padding:2px; background:#fdd repeat-x top; border:1px solid #f00; }
+.fldPass { color:#045c00; font:10pt Tahoma; vertical-align:middle; margin:1px 0; padding:2px; background:#baeeb8 repeat-x top; border:1px solid #045c00; }
 .bold { font-weight: bold; }
 .indent { clear:both; padding:2px 12px;}
+.right { float: right; }
+.left { float: left; }
 
 /* MAPPING
 ----------------------------------------------------------*/
@@ -33,7 +38,7 @@ h2 { font-size: 1.5em; }
 
 /* PRIMARY LAYOUT ELEMENTS   
 ----------------------------------------------------------*/
-.page { width: 98%; background-color: #fff; margin: 10px auto 0px auto; border: 1px solid #696969; min-height:600px; }
+.page { background-color: #fff; border-bottom: 1px solid #696969; min-height:600px; }
 .header { position: relative; margin: 0px; padding: 0px; background: #4b6c9e; width: 100%;}
 .footer { color: #4e5766; padding: 8px 0px 0px 0px; margin: 0px auto; text-align: center; line-height: normal;}
 
@@ -51,7 +56,8 @@ a:link.menuitem, a:visited.menuitem { color: #e2e2e2;}
        border-style:solid; border:1px solid #ccc; min-width:60px }
 .btn:hover { color: #99ccff; }
 .btn[disabled] { color:Gray; } /* needed for Chrome compatibility  */
-.btnRibbon { border-radius:5px; clear:both; margin:3px 0; padding:4px 10px; background-color:#e9e9e9; border:1px dotted #7a97d2; }
+.btnRibbon { border-radius:5px; clear:both; margin:3px 0; padding:4px 10px; background-color:#e9e9e9; border:1px dotted #7a97d2; min-height:24px; }
+.btnRibbon:empty { display: none; }
 
 /* FORM ELEMENTS (default from MS)   
 ----------------------------------------------------------*/
@@ -62,12 +68,13 @@ fieldset label.inline {display: inline;}
 legend  { font-size: 1.1em; font-weight: 600; padding: 2px 4px 8px 4px; }
 .row { clear: both; padding: 5px;}
 .fldLbl { float: left; width:150px; height: 5px;}
-.fldTxt { float: left; font-family:Tahoma; color: #404040;  }
+.fldTxt { float: left; font-family:Tahoma; color: #404040; height: 22px; line-height:22px; }
 .fldTxt:focus {background-color: #ccff99;}
+.smallnote {font-size: 11px; line-height: 1.5em; }
 
 /* GRIDVIEW
 ----------------------------------------------------------*/
-.grd { width: 100%; background-color: #fff; margin: 5px 0 10px 0; border: solid 1px #525252; border-collapse:collapse; }
+.grd { width: 100%; background-color: #fff; margin: 5px 0 10px 0; border: solid 1px #525252; border-collapse:collapse; clear:both; }
     .grd td { padding: 2px; border: solid 1px #c1c1c1; color: #696969; }
     .grd th { padding: 4px 2px; color: #fff; background: #424242 url(../App_Images/grd_head.png) repeat-x top; border-left: solid 1px #525252; font-size: 0.9em; }
     .grd th a { color: #fff;  }
@@ -85,19 +92,19 @@ legend  { font-size: 1.1em; font-weight: 600; padding: 2px 4px 8px 4px; }
 
 /* ROUNDED PANEL
 ----------------------------------------------------------*/
-.brdr-green { border:1px solid #666666; border-radius: 31px 11px / 31px 11px; background-color:#dddddd; box-shadow: -3px 7px 3px #888888;}  /*outside line */
+.brdr-green { border:1px solid #666666; border-radius: 31px 11px / 31px 11px; background-color:#dddddd; box-shadow: -3px 7px 3px #888888; margin-bottom: 10px; margin-left: 10px;}  /*outside line */
 .ie9roundedgradient { display:inline-block; overflow:hidden; border-top-left-radius: 30px; border-top-right-radius: 10px; width:100% } /* needed for IE9 compatibility  */
 .rndPnlTop-green
 {
     color: #ffffff; border-top-left-radius: 30px; border-top-right-radius: 10px; padding: 4px; font-size: 12pt; font-weight: bold; text-align: center;
     background: #003300; /* Old browsers */
-    background: -moz-linear-gradient(top, #13C027 0%, #003300 30%, #003300 100%); /* FF3.6+ */
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#13C027), color-stop(30%,#003300), color-stop(100%,#003300)); /* Chrome,Safari4+ */
-    background: -webkit-linear-gradient(top, #13C027 0%,#003300 30%,#003300 100%); /* Chrome10+,Safari5.1+ */
-    background: -o-linear-gradient(top, #13C027 0%,#003300 30%,#003300 100%); /* Opera 11.10+ */
-    background: -ms-linear-gradient(top, #13C027 0%,#003300 30%,#003300 100%); /* IE10+ */
-    background: linear-gradient(to bottom, #13C027 0%,#003300 30%,#003300 100%); /* W3C */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0C7E19', endColorstr='#003300',GradientType=0 ); /* IE6-9 */                                                         
+    background: -moz-linear-gradient(top, #58D68D 0%, #003300 30%, #003300 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#58D68D), color-stop(30%,#003300), color-stop(100%,#003300)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, #58D68D 0%,#003300 30%,#003300 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, #58D68D 0%,#003300 30%,#003300 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, #58D68D 0%,#003300 30%,#003300 100%); /* IE10+ */
+    background: linear-gradient(to bottom, #58D68D 0%,#003300 30%,#003300 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#58D68D', endColorstr='#003300',GradientType=0 ); /* IE6-9 */                                                         
 }
 
 /*  DATAGRID FILTER PANELS
@@ -125,3 +132,38 @@ legend  { font-size: 1.1em; font-weight: 600; padding: 2px 4px 8px 4px; }
 .modalWindow { border: 1px solid #98B9DB; background:#f0f0f0; padding: 0px 0px 0px 0px; position:absolute; top:-1000px; }
 .modalBackground { background-color:Gray; filter: alpha(opacity=70); opacity:0.7; }
 .modalTitle { clear: both; background-color:#666666; padding: 3px 8px; font: bold 9pt Tahoma; color: #FFFFFF; margin: 3px 0 0 0;}
+
+/* GETTING STARTED WIZARD
+----------------------------------------------------------*/
+#signup_steps{ margin:20px auto;width:663px; }
+#signup_steps .ui-accordion-header{background:url(../App_Images/bg.png) no-repeat; }
+#signup_steps h3 {  border: 0 none; height: 67px; position: relative; width: 700px; }
+#signup_steps h3 .ui-icon-exp { background: url(../App_Images/wiz_1.png) no-repeat;  }
+.signup_header_check { background: url(../App_Images/wiz_check.png); height: 45px; position: absolute; left: 610px; top: 10px; width: 45px;  }
+.signup_header_cross { background: url(../App_Images/wiz_cross.png); height: 45px; position: absolute; left: 610px; top: 10px; width: 45px;  }
+.signup_header_crossbw { background: url(../App_Images/wiz_cross_bw.png); height: 45px; position: absolute; left: 610px; top: 10px; width: 45px;  }
+.signup_header_progress { background: url(../App_Images/wiz_progress.png); height: 45px; position: absolute; left: 610px; top: 10px; width: 45px;  }
+.signup_tabs_header { color: #555; display: block; float: left; font-size: 18px; height: 7px; margin: 6px 0 0 0px; text-shadow: #fff 0 1px 0; padding:15px 0 0 50px; }
+.signup_container { height: auto !important;  overflow: auto; padding-top: 13px; padding-bottom: 13px; display: block; }
+.infoSlide { border: 1px solid #dcd5aa; color: #ac9f52; margin-left:20px !important; background-color: #fff; line-height: 1.6; width: 600px; }
+.ui-accordion .ui-accordion-header { cursor: pointer; position: relative; margin-top: 1px; zoom: 1; }
+.ui-accordion .ui-accordion-content { padding: 1em 2.2em; border-top: 0; margin-top: -2px; position: relative; top: 1px; margin-bottom: 2px; zoom: 1; }
+.ui-corner-all { -moz-border-radius: 5px; -webkit-border-radius: 5px; border-radius: 5px; }
+.ui-corner-bottom { border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; }
+.ui-helper-reset { margin: 0; padding: 0; border: 0; outline: 0; line-height: 1.3; text-decoration: none; font-size: 100%; list-style: none; }
+.ui-icon { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; width: 29px; height: 29px;  display: block; text-indent: 9px; color:#fff; 
+           font-size:18px; padding-top:2px; padding-bottom: 0px; float: left; margin: 18px 0 0 18px;  }
+
+
+
+/* TABS
+----------------------------------------------------------*/
+
+.tabs-menu{ height: 30px; float: left; clear: both; list-style: none; padding-left: 0px; margin-bottom: 0px; }
+.tabs-menu li { height: 30px; line-height:30px; float: left; margin-right: 10px; background-color: #ccc; border-top: 1px solid #d4d4d1; border-right: 1px solid #d4d4d1; border-left: 1px solid #d4d4d1;  }
+.tabs-menu li.current { position: relative; background-color: #fff; border-bottom: 1px solid #fff; z-index: 5; }
+.tabs-menu li a { padding: 10px; color: #fff; text-decoration: none; font-size: 11pt; font-weight: bold; }
+.tabs-menu .current a { color: #227c14; }
+.tab { border: 1px solid #d4d4d1; background-color: #fff; float: left; margin-bottom: 10px; width: auto; clear-both; min-height:165px; }
+.tab-content { width: 880px; padding: 15px; display: none; }
+#tab-1 {display: block; }
