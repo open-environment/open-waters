@@ -1,74 +1,64 @@
-﻿<%@ Page Title="Register" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true"
-    CodeBehind="Register.aspx.cs" Inherits="OpenEnvironment.Account.Register" %>
+﻿<%@ Page Title="Register" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true"  CodeBehind="Register.aspx.cs" Inherits="OpenEnvironment.Account.Register" %>
 
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
 </asp:Content>
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
-    <asp:CreateUserWizard ID="RegisterUser" runat="server" EnableViewState="false" OnCreatedUser="RegisterUser_CreatedUser">
-        <LayoutTemplate>
-            <asp:PlaceHolder ID="wizardStepPlaceholder" runat="server"></asp:PlaceHolder>
-            <asp:PlaceHolder ID="navigationPlaceholder" runat="server"></asp:PlaceHolder>
-        </LayoutTemplate>
-        <WizardSteps>
-            <asp:CreateUserWizardStep ID="RegisterUserWizardStep" runat="server">
-                <ContentTemplate>
-                    <h2>
-                        Create a New Account
-                    </h2>
-                    <p>
-                        Use the form below to create a new account.
-                    </p>
-                    <p>
-                        Passwords are required to be a minimum of <%= Membership.MinRequiredPasswordLength %> characters in length.
-                    </p>
-                    <span class="failureNotification">
-                        <asp:Literal ID="ErrorMessage" runat="server"></asp:Literal>
-                    </span>
-                    <asp:ValidationSummary ID="RegisterUserValidationSummary" runat="server" CssClass="failureNotification" 
-                         ValidationGroup="RegisterUserValidationGroup"/>
-                    <div class="accountInfo">
-                        <fieldset class="register">
-                            <legend>Account Information</legend>
-                            <p>
-                                <asp:Label ID="UserNameLabel" runat="server" AssociatedControlID="UserName">User Name:</asp:Label>
-                                <asp:TextBox ID="UserName" runat="server" CssClass="textEntry"></asp:TextBox>
-                                <asp:RequiredFieldValidator ID="UserNameRequired" runat="server" ControlToValidate="UserName" 
-                                     CssClass="failureNotification" ErrorMessage="User Name is required." ToolTip="User Name is required." 
-                                     ValidationGroup="RegisterUserValidationGroup">*</asp:RequiredFieldValidator>
-                            </p>
-                            <p>
-                                <asp:Label ID="EmailLabel" runat="server" AssociatedControlID="Email">E-mail:</asp:Label>
-                                <asp:TextBox ID="Email" runat="server" CssClass="textEntry"></asp:TextBox>
-                                <asp:RequiredFieldValidator ID="EmailRequired" runat="server" ControlToValidate="Email" 
-                                     CssClass="failureNotification" ErrorMessage="E-mail is required." ToolTip="E-mail is required." 
-                                     ValidationGroup="RegisterUserValidationGroup">*</asp:RequiredFieldValidator>
-                            </p>
-                            <p>
-                                <asp:Label ID="PasswordLabel" runat="server" AssociatedControlID="Password">Password:</asp:Label>
-                                <asp:TextBox ID="Password" runat="server" CssClass="passwordEntry" TextMode="Password"></asp:TextBox>
-                                <asp:RequiredFieldValidator ID="PasswordRequired" runat="server" ControlToValidate="Password" 
-                                     CssClass="failureNotification" ErrorMessage="Password is required." ToolTip="Password is required." 
-                                     ValidationGroup="RegisterUserValidationGroup">*</asp:RequiredFieldValidator>
-                            </p>
-                            <p>
-                                <asp:Label ID="ConfirmPasswordLabel" runat="server" AssociatedControlID="ConfirmPassword">Confirm Password:</asp:Label>
-                                <asp:TextBox ID="ConfirmPassword" runat="server" CssClass="passwordEntry" TextMode="Password"></asp:TextBox>
-                                <asp:RequiredFieldValidator ControlToValidate="ConfirmPassword" CssClass="failureNotification" Display="Dynamic" 
-                                     ErrorMessage="Confirm Password is required." ID="ConfirmPasswordRequired" runat="server" 
-                                     ToolTip="Confirm Password is required." ValidationGroup="RegisterUserValidationGroup">*</asp:RequiredFieldValidator>
-                                <asp:CompareValidator ID="PasswordCompare" runat="server" ControlToCompare="Password" ControlToValidate="ConfirmPassword" 
-                                     CssClass="failureNotification" Display="Dynamic" ErrorMessage="The Password and Confirmation Password must match."
-                                     ValidationGroup="RegisterUserValidationGroup">*</asp:CompareValidator>
-                            </p>
-                        </fieldset>
-                        <p>
-                            <asp:Button ID="CreateUserButton" runat="server" CommandName="MoveNext" Text="Create User" CssClass="btn" ValidationGroup="RegisterUserValidationGroup"/>
-                        </p>
-                    </div>
-                </ContentTemplate>
-                <CustomNavigationTemplate>
-                </CustomNavigationTemplate>
-            </asp:CreateUserWizardStep>
-        </WizardSteps>
-    </asp:CreateUserWizard>
+    <h2>
+        <asp:Label ID="lblTitle" runat="server">Create a New Account</asp:Label>
+    </h2>
+    <p>
+        <asp:Label ID="lblMsg" runat="server" CssClass="failureNotification"></asp:Label>
+    </p>
+    <asp:Panel ID="pnl1" runat="server" DefaultButton="btnSave">
+        <p>
+            Use the form below to create a new account.
+        </p>
+
+        <div class="row">
+            <span class="fldLbl">User ID</span>
+            <asp:TextBox ID="txtUserID" runat="server" MaxLength="25" Width="200px" CssClass="fldTxt" ></asp:TextBox>
+        </div>
+        <div class="row">
+            <span class="fldLbl">First Name</span>
+            <asp:TextBox ID="txtFName" runat="server" CssClass="fldTxt" Width="200px" MaxLength="40"></asp:TextBox>
+        </div>
+        <div class="row">
+            <span class="fldLbl" >Last Name</span>
+            <asp:TextBox ID="txtLName" runat="server" CssClass="fldTxt" Width="200px" MaxLength="40"></asp:TextBox>
+        </div>
+        <div class="row">
+            <span class="fldLbl">Email</span>
+            <asp:TextBox ID="txtEmail" runat="server" CssClass="fldTxt" Width="200px"  MaxLength="150"></asp:TextBox>
+        </div>
+        <div class="row">
+            <span class="fldLbl">Phone</span>
+            <asp:TextBox ID="txtPhone" runat="server" CssClass="fldTxt" Width="100px" MaxLength="12"></asp:TextBox>
+            <span class="fldLbl" style="width:10px" ></span>
+            <span class="fldLbl" style="width:75px" >Extention</span>
+            <asp:TextBox ID="txtPhoneExt" runat="server" CssClass="fldTxt"  Width="50px" MaxLength="4"></asp:TextBox>
+        </div>
+        <asp:Panel ID="pnlBeta" runat="server"  Visible="false" CssClass="row">
+            <span class="fldLbl">Beta Invite Code</span>
+            <asp:TextBox ID="txtBetaKey" runat="server" CssClass="fldTxt" Width="200px"  MaxLength="10"></asp:TextBox>
+        </asp:Panel>
+        <br />
+        <div class="smallnote row">
+            By signing up for Open Waters, you agree to the <a href="../App_Pages/Public/Terms.aspx" target="_blank">Terms of Service</a>.
+        </div>
+        <div class="btnRibbon">
+            <asp:Button ID="btnBack" runat="server" CssClass="btn" OnClick="btnBack_Click" Text="Go Back" />
+            <asp:Button ID="btnSave" runat="server" CssClass="btn" OnClick="btnSave_Click" Text="Save" />
+        </div>
+    </asp:Panel>
+    <asp:Panel ID="pnl2" runat="server" Visible="false" >
+        <div class="row">
+            <h3>Your Account is Registered</h3>
+            <h4 class="failureNotification">Email Verification Required!</h4>
+            You will need to verify your account. Please <b><u>check your email</u></b> and click the link in the email to verify your account.
+            <div class="btnRibbon">
+                <asp:Button ID="btnBack2" runat="server" CssClass="btn" OnClick="btnBack_Click" Text="Return to Login Page" />
+            </div>
+
+        </div>
+    </asp:Panel>
 </asp:Content>
