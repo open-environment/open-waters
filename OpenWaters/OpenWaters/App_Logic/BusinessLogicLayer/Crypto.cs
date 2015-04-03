@@ -42,12 +42,19 @@ namespace OpenEnvironment.App_Logic.BusinessLogicLayer
 
         protected byte[] Transform(byte[] buffer, ICryptoTransform transform)
         {
-            MemoryStream stream = new MemoryStream();
-            using (CryptoStream cs = new CryptoStream(stream, transform, CryptoStreamMode.Write))
+            try
             {
-                cs.Write(buffer, 0, buffer.Length);
+                MemoryStream stream = new MemoryStream();
+                using (CryptoStream cs = new CryptoStream(stream, transform, CryptoStreamMode.Write))
+                {
+                    cs.Write(buffer, 0, buffer.Length);
+                }
+                return stream.ToArray();
             }
-            return stream.ToArray();
+            catch (Exception ex)
+            {
+                return null;
+            }
         }
     }
 }

@@ -21,28 +21,30 @@ using System.Xml.Serialization;
 
 [assembly: EdmRelationshipAttribute("OpenEnvironmentModel", "FK__T_OE_USER__ROLE___07F6335A", "T_OE_ROLES", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(OpenEnvironment.App_Logic.DataAccessLayer.T_OE_ROLES), "T_OE_USER_ROLES", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(OpenEnvironment.App_Logic.DataAccessLayer.T_OE_USER_ROLES), true)]
 [assembly: EdmRelationshipAttribute("OpenEnvironmentModel", "FK__T_OE_USER__USER___08EA5793", "T_OE_USERS", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(OpenEnvironment.App_Logic.DataAccessLayer.T_OE_USERS), "T_OE_USER_ROLES", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(OpenEnvironment.App_Logic.DataAccessLayer.T_OE_USER_ROLES), true)]
-[assembly: EdmRelationshipAttribute("OpenEnvironmentModel", "FK__T_WQX_ACT__ACTIV__22AA2996", "T_WQX_ACTIVITY", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(OpenEnvironment.App_Logic.DataAccessLayer.T_WQX_ACTIVITY), "T_WQX_ACTIVITY_METRIC", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(OpenEnvironment.App_Logic.DataAccessLayer.T_WQX_ACTIVITY_METRIC), true)]
-[assembly: EdmRelationshipAttribute("OpenEnvironmentModel", "FK__T_WQX_ACT__MONLO__1B0907CE", "T_WQX_MONLOC", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(OpenEnvironment.App_Logic.DataAccessLayer.T_WQX_MONLOC), "T_WQX_ACTIVITY", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(OpenEnvironment.App_Logic.DataAccessLayer.T_WQX_ACTIVITY), true)]
-[assembly: EdmRelationshipAttribute("OpenEnvironmentModel", "FK__T_WQX_ACT__PROJE__1A14E395", "T_WQX_PROJECT", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(OpenEnvironment.App_Logic.DataAccessLayer.T_WQX_PROJECT), "T_WQX_ACTIVITY", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(OpenEnvironment.App_Logic.DataAccessLayer.T_WQX_ACTIVITY), true)]
-[assembly: EdmRelationshipAttribute("OpenEnvironmentModel", "FK__T_WQX_RES__ACTIV__267ABA7A", "T_WQX_ACTIVITY", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(OpenEnvironment.App_Logic.DataAccessLayer.T_WQX_ACTIVITY), "T_WQX_RESULT", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(OpenEnvironment.App_Logic.DataAccessLayer.T_WQX_RESULT), true)]
 [assembly: EdmRelationshipAttribute("OpenEnvironmentModel", "FK__T_WQX_ACT__BIO_H__239E4DCF", "T_WQX_BIO_HABITAT_INDEX", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(OpenEnvironment.App_Logic.DataAccessLayer.T_WQX_BIO_HABITAT_INDEX), "T_WQX_ACTIVITY_METRIC", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(OpenEnvironment.App_Logic.DataAccessLayer.T_WQX_ACTIVITY_METRIC), true)]
 [assembly: EdmRelationshipAttribute("OpenEnvironmentModel", "FK__T_WQX_BIO__MONLO__1ED998B2", "T_WQX_MONLOC", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(OpenEnvironment.App_Logic.DataAccessLayer.T_WQX_MONLOC), "T_WQX_BIO_HABITAT_INDEX", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(OpenEnvironment.App_Logic.DataAccessLayer.T_WQX_BIO_HABITAT_INDEX), true)]
-[assembly: EdmRelationshipAttribute("OpenEnvironmentModel", "FK__T_WQX_RES__ANALY__286302EC", "T_WQX_REF_ANAL_METHOD", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(OpenEnvironment.App_Logic.DataAccessLayer.T_WQX_REF_ANAL_METHOD), "T_WQX_RESULT", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(OpenEnvironment.App_Logic.DataAccessLayer.T_WQX_RESULT), true)]
-[assembly: EdmRelationshipAttribute("OpenEnvironmentModel", "FK__T_WQX_RES__LAB_I__276EDEB3", "T_WQX_REF_LAB", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(OpenEnvironment.App_Logic.DataAccessLayer.T_WQX_REF_LAB), "T_WQX_RESULT", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(OpenEnvironment.App_Logic.DataAccessLayer.T_WQX_RESULT), true)]
 [assembly: EdmRelationshipAttribute("OpenEnvironmentModel", "FK__T_WQX_REF__CHAR___46E78A0C", "T_WQX_REF_CHARACTERISTIC", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(OpenEnvironment.App_Logic.DataAccessLayer.T_WQX_REF_CHARACTERISTIC), "T_WQX_REF_CHAR_LIMITS", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(OpenEnvironment.App_Logic.DataAccessLayer.T_WQX_REF_CHAR_LIMITS), true)]
 [assembly: EdmRelationshipAttribute("OpenEnvironmentModel", "FK__T_WQX_USE__USER___0E6E26BF", "T_OE_USERS", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(OpenEnvironment.App_Logic.DataAccessLayer.T_OE_USERS), "T_WQX_USER_ORGS", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(OpenEnvironment.App_Logic.DataAccessLayer.T_WQX_USER_ORGS), true)]
-[assembly: EdmRelationshipAttribute("OpenEnvironmentModel", "FK__T_WQX_REF__CHAR___19DFD96B", "T_WQX_REF_CHARACTERISTIC", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(OpenEnvironment.App_Logic.DataAccessLayer.T_WQX_REF_CHARACTERISTIC), "T_WQX_REF_CHAR_ORG", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(OpenEnvironment.App_Logic.DataAccessLayer.T_WQX_REF_CHAR_ORG), true)]
 [assembly: EdmRelationshipAttribute("OpenEnvironmentModel", "FK__T_WQX_IMP__TEMPL__66603565", "T_WQX_IMPORT_TEMPLATE", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(OpenEnvironment.App_Logic.DataAccessLayer.T_WQX_IMPORT_TEMPLATE), "T_WQX_IMPORT_TEMPLATE_DTL", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(OpenEnvironment.App_Logic.DataAccessLayer.T_WQX_IMPORT_TEMPLATE_DTL), true)]
-[assembly: EdmRelationshipAttribute("OpenEnvironmentModel", "FK__T_WQX_IMP__TEMP___29221CFB", "T_WQX_IMPORT_TEMP_SAMPLE", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(OpenEnvironment.App_Logic.DataAccessLayer.T_WQX_IMPORT_TEMP_SAMPLE), "T_WQX_IMPORT_TEMP_RESULT", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(OpenEnvironment.App_Logic.DataAccessLayer.T_WQX_IMPORT_TEMP_RESULT), true)]
-[assembly: EdmRelationshipAttribute("OpenEnvironmentModel", "FK__T_WQX_ACT__ORG_I__30F848ED", "T_WQX_ORGANIZATION", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(OpenEnvironment.App_Logic.DataAccessLayer.T_WQX_ORGANIZATION), "T_WQX_ACTIVITY", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(OpenEnvironment.App_Logic.DataAccessLayer.T_WQX_ACTIVITY), true)]
 [assembly: EdmRelationshipAttribute("OpenEnvironmentModel", "FK__T_WQX_BIO__ORG_I__34C8D9D1", "T_WQX_ORGANIZATION", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(OpenEnvironment.App_Logic.DataAccessLayer.T_WQX_ORGANIZATION), "T_WQX_BIO_HABITAT_INDEX", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(OpenEnvironment.App_Logic.DataAccessLayer.T_WQX_BIO_HABITAT_INDEX), true)]
-[assembly: EdmRelationshipAttribute("OpenEnvironmentModel", "FK__T_WQX_IMP__ORG_I__4CA06362", "T_WQX_ORGANIZATION", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(OpenEnvironment.App_Logic.DataAccessLayer.T_WQX_ORGANIZATION), "T_WQX_IMPORT_LOG", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(OpenEnvironment.App_Logic.DataAccessLayer.T_WQX_IMPORT_LOG), true)]
 [assembly: EdmRelationshipAttribute("OpenEnvironmentModel", "FK__T_WQX_IMP__ORG_I__4F7CD00D", "T_WQX_ORGANIZATION", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(OpenEnvironment.App_Logic.DataAccessLayer.T_WQX_ORGANIZATION), "T_WQX_IMPORT_TEMPLATE", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(OpenEnvironment.App_Logic.DataAccessLayer.T_WQX_IMPORT_TEMPLATE), true)]
 [assembly: EdmRelationshipAttribute("OpenEnvironmentModel", "FK__T_WQX_MON__ORG_I__2C3393D0", "T_WQX_ORGANIZATION", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(OpenEnvironment.App_Logic.DataAccessLayer.T_WQX_ORGANIZATION), "T_WQX_MONLOC", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(OpenEnvironment.App_Logic.DataAccessLayer.T_WQX_MONLOC), true)]
 [assembly: EdmRelationshipAttribute("OpenEnvironmentModel", "FK__T_WQX_ORG__ORG_I__22AA2996", "T_WQX_ORGANIZATION", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(OpenEnvironment.App_Logic.DataAccessLayer.T_WQX_ORGANIZATION), "T_WQX_ORG_ADDRESS", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(OpenEnvironment.App_Logic.DataAccessLayer.T_WQX_ORG_ADDRESS), true)]
 [assembly: EdmRelationshipAttribute("OpenEnvironmentModel", "FK__T_WQX_PRO__ORG_I__29572725", "T_WQX_ORGANIZATION", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(OpenEnvironment.App_Logic.DataAccessLayer.T_WQX_ORGANIZATION), "T_WQX_PROJECT", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(OpenEnvironment.App_Logic.DataAccessLayer.T_WQX_PROJECT), true)]
-[assembly: EdmRelationshipAttribute("OpenEnvironmentModel", "FK__T_WQX_REF__ORG_I__46E78A0C", "T_WQX_ORGANIZATION", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(OpenEnvironment.App_Logic.DataAccessLayer.T_WQX_ORGANIZATION), "T_WQX_REF_CHAR_ORG", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(OpenEnvironment.App_Logic.DataAccessLayer.T_WQX_REF_CHAR_ORG), true)]
 [assembly: EdmRelationshipAttribute("OpenEnvironmentModel", "FK__T_WQX_USE__ORG_I__25869641", "T_WQX_ORGANIZATION", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(OpenEnvironment.App_Logic.DataAccessLayer.T_WQX_ORGANIZATION), "T_WQX_USER_ORGS", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(OpenEnvironment.App_Logic.DataAccessLayer.T_WQX_USER_ORGS), true)]
+[assembly: EdmRelationshipAttribute("OpenEnvironmentModel", "FK__T_WQX_ACT__ACTIV__44FF419A", "T_WQX_ACTIVITY", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(OpenEnvironment.App_Logic.DataAccessLayer.T_WQX_ACTIVITY), "T_WQX_ACTIVITY_METRIC", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(OpenEnvironment.App_Logic.DataAccessLayer.T_WQX_ACTIVITY_METRIC), true)]
+[assembly: EdmRelationshipAttribute("OpenEnvironmentModel", "FK__T_WQX_ACT__MONLO__3D5E1FD2", "T_WQX_MONLOC", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(OpenEnvironment.App_Logic.DataAccessLayer.T_WQX_MONLOC), "T_WQX_ACTIVITY", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(OpenEnvironment.App_Logic.DataAccessLayer.T_WQX_ACTIVITY), true)]
+[assembly: EdmRelationshipAttribute("OpenEnvironmentModel", "FK__T_WQX_ACT__ORG_I__3E52440B", "T_WQX_ORGANIZATION", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(OpenEnvironment.App_Logic.DataAccessLayer.T_WQX_ORGANIZATION), "T_WQX_ACTIVITY", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(OpenEnvironment.App_Logic.DataAccessLayer.T_WQX_ACTIVITY), true)]
+[assembly: EdmRelationshipAttribute("OpenEnvironmentModel", "FK__T_WQX_ACT__PROJE__3C69FB99", "T_WQX_PROJECT", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(OpenEnvironment.App_Logic.DataAccessLayer.T_WQX_PROJECT), "T_WQX_ACTIVITY", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(OpenEnvironment.App_Logic.DataAccessLayer.T_WQX_ACTIVITY), true)]
+[assembly: EdmRelationshipAttribute("OpenEnvironmentModel", "FK__T_WQX_RES__ACTIV__48CFD27E", "T_WQX_ACTIVITY", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(OpenEnvironment.App_Logic.DataAccessLayer.T_WQX_ACTIVITY), "T_WQX_RESULT", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(OpenEnvironment.App_Logic.DataAccessLayer.T_WQX_RESULT), true)]
+[assembly: EdmRelationshipAttribute("OpenEnvironmentModel", "FK__T_WQX_RES__ANALY__4AB81AF0", "T_WQX_REF_ANAL_METHOD", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(OpenEnvironment.App_Logic.DataAccessLayer.T_WQX_REF_ANAL_METHOD), "T_WQX_RESULT", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(OpenEnvironment.App_Logic.DataAccessLayer.T_WQX_RESULT), true)]
+[assembly: EdmRelationshipAttribute("OpenEnvironmentModel", "FK__T_WQX_IMP__ORG_I__534D60F1", "T_WQX_ORGANIZATION", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(OpenEnvironment.App_Logic.DataAccessLayer.T_WQX_ORGANIZATION), "T_WQX_IMPORT_LOG", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(OpenEnvironment.App_Logic.DataAccessLayer.T_WQX_IMPORT_LOG), true)]
+[assembly: EdmRelationshipAttribute("OpenEnvironmentModel", "FK__T_WQX_RES__LAB_I__2A164134", "T_WQX_REF_LAB", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(OpenEnvironment.App_Logic.DataAccessLayer.T_WQX_REF_LAB), "T_WQX_RESULT", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(OpenEnvironment.App_Logic.DataAccessLayer.T_WQX_RESULT), true)]
+[assembly: EdmRelationshipAttribute("OpenEnvironmentModel", "FK__T_WQX_REF__ORG_I__756D6ECB", "T_WQX_ORGANIZATION", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(OpenEnvironment.App_Logic.DataAccessLayer.T_WQX_ORGANIZATION), "T_WQX_REF_TAXA_ORG", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(OpenEnvironment.App_Logic.DataAccessLayer.T_WQX_REF_TAXA_ORG), true)]
+[assembly: EdmRelationshipAttribute("OpenEnvironmentModel", "FK__T_WQX_REF__ORG_I__4D94879B", "T_WQX_ORGANIZATION", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(OpenEnvironment.App_Logic.DataAccessLayer.T_WQX_ORGANIZATION), "T_WQX_REF_CHAR_ORG", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(OpenEnvironment.App_Logic.DataAccessLayer.T_WQX_REF_CHAR_ORG), true)]
+[assembly: EdmRelationshipAttribute("OpenEnvironmentModel", "FK_T_WQX_REF_CHAR_ORG", "T_WQX_REF_ANAL_METHOD", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(OpenEnvironment.App_Logic.DataAccessLayer.T_WQX_REF_ANAL_METHOD), "T_WQX_REF_CHAR_ORG", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(OpenEnvironment.App_Logic.DataAccessLayer.T_WQX_REF_CHAR_ORG), true)]
+[assembly: EdmRelationshipAttribute("OpenEnvironmentModel", "FK__T_WQX_REF__CHAR___4E88ABD4", "T_WQX_REF_CHARACTERISTIC", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(OpenEnvironment.App_Logic.DataAccessLayer.T_WQX_REF_CHARACTERISTIC), "T_WQX_REF_CHAR_ORG", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(OpenEnvironment.App_Logic.DataAccessLayer.T_WQX_REF_CHAR_ORG), true)]
+[assembly: EdmRelationshipAttribute("OpenEnvironmentModel", "FK__T_WQX_IMP__TEMP___3C34F16F", "T_WQX_IMPORT_TEMP_SAMPLE", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(OpenEnvironment.App_Logic.DataAccessLayer.T_WQX_IMPORT_TEMP_SAMPLE), "T_WQX_IMPORT_TEMP_RESULT", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(OpenEnvironment.App_Logic.DataAccessLayer.T_WQX_IMPORT_TEMP_RESULT), true)]
 
 #endregion
 
@@ -177,22 +179,6 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        public ObjectSet<T_WQX_ACTIVITY> T_WQX_ACTIVITY
-        {
-            get
-            {
-                if ((_T_WQX_ACTIVITY == null))
-                {
-                    _T_WQX_ACTIVITY = base.CreateObjectSet<T_WQX_ACTIVITY>("T_WQX_ACTIVITY");
-                }
-                return _T_WQX_ACTIVITY;
-            }
-        }
-        private ObjectSet<T_WQX_ACTIVITY> _T_WQX_ACTIVITY;
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
         public ObjectSet<T_WQX_ACTIVITY_METRIC> T_WQX_ACTIVITY_METRIC
         {
             get
@@ -221,22 +207,6 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             }
         }
         private ObjectSet<T_WQX_BIO_HABITAT_INDEX> _T_WQX_BIO_HABITAT_INDEX;
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        public ObjectSet<T_WQX_IMPORT_LOG> T_WQX_IMPORT_LOG
-        {
-            get
-            {
-                if ((_T_WQX_IMPORT_LOG == null))
-                {
-                    _T_WQX_IMPORT_LOG = base.CreateObjectSet<T_WQX_IMPORT_LOG>("T_WQX_IMPORT_LOG");
-                }
-                return _T_WQX_IMPORT_LOG;
-            }
-        }
-        private ObjectSet<T_WQX_IMPORT_LOG> _T_WQX_IMPORT_LOG;
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -321,38 +291,6 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        public ObjectSet<T_WQX_REF_LAB> T_WQX_REF_LAB
-        {
-            get
-            {
-                if ((_T_WQX_REF_LAB == null))
-                {
-                    _T_WQX_REF_LAB = base.CreateObjectSet<T_WQX_REF_LAB>("T_WQX_REF_LAB");
-                }
-                return _T_WQX_REF_LAB;
-            }
-        }
-        private ObjectSet<T_WQX_REF_LAB> _T_WQX_REF_LAB;
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        public ObjectSet<T_WQX_RESULT> T_WQX_RESULT
-        {
-            get
-            {
-                if ((_T_WQX_RESULT == null))
-                {
-                    _T_WQX_RESULT = base.CreateObjectSet<T_WQX_RESULT>("T_WQX_RESULT");
-                }
-                return _T_WQX_RESULT;
-            }
-        }
-        private ObjectSet<T_WQX_RESULT> _T_WQX_RESULT;
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
         public ObjectSet<T_WQX_REF_CHARACTERISTIC> T_WQX_REF_CHARACTERISTIC
         {
             get
@@ -417,22 +355,6 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        public ObjectSet<T_WQX_REF_CHAR_ORG> T_WQX_REF_CHAR_ORG
-        {
-            get
-            {
-                if ((_T_WQX_REF_CHAR_ORG == null))
-                {
-                    _T_WQX_REF_CHAR_ORG = base.CreateObjectSet<T_WQX_REF_CHAR_ORG>("T_WQX_REF_CHAR_ORG");
-                }
-                return _T_WQX_REF_CHAR_ORG;
-            }
-        }
-        private ObjectSet<T_WQX_REF_CHAR_ORG> _T_WQX_REF_CHAR_ORG;
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
         public ObjectSet<T_WQX_IMPORT_TEMPLATE> T_WQX_IMPORT_TEMPLATE
         {
             get
@@ -461,22 +383,6 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             }
         }
         private ObjectSet<T_WQX_IMPORT_TEMPLATE_DTL> _T_WQX_IMPORT_TEMPLATE_DTL;
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        public ObjectSet<T_WQX_IMPORT_TEMP_RESULT> T_WQX_IMPORT_TEMP_RESULT
-        {
-            get
-            {
-                if ((_T_WQX_IMPORT_TEMP_RESULT == null))
-                {
-                    _T_WQX_IMPORT_TEMP_RESULT = base.CreateObjectSet<T_WQX_IMPORT_TEMP_RESULT>("T_WQX_IMPORT_TEMP_RESULT");
-                }
-                return _T_WQX_IMPORT_TEMP_RESULT;
-            }
-        }
-        private ObjectSet<T_WQX_IMPORT_TEMP_RESULT> _T_WQX_IMPORT_TEMP_RESULT;
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -573,6 +479,230 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             }
         }
         private ObjectSet<V_WQX_TRANSACTION_LOG> _V_WQX_TRANSACTION_LOG;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<T_WQX_IMPORT_TEMP_PROJECT> T_WQX_IMPORT_TEMP_PROJECT
+        {
+            get
+            {
+                if ((_T_WQX_IMPORT_TEMP_PROJECT == null))
+                {
+                    _T_WQX_IMPORT_TEMP_PROJECT = base.CreateObjectSet<T_WQX_IMPORT_TEMP_PROJECT>("T_WQX_IMPORT_TEMP_PROJECT");
+                }
+                return _T_WQX_IMPORT_TEMP_PROJECT;
+            }
+        }
+        private ObjectSet<T_WQX_IMPORT_TEMP_PROJECT> _T_WQX_IMPORT_TEMP_PROJECT;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<T_EPA_ORGS> T_EPA_ORGS
+        {
+            get
+            {
+                if ((_T_EPA_ORGS == null))
+                {
+                    _T_EPA_ORGS = base.CreateObjectSet<T_EPA_ORGS>("T_EPA_ORGS");
+                }
+                return _T_EPA_ORGS;
+            }
+        }
+        private ObjectSet<T_EPA_ORGS> _T_EPA_ORGS;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<V_WQX_ALL_ORGS> V_WQX_ALL_ORGS
+        {
+            get
+            {
+                if ((_V_WQX_ALL_ORGS == null))
+                {
+                    _V_WQX_ALL_ORGS = base.CreateObjectSet<V_WQX_ALL_ORGS>("V_WQX_ALL_ORGS");
+                }
+                return _V_WQX_ALL_ORGS;
+            }
+        }
+        private ObjectSet<V_WQX_ALL_ORGS> _V_WQX_ALL_ORGS;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<T_WQX_REF_DEFAULT_TIME_ZONE> T_WQX_REF_DEFAULT_TIME_ZONE
+        {
+            get
+            {
+                if ((_T_WQX_REF_DEFAULT_TIME_ZONE == null))
+                {
+                    _T_WQX_REF_DEFAULT_TIME_ZONE = base.CreateObjectSet<T_WQX_REF_DEFAULT_TIME_ZONE>("T_WQX_REF_DEFAULT_TIME_ZONE");
+                }
+                return _T_WQX_REF_DEFAULT_TIME_ZONE;
+            }
+        }
+        private ObjectSet<T_WQX_REF_DEFAULT_TIME_ZONE> _T_WQX_REF_DEFAULT_TIME_ZONE;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<T_WQX_REF_COUNTY> T_WQX_REF_COUNTY
+        {
+            get
+            {
+                if ((_T_WQX_REF_COUNTY == null))
+                {
+                    _T_WQX_REF_COUNTY = base.CreateObjectSet<T_WQX_REF_COUNTY>("T_WQX_REF_COUNTY");
+                }
+                return _T_WQX_REF_COUNTY;
+            }
+        }
+        private ObjectSet<T_WQX_REF_COUNTY> _T_WQX_REF_COUNTY;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<T_WQX_REF_SAMP_COL_METHOD> T_WQX_REF_SAMP_COL_METHOD
+        {
+            get
+            {
+                if ((_T_WQX_REF_SAMP_COL_METHOD == null))
+                {
+                    _T_WQX_REF_SAMP_COL_METHOD = base.CreateObjectSet<T_WQX_REF_SAMP_COL_METHOD>("T_WQX_REF_SAMP_COL_METHOD");
+                }
+                return _T_WQX_REF_SAMP_COL_METHOD;
+            }
+        }
+        private ObjectSet<T_WQX_REF_SAMP_COL_METHOD> _T_WQX_REF_SAMP_COL_METHOD;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<T_WQX_REF_SAMP_PREP> T_WQX_REF_SAMP_PREP
+        {
+            get
+            {
+                if ((_T_WQX_REF_SAMP_PREP == null))
+                {
+                    _T_WQX_REF_SAMP_PREP = base.CreateObjectSet<T_WQX_REF_SAMP_PREP>("T_WQX_REF_SAMP_PREP");
+                }
+                return _T_WQX_REF_SAMP_PREP;
+            }
+        }
+        private ObjectSet<T_WQX_REF_SAMP_PREP> _T_WQX_REF_SAMP_PREP;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<T_WQX_ACTIVITY> T_WQX_ACTIVITY
+        {
+            get
+            {
+                if ((_T_WQX_ACTIVITY == null))
+                {
+                    _T_WQX_ACTIVITY = base.CreateObjectSet<T_WQX_ACTIVITY>("T_WQX_ACTIVITY");
+                }
+                return _T_WQX_ACTIVITY;
+            }
+        }
+        private ObjectSet<T_WQX_ACTIVITY> _T_WQX_ACTIVITY;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<T_WQX_RESULT> T_WQX_RESULT
+        {
+            get
+            {
+                if ((_T_WQX_RESULT == null))
+                {
+                    _T_WQX_RESULT = base.CreateObjectSet<T_WQX_RESULT>("T_WQX_RESULT");
+                }
+                return _T_WQX_RESULT;
+            }
+        }
+        private ObjectSet<T_WQX_RESULT> _T_WQX_RESULT;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<T_WQX_IMPORT_LOG> T_WQX_IMPORT_LOG
+        {
+            get
+            {
+                if ((_T_WQX_IMPORT_LOG == null))
+                {
+                    _T_WQX_IMPORT_LOG = base.CreateObjectSet<T_WQX_IMPORT_LOG>("T_WQX_IMPORT_LOG");
+                }
+                return _T_WQX_IMPORT_LOG;
+            }
+        }
+        private ObjectSet<T_WQX_IMPORT_LOG> _T_WQX_IMPORT_LOG;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<T_WQX_REF_LAB> T_WQX_REF_LAB
+        {
+            get
+            {
+                if ((_T_WQX_REF_LAB == null))
+                {
+                    _T_WQX_REF_LAB = base.CreateObjectSet<T_WQX_REF_LAB>("T_WQX_REF_LAB");
+                }
+                return _T_WQX_REF_LAB;
+            }
+        }
+        private ObjectSet<T_WQX_REF_LAB> _T_WQX_REF_LAB;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<T_WQX_REF_TAXA_ORG> T_WQX_REF_TAXA_ORG
+        {
+            get
+            {
+                if ((_T_WQX_REF_TAXA_ORG == null))
+                {
+                    _T_WQX_REF_TAXA_ORG = base.CreateObjectSet<T_WQX_REF_TAXA_ORG>("T_WQX_REF_TAXA_ORG");
+                }
+                return _T_WQX_REF_TAXA_ORG;
+            }
+        }
+        private ObjectSet<T_WQX_REF_TAXA_ORG> _T_WQX_REF_TAXA_ORG;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<T_WQX_REF_CHAR_ORG> T_WQX_REF_CHAR_ORG
+        {
+            get
+            {
+                if ((_T_WQX_REF_CHAR_ORG == null))
+                {
+                    _T_WQX_REF_CHAR_ORG = base.CreateObjectSet<T_WQX_REF_CHAR_ORG>("T_WQX_REF_CHAR_ORG");
+                }
+                return _T_WQX_REF_CHAR_ORG;
+            }
+        }
+        private ObjectSet<T_WQX_REF_CHAR_ORG> _T_WQX_REF_CHAR_ORG;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<T_WQX_IMPORT_TEMP_RESULT> T_WQX_IMPORT_TEMP_RESULT
+        {
+            get
+            {
+                if ((_T_WQX_IMPORT_TEMP_RESULT == null))
+                {
+                    _T_WQX_IMPORT_TEMP_RESULT = base.CreateObjectSet<T_WQX_IMPORT_TEMP_RESULT>("T_WQX_IMPORT_TEMP_RESULT");
+                }
+                return _T_WQX_IMPORT_TEMP_RESULT;
+            }
+        }
+        private ObjectSet<T_WQX_IMPORT_TEMP_RESULT> _T_WQX_IMPORT_TEMP_RESULT;
 
         #endregion
 
@@ -619,14 +749,6 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
         }
     
         /// <summary>
-        /// Deprecated Method for adding a new object to the T_WQX_ACTIVITY EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
-        /// </summary>
-        public void AddToT_WQX_ACTIVITY(T_WQX_ACTIVITY t_WQX_ACTIVITY)
-        {
-            base.AddObject("T_WQX_ACTIVITY", t_WQX_ACTIVITY);
-        }
-    
-        /// <summary>
         /// Deprecated Method for adding a new object to the T_WQX_ACTIVITY_METRIC EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
         /// </summary>
         public void AddToT_WQX_ACTIVITY_METRIC(T_WQX_ACTIVITY_METRIC t_WQX_ACTIVITY_METRIC)
@@ -640,14 +762,6 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
         public void AddToT_WQX_BIO_HABITAT_INDEX(T_WQX_BIO_HABITAT_INDEX t_WQX_BIO_HABITAT_INDEX)
         {
             base.AddObject("T_WQX_BIO_HABITAT_INDEX", t_WQX_BIO_HABITAT_INDEX);
-        }
-    
-        /// <summary>
-        /// Deprecated Method for adding a new object to the T_WQX_IMPORT_LOG EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
-        /// </summary>
-        public void AddToT_WQX_IMPORT_LOG(T_WQX_IMPORT_LOG t_WQX_IMPORT_LOG)
-        {
-            base.AddObject("T_WQX_IMPORT_LOG", t_WQX_IMPORT_LOG);
         }
     
         /// <summary>
@@ -691,22 +805,6 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
         }
     
         /// <summary>
-        /// Deprecated Method for adding a new object to the T_WQX_REF_LAB EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
-        /// </summary>
-        public void AddToT_WQX_REF_LAB(T_WQX_REF_LAB t_WQX_REF_LAB)
-        {
-            base.AddObject("T_WQX_REF_LAB", t_WQX_REF_LAB);
-        }
-    
-        /// <summary>
-        /// Deprecated Method for adding a new object to the T_WQX_RESULT EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
-        /// </summary>
-        public void AddToT_WQX_RESULT(T_WQX_RESULT t_WQX_RESULT)
-        {
-            base.AddObject("T_WQX_RESULT", t_WQX_RESULT);
-        }
-    
-        /// <summary>
         /// Deprecated Method for adding a new object to the T_WQX_REF_CHARACTERISTIC EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
         /// </summary>
         public void AddToT_WQX_REF_CHARACTERISTIC(T_WQX_REF_CHARACTERISTIC t_WQX_REF_CHARACTERISTIC)
@@ -739,14 +837,6 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
         }
     
         /// <summary>
-        /// Deprecated Method for adding a new object to the T_WQX_REF_CHAR_ORG EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
-        /// </summary>
-        public void AddToT_WQX_REF_CHAR_ORG(T_WQX_REF_CHAR_ORG t_WQX_REF_CHAR_ORG)
-        {
-            base.AddObject("T_WQX_REF_CHAR_ORG", t_WQX_REF_CHAR_ORG);
-        }
-    
-        /// <summary>
         /// Deprecated Method for adding a new object to the T_WQX_IMPORT_TEMPLATE EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
         /// </summary>
         public void AddToT_WQX_IMPORT_TEMPLATE(T_WQX_IMPORT_TEMPLATE t_WQX_IMPORT_TEMPLATE)
@@ -760,14 +850,6 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
         public void AddToT_WQX_IMPORT_TEMPLATE_DTL(T_WQX_IMPORT_TEMPLATE_DTL t_WQX_IMPORT_TEMPLATE_DTL)
         {
             base.AddObject("T_WQX_IMPORT_TEMPLATE_DTL", t_WQX_IMPORT_TEMPLATE_DTL);
-        }
-    
-        /// <summary>
-        /// Deprecated Method for adding a new object to the T_WQX_IMPORT_TEMP_RESULT EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
-        /// </summary>
-        public void AddToT_WQX_IMPORT_TEMP_RESULT(T_WQX_IMPORT_TEMP_RESULT t_WQX_IMPORT_TEMP_RESULT)
-        {
-            base.AddObject("T_WQX_IMPORT_TEMP_RESULT", t_WQX_IMPORT_TEMP_RESULT);
         }
     
         /// <summary>
@@ -816,6 +898,118 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
         public void AddToV_WQX_TRANSACTION_LOG(V_WQX_TRANSACTION_LOG v_WQX_TRANSACTION_LOG)
         {
             base.AddObject("V_WQX_TRANSACTION_LOG", v_WQX_TRANSACTION_LOG);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the T_WQX_IMPORT_TEMP_PROJECT EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToT_WQX_IMPORT_TEMP_PROJECT(T_WQX_IMPORT_TEMP_PROJECT t_WQX_IMPORT_TEMP_PROJECT)
+        {
+            base.AddObject("T_WQX_IMPORT_TEMP_PROJECT", t_WQX_IMPORT_TEMP_PROJECT);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the T_EPA_ORGS EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToT_EPA_ORGS(T_EPA_ORGS t_EPA_ORGS)
+        {
+            base.AddObject("T_EPA_ORGS", t_EPA_ORGS);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the V_WQX_ALL_ORGS EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToV_WQX_ALL_ORGS(V_WQX_ALL_ORGS v_WQX_ALL_ORGS)
+        {
+            base.AddObject("V_WQX_ALL_ORGS", v_WQX_ALL_ORGS);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the T_WQX_REF_DEFAULT_TIME_ZONE EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToT_WQX_REF_DEFAULT_TIME_ZONE(T_WQX_REF_DEFAULT_TIME_ZONE t_WQX_REF_DEFAULT_TIME_ZONE)
+        {
+            base.AddObject("T_WQX_REF_DEFAULT_TIME_ZONE", t_WQX_REF_DEFAULT_TIME_ZONE);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the T_WQX_REF_COUNTY EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToT_WQX_REF_COUNTY(T_WQX_REF_COUNTY t_WQX_REF_COUNTY)
+        {
+            base.AddObject("T_WQX_REF_COUNTY", t_WQX_REF_COUNTY);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the T_WQX_REF_SAMP_COL_METHOD EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToT_WQX_REF_SAMP_COL_METHOD(T_WQX_REF_SAMP_COL_METHOD t_WQX_REF_SAMP_COL_METHOD)
+        {
+            base.AddObject("T_WQX_REF_SAMP_COL_METHOD", t_WQX_REF_SAMP_COL_METHOD);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the T_WQX_REF_SAMP_PREP EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToT_WQX_REF_SAMP_PREP(T_WQX_REF_SAMP_PREP t_WQX_REF_SAMP_PREP)
+        {
+            base.AddObject("T_WQX_REF_SAMP_PREP", t_WQX_REF_SAMP_PREP);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the T_WQX_ACTIVITY EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToT_WQX_ACTIVITY(T_WQX_ACTIVITY t_WQX_ACTIVITY)
+        {
+            base.AddObject("T_WQX_ACTIVITY", t_WQX_ACTIVITY);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the T_WQX_RESULT EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToT_WQX_RESULT(T_WQX_RESULT t_WQX_RESULT)
+        {
+            base.AddObject("T_WQX_RESULT", t_WQX_RESULT);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the T_WQX_IMPORT_LOG EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToT_WQX_IMPORT_LOG(T_WQX_IMPORT_LOG t_WQX_IMPORT_LOG)
+        {
+            base.AddObject("T_WQX_IMPORT_LOG", t_WQX_IMPORT_LOG);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the T_WQX_REF_LAB EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToT_WQX_REF_LAB(T_WQX_REF_LAB t_WQX_REF_LAB)
+        {
+            base.AddObject("T_WQX_REF_LAB", t_WQX_REF_LAB);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the T_WQX_REF_TAXA_ORG EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToT_WQX_REF_TAXA_ORG(T_WQX_REF_TAXA_ORG t_WQX_REF_TAXA_ORG)
+        {
+            base.AddObject("T_WQX_REF_TAXA_ORG", t_WQX_REF_TAXA_ORG);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the T_WQX_REF_CHAR_ORG EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToT_WQX_REF_CHAR_ORG(T_WQX_REF_CHAR_ORG t_WQX_REF_CHAR_ORG)
+        {
+            base.AddObject("T_WQX_REF_CHAR_ORG", t_WQX_REF_CHAR_ORG);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the T_WQX_IMPORT_TEMP_RESULT EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToT_WQX_IMPORT_TEMP_RESULT(T_WQX_IMPORT_TEMP_RESULT t_WQX_IMPORT_TEMP_RESULT)
+        {
+            base.AddObject("T_WQX_IMPORT_TEMP_RESULT", t_WQX_IMPORT_TEMP_RESULT);
         }
 
         #endregion
@@ -944,6 +1138,66 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
     
             return base.ExecuteFunction<global::System.String>("GenWQXXML_Org", orgIDParameter);
         }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        /// <param name="typeText">No Metadata Documentation available.</param>
+        /// <param name="recordIDX">No Metadata Documentation available.</param>
+        public ObjectResult<global::System.String> GenWQXXML_Single_Delete(global::System.String typeText, Nullable<global::System.Int32> recordIDX)
+        {
+            ObjectParameter typeTextParameter;
+            if (typeText != null)
+            {
+                typeTextParameter = new ObjectParameter("TypeText", typeText);
+            }
+            else
+            {
+                typeTextParameter = new ObjectParameter("TypeText", typeof(global::System.String));
+            }
+    
+            ObjectParameter recordIDXParameter;
+            if (recordIDX.HasValue)
+            {
+                recordIDXParameter = new ObjectParameter("RecordIDX", recordIDX);
+            }
+            else
+            {
+                recordIDXParameter = new ObjectParameter("RecordIDX", typeof(global::System.Int32));
+            }
+    
+            return base.ExecuteFunction<global::System.String>("GenWQXXML_Single_Delete", typeTextParameter, recordIDXParameter);
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        /// <param name="userID">No Metadata Documentation available.</param>
+        /// <param name="wQXInd">No Metadata Documentation available.</param>
+        public int ImportActivityFromTemp(global::System.String userID, global::System.String wQXInd)
+        {
+            ObjectParameter userIDParameter;
+            if (userID != null)
+            {
+                userIDParameter = new ObjectParameter("UserID", userID);
+            }
+            else
+            {
+                userIDParameter = new ObjectParameter("UserID", typeof(global::System.String));
+            }
+    
+            ObjectParameter wQXIndParameter;
+            if (wQXInd != null)
+            {
+                wQXIndParameter = new ObjectParameter("WQXInd", wQXInd);
+            }
+            else
+            {
+                wQXIndParameter = new ObjectParameter("WQXInd", typeof(global::System.String));
+            }
+    
+            return base.ExecuteFunction("ImportActivityFromTemp", userIDParameter, wQXIndParameter);
+        }
 
         #endregion
 
@@ -952,6 +1206,112 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
     #endregion
 
     #region Entities
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="OpenEnvironmentModel", Name="T_EPA_ORGS")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class T_EPA_ORGS : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new T_EPA_ORGS object.
+        /// </summary>
+        /// <param name="oRG_ID">Initial value of the ORG_ID property.</param>
+        /// <param name="oRG_FORMAL_NAME">Initial value of the ORG_FORMAL_NAME property.</param>
+        public static T_EPA_ORGS CreateT_EPA_ORGS(global::System.String oRG_ID, global::System.String oRG_FORMAL_NAME)
+        {
+            T_EPA_ORGS t_EPA_ORGS = new T_EPA_ORGS();
+            t_EPA_ORGS.ORG_ID = oRG_ID;
+            t_EPA_ORGS.ORG_FORMAL_NAME = oRG_FORMAL_NAME;
+            return t_EPA_ORGS;
+        }
+
+        #endregion
+
+        #region Simple Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String ORG_ID
+        {
+            get
+            {
+                return _ORG_ID;
+            }
+            set
+            {
+                if (_ORG_ID != value)
+                {
+                    OnORG_IDChanging(value);
+                    ReportPropertyChanging("ORG_ID");
+                    _ORG_ID = StructuralObject.SetValidValue(value, false, "ORG_ID");
+                    ReportPropertyChanged("ORG_ID");
+                    OnORG_IDChanged();
+                }
+            }
+        }
+        private global::System.String _ORG_ID;
+        partial void OnORG_IDChanging(global::System.String value);
+        partial void OnORG_IDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String ORG_FORMAL_NAME
+        {
+            get
+            {
+                return _ORG_FORMAL_NAME;
+            }
+            set
+            {
+                OnORG_FORMAL_NAMEChanging(value);
+                ReportPropertyChanging("ORG_FORMAL_NAME");
+                _ORG_FORMAL_NAME = StructuralObject.SetValidValue(value, false, "ORG_FORMAL_NAME");
+                ReportPropertyChanged("ORG_FORMAL_NAME");
+                OnORG_FORMAL_NAMEChanged();
+            }
+        }
+        private global::System.String _ORG_FORMAL_NAME;
+        partial void OnORG_FORMAL_NAMEChanging(global::System.String value);
+        partial void OnORG_FORMAL_NAMEChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> UPDATE_DT
+        {
+            get
+            {
+                return _UPDATE_DT;
+            }
+            set
+            {
+                OnUPDATE_DTChanging(value);
+                ReportPropertyChanging("UPDATE_DT");
+                _UPDATE_DT = StructuralObject.SetValidValue(value, "UPDATE_DT");
+                ReportPropertyChanged("UPDATE_DT");
+                OnUPDATE_DTChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _UPDATE_DT;
+        partial void OnUPDATE_DTChanging(Nullable<global::System.DateTime> value);
+        partial void OnUPDATE_DTChanged();
+
+        #endregion
+
+    }
     
     /// <summary>
     /// No Metadata Documentation available.
@@ -978,7 +1338,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
 
         #endregion
 
-        #region Primitive Properties
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -997,7 +1357,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
                 {
                     OnSETTING_IDXChanging(value);
                     ReportPropertyChanging("SETTING_IDX");
-                    _SETTING_IDX = StructuralObject.SetValidValue(value);
+                    _SETTING_IDX = StructuralObject.SetValidValue(value, "SETTING_IDX");
                     ReportPropertyChanged("SETTING_IDX");
                     OnSETTING_IDXChanged();
                 }
@@ -1022,7 +1382,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnSETTING_NAMEChanging(value);
                 ReportPropertyChanging("SETTING_NAME");
-                _SETTING_NAME = StructuralObject.SetValidValue(value, false);
+                _SETTING_NAME = StructuralObject.SetValidValue(value, false, "SETTING_NAME");
                 ReportPropertyChanged("SETTING_NAME");
                 OnSETTING_NAMEChanged();
             }
@@ -1046,7 +1406,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnSETTING_VALUEChanging(value);
                 ReportPropertyChanging("SETTING_VALUE");
-                _SETTING_VALUE = StructuralObject.SetValidValue(value, true);
+                _SETTING_VALUE = StructuralObject.SetValidValue(value, true, "SETTING_VALUE");
                 ReportPropertyChanged("SETTING_VALUE");
                 OnSETTING_VALUEChanged();
             }
@@ -1070,7 +1430,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnENCRYPT_INDChanging(value);
                 ReportPropertyChanging("ENCRYPT_IND");
-                _ENCRYPT_IND = StructuralObject.SetValidValue(value);
+                _ENCRYPT_IND = StructuralObject.SetValidValue(value, "ENCRYPT_IND");
                 ReportPropertyChanged("ENCRYPT_IND");
                 OnENCRYPT_INDChanged();
             }
@@ -1094,7 +1454,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnSETTING_VALUE_SALTChanging(value);
                 ReportPropertyChanging("SETTING_VALUE_SALT");
-                _SETTING_VALUE_SALT = StructuralObject.SetValidValue(value, true);
+                _SETTING_VALUE_SALT = StructuralObject.SetValidValue(value, true, "SETTING_VALUE_SALT");
                 ReportPropertyChanged("SETTING_VALUE_SALT");
                 OnSETTING_VALUE_SALTChanged();
             }
@@ -1118,7 +1478,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnMODIFY_USERIDChanging(value);
                 ReportPropertyChanging("MODIFY_USERID");
-                _MODIFY_USERID = StructuralObject.SetValidValue(value, true);
+                _MODIFY_USERID = StructuralObject.SetValidValue(value, true, "MODIFY_USERID");
                 ReportPropertyChanged("MODIFY_USERID");
                 OnMODIFY_USERIDChanged();
             }
@@ -1142,7 +1502,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnMODIFY_DTChanging(value);
                 ReportPropertyChanging("MODIFY_DT");
-                _MODIFY_DT = StructuralObject.SetValidValue(value);
+                _MODIFY_DT = StructuralObject.SetValidValue(value, "MODIFY_DT");
                 ReportPropertyChanged("MODIFY_DT");
                 OnMODIFY_DTChanged();
             }
@@ -1150,10 +1510,33 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
         private Nullable<global::System.DateTime> _MODIFY_DT;
         partial void OnMODIFY_DTChanging(Nullable<global::System.DateTime> value);
         partial void OnMODIFY_DTChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String SETTING_DESC
+        {
+            get
+            {
+                return _SETTING_DESC;
+            }
+            set
+            {
+                OnSETTING_DESCChanging(value);
+                ReportPropertyChanging("SETTING_DESC");
+                _SETTING_DESC = StructuralObject.SetValidValue(value, true, "SETTING_DESC");
+                ReportPropertyChanged("SETTING_DESC");
+                OnSETTING_DESCChanged();
+            }
+        }
+        private global::System.String _SETTING_DESC;
+        partial void OnSETTING_DESCChanging(global::System.String value);
+        partial void OnSETTING_DESCChanged();
 
         #endregion
 
-    
     }
     
     /// <summary>
@@ -1187,7 +1570,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
 
         #endregion
 
-        #region Primitive Properties
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -1206,7 +1589,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
                 {
                     OnTASK_IDXChanging(value);
                     ReportPropertyChanging("TASK_IDX");
-                    _TASK_IDX = StructuralObject.SetValidValue(value);
+                    _TASK_IDX = StructuralObject.SetValidValue(value, "TASK_IDX");
                     ReportPropertyChanged("TASK_IDX");
                     OnTASK_IDXChanged();
                 }
@@ -1231,7 +1614,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnTASK_NAMEChanging(value);
                 ReportPropertyChanging("TASK_NAME");
-                _TASK_NAME = StructuralObject.SetValidValue(value, false);
+                _TASK_NAME = StructuralObject.SetValidValue(value, false, "TASK_NAME");
                 ReportPropertyChanged("TASK_NAME");
                 OnTASK_NAMEChanged();
             }
@@ -1255,7 +1638,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnTASK_DESCChanging(value);
                 ReportPropertyChanging("TASK_DESC");
-                _TASK_DESC = StructuralObject.SetValidValue(value, false);
+                _TASK_DESC = StructuralObject.SetValidValue(value, false, "TASK_DESC");
                 ReportPropertyChanged("TASK_DESC");
                 OnTASK_DESCChanged();
             }
@@ -1279,7 +1662,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnTASK_STATUSChanging(value);
                 ReportPropertyChanging("TASK_STATUS");
-                _TASK_STATUS = StructuralObject.SetValidValue(value, false);
+                _TASK_STATUS = StructuralObject.SetValidValue(value, false, "TASK_STATUS");
                 ReportPropertyChanged("TASK_STATUS");
                 OnTASK_STATUSChanged();
             }
@@ -1303,7 +1686,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnTASK_FREQ_MSChanging(value);
                 ReportPropertyChanging("TASK_FREQ_MS");
-                _TASK_FREQ_MS = StructuralObject.SetValidValue(value);
+                _TASK_FREQ_MS = StructuralObject.SetValidValue(value, "TASK_FREQ_MS");
                 ReportPropertyChanged("TASK_FREQ_MS");
                 OnTASK_FREQ_MSChanged();
             }
@@ -1327,7 +1710,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnMODIFY_USERIDChanging(value);
                 ReportPropertyChanging("MODIFY_USERID");
-                _MODIFY_USERID = StructuralObject.SetValidValue(value, true);
+                _MODIFY_USERID = StructuralObject.SetValidValue(value, true, "MODIFY_USERID");
                 ReportPropertyChanged("MODIFY_USERID");
                 OnMODIFY_USERIDChanged();
             }
@@ -1351,7 +1734,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnMODIFY_DTChanging(value);
                 ReportPropertyChanging("MODIFY_DT");
-                _MODIFY_DT = StructuralObject.SetValidValue(value);
+                _MODIFY_DT = StructuralObject.SetValidValue(value, "MODIFY_DT");
                 ReportPropertyChanged("MODIFY_DT");
                 OnMODIFY_DTChanged();
             }
@@ -1362,7 +1745,6 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
 
         #endregion
 
-    
     }
     
     /// <summary>
@@ -1392,7 +1774,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
 
         #endregion
 
-        #region Primitive Properties
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -1411,7 +1793,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
                 {
                     OnROLE_IDXChanging(value);
                     ReportPropertyChanging("ROLE_IDX");
-                    _ROLE_IDX = StructuralObject.SetValidValue(value);
+                    _ROLE_IDX = StructuralObject.SetValidValue(value, "ROLE_IDX");
                     ReportPropertyChanged("ROLE_IDX");
                     OnROLE_IDXChanged();
                 }
@@ -1436,7 +1818,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnROLE_NAMEChanging(value);
                 ReportPropertyChanging("ROLE_NAME");
-                _ROLE_NAME = StructuralObject.SetValidValue(value, false);
+                _ROLE_NAME = StructuralObject.SetValidValue(value, false, "ROLE_NAME");
                 ReportPropertyChanged("ROLE_NAME");
                 OnROLE_NAMEChanged();
             }
@@ -1460,7 +1842,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnROLE_DESCChanging(value);
                 ReportPropertyChanging("ROLE_DESC");
-                _ROLE_DESC = StructuralObject.SetValidValue(value, false);
+                _ROLE_DESC = StructuralObject.SetValidValue(value, false, "ROLE_DESC");
                 ReportPropertyChanged("ROLE_DESC");
                 OnROLE_DESCChanged();
             }
@@ -1484,7 +1866,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnCREATE_USERIDChanging(value);
                 ReportPropertyChanging("CREATE_USERID");
-                _CREATE_USERID = StructuralObject.SetValidValue(value, true);
+                _CREATE_USERID = StructuralObject.SetValidValue(value, true, "CREATE_USERID");
                 ReportPropertyChanged("CREATE_USERID");
                 OnCREATE_USERIDChanged();
             }
@@ -1508,7 +1890,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnCREATE_DTChanging(value);
                 ReportPropertyChanging("CREATE_DT");
-                _CREATE_DT = StructuralObject.SetValidValue(value);
+                _CREATE_DT = StructuralObject.SetValidValue(value, "CREATE_DT");
                 ReportPropertyChanged("CREATE_DT");
                 OnCREATE_DTChanged();
             }
@@ -1532,7 +1914,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnMODIFY_USERIDChanging(value);
                 ReportPropertyChanging("MODIFY_USERID");
-                _MODIFY_USERID = StructuralObject.SetValidValue(value, true);
+                _MODIFY_USERID = StructuralObject.SetValidValue(value, true, "MODIFY_USERID");
                 ReportPropertyChanged("MODIFY_USERID");
                 OnMODIFY_USERIDChanged();
             }
@@ -1556,7 +1938,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnMODIFY_DTChanging(value);
                 ReportPropertyChanging("MODIFY_DT");
-                _MODIFY_DT = StructuralObject.SetValidValue(value);
+                _MODIFY_DT = StructuralObject.SetValidValue(value, "MODIFY_DT");
                 ReportPropertyChanged("MODIFY_DT");
                 OnMODIFY_DTChanged();
             }
@@ -1567,7 +1949,6 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
 
         #endregion
 
-    
         #region Navigation Properties
     
         /// <summary>
@@ -1621,7 +2002,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
 
         #endregion
 
-        #region Primitive Properties
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -1640,7 +2021,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
                 {
                     OnSYS_LOG_IDChanging(value);
                     ReportPropertyChanging("SYS_LOG_ID");
-                    _SYS_LOG_ID = StructuralObject.SetValidValue(value);
+                    _SYS_LOG_ID = StructuralObject.SetValidValue(value, "SYS_LOG_ID");
                     ReportPropertyChanged("SYS_LOG_ID");
                     OnSYS_LOG_IDChanged();
                 }
@@ -1665,7 +2046,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnLOG_DTChanging(value);
                 ReportPropertyChanging("LOG_DT");
-                _LOG_DT = StructuralObject.SetValidValue(value);
+                _LOG_DT = StructuralObject.SetValidValue(value, "LOG_DT");
                 ReportPropertyChanged("LOG_DT");
                 OnLOG_DTChanged();
             }
@@ -1689,7 +2070,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnLOG_USERIDXChanging(value);
                 ReportPropertyChanging("LOG_USERIDX");
-                _LOG_USERIDX = StructuralObject.SetValidValue(value);
+                _LOG_USERIDX = StructuralObject.SetValidValue(value, "LOG_USERIDX");
                 ReportPropertyChanged("LOG_USERIDX");
                 OnLOG_USERIDXChanged();
             }
@@ -1713,7 +2094,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnLOG_TYPEChanging(value);
                 ReportPropertyChanging("LOG_TYPE");
-                _LOG_TYPE = StructuralObject.SetValidValue(value, true);
+                _LOG_TYPE = StructuralObject.SetValidValue(value, true, "LOG_TYPE");
                 ReportPropertyChanged("LOG_TYPE");
                 OnLOG_TYPEChanged();
             }
@@ -1737,7 +2118,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnLOG_MSGChanging(value);
                 ReportPropertyChanging("LOG_MSG");
-                _LOG_MSG = StructuralObject.SetValidValue(value, true);
+                _LOG_MSG = StructuralObject.SetValidValue(value, true, "LOG_MSG");
                 ReportPropertyChanged("LOG_MSG");
                 OnLOG_MSGChanged();
             }
@@ -1748,7 +2129,6 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
 
         #endregion
 
-    
     }
     
     /// <summary>
@@ -1778,7 +2158,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
 
         #endregion
 
-        #region Primitive Properties
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -1797,7 +2177,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
                 {
                     OnUSER_ROLE_IDXChanging(value);
                     ReportPropertyChanging("USER_ROLE_IDX");
-                    _USER_ROLE_IDX = StructuralObject.SetValidValue(value);
+                    _USER_ROLE_IDX = StructuralObject.SetValidValue(value, "USER_ROLE_IDX");
                     ReportPropertyChanged("USER_ROLE_IDX");
                     OnUSER_ROLE_IDXChanged();
                 }
@@ -1822,7 +2202,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnUSER_IDXChanging(value);
                 ReportPropertyChanging("USER_IDX");
-                _USER_IDX = StructuralObject.SetValidValue(value);
+                _USER_IDX = StructuralObject.SetValidValue(value, "USER_IDX");
                 ReportPropertyChanged("USER_IDX");
                 OnUSER_IDXChanged();
             }
@@ -1846,7 +2226,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnROLE_IDXChanging(value);
                 ReportPropertyChanging("ROLE_IDX");
-                _ROLE_IDX = StructuralObject.SetValidValue(value);
+                _ROLE_IDX = StructuralObject.SetValidValue(value, "ROLE_IDX");
                 ReportPropertyChanged("ROLE_IDX");
                 OnROLE_IDXChanged();
             }
@@ -1870,7 +2250,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnCREATE_USERIDChanging(value);
                 ReportPropertyChanging("CREATE_USERID");
-                _CREATE_USERID = StructuralObject.SetValidValue(value, true);
+                _CREATE_USERID = StructuralObject.SetValidValue(value, true, "CREATE_USERID");
                 ReportPropertyChanged("CREATE_USERID");
                 OnCREATE_USERIDChanged();
             }
@@ -1894,7 +2274,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnCREATE_DTChanging(value);
                 ReportPropertyChanging("CREATE_DT");
-                _CREATE_DT = StructuralObject.SetValidValue(value);
+                _CREATE_DT = StructuralObject.SetValidValue(value, "CREATE_DT");
                 ReportPropertyChanged("CREATE_DT");
                 OnCREATE_DTChanged();
             }
@@ -1905,7 +2285,6 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
 
         #endregion
 
-    
         #region Navigation Properties
     
         /// <summary>
@@ -2027,7 +2406,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
 
         #endregion
 
-        #region Primitive Properties
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -2046,7 +2425,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
                 {
                     OnUSER_IDXChanging(value);
                     ReportPropertyChanging("USER_IDX");
-                    _USER_IDX = StructuralObject.SetValidValue(value);
+                    _USER_IDX = StructuralObject.SetValidValue(value, "USER_IDX");
                     ReportPropertyChanged("USER_IDX");
                     OnUSER_IDXChanged();
                 }
@@ -2071,7 +2450,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnUSER_IDChanging(value);
                 ReportPropertyChanging("USER_ID");
-                _USER_ID = StructuralObject.SetValidValue(value, false);
+                _USER_ID = StructuralObject.SetValidValue(value, false, "USER_ID");
                 ReportPropertyChanged("USER_ID");
                 OnUSER_IDChanged();
             }
@@ -2095,7 +2474,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnPWD_HASHChanging(value);
                 ReportPropertyChanging("PWD_HASH");
-                _PWD_HASH = StructuralObject.SetValidValue(value, false);
+                _PWD_HASH = StructuralObject.SetValidValue(value, false, "PWD_HASH");
                 ReportPropertyChanged("PWD_HASH");
                 OnPWD_HASHChanged();
             }
@@ -2119,7 +2498,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnPWD_SALTChanging(value);
                 ReportPropertyChanging("PWD_SALT");
-                _PWD_SALT = StructuralObject.SetValidValue(value, false);
+                _PWD_SALT = StructuralObject.SetValidValue(value, false, "PWD_SALT");
                 ReportPropertyChanged("PWD_SALT");
                 OnPWD_SALTChanged();
             }
@@ -2143,7 +2522,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnFNAMEChanging(value);
                 ReportPropertyChanging("FNAME");
-                _FNAME = StructuralObject.SetValidValue(value, false);
+                _FNAME = StructuralObject.SetValidValue(value, false, "FNAME");
                 ReportPropertyChanged("FNAME");
                 OnFNAMEChanged();
             }
@@ -2167,7 +2546,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnLNAMEChanging(value);
                 ReportPropertyChanging("LNAME");
-                _LNAME = StructuralObject.SetValidValue(value, false);
+                _LNAME = StructuralObject.SetValidValue(value, false, "LNAME");
                 ReportPropertyChanged("LNAME");
                 OnLNAMEChanged();
             }
@@ -2191,7 +2570,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnEMAILChanging(value);
                 ReportPropertyChanging("EMAIL");
-                _EMAIL = StructuralObject.SetValidValue(value, true);
+                _EMAIL = StructuralObject.SetValidValue(value, true, "EMAIL");
                 ReportPropertyChanged("EMAIL");
                 OnEMAILChanged();
             }
@@ -2215,7 +2594,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnINITAL_PWD_FLAGChanging(value);
                 ReportPropertyChanging("INITAL_PWD_FLAG");
-                _INITAL_PWD_FLAG = StructuralObject.SetValidValue(value);
+                _INITAL_PWD_FLAG = StructuralObject.SetValidValue(value, "INITAL_PWD_FLAG");
                 ReportPropertyChanged("INITAL_PWD_FLAG");
                 OnINITAL_PWD_FLAGChanged();
             }
@@ -2239,7 +2618,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnEFFECTIVE_DTChanging(value);
                 ReportPropertyChanging("EFFECTIVE_DT");
-                _EFFECTIVE_DT = StructuralObject.SetValidValue(value);
+                _EFFECTIVE_DT = StructuralObject.SetValidValue(value, "EFFECTIVE_DT");
                 ReportPropertyChanged("EFFECTIVE_DT");
                 OnEFFECTIVE_DTChanged();
             }
@@ -2263,7 +2642,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnLASTLOGIN_DTChanging(value);
                 ReportPropertyChanging("LASTLOGIN_DT");
-                _LASTLOGIN_DT = StructuralObject.SetValidValue(value);
+                _LASTLOGIN_DT = StructuralObject.SetValidValue(value, "LASTLOGIN_DT");
                 ReportPropertyChanged("LASTLOGIN_DT");
                 OnLASTLOGIN_DTChanged();
             }
@@ -2287,7 +2666,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnPHONEChanging(value);
                 ReportPropertyChanging("PHONE");
-                _PHONE = StructuralObject.SetValidValue(value, true);
+                _PHONE = StructuralObject.SetValidValue(value, true, "PHONE");
                 ReportPropertyChanged("PHONE");
                 OnPHONEChanged();
             }
@@ -2311,7 +2690,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnPHONE_EXTChanging(value);
                 ReportPropertyChanging("PHONE_EXT");
-                _PHONE_EXT = StructuralObject.SetValidValue(value, true);
+                _PHONE_EXT = StructuralObject.SetValidValue(value, true, "PHONE_EXT");
                 ReportPropertyChanged("PHONE_EXT");
                 OnPHONE_EXTChanged();
             }
@@ -2335,7 +2714,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnACT_INDChanging(value);
                 ReportPropertyChanging("ACT_IND");
-                _ACT_IND = StructuralObject.SetValidValue(value);
+                _ACT_IND = StructuralObject.SetValidValue(value, "ACT_IND");
                 ReportPropertyChanged("ACT_IND");
                 OnACT_INDChanged();
             }
@@ -2359,7 +2738,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnCREATE_USERIDChanging(value);
                 ReportPropertyChanging("CREATE_USERID");
-                _CREATE_USERID = StructuralObject.SetValidValue(value, true);
+                _CREATE_USERID = StructuralObject.SetValidValue(value, true, "CREATE_USERID");
                 ReportPropertyChanged("CREATE_USERID");
                 OnCREATE_USERIDChanged();
             }
@@ -2383,7 +2762,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnCREATE_DTChanging(value);
                 ReportPropertyChanging("CREATE_DT");
-                _CREATE_DT = StructuralObject.SetValidValue(value);
+                _CREATE_DT = StructuralObject.SetValidValue(value, "CREATE_DT");
                 ReportPropertyChanged("CREATE_DT");
                 OnCREATE_DTChanged();
             }
@@ -2407,7 +2786,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnMODIFY_USERIDChanging(value);
                 ReportPropertyChanging("MODIFY_USERID");
-                _MODIFY_USERID = StructuralObject.SetValidValue(value, true);
+                _MODIFY_USERID = StructuralObject.SetValidValue(value, true, "MODIFY_USERID");
                 ReportPropertyChanged("MODIFY_USERID");
                 OnMODIFY_USERIDChanged();
             }
@@ -2431,7 +2810,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnMODIFY_DTChanging(value);
                 ReportPropertyChanging("MODIFY_DT");
-                _MODIFY_DT = StructuralObject.SetValidValue(value);
+                _MODIFY_DT = StructuralObject.SetValidValue(value, "MODIFY_DT");
                 ReportPropertyChanged("MODIFY_DT");
                 OnMODIFY_DTChanged();
             }
@@ -2455,7 +2834,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnDEFAULT_ORG_IDChanging(value);
                 ReportPropertyChanging("DEFAULT_ORG_ID");
-                _DEFAULT_ORG_ID = StructuralObject.SetValidValue(value, true);
+                _DEFAULT_ORG_ID = StructuralObject.SetValidValue(value, true, "DEFAULT_ORG_ID");
                 ReportPropertyChanged("DEFAULT_ORG_ID");
                 OnDEFAULT_ORG_IDChanged();
             }
@@ -2466,7 +2845,6 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
 
         #endregion
 
-    
         #region Navigation Properties
     
         /// <summary>
@@ -2552,7 +2930,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
 
         #endregion
 
-        #region Primitive Properties
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -2571,7 +2949,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
                 {
                     OnACTIVITY_IDXChanging(value);
                     ReportPropertyChanging("ACTIVITY_IDX");
-                    _ACTIVITY_IDX = StructuralObject.SetValidValue(value);
+                    _ACTIVITY_IDX = StructuralObject.SetValidValue(value, "ACTIVITY_IDX");
                     ReportPropertyChanged("ACTIVITY_IDX");
                     OnACTIVITY_IDXChanged();
                 }
@@ -2596,7 +2974,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnORG_IDChanging(value);
                 ReportPropertyChanging("ORG_ID");
-                _ORG_ID = StructuralObject.SetValidValue(value, false);
+                _ORG_ID = StructuralObject.SetValidValue(value, false, "ORG_ID");
                 ReportPropertyChanged("ORG_ID");
                 OnORG_IDChanged();
             }
@@ -2620,7 +2998,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnPROJECT_IDXChanging(value);
                 ReportPropertyChanging("PROJECT_IDX");
-                _PROJECT_IDX = StructuralObject.SetValidValue(value);
+                _PROJECT_IDX = StructuralObject.SetValidValue(value, "PROJECT_IDX");
                 ReportPropertyChanged("PROJECT_IDX");
                 OnPROJECT_IDXChanged();
             }
@@ -2644,7 +3022,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnMONLOC_IDXChanging(value);
                 ReportPropertyChanging("MONLOC_IDX");
-                _MONLOC_IDX = StructuralObject.SetValidValue(value);
+                _MONLOC_IDX = StructuralObject.SetValidValue(value, "MONLOC_IDX");
                 ReportPropertyChanged("MONLOC_IDX");
                 OnMONLOC_IDXChanged();
             }
@@ -2668,7 +3046,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnACTIVITY_IDChanging(value);
                 ReportPropertyChanging("ACTIVITY_ID");
-                _ACTIVITY_ID = StructuralObject.SetValidValue(value, false);
+                _ACTIVITY_ID = StructuralObject.SetValidValue(value, false, "ACTIVITY_ID");
                 ReportPropertyChanged("ACTIVITY_ID");
                 OnACTIVITY_IDChanged();
             }
@@ -2692,7 +3070,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnACT_TYPEChanging(value);
                 ReportPropertyChanging("ACT_TYPE");
-                _ACT_TYPE = StructuralObject.SetValidValue(value, false);
+                _ACT_TYPE = StructuralObject.SetValidValue(value, false, "ACT_TYPE");
                 ReportPropertyChanged("ACT_TYPE");
                 OnACT_TYPEChanged();
             }
@@ -2716,7 +3094,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnACT_MEDIAChanging(value);
                 ReportPropertyChanging("ACT_MEDIA");
-                _ACT_MEDIA = StructuralObject.SetValidValue(value, false);
+                _ACT_MEDIA = StructuralObject.SetValidValue(value, false, "ACT_MEDIA");
                 ReportPropertyChanged("ACT_MEDIA");
                 OnACT_MEDIAChanged();
             }
@@ -2740,7 +3118,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnACT_SUBMEDIAChanging(value);
                 ReportPropertyChanging("ACT_SUBMEDIA");
-                _ACT_SUBMEDIA = StructuralObject.SetValidValue(value, true);
+                _ACT_SUBMEDIA = StructuralObject.SetValidValue(value, true, "ACT_SUBMEDIA");
                 ReportPropertyChanged("ACT_SUBMEDIA");
                 OnACT_SUBMEDIAChanged();
             }
@@ -2764,7 +3142,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnACT_START_DTChanging(value);
                 ReportPropertyChanging("ACT_START_DT");
-                _ACT_START_DT = StructuralObject.SetValidValue(value);
+                _ACT_START_DT = StructuralObject.SetValidValue(value, "ACT_START_DT");
                 ReportPropertyChanged("ACT_START_DT");
                 OnACT_START_DTChanged();
             }
@@ -2788,7 +3166,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnACT_END_DTChanging(value);
                 ReportPropertyChanging("ACT_END_DT");
-                _ACT_END_DT = StructuralObject.SetValidValue(value);
+                _ACT_END_DT = StructuralObject.SetValidValue(value, "ACT_END_DT");
                 ReportPropertyChanged("ACT_END_DT");
                 OnACT_END_DTChanged();
             }
@@ -2812,7 +3190,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnACT_TIME_ZONEChanging(value);
                 ReportPropertyChanging("ACT_TIME_ZONE");
-                _ACT_TIME_ZONE = StructuralObject.SetValidValue(value, true);
+                _ACT_TIME_ZONE = StructuralObject.SetValidValue(value, true, "ACT_TIME_ZONE");
                 ReportPropertyChanged("ACT_TIME_ZONE");
                 OnACT_TIME_ZONEChanged();
             }
@@ -2836,7 +3214,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnRELATIVE_DEPTH_NAMEChanging(value);
                 ReportPropertyChanging("RELATIVE_DEPTH_NAME");
-                _RELATIVE_DEPTH_NAME = StructuralObject.SetValidValue(value, true);
+                _RELATIVE_DEPTH_NAME = StructuralObject.SetValidValue(value, true, "RELATIVE_DEPTH_NAME");
                 ReportPropertyChanged("RELATIVE_DEPTH_NAME");
                 OnRELATIVE_DEPTH_NAMEChanged();
             }
@@ -2860,7 +3238,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnACT_DEPTHHEIGHT_MSRChanging(value);
                 ReportPropertyChanging("ACT_DEPTHHEIGHT_MSR");
-                _ACT_DEPTHHEIGHT_MSR = StructuralObject.SetValidValue(value, true);
+                _ACT_DEPTHHEIGHT_MSR = StructuralObject.SetValidValue(value, true, "ACT_DEPTHHEIGHT_MSR");
                 ReportPropertyChanged("ACT_DEPTHHEIGHT_MSR");
                 OnACT_DEPTHHEIGHT_MSRChanged();
             }
@@ -2884,7 +3262,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnACT_DEPTHHEIGHT_MSR_UNITChanging(value);
                 ReportPropertyChanging("ACT_DEPTHHEIGHT_MSR_UNIT");
-                _ACT_DEPTHHEIGHT_MSR_UNIT = StructuralObject.SetValidValue(value, true);
+                _ACT_DEPTHHEIGHT_MSR_UNIT = StructuralObject.SetValidValue(value, true, "ACT_DEPTHHEIGHT_MSR_UNIT");
                 ReportPropertyChanged("ACT_DEPTHHEIGHT_MSR_UNIT");
                 OnACT_DEPTHHEIGHT_MSR_UNITChanged();
             }
@@ -2908,7 +3286,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnTOP_DEPTHHEIGHT_MSRChanging(value);
                 ReportPropertyChanging("TOP_DEPTHHEIGHT_MSR");
-                _TOP_DEPTHHEIGHT_MSR = StructuralObject.SetValidValue(value, true);
+                _TOP_DEPTHHEIGHT_MSR = StructuralObject.SetValidValue(value, true, "TOP_DEPTHHEIGHT_MSR");
                 ReportPropertyChanged("TOP_DEPTHHEIGHT_MSR");
                 OnTOP_DEPTHHEIGHT_MSRChanged();
             }
@@ -2932,7 +3310,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnTOP_DEPTHHEIGHT_MSR_UNITChanging(value);
                 ReportPropertyChanging("TOP_DEPTHHEIGHT_MSR_UNIT");
-                _TOP_DEPTHHEIGHT_MSR_UNIT = StructuralObject.SetValidValue(value, true);
+                _TOP_DEPTHHEIGHT_MSR_UNIT = StructuralObject.SetValidValue(value, true, "TOP_DEPTHHEIGHT_MSR_UNIT");
                 ReportPropertyChanged("TOP_DEPTHHEIGHT_MSR_UNIT");
                 OnTOP_DEPTHHEIGHT_MSR_UNITChanged();
             }
@@ -2956,7 +3334,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnBOT_DEPTHHEIGHT_MSRChanging(value);
                 ReportPropertyChanging("BOT_DEPTHHEIGHT_MSR");
-                _BOT_DEPTHHEIGHT_MSR = StructuralObject.SetValidValue(value, true);
+                _BOT_DEPTHHEIGHT_MSR = StructuralObject.SetValidValue(value, true, "BOT_DEPTHHEIGHT_MSR");
                 ReportPropertyChanged("BOT_DEPTHHEIGHT_MSR");
                 OnBOT_DEPTHHEIGHT_MSRChanged();
             }
@@ -2980,7 +3358,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnBOT_DEPTHHEIGHT_MSR_UNITChanging(value);
                 ReportPropertyChanging("BOT_DEPTHHEIGHT_MSR_UNIT");
-                _BOT_DEPTHHEIGHT_MSR_UNIT = StructuralObject.SetValidValue(value, true);
+                _BOT_DEPTHHEIGHT_MSR_UNIT = StructuralObject.SetValidValue(value, true, "BOT_DEPTHHEIGHT_MSR_UNIT");
                 ReportPropertyChanged("BOT_DEPTHHEIGHT_MSR_UNIT");
                 OnBOT_DEPTHHEIGHT_MSR_UNITChanged();
             }
@@ -3004,7 +3382,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnDEPTH_REF_POINTChanging(value);
                 ReportPropertyChanging("DEPTH_REF_POINT");
-                _DEPTH_REF_POINT = StructuralObject.SetValidValue(value, true);
+                _DEPTH_REF_POINT = StructuralObject.SetValidValue(value, true, "DEPTH_REF_POINT");
                 ReportPropertyChanged("DEPTH_REF_POINT");
                 OnDEPTH_REF_POINTChanged();
             }
@@ -3028,7 +3406,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnACT_COMMENTChanging(value);
                 ReportPropertyChanging("ACT_COMMENT");
-                _ACT_COMMENT = StructuralObject.SetValidValue(value, true);
+                _ACT_COMMENT = StructuralObject.SetValidValue(value, true, "ACT_COMMENT");
                 ReportPropertyChanged("ACT_COMMENT");
                 OnACT_COMMENTChanged();
             }
@@ -3052,7 +3430,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnBIO_ASSEMBLAGE_SAMPLEDChanging(value);
                 ReportPropertyChanging("BIO_ASSEMBLAGE_SAMPLED");
-                _BIO_ASSEMBLAGE_SAMPLED = StructuralObject.SetValidValue(value, true);
+                _BIO_ASSEMBLAGE_SAMPLED = StructuralObject.SetValidValue(value, true, "BIO_ASSEMBLAGE_SAMPLED");
                 ReportPropertyChanged("BIO_ASSEMBLAGE_SAMPLED");
                 OnBIO_ASSEMBLAGE_SAMPLEDChanged();
             }
@@ -3076,7 +3454,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnBIO_DURATION_MSRChanging(value);
                 ReportPropertyChanging("BIO_DURATION_MSR");
-                _BIO_DURATION_MSR = StructuralObject.SetValidValue(value, true);
+                _BIO_DURATION_MSR = StructuralObject.SetValidValue(value, true, "BIO_DURATION_MSR");
                 ReportPropertyChanged("BIO_DURATION_MSR");
                 OnBIO_DURATION_MSRChanged();
             }
@@ -3100,7 +3478,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnBIO_DURATION_MSR_UNITChanging(value);
                 ReportPropertyChanging("BIO_DURATION_MSR_UNIT");
-                _BIO_DURATION_MSR_UNIT = StructuralObject.SetValidValue(value, true);
+                _BIO_DURATION_MSR_UNIT = StructuralObject.SetValidValue(value, true, "BIO_DURATION_MSR_UNIT");
                 ReportPropertyChanged("BIO_DURATION_MSR_UNIT");
                 OnBIO_DURATION_MSR_UNITChanged();
             }
@@ -3124,7 +3502,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnBIO_SAMP_COMPONENTChanging(value);
                 ReportPropertyChanging("BIO_SAMP_COMPONENT");
-                _BIO_SAMP_COMPONENT = StructuralObject.SetValidValue(value, true);
+                _BIO_SAMP_COMPONENT = StructuralObject.SetValidValue(value, true, "BIO_SAMP_COMPONENT");
                 ReportPropertyChanged("BIO_SAMP_COMPONENT");
                 OnBIO_SAMP_COMPONENTChanged();
             }
@@ -3148,7 +3526,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnBIO_SAMP_COMPONENT_SEQChanging(value);
                 ReportPropertyChanging("BIO_SAMP_COMPONENT_SEQ");
-                _BIO_SAMP_COMPONENT_SEQ = StructuralObject.SetValidValue(value);
+                _BIO_SAMP_COMPONENT_SEQ = StructuralObject.SetValidValue(value, "BIO_SAMP_COMPONENT_SEQ");
                 ReportPropertyChanged("BIO_SAMP_COMPONENT_SEQ");
                 OnBIO_SAMP_COMPONENT_SEQChanged();
             }
@@ -3172,7 +3550,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnBIO_REACH_LEN_MSRChanging(value);
                 ReportPropertyChanging("BIO_REACH_LEN_MSR");
-                _BIO_REACH_LEN_MSR = StructuralObject.SetValidValue(value, true);
+                _BIO_REACH_LEN_MSR = StructuralObject.SetValidValue(value, true, "BIO_REACH_LEN_MSR");
                 ReportPropertyChanged("BIO_REACH_LEN_MSR");
                 OnBIO_REACH_LEN_MSRChanged();
             }
@@ -3196,7 +3574,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnBIO_REACH_LEN_MSR_UNITChanging(value);
                 ReportPropertyChanging("BIO_REACH_LEN_MSR_UNIT");
-                _BIO_REACH_LEN_MSR_UNIT = StructuralObject.SetValidValue(value, true);
+                _BIO_REACH_LEN_MSR_UNIT = StructuralObject.SetValidValue(value, true, "BIO_REACH_LEN_MSR_UNIT");
                 ReportPropertyChanged("BIO_REACH_LEN_MSR_UNIT");
                 OnBIO_REACH_LEN_MSR_UNITChanged();
             }
@@ -3220,7 +3598,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnBIO_REACH_WID_MSRChanging(value);
                 ReportPropertyChanging("BIO_REACH_WID_MSR");
-                _BIO_REACH_WID_MSR = StructuralObject.SetValidValue(value, true);
+                _BIO_REACH_WID_MSR = StructuralObject.SetValidValue(value, true, "BIO_REACH_WID_MSR");
                 ReportPropertyChanged("BIO_REACH_WID_MSR");
                 OnBIO_REACH_WID_MSRChanged();
             }
@@ -3244,7 +3622,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnBIO_REACH_WID_MSR_UNITChanging(value);
                 ReportPropertyChanging("BIO_REACH_WID_MSR_UNIT");
-                _BIO_REACH_WID_MSR_UNIT = StructuralObject.SetValidValue(value, true);
+                _BIO_REACH_WID_MSR_UNIT = StructuralObject.SetValidValue(value, true, "BIO_REACH_WID_MSR_UNIT");
                 ReportPropertyChanged("BIO_REACH_WID_MSR_UNIT");
                 OnBIO_REACH_WID_MSR_UNITChanged();
             }
@@ -3268,7 +3646,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnBIO_PASS_COUNTChanging(value);
                 ReportPropertyChanging("BIO_PASS_COUNT");
-                _BIO_PASS_COUNT = StructuralObject.SetValidValue(value);
+                _BIO_PASS_COUNT = StructuralObject.SetValidValue(value, "BIO_PASS_COUNT");
                 ReportPropertyChanged("BIO_PASS_COUNT");
                 OnBIO_PASS_COUNTChanged();
             }
@@ -3292,7 +3670,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnBIO_NET_TYPEChanging(value);
                 ReportPropertyChanging("BIO_NET_TYPE");
-                _BIO_NET_TYPE = StructuralObject.SetValidValue(value, true);
+                _BIO_NET_TYPE = StructuralObject.SetValidValue(value, true, "BIO_NET_TYPE");
                 ReportPropertyChanged("BIO_NET_TYPE");
                 OnBIO_NET_TYPEChanged();
             }
@@ -3316,7 +3694,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnBIO_NET_AREA_MSRChanging(value);
                 ReportPropertyChanging("BIO_NET_AREA_MSR");
-                _BIO_NET_AREA_MSR = StructuralObject.SetValidValue(value, true);
+                _BIO_NET_AREA_MSR = StructuralObject.SetValidValue(value, true, "BIO_NET_AREA_MSR");
                 ReportPropertyChanged("BIO_NET_AREA_MSR");
                 OnBIO_NET_AREA_MSRChanged();
             }
@@ -3340,7 +3718,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnBIO_NET_AREA_MSR_UNITChanging(value);
                 ReportPropertyChanging("BIO_NET_AREA_MSR_UNIT");
-                _BIO_NET_AREA_MSR_UNIT = StructuralObject.SetValidValue(value, true);
+                _BIO_NET_AREA_MSR_UNIT = StructuralObject.SetValidValue(value, true, "BIO_NET_AREA_MSR_UNIT");
                 ReportPropertyChanged("BIO_NET_AREA_MSR_UNIT");
                 OnBIO_NET_AREA_MSR_UNITChanged();
             }
@@ -3364,7 +3742,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnBIO_NET_MESHSIZE_MSRChanging(value);
                 ReportPropertyChanging("BIO_NET_MESHSIZE_MSR");
-                _BIO_NET_MESHSIZE_MSR = StructuralObject.SetValidValue(value, true);
+                _BIO_NET_MESHSIZE_MSR = StructuralObject.SetValidValue(value, true, "BIO_NET_MESHSIZE_MSR");
                 ReportPropertyChanged("BIO_NET_MESHSIZE_MSR");
                 OnBIO_NET_MESHSIZE_MSRChanged();
             }
@@ -3388,7 +3766,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnBIO_MESHSIZE_MSR_UNITChanging(value);
                 ReportPropertyChanging("BIO_MESHSIZE_MSR_UNIT");
-                _BIO_MESHSIZE_MSR_UNIT = StructuralObject.SetValidValue(value, true);
+                _BIO_MESHSIZE_MSR_UNIT = StructuralObject.SetValidValue(value, true, "BIO_MESHSIZE_MSR_UNIT");
                 ReportPropertyChanged("BIO_MESHSIZE_MSR_UNIT");
                 OnBIO_MESHSIZE_MSR_UNITChanged();
             }
@@ -3412,7 +3790,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnBIO_BOAT_SPEED_MSRChanging(value);
                 ReportPropertyChanging("BIO_BOAT_SPEED_MSR");
-                _BIO_BOAT_SPEED_MSR = StructuralObject.SetValidValue(value, true);
+                _BIO_BOAT_SPEED_MSR = StructuralObject.SetValidValue(value, true, "BIO_BOAT_SPEED_MSR");
                 ReportPropertyChanged("BIO_BOAT_SPEED_MSR");
                 OnBIO_BOAT_SPEED_MSRChanged();
             }
@@ -3436,7 +3814,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnBIO_BOAT_SPEED_MSR_UNITChanging(value);
                 ReportPropertyChanging("BIO_BOAT_SPEED_MSR_UNIT");
-                _BIO_BOAT_SPEED_MSR_UNIT = StructuralObject.SetValidValue(value, true);
+                _BIO_BOAT_SPEED_MSR_UNIT = StructuralObject.SetValidValue(value, true, "BIO_BOAT_SPEED_MSR_UNIT");
                 ReportPropertyChanged("BIO_BOAT_SPEED_MSR_UNIT");
                 OnBIO_BOAT_SPEED_MSR_UNITChanged();
             }
@@ -3460,7 +3838,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnBIO_CURR_SPEED_MSRChanging(value);
                 ReportPropertyChanging("BIO_CURR_SPEED_MSR");
-                _BIO_CURR_SPEED_MSR = StructuralObject.SetValidValue(value, true);
+                _BIO_CURR_SPEED_MSR = StructuralObject.SetValidValue(value, true, "BIO_CURR_SPEED_MSR");
                 ReportPropertyChanged("BIO_CURR_SPEED_MSR");
                 OnBIO_CURR_SPEED_MSRChanged();
             }
@@ -3484,7 +3862,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnBIO_CURR_SPEED_MSR_UNITChanging(value);
                 ReportPropertyChanging("BIO_CURR_SPEED_MSR_UNIT");
-                _BIO_CURR_SPEED_MSR_UNIT = StructuralObject.SetValidValue(value, true);
+                _BIO_CURR_SPEED_MSR_UNIT = StructuralObject.SetValidValue(value, true, "BIO_CURR_SPEED_MSR_UNIT");
                 ReportPropertyChanged("BIO_CURR_SPEED_MSR_UNIT");
                 OnBIO_CURR_SPEED_MSR_UNITChanged();
             }
@@ -3508,7 +3886,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnBIO_TOXICITY_TEST_TYPEChanging(value);
                 ReportPropertyChanging("BIO_TOXICITY_TEST_TYPE");
-                _BIO_TOXICITY_TEST_TYPE = StructuralObject.SetValidValue(value, true);
+                _BIO_TOXICITY_TEST_TYPE = StructuralObject.SetValidValue(value, true, "BIO_TOXICITY_TEST_TYPE");
                 ReportPropertyChanged("BIO_TOXICITY_TEST_TYPE");
                 OnBIO_TOXICITY_TEST_TYPEChanged();
             }
@@ -3516,30 +3894,6 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
         private global::System.String _BIO_TOXICITY_TEST_TYPE;
         partial void OnBIO_TOXICITY_TEST_TYPEChanging(global::System.String value);
         partial void OnBIO_TOXICITY_TEST_TYPEChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public global::System.String SAMP_COLL_METHOD_IDX
-        {
-            get
-            {
-                return _SAMP_COLL_METHOD_IDX;
-            }
-            set
-            {
-                OnSAMP_COLL_METHOD_IDXChanging(value);
-                ReportPropertyChanging("SAMP_COLL_METHOD_IDX");
-                _SAMP_COLL_METHOD_IDX = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("SAMP_COLL_METHOD_IDX");
-                OnSAMP_COLL_METHOD_IDXChanged();
-            }
-        }
-        private global::System.String _SAMP_COLL_METHOD_IDX;
-        partial void OnSAMP_COLL_METHOD_IDXChanging(global::System.String value);
-        partial void OnSAMP_COLL_METHOD_IDXChanged();
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -3556,7 +3910,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnSAMP_COLL_EQUIPChanging(value);
                 ReportPropertyChanging("SAMP_COLL_EQUIP");
-                _SAMP_COLL_EQUIP = StructuralObject.SetValidValue(value, true);
+                _SAMP_COLL_EQUIP = StructuralObject.SetValidValue(value, true, "SAMP_COLL_EQUIP");
                 ReportPropertyChanged("SAMP_COLL_EQUIP");
                 OnSAMP_COLL_EQUIPChanged();
             }
@@ -3580,7 +3934,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnSAMP_COLL_EQUIP_COMMENTChanging(value);
                 ReportPropertyChanging("SAMP_COLL_EQUIP_COMMENT");
-                _SAMP_COLL_EQUIP_COMMENT = StructuralObject.SetValidValue(value, true);
+                _SAMP_COLL_EQUIP_COMMENT = StructuralObject.SetValidValue(value, true, "SAMP_COLL_EQUIP_COMMENT");
                 ReportPropertyChanged("SAMP_COLL_EQUIP_COMMENT");
                 OnSAMP_COLL_EQUIP_COMMENTChanged();
             }
@@ -3588,30 +3942,6 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
         private global::System.String _SAMP_COLL_EQUIP_COMMENT;
         partial void OnSAMP_COLL_EQUIP_COMMENTChanging(global::System.String value);
         partial void OnSAMP_COLL_EQUIP_COMMENTChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public global::System.String SAMP_PREP_IDX
-        {
-            get
-            {
-                return _SAMP_PREP_IDX;
-            }
-            set
-            {
-                OnSAMP_PREP_IDXChanging(value);
-                ReportPropertyChanging("SAMP_PREP_IDX");
-                _SAMP_PREP_IDX = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("SAMP_PREP_IDX");
-                OnSAMP_PREP_IDXChanged();
-            }
-        }
-        private global::System.String _SAMP_PREP_IDX;
-        partial void OnSAMP_PREP_IDXChanging(global::System.String value);
-        partial void OnSAMP_PREP_IDXChanged();
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -3628,7 +3958,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnSAMP_PREP_CONT_TYPEChanging(value);
                 ReportPropertyChanging("SAMP_PREP_CONT_TYPE");
-                _SAMP_PREP_CONT_TYPE = StructuralObject.SetValidValue(value, true);
+                _SAMP_PREP_CONT_TYPE = StructuralObject.SetValidValue(value, true, "SAMP_PREP_CONT_TYPE");
                 ReportPropertyChanged("SAMP_PREP_CONT_TYPE");
                 OnSAMP_PREP_CONT_TYPEChanged();
             }
@@ -3652,7 +3982,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnSAMP_PREP_CONT_COLORChanging(value);
                 ReportPropertyChanging("SAMP_PREP_CONT_COLOR");
-                _SAMP_PREP_CONT_COLOR = StructuralObject.SetValidValue(value, true);
+                _SAMP_PREP_CONT_COLOR = StructuralObject.SetValidValue(value, true, "SAMP_PREP_CONT_COLOR");
                 ReportPropertyChanged("SAMP_PREP_CONT_COLOR");
                 OnSAMP_PREP_CONT_COLORChanged();
             }
@@ -3676,7 +4006,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnSAMP_PREP_CHEM_PRESERVChanging(value);
                 ReportPropertyChanging("SAMP_PREP_CHEM_PRESERV");
-                _SAMP_PREP_CHEM_PRESERV = StructuralObject.SetValidValue(value, true);
+                _SAMP_PREP_CHEM_PRESERV = StructuralObject.SetValidValue(value, true, "SAMP_PREP_CHEM_PRESERV");
                 ReportPropertyChanged("SAMP_PREP_CHEM_PRESERV");
                 OnSAMP_PREP_CHEM_PRESERVChanged();
             }
@@ -3700,7 +4030,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnSAMP_PREP_THERM_PRESERVChanging(value);
                 ReportPropertyChanging("SAMP_PREP_THERM_PRESERV");
-                _SAMP_PREP_THERM_PRESERV = StructuralObject.SetValidValue(value, true);
+                _SAMP_PREP_THERM_PRESERV = StructuralObject.SetValidValue(value, true, "SAMP_PREP_THERM_PRESERV");
                 ReportPropertyChanged("SAMP_PREP_THERM_PRESERV");
                 OnSAMP_PREP_THERM_PRESERVChanged();
             }
@@ -3724,7 +4054,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnSAMP_PREP_STORAGE_DESCChanging(value);
                 ReportPropertyChanging("SAMP_PREP_STORAGE_DESC");
-                _SAMP_PREP_STORAGE_DESC = StructuralObject.SetValidValue(value, true);
+                _SAMP_PREP_STORAGE_DESC = StructuralObject.SetValidValue(value, true, "SAMP_PREP_STORAGE_DESC");
                 ReportPropertyChanged("SAMP_PREP_STORAGE_DESC");
                 OnSAMP_PREP_STORAGE_DESCChanged();
             }
@@ -3748,7 +4078,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnWQX_INDChanging(value);
                 ReportPropertyChanging("WQX_IND");
-                _WQX_IND = StructuralObject.SetValidValue(value);
+                _WQX_IND = StructuralObject.SetValidValue(value, "WQX_IND");
                 ReportPropertyChanged("WQX_IND");
                 OnWQX_INDChanged();
             }
@@ -3772,7 +4102,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnWQX_SUBMIT_STATUSChanging(value);
                 ReportPropertyChanging("WQX_SUBMIT_STATUS");
-                _WQX_SUBMIT_STATUS = StructuralObject.SetValidValue(value, true);
+                _WQX_SUBMIT_STATUS = StructuralObject.SetValidValue(value, true, "WQX_SUBMIT_STATUS");
                 ReportPropertyChanged("WQX_SUBMIT_STATUS");
                 OnWQX_SUBMIT_STATUSChanged();
             }
@@ -3796,7 +4126,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnWQX_UPDATE_DTChanging(value);
                 ReportPropertyChanging("WQX_UPDATE_DT");
-                _WQX_UPDATE_DT = StructuralObject.SetValidValue(value);
+                _WQX_UPDATE_DT = StructuralObject.SetValidValue(value, "WQX_UPDATE_DT");
                 ReportPropertyChanged("WQX_UPDATE_DT");
                 OnWQX_UPDATE_DTChanged();
             }
@@ -3820,7 +4150,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnACT_INDChanging(value);
                 ReportPropertyChanging("ACT_IND");
-                _ACT_IND = StructuralObject.SetValidValue(value);
+                _ACT_IND = StructuralObject.SetValidValue(value, "ACT_IND");
                 ReportPropertyChanged("ACT_IND");
                 OnACT_INDChanged();
             }
@@ -3844,7 +4174,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnCREATE_DTChanging(value);
                 ReportPropertyChanging("CREATE_DT");
-                _CREATE_DT = StructuralObject.SetValidValue(value);
+                _CREATE_DT = StructuralObject.SetValidValue(value, "CREATE_DT");
                 ReportPropertyChanged("CREATE_DT");
                 OnCREATE_DTChanged();
             }
@@ -3868,7 +4198,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnCREATE_USERIDChanging(value);
                 ReportPropertyChanging("CREATE_USERID");
-                _CREATE_USERID = StructuralObject.SetValidValue(value, true);
+                _CREATE_USERID = StructuralObject.SetValidValue(value, true, "CREATE_USERID");
                 ReportPropertyChanged("CREATE_USERID");
                 OnCREATE_USERIDChanged();
             }
@@ -3892,7 +4222,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnUPDATE_DTChanging(value);
                 ReportPropertyChanging("UPDATE_DT");
-                _UPDATE_DT = StructuralObject.SetValidValue(value);
+                _UPDATE_DT = StructuralObject.SetValidValue(value, "UPDATE_DT");
                 ReportPropertyChanged("UPDATE_DT");
                 OnUPDATE_DTChanged();
             }
@@ -3916,7 +4246,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnUPDATE_USERIDChanging(value);
                 ReportPropertyChanging("UPDATE_USERID");
-                _UPDATE_USERID = StructuralObject.SetValidValue(value, true);
+                _UPDATE_USERID = StructuralObject.SetValidValue(value, true, "UPDATE_USERID");
                 ReportPropertyChanged("UPDATE_USERID");
                 OnUPDATE_USERIDChanged();
             }
@@ -3924,10 +4254,105 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
         private global::System.String _UPDATE_USERID;
         partial void OnUPDATE_USERIDChanging(global::System.String value);
         partial void OnUPDATE_USERIDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> SAMP_COLL_METHOD_IDX
+        {
+            get
+            {
+                return _SAMP_COLL_METHOD_IDX;
+            }
+            set
+            {
+                OnSAMP_COLL_METHOD_IDXChanging(value);
+                ReportPropertyChanging("SAMP_COLL_METHOD_IDX");
+                _SAMP_COLL_METHOD_IDX = StructuralObject.SetValidValue(value, "SAMP_COLL_METHOD_IDX");
+                ReportPropertyChanged("SAMP_COLL_METHOD_IDX");
+                OnSAMP_COLL_METHOD_IDXChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _SAMP_COLL_METHOD_IDX;
+        partial void OnSAMP_COLL_METHOD_IDXChanging(Nullable<global::System.Int32> value);
+        partial void OnSAMP_COLL_METHOD_IDXChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> SAMP_PREP_IDX
+        {
+            get
+            {
+                return _SAMP_PREP_IDX;
+            }
+            set
+            {
+                OnSAMP_PREP_IDXChanging(value);
+                ReportPropertyChanging("SAMP_PREP_IDX");
+                _SAMP_PREP_IDX = StructuralObject.SetValidValue(value, "SAMP_PREP_IDX");
+                ReportPropertyChanged("SAMP_PREP_IDX");
+                OnSAMP_PREP_IDXChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _SAMP_PREP_IDX;
+        partial void OnSAMP_PREP_IDXChanging(Nullable<global::System.Int32> value);
+        partial void OnSAMP_PREP_IDXChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> TEMP_SAMPLE_IDX
+        {
+            get
+            {
+                return _TEMP_SAMPLE_IDX;
+            }
+            set
+            {
+                OnTEMP_SAMPLE_IDXChanging(value);
+                ReportPropertyChanging("TEMP_SAMPLE_IDX");
+                _TEMP_SAMPLE_IDX = StructuralObject.SetValidValue(value, "TEMP_SAMPLE_IDX");
+                ReportPropertyChanged("TEMP_SAMPLE_IDX");
+                OnTEMP_SAMPLE_IDXChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _TEMP_SAMPLE_IDX;
+        partial void OnTEMP_SAMPLE_IDXChanging(Nullable<global::System.Int32> value);
+        partial void OnTEMP_SAMPLE_IDXChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String ENTRY_TYPE
+        {
+            get
+            {
+                return _ENTRY_TYPE;
+            }
+            set
+            {
+                OnENTRY_TYPEChanging(value);
+                ReportPropertyChanging("ENTRY_TYPE");
+                _ENTRY_TYPE = StructuralObject.SetValidValue(value, true, "ENTRY_TYPE");
+                ReportPropertyChanged("ENTRY_TYPE");
+                OnENTRY_TYPEChanged();
+            }
+        }
+        private global::System.String _ENTRY_TYPE;
+        partial void OnENTRY_TYPEChanging(global::System.String value);
+        partial void OnENTRY_TYPEChanged();
 
         #endregion
 
-    
         #region Navigation Properties
     
         /// <summary>
@@ -3936,18 +4361,18 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("OpenEnvironmentModel", "FK__T_WQX_ACT__ACTIV__22AA2996", "T_WQX_ACTIVITY_METRIC")]
+        [EdmRelationshipNavigationPropertyAttribute("OpenEnvironmentModel", "FK__T_WQX_ACT__ACTIV__44FF419A", "T_WQX_ACTIVITY_METRIC")]
         public EntityCollection<T_WQX_ACTIVITY_METRIC> T_WQX_ACTIVITY_METRIC
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<T_WQX_ACTIVITY_METRIC>("OpenEnvironmentModel.FK__T_WQX_ACT__ACTIV__22AA2996", "T_WQX_ACTIVITY_METRIC");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<T_WQX_ACTIVITY_METRIC>("OpenEnvironmentModel.FK__T_WQX_ACT__ACTIV__44FF419A", "T_WQX_ACTIVITY_METRIC");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<T_WQX_ACTIVITY_METRIC>("OpenEnvironmentModel.FK__T_WQX_ACT__ACTIV__22AA2996", "T_WQX_ACTIVITY_METRIC", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<T_WQX_ACTIVITY_METRIC>("OpenEnvironmentModel.FK__T_WQX_ACT__ACTIV__44FF419A", "T_WQX_ACTIVITY_METRIC", value);
                 }
             }
         }
@@ -3958,16 +4383,16 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("OpenEnvironmentModel", "FK__T_WQX_ACT__MONLO__1B0907CE", "T_WQX_MONLOC")]
+        [EdmRelationshipNavigationPropertyAttribute("OpenEnvironmentModel", "FK__T_WQX_ACT__MONLO__3D5E1FD2", "T_WQX_MONLOC")]
         public T_WQX_MONLOC T_WQX_MONLOC
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<T_WQX_MONLOC>("OpenEnvironmentModel.FK__T_WQX_ACT__MONLO__1B0907CE", "T_WQX_MONLOC").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<T_WQX_MONLOC>("OpenEnvironmentModel.FK__T_WQX_ACT__MONLO__3D5E1FD2", "T_WQX_MONLOC").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<T_WQX_MONLOC>("OpenEnvironmentModel.FK__T_WQX_ACT__MONLO__1B0907CE", "T_WQX_MONLOC").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<T_WQX_MONLOC>("OpenEnvironmentModel.FK__T_WQX_ACT__MONLO__3D5E1FD2", "T_WQX_MONLOC").Value = value;
             }
         }
         /// <summary>
@@ -3979,13 +4404,13 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<T_WQX_MONLOC>("OpenEnvironmentModel.FK__T_WQX_ACT__MONLO__1B0907CE", "T_WQX_MONLOC");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<T_WQX_MONLOC>("OpenEnvironmentModel.FK__T_WQX_ACT__MONLO__3D5E1FD2", "T_WQX_MONLOC");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<T_WQX_MONLOC>("OpenEnvironmentModel.FK__T_WQX_ACT__MONLO__1B0907CE", "T_WQX_MONLOC", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<T_WQX_MONLOC>("OpenEnvironmentModel.FK__T_WQX_ACT__MONLO__3D5E1FD2", "T_WQX_MONLOC", value);
                 }
             }
         }
@@ -3996,76 +4421,16 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("OpenEnvironmentModel", "FK__T_WQX_ACT__PROJE__1A14E395", "T_WQX_PROJECT")]
-        public T_WQX_PROJECT T_WQX_PROJECT
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<T_WQX_PROJECT>("OpenEnvironmentModel.FK__T_WQX_ACT__PROJE__1A14E395", "T_WQX_PROJECT").Value;
-            }
-            set
-            {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<T_WQX_PROJECT>("OpenEnvironmentModel.FK__T_WQX_ACT__PROJE__1A14E395", "T_WQX_PROJECT").Value = value;
-            }
-        }
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [BrowsableAttribute(false)]
-        [DataMemberAttribute()]
-        public EntityReference<T_WQX_PROJECT> T_WQX_PROJECTReference
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<T_WQX_PROJECT>("OpenEnvironmentModel.FK__T_WQX_ACT__PROJE__1A14E395", "T_WQX_PROJECT");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<T_WQX_PROJECT>("OpenEnvironmentModel.FK__T_WQX_ACT__PROJE__1A14E395", "T_WQX_PROJECT", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("OpenEnvironmentModel", "FK__T_WQX_RES__ACTIV__267ABA7A", "T_WQX_RESULT")]
-        public EntityCollection<T_WQX_RESULT> T_WQX_RESULT
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<T_WQX_RESULT>("OpenEnvironmentModel.FK__T_WQX_RES__ACTIV__267ABA7A", "T_WQX_RESULT");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<T_WQX_RESULT>("OpenEnvironmentModel.FK__T_WQX_RES__ACTIV__267ABA7A", "T_WQX_RESULT", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("OpenEnvironmentModel", "FK__T_WQX_ACT__ORG_I__30F848ED", "T_WQX_ORGANIZATION")]
+        [EdmRelationshipNavigationPropertyAttribute("OpenEnvironmentModel", "FK__T_WQX_ACT__ORG_I__3E52440B", "T_WQX_ORGANIZATION")]
         public T_WQX_ORGANIZATION T_WQX_ORGANIZATION
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<T_WQX_ORGANIZATION>("OpenEnvironmentModel.FK__T_WQX_ACT__ORG_I__30F848ED", "T_WQX_ORGANIZATION").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<T_WQX_ORGANIZATION>("OpenEnvironmentModel.FK__T_WQX_ACT__ORG_I__3E52440B", "T_WQX_ORGANIZATION").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<T_WQX_ORGANIZATION>("OpenEnvironmentModel.FK__T_WQX_ACT__ORG_I__30F848ED", "T_WQX_ORGANIZATION").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<T_WQX_ORGANIZATION>("OpenEnvironmentModel.FK__T_WQX_ACT__ORG_I__3E52440B", "T_WQX_ORGANIZATION").Value = value;
             }
         }
         /// <summary>
@@ -4077,13 +4442,73 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<T_WQX_ORGANIZATION>("OpenEnvironmentModel.FK__T_WQX_ACT__ORG_I__30F848ED", "T_WQX_ORGANIZATION");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<T_WQX_ORGANIZATION>("OpenEnvironmentModel.FK__T_WQX_ACT__ORG_I__3E52440B", "T_WQX_ORGANIZATION");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<T_WQX_ORGANIZATION>("OpenEnvironmentModel.FK__T_WQX_ACT__ORG_I__30F848ED", "T_WQX_ORGANIZATION", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<T_WQX_ORGANIZATION>("OpenEnvironmentModel.FK__T_WQX_ACT__ORG_I__3E52440B", "T_WQX_ORGANIZATION", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("OpenEnvironmentModel", "FK__T_WQX_ACT__PROJE__3C69FB99", "T_WQX_PROJECT")]
+        public T_WQX_PROJECT T_WQX_PROJECT
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<T_WQX_PROJECT>("OpenEnvironmentModel.FK__T_WQX_ACT__PROJE__3C69FB99", "T_WQX_PROJECT").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<T_WQX_PROJECT>("OpenEnvironmentModel.FK__T_WQX_ACT__PROJE__3C69FB99", "T_WQX_PROJECT").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<T_WQX_PROJECT> T_WQX_PROJECTReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<T_WQX_PROJECT>("OpenEnvironmentModel.FK__T_WQX_ACT__PROJE__3C69FB99", "T_WQX_PROJECT");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<T_WQX_PROJECT>("OpenEnvironmentModel.FK__T_WQX_ACT__PROJE__3C69FB99", "T_WQX_PROJECT", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("OpenEnvironmentModel", "FK__T_WQX_RES__ACTIV__48CFD27E", "T_WQX_RESULT")]
+        public EntityCollection<T_WQX_RESULT> T_WQX_RESULT
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<T_WQX_RESULT>("OpenEnvironmentModel.FK__T_WQX_RES__ACTIV__48CFD27E", "T_WQX_RESULT");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<T_WQX_RESULT>("OpenEnvironmentModel.FK__T_WQX_RES__ACTIV__48CFD27E", "T_WQX_RESULT", value);
                 }
             }
         }
@@ -4123,7 +4548,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
 
         #endregion
 
-        #region Primitive Properties
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -4142,7 +4567,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
                 {
                     OnACTIVITY_METRIC_IDXChanging(value);
                     ReportPropertyChanging("ACTIVITY_METRIC_IDX");
-                    _ACTIVITY_METRIC_IDX = StructuralObject.SetValidValue(value);
+                    _ACTIVITY_METRIC_IDX = StructuralObject.SetValidValue(value, "ACTIVITY_METRIC_IDX");
                     ReportPropertyChanged("ACTIVITY_METRIC_IDX");
                     OnACTIVITY_METRIC_IDXChanged();
                 }
@@ -4167,7 +4592,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnACTIVITY_IDXChanging(value);
                 ReportPropertyChanging("ACTIVITY_IDX");
-                _ACTIVITY_IDX = StructuralObject.SetValidValue(value);
+                _ACTIVITY_IDX = StructuralObject.SetValidValue(value, "ACTIVITY_IDX");
                 ReportPropertyChanged("ACTIVITY_IDX");
                 OnACTIVITY_IDXChanged();
             }
@@ -4191,7 +4616,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnMETRIC_TYPE_IDChanging(value);
                 ReportPropertyChanging("METRIC_TYPE_ID");
-                _METRIC_TYPE_ID = StructuralObject.SetValidValue(value, false);
+                _METRIC_TYPE_ID = StructuralObject.SetValidValue(value, false, "METRIC_TYPE_ID");
                 ReportPropertyChanged("METRIC_TYPE_ID");
                 OnMETRIC_TYPE_IDChanged();
             }
@@ -4215,7 +4640,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnMETRIC_TYPE_ID_CONTEXTChanging(value);
                 ReportPropertyChanging("METRIC_TYPE_ID_CONTEXT");
-                _METRIC_TYPE_ID_CONTEXT = StructuralObject.SetValidValue(value, false);
+                _METRIC_TYPE_ID_CONTEXT = StructuralObject.SetValidValue(value, false, "METRIC_TYPE_ID_CONTEXT");
                 ReportPropertyChanged("METRIC_TYPE_ID_CONTEXT");
                 OnMETRIC_TYPE_ID_CONTEXTChanged();
             }
@@ -4239,7 +4664,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnMETRIC_TYPE_NAMEChanging(value);
                 ReportPropertyChanging("METRIC_TYPE_NAME");
-                _METRIC_TYPE_NAME = StructuralObject.SetValidValue(value, true);
+                _METRIC_TYPE_NAME = StructuralObject.SetValidValue(value, true, "METRIC_TYPE_NAME");
                 ReportPropertyChanged("METRIC_TYPE_NAME");
                 OnMETRIC_TYPE_NAMEChanged();
             }
@@ -4263,7 +4688,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnCITATION_TITLEChanging(value);
                 ReportPropertyChanging("CITATION_TITLE");
-                _CITATION_TITLE = StructuralObject.SetValidValue(value, true);
+                _CITATION_TITLE = StructuralObject.SetValidValue(value, true, "CITATION_TITLE");
                 ReportPropertyChanged("CITATION_TITLE");
                 OnCITATION_TITLEChanged();
             }
@@ -4287,7 +4712,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnCITATION_CREATORChanging(value);
                 ReportPropertyChanging("CITATION_CREATOR");
-                _CITATION_CREATOR = StructuralObject.SetValidValue(value, true);
+                _CITATION_CREATOR = StructuralObject.SetValidValue(value, true, "CITATION_CREATOR");
                 ReportPropertyChanged("CITATION_CREATOR");
                 OnCITATION_CREATORChanged();
             }
@@ -4311,7 +4736,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnCITATION_SUBJECTChanging(value);
                 ReportPropertyChanging("CITATION_SUBJECT");
-                _CITATION_SUBJECT = StructuralObject.SetValidValue(value, true);
+                _CITATION_SUBJECT = StructuralObject.SetValidValue(value, true, "CITATION_SUBJECT");
                 ReportPropertyChanged("CITATION_SUBJECT");
                 OnCITATION_SUBJECTChanged();
             }
@@ -4335,7 +4760,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnCITATION_PUBLISHERChanging(value);
                 ReportPropertyChanging("CITATION_PUBLISHER");
-                _CITATION_PUBLISHER = StructuralObject.SetValidValue(value, true);
+                _CITATION_PUBLISHER = StructuralObject.SetValidValue(value, true, "CITATION_PUBLISHER");
                 ReportPropertyChanged("CITATION_PUBLISHER");
                 OnCITATION_PUBLISHERChanged();
             }
@@ -4359,7 +4784,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnCITATION_DATEChanging(value);
                 ReportPropertyChanging("CITATION_DATE");
-                _CITATION_DATE = StructuralObject.SetValidValue(value);
+                _CITATION_DATE = StructuralObject.SetValidValue(value, "CITATION_DATE");
                 ReportPropertyChanged("CITATION_DATE");
                 OnCITATION_DATEChanged();
             }
@@ -4383,7 +4808,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnCITATION_IDChanging(value);
                 ReportPropertyChanging("CITATION_ID");
-                _CITATION_ID = StructuralObject.SetValidValue(value, true);
+                _CITATION_ID = StructuralObject.SetValidValue(value, true, "CITATION_ID");
                 ReportPropertyChanged("CITATION_ID");
                 OnCITATION_IDChanged();
             }
@@ -4407,7 +4832,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnMETRIC_SCALEChanging(value);
                 ReportPropertyChanging("METRIC_SCALE");
-                _METRIC_SCALE = StructuralObject.SetValidValue(value, true);
+                _METRIC_SCALE = StructuralObject.SetValidValue(value, true, "METRIC_SCALE");
                 ReportPropertyChanged("METRIC_SCALE");
                 OnMETRIC_SCALEChanged();
             }
@@ -4431,7 +4856,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnMETRIC_FORMULA_DESCChanging(value);
                 ReportPropertyChanging("METRIC_FORMULA_DESC");
-                _METRIC_FORMULA_DESC = StructuralObject.SetValidValue(value, true);
+                _METRIC_FORMULA_DESC = StructuralObject.SetValidValue(value, true, "METRIC_FORMULA_DESC");
                 ReportPropertyChanged("METRIC_FORMULA_DESC");
                 OnMETRIC_FORMULA_DESCChanged();
             }
@@ -4455,7 +4880,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnMETRIC_VALUE_MSRChanging(value);
                 ReportPropertyChanging("METRIC_VALUE_MSR");
-                _METRIC_VALUE_MSR = StructuralObject.SetValidValue(value, true);
+                _METRIC_VALUE_MSR = StructuralObject.SetValidValue(value, true, "METRIC_VALUE_MSR");
                 ReportPropertyChanged("METRIC_VALUE_MSR");
                 OnMETRIC_VALUE_MSRChanged();
             }
@@ -4479,7 +4904,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnMETRIC_VALUE_MSR_UNITChanging(value);
                 ReportPropertyChanging("METRIC_VALUE_MSR_UNIT");
-                _METRIC_VALUE_MSR_UNIT = StructuralObject.SetValidValue(value, true);
+                _METRIC_VALUE_MSR_UNIT = StructuralObject.SetValidValue(value, true, "METRIC_VALUE_MSR_UNIT");
                 ReportPropertyChanged("METRIC_VALUE_MSR_UNIT");
                 OnMETRIC_VALUE_MSR_UNITChanged();
             }
@@ -4503,7 +4928,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnMETRIC_SCOREChanging(value);
                 ReportPropertyChanging("METRIC_SCORE");
-                _METRIC_SCORE = StructuralObject.SetValidValue(value, false);
+                _METRIC_SCORE = StructuralObject.SetValidValue(value, false, "METRIC_SCORE");
                 ReportPropertyChanged("METRIC_SCORE");
                 OnMETRIC_SCOREChanged();
             }
@@ -4527,7 +4952,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnMETRIC_COMMENTChanging(value);
                 ReportPropertyChanging("METRIC_COMMENT");
-                _METRIC_COMMENT = StructuralObject.SetValidValue(value, true);
+                _METRIC_COMMENT = StructuralObject.SetValidValue(value, true, "METRIC_COMMENT");
                 ReportPropertyChanged("METRIC_COMMENT");
                 OnMETRIC_COMMENTChanged();
             }
@@ -4551,7 +4976,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnBIO_HABITAT_INDEX_IDXChanging(value);
                 ReportPropertyChanging("BIO_HABITAT_INDEX_IDX");
-                _BIO_HABITAT_INDEX_IDX = StructuralObject.SetValidValue(value);
+                _BIO_HABITAT_INDEX_IDX = StructuralObject.SetValidValue(value, "BIO_HABITAT_INDEX_IDX");
                 ReportPropertyChanged("BIO_HABITAT_INDEX_IDX");
                 OnBIO_HABITAT_INDEX_IDXChanged();
             }
@@ -4575,7 +5000,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnWQX_INDChanging(value);
                 ReportPropertyChanging("WQX_IND");
-                _WQX_IND = StructuralObject.SetValidValue(value);
+                _WQX_IND = StructuralObject.SetValidValue(value, "WQX_IND");
                 ReportPropertyChanged("WQX_IND");
                 OnWQX_INDChanged();
             }
@@ -4599,7 +5024,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnWQX_SUBMIT_STATUSChanging(value);
                 ReportPropertyChanging("WQX_SUBMIT_STATUS");
-                _WQX_SUBMIT_STATUS = StructuralObject.SetValidValue(value, true);
+                _WQX_SUBMIT_STATUS = StructuralObject.SetValidValue(value, true, "WQX_SUBMIT_STATUS");
                 ReportPropertyChanged("WQX_SUBMIT_STATUS");
                 OnWQX_SUBMIT_STATUSChanged();
             }
@@ -4623,7 +5048,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnWQX_UPDATE_DTChanging(value);
                 ReportPropertyChanging("WQX_UPDATE_DT");
-                _WQX_UPDATE_DT = StructuralObject.SetValidValue(value);
+                _WQX_UPDATE_DT = StructuralObject.SetValidValue(value, "WQX_UPDATE_DT");
                 ReportPropertyChanged("WQX_UPDATE_DT");
                 OnWQX_UPDATE_DTChanged();
             }
@@ -4647,7 +5072,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnACT_INDChanging(value);
                 ReportPropertyChanging("ACT_IND");
-                _ACT_IND = StructuralObject.SetValidValue(value);
+                _ACT_IND = StructuralObject.SetValidValue(value, "ACT_IND");
                 ReportPropertyChanged("ACT_IND");
                 OnACT_INDChanged();
             }
@@ -4671,7 +5096,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnCREATE_DTChanging(value);
                 ReportPropertyChanging("CREATE_DT");
-                _CREATE_DT = StructuralObject.SetValidValue(value);
+                _CREATE_DT = StructuralObject.SetValidValue(value, "CREATE_DT");
                 ReportPropertyChanged("CREATE_DT");
                 OnCREATE_DTChanged();
             }
@@ -4695,7 +5120,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnCREATE_USERIDChanging(value);
                 ReportPropertyChanging("CREATE_USERID");
-                _CREATE_USERID = StructuralObject.SetValidValue(value, true);
+                _CREATE_USERID = StructuralObject.SetValidValue(value, true, "CREATE_USERID");
                 ReportPropertyChanged("CREATE_USERID");
                 OnCREATE_USERIDChanged();
             }
@@ -4719,7 +5144,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnUPDATE_DTChanging(value);
                 ReportPropertyChanging("UPDATE_DT");
-                _UPDATE_DT = StructuralObject.SetValidValue(value);
+                _UPDATE_DT = StructuralObject.SetValidValue(value, "UPDATE_DT");
                 ReportPropertyChanged("UPDATE_DT");
                 OnUPDATE_DTChanged();
             }
@@ -4743,7 +5168,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnUPDATE_USERIDChanging(value);
                 ReportPropertyChanging("UPDATE_USERID");
-                _UPDATE_USERID = StructuralObject.SetValidValue(value, true);
+                _UPDATE_USERID = StructuralObject.SetValidValue(value, true, "UPDATE_USERID");
                 ReportPropertyChanged("UPDATE_USERID");
                 OnUPDATE_USERIDChanged();
             }
@@ -4754,46 +5179,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
 
         #endregion
 
-    
         #region Navigation Properties
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("OpenEnvironmentModel", "FK__T_WQX_ACT__ACTIV__22AA2996", "T_WQX_ACTIVITY")]
-        public T_WQX_ACTIVITY T_WQX_ACTIVITY
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<T_WQX_ACTIVITY>("OpenEnvironmentModel.FK__T_WQX_ACT__ACTIV__22AA2996", "T_WQX_ACTIVITY").Value;
-            }
-            set
-            {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<T_WQX_ACTIVITY>("OpenEnvironmentModel.FK__T_WQX_ACT__ACTIV__22AA2996", "T_WQX_ACTIVITY").Value = value;
-            }
-        }
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [BrowsableAttribute(false)]
-        [DataMemberAttribute()]
-        public EntityReference<T_WQX_ACTIVITY> T_WQX_ACTIVITYReference
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<T_WQX_ACTIVITY>("OpenEnvironmentModel.FK__T_WQX_ACT__ACTIV__22AA2996", "T_WQX_ACTIVITY");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<T_WQX_ACTIVITY>("OpenEnvironmentModel.FK__T_WQX_ACT__ACTIV__22AA2996", "T_WQX_ACTIVITY", value);
-                }
-            }
-        }
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -4829,6 +5215,44 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<T_WQX_BIO_HABITAT_INDEX>("OpenEnvironmentModel.FK__T_WQX_ACT__BIO_H__239E4DCF", "T_WQX_BIO_HABITAT_INDEX", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("OpenEnvironmentModel", "FK__T_WQX_ACT__ACTIV__44FF419A", "T_WQX_ACTIVITY")]
+        public T_WQX_ACTIVITY T_WQX_ACTIVITY
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<T_WQX_ACTIVITY>("OpenEnvironmentModel.FK__T_WQX_ACT__ACTIV__44FF419A", "T_WQX_ACTIVITY").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<T_WQX_ACTIVITY>("OpenEnvironmentModel.FK__T_WQX_ACT__ACTIV__44FF419A", "T_WQX_ACTIVITY").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<T_WQX_ACTIVITY> T_WQX_ACTIVITYReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<T_WQX_ACTIVITY>("OpenEnvironmentModel.FK__T_WQX_ACT__ACTIV__44FF419A", "T_WQX_ACTIVITY");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<T_WQX_ACTIVITY>("OpenEnvironmentModel.FK__T_WQX_ACT__ACTIV__44FF419A", "T_WQX_ACTIVITY", value);
                 }
             }
         }
@@ -4872,7 +5296,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
 
         #endregion
 
-        #region Primitive Properties
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -4891,7 +5315,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
                 {
                     OnBIO_HABITAT_INDEX_IDXChanging(value);
                     ReportPropertyChanging("BIO_HABITAT_INDEX_IDX");
-                    _BIO_HABITAT_INDEX_IDX = StructuralObject.SetValidValue(value);
+                    _BIO_HABITAT_INDEX_IDX = StructuralObject.SetValidValue(value, "BIO_HABITAT_INDEX_IDX");
                     ReportPropertyChanged("BIO_HABITAT_INDEX_IDX");
                     OnBIO_HABITAT_INDEX_IDXChanged();
                 }
@@ -4916,7 +5340,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnORG_IDChanging(value);
                 ReportPropertyChanging("ORG_ID");
-                _ORG_ID = StructuralObject.SetValidValue(value, false);
+                _ORG_ID = StructuralObject.SetValidValue(value, false, "ORG_ID");
                 ReportPropertyChanged("ORG_ID");
                 OnORG_IDChanged();
             }
@@ -4940,7 +5364,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnMONLOC_IDXChanging(value);
                 ReportPropertyChanging("MONLOC_IDX");
-                _MONLOC_IDX = StructuralObject.SetValidValue(value);
+                _MONLOC_IDX = StructuralObject.SetValidValue(value, "MONLOC_IDX");
                 ReportPropertyChanged("MONLOC_IDX");
                 OnMONLOC_IDXChanged();
             }
@@ -4964,7 +5388,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnINDEX_IDChanging(value);
                 ReportPropertyChanging("INDEX_ID");
-                _INDEX_ID = StructuralObject.SetValidValue(value, false);
+                _INDEX_ID = StructuralObject.SetValidValue(value, false, "INDEX_ID");
                 ReportPropertyChanged("INDEX_ID");
                 OnINDEX_IDChanged();
             }
@@ -4988,7 +5412,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnINDEX_TYPE_IDChanging(value);
                 ReportPropertyChanging("INDEX_TYPE_ID");
-                _INDEX_TYPE_ID = StructuralObject.SetValidValue(value, false);
+                _INDEX_TYPE_ID = StructuralObject.SetValidValue(value, false, "INDEX_TYPE_ID");
                 ReportPropertyChanged("INDEX_TYPE_ID");
                 OnINDEX_TYPE_IDChanged();
             }
@@ -5012,7 +5436,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnINDEX_TYPE_ID_CONTEXTChanging(value);
                 ReportPropertyChanging("INDEX_TYPE_ID_CONTEXT");
-                _INDEX_TYPE_ID_CONTEXT = StructuralObject.SetValidValue(value, false);
+                _INDEX_TYPE_ID_CONTEXT = StructuralObject.SetValidValue(value, false, "INDEX_TYPE_ID_CONTEXT");
                 ReportPropertyChanged("INDEX_TYPE_ID_CONTEXT");
                 OnINDEX_TYPE_ID_CONTEXTChanged();
             }
@@ -5036,7 +5460,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnINDEX_TYPE_NAMEChanging(value);
                 ReportPropertyChanging("INDEX_TYPE_NAME");
-                _INDEX_TYPE_NAME = StructuralObject.SetValidValue(value, false);
+                _INDEX_TYPE_NAME = StructuralObject.SetValidValue(value, false, "INDEX_TYPE_NAME");
                 ReportPropertyChanged("INDEX_TYPE_NAME");
                 OnINDEX_TYPE_NAMEChanged();
             }
@@ -5060,7 +5484,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnRESOURCE_TITLEChanging(value);
                 ReportPropertyChanging("RESOURCE_TITLE");
-                _RESOURCE_TITLE = StructuralObject.SetValidValue(value, true);
+                _RESOURCE_TITLE = StructuralObject.SetValidValue(value, true, "RESOURCE_TITLE");
                 ReportPropertyChanged("RESOURCE_TITLE");
                 OnRESOURCE_TITLEChanged();
             }
@@ -5084,7 +5508,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnRESOURCE_CREATORChanging(value);
                 ReportPropertyChanging("RESOURCE_CREATOR");
-                _RESOURCE_CREATOR = StructuralObject.SetValidValue(value, true);
+                _RESOURCE_CREATOR = StructuralObject.SetValidValue(value, true, "RESOURCE_CREATOR");
                 ReportPropertyChanged("RESOURCE_CREATOR");
                 OnRESOURCE_CREATORChanged();
             }
@@ -5108,7 +5532,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnRESOURCE_SUBJECTChanging(value);
                 ReportPropertyChanging("RESOURCE_SUBJECT");
-                _RESOURCE_SUBJECT = StructuralObject.SetValidValue(value, true);
+                _RESOURCE_SUBJECT = StructuralObject.SetValidValue(value, true, "RESOURCE_SUBJECT");
                 ReportPropertyChanged("RESOURCE_SUBJECT");
                 OnRESOURCE_SUBJECTChanged();
             }
@@ -5132,7 +5556,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnRESOURCE_PUBLISHERChanging(value);
                 ReportPropertyChanging("RESOURCE_PUBLISHER");
-                _RESOURCE_PUBLISHER = StructuralObject.SetValidValue(value, true);
+                _RESOURCE_PUBLISHER = StructuralObject.SetValidValue(value, true, "RESOURCE_PUBLISHER");
                 ReportPropertyChanged("RESOURCE_PUBLISHER");
                 OnRESOURCE_PUBLISHERChanged();
             }
@@ -5156,7 +5580,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnRESOURCE_DATEChanging(value);
                 ReportPropertyChanging("RESOURCE_DATE");
-                _RESOURCE_DATE = StructuralObject.SetValidValue(value);
+                _RESOURCE_DATE = StructuralObject.SetValidValue(value, "RESOURCE_DATE");
                 ReportPropertyChanged("RESOURCE_DATE");
                 OnRESOURCE_DATEChanged();
             }
@@ -5180,7 +5604,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnRESOURCE_IDChanging(value);
                 ReportPropertyChanging("RESOURCE_ID");
-                _RESOURCE_ID = StructuralObject.SetValidValue(value, true);
+                _RESOURCE_ID = StructuralObject.SetValidValue(value, true, "RESOURCE_ID");
                 ReportPropertyChanged("RESOURCE_ID");
                 OnRESOURCE_IDChanged();
             }
@@ -5204,7 +5628,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnINDEX_TYPE_SCALEChanging(value);
                 ReportPropertyChanging("INDEX_TYPE_SCALE");
-                _INDEX_TYPE_SCALE = StructuralObject.SetValidValue(value, true);
+                _INDEX_TYPE_SCALE = StructuralObject.SetValidValue(value, true, "INDEX_TYPE_SCALE");
                 ReportPropertyChanged("INDEX_TYPE_SCALE");
                 OnINDEX_TYPE_SCALEChanged();
             }
@@ -5228,7 +5652,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnINDEX_SCOREChanging(value);
                 ReportPropertyChanging("INDEX_SCORE");
-                _INDEX_SCORE = StructuralObject.SetValidValue(value, false);
+                _INDEX_SCORE = StructuralObject.SetValidValue(value, false, "INDEX_SCORE");
                 ReportPropertyChanged("INDEX_SCORE");
                 OnINDEX_SCOREChanged();
             }
@@ -5252,7 +5676,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnINDEX_QUAL_CDChanging(value);
                 ReportPropertyChanging("INDEX_QUAL_CD");
-                _INDEX_QUAL_CD = StructuralObject.SetValidValue(value, true);
+                _INDEX_QUAL_CD = StructuralObject.SetValidValue(value, true, "INDEX_QUAL_CD");
                 ReportPropertyChanged("INDEX_QUAL_CD");
                 OnINDEX_QUAL_CDChanged();
             }
@@ -5276,7 +5700,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnINDEX_COMMENTChanging(value);
                 ReportPropertyChanging("INDEX_COMMENT");
-                _INDEX_COMMENT = StructuralObject.SetValidValue(value, true);
+                _INDEX_COMMENT = StructuralObject.SetValidValue(value, true, "INDEX_COMMENT");
                 ReportPropertyChanged("INDEX_COMMENT");
                 OnINDEX_COMMENTChanged();
             }
@@ -5300,7 +5724,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnINDEX_CALC_DATEChanging(value);
                 ReportPropertyChanging("INDEX_CALC_DATE");
-                _INDEX_CALC_DATE = StructuralObject.SetValidValue(value);
+                _INDEX_CALC_DATE = StructuralObject.SetValidValue(value, "INDEX_CALC_DATE");
                 ReportPropertyChanged("INDEX_CALC_DATE");
                 OnINDEX_CALC_DATEChanged();
             }
@@ -5324,7 +5748,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnWQX_INDChanging(value);
                 ReportPropertyChanging("WQX_IND");
-                _WQX_IND = StructuralObject.SetValidValue(value);
+                _WQX_IND = StructuralObject.SetValidValue(value, "WQX_IND");
                 ReportPropertyChanged("WQX_IND");
                 OnWQX_INDChanged();
             }
@@ -5348,7 +5772,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnWQX_SUBMIT_STATUSChanging(value);
                 ReportPropertyChanging("WQX_SUBMIT_STATUS");
-                _WQX_SUBMIT_STATUS = StructuralObject.SetValidValue(value, true);
+                _WQX_SUBMIT_STATUS = StructuralObject.SetValidValue(value, true, "WQX_SUBMIT_STATUS");
                 ReportPropertyChanged("WQX_SUBMIT_STATUS");
                 OnWQX_SUBMIT_STATUSChanged();
             }
@@ -5372,7 +5796,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnWQX_UPDATE_DTChanging(value);
                 ReportPropertyChanging("WQX_UPDATE_DT");
-                _WQX_UPDATE_DT = StructuralObject.SetValidValue(value);
+                _WQX_UPDATE_DT = StructuralObject.SetValidValue(value, "WQX_UPDATE_DT");
                 ReportPropertyChanged("WQX_UPDATE_DT");
                 OnWQX_UPDATE_DTChanged();
             }
@@ -5396,7 +5820,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnACT_INDChanging(value);
                 ReportPropertyChanging("ACT_IND");
-                _ACT_IND = StructuralObject.SetValidValue(value);
+                _ACT_IND = StructuralObject.SetValidValue(value, "ACT_IND");
                 ReportPropertyChanged("ACT_IND");
                 OnACT_INDChanged();
             }
@@ -5420,7 +5844,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnCREATE_DTChanging(value);
                 ReportPropertyChanging("CREATE_DT");
-                _CREATE_DT = StructuralObject.SetValidValue(value);
+                _CREATE_DT = StructuralObject.SetValidValue(value, "CREATE_DT");
                 ReportPropertyChanged("CREATE_DT");
                 OnCREATE_DTChanged();
             }
@@ -5444,7 +5868,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnCREATE_USERIDChanging(value);
                 ReportPropertyChanging("CREATE_USERID");
-                _CREATE_USERID = StructuralObject.SetValidValue(value, true);
+                _CREATE_USERID = StructuralObject.SetValidValue(value, true, "CREATE_USERID");
                 ReportPropertyChanged("CREATE_USERID");
                 OnCREATE_USERIDChanged();
             }
@@ -5468,7 +5892,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnUPDATE_DTChanging(value);
                 ReportPropertyChanging("UPDATE_DT");
-                _UPDATE_DT = StructuralObject.SetValidValue(value);
+                _UPDATE_DT = StructuralObject.SetValidValue(value, "UPDATE_DT");
                 ReportPropertyChanged("UPDATE_DT");
                 OnUPDATE_DTChanged();
             }
@@ -5492,7 +5916,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnUPDATE_USERIDChanging(value);
                 ReportPropertyChanging("UPDATE_USERID");
-                _UPDATE_USERID = StructuralObject.SetValidValue(value, true);
+                _UPDATE_USERID = StructuralObject.SetValidValue(value, true, "UPDATE_USERID");
                 ReportPropertyChanged("UPDATE_USERID");
                 OnUPDATE_USERIDChanged();
             }
@@ -5503,7 +5927,6 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
 
         #endregion
 
-    
         #region Navigation Properties
     
         /// <summary>
@@ -5639,7 +6062,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
 
         #endregion
 
-        #region Primitive Properties
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -5658,7 +6081,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
                 {
                     OnIMPORT_IDChanging(value);
                     ReportPropertyChanging("IMPORT_ID");
-                    _IMPORT_ID = StructuralObject.SetValidValue(value);
+                    _IMPORT_ID = StructuralObject.SetValidValue(value, "IMPORT_ID");
                     ReportPropertyChanged("IMPORT_ID");
                     OnIMPORT_IDChanged();
                 }
@@ -5683,7 +6106,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnORG_IDChanging(value);
                 ReportPropertyChanging("ORG_ID");
-                _ORG_ID = StructuralObject.SetValidValue(value, false);
+                _ORG_ID = StructuralObject.SetValidValue(value, false, "ORG_ID");
                 ReportPropertyChanged("ORG_ID");
                 OnORG_IDChanged();
             }
@@ -5707,7 +6130,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnTYPE_CDChanging(value);
                 ReportPropertyChanging("TYPE_CD");
-                _TYPE_CD = StructuralObject.SetValidValue(value, false);
+                _TYPE_CD = StructuralObject.SetValidValue(value, false, "TYPE_CD");
                 ReportPropertyChanged("TYPE_CD");
                 OnTYPE_CDChanged();
             }
@@ -5731,7 +6154,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnFILE_NAMEChanging(value);
                 ReportPropertyChanging("FILE_NAME");
-                _FILE_NAME = StructuralObject.SetValidValue(value, false);
+                _FILE_NAME = StructuralObject.SetValidValue(value, false, "FILE_NAME");
                 ReportPropertyChanged("FILE_NAME");
                 OnFILE_NAMEChanged();
             }
@@ -5755,7 +6178,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnFILE_SIZEChanging(value);
                 ReportPropertyChanging("FILE_SIZE");
-                _FILE_SIZE = StructuralObject.SetValidValue(value);
+                _FILE_SIZE = StructuralObject.SetValidValue(value, "FILE_SIZE");
                 ReportPropertyChanged("FILE_SIZE");
                 OnFILE_SIZEChanged();
             }
@@ -5779,7 +6202,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnIMPORT_STATUSChanging(value);
                 ReportPropertyChanging("IMPORT_STATUS");
-                _IMPORT_STATUS = StructuralObject.SetValidValue(value, true);
+                _IMPORT_STATUS = StructuralObject.SetValidValue(value, true, "IMPORT_STATUS");
                 ReportPropertyChanged("IMPORT_STATUS");
                 OnIMPORT_STATUSChanged();
             }
@@ -5803,7 +6226,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnIMPORT_FILEChanging(value);
                 ReportPropertyChanging("IMPORT_FILE");
-                _IMPORT_FILE = StructuralObject.SetValidValue(value, true);
+                _IMPORT_FILE = StructuralObject.SetValidValue(value, true, "IMPORT_FILE");
                 ReportPropertyChanged("IMPORT_FILE");
                 OnIMPORT_FILEChanged();
             }
@@ -5827,7 +6250,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnCREATE_DTChanging(value);
                 ReportPropertyChanging("CREATE_DT");
-                _CREATE_DT = StructuralObject.SetValidValue(value);
+                _CREATE_DT = StructuralObject.SetValidValue(value, "CREATE_DT");
                 ReportPropertyChanged("CREATE_DT");
                 OnCREATE_DTChanged();
             }
@@ -5851,7 +6274,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnCREATE_USERIDChanging(value);
                 ReportPropertyChanging("CREATE_USERID");
-                _CREATE_USERID = StructuralObject.SetValidValue(value, true);
+                _CREATE_USERID = StructuralObject.SetValidValue(value, true, "CREATE_USERID");
                 ReportPropertyChanged("CREATE_USERID");
                 OnCREATE_USERIDChanged();
             }
@@ -5859,10 +6282,57 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
         private global::System.String _CREATE_USERID;
         partial void OnCREATE_USERIDChanging(global::System.String value);
         partial void OnCREATE_USERIDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String IMPORT_PROGRESS
+        {
+            get
+            {
+                return _IMPORT_PROGRESS;
+            }
+            set
+            {
+                OnIMPORT_PROGRESSChanging(value);
+                ReportPropertyChanging("IMPORT_PROGRESS");
+                _IMPORT_PROGRESS = StructuralObject.SetValidValue(value, true, "IMPORT_PROGRESS");
+                ReportPropertyChanged("IMPORT_PROGRESS");
+                OnIMPORT_PROGRESSChanged();
+            }
+        }
+        private global::System.String _IMPORT_PROGRESS;
+        partial void OnIMPORT_PROGRESSChanging(global::System.String value);
+        partial void OnIMPORT_PROGRESSChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String IMPORT_PROGRESS_MSG
+        {
+            get
+            {
+                return _IMPORT_PROGRESS_MSG;
+            }
+            set
+            {
+                OnIMPORT_PROGRESS_MSGChanging(value);
+                ReportPropertyChanging("IMPORT_PROGRESS_MSG");
+                _IMPORT_PROGRESS_MSG = StructuralObject.SetValidValue(value, true, "IMPORT_PROGRESS_MSG");
+                ReportPropertyChanged("IMPORT_PROGRESS_MSG");
+                OnIMPORT_PROGRESS_MSGChanged();
+            }
+        }
+        private global::System.String _IMPORT_PROGRESS_MSG;
+        partial void OnIMPORT_PROGRESS_MSGChanging(global::System.String value);
+        partial void OnIMPORT_PROGRESS_MSGChanged();
 
         #endregion
 
-    
         #region Navigation Properties
     
         /// <summary>
@@ -5871,16 +6341,16 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("OpenEnvironmentModel", "FK__T_WQX_IMP__ORG_I__4CA06362", "T_WQX_ORGANIZATION")]
+        [EdmRelationshipNavigationPropertyAttribute("OpenEnvironmentModel", "FK__T_WQX_IMP__ORG_I__534D60F1", "T_WQX_ORGANIZATION")]
         public T_WQX_ORGANIZATION T_WQX_ORGANIZATION
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<T_WQX_ORGANIZATION>("OpenEnvironmentModel.FK__T_WQX_IMP__ORG_I__4CA06362", "T_WQX_ORGANIZATION").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<T_WQX_ORGANIZATION>("OpenEnvironmentModel.FK__T_WQX_IMP__ORG_I__534D60F1", "T_WQX_ORGANIZATION").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<T_WQX_ORGANIZATION>("OpenEnvironmentModel.FK__T_WQX_IMP__ORG_I__4CA06362", "T_WQX_ORGANIZATION").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<T_WQX_ORGANIZATION>("OpenEnvironmentModel.FK__T_WQX_IMP__ORG_I__534D60F1", "T_WQX_ORGANIZATION").Value = value;
             }
         }
         /// <summary>
@@ -5892,13 +6362,13 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<T_WQX_ORGANIZATION>("OpenEnvironmentModel.FK__T_WQX_IMP__ORG_I__4CA06362", "T_WQX_ORGANIZATION");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<T_WQX_ORGANIZATION>("OpenEnvironmentModel.FK__T_WQX_IMP__ORG_I__534D60F1", "T_WQX_ORGANIZATION");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<T_WQX_ORGANIZATION>("OpenEnvironmentModel.FK__T_WQX_IMP__ORG_I__4CA06362", "T_WQX_ORGANIZATION", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<T_WQX_ORGANIZATION>("OpenEnvironmentModel.FK__T_WQX_IMP__ORG_I__534D60F1", "T_WQX_ORGANIZATION", value);
                 }
             }
         }
@@ -5936,7 +6406,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
 
         #endregion
 
-        #region Primitive Properties
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -5955,7 +6425,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
                 {
                     OnTEMP_MONLOC_IDXChanging(value);
                     ReportPropertyChanging("TEMP_MONLOC_IDX");
-                    _TEMP_MONLOC_IDX = StructuralObject.SetValidValue(value);
+                    _TEMP_MONLOC_IDX = StructuralObject.SetValidValue(value, "TEMP_MONLOC_IDX");
                     ReportPropertyChanged("TEMP_MONLOC_IDX");
                     OnTEMP_MONLOC_IDXChanged();
                 }
@@ -5980,7 +6450,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnUSER_IDChanging(value);
                 ReportPropertyChanging("USER_ID");
-                _USER_ID = StructuralObject.SetValidValue(value, false);
+                _USER_ID = StructuralObject.SetValidValue(value, false, "USER_ID");
                 ReportPropertyChanged("USER_ID");
                 OnUSER_IDChanged();
             }
@@ -6004,7 +6474,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnMONLOC_IDXChanging(value);
                 ReportPropertyChanging("MONLOC_IDX");
-                _MONLOC_IDX = StructuralObject.SetValidValue(value);
+                _MONLOC_IDX = StructuralObject.SetValidValue(value, "MONLOC_IDX");
                 ReportPropertyChanged("MONLOC_IDX");
                 OnMONLOC_IDXChanged();
             }
@@ -6028,7 +6498,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnORG_IDChanging(value);
                 ReportPropertyChanging("ORG_ID");
-                _ORG_ID = StructuralObject.SetValidValue(value, true);
+                _ORG_ID = StructuralObject.SetValidValue(value, true, "ORG_ID");
                 ReportPropertyChanged("ORG_ID");
                 OnORG_IDChanged();
             }
@@ -6052,7 +6522,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnMONLOC_IDChanging(value);
                 ReportPropertyChanging("MONLOC_ID");
-                _MONLOC_ID = StructuralObject.SetValidValue(value, true);
+                _MONLOC_ID = StructuralObject.SetValidValue(value, true, "MONLOC_ID");
                 ReportPropertyChanged("MONLOC_ID");
                 OnMONLOC_IDChanged();
             }
@@ -6076,7 +6546,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnMONLOC_NAMEChanging(value);
                 ReportPropertyChanging("MONLOC_NAME");
-                _MONLOC_NAME = StructuralObject.SetValidValue(value, true);
+                _MONLOC_NAME = StructuralObject.SetValidValue(value, true, "MONLOC_NAME");
                 ReportPropertyChanged("MONLOC_NAME");
                 OnMONLOC_NAMEChanged();
             }
@@ -6100,7 +6570,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnMONLOC_TYPEChanging(value);
                 ReportPropertyChanging("MONLOC_TYPE");
-                _MONLOC_TYPE = StructuralObject.SetValidValue(value, true);
+                _MONLOC_TYPE = StructuralObject.SetValidValue(value, true, "MONLOC_TYPE");
                 ReportPropertyChanged("MONLOC_TYPE");
                 OnMONLOC_TYPEChanged();
             }
@@ -6124,7 +6594,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnMONLOC_DESCChanging(value);
                 ReportPropertyChanging("MONLOC_DESC");
-                _MONLOC_DESC = StructuralObject.SetValidValue(value, true);
+                _MONLOC_DESC = StructuralObject.SetValidValue(value, true, "MONLOC_DESC");
                 ReportPropertyChanged("MONLOC_DESC");
                 OnMONLOC_DESCChanged();
             }
@@ -6148,7 +6618,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnHUC_EIGHTChanging(value);
                 ReportPropertyChanging("HUC_EIGHT");
-                _HUC_EIGHT = StructuralObject.SetValidValue(value, true);
+                _HUC_EIGHT = StructuralObject.SetValidValue(value, true, "HUC_EIGHT");
                 ReportPropertyChanged("HUC_EIGHT");
                 OnHUC_EIGHTChanged();
             }
@@ -6172,7 +6642,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnHUC_TWELVEChanging(value);
                 ReportPropertyChanging("HUC_TWELVE");
-                _HUC_TWELVE = StructuralObject.SetValidValue(value, true);
+                _HUC_TWELVE = StructuralObject.SetValidValue(value, true, "HUC_TWELVE");
                 ReportPropertyChanged("HUC_TWELVE");
                 OnHUC_TWELVEChanged();
             }
@@ -6196,7 +6666,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnTRIBAL_LAND_INDChanging(value);
                 ReportPropertyChanging("TRIBAL_LAND_IND");
-                _TRIBAL_LAND_IND = StructuralObject.SetValidValue(value, true);
+                _TRIBAL_LAND_IND = StructuralObject.SetValidValue(value, true, "TRIBAL_LAND_IND");
                 ReportPropertyChanged("TRIBAL_LAND_IND");
                 OnTRIBAL_LAND_INDChanged();
             }
@@ -6220,7 +6690,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnTRIBAL_LAND_NAMEChanging(value);
                 ReportPropertyChanging("TRIBAL_LAND_NAME");
-                _TRIBAL_LAND_NAME = StructuralObject.SetValidValue(value, true);
+                _TRIBAL_LAND_NAME = StructuralObject.SetValidValue(value, true, "TRIBAL_LAND_NAME");
                 ReportPropertyChanged("TRIBAL_LAND_NAME");
                 OnTRIBAL_LAND_NAMEChanged();
             }
@@ -6244,7 +6714,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnLATITUDE_MSRChanging(value);
                 ReportPropertyChanging("LATITUDE_MSR");
-                _LATITUDE_MSR = StructuralObject.SetValidValue(value, false);
+                _LATITUDE_MSR = StructuralObject.SetValidValue(value, false, "LATITUDE_MSR");
                 ReportPropertyChanged("LATITUDE_MSR");
                 OnLATITUDE_MSRChanged();
             }
@@ -6268,7 +6738,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnLONGITUDE_MSRChanging(value);
                 ReportPropertyChanging("LONGITUDE_MSR");
-                _LONGITUDE_MSR = StructuralObject.SetValidValue(value, false);
+                _LONGITUDE_MSR = StructuralObject.SetValidValue(value, false, "LONGITUDE_MSR");
                 ReportPropertyChanged("LONGITUDE_MSR");
                 OnLONGITUDE_MSRChanged();
             }
@@ -6292,7 +6762,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnSOURCE_MAP_SCALEChanging(value);
                 ReportPropertyChanging("SOURCE_MAP_SCALE");
-                _SOURCE_MAP_SCALE = StructuralObject.SetValidValue(value);
+                _SOURCE_MAP_SCALE = StructuralObject.SetValidValue(value, "SOURCE_MAP_SCALE");
                 ReportPropertyChanged("SOURCE_MAP_SCALE");
                 OnSOURCE_MAP_SCALEChanged();
             }
@@ -6316,7 +6786,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnHORIZ_ACCURACYChanging(value);
                 ReportPropertyChanging("HORIZ_ACCURACY");
-                _HORIZ_ACCURACY = StructuralObject.SetValidValue(value, true);
+                _HORIZ_ACCURACY = StructuralObject.SetValidValue(value, true, "HORIZ_ACCURACY");
                 ReportPropertyChanged("HORIZ_ACCURACY");
                 OnHORIZ_ACCURACYChanged();
             }
@@ -6340,7 +6810,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnHORIZ_ACCURACY_UNITChanging(value);
                 ReportPropertyChanging("HORIZ_ACCURACY_UNIT");
-                _HORIZ_ACCURACY_UNIT = StructuralObject.SetValidValue(value, true);
+                _HORIZ_ACCURACY_UNIT = StructuralObject.SetValidValue(value, true, "HORIZ_ACCURACY_UNIT");
                 ReportPropertyChanged("HORIZ_ACCURACY_UNIT");
                 OnHORIZ_ACCURACY_UNITChanged();
             }
@@ -6364,7 +6834,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnHORIZ_COLL_METHODChanging(value);
                 ReportPropertyChanging("HORIZ_COLL_METHOD");
-                _HORIZ_COLL_METHOD = StructuralObject.SetValidValue(value, true);
+                _HORIZ_COLL_METHOD = StructuralObject.SetValidValue(value, true, "HORIZ_COLL_METHOD");
                 ReportPropertyChanged("HORIZ_COLL_METHOD");
                 OnHORIZ_COLL_METHODChanged();
             }
@@ -6388,7 +6858,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnHORIZ_REF_DATUMChanging(value);
                 ReportPropertyChanging("HORIZ_REF_DATUM");
-                _HORIZ_REF_DATUM = StructuralObject.SetValidValue(value, true);
+                _HORIZ_REF_DATUM = StructuralObject.SetValidValue(value, true, "HORIZ_REF_DATUM");
                 ReportPropertyChanged("HORIZ_REF_DATUM");
                 OnHORIZ_REF_DATUMChanged();
             }
@@ -6412,7 +6882,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnVERT_MEASUREChanging(value);
                 ReportPropertyChanging("VERT_MEASURE");
-                _VERT_MEASURE = StructuralObject.SetValidValue(value, true);
+                _VERT_MEASURE = StructuralObject.SetValidValue(value, true, "VERT_MEASURE");
                 ReportPropertyChanged("VERT_MEASURE");
                 OnVERT_MEASUREChanged();
             }
@@ -6436,7 +6906,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnVERT_MEASURE_UNITChanging(value);
                 ReportPropertyChanging("VERT_MEASURE_UNIT");
-                _VERT_MEASURE_UNIT = StructuralObject.SetValidValue(value, true);
+                _VERT_MEASURE_UNIT = StructuralObject.SetValidValue(value, true, "VERT_MEASURE_UNIT");
                 ReportPropertyChanged("VERT_MEASURE_UNIT");
                 OnVERT_MEASURE_UNITChanged();
             }
@@ -6460,7 +6930,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnVERT_COLL_METHODChanging(value);
                 ReportPropertyChanging("VERT_COLL_METHOD");
-                _VERT_COLL_METHOD = StructuralObject.SetValidValue(value, true);
+                _VERT_COLL_METHOD = StructuralObject.SetValidValue(value, true, "VERT_COLL_METHOD");
                 ReportPropertyChanged("VERT_COLL_METHOD");
                 OnVERT_COLL_METHODChanged();
             }
@@ -6484,7 +6954,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnVERT_REF_DATUMChanging(value);
                 ReportPropertyChanging("VERT_REF_DATUM");
-                _VERT_REF_DATUM = StructuralObject.SetValidValue(value, true);
+                _VERT_REF_DATUM = StructuralObject.SetValidValue(value, true, "VERT_REF_DATUM");
                 ReportPropertyChanged("VERT_REF_DATUM");
                 OnVERT_REF_DATUMChanged();
             }
@@ -6508,7 +6978,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnCOUNTRY_CODEChanging(value);
                 ReportPropertyChanging("COUNTRY_CODE");
-                _COUNTRY_CODE = StructuralObject.SetValidValue(value, true);
+                _COUNTRY_CODE = StructuralObject.SetValidValue(value, true, "COUNTRY_CODE");
                 ReportPropertyChanged("COUNTRY_CODE");
                 OnCOUNTRY_CODEChanged();
             }
@@ -6532,7 +7002,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnSTATE_CODEChanging(value);
                 ReportPropertyChanging("STATE_CODE");
-                _STATE_CODE = StructuralObject.SetValidValue(value, true);
+                _STATE_CODE = StructuralObject.SetValidValue(value, true, "STATE_CODE");
                 ReportPropertyChanged("STATE_CODE");
                 OnSTATE_CODEChanged();
             }
@@ -6556,7 +7026,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnCOUNTY_CODEChanging(value);
                 ReportPropertyChanging("COUNTY_CODE");
-                _COUNTY_CODE = StructuralObject.SetValidValue(value, true);
+                _COUNTY_CODE = StructuralObject.SetValidValue(value, true, "COUNTY_CODE");
                 ReportPropertyChanged("COUNTY_CODE");
                 OnCOUNTY_CODEChanged();
             }
@@ -6580,7 +7050,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnWELL_TYPEChanging(value);
                 ReportPropertyChanging("WELL_TYPE");
-                _WELL_TYPE = StructuralObject.SetValidValue(value, true);
+                _WELL_TYPE = StructuralObject.SetValidValue(value, true, "WELL_TYPE");
                 ReportPropertyChanged("WELL_TYPE");
                 OnWELL_TYPEChanged();
             }
@@ -6604,7 +7074,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnAQUIFER_NAMEChanging(value);
                 ReportPropertyChanging("AQUIFER_NAME");
-                _AQUIFER_NAME = StructuralObject.SetValidValue(value, true);
+                _AQUIFER_NAME = StructuralObject.SetValidValue(value, true, "AQUIFER_NAME");
                 ReportPropertyChanged("AQUIFER_NAME");
                 OnAQUIFER_NAMEChanged();
             }
@@ -6628,7 +7098,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnFORMATION_TYPEChanging(value);
                 ReportPropertyChanging("FORMATION_TYPE");
-                _FORMATION_TYPE = StructuralObject.SetValidValue(value, true);
+                _FORMATION_TYPE = StructuralObject.SetValidValue(value, true, "FORMATION_TYPE");
                 ReportPropertyChanged("FORMATION_TYPE");
                 OnFORMATION_TYPEChanged();
             }
@@ -6652,7 +7122,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnWELLHOLE_DEPTH_MSRChanging(value);
                 ReportPropertyChanging("WELLHOLE_DEPTH_MSR");
-                _WELLHOLE_DEPTH_MSR = StructuralObject.SetValidValue(value, true);
+                _WELLHOLE_DEPTH_MSR = StructuralObject.SetValidValue(value, true, "WELLHOLE_DEPTH_MSR");
                 ReportPropertyChanged("WELLHOLE_DEPTH_MSR");
                 OnWELLHOLE_DEPTH_MSRChanged();
             }
@@ -6676,7 +7146,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnWELLHOLE_DEPTH_MSR_UNITChanging(value);
                 ReportPropertyChanging("WELLHOLE_DEPTH_MSR_UNIT");
-                _WELLHOLE_DEPTH_MSR_UNIT = StructuralObject.SetValidValue(value, true);
+                _WELLHOLE_DEPTH_MSR_UNIT = StructuralObject.SetValidValue(value, true, "WELLHOLE_DEPTH_MSR_UNIT");
                 ReportPropertyChanged("WELLHOLE_DEPTH_MSR_UNIT");
                 OnWELLHOLE_DEPTH_MSR_UNITChanged();
             }
@@ -6700,7 +7170,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnIMPORT_STATUS_CDChanging(value);
                 ReportPropertyChanging("IMPORT_STATUS_CD");
-                _IMPORT_STATUS_CD = StructuralObject.SetValidValue(value, true);
+                _IMPORT_STATUS_CD = StructuralObject.SetValidValue(value, true, "IMPORT_STATUS_CD");
                 ReportPropertyChanged("IMPORT_STATUS_CD");
                 OnIMPORT_STATUS_CDChanged();
             }
@@ -6724,7 +7194,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnIMPORT_STATUS_DESCChanging(value);
                 ReportPropertyChanging("IMPORT_STATUS_DESC");
-                _IMPORT_STATUS_DESC = StructuralObject.SetValidValue(value, true);
+                _IMPORT_STATUS_DESC = StructuralObject.SetValidValue(value, true, "IMPORT_STATUS_DESC");
                 ReportPropertyChanged("IMPORT_STATUS_DESC");
                 OnIMPORT_STATUS_DESCChanged();
             }
@@ -6735,7 +7205,332 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
 
         #endregion
 
+    }
     
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="OpenEnvironmentModel", Name="T_WQX_IMPORT_TEMP_PROJECT")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class T_WQX_IMPORT_TEMP_PROJECT : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new T_WQX_IMPORT_TEMP_PROJECT object.
+        /// </summary>
+        /// <param name="tEMP_PROJECT_IDX">Initial value of the TEMP_PROJECT_IDX property.</param>
+        /// <param name="uSER_ID">Initial value of the USER_ID property.</param>
+        /// <param name="pROJECT_ID">Initial value of the PROJECT_ID property.</param>
+        /// <param name="pROJECT_NAME">Initial value of the PROJECT_NAME property.</param>
+        public static T_WQX_IMPORT_TEMP_PROJECT CreateT_WQX_IMPORT_TEMP_PROJECT(global::System.Int32 tEMP_PROJECT_IDX, global::System.String uSER_ID, global::System.String pROJECT_ID, global::System.String pROJECT_NAME)
+        {
+            T_WQX_IMPORT_TEMP_PROJECT t_WQX_IMPORT_TEMP_PROJECT = new T_WQX_IMPORT_TEMP_PROJECT();
+            t_WQX_IMPORT_TEMP_PROJECT.TEMP_PROJECT_IDX = tEMP_PROJECT_IDX;
+            t_WQX_IMPORT_TEMP_PROJECT.USER_ID = uSER_ID;
+            t_WQX_IMPORT_TEMP_PROJECT.PROJECT_ID = pROJECT_ID;
+            t_WQX_IMPORT_TEMP_PROJECT.PROJECT_NAME = pROJECT_NAME;
+            return t_WQX_IMPORT_TEMP_PROJECT;
+        }
+
+        #endregion
+
+        #region Simple Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 TEMP_PROJECT_IDX
+        {
+            get
+            {
+                return _TEMP_PROJECT_IDX;
+            }
+            set
+            {
+                if (_TEMP_PROJECT_IDX != value)
+                {
+                    OnTEMP_PROJECT_IDXChanging(value);
+                    ReportPropertyChanging("TEMP_PROJECT_IDX");
+                    _TEMP_PROJECT_IDX = StructuralObject.SetValidValue(value, "TEMP_PROJECT_IDX");
+                    ReportPropertyChanged("TEMP_PROJECT_IDX");
+                    OnTEMP_PROJECT_IDXChanged();
+                }
+            }
+        }
+        private global::System.Int32 _TEMP_PROJECT_IDX;
+        partial void OnTEMP_PROJECT_IDXChanging(global::System.Int32 value);
+        partial void OnTEMP_PROJECT_IDXChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String USER_ID
+        {
+            get
+            {
+                return _USER_ID;
+            }
+            set
+            {
+                OnUSER_IDChanging(value);
+                ReportPropertyChanging("USER_ID");
+                _USER_ID = StructuralObject.SetValidValue(value, false, "USER_ID");
+                ReportPropertyChanged("USER_ID");
+                OnUSER_IDChanged();
+            }
+        }
+        private global::System.String _USER_ID;
+        partial void OnUSER_IDChanging(global::System.String value);
+        partial void OnUSER_IDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> PROJECT_IDX
+        {
+            get
+            {
+                return _PROJECT_IDX;
+            }
+            set
+            {
+                OnPROJECT_IDXChanging(value);
+                ReportPropertyChanging("PROJECT_IDX");
+                _PROJECT_IDX = StructuralObject.SetValidValue(value, "PROJECT_IDX");
+                ReportPropertyChanged("PROJECT_IDX");
+                OnPROJECT_IDXChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _PROJECT_IDX;
+        partial void OnPROJECT_IDXChanging(Nullable<global::System.Int32> value);
+        partial void OnPROJECT_IDXChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String ORG_ID
+        {
+            get
+            {
+                return _ORG_ID;
+            }
+            set
+            {
+                OnORG_IDChanging(value);
+                ReportPropertyChanging("ORG_ID");
+                _ORG_ID = StructuralObject.SetValidValue(value, true, "ORG_ID");
+                ReportPropertyChanged("ORG_ID");
+                OnORG_IDChanged();
+            }
+        }
+        private global::System.String _ORG_ID;
+        partial void OnORG_IDChanging(global::System.String value);
+        partial void OnORG_IDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String PROJECT_ID
+        {
+            get
+            {
+                return _PROJECT_ID;
+            }
+            set
+            {
+                OnPROJECT_IDChanging(value);
+                ReportPropertyChanging("PROJECT_ID");
+                _PROJECT_ID = StructuralObject.SetValidValue(value, false, "PROJECT_ID");
+                ReportPropertyChanged("PROJECT_ID");
+                OnPROJECT_IDChanged();
+            }
+        }
+        private global::System.String _PROJECT_ID;
+        partial void OnPROJECT_IDChanging(global::System.String value);
+        partial void OnPROJECT_IDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String PROJECT_NAME
+        {
+            get
+            {
+                return _PROJECT_NAME;
+            }
+            set
+            {
+                OnPROJECT_NAMEChanging(value);
+                ReportPropertyChanging("PROJECT_NAME");
+                _PROJECT_NAME = StructuralObject.SetValidValue(value, false, "PROJECT_NAME");
+                ReportPropertyChanged("PROJECT_NAME");
+                OnPROJECT_NAMEChanged();
+            }
+        }
+        private global::System.String _PROJECT_NAME;
+        partial void OnPROJECT_NAMEChanging(global::System.String value);
+        partial void OnPROJECT_NAMEChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String PROJECT_DESC
+        {
+            get
+            {
+                return _PROJECT_DESC;
+            }
+            set
+            {
+                OnPROJECT_DESCChanging(value);
+                ReportPropertyChanging("PROJECT_DESC");
+                _PROJECT_DESC = StructuralObject.SetValidValue(value, true, "PROJECT_DESC");
+                ReportPropertyChanged("PROJECT_DESC");
+                OnPROJECT_DESCChanged();
+            }
+        }
+        private global::System.String _PROJECT_DESC;
+        partial void OnPROJECT_DESCChanging(global::System.String value);
+        partial void OnPROJECT_DESCChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String SAMP_DESIGN_TYPE_CD
+        {
+            get
+            {
+                return _SAMP_DESIGN_TYPE_CD;
+            }
+            set
+            {
+                OnSAMP_DESIGN_TYPE_CDChanging(value);
+                ReportPropertyChanging("SAMP_DESIGN_TYPE_CD");
+                _SAMP_DESIGN_TYPE_CD = StructuralObject.SetValidValue(value, true, "SAMP_DESIGN_TYPE_CD");
+                ReportPropertyChanged("SAMP_DESIGN_TYPE_CD");
+                OnSAMP_DESIGN_TYPE_CDChanged();
+            }
+        }
+        private global::System.String _SAMP_DESIGN_TYPE_CD;
+        partial void OnSAMP_DESIGN_TYPE_CDChanging(global::System.String value);
+        partial void OnSAMP_DESIGN_TYPE_CDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Boolean> QAPP_APPROVAL_IND
+        {
+            get
+            {
+                return _QAPP_APPROVAL_IND;
+            }
+            set
+            {
+                OnQAPP_APPROVAL_INDChanging(value);
+                ReportPropertyChanging("QAPP_APPROVAL_IND");
+                _QAPP_APPROVAL_IND = StructuralObject.SetValidValue(value, "QAPP_APPROVAL_IND");
+                ReportPropertyChanged("QAPP_APPROVAL_IND");
+                OnQAPP_APPROVAL_INDChanged();
+            }
+        }
+        private Nullable<global::System.Boolean> _QAPP_APPROVAL_IND;
+        partial void OnQAPP_APPROVAL_INDChanging(Nullable<global::System.Boolean> value);
+        partial void OnQAPP_APPROVAL_INDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String QAPP_APPROVAL_AGENCY
+        {
+            get
+            {
+                return _QAPP_APPROVAL_AGENCY;
+            }
+            set
+            {
+                OnQAPP_APPROVAL_AGENCYChanging(value);
+                ReportPropertyChanging("QAPP_APPROVAL_AGENCY");
+                _QAPP_APPROVAL_AGENCY = StructuralObject.SetValidValue(value, true, "QAPP_APPROVAL_AGENCY");
+                ReportPropertyChanged("QAPP_APPROVAL_AGENCY");
+                OnQAPP_APPROVAL_AGENCYChanged();
+            }
+        }
+        private global::System.String _QAPP_APPROVAL_AGENCY;
+        partial void OnQAPP_APPROVAL_AGENCYChanging(global::System.String value);
+        partial void OnQAPP_APPROVAL_AGENCYChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String IMPORT_STATUS_CD
+        {
+            get
+            {
+                return _IMPORT_STATUS_CD;
+            }
+            set
+            {
+                OnIMPORT_STATUS_CDChanging(value);
+                ReportPropertyChanging("IMPORT_STATUS_CD");
+                _IMPORT_STATUS_CD = StructuralObject.SetValidValue(value, true, "IMPORT_STATUS_CD");
+                ReportPropertyChanged("IMPORT_STATUS_CD");
+                OnIMPORT_STATUS_CDChanged();
+            }
+        }
+        private global::System.String _IMPORT_STATUS_CD;
+        partial void OnIMPORT_STATUS_CDChanging(global::System.String value);
+        partial void OnIMPORT_STATUS_CDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String IMPORT_STATUS_DESC
+        {
+            get
+            {
+                return _IMPORT_STATUS_DESC;
+            }
+            set
+            {
+                OnIMPORT_STATUS_DESCChanging(value);
+                ReportPropertyChanging("IMPORT_STATUS_DESC");
+                _IMPORT_STATUS_DESC = StructuralObject.SetValidValue(value, true, "IMPORT_STATUS_DESC");
+                ReportPropertyChanged("IMPORT_STATUS_DESC");
+                OnIMPORT_STATUS_DESCChanged();
+            }
+        }
+        private global::System.String _IMPORT_STATUS_DESC;
+        partial void OnIMPORT_STATUS_DESCChanging(global::System.String value);
+        partial void OnIMPORT_STATUS_DESCChanged();
+
+        #endregion
+
     }
     
     /// <summary>
@@ -6763,7 +7558,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
 
         #endregion
 
-        #region Primitive Properties
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -6782,7 +7577,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
                 {
                     OnTEMP_RESULT_IDXChanging(value);
                     ReportPropertyChanging("TEMP_RESULT_IDX");
-                    _TEMP_RESULT_IDX = StructuralObject.SetValidValue(value);
+                    _TEMP_RESULT_IDX = StructuralObject.SetValidValue(value, "TEMP_RESULT_IDX");
                     ReportPropertyChanged("TEMP_RESULT_IDX");
                     OnTEMP_RESULT_IDXChanged();
                 }
@@ -6807,7 +7602,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnTEMP_SAMPLE_IDXChanging(value);
                 ReportPropertyChanging("TEMP_SAMPLE_IDX");
-                _TEMP_SAMPLE_IDX = StructuralObject.SetValidValue(value);
+                _TEMP_SAMPLE_IDX = StructuralObject.SetValidValue(value, "TEMP_SAMPLE_IDX");
                 ReportPropertyChanged("TEMP_SAMPLE_IDX");
                 OnTEMP_SAMPLE_IDXChanged();
             }
@@ -6831,7 +7626,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnRESULT_IDXChanging(value);
                 ReportPropertyChanging("RESULT_IDX");
-                _RESULT_IDX = StructuralObject.SetValidValue(value);
+                _RESULT_IDX = StructuralObject.SetValidValue(value, "RESULT_IDX");
                 ReportPropertyChanged("RESULT_IDX");
                 OnRESULT_IDXChanged();
             }
@@ -6855,7 +7650,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnDATA_LOGGER_LINEChanging(value);
                 ReportPropertyChanging("DATA_LOGGER_LINE");
-                _DATA_LOGGER_LINE = StructuralObject.SetValidValue(value, true);
+                _DATA_LOGGER_LINE = StructuralObject.SetValidValue(value, true, "DATA_LOGGER_LINE");
                 ReportPropertyChanged("DATA_LOGGER_LINE");
                 OnDATA_LOGGER_LINEChanged();
             }
@@ -6879,7 +7674,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnRESULT_DETECT_CONDITIONChanging(value);
                 ReportPropertyChanging("RESULT_DETECT_CONDITION");
-                _RESULT_DETECT_CONDITION = StructuralObject.SetValidValue(value, true);
+                _RESULT_DETECT_CONDITION = StructuralObject.SetValidValue(value, true, "RESULT_DETECT_CONDITION");
                 ReportPropertyChanged("RESULT_DETECT_CONDITION");
                 OnRESULT_DETECT_CONDITIONChanged();
             }
@@ -6903,7 +7698,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnCHAR_NAMEChanging(value);
                 ReportPropertyChanging("CHAR_NAME");
-                _CHAR_NAME = StructuralObject.SetValidValue(value, true);
+                _CHAR_NAME = StructuralObject.SetValidValue(value, true, "CHAR_NAME");
                 ReportPropertyChanged("CHAR_NAME");
                 OnCHAR_NAMEChanged();
             }
@@ -6927,7 +7722,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnMETHOD_SPECIATION_NAMEChanging(value);
                 ReportPropertyChanging("METHOD_SPECIATION_NAME");
-                _METHOD_SPECIATION_NAME = StructuralObject.SetValidValue(value, true);
+                _METHOD_SPECIATION_NAME = StructuralObject.SetValidValue(value, true, "METHOD_SPECIATION_NAME");
                 ReportPropertyChanged("METHOD_SPECIATION_NAME");
                 OnMETHOD_SPECIATION_NAMEChanged();
             }
@@ -6951,7 +7746,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnRESULT_SAMP_FRACTIONChanging(value);
                 ReportPropertyChanging("RESULT_SAMP_FRACTION");
-                _RESULT_SAMP_FRACTION = StructuralObject.SetValidValue(value, true);
+                _RESULT_SAMP_FRACTION = StructuralObject.SetValidValue(value, true, "RESULT_SAMP_FRACTION");
                 ReportPropertyChanged("RESULT_SAMP_FRACTION");
                 OnRESULT_SAMP_FRACTIONChanged();
             }
@@ -6975,7 +7770,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnRESULT_MSRChanging(value);
                 ReportPropertyChanging("RESULT_MSR");
-                _RESULT_MSR = StructuralObject.SetValidValue(value, true);
+                _RESULT_MSR = StructuralObject.SetValidValue(value, true, "RESULT_MSR");
                 ReportPropertyChanged("RESULT_MSR");
                 OnRESULT_MSRChanged();
             }
@@ -6999,7 +7794,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnRESULT_MSR_UNITChanging(value);
                 ReportPropertyChanging("RESULT_MSR_UNIT");
-                _RESULT_MSR_UNIT = StructuralObject.SetValidValue(value, true);
+                _RESULT_MSR_UNIT = StructuralObject.SetValidValue(value, true, "RESULT_MSR_UNIT");
                 ReportPropertyChanged("RESULT_MSR_UNIT");
                 OnRESULT_MSR_UNITChanged();
             }
@@ -7023,7 +7818,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnRESULT_MSR_QUALChanging(value);
                 ReportPropertyChanging("RESULT_MSR_QUAL");
-                _RESULT_MSR_QUAL = StructuralObject.SetValidValue(value, true);
+                _RESULT_MSR_QUAL = StructuralObject.SetValidValue(value, true, "RESULT_MSR_QUAL");
                 ReportPropertyChanged("RESULT_MSR_QUAL");
                 OnRESULT_MSR_QUALChanged();
             }
@@ -7047,7 +7842,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnRESULT_STATUSChanging(value);
                 ReportPropertyChanging("RESULT_STATUS");
-                _RESULT_STATUS = StructuralObject.SetValidValue(value, true);
+                _RESULT_STATUS = StructuralObject.SetValidValue(value, true, "RESULT_STATUS");
                 ReportPropertyChanged("RESULT_STATUS");
                 OnRESULT_STATUSChanged();
             }
@@ -7071,7 +7866,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnSTATISTIC_BASE_CODEChanging(value);
                 ReportPropertyChanging("STATISTIC_BASE_CODE");
-                _STATISTIC_BASE_CODE = StructuralObject.SetValidValue(value, true);
+                _STATISTIC_BASE_CODE = StructuralObject.SetValidValue(value, true, "STATISTIC_BASE_CODE");
                 ReportPropertyChanged("STATISTIC_BASE_CODE");
                 OnSTATISTIC_BASE_CODEChanged();
             }
@@ -7095,7 +7890,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnRESULT_VALUE_TYPEChanging(value);
                 ReportPropertyChanging("RESULT_VALUE_TYPE");
-                _RESULT_VALUE_TYPE = StructuralObject.SetValidValue(value, true);
+                _RESULT_VALUE_TYPE = StructuralObject.SetValidValue(value, true, "RESULT_VALUE_TYPE");
                 ReportPropertyChanged("RESULT_VALUE_TYPE");
                 OnRESULT_VALUE_TYPEChanged();
             }
@@ -7119,7 +7914,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnWEIGHT_BASISChanging(value);
                 ReportPropertyChanging("WEIGHT_BASIS");
-                _WEIGHT_BASIS = StructuralObject.SetValidValue(value, true);
+                _WEIGHT_BASIS = StructuralObject.SetValidValue(value, true, "WEIGHT_BASIS");
                 ReportPropertyChanged("WEIGHT_BASIS");
                 OnWEIGHT_BASISChanged();
             }
@@ -7143,7 +7938,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnTIME_BASISChanging(value);
                 ReportPropertyChanging("TIME_BASIS");
-                _TIME_BASIS = StructuralObject.SetValidValue(value, true);
+                _TIME_BASIS = StructuralObject.SetValidValue(value, true, "TIME_BASIS");
                 ReportPropertyChanged("TIME_BASIS");
                 OnTIME_BASISChanged();
             }
@@ -7167,7 +7962,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnTEMP_BASISChanging(value);
                 ReportPropertyChanging("TEMP_BASIS");
-                _TEMP_BASIS = StructuralObject.SetValidValue(value, true);
+                _TEMP_BASIS = StructuralObject.SetValidValue(value, true, "TEMP_BASIS");
                 ReportPropertyChanged("TEMP_BASIS");
                 OnTEMP_BASISChanged();
             }
@@ -7191,7 +7986,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnPARTICLESIZE_BASISChanging(value);
                 ReportPropertyChanging("PARTICLESIZE_BASIS");
-                _PARTICLESIZE_BASIS = StructuralObject.SetValidValue(value, true);
+                _PARTICLESIZE_BASIS = StructuralObject.SetValidValue(value, true, "PARTICLESIZE_BASIS");
                 ReportPropertyChanged("PARTICLESIZE_BASIS");
                 OnPARTICLESIZE_BASISChanged();
             }
@@ -7215,7 +8010,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnPRECISION_VALUEChanging(value);
                 ReportPropertyChanging("PRECISION_VALUE");
-                _PRECISION_VALUE = StructuralObject.SetValidValue(value, true);
+                _PRECISION_VALUE = StructuralObject.SetValidValue(value, true, "PRECISION_VALUE");
                 ReportPropertyChanged("PRECISION_VALUE");
                 OnPRECISION_VALUEChanged();
             }
@@ -7239,7 +8034,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnBIAS_VALUEChanging(value);
                 ReportPropertyChanging("BIAS_VALUE");
-                _BIAS_VALUE = StructuralObject.SetValidValue(value, true);
+                _BIAS_VALUE = StructuralObject.SetValidValue(value, true, "BIAS_VALUE");
                 ReportPropertyChanged("BIAS_VALUE");
                 OnBIAS_VALUEChanged();
             }
@@ -7263,7 +8058,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnCONFIDENCE_INTERVAL_VALUEChanging(value);
                 ReportPropertyChanging("CONFIDENCE_INTERVAL_VALUE");
-                _CONFIDENCE_INTERVAL_VALUE = StructuralObject.SetValidValue(value, true);
+                _CONFIDENCE_INTERVAL_VALUE = StructuralObject.SetValidValue(value, true, "CONFIDENCE_INTERVAL_VALUE");
                 ReportPropertyChanged("CONFIDENCE_INTERVAL_VALUE");
                 OnCONFIDENCE_INTERVAL_VALUEChanged();
             }
@@ -7287,7 +8082,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnUPPER_CONFIDENCE_LIMITChanging(value);
                 ReportPropertyChanging("UPPER_CONFIDENCE_LIMIT");
-                _UPPER_CONFIDENCE_LIMIT = StructuralObject.SetValidValue(value, true);
+                _UPPER_CONFIDENCE_LIMIT = StructuralObject.SetValidValue(value, true, "UPPER_CONFIDENCE_LIMIT");
                 ReportPropertyChanged("UPPER_CONFIDENCE_LIMIT");
                 OnUPPER_CONFIDENCE_LIMITChanged();
             }
@@ -7311,7 +8106,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnLOWER_CONFIDENCE_LIMITChanging(value);
                 ReportPropertyChanging("LOWER_CONFIDENCE_LIMIT");
-                _LOWER_CONFIDENCE_LIMIT = StructuralObject.SetValidValue(value, true);
+                _LOWER_CONFIDENCE_LIMIT = StructuralObject.SetValidValue(value, true, "LOWER_CONFIDENCE_LIMIT");
                 ReportPropertyChanged("LOWER_CONFIDENCE_LIMIT");
                 OnLOWER_CONFIDENCE_LIMITChanged();
             }
@@ -7335,7 +8130,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnRESULT_COMMENTChanging(value);
                 ReportPropertyChanging("RESULT_COMMENT");
-                _RESULT_COMMENT = StructuralObject.SetValidValue(value, true);
+                _RESULT_COMMENT = StructuralObject.SetValidValue(value, true, "RESULT_COMMENT");
                 ReportPropertyChanged("RESULT_COMMENT");
                 OnRESULT_COMMENTChanged();
             }
@@ -7359,7 +8154,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnDEPTH_HEIGHT_MSRChanging(value);
                 ReportPropertyChanging("DEPTH_HEIGHT_MSR");
-                _DEPTH_HEIGHT_MSR = StructuralObject.SetValidValue(value, true);
+                _DEPTH_HEIGHT_MSR = StructuralObject.SetValidValue(value, true, "DEPTH_HEIGHT_MSR");
                 ReportPropertyChanged("DEPTH_HEIGHT_MSR");
                 OnDEPTH_HEIGHT_MSRChanged();
             }
@@ -7383,7 +8178,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnDEPTH_HEIGHT_MSR_UNITChanging(value);
                 ReportPropertyChanging("DEPTH_HEIGHT_MSR_UNIT");
-                _DEPTH_HEIGHT_MSR_UNIT = StructuralObject.SetValidValue(value, true);
+                _DEPTH_HEIGHT_MSR_UNIT = StructuralObject.SetValidValue(value, true, "DEPTH_HEIGHT_MSR_UNIT");
                 ReportPropertyChanged("DEPTH_HEIGHT_MSR_UNIT");
                 OnDEPTH_HEIGHT_MSR_UNITChanged();
             }
@@ -7407,7 +8202,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnDEPTHALTITUDEREFPOINTChanging(value);
                 ReportPropertyChanging("DEPTHALTITUDEREFPOINT");
-                _DEPTHALTITUDEREFPOINT = StructuralObject.SetValidValue(value, true);
+                _DEPTHALTITUDEREFPOINT = StructuralObject.SetValidValue(value, true, "DEPTHALTITUDEREFPOINT");
                 ReportPropertyChanged("DEPTHALTITUDEREFPOINT");
                 OnDEPTHALTITUDEREFPOINTChanged();
             }
@@ -7415,6 +8210,438 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
         private global::System.String _DEPTHALTITUDEREFPOINT;
         partial void OnDEPTHALTITUDEREFPOINTChanging(global::System.String value);
         partial void OnDEPTHALTITUDEREFPOINTChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String BIO_INTENT_NAME
+        {
+            get
+            {
+                return _BIO_INTENT_NAME;
+            }
+            set
+            {
+                OnBIO_INTENT_NAMEChanging(value);
+                ReportPropertyChanging("BIO_INTENT_NAME");
+                _BIO_INTENT_NAME = StructuralObject.SetValidValue(value, true, "BIO_INTENT_NAME");
+                ReportPropertyChanged("BIO_INTENT_NAME");
+                OnBIO_INTENT_NAMEChanged();
+            }
+        }
+        private global::System.String _BIO_INTENT_NAME;
+        partial void OnBIO_INTENT_NAMEChanging(global::System.String value);
+        partial void OnBIO_INTENT_NAMEChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String BIO_INDIVIDUAL_ID
+        {
+            get
+            {
+                return _BIO_INDIVIDUAL_ID;
+            }
+            set
+            {
+                OnBIO_INDIVIDUAL_IDChanging(value);
+                ReportPropertyChanging("BIO_INDIVIDUAL_ID");
+                _BIO_INDIVIDUAL_ID = StructuralObject.SetValidValue(value, true, "BIO_INDIVIDUAL_ID");
+                ReportPropertyChanged("BIO_INDIVIDUAL_ID");
+                OnBIO_INDIVIDUAL_IDChanged();
+            }
+        }
+        private global::System.String _BIO_INDIVIDUAL_ID;
+        partial void OnBIO_INDIVIDUAL_IDChanging(global::System.String value);
+        partial void OnBIO_INDIVIDUAL_IDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String BIO_SUBJECT_TAXONOMY
+        {
+            get
+            {
+                return _BIO_SUBJECT_TAXONOMY;
+            }
+            set
+            {
+                OnBIO_SUBJECT_TAXONOMYChanging(value);
+                ReportPropertyChanging("BIO_SUBJECT_TAXONOMY");
+                _BIO_SUBJECT_TAXONOMY = StructuralObject.SetValidValue(value, true, "BIO_SUBJECT_TAXONOMY");
+                ReportPropertyChanged("BIO_SUBJECT_TAXONOMY");
+                OnBIO_SUBJECT_TAXONOMYChanged();
+            }
+        }
+        private global::System.String _BIO_SUBJECT_TAXONOMY;
+        partial void OnBIO_SUBJECT_TAXONOMYChanging(global::System.String value);
+        partial void OnBIO_SUBJECT_TAXONOMYChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String BIO_UNIDENTIFIED_SPECIES_ID
+        {
+            get
+            {
+                return _BIO_UNIDENTIFIED_SPECIES_ID;
+            }
+            set
+            {
+                OnBIO_UNIDENTIFIED_SPECIES_IDChanging(value);
+                ReportPropertyChanging("BIO_UNIDENTIFIED_SPECIES_ID");
+                _BIO_UNIDENTIFIED_SPECIES_ID = StructuralObject.SetValidValue(value, true, "BIO_UNIDENTIFIED_SPECIES_ID");
+                ReportPropertyChanged("BIO_UNIDENTIFIED_SPECIES_ID");
+                OnBIO_UNIDENTIFIED_SPECIES_IDChanged();
+            }
+        }
+        private global::System.String _BIO_UNIDENTIFIED_SPECIES_ID;
+        partial void OnBIO_UNIDENTIFIED_SPECIES_IDChanging(global::System.String value);
+        partial void OnBIO_UNIDENTIFIED_SPECIES_IDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String BIO_SAMPLE_TISSUE_ANATOMY
+        {
+            get
+            {
+                return _BIO_SAMPLE_TISSUE_ANATOMY;
+            }
+            set
+            {
+                OnBIO_SAMPLE_TISSUE_ANATOMYChanging(value);
+                ReportPropertyChanging("BIO_SAMPLE_TISSUE_ANATOMY");
+                _BIO_SAMPLE_TISSUE_ANATOMY = StructuralObject.SetValidValue(value, true, "BIO_SAMPLE_TISSUE_ANATOMY");
+                ReportPropertyChanged("BIO_SAMPLE_TISSUE_ANATOMY");
+                OnBIO_SAMPLE_TISSUE_ANATOMYChanged();
+            }
+        }
+        private global::System.String _BIO_SAMPLE_TISSUE_ANATOMY;
+        partial void OnBIO_SAMPLE_TISSUE_ANATOMYChanging(global::System.String value);
+        partial void OnBIO_SAMPLE_TISSUE_ANATOMYChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String GRP_SUMM_COUNT_WEIGHT_MSR
+        {
+            get
+            {
+                return _GRP_SUMM_COUNT_WEIGHT_MSR;
+            }
+            set
+            {
+                OnGRP_SUMM_COUNT_WEIGHT_MSRChanging(value);
+                ReportPropertyChanging("GRP_SUMM_COUNT_WEIGHT_MSR");
+                _GRP_SUMM_COUNT_WEIGHT_MSR = StructuralObject.SetValidValue(value, true, "GRP_SUMM_COUNT_WEIGHT_MSR");
+                ReportPropertyChanged("GRP_SUMM_COUNT_WEIGHT_MSR");
+                OnGRP_SUMM_COUNT_WEIGHT_MSRChanged();
+            }
+        }
+        private global::System.String _GRP_SUMM_COUNT_WEIGHT_MSR;
+        partial void OnGRP_SUMM_COUNT_WEIGHT_MSRChanging(global::System.String value);
+        partial void OnGRP_SUMM_COUNT_WEIGHT_MSRChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String GRP_SUMM_COUNT_WEIGHT_MSR_UNIT
+        {
+            get
+            {
+                return _GRP_SUMM_COUNT_WEIGHT_MSR_UNIT;
+            }
+            set
+            {
+                OnGRP_SUMM_COUNT_WEIGHT_MSR_UNITChanging(value);
+                ReportPropertyChanging("GRP_SUMM_COUNT_WEIGHT_MSR_UNIT");
+                _GRP_SUMM_COUNT_WEIGHT_MSR_UNIT = StructuralObject.SetValidValue(value, true, "GRP_SUMM_COUNT_WEIGHT_MSR_UNIT");
+                ReportPropertyChanged("GRP_SUMM_COUNT_WEIGHT_MSR_UNIT");
+                OnGRP_SUMM_COUNT_WEIGHT_MSR_UNITChanged();
+            }
+        }
+        private global::System.String _GRP_SUMM_COUNT_WEIGHT_MSR_UNIT;
+        partial void OnGRP_SUMM_COUNT_WEIGHT_MSR_UNITChanging(global::System.String value);
+        partial void OnGRP_SUMM_COUNT_WEIGHT_MSR_UNITChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String TAX_DTL_CELL_FORM
+        {
+            get
+            {
+                return _TAX_DTL_CELL_FORM;
+            }
+            set
+            {
+                OnTAX_DTL_CELL_FORMChanging(value);
+                ReportPropertyChanging("TAX_DTL_CELL_FORM");
+                _TAX_DTL_CELL_FORM = StructuralObject.SetValidValue(value, true, "TAX_DTL_CELL_FORM");
+                ReportPropertyChanged("TAX_DTL_CELL_FORM");
+                OnTAX_DTL_CELL_FORMChanged();
+            }
+        }
+        private global::System.String _TAX_DTL_CELL_FORM;
+        partial void OnTAX_DTL_CELL_FORMChanging(global::System.String value);
+        partial void OnTAX_DTL_CELL_FORMChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String TAX_DTL_CELL_SHAPE
+        {
+            get
+            {
+                return _TAX_DTL_CELL_SHAPE;
+            }
+            set
+            {
+                OnTAX_DTL_CELL_SHAPEChanging(value);
+                ReportPropertyChanging("TAX_DTL_CELL_SHAPE");
+                _TAX_DTL_CELL_SHAPE = StructuralObject.SetValidValue(value, true, "TAX_DTL_CELL_SHAPE");
+                ReportPropertyChanged("TAX_DTL_CELL_SHAPE");
+                OnTAX_DTL_CELL_SHAPEChanged();
+            }
+        }
+        private global::System.String _TAX_DTL_CELL_SHAPE;
+        partial void OnTAX_DTL_CELL_SHAPEChanging(global::System.String value);
+        partial void OnTAX_DTL_CELL_SHAPEChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String TAX_DTL_HABIT
+        {
+            get
+            {
+                return _TAX_DTL_HABIT;
+            }
+            set
+            {
+                OnTAX_DTL_HABITChanging(value);
+                ReportPropertyChanging("TAX_DTL_HABIT");
+                _TAX_DTL_HABIT = StructuralObject.SetValidValue(value, true, "TAX_DTL_HABIT");
+                ReportPropertyChanged("TAX_DTL_HABIT");
+                OnTAX_DTL_HABITChanged();
+            }
+        }
+        private global::System.String _TAX_DTL_HABIT;
+        partial void OnTAX_DTL_HABITChanging(global::System.String value);
+        partial void OnTAX_DTL_HABITChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String TAX_DTL_VOLTINISM
+        {
+            get
+            {
+                return _TAX_DTL_VOLTINISM;
+            }
+            set
+            {
+                OnTAX_DTL_VOLTINISMChanging(value);
+                ReportPropertyChanging("TAX_DTL_VOLTINISM");
+                _TAX_DTL_VOLTINISM = StructuralObject.SetValidValue(value, true, "TAX_DTL_VOLTINISM");
+                ReportPropertyChanged("TAX_DTL_VOLTINISM");
+                OnTAX_DTL_VOLTINISMChanged();
+            }
+        }
+        private global::System.String _TAX_DTL_VOLTINISM;
+        partial void OnTAX_DTL_VOLTINISMChanging(global::System.String value);
+        partial void OnTAX_DTL_VOLTINISMChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String TAX_DTL_POLL_TOLERANCE
+        {
+            get
+            {
+                return _TAX_DTL_POLL_TOLERANCE;
+            }
+            set
+            {
+                OnTAX_DTL_POLL_TOLERANCEChanging(value);
+                ReportPropertyChanging("TAX_DTL_POLL_TOLERANCE");
+                _TAX_DTL_POLL_TOLERANCE = StructuralObject.SetValidValue(value, true, "TAX_DTL_POLL_TOLERANCE");
+                ReportPropertyChanged("TAX_DTL_POLL_TOLERANCE");
+                OnTAX_DTL_POLL_TOLERANCEChanged();
+            }
+        }
+        private global::System.String _TAX_DTL_POLL_TOLERANCE;
+        partial void OnTAX_DTL_POLL_TOLERANCEChanging(global::System.String value);
+        partial void OnTAX_DTL_POLL_TOLERANCEChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String TAX_DTL_POLL_TOLERANCE_SCALE
+        {
+            get
+            {
+                return _TAX_DTL_POLL_TOLERANCE_SCALE;
+            }
+            set
+            {
+                OnTAX_DTL_POLL_TOLERANCE_SCALEChanging(value);
+                ReportPropertyChanging("TAX_DTL_POLL_TOLERANCE_SCALE");
+                _TAX_DTL_POLL_TOLERANCE_SCALE = StructuralObject.SetValidValue(value, true, "TAX_DTL_POLL_TOLERANCE_SCALE");
+                ReportPropertyChanged("TAX_DTL_POLL_TOLERANCE_SCALE");
+                OnTAX_DTL_POLL_TOLERANCE_SCALEChanged();
+            }
+        }
+        private global::System.String _TAX_DTL_POLL_TOLERANCE_SCALE;
+        partial void OnTAX_DTL_POLL_TOLERANCE_SCALEChanging(global::System.String value);
+        partial void OnTAX_DTL_POLL_TOLERANCE_SCALEChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String TAX_DTL_TROPHIC_LEVEL
+        {
+            get
+            {
+                return _TAX_DTL_TROPHIC_LEVEL;
+            }
+            set
+            {
+                OnTAX_DTL_TROPHIC_LEVELChanging(value);
+                ReportPropertyChanging("TAX_DTL_TROPHIC_LEVEL");
+                _TAX_DTL_TROPHIC_LEVEL = StructuralObject.SetValidValue(value, true, "TAX_DTL_TROPHIC_LEVEL");
+                ReportPropertyChanged("TAX_DTL_TROPHIC_LEVEL");
+                OnTAX_DTL_TROPHIC_LEVELChanged();
+            }
+        }
+        private global::System.String _TAX_DTL_TROPHIC_LEVEL;
+        partial void OnTAX_DTL_TROPHIC_LEVELChanging(global::System.String value);
+        partial void OnTAX_DTL_TROPHIC_LEVELChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String TAX_DTL_FUNC_FEEDING_GROUP1
+        {
+            get
+            {
+                return _TAX_DTL_FUNC_FEEDING_GROUP1;
+            }
+            set
+            {
+                OnTAX_DTL_FUNC_FEEDING_GROUP1Changing(value);
+                ReportPropertyChanging("TAX_DTL_FUNC_FEEDING_GROUP1");
+                _TAX_DTL_FUNC_FEEDING_GROUP1 = StructuralObject.SetValidValue(value, true, "TAX_DTL_FUNC_FEEDING_GROUP1");
+                ReportPropertyChanged("TAX_DTL_FUNC_FEEDING_GROUP1");
+                OnTAX_DTL_FUNC_FEEDING_GROUP1Changed();
+            }
+        }
+        private global::System.String _TAX_DTL_FUNC_FEEDING_GROUP1;
+        partial void OnTAX_DTL_FUNC_FEEDING_GROUP1Changing(global::System.String value);
+        partial void OnTAX_DTL_FUNC_FEEDING_GROUP1Changed();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String TAX_DTL_FUNC_FEEDING_GROUP2
+        {
+            get
+            {
+                return _TAX_DTL_FUNC_FEEDING_GROUP2;
+            }
+            set
+            {
+                OnTAX_DTL_FUNC_FEEDING_GROUP2Changing(value);
+                ReportPropertyChanging("TAX_DTL_FUNC_FEEDING_GROUP2");
+                _TAX_DTL_FUNC_FEEDING_GROUP2 = StructuralObject.SetValidValue(value, true, "TAX_DTL_FUNC_FEEDING_GROUP2");
+                ReportPropertyChanged("TAX_DTL_FUNC_FEEDING_GROUP2");
+                OnTAX_DTL_FUNC_FEEDING_GROUP2Changed();
+            }
+        }
+        private global::System.String _TAX_DTL_FUNC_FEEDING_GROUP2;
+        partial void OnTAX_DTL_FUNC_FEEDING_GROUP2Changing(global::System.String value);
+        partial void OnTAX_DTL_FUNC_FEEDING_GROUP2Changed();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String TAX_DTL_FUNC_FEEDING_GROUP3
+        {
+            get
+            {
+                return _TAX_DTL_FUNC_FEEDING_GROUP3;
+            }
+            set
+            {
+                OnTAX_DTL_FUNC_FEEDING_GROUP3Changing(value);
+                ReportPropertyChanging("TAX_DTL_FUNC_FEEDING_GROUP3");
+                _TAX_DTL_FUNC_FEEDING_GROUP3 = StructuralObject.SetValidValue(value, true, "TAX_DTL_FUNC_FEEDING_GROUP3");
+                ReportPropertyChanged("TAX_DTL_FUNC_FEEDING_GROUP3");
+                OnTAX_DTL_FUNC_FEEDING_GROUP3Changed();
+            }
+        }
+        private global::System.String _TAX_DTL_FUNC_FEEDING_GROUP3;
+        partial void OnTAX_DTL_FUNC_FEEDING_GROUP3Changing(global::System.String value);
+        partial void OnTAX_DTL_FUNC_FEEDING_GROUP3Changed();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> ANALYTIC_METHOD_IDX
+        {
+            get
+            {
+                return _ANALYTIC_METHOD_IDX;
+            }
+            set
+            {
+                OnANALYTIC_METHOD_IDXChanging(value);
+                ReportPropertyChanging("ANALYTIC_METHOD_IDX");
+                _ANALYTIC_METHOD_IDX = StructuralObject.SetValidValue(value, "ANALYTIC_METHOD_IDX");
+                ReportPropertyChanged("ANALYTIC_METHOD_IDX");
+                OnANALYTIC_METHOD_IDXChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _ANALYTIC_METHOD_IDX;
+        partial void OnANALYTIC_METHOD_IDXChanging(Nullable<global::System.Int32> value);
+        partial void OnANALYTIC_METHOD_IDXChanged();
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -7431,7 +8658,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnANALYTIC_METHOD_IDChanging(value);
                 ReportPropertyChanging("ANALYTIC_METHOD_ID");
-                _ANALYTIC_METHOD_ID = StructuralObject.SetValidValue(value, true);
+                _ANALYTIC_METHOD_ID = StructuralObject.SetValidValue(value, true, "ANALYTIC_METHOD_ID");
                 ReportPropertyChanged("ANALYTIC_METHOD_ID");
                 OnANALYTIC_METHOD_IDChanged();
             }
@@ -7439,6 +8666,54 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
         private global::System.String _ANALYTIC_METHOD_ID;
         partial void OnANALYTIC_METHOD_IDChanging(global::System.String value);
         partial void OnANALYTIC_METHOD_IDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String ANALYTIC_METHOD_CTX
+        {
+            get
+            {
+                return _ANALYTIC_METHOD_CTX;
+            }
+            set
+            {
+                OnANALYTIC_METHOD_CTXChanging(value);
+                ReportPropertyChanging("ANALYTIC_METHOD_CTX");
+                _ANALYTIC_METHOD_CTX = StructuralObject.SetValidValue(value, true, "ANALYTIC_METHOD_CTX");
+                ReportPropertyChanged("ANALYTIC_METHOD_CTX");
+                OnANALYTIC_METHOD_CTXChanged();
+            }
+        }
+        private global::System.String _ANALYTIC_METHOD_CTX;
+        partial void OnANALYTIC_METHOD_CTXChanging(global::System.String value);
+        partial void OnANALYTIC_METHOD_CTXChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String ANALYTIC_METHOD_NAME
+        {
+            get
+            {
+                return _ANALYTIC_METHOD_NAME;
+            }
+            set
+            {
+                OnANALYTIC_METHOD_NAMEChanging(value);
+                ReportPropertyChanging("ANALYTIC_METHOD_NAME");
+                _ANALYTIC_METHOD_NAME = StructuralObject.SetValidValue(value, true, "ANALYTIC_METHOD_NAME");
+                ReportPropertyChanged("ANALYTIC_METHOD_NAME");
+                OnANALYTIC_METHOD_NAMEChanged();
+            }
+        }
+        private global::System.String _ANALYTIC_METHOD_NAME;
+        partial void OnANALYTIC_METHOD_NAMEChanging(global::System.String value);
+        partial void OnANALYTIC_METHOD_NAMEChanged();
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -7455,7 +8730,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnLAB_IDXChanging(value);
                 ReportPropertyChanging("LAB_IDX");
-                _LAB_IDX = StructuralObject.SetValidValue(value);
+                _LAB_IDX = StructuralObject.SetValidValue(value, "LAB_IDX");
                 ReportPropertyChanged("LAB_IDX");
                 OnLAB_IDXChanged();
             }
@@ -7463,6 +8738,30 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
         private Nullable<global::System.Int32> _LAB_IDX;
         partial void OnLAB_IDXChanging(Nullable<global::System.Int32> value);
         partial void OnLAB_IDXChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String LAB_NAME
+        {
+            get
+            {
+                return _LAB_NAME;
+            }
+            set
+            {
+                OnLAB_NAMEChanging(value);
+                ReportPropertyChanging("LAB_NAME");
+                _LAB_NAME = StructuralObject.SetValidValue(value, true, "LAB_NAME");
+                ReportPropertyChanged("LAB_NAME");
+                OnLAB_NAMEChanged();
+            }
+        }
+        private global::System.String _LAB_NAME;
+        partial void OnLAB_NAMEChanging(global::System.String value);
+        partial void OnLAB_NAMEChanged();
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -7479,7 +8778,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnLAB_ANALYSIS_START_DTChanging(value);
                 ReportPropertyChanging("LAB_ANALYSIS_START_DT");
-                _LAB_ANALYSIS_START_DT = StructuralObject.SetValidValue(value);
+                _LAB_ANALYSIS_START_DT = StructuralObject.SetValidValue(value, "LAB_ANALYSIS_START_DT");
                 ReportPropertyChanged("LAB_ANALYSIS_START_DT");
                 OnLAB_ANALYSIS_START_DTChanged();
             }
@@ -7503,7 +8802,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnLAB_ANALYSIS_END_DTChanging(value);
                 ReportPropertyChanging("LAB_ANALYSIS_END_DT");
-                _LAB_ANALYSIS_END_DT = StructuralObject.SetValidValue(value);
+                _LAB_ANALYSIS_END_DT = StructuralObject.SetValidValue(value, "LAB_ANALYSIS_END_DT");
                 ReportPropertyChanged("LAB_ANALYSIS_END_DT");
                 OnLAB_ANALYSIS_END_DTChanged();
             }
@@ -7527,7 +8826,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnLAB_ANALYSIS_TIMEZONEChanging(value);
                 ReportPropertyChanging("LAB_ANALYSIS_TIMEZONE");
-                _LAB_ANALYSIS_TIMEZONE = StructuralObject.SetValidValue(value, true);
+                _LAB_ANALYSIS_TIMEZONE = StructuralObject.SetValidValue(value, true, "LAB_ANALYSIS_TIMEZONE");
                 ReportPropertyChanged("LAB_ANALYSIS_TIMEZONE");
                 OnLAB_ANALYSIS_TIMEZONEChanged();
             }
@@ -7551,7 +8850,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnRESULT_LAB_COMMENT_CODEChanging(value);
                 ReportPropertyChanging("RESULT_LAB_COMMENT_CODE");
-                _RESULT_LAB_COMMENT_CODE = StructuralObject.SetValidValue(value, true);
+                _RESULT_LAB_COMMENT_CODE = StructuralObject.SetValidValue(value, true, "RESULT_LAB_COMMENT_CODE");
                 ReportPropertyChanged("RESULT_LAB_COMMENT_CODE");
                 OnRESULT_LAB_COMMENT_CODEChanged();
             }
@@ -7565,48 +8864,288 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public global::System.String DETECTION_LIMIT_TYPE
+        public global::System.String METHOD_DETECTION_LEVEL
         {
             get
             {
-                return _DETECTION_LIMIT_TYPE;
+                return _METHOD_DETECTION_LEVEL;
             }
             set
             {
-                OnDETECTION_LIMIT_TYPEChanging(value);
-                ReportPropertyChanging("DETECTION_LIMIT_TYPE");
-                _DETECTION_LIMIT_TYPE = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("DETECTION_LIMIT_TYPE");
-                OnDETECTION_LIMIT_TYPEChanged();
+                OnMETHOD_DETECTION_LEVELChanging(value);
+                ReportPropertyChanging("METHOD_DETECTION_LEVEL");
+                _METHOD_DETECTION_LEVEL = StructuralObject.SetValidValue(value, true, "METHOD_DETECTION_LEVEL");
+                ReportPropertyChanged("METHOD_DETECTION_LEVEL");
+                OnMETHOD_DETECTION_LEVELChanged();
             }
         }
-        private global::System.String _DETECTION_LIMIT_TYPE;
-        partial void OnDETECTION_LIMIT_TYPEChanging(global::System.String value);
-        partial void OnDETECTION_LIMIT_TYPEChanged();
+        private global::System.String _METHOD_DETECTION_LEVEL;
+        partial void OnMETHOD_DETECTION_LEVELChanging(global::System.String value);
+        partial void OnMETHOD_DETECTION_LEVELChanged();
     
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public global::System.String DETECTION_LIMIT
+        public global::System.String LAB_REPORTING_LEVEL
         {
             get
             {
-                return _DETECTION_LIMIT;
+                return _LAB_REPORTING_LEVEL;
             }
             set
             {
-                OnDETECTION_LIMITChanging(value);
-                ReportPropertyChanging("DETECTION_LIMIT");
-                _DETECTION_LIMIT = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("DETECTION_LIMIT");
-                OnDETECTION_LIMITChanged();
+                OnLAB_REPORTING_LEVELChanging(value);
+                ReportPropertyChanging("LAB_REPORTING_LEVEL");
+                _LAB_REPORTING_LEVEL = StructuralObject.SetValidValue(value, true, "LAB_REPORTING_LEVEL");
+                ReportPropertyChanged("LAB_REPORTING_LEVEL");
+                OnLAB_REPORTING_LEVELChanged();
             }
         }
-        private global::System.String _DETECTION_LIMIT;
-        partial void OnDETECTION_LIMITChanging(global::System.String value);
-        partial void OnDETECTION_LIMITChanged();
+        private global::System.String _LAB_REPORTING_LEVEL;
+        partial void OnLAB_REPORTING_LEVELChanging(global::System.String value);
+        partial void OnLAB_REPORTING_LEVELChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String PQL
+        {
+            get
+            {
+                return _PQL;
+            }
+            set
+            {
+                OnPQLChanging(value);
+                ReportPropertyChanging("PQL");
+                _PQL = StructuralObject.SetValidValue(value, true, "PQL");
+                ReportPropertyChanged("PQL");
+                OnPQLChanged();
+            }
+        }
+        private global::System.String _PQL;
+        partial void OnPQLChanging(global::System.String value);
+        partial void OnPQLChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String LOWER_QUANT_LIMIT
+        {
+            get
+            {
+                return _LOWER_QUANT_LIMIT;
+            }
+            set
+            {
+                OnLOWER_QUANT_LIMITChanging(value);
+                ReportPropertyChanging("LOWER_QUANT_LIMIT");
+                _LOWER_QUANT_LIMIT = StructuralObject.SetValidValue(value, true, "LOWER_QUANT_LIMIT");
+                ReportPropertyChanged("LOWER_QUANT_LIMIT");
+                OnLOWER_QUANT_LIMITChanged();
+            }
+        }
+        private global::System.String _LOWER_QUANT_LIMIT;
+        partial void OnLOWER_QUANT_LIMITChanging(global::System.String value);
+        partial void OnLOWER_QUANT_LIMITChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String UPPER_QUANT_LIMIT
+        {
+            get
+            {
+                return _UPPER_QUANT_LIMIT;
+            }
+            set
+            {
+                OnUPPER_QUANT_LIMITChanging(value);
+                ReportPropertyChanging("UPPER_QUANT_LIMIT");
+                _UPPER_QUANT_LIMIT = StructuralObject.SetValidValue(value, true, "UPPER_QUANT_LIMIT");
+                ReportPropertyChanged("UPPER_QUANT_LIMIT");
+                OnUPPER_QUANT_LIMITChanged();
+            }
+        }
+        private global::System.String _UPPER_QUANT_LIMIT;
+        partial void OnUPPER_QUANT_LIMITChanging(global::System.String value);
+        partial void OnUPPER_QUANT_LIMITChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String DETECTION_LIMIT_UNIT
+        {
+            get
+            {
+                return _DETECTION_LIMIT_UNIT;
+            }
+            set
+            {
+                OnDETECTION_LIMIT_UNITChanging(value);
+                ReportPropertyChanging("DETECTION_LIMIT_UNIT");
+                _DETECTION_LIMIT_UNIT = StructuralObject.SetValidValue(value, true, "DETECTION_LIMIT_UNIT");
+                ReportPropertyChanged("DETECTION_LIMIT_UNIT");
+                OnDETECTION_LIMIT_UNITChanged();
+            }
+        }
+        private global::System.String _DETECTION_LIMIT_UNIT;
+        partial void OnDETECTION_LIMIT_UNITChanging(global::System.String value);
+        partial void OnDETECTION_LIMIT_UNITChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> LAB_SAMP_PREP_IDX
+        {
+            get
+            {
+                return _LAB_SAMP_PREP_IDX;
+            }
+            set
+            {
+                OnLAB_SAMP_PREP_IDXChanging(value);
+                ReportPropertyChanging("LAB_SAMP_PREP_IDX");
+                _LAB_SAMP_PREP_IDX = StructuralObject.SetValidValue(value, "LAB_SAMP_PREP_IDX");
+                ReportPropertyChanged("LAB_SAMP_PREP_IDX");
+                OnLAB_SAMP_PREP_IDXChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _LAB_SAMP_PREP_IDX;
+        partial void OnLAB_SAMP_PREP_IDXChanging(Nullable<global::System.Int32> value);
+        partial void OnLAB_SAMP_PREP_IDXChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String LAB_SAMP_PREP_ID
+        {
+            get
+            {
+                return _LAB_SAMP_PREP_ID;
+            }
+            set
+            {
+                OnLAB_SAMP_PREP_IDChanging(value);
+                ReportPropertyChanging("LAB_SAMP_PREP_ID");
+                _LAB_SAMP_PREP_ID = StructuralObject.SetValidValue(value, true, "LAB_SAMP_PREP_ID");
+                ReportPropertyChanged("LAB_SAMP_PREP_ID");
+                OnLAB_SAMP_PREP_IDChanged();
+            }
+        }
+        private global::System.String _LAB_SAMP_PREP_ID;
+        partial void OnLAB_SAMP_PREP_IDChanging(global::System.String value);
+        partial void OnLAB_SAMP_PREP_IDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String LAB_SAMP_PREP_CTX
+        {
+            get
+            {
+                return _LAB_SAMP_PREP_CTX;
+            }
+            set
+            {
+                OnLAB_SAMP_PREP_CTXChanging(value);
+                ReportPropertyChanging("LAB_SAMP_PREP_CTX");
+                _LAB_SAMP_PREP_CTX = StructuralObject.SetValidValue(value, true, "LAB_SAMP_PREP_CTX");
+                ReportPropertyChanged("LAB_SAMP_PREP_CTX");
+                OnLAB_SAMP_PREP_CTXChanged();
+            }
+        }
+        private global::System.String _LAB_SAMP_PREP_CTX;
+        partial void OnLAB_SAMP_PREP_CTXChanging(global::System.String value);
+        partial void OnLAB_SAMP_PREP_CTXChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> LAB_SAMP_PREP_START_DT
+        {
+            get
+            {
+                return _LAB_SAMP_PREP_START_DT;
+            }
+            set
+            {
+                OnLAB_SAMP_PREP_START_DTChanging(value);
+                ReportPropertyChanging("LAB_SAMP_PREP_START_DT");
+                _LAB_SAMP_PREP_START_DT = StructuralObject.SetValidValue(value, "LAB_SAMP_PREP_START_DT");
+                ReportPropertyChanged("LAB_SAMP_PREP_START_DT");
+                OnLAB_SAMP_PREP_START_DTChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _LAB_SAMP_PREP_START_DT;
+        partial void OnLAB_SAMP_PREP_START_DTChanging(Nullable<global::System.DateTime> value);
+        partial void OnLAB_SAMP_PREP_START_DTChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> LAB_SAMP_PREP_END_DT
+        {
+            get
+            {
+                return _LAB_SAMP_PREP_END_DT;
+            }
+            set
+            {
+                OnLAB_SAMP_PREP_END_DTChanging(value);
+                ReportPropertyChanging("LAB_SAMP_PREP_END_DT");
+                _LAB_SAMP_PREP_END_DT = StructuralObject.SetValidValue(value, "LAB_SAMP_PREP_END_DT");
+                ReportPropertyChanged("LAB_SAMP_PREP_END_DT");
+                OnLAB_SAMP_PREP_END_DTChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _LAB_SAMP_PREP_END_DT;
+        partial void OnLAB_SAMP_PREP_END_DTChanging(Nullable<global::System.DateTime> value);
+        partial void OnLAB_SAMP_PREP_END_DTChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String DILUTION_FACTOR
+        {
+            get
+            {
+                return _DILUTION_FACTOR;
+            }
+            set
+            {
+                OnDILUTION_FACTORChanging(value);
+                ReportPropertyChanging("DILUTION_FACTOR");
+                _DILUTION_FACTOR = StructuralObject.SetValidValue(value, true, "DILUTION_FACTOR");
+                ReportPropertyChanged("DILUTION_FACTOR");
+                OnDILUTION_FACTORChanged();
+            }
+        }
+        private global::System.String _DILUTION_FACTOR;
+        partial void OnDILUTION_FACTORChanging(global::System.String value);
+        partial void OnDILUTION_FACTORChanged();
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -7623,7 +9162,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnIMPORT_STATUS_CDChanging(value);
                 ReportPropertyChanging("IMPORT_STATUS_CD");
-                _IMPORT_STATUS_CD = StructuralObject.SetValidValue(value, true);
+                _IMPORT_STATUS_CD = StructuralObject.SetValidValue(value, true, "IMPORT_STATUS_CD");
                 ReportPropertyChanged("IMPORT_STATUS_CD");
                 OnIMPORT_STATUS_CDChanged();
             }
@@ -7647,7 +9186,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnIMPORT_STATUS_DESCChanging(value);
                 ReportPropertyChanging("IMPORT_STATUS_DESC");
-                _IMPORT_STATUS_DESC = StructuralObject.SetValidValue(value, true);
+                _IMPORT_STATUS_DESC = StructuralObject.SetValidValue(value, true, "IMPORT_STATUS_DESC");
                 ReportPropertyChanged("IMPORT_STATUS_DESC");
                 OnIMPORT_STATUS_DESCChanged();
             }
@@ -7655,10 +9194,105 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
         private global::System.String _IMPORT_STATUS_DESC;
         partial void OnIMPORT_STATUS_DESCChanging(global::System.String value);
         partial void OnIMPORT_STATUS_DESCChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String FREQ_CLASS_CODE
+        {
+            get
+            {
+                return _FREQ_CLASS_CODE;
+            }
+            set
+            {
+                OnFREQ_CLASS_CODEChanging(value);
+                ReportPropertyChanging("FREQ_CLASS_CODE");
+                _FREQ_CLASS_CODE = StructuralObject.SetValidValue(value, true, "FREQ_CLASS_CODE");
+                ReportPropertyChanged("FREQ_CLASS_CODE");
+                OnFREQ_CLASS_CODEChanged();
+            }
+        }
+        private global::System.String _FREQ_CLASS_CODE;
+        partial void OnFREQ_CLASS_CODEChanging(global::System.String value);
+        partial void OnFREQ_CLASS_CODEChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String FREQ_CLASS_UNIT
+        {
+            get
+            {
+                return _FREQ_CLASS_UNIT;
+            }
+            set
+            {
+                OnFREQ_CLASS_UNITChanging(value);
+                ReportPropertyChanging("FREQ_CLASS_UNIT");
+                _FREQ_CLASS_UNIT = StructuralObject.SetValidValue(value, true, "FREQ_CLASS_UNIT");
+                ReportPropertyChanged("FREQ_CLASS_UNIT");
+                OnFREQ_CLASS_UNITChanged();
+            }
+        }
+        private global::System.String _FREQ_CLASS_UNIT;
+        partial void OnFREQ_CLASS_UNITChanging(global::System.String value);
+        partial void OnFREQ_CLASS_UNITChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String FREQ_CLASS_UPPER
+        {
+            get
+            {
+                return _FREQ_CLASS_UPPER;
+            }
+            set
+            {
+                OnFREQ_CLASS_UPPERChanging(value);
+                ReportPropertyChanging("FREQ_CLASS_UPPER");
+                _FREQ_CLASS_UPPER = StructuralObject.SetValidValue(value, true, "FREQ_CLASS_UPPER");
+                ReportPropertyChanged("FREQ_CLASS_UPPER");
+                OnFREQ_CLASS_UPPERChanged();
+            }
+        }
+        private global::System.String _FREQ_CLASS_UPPER;
+        partial void OnFREQ_CLASS_UPPERChanging(global::System.String value);
+        partial void OnFREQ_CLASS_UPPERChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String FREQ_CLASS_LOWER
+        {
+            get
+            {
+                return _FREQ_CLASS_LOWER;
+            }
+            set
+            {
+                OnFREQ_CLASS_LOWERChanging(value);
+                ReportPropertyChanging("FREQ_CLASS_LOWER");
+                _FREQ_CLASS_LOWER = StructuralObject.SetValidValue(value, true, "FREQ_CLASS_LOWER");
+                ReportPropertyChanged("FREQ_CLASS_LOWER");
+                OnFREQ_CLASS_LOWERChanged();
+            }
+        }
+        private global::System.String _FREQ_CLASS_LOWER;
+        partial void OnFREQ_CLASS_LOWERChanging(global::System.String value);
+        partial void OnFREQ_CLASS_LOWERChanged();
 
         #endregion
 
-    
         #region Navigation Properties
     
         /// <summary>
@@ -7667,16 +9301,16 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("OpenEnvironmentModel", "FK__T_WQX_IMP__TEMP___29221CFB", "T_WQX_IMPORT_TEMP_SAMPLE")]
+        [EdmRelationshipNavigationPropertyAttribute("OpenEnvironmentModel", "FK__T_WQX_IMP__TEMP___3C34F16F", "T_WQX_IMPORT_TEMP_SAMPLE")]
         public T_WQX_IMPORT_TEMP_SAMPLE T_WQX_IMPORT_TEMP_SAMPLE
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<T_WQX_IMPORT_TEMP_SAMPLE>("OpenEnvironmentModel.FK__T_WQX_IMP__TEMP___29221CFB", "T_WQX_IMPORT_TEMP_SAMPLE").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<T_WQX_IMPORT_TEMP_SAMPLE>("OpenEnvironmentModel.FK__T_WQX_IMP__TEMP___3C34F16F", "T_WQX_IMPORT_TEMP_SAMPLE").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<T_WQX_IMPORT_TEMP_SAMPLE>("OpenEnvironmentModel.FK__T_WQX_IMP__TEMP___29221CFB", "T_WQX_IMPORT_TEMP_SAMPLE").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<T_WQX_IMPORT_TEMP_SAMPLE>("OpenEnvironmentModel.FK__T_WQX_IMP__TEMP___3C34F16F", "T_WQX_IMPORT_TEMP_SAMPLE").Value = value;
             }
         }
         /// <summary>
@@ -7688,13 +9322,13 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<T_WQX_IMPORT_TEMP_SAMPLE>("OpenEnvironmentModel.FK__T_WQX_IMP__TEMP___29221CFB", "T_WQX_IMPORT_TEMP_SAMPLE");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<T_WQX_IMPORT_TEMP_SAMPLE>("OpenEnvironmentModel.FK__T_WQX_IMP__TEMP___3C34F16F", "T_WQX_IMPORT_TEMP_SAMPLE");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<T_WQX_IMPORT_TEMP_SAMPLE>("OpenEnvironmentModel.FK__T_WQX_IMP__TEMP___29221CFB", "T_WQX_IMPORT_TEMP_SAMPLE", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<T_WQX_IMPORT_TEMP_SAMPLE>("OpenEnvironmentModel.FK__T_WQX_IMP__TEMP___3C34F16F", "T_WQX_IMPORT_TEMP_SAMPLE", value);
                 }
             }
         }
@@ -7732,7 +9366,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
 
         #endregion
 
-        #region Primitive Properties
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -7751,7 +9385,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
                 {
                     OnTEMP_SAMPLE_IDXChanging(value);
                     ReportPropertyChanging("TEMP_SAMPLE_IDX");
-                    _TEMP_SAMPLE_IDX = StructuralObject.SetValidValue(value);
+                    _TEMP_SAMPLE_IDX = StructuralObject.SetValidValue(value, "TEMP_SAMPLE_IDX");
                     ReportPropertyChanged("TEMP_SAMPLE_IDX");
                     OnTEMP_SAMPLE_IDXChanged();
                 }
@@ -7776,7 +9410,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnUSER_IDChanging(value);
                 ReportPropertyChanging("USER_ID");
-                _USER_ID = StructuralObject.SetValidValue(value, false);
+                _USER_ID = StructuralObject.SetValidValue(value, false, "USER_ID");
                 ReportPropertyChanged("USER_ID");
                 OnUSER_IDChanged();
             }
@@ -7800,7 +9434,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnORG_IDChanging(value);
                 ReportPropertyChanging("ORG_ID");
-                _ORG_ID = StructuralObject.SetValidValue(value, true);
+                _ORG_ID = StructuralObject.SetValidValue(value, true, "ORG_ID");
                 ReportPropertyChanged("ORG_ID");
                 OnORG_IDChanged();
             }
@@ -7824,7 +9458,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnPROJECT_IDXChanging(value);
                 ReportPropertyChanging("PROJECT_IDX");
-                _PROJECT_IDX = StructuralObject.SetValidValue(value);
+                _PROJECT_IDX = StructuralObject.SetValidValue(value, "PROJECT_IDX");
                 ReportPropertyChanged("PROJECT_IDX");
                 OnPROJECT_IDXChanged();
             }
@@ -7848,7 +9482,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnPROJECT_IDChanging(value);
                 ReportPropertyChanging("PROJECT_ID");
-                _PROJECT_ID = StructuralObject.SetValidValue(value, true);
+                _PROJECT_ID = StructuralObject.SetValidValue(value, true, "PROJECT_ID");
                 ReportPropertyChanged("PROJECT_ID");
                 OnPROJECT_IDChanged();
             }
@@ -7872,7 +9506,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnMONLOC_IDXChanging(value);
                 ReportPropertyChanging("MONLOC_IDX");
-                _MONLOC_IDX = StructuralObject.SetValidValue(value);
+                _MONLOC_IDX = StructuralObject.SetValidValue(value, "MONLOC_IDX");
                 ReportPropertyChanged("MONLOC_IDX");
                 OnMONLOC_IDXChanged();
             }
@@ -7896,7 +9530,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnMONLOC_IDChanging(value);
                 ReportPropertyChanging("MONLOC_ID");
-                _MONLOC_ID = StructuralObject.SetValidValue(value, true);
+                _MONLOC_ID = StructuralObject.SetValidValue(value, true, "MONLOC_ID");
                 ReportPropertyChanged("MONLOC_ID");
                 OnMONLOC_IDChanged();
             }
@@ -7920,7 +9554,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnACTIVITY_IDXChanging(value);
                 ReportPropertyChanging("ACTIVITY_IDX");
-                _ACTIVITY_IDX = StructuralObject.SetValidValue(value);
+                _ACTIVITY_IDX = StructuralObject.SetValidValue(value, "ACTIVITY_IDX");
                 ReportPropertyChanged("ACTIVITY_IDX");
                 OnACTIVITY_IDXChanged();
             }
@@ -7944,7 +9578,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnACTIVITY_IDChanging(value);
                 ReportPropertyChanging("ACTIVITY_ID");
-                _ACTIVITY_ID = StructuralObject.SetValidValue(value, true);
+                _ACTIVITY_ID = StructuralObject.SetValidValue(value, true, "ACTIVITY_ID");
                 ReportPropertyChanged("ACTIVITY_ID");
                 OnACTIVITY_IDChanged();
             }
@@ -7968,7 +9602,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnACT_TYPEChanging(value);
                 ReportPropertyChanging("ACT_TYPE");
-                _ACT_TYPE = StructuralObject.SetValidValue(value, false);
+                _ACT_TYPE = StructuralObject.SetValidValue(value, false, "ACT_TYPE");
                 ReportPropertyChanged("ACT_TYPE");
                 OnACT_TYPEChanged();
             }
@@ -7992,7 +9626,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnACT_MEDIAChanging(value);
                 ReportPropertyChanging("ACT_MEDIA");
-                _ACT_MEDIA = StructuralObject.SetValidValue(value, false);
+                _ACT_MEDIA = StructuralObject.SetValidValue(value, false, "ACT_MEDIA");
                 ReportPropertyChanged("ACT_MEDIA");
                 OnACT_MEDIAChanged();
             }
@@ -8016,7 +9650,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnACT_SUBMEDIAChanging(value);
                 ReportPropertyChanging("ACT_SUBMEDIA");
-                _ACT_SUBMEDIA = StructuralObject.SetValidValue(value, true);
+                _ACT_SUBMEDIA = StructuralObject.SetValidValue(value, true, "ACT_SUBMEDIA");
                 ReportPropertyChanged("ACT_SUBMEDIA");
                 OnACT_SUBMEDIAChanged();
             }
@@ -8040,7 +9674,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnACT_START_DTChanging(value);
                 ReportPropertyChanging("ACT_START_DT");
-                _ACT_START_DT = StructuralObject.SetValidValue(value);
+                _ACT_START_DT = StructuralObject.SetValidValue(value, "ACT_START_DT");
                 ReportPropertyChanged("ACT_START_DT");
                 OnACT_START_DTChanged();
             }
@@ -8064,7 +9698,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnACT_END_DTChanging(value);
                 ReportPropertyChanging("ACT_END_DT");
-                _ACT_END_DT = StructuralObject.SetValidValue(value);
+                _ACT_END_DT = StructuralObject.SetValidValue(value, "ACT_END_DT");
                 ReportPropertyChanged("ACT_END_DT");
                 OnACT_END_DTChanged();
             }
@@ -8088,7 +9722,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnACT_TIME_ZONEChanging(value);
                 ReportPropertyChanging("ACT_TIME_ZONE");
-                _ACT_TIME_ZONE = StructuralObject.SetValidValue(value, true);
+                _ACT_TIME_ZONE = StructuralObject.SetValidValue(value, true, "ACT_TIME_ZONE");
                 ReportPropertyChanged("ACT_TIME_ZONE");
                 OnACT_TIME_ZONEChanged();
             }
@@ -8112,7 +9746,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnACT_COMMENTChanging(value);
                 ReportPropertyChanging("ACT_COMMENT");
-                _ACT_COMMENT = StructuralObject.SetValidValue(value, true);
+                _ACT_COMMENT = StructuralObject.SetValidValue(value, true, "ACT_COMMENT");
                 ReportPropertyChanged("ACT_COMMENT");
                 OnACT_COMMENTChanged();
             }
@@ -8136,7 +9770,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnIMPORT_STATUS_CDChanging(value);
                 ReportPropertyChanging("IMPORT_STATUS_CD");
-                _IMPORT_STATUS_CD = StructuralObject.SetValidValue(value, true);
+                _IMPORT_STATUS_CD = StructuralObject.SetValidValue(value, true, "IMPORT_STATUS_CD");
                 ReportPropertyChanged("IMPORT_STATUS_CD");
                 OnIMPORT_STATUS_CDChanged();
             }
@@ -8160,7 +9794,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnIMPORT_STATUS_DESCChanging(value);
                 ReportPropertyChanging("IMPORT_STATUS_DESC");
-                _IMPORT_STATUS_DESC = StructuralObject.SetValidValue(value, true);
+                _IMPORT_STATUS_DESC = StructuralObject.SetValidValue(value, true, "IMPORT_STATUS_DESC");
                 ReportPropertyChanged("IMPORT_STATUS_DESC");
                 OnIMPORT_STATUS_DESCChanged();
             }
@@ -8168,10 +9802,1041 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
         private global::System.String _IMPORT_STATUS_DESC;
         partial void OnIMPORT_STATUS_DESCChanging(global::System.String value);
         partial void OnIMPORT_STATUS_DESCChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String RELATIVE_DEPTH_NAME
+        {
+            get
+            {
+                return _RELATIVE_DEPTH_NAME;
+            }
+            set
+            {
+                OnRELATIVE_DEPTH_NAMEChanging(value);
+                ReportPropertyChanging("RELATIVE_DEPTH_NAME");
+                _RELATIVE_DEPTH_NAME = StructuralObject.SetValidValue(value, true, "RELATIVE_DEPTH_NAME");
+                ReportPropertyChanged("RELATIVE_DEPTH_NAME");
+                OnRELATIVE_DEPTH_NAMEChanged();
+            }
+        }
+        private global::System.String _RELATIVE_DEPTH_NAME;
+        partial void OnRELATIVE_DEPTH_NAMEChanging(global::System.String value);
+        partial void OnRELATIVE_DEPTH_NAMEChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String ACT_DEPTHHEIGHT_MSR
+        {
+            get
+            {
+                return _ACT_DEPTHHEIGHT_MSR;
+            }
+            set
+            {
+                OnACT_DEPTHHEIGHT_MSRChanging(value);
+                ReportPropertyChanging("ACT_DEPTHHEIGHT_MSR");
+                _ACT_DEPTHHEIGHT_MSR = StructuralObject.SetValidValue(value, true, "ACT_DEPTHHEIGHT_MSR");
+                ReportPropertyChanged("ACT_DEPTHHEIGHT_MSR");
+                OnACT_DEPTHHEIGHT_MSRChanged();
+            }
+        }
+        private global::System.String _ACT_DEPTHHEIGHT_MSR;
+        partial void OnACT_DEPTHHEIGHT_MSRChanging(global::System.String value);
+        partial void OnACT_DEPTHHEIGHT_MSRChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String ACT_DEPTHHEIGHT_MSR_UNIT
+        {
+            get
+            {
+                return _ACT_DEPTHHEIGHT_MSR_UNIT;
+            }
+            set
+            {
+                OnACT_DEPTHHEIGHT_MSR_UNITChanging(value);
+                ReportPropertyChanging("ACT_DEPTHHEIGHT_MSR_UNIT");
+                _ACT_DEPTHHEIGHT_MSR_UNIT = StructuralObject.SetValidValue(value, true, "ACT_DEPTHHEIGHT_MSR_UNIT");
+                ReportPropertyChanged("ACT_DEPTHHEIGHT_MSR_UNIT");
+                OnACT_DEPTHHEIGHT_MSR_UNITChanged();
+            }
+        }
+        private global::System.String _ACT_DEPTHHEIGHT_MSR_UNIT;
+        partial void OnACT_DEPTHHEIGHT_MSR_UNITChanging(global::System.String value);
+        partial void OnACT_DEPTHHEIGHT_MSR_UNITChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String TOP_DEPTHHEIGHT_MSR
+        {
+            get
+            {
+                return _TOP_DEPTHHEIGHT_MSR;
+            }
+            set
+            {
+                OnTOP_DEPTHHEIGHT_MSRChanging(value);
+                ReportPropertyChanging("TOP_DEPTHHEIGHT_MSR");
+                _TOP_DEPTHHEIGHT_MSR = StructuralObject.SetValidValue(value, true, "TOP_DEPTHHEIGHT_MSR");
+                ReportPropertyChanged("TOP_DEPTHHEIGHT_MSR");
+                OnTOP_DEPTHHEIGHT_MSRChanged();
+            }
+        }
+        private global::System.String _TOP_DEPTHHEIGHT_MSR;
+        partial void OnTOP_DEPTHHEIGHT_MSRChanging(global::System.String value);
+        partial void OnTOP_DEPTHHEIGHT_MSRChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String TOP_DEPTHHEIGHT_MSR_UNIT
+        {
+            get
+            {
+                return _TOP_DEPTHHEIGHT_MSR_UNIT;
+            }
+            set
+            {
+                OnTOP_DEPTHHEIGHT_MSR_UNITChanging(value);
+                ReportPropertyChanging("TOP_DEPTHHEIGHT_MSR_UNIT");
+                _TOP_DEPTHHEIGHT_MSR_UNIT = StructuralObject.SetValidValue(value, true, "TOP_DEPTHHEIGHT_MSR_UNIT");
+                ReportPropertyChanged("TOP_DEPTHHEIGHT_MSR_UNIT");
+                OnTOP_DEPTHHEIGHT_MSR_UNITChanged();
+            }
+        }
+        private global::System.String _TOP_DEPTHHEIGHT_MSR_UNIT;
+        partial void OnTOP_DEPTHHEIGHT_MSR_UNITChanging(global::System.String value);
+        partial void OnTOP_DEPTHHEIGHT_MSR_UNITChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String BOT_DEPTHHEIGHT_MSR
+        {
+            get
+            {
+                return _BOT_DEPTHHEIGHT_MSR;
+            }
+            set
+            {
+                OnBOT_DEPTHHEIGHT_MSRChanging(value);
+                ReportPropertyChanging("BOT_DEPTHHEIGHT_MSR");
+                _BOT_DEPTHHEIGHT_MSR = StructuralObject.SetValidValue(value, true, "BOT_DEPTHHEIGHT_MSR");
+                ReportPropertyChanged("BOT_DEPTHHEIGHT_MSR");
+                OnBOT_DEPTHHEIGHT_MSRChanged();
+            }
+        }
+        private global::System.String _BOT_DEPTHHEIGHT_MSR;
+        partial void OnBOT_DEPTHHEIGHT_MSRChanging(global::System.String value);
+        partial void OnBOT_DEPTHHEIGHT_MSRChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String BOT_DEPTHHEIGHT_MSR_UNIT
+        {
+            get
+            {
+                return _BOT_DEPTHHEIGHT_MSR_UNIT;
+            }
+            set
+            {
+                OnBOT_DEPTHHEIGHT_MSR_UNITChanging(value);
+                ReportPropertyChanging("BOT_DEPTHHEIGHT_MSR_UNIT");
+                _BOT_DEPTHHEIGHT_MSR_UNIT = StructuralObject.SetValidValue(value, true, "BOT_DEPTHHEIGHT_MSR_UNIT");
+                ReportPropertyChanged("BOT_DEPTHHEIGHT_MSR_UNIT");
+                OnBOT_DEPTHHEIGHT_MSR_UNITChanged();
+            }
+        }
+        private global::System.String _BOT_DEPTHHEIGHT_MSR_UNIT;
+        partial void OnBOT_DEPTHHEIGHT_MSR_UNITChanging(global::System.String value);
+        partial void OnBOT_DEPTHHEIGHT_MSR_UNITChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String DEPTH_REF_POINT
+        {
+            get
+            {
+                return _DEPTH_REF_POINT;
+            }
+            set
+            {
+                OnDEPTH_REF_POINTChanging(value);
+                ReportPropertyChanging("DEPTH_REF_POINT");
+                _DEPTH_REF_POINT = StructuralObject.SetValidValue(value, true, "DEPTH_REF_POINT");
+                ReportPropertyChanged("DEPTH_REF_POINT");
+                OnDEPTH_REF_POINTChanged();
+            }
+        }
+        private global::System.String _DEPTH_REF_POINT;
+        partial void OnDEPTH_REF_POINTChanging(global::System.String value);
+        partial void OnDEPTH_REF_POINTChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String BIO_ASSEMBLAGE_SAMPLED
+        {
+            get
+            {
+                return _BIO_ASSEMBLAGE_SAMPLED;
+            }
+            set
+            {
+                OnBIO_ASSEMBLAGE_SAMPLEDChanging(value);
+                ReportPropertyChanging("BIO_ASSEMBLAGE_SAMPLED");
+                _BIO_ASSEMBLAGE_SAMPLED = StructuralObject.SetValidValue(value, true, "BIO_ASSEMBLAGE_SAMPLED");
+                ReportPropertyChanged("BIO_ASSEMBLAGE_SAMPLED");
+                OnBIO_ASSEMBLAGE_SAMPLEDChanged();
+            }
+        }
+        private global::System.String _BIO_ASSEMBLAGE_SAMPLED;
+        partial void OnBIO_ASSEMBLAGE_SAMPLEDChanging(global::System.String value);
+        partial void OnBIO_ASSEMBLAGE_SAMPLEDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String BIO_DURATION_MSR
+        {
+            get
+            {
+                return _BIO_DURATION_MSR;
+            }
+            set
+            {
+                OnBIO_DURATION_MSRChanging(value);
+                ReportPropertyChanging("BIO_DURATION_MSR");
+                _BIO_DURATION_MSR = StructuralObject.SetValidValue(value, true, "BIO_DURATION_MSR");
+                ReportPropertyChanged("BIO_DURATION_MSR");
+                OnBIO_DURATION_MSRChanged();
+            }
+        }
+        private global::System.String _BIO_DURATION_MSR;
+        partial void OnBIO_DURATION_MSRChanging(global::System.String value);
+        partial void OnBIO_DURATION_MSRChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String BIO_DURATION_MSR_UNIT
+        {
+            get
+            {
+                return _BIO_DURATION_MSR_UNIT;
+            }
+            set
+            {
+                OnBIO_DURATION_MSR_UNITChanging(value);
+                ReportPropertyChanging("BIO_DURATION_MSR_UNIT");
+                _BIO_DURATION_MSR_UNIT = StructuralObject.SetValidValue(value, true, "BIO_DURATION_MSR_UNIT");
+                ReportPropertyChanged("BIO_DURATION_MSR_UNIT");
+                OnBIO_DURATION_MSR_UNITChanged();
+            }
+        }
+        private global::System.String _BIO_DURATION_MSR_UNIT;
+        partial void OnBIO_DURATION_MSR_UNITChanging(global::System.String value);
+        partial void OnBIO_DURATION_MSR_UNITChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String BIO_SAMP_COMPONENT
+        {
+            get
+            {
+                return _BIO_SAMP_COMPONENT;
+            }
+            set
+            {
+                OnBIO_SAMP_COMPONENTChanging(value);
+                ReportPropertyChanging("BIO_SAMP_COMPONENT");
+                _BIO_SAMP_COMPONENT = StructuralObject.SetValidValue(value, true, "BIO_SAMP_COMPONENT");
+                ReportPropertyChanged("BIO_SAMP_COMPONENT");
+                OnBIO_SAMP_COMPONENTChanged();
+            }
+        }
+        private global::System.String _BIO_SAMP_COMPONENT;
+        partial void OnBIO_SAMP_COMPONENTChanging(global::System.String value);
+        partial void OnBIO_SAMP_COMPONENTChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> BIO_SAMP_COMPONENT_SEQ
+        {
+            get
+            {
+                return _BIO_SAMP_COMPONENT_SEQ;
+            }
+            set
+            {
+                OnBIO_SAMP_COMPONENT_SEQChanging(value);
+                ReportPropertyChanging("BIO_SAMP_COMPONENT_SEQ");
+                _BIO_SAMP_COMPONENT_SEQ = StructuralObject.SetValidValue(value, "BIO_SAMP_COMPONENT_SEQ");
+                ReportPropertyChanged("BIO_SAMP_COMPONENT_SEQ");
+                OnBIO_SAMP_COMPONENT_SEQChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _BIO_SAMP_COMPONENT_SEQ;
+        partial void OnBIO_SAMP_COMPONENT_SEQChanging(Nullable<global::System.Int32> value);
+        partial void OnBIO_SAMP_COMPONENT_SEQChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String BIO_REACH_LEN_MSR
+        {
+            get
+            {
+                return _BIO_REACH_LEN_MSR;
+            }
+            set
+            {
+                OnBIO_REACH_LEN_MSRChanging(value);
+                ReportPropertyChanging("BIO_REACH_LEN_MSR");
+                _BIO_REACH_LEN_MSR = StructuralObject.SetValidValue(value, true, "BIO_REACH_LEN_MSR");
+                ReportPropertyChanged("BIO_REACH_LEN_MSR");
+                OnBIO_REACH_LEN_MSRChanged();
+            }
+        }
+        private global::System.String _BIO_REACH_LEN_MSR;
+        partial void OnBIO_REACH_LEN_MSRChanging(global::System.String value);
+        partial void OnBIO_REACH_LEN_MSRChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String BIO_REACH_LEN_MSR_UNIT
+        {
+            get
+            {
+                return _BIO_REACH_LEN_MSR_UNIT;
+            }
+            set
+            {
+                OnBIO_REACH_LEN_MSR_UNITChanging(value);
+                ReportPropertyChanging("BIO_REACH_LEN_MSR_UNIT");
+                _BIO_REACH_LEN_MSR_UNIT = StructuralObject.SetValidValue(value, true, "BIO_REACH_LEN_MSR_UNIT");
+                ReportPropertyChanged("BIO_REACH_LEN_MSR_UNIT");
+                OnBIO_REACH_LEN_MSR_UNITChanged();
+            }
+        }
+        private global::System.String _BIO_REACH_LEN_MSR_UNIT;
+        partial void OnBIO_REACH_LEN_MSR_UNITChanging(global::System.String value);
+        partial void OnBIO_REACH_LEN_MSR_UNITChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String BIO_REACH_WID_MSR
+        {
+            get
+            {
+                return _BIO_REACH_WID_MSR;
+            }
+            set
+            {
+                OnBIO_REACH_WID_MSRChanging(value);
+                ReportPropertyChanging("BIO_REACH_WID_MSR");
+                _BIO_REACH_WID_MSR = StructuralObject.SetValidValue(value, true, "BIO_REACH_WID_MSR");
+                ReportPropertyChanged("BIO_REACH_WID_MSR");
+                OnBIO_REACH_WID_MSRChanged();
+            }
+        }
+        private global::System.String _BIO_REACH_WID_MSR;
+        partial void OnBIO_REACH_WID_MSRChanging(global::System.String value);
+        partial void OnBIO_REACH_WID_MSRChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String BIO_REACH_WID_MSR_UNIT
+        {
+            get
+            {
+                return _BIO_REACH_WID_MSR_UNIT;
+            }
+            set
+            {
+                OnBIO_REACH_WID_MSR_UNITChanging(value);
+                ReportPropertyChanging("BIO_REACH_WID_MSR_UNIT");
+                _BIO_REACH_WID_MSR_UNIT = StructuralObject.SetValidValue(value, true, "BIO_REACH_WID_MSR_UNIT");
+                ReportPropertyChanged("BIO_REACH_WID_MSR_UNIT");
+                OnBIO_REACH_WID_MSR_UNITChanged();
+            }
+        }
+        private global::System.String _BIO_REACH_WID_MSR_UNIT;
+        partial void OnBIO_REACH_WID_MSR_UNITChanging(global::System.String value);
+        partial void OnBIO_REACH_WID_MSR_UNITChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> BIO_PASS_COUNT
+        {
+            get
+            {
+                return _BIO_PASS_COUNT;
+            }
+            set
+            {
+                OnBIO_PASS_COUNTChanging(value);
+                ReportPropertyChanging("BIO_PASS_COUNT");
+                _BIO_PASS_COUNT = StructuralObject.SetValidValue(value, "BIO_PASS_COUNT");
+                ReportPropertyChanged("BIO_PASS_COUNT");
+                OnBIO_PASS_COUNTChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _BIO_PASS_COUNT;
+        partial void OnBIO_PASS_COUNTChanging(Nullable<global::System.Int32> value);
+        partial void OnBIO_PASS_COUNTChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String BIO_NET_TYPE
+        {
+            get
+            {
+                return _BIO_NET_TYPE;
+            }
+            set
+            {
+                OnBIO_NET_TYPEChanging(value);
+                ReportPropertyChanging("BIO_NET_TYPE");
+                _BIO_NET_TYPE = StructuralObject.SetValidValue(value, true, "BIO_NET_TYPE");
+                ReportPropertyChanged("BIO_NET_TYPE");
+                OnBIO_NET_TYPEChanged();
+            }
+        }
+        private global::System.String _BIO_NET_TYPE;
+        partial void OnBIO_NET_TYPEChanging(global::System.String value);
+        partial void OnBIO_NET_TYPEChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String BIO_NET_AREA_MSR
+        {
+            get
+            {
+                return _BIO_NET_AREA_MSR;
+            }
+            set
+            {
+                OnBIO_NET_AREA_MSRChanging(value);
+                ReportPropertyChanging("BIO_NET_AREA_MSR");
+                _BIO_NET_AREA_MSR = StructuralObject.SetValidValue(value, true, "BIO_NET_AREA_MSR");
+                ReportPropertyChanged("BIO_NET_AREA_MSR");
+                OnBIO_NET_AREA_MSRChanged();
+            }
+        }
+        private global::System.String _BIO_NET_AREA_MSR;
+        partial void OnBIO_NET_AREA_MSRChanging(global::System.String value);
+        partial void OnBIO_NET_AREA_MSRChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String BIO_NET_AREA_MSR_UNIT
+        {
+            get
+            {
+                return _BIO_NET_AREA_MSR_UNIT;
+            }
+            set
+            {
+                OnBIO_NET_AREA_MSR_UNITChanging(value);
+                ReportPropertyChanging("BIO_NET_AREA_MSR_UNIT");
+                _BIO_NET_AREA_MSR_UNIT = StructuralObject.SetValidValue(value, true, "BIO_NET_AREA_MSR_UNIT");
+                ReportPropertyChanged("BIO_NET_AREA_MSR_UNIT");
+                OnBIO_NET_AREA_MSR_UNITChanged();
+            }
+        }
+        private global::System.String _BIO_NET_AREA_MSR_UNIT;
+        partial void OnBIO_NET_AREA_MSR_UNITChanging(global::System.String value);
+        partial void OnBIO_NET_AREA_MSR_UNITChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String BIO_NET_MESHSIZE_MSR
+        {
+            get
+            {
+                return _BIO_NET_MESHSIZE_MSR;
+            }
+            set
+            {
+                OnBIO_NET_MESHSIZE_MSRChanging(value);
+                ReportPropertyChanging("BIO_NET_MESHSIZE_MSR");
+                _BIO_NET_MESHSIZE_MSR = StructuralObject.SetValidValue(value, true, "BIO_NET_MESHSIZE_MSR");
+                ReportPropertyChanged("BIO_NET_MESHSIZE_MSR");
+                OnBIO_NET_MESHSIZE_MSRChanged();
+            }
+        }
+        private global::System.String _BIO_NET_MESHSIZE_MSR;
+        partial void OnBIO_NET_MESHSIZE_MSRChanging(global::System.String value);
+        partial void OnBIO_NET_MESHSIZE_MSRChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String BIO_MESHSIZE_MSR_UNIT
+        {
+            get
+            {
+                return _BIO_MESHSIZE_MSR_UNIT;
+            }
+            set
+            {
+                OnBIO_MESHSIZE_MSR_UNITChanging(value);
+                ReportPropertyChanging("BIO_MESHSIZE_MSR_UNIT");
+                _BIO_MESHSIZE_MSR_UNIT = StructuralObject.SetValidValue(value, true, "BIO_MESHSIZE_MSR_UNIT");
+                ReportPropertyChanged("BIO_MESHSIZE_MSR_UNIT");
+                OnBIO_MESHSIZE_MSR_UNITChanged();
+            }
+        }
+        private global::System.String _BIO_MESHSIZE_MSR_UNIT;
+        partial void OnBIO_MESHSIZE_MSR_UNITChanging(global::System.String value);
+        partial void OnBIO_MESHSIZE_MSR_UNITChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String BIO_BOAT_SPEED_MSR
+        {
+            get
+            {
+                return _BIO_BOAT_SPEED_MSR;
+            }
+            set
+            {
+                OnBIO_BOAT_SPEED_MSRChanging(value);
+                ReportPropertyChanging("BIO_BOAT_SPEED_MSR");
+                _BIO_BOAT_SPEED_MSR = StructuralObject.SetValidValue(value, true, "BIO_BOAT_SPEED_MSR");
+                ReportPropertyChanged("BIO_BOAT_SPEED_MSR");
+                OnBIO_BOAT_SPEED_MSRChanged();
+            }
+        }
+        private global::System.String _BIO_BOAT_SPEED_MSR;
+        partial void OnBIO_BOAT_SPEED_MSRChanging(global::System.String value);
+        partial void OnBIO_BOAT_SPEED_MSRChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String BIO_BOAT_SPEED_MSR_UNIT
+        {
+            get
+            {
+                return _BIO_BOAT_SPEED_MSR_UNIT;
+            }
+            set
+            {
+                OnBIO_BOAT_SPEED_MSR_UNITChanging(value);
+                ReportPropertyChanging("BIO_BOAT_SPEED_MSR_UNIT");
+                _BIO_BOAT_SPEED_MSR_UNIT = StructuralObject.SetValidValue(value, true, "BIO_BOAT_SPEED_MSR_UNIT");
+                ReportPropertyChanged("BIO_BOAT_SPEED_MSR_UNIT");
+                OnBIO_BOAT_SPEED_MSR_UNITChanged();
+            }
+        }
+        private global::System.String _BIO_BOAT_SPEED_MSR_UNIT;
+        partial void OnBIO_BOAT_SPEED_MSR_UNITChanging(global::System.String value);
+        partial void OnBIO_BOAT_SPEED_MSR_UNITChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String BIO_CURR_SPEED_MSR
+        {
+            get
+            {
+                return _BIO_CURR_SPEED_MSR;
+            }
+            set
+            {
+                OnBIO_CURR_SPEED_MSRChanging(value);
+                ReportPropertyChanging("BIO_CURR_SPEED_MSR");
+                _BIO_CURR_SPEED_MSR = StructuralObject.SetValidValue(value, true, "BIO_CURR_SPEED_MSR");
+                ReportPropertyChanged("BIO_CURR_SPEED_MSR");
+                OnBIO_CURR_SPEED_MSRChanged();
+            }
+        }
+        private global::System.String _BIO_CURR_SPEED_MSR;
+        partial void OnBIO_CURR_SPEED_MSRChanging(global::System.String value);
+        partial void OnBIO_CURR_SPEED_MSRChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String BIO_CURR_SPEED_MSR_UNIT
+        {
+            get
+            {
+                return _BIO_CURR_SPEED_MSR_UNIT;
+            }
+            set
+            {
+                OnBIO_CURR_SPEED_MSR_UNITChanging(value);
+                ReportPropertyChanging("BIO_CURR_SPEED_MSR_UNIT");
+                _BIO_CURR_SPEED_MSR_UNIT = StructuralObject.SetValidValue(value, true, "BIO_CURR_SPEED_MSR_UNIT");
+                ReportPropertyChanged("BIO_CURR_SPEED_MSR_UNIT");
+                OnBIO_CURR_SPEED_MSR_UNITChanged();
+            }
+        }
+        private global::System.String _BIO_CURR_SPEED_MSR_UNIT;
+        partial void OnBIO_CURR_SPEED_MSR_UNITChanging(global::System.String value);
+        partial void OnBIO_CURR_SPEED_MSR_UNITChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String BIO_TOXICITY_TEST_TYPE
+        {
+            get
+            {
+                return _BIO_TOXICITY_TEST_TYPE;
+            }
+            set
+            {
+                OnBIO_TOXICITY_TEST_TYPEChanging(value);
+                ReportPropertyChanging("BIO_TOXICITY_TEST_TYPE");
+                _BIO_TOXICITY_TEST_TYPE = StructuralObject.SetValidValue(value, true, "BIO_TOXICITY_TEST_TYPE");
+                ReportPropertyChanged("BIO_TOXICITY_TEST_TYPE");
+                OnBIO_TOXICITY_TEST_TYPEChanged();
+            }
+        }
+        private global::System.String _BIO_TOXICITY_TEST_TYPE;
+        partial void OnBIO_TOXICITY_TEST_TYPEChanging(global::System.String value);
+        partial void OnBIO_TOXICITY_TEST_TYPEChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> SAMP_COLL_METHOD_IDX
+        {
+            get
+            {
+                return _SAMP_COLL_METHOD_IDX;
+            }
+            set
+            {
+                OnSAMP_COLL_METHOD_IDXChanging(value);
+                ReportPropertyChanging("SAMP_COLL_METHOD_IDX");
+                _SAMP_COLL_METHOD_IDX = StructuralObject.SetValidValue(value, "SAMP_COLL_METHOD_IDX");
+                ReportPropertyChanged("SAMP_COLL_METHOD_IDX");
+                OnSAMP_COLL_METHOD_IDXChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _SAMP_COLL_METHOD_IDX;
+        partial void OnSAMP_COLL_METHOD_IDXChanging(Nullable<global::System.Int32> value);
+        partial void OnSAMP_COLL_METHOD_IDXChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String SAMP_COLL_METHOD_ID
+        {
+            get
+            {
+                return _SAMP_COLL_METHOD_ID;
+            }
+            set
+            {
+                OnSAMP_COLL_METHOD_IDChanging(value);
+                ReportPropertyChanging("SAMP_COLL_METHOD_ID");
+                _SAMP_COLL_METHOD_ID = StructuralObject.SetValidValue(value, true, "SAMP_COLL_METHOD_ID");
+                ReportPropertyChanged("SAMP_COLL_METHOD_ID");
+                OnSAMP_COLL_METHOD_IDChanged();
+            }
+        }
+        private global::System.String _SAMP_COLL_METHOD_ID;
+        partial void OnSAMP_COLL_METHOD_IDChanging(global::System.String value);
+        partial void OnSAMP_COLL_METHOD_IDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String SAMP_COLL_METHOD_CTX
+        {
+            get
+            {
+                return _SAMP_COLL_METHOD_CTX;
+            }
+            set
+            {
+                OnSAMP_COLL_METHOD_CTXChanging(value);
+                ReportPropertyChanging("SAMP_COLL_METHOD_CTX");
+                _SAMP_COLL_METHOD_CTX = StructuralObject.SetValidValue(value, true, "SAMP_COLL_METHOD_CTX");
+                ReportPropertyChanged("SAMP_COLL_METHOD_CTX");
+                OnSAMP_COLL_METHOD_CTXChanged();
+            }
+        }
+        private global::System.String _SAMP_COLL_METHOD_CTX;
+        partial void OnSAMP_COLL_METHOD_CTXChanging(global::System.String value);
+        partial void OnSAMP_COLL_METHOD_CTXChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String SAMP_COLL_EQUIP
+        {
+            get
+            {
+                return _SAMP_COLL_EQUIP;
+            }
+            set
+            {
+                OnSAMP_COLL_EQUIPChanging(value);
+                ReportPropertyChanging("SAMP_COLL_EQUIP");
+                _SAMP_COLL_EQUIP = StructuralObject.SetValidValue(value, true, "SAMP_COLL_EQUIP");
+                ReportPropertyChanged("SAMP_COLL_EQUIP");
+                OnSAMP_COLL_EQUIPChanged();
+            }
+        }
+        private global::System.String _SAMP_COLL_EQUIP;
+        partial void OnSAMP_COLL_EQUIPChanging(global::System.String value);
+        partial void OnSAMP_COLL_EQUIPChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String SAMP_COLL_EQUIP_COMMENT
+        {
+            get
+            {
+                return _SAMP_COLL_EQUIP_COMMENT;
+            }
+            set
+            {
+                OnSAMP_COLL_EQUIP_COMMENTChanging(value);
+                ReportPropertyChanging("SAMP_COLL_EQUIP_COMMENT");
+                _SAMP_COLL_EQUIP_COMMENT = StructuralObject.SetValidValue(value, true, "SAMP_COLL_EQUIP_COMMENT");
+                ReportPropertyChanged("SAMP_COLL_EQUIP_COMMENT");
+                OnSAMP_COLL_EQUIP_COMMENTChanged();
+            }
+        }
+        private global::System.String _SAMP_COLL_EQUIP_COMMENT;
+        partial void OnSAMP_COLL_EQUIP_COMMENTChanging(global::System.String value);
+        partial void OnSAMP_COLL_EQUIP_COMMENTChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> SAMP_PREP_IDX
+        {
+            get
+            {
+                return _SAMP_PREP_IDX;
+            }
+            set
+            {
+                OnSAMP_PREP_IDXChanging(value);
+                ReportPropertyChanging("SAMP_PREP_IDX");
+                _SAMP_PREP_IDX = StructuralObject.SetValidValue(value, "SAMP_PREP_IDX");
+                ReportPropertyChanged("SAMP_PREP_IDX");
+                OnSAMP_PREP_IDXChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _SAMP_PREP_IDX;
+        partial void OnSAMP_PREP_IDXChanging(Nullable<global::System.Int32> value);
+        partial void OnSAMP_PREP_IDXChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String SAMP_PREP_ID
+        {
+            get
+            {
+                return _SAMP_PREP_ID;
+            }
+            set
+            {
+                OnSAMP_PREP_IDChanging(value);
+                ReportPropertyChanging("SAMP_PREP_ID");
+                _SAMP_PREP_ID = StructuralObject.SetValidValue(value, true, "SAMP_PREP_ID");
+                ReportPropertyChanged("SAMP_PREP_ID");
+                OnSAMP_PREP_IDChanged();
+            }
+        }
+        private global::System.String _SAMP_PREP_ID;
+        partial void OnSAMP_PREP_IDChanging(global::System.String value);
+        partial void OnSAMP_PREP_IDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String SAMP_PREP_CTX
+        {
+            get
+            {
+                return _SAMP_PREP_CTX;
+            }
+            set
+            {
+                OnSAMP_PREP_CTXChanging(value);
+                ReportPropertyChanging("SAMP_PREP_CTX");
+                _SAMP_PREP_CTX = StructuralObject.SetValidValue(value, true, "SAMP_PREP_CTX");
+                ReportPropertyChanged("SAMP_PREP_CTX");
+                OnSAMP_PREP_CTXChanged();
+            }
+        }
+        private global::System.String _SAMP_PREP_CTX;
+        partial void OnSAMP_PREP_CTXChanging(global::System.String value);
+        partial void OnSAMP_PREP_CTXChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String SAMP_PREP_CONT_TYPE
+        {
+            get
+            {
+                return _SAMP_PREP_CONT_TYPE;
+            }
+            set
+            {
+                OnSAMP_PREP_CONT_TYPEChanging(value);
+                ReportPropertyChanging("SAMP_PREP_CONT_TYPE");
+                _SAMP_PREP_CONT_TYPE = StructuralObject.SetValidValue(value, true, "SAMP_PREP_CONT_TYPE");
+                ReportPropertyChanged("SAMP_PREP_CONT_TYPE");
+                OnSAMP_PREP_CONT_TYPEChanged();
+            }
+        }
+        private global::System.String _SAMP_PREP_CONT_TYPE;
+        partial void OnSAMP_PREP_CONT_TYPEChanging(global::System.String value);
+        partial void OnSAMP_PREP_CONT_TYPEChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String SAMP_PREP_CONT_COLOR
+        {
+            get
+            {
+                return _SAMP_PREP_CONT_COLOR;
+            }
+            set
+            {
+                OnSAMP_PREP_CONT_COLORChanging(value);
+                ReportPropertyChanging("SAMP_PREP_CONT_COLOR");
+                _SAMP_PREP_CONT_COLOR = StructuralObject.SetValidValue(value, true, "SAMP_PREP_CONT_COLOR");
+                ReportPropertyChanged("SAMP_PREP_CONT_COLOR");
+                OnSAMP_PREP_CONT_COLORChanged();
+            }
+        }
+        private global::System.String _SAMP_PREP_CONT_COLOR;
+        partial void OnSAMP_PREP_CONT_COLORChanging(global::System.String value);
+        partial void OnSAMP_PREP_CONT_COLORChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String SAMP_PREP_CHEM_PRESERV
+        {
+            get
+            {
+                return _SAMP_PREP_CHEM_PRESERV;
+            }
+            set
+            {
+                OnSAMP_PREP_CHEM_PRESERVChanging(value);
+                ReportPropertyChanging("SAMP_PREP_CHEM_PRESERV");
+                _SAMP_PREP_CHEM_PRESERV = StructuralObject.SetValidValue(value, true, "SAMP_PREP_CHEM_PRESERV");
+                ReportPropertyChanged("SAMP_PREP_CHEM_PRESERV");
+                OnSAMP_PREP_CHEM_PRESERVChanged();
+            }
+        }
+        private global::System.String _SAMP_PREP_CHEM_PRESERV;
+        partial void OnSAMP_PREP_CHEM_PRESERVChanging(global::System.String value);
+        partial void OnSAMP_PREP_CHEM_PRESERVChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String SAMP_PREP_THERM_PRESERV
+        {
+            get
+            {
+                return _SAMP_PREP_THERM_PRESERV;
+            }
+            set
+            {
+                OnSAMP_PREP_THERM_PRESERVChanging(value);
+                ReportPropertyChanging("SAMP_PREP_THERM_PRESERV");
+                _SAMP_PREP_THERM_PRESERV = StructuralObject.SetValidValue(value, true, "SAMP_PREP_THERM_PRESERV");
+                ReportPropertyChanged("SAMP_PREP_THERM_PRESERV");
+                OnSAMP_PREP_THERM_PRESERVChanged();
+            }
+        }
+        private global::System.String _SAMP_PREP_THERM_PRESERV;
+        partial void OnSAMP_PREP_THERM_PRESERVChanging(global::System.String value);
+        partial void OnSAMP_PREP_THERM_PRESERVChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String SAMP_PREP_STORAGE_DESC
+        {
+            get
+            {
+                return _SAMP_PREP_STORAGE_DESC;
+            }
+            set
+            {
+                OnSAMP_PREP_STORAGE_DESCChanging(value);
+                ReportPropertyChanging("SAMP_PREP_STORAGE_DESC");
+                _SAMP_PREP_STORAGE_DESC = StructuralObject.SetValidValue(value, true, "SAMP_PREP_STORAGE_DESC");
+                ReportPropertyChanged("SAMP_PREP_STORAGE_DESC");
+                OnSAMP_PREP_STORAGE_DESCChanged();
+            }
+        }
+        private global::System.String _SAMP_PREP_STORAGE_DESC;
+        partial void OnSAMP_PREP_STORAGE_DESCChanging(global::System.String value);
+        partial void OnSAMP_PREP_STORAGE_DESCChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String SAMP_COLL_METHOD_NAME
+        {
+            get
+            {
+                return _SAMP_COLL_METHOD_NAME;
+            }
+            set
+            {
+                OnSAMP_COLL_METHOD_NAMEChanging(value);
+                ReportPropertyChanging("SAMP_COLL_METHOD_NAME");
+                _SAMP_COLL_METHOD_NAME = StructuralObject.SetValidValue(value, true, "SAMP_COLL_METHOD_NAME");
+                ReportPropertyChanged("SAMP_COLL_METHOD_NAME");
+                OnSAMP_COLL_METHOD_NAMEChanged();
+            }
+        }
+        private global::System.String _SAMP_COLL_METHOD_NAME;
+        partial void OnSAMP_COLL_METHOD_NAMEChanging(global::System.String value);
+        partial void OnSAMP_COLL_METHOD_NAMEChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String SAMP_PREP_NAME
+        {
+            get
+            {
+                return _SAMP_PREP_NAME;
+            }
+            set
+            {
+                OnSAMP_PREP_NAMEChanging(value);
+                ReportPropertyChanging("SAMP_PREP_NAME");
+                _SAMP_PREP_NAME = StructuralObject.SetValidValue(value, true, "SAMP_PREP_NAME");
+                ReportPropertyChanged("SAMP_PREP_NAME");
+                OnSAMP_PREP_NAMEChanged();
+            }
+        }
+        private global::System.String _SAMP_PREP_NAME;
+        partial void OnSAMP_PREP_NAMEChanging(global::System.String value);
+        partial void OnSAMP_PREP_NAMEChanged();
 
         #endregion
 
-    
         #region Navigation Properties
     
         /// <summary>
@@ -8180,18 +10845,18 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("OpenEnvironmentModel", "FK__T_WQX_IMP__TEMP___29221CFB", "T_WQX_IMPORT_TEMP_RESULT")]
+        [EdmRelationshipNavigationPropertyAttribute("OpenEnvironmentModel", "FK__T_WQX_IMP__TEMP___3C34F16F", "T_WQX_IMPORT_TEMP_RESULT")]
         public EntityCollection<T_WQX_IMPORT_TEMP_RESULT> T_WQX_IMPORT_TEMP_RESULT
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<T_WQX_IMPORT_TEMP_RESULT>("OpenEnvironmentModel.FK__T_WQX_IMP__TEMP___29221CFB", "T_WQX_IMPORT_TEMP_RESULT");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<T_WQX_IMPORT_TEMP_RESULT>("OpenEnvironmentModel.FK__T_WQX_IMP__TEMP___3C34F16F", "T_WQX_IMPORT_TEMP_RESULT");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<T_WQX_IMPORT_TEMP_RESULT>("OpenEnvironmentModel.FK__T_WQX_IMP__TEMP___29221CFB", "T_WQX_IMPORT_TEMP_RESULT", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<T_WQX_IMPORT_TEMP_RESULT>("OpenEnvironmentModel.FK__T_WQX_IMP__TEMP___3C34F16F", "T_WQX_IMPORT_TEMP_RESULT", value);
                 }
             }
         }
@@ -8229,7 +10894,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
 
         #endregion
 
-        #region Primitive Properties
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -8248,7 +10913,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
                 {
                     OnTEMPLATE_IDChanging(value);
                     ReportPropertyChanging("TEMPLATE_ID");
-                    _TEMPLATE_ID = StructuralObject.SetValidValue(value);
+                    _TEMPLATE_ID = StructuralObject.SetValidValue(value, "TEMPLATE_ID");
                     ReportPropertyChanged("TEMPLATE_ID");
                     OnTEMPLATE_IDChanged();
                 }
@@ -8273,7 +10938,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnORG_IDChanging(value);
                 ReportPropertyChanging("ORG_ID");
-                _ORG_ID = StructuralObject.SetValidValue(value, false);
+                _ORG_ID = StructuralObject.SetValidValue(value, false, "ORG_ID");
                 ReportPropertyChanged("ORG_ID");
                 OnORG_IDChanged();
             }
@@ -8297,7 +10962,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnTYPE_CDChanging(value);
                 ReportPropertyChanging("TYPE_CD");
-                _TYPE_CD = StructuralObject.SetValidValue(value, false);
+                _TYPE_CD = StructuralObject.SetValidValue(value, false, "TYPE_CD");
                 ReportPropertyChanged("TYPE_CD");
                 OnTYPE_CDChanged();
             }
@@ -8321,7 +10986,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnTEMPLATE_NAMEChanging(value);
                 ReportPropertyChanging("TEMPLATE_NAME");
-                _TEMPLATE_NAME = StructuralObject.SetValidValue(value, false);
+                _TEMPLATE_NAME = StructuralObject.SetValidValue(value, false, "TEMPLATE_NAME");
                 ReportPropertyChanged("TEMPLATE_NAME");
                 OnTEMPLATE_NAMEChanged();
             }
@@ -8345,7 +11010,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnCREATE_DTChanging(value);
                 ReportPropertyChanging("CREATE_DT");
-                _CREATE_DT = StructuralObject.SetValidValue(value);
+                _CREATE_DT = StructuralObject.SetValidValue(value, "CREATE_DT");
                 ReportPropertyChanged("CREATE_DT");
                 OnCREATE_DTChanged();
             }
@@ -8369,7 +11034,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnCREATE_USERIDChanging(value);
                 ReportPropertyChanging("CREATE_USERID");
-                _CREATE_USERID = StructuralObject.SetValidValue(value, true);
+                _CREATE_USERID = StructuralObject.SetValidValue(value, true, "CREATE_USERID");
                 ReportPropertyChanged("CREATE_USERID");
                 OnCREATE_USERIDChanged();
             }
@@ -8380,7 +11045,6 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
 
         #endregion
 
-    
         #region Navigation Properties
     
         /// <summary>
@@ -8474,7 +11138,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
 
         #endregion
 
-        #region Primitive Properties
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -8493,7 +11157,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
                 {
                     OnTEMPLATE_DTL_IDChanging(value);
                     ReportPropertyChanging("TEMPLATE_DTL_ID");
-                    _TEMPLATE_DTL_ID = StructuralObject.SetValidValue(value);
+                    _TEMPLATE_DTL_ID = StructuralObject.SetValidValue(value, "TEMPLATE_DTL_ID");
                     ReportPropertyChanged("TEMPLATE_DTL_ID");
                     OnTEMPLATE_DTL_IDChanged();
                 }
@@ -8518,7 +11182,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnTEMPLATE_IDChanging(value);
                 ReportPropertyChanging("TEMPLATE_ID");
-                _TEMPLATE_ID = StructuralObject.SetValidValue(value);
+                _TEMPLATE_ID = StructuralObject.SetValidValue(value, "TEMPLATE_ID");
                 ReportPropertyChanged("TEMPLATE_ID");
                 OnTEMPLATE_IDChanged();
             }
@@ -8542,7 +11206,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnCOL_NUMChanging(value);
                 ReportPropertyChanging("COL_NUM");
-                _COL_NUM = StructuralObject.SetValidValue(value);
+                _COL_NUM = StructuralObject.SetValidValue(value, "COL_NUM");
                 ReportPropertyChanged("COL_NUM");
                 OnCOL_NUMChanged();
             }
@@ -8566,7 +11230,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnFIELD_MAPChanging(value);
                 ReportPropertyChanging("FIELD_MAP");
-                _FIELD_MAP = StructuralObject.SetValidValue(value, true);
+                _FIELD_MAP = StructuralObject.SetValidValue(value, true, "FIELD_MAP");
                 ReportPropertyChanged("FIELD_MAP");
                 OnFIELD_MAPChanged();
             }
@@ -8590,7 +11254,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnCHAR_NAMEChanging(value);
                 ReportPropertyChanging("CHAR_NAME");
-                _CHAR_NAME = StructuralObject.SetValidValue(value, true);
+                _CHAR_NAME = StructuralObject.SetValidValue(value, true, "CHAR_NAME");
                 ReportPropertyChanged("CHAR_NAME");
                 OnCHAR_NAMEChanged();
             }
@@ -8614,7 +11278,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnCHAR_DEFAULT_UNITChanging(value);
                 ReportPropertyChanging("CHAR_DEFAULT_UNIT");
-                _CHAR_DEFAULT_UNIT = StructuralObject.SetValidValue(value, true);
+                _CHAR_DEFAULT_UNIT = StructuralObject.SetValidValue(value, true, "CHAR_DEFAULT_UNIT");
                 ReportPropertyChanged("CHAR_DEFAULT_UNIT");
                 OnCHAR_DEFAULT_UNITChanged();
             }
@@ -8638,7 +11302,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnCREATE_DTChanging(value);
                 ReportPropertyChanging("CREATE_DT");
-                _CREATE_DT = StructuralObject.SetValidValue(value);
+                _CREATE_DT = StructuralObject.SetValidValue(value, "CREATE_DT");
                 ReportPropertyChanged("CREATE_DT");
                 OnCREATE_DTChanged();
             }
@@ -8662,7 +11326,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnCREATE_USERIDChanging(value);
                 ReportPropertyChanging("CREATE_USERID");
-                _CREATE_USERID = StructuralObject.SetValidValue(value, true);
+                _CREATE_USERID = StructuralObject.SetValidValue(value, true, "CREATE_USERID");
                 ReportPropertyChanged("CREATE_USERID");
                 OnCREATE_USERIDChanged();
             }
@@ -8673,7 +11337,6 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
 
         #endregion
 
-    
         #region Navigation Properties
     
         /// <summary>
@@ -8753,7 +11416,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
 
         #endregion
 
-        #region Primitive Properties
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -8772,7 +11435,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
                 {
                     OnMONLOC_IDXChanging(value);
                     ReportPropertyChanging("MONLOC_IDX");
-                    _MONLOC_IDX = StructuralObject.SetValidValue(value);
+                    _MONLOC_IDX = StructuralObject.SetValidValue(value, "MONLOC_IDX");
                     ReportPropertyChanged("MONLOC_IDX");
                     OnMONLOC_IDXChanged();
                 }
@@ -8797,7 +11460,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnORG_IDChanging(value);
                 ReportPropertyChanging("ORG_ID");
-                _ORG_ID = StructuralObject.SetValidValue(value, false);
+                _ORG_ID = StructuralObject.SetValidValue(value, false, "ORG_ID");
                 ReportPropertyChanged("ORG_ID");
                 OnORG_IDChanged();
             }
@@ -8821,7 +11484,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnMONLOC_IDChanging(value);
                 ReportPropertyChanging("MONLOC_ID");
-                _MONLOC_ID = StructuralObject.SetValidValue(value, false);
+                _MONLOC_ID = StructuralObject.SetValidValue(value, false, "MONLOC_ID");
                 ReportPropertyChanged("MONLOC_ID");
                 OnMONLOC_IDChanged();
             }
@@ -8845,7 +11508,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnMONLOC_NAMEChanging(value);
                 ReportPropertyChanging("MONLOC_NAME");
-                _MONLOC_NAME = StructuralObject.SetValidValue(value, false);
+                _MONLOC_NAME = StructuralObject.SetValidValue(value, false, "MONLOC_NAME");
                 ReportPropertyChanged("MONLOC_NAME");
                 OnMONLOC_NAMEChanged();
             }
@@ -8869,7 +11532,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnMONLOC_TYPEChanging(value);
                 ReportPropertyChanging("MONLOC_TYPE");
-                _MONLOC_TYPE = StructuralObject.SetValidValue(value, false);
+                _MONLOC_TYPE = StructuralObject.SetValidValue(value, false, "MONLOC_TYPE");
                 ReportPropertyChanged("MONLOC_TYPE");
                 OnMONLOC_TYPEChanged();
             }
@@ -8893,7 +11556,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnMONLOC_DESCChanging(value);
                 ReportPropertyChanging("MONLOC_DESC");
-                _MONLOC_DESC = StructuralObject.SetValidValue(value, true);
+                _MONLOC_DESC = StructuralObject.SetValidValue(value, true, "MONLOC_DESC");
                 ReportPropertyChanged("MONLOC_DESC");
                 OnMONLOC_DESCChanged();
             }
@@ -8917,7 +11580,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnHUC_EIGHTChanging(value);
                 ReportPropertyChanging("HUC_EIGHT");
-                _HUC_EIGHT = StructuralObject.SetValidValue(value, true);
+                _HUC_EIGHT = StructuralObject.SetValidValue(value, true, "HUC_EIGHT");
                 ReportPropertyChanged("HUC_EIGHT");
                 OnHUC_EIGHTChanged();
             }
@@ -8941,7 +11604,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnHUC_TWELVEChanging(value);
                 ReportPropertyChanging("HUC_TWELVE");
-                _HUC_TWELVE = StructuralObject.SetValidValue(value, true);
+                _HUC_TWELVE = StructuralObject.SetValidValue(value, true, "HUC_TWELVE");
                 ReportPropertyChanged("HUC_TWELVE");
                 OnHUC_TWELVEChanged();
             }
@@ -8965,7 +11628,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnTRIBAL_LAND_INDChanging(value);
                 ReportPropertyChanging("TRIBAL_LAND_IND");
-                _TRIBAL_LAND_IND = StructuralObject.SetValidValue(value, true);
+                _TRIBAL_LAND_IND = StructuralObject.SetValidValue(value, true, "TRIBAL_LAND_IND");
                 ReportPropertyChanged("TRIBAL_LAND_IND");
                 OnTRIBAL_LAND_INDChanged();
             }
@@ -8989,7 +11652,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnTRIBAL_LAND_NAMEChanging(value);
                 ReportPropertyChanging("TRIBAL_LAND_NAME");
-                _TRIBAL_LAND_NAME = StructuralObject.SetValidValue(value, true);
+                _TRIBAL_LAND_NAME = StructuralObject.SetValidValue(value, true, "TRIBAL_LAND_NAME");
                 ReportPropertyChanged("TRIBAL_LAND_NAME");
                 OnTRIBAL_LAND_NAMEChanged();
             }
@@ -9013,7 +11676,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnLATITUDE_MSRChanging(value);
                 ReportPropertyChanging("LATITUDE_MSR");
-                _LATITUDE_MSR = StructuralObject.SetValidValue(value, false);
+                _LATITUDE_MSR = StructuralObject.SetValidValue(value, false, "LATITUDE_MSR");
                 ReportPropertyChanged("LATITUDE_MSR");
                 OnLATITUDE_MSRChanged();
             }
@@ -9037,7 +11700,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnLONGITUDE_MSRChanging(value);
                 ReportPropertyChanging("LONGITUDE_MSR");
-                _LONGITUDE_MSR = StructuralObject.SetValidValue(value, false);
+                _LONGITUDE_MSR = StructuralObject.SetValidValue(value, false, "LONGITUDE_MSR");
                 ReportPropertyChanged("LONGITUDE_MSR");
                 OnLONGITUDE_MSRChanged();
             }
@@ -9061,7 +11724,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnSOURCE_MAP_SCALEChanging(value);
                 ReportPropertyChanging("SOURCE_MAP_SCALE");
-                _SOURCE_MAP_SCALE = StructuralObject.SetValidValue(value);
+                _SOURCE_MAP_SCALE = StructuralObject.SetValidValue(value, "SOURCE_MAP_SCALE");
                 ReportPropertyChanged("SOURCE_MAP_SCALE");
                 OnSOURCE_MAP_SCALEChanged();
             }
@@ -9085,7 +11748,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnHORIZ_ACCURACYChanging(value);
                 ReportPropertyChanging("HORIZ_ACCURACY");
-                _HORIZ_ACCURACY = StructuralObject.SetValidValue(value, true);
+                _HORIZ_ACCURACY = StructuralObject.SetValidValue(value, true, "HORIZ_ACCURACY");
                 ReportPropertyChanged("HORIZ_ACCURACY");
                 OnHORIZ_ACCURACYChanged();
             }
@@ -9109,7 +11772,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnHORIZ_ACCURACY_UNITChanging(value);
                 ReportPropertyChanging("HORIZ_ACCURACY_UNIT");
-                _HORIZ_ACCURACY_UNIT = StructuralObject.SetValidValue(value, true);
+                _HORIZ_ACCURACY_UNIT = StructuralObject.SetValidValue(value, true, "HORIZ_ACCURACY_UNIT");
                 ReportPropertyChanged("HORIZ_ACCURACY_UNIT");
                 OnHORIZ_ACCURACY_UNITChanged();
             }
@@ -9133,7 +11796,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnHORIZ_COLL_METHODChanging(value);
                 ReportPropertyChanging("HORIZ_COLL_METHOD");
-                _HORIZ_COLL_METHOD = StructuralObject.SetValidValue(value, true);
+                _HORIZ_COLL_METHOD = StructuralObject.SetValidValue(value, true, "HORIZ_COLL_METHOD");
                 ReportPropertyChanged("HORIZ_COLL_METHOD");
                 OnHORIZ_COLL_METHODChanged();
             }
@@ -9157,7 +11820,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnHORIZ_REF_DATUMChanging(value);
                 ReportPropertyChanging("HORIZ_REF_DATUM");
-                _HORIZ_REF_DATUM = StructuralObject.SetValidValue(value, true);
+                _HORIZ_REF_DATUM = StructuralObject.SetValidValue(value, true, "HORIZ_REF_DATUM");
                 ReportPropertyChanged("HORIZ_REF_DATUM");
                 OnHORIZ_REF_DATUMChanged();
             }
@@ -9181,7 +11844,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnVERT_MEASUREChanging(value);
                 ReportPropertyChanging("VERT_MEASURE");
-                _VERT_MEASURE = StructuralObject.SetValidValue(value, true);
+                _VERT_MEASURE = StructuralObject.SetValidValue(value, true, "VERT_MEASURE");
                 ReportPropertyChanged("VERT_MEASURE");
                 OnVERT_MEASUREChanged();
             }
@@ -9205,7 +11868,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnVERT_MEASURE_UNITChanging(value);
                 ReportPropertyChanging("VERT_MEASURE_UNIT");
-                _VERT_MEASURE_UNIT = StructuralObject.SetValidValue(value, true);
+                _VERT_MEASURE_UNIT = StructuralObject.SetValidValue(value, true, "VERT_MEASURE_UNIT");
                 ReportPropertyChanged("VERT_MEASURE_UNIT");
                 OnVERT_MEASURE_UNITChanged();
             }
@@ -9229,7 +11892,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnVERT_COLL_METHODChanging(value);
                 ReportPropertyChanging("VERT_COLL_METHOD");
-                _VERT_COLL_METHOD = StructuralObject.SetValidValue(value, true);
+                _VERT_COLL_METHOD = StructuralObject.SetValidValue(value, true, "VERT_COLL_METHOD");
                 ReportPropertyChanged("VERT_COLL_METHOD");
                 OnVERT_COLL_METHODChanged();
             }
@@ -9253,7 +11916,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnVERT_REF_DATUMChanging(value);
                 ReportPropertyChanging("VERT_REF_DATUM");
-                _VERT_REF_DATUM = StructuralObject.SetValidValue(value, true);
+                _VERT_REF_DATUM = StructuralObject.SetValidValue(value, true, "VERT_REF_DATUM");
                 ReportPropertyChanged("VERT_REF_DATUM");
                 OnVERT_REF_DATUMChanged();
             }
@@ -9277,7 +11940,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnCOUNTRY_CODEChanging(value);
                 ReportPropertyChanging("COUNTRY_CODE");
-                _COUNTRY_CODE = StructuralObject.SetValidValue(value, true);
+                _COUNTRY_CODE = StructuralObject.SetValidValue(value, true, "COUNTRY_CODE");
                 ReportPropertyChanged("COUNTRY_CODE");
                 OnCOUNTRY_CODEChanged();
             }
@@ -9301,7 +11964,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnSTATE_CODEChanging(value);
                 ReportPropertyChanging("STATE_CODE");
-                _STATE_CODE = StructuralObject.SetValidValue(value, true);
+                _STATE_CODE = StructuralObject.SetValidValue(value, true, "STATE_CODE");
                 ReportPropertyChanged("STATE_CODE");
                 OnSTATE_CODEChanged();
             }
@@ -9325,7 +11988,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnCOUNTY_CODEChanging(value);
                 ReportPropertyChanging("COUNTY_CODE");
-                _COUNTY_CODE = StructuralObject.SetValidValue(value, true);
+                _COUNTY_CODE = StructuralObject.SetValidValue(value, true, "COUNTY_CODE");
                 ReportPropertyChanged("COUNTY_CODE");
                 OnCOUNTY_CODEChanged();
             }
@@ -9349,7 +12012,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnWELL_TYPEChanging(value);
                 ReportPropertyChanging("WELL_TYPE");
-                _WELL_TYPE = StructuralObject.SetValidValue(value, true);
+                _WELL_TYPE = StructuralObject.SetValidValue(value, true, "WELL_TYPE");
                 ReportPropertyChanged("WELL_TYPE");
                 OnWELL_TYPEChanged();
             }
@@ -9373,7 +12036,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnAQUIFER_NAMEChanging(value);
                 ReportPropertyChanging("AQUIFER_NAME");
-                _AQUIFER_NAME = StructuralObject.SetValidValue(value, true);
+                _AQUIFER_NAME = StructuralObject.SetValidValue(value, true, "AQUIFER_NAME");
                 ReportPropertyChanged("AQUIFER_NAME");
                 OnAQUIFER_NAMEChanged();
             }
@@ -9397,7 +12060,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnFORMATION_TYPEChanging(value);
                 ReportPropertyChanging("FORMATION_TYPE");
-                _FORMATION_TYPE = StructuralObject.SetValidValue(value, true);
+                _FORMATION_TYPE = StructuralObject.SetValidValue(value, true, "FORMATION_TYPE");
                 ReportPropertyChanged("FORMATION_TYPE");
                 OnFORMATION_TYPEChanged();
             }
@@ -9421,7 +12084,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnWELLHOLE_DEPTH_MSRChanging(value);
                 ReportPropertyChanging("WELLHOLE_DEPTH_MSR");
-                _WELLHOLE_DEPTH_MSR = StructuralObject.SetValidValue(value, true);
+                _WELLHOLE_DEPTH_MSR = StructuralObject.SetValidValue(value, true, "WELLHOLE_DEPTH_MSR");
                 ReportPropertyChanged("WELLHOLE_DEPTH_MSR");
                 OnWELLHOLE_DEPTH_MSRChanged();
             }
@@ -9445,7 +12108,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnWELLHOLE_DEPTH_MSR_UNITChanging(value);
                 ReportPropertyChanging("WELLHOLE_DEPTH_MSR_UNIT");
-                _WELLHOLE_DEPTH_MSR_UNIT = StructuralObject.SetValidValue(value, true);
+                _WELLHOLE_DEPTH_MSR_UNIT = StructuralObject.SetValidValue(value, true, "WELLHOLE_DEPTH_MSR_UNIT");
                 ReportPropertyChanged("WELLHOLE_DEPTH_MSR_UNIT");
                 OnWELLHOLE_DEPTH_MSR_UNITChanged();
             }
@@ -9469,7 +12132,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnWQX_INDChanging(value);
                 ReportPropertyChanging("WQX_IND");
-                _WQX_IND = StructuralObject.SetValidValue(value);
+                _WQX_IND = StructuralObject.SetValidValue(value, "WQX_IND");
                 ReportPropertyChanged("WQX_IND");
                 OnWQX_INDChanged();
             }
@@ -9493,7 +12156,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnWQX_SUBMIT_STATUSChanging(value);
                 ReportPropertyChanging("WQX_SUBMIT_STATUS");
-                _WQX_SUBMIT_STATUS = StructuralObject.SetValidValue(value, true);
+                _WQX_SUBMIT_STATUS = StructuralObject.SetValidValue(value, true, "WQX_SUBMIT_STATUS");
                 ReportPropertyChanged("WQX_SUBMIT_STATUS");
                 OnWQX_SUBMIT_STATUSChanged();
             }
@@ -9517,7 +12180,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnWQX_UPDATE_DTChanging(value);
                 ReportPropertyChanging("WQX_UPDATE_DT");
-                _WQX_UPDATE_DT = StructuralObject.SetValidValue(value);
+                _WQX_UPDATE_DT = StructuralObject.SetValidValue(value, "WQX_UPDATE_DT");
                 ReportPropertyChanged("WQX_UPDATE_DT");
                 OnWQX_UPDATE_DTChanged();
             }
@@ -9541,7 +12204,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnIMPORT_MONLOC_IDChanging(value);
                 ReportPropertyChanging("IMPORT_MONLOC_ID");
-                _IMPORT_MONLOC_ID = StructuralObject.SetValidValue(value, true);
+                _IMPORT_MONLOC_ID = StructuralObject.SetValidValue(value, true, "IMPORT_MONLOC_ID");
                 ReportPropertyChanged("IMPORT_MONLOC_ID");
                 OnIMPORT_MONLOC_IDChanged();
             }
@@ -9565,7 +12228,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnACT_INDChanging(value);
                 ReportPropertyChanging("ACT_IND");
-                _ACT_IND = StructuralObject.SetValidValue(value);
+                _ACT_IND = StructuralObject.SetValidValue(value, "ACT_IND");
                 ReportPropertyChanged("ACT_IND");
                 OnACT_INDChanged();
             }
@@ -9589,7 +12252,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnCREATE_DTChanging(value);
                 ReportPropertyChanging("CREATE_DT");
-                _CREATE_DT = StructuralObject.SetValidValue(value);
+                _CREATE_DT = StructuralObject.SetValidValue(value, "CREATE_DT");
                 ReportPropertyChanged("CREATE_DT");
                 OnCREATE_DTChanged();
             }
@@ -9613,7 +12276,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnCREATE_USERIDChanging(value);
                 ReportPropertyChanging("CREATE_USERID");
-                _CREATE_USERID = StructuralObject.SetValidValue(value, true);
+                _CREATE_USERID = StructuralObject.SetValidValue(value, true, "CREATE_USERID");
                 ReportPropertyChanged("CREATE_USERID");
                 OnCREATE_USERIDChanged();
             }
@@ -9637,7 +12300,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnUPDATE_DTChanging(value);
                 ReportPropertyChanging("UPDATE_DT");
-                _UPDATE_DT = StructuralObject.SetValidValue(value);
+                _UPDATE_DT = StructuralObject.SetValidValue(value, "UPDATE_DT");
                 ReportPropertyChanged("UPDATE_DT");
                 OnUPDATE_DTChanged();
             }
@@ -9661,7 +12324,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnUPDATE_USERIDChanging(value);
                 ReportPropertyChanging("UPDATE_USERID");
-                _UPDATE_USERID = StructuralObject.SetValidValue(value, true);
+                _UPDATE_USERID = StructuralObject.SetValidValue(value, true, "UPDATE_USERID");
                 ReportPropertyChanged("UPDATE_USERID");
                 OnUPDATE_USERIDChanged();
             }
@@ -9672,30 +12335,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
 
         #endregion
 
-    
         #region Navigation Properties
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("OpenEnvironmentModel", "FK__T_WQX_ACT__MONLO__1B0907CE", "T_WQX_ACTIVITY")]
-        public EntityCollection<T_WQX_ACTIVITY> T_WQX_ACTIVITY
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<T_WQX_ACTIVITY>("OpenEnvironmentModel.FK__T_WQX_ACT__MONLO__1B0907CE", "T_WQX_ACTIVITY");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<T_WQX_ACTIVITY>("OpenEnvironmentModel.FK__T_WQX_ACT__MONLO__1B0907CE", "T_WQX_ACTIVITY", value);
-                }
-            }
-        }
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -9756,6 +12396,28 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
                 }
             }
         }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("OpenEnvironmentModel", "FK__T_WQX_ACT__MONLO__3D5E1FD2", "T_WQX_ACTIVITY")]
+        public EntityCollection<T_WQX_ACTIVITY> T_WQX_ACTIVITY
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<T_WQX_ACTIVITY>("OpenEnvironmentModel.FK__T_WQX_ACT__MONLO__3D5E1FD2", "T_WQX_ACTIVITY");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<T_WQX_ACTIVITY>("OpenEnvironmentModel.FK__T_WQX_ACT__MONLO__3D5E1FD2", "T_WQX_ACTIVITY", value);
+                }
+            }
+        }
 
         #endregion
 
@@ -9788,7 +12450,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
 
         #endregion
 
-        #region Primitive Properties
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -9807,7 +12469,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
                 {
                     OnORG_IDChanging(value);
                     ReportPropertyChanging("ORG_ID");
-                    _ORG_ID = StructuralObject.SetValidValue(value, false);
+                    _ORG_ID = StructuralObject.SetValidValue(value, false, "ORG_ID");
                     ReportPropertyChanged("ORG_ID");
                     OnORG_IDChanged();
                 }
@@ -9834,7 +12496,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
                 {
                     OnADDRESS_TYPEChanging(value);
                     ReportPropertyChanging("ADDRESS_TYPE");
-                    _ADDRESS_TYPE = StructuralObject.SetValidValue(value, false);
+                    _ADDRESS_TYPE = StructuralObject.SetValidValue(value, false, "ADDRESS_TYPE");
                     ReportPropertyChanged("ADDRESS_TYPE");
                     OnADDRESS_TYPEChanged();
                 }
@@ -9859,7 +12521,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnADDRESSChanging(value);
                 ReportPropertyChanging("ADDRESS");
-                _ADDRESS = StructuralObject.SetValidValue(value, false);
+                _ADDRESS = StructuralObject.SetValidValue(value, false, "ADDRESS");
                 ReportPropertyChanged("ADDRESS");
                 OnADDRESSChanged();
             }
@@ -9883,7 +12545,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnSUPP_ADDRESSChanging(value);
                 ReportPropertyChanging("SUPP_ADDRESS");
-                _SUPP_ADDRESS = StructuralObject.SetValidValue(value, true);
+                _SUPP_ADDRESS = StructuralObject.SetValidValue(value, true, "SUPP_ADDRESS");
                 ReportPropertyChanged("SUPP_ADDRESS");
                 OnSUPP_ADDRESSChanged();
             }
@@ -9907,7 +12569,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnLOCALITYChanging(value);
                 ReportPropertyChanging("LOCALITY");
-                _LOCALITY = StructuralObject.SetValidValue(value, true);
+                _LOCALITY = StructuralObject.SetValidValue(value, true, "LOCALITY");
                 ReportPropertyChanged("LOCALITY");
                 OnLOCALITYChanged();
             }
@@ -9931,7 +12593,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnSTATE_CDChanging(value);
                 ReportPropertyChanging("STATE_CD");
-                _STATE_CD = StructuralObject.SetValidValue(value, true);
+                _STATE_CD = StructuralObject.SetValidValue(value, true, "STATE_CD");
                 ReportPropertyChanged("STATE_CD");
                 OnSTATE_CDChanged();
             }
@@ -9955,7 +12617,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnPOSTAL_CDChanging(value);
                 ReportPropertyChanging("POSTAL_CD");
-                _POSTAL_CD = StructuralObject.SetValidValue(value, true);
+                _POSTAL_CD = StructuralObject.SetValidValue(value, true, "POSTAL_CD");
                 ReportPropertyChanged("POSTAL_CD");
                 OnPOSTAL_CDChanged();
             }
@@ -9979,7 +12641,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnCOUNTRY_CDChanging(value);
                 ReportPropertyChanging("COUNTRY_CD");
-                _COUNTRY_CD = StructuralObject.SetValidValue(value, true);
+                _COUNTRY_CD = StructuralObject.SetValidValue(value, true, "COUNTRY_CD");
                 ReportPropertyChanged("COUNTRY_CD");
                 OnCOUNTRY_CDChanged();
             }
@@ -10003,7 +12665,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnCOUNTY_CDChanging(value);
                 ReportPropertyChanging("COUNTY_CD");
-                _COUNTY_CD = StructuralObject.SetValidValue(value, true);
+                _COUNTY_CD = StructuralObject.SetValidValue(value, true, "COUNTY_CD");
                 ReportPropertyChanged("COUNTY_CD");
                 OnCOUNTY_CDChanged();
             }
@@ -10027,7 +12689,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnCREATE_DTChanging(value);
                 ReportPropertyChanging("CREATE_DT");
-                _CREATE_DT = StructuralObject.SetValidValue(value);
+                _CREATE_DT = StructuralObject.SetValidValue(value, "CREATE_DT");
                 ReportPropertyChanged("CREATE_DT");
                 OnCREATE_DTChanged();
             }
@@ -10051,7 +12713,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnCREATE_USERIDChanging(value);
                 ReportPropertyChanging("CREATE_USERID");
-                _CREATE_USERID = StructuralObject.SetValidValue(value, true);
+                _CREATE_USERID = StructuralObject.SetValidValue(value, true, "CREATE_USERID");
                 ReportPropertyChanged("CREATE_USERID");
                 OnCREATE_USERIDChanged();
             }
@@ -10075,7 +12737,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnUPDATE_DTChanging(value);
                 ReportPropertyChanging("UPDATE_DT");
-                _UPDATE_DT = StructuralObject.SetValidValue(value);
+                _UPDATE_DT = StructuralObject.SetValidValue(value, "UPDATE_DT");
                 ReportPropertyChanged("UPDATE_DT");
                 OnUPDATE_DTChanged();
             }
@@ -10099,7 +12761,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnUPDATE_USERIDChanging(value);
                 ReportPropertyChanging("UPDATE_USERID");
-                _UPDATE_USERID = StructuralObject.SetValidValue(value, true);
+                _UPDATE_USERID = StructuralObject.SetValidValue(value, true, "UPDATE_USERID");
                 ReportPropertyChanged("UPDATE_USERID");
                 OnUPDATE_USERIDChanged();
             }
@@ -10110,7 +12772,6 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
 
         #endregion
 
-    
         #region Navigation Properties
     
         /// <summary>
@@ -10184,7 +12845,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
 
         #endregion
 
-        #region Primitive Properties
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -10203,7 +12864,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
                 {
                     OnORG_IDChanging(value);
                     ReportPropertyChanging("ORG_ID");
-                    _ORG_ID = StructuralObject.SetValidValue(value, false);
+                    _ORG_ID = StructuralObject.SetValidValue(value, false, "ORG_ID");
                     ReportPropertyChanged("ORG_ID");
                     OnORG_IDChanged();
                 }
@@ -10228,7 +12889,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnORG_FORMAL_NAMEChanging(value);
                 ReportPropertyChanging("ORG_FORMAL_NAME");
-                _ORG_FORMAL_NAME = StructuralObject.SetValidValue(value, false);
+                _ORG_FORMAL_NAME = StructuralObject.SetValidValue(value, false, "ORG_FORMAL_NAME");
                 ReportPropertyChanged("ORG_FORMAL_NAME");
                 OnORG_FORMAL_NAMEChanged();
             }
@@ -10252,7 +12913,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnORG_DESCChanging(value);
                 ReportPropertyChanging("ORG_DESC");
-                _ORG_DESC = StructuralObject.SetValidValue(value, true);
+                _ORG_DESC = StructuralObject.SetValidValue(value, true, "ORG_DESC");
                 ReportPropertyChanged("ORG_DESC");
                 OnORG_DESCChanged();
             }
@@ -10276,7 +12937,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnTRIBAL_CODEChanging(value);
                 ReportPropertyChanging("TRIBAL_CODE");
-                _TRIBAL_CODE = StructuralObject.SetValidValue(value, true);
+                _TRIBAL_CODE = StructuralObject.SetValidValue(value, true, "TRIBAL_CODE");
                 ReportPropertyChanged("TRIBAL_CODE");
                 OnTRIBAL_CODEChanged();
             }
@@ -10300,7 +12961,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnELECTRONICADDRESSChanging(value);
                 ReportPropertyChanging("ELECTRONICADDRESS");
-                _ELECTRONICADDRESS = StructuralObject.SetValidValue(value, false);
+                _ELECTRONICADDRESS = StructuralObject.SetValidValue(value, false, "ELECTRONICADDRESS");
                 ReportPropertyChanged("ELECTRONICADDRESS");
                 OnELECTRONICADDRESSChanged();
             }
@@ -10324,7 +12985,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnELECTRONICADDRESSTYPEChanging(value);
                 ReportPropertyChanging("ELECTRONICADDRESSTYPE");
-                _ELECTRONICADDRESSTYPE = StructuralObject.SetValidValue(value, true);
+                _ELECTRONICADDRESSTYPE = StructuralObject.SetValidValue(value, true, "ELECTRONICADDRESSTYPE");
                 ReportPropertyChanged("ELECTRONICADDRESSTYPE");
                 OnELECTRONICADDRESSTYPEChanged();
             }
@@ -10348,7 +13009,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnTELEPHONE_NUMChanging(value);
                 ReportPropertyChanging("TELEPHONE_NUM");
-                _TELEPHONE_NUM = StructuralObject.SetValidValue(value, false);
+                _TELEPHONE_NUM = StructuralObject.SetValidValue(value, false, "TELEPHONE_NUM");
                 ReportPropertyChanged("TELEPHONE_NUM");
                 OnTELEPHONE_NUMChanged();
             }
@@ -10372,7 +13033,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnTELEPHONE_NUM_TYPEChanging(value);
                 ReportPropertyChanging("TELEPHONE_NUM_TYPE");
-                _TELEPHONE_NUM_TYPE = StructuralObject.SetValidValue(value, true);
+                _TELEPHONE_NUM_TYPE = StructuralObject.SetValidValue(value, true, "TELEPHONE_NUM_TYPE");
                 ReportPropertyChanged("TELEPHONE_NUM_TYPE");
                 OnTELEPHONE_NUM_TYPEChanged();
             }
@@ -10396,7 +13057,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnTELEPHONE_EXTChanging(value);
                 ReportPropertyChanging("TELEPHONE_EXT");
-                _TELEPHONE_EXT = StructuralObject.SetValidValue(value, true);
+                _TELEPHONE_EXT = StructuralObject.SetValidValue(value, true, "TELEPHONE_EXT");
                 ReportPropertyChanged("TELEPHONE_EXT");
                 OnTELEPHONE_EXTChanged();
             }
@@ -10420,7 +13081,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnCDX_SUBMITTER_IDChanging(value);
                 ReportPropertyChanging("CDX_SUBMITTER_ID");
-                _CDX_SUBMITTER_ID = StructuralObject.SetValidValue(value, true);
+                _CDX_SUBMITTER_ID = StructuralObject.SetValidValue(value, true, "CDX_SUBMITTER_ID");
                 ReportPropertyChanged("CDX_SUBMITTER_ID");
                 OnCDX_SUBMITTER_IDChanged();
             }
@@ -10444,7 +13105,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnCDX_SUBMITTER_PWD_HASHChanging(value);
                 ReportPropertyChanging("CDX_SUBMITTER_PWD_HASH");
-                _CDX_SUBMITTER_PWD_HASH = StructuralObject.SetValidValue(value, true);
+                _CDX_SUBMITTER_PWD_HASH = StructuralObject.SetValidValue(value, true, "CDX_SUBMITTER_PWD_HASH");
                 ReportPropertyChanged("CDX_SUBMITTER_PWD_HASH");
                 OnCDX_SUBMITTER_PWD_HASHChanged();
             }
@@ -10468,7 +13129,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnCDX_SUBMITTER_PWD_SALTChanging(value);
                 ReportPropertyChanging("CDX_SUBMITTER_PWD_SALT");
-                _CDX_SUBMITTER_PWD_SALT = StructuralObject.SetValidValue(value, true);
+                _CDX_SUBMITTER_PWD_SALT = StructuralObject.SetValidValue(value, true, "CDX_SUBMITTER_PWD_SALT");
                 ReportPropertyChanged("CDX_SUBMITTER_PWD_SALT");
                 OnCDX_SUBMITTER_PWD_SALTChanged();
             }
@@ -10492,7 +13153,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnCREATE_DTChanging(value);
                 ReportPropertyChanging("CREATE_DT");
-                _CREATE_DT = StructuralObject.SetValidValue(value);
+                _CREATE_DT = StructuralObject.SetValidValue(value, "CREATE_DT");
                 ReportPropertyChanged("CREATE_DT");
                 OnCREATE_DTChanged();
             }
@@ -10516,7 +13177,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnCREATE_USERIDChanging(value);
                 ReportPropertyChanging("CREATE_USERID");
-                _CREATE_USERID = StructuralObject.SetValidValue(value, true);
+                _CREATE_USERID = StructuralObject.SetValidValue(value, true, "CREATE_USERID");
                 ReportPropertyChanged("CREATE_USERID");
                 OnCREATE_USERIDChanged();
             }
@@ -10540,7 +13201,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnUPDATE_DTChanging(value);
                 ReportPropertyChanging("UPDATE_DT");
-                _UPDATE_DT = StructuralObject.SetValidValue(value);
+                _UPDATE_DT = StructuralObject.SetValidValue(value, "UPDATE_DT");
                 ReportPropertyChanged("UPDATE_DT");
                 OnUPDATE_DTChanged();
             }
@@ -10564,7 +13225,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnUPDATE_USERIDChanging(value);
                 ReportPropertyChanging("UPDATE_USERID");
-                _UPDATE_USERID = StructuralObject.SetValidValue(value, true);
+                _UPDATE_USERID = StructuralObject.SetValidValue(value, true, "UPDATE_USERID");
                 ReportPropertyChanged("UPDATE_USERID");
                 OnUPDATE_USERIDChanged();
             }
@@ -10588,7 +13249,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnCDX_SUBMIT_INDChanging(value);
                 ReportPropertyChanging("CDX_SUBMIT_IND");
-                _CDX_SUBMIT_IND = StructuralObject.SetValidValue(value);
+                _CDX_SUBMIT_IND = StructuralObject.SetValidValue(value, "CDX_SUBMIT_IND");
                 ReportPropertyChanged("CDX_SUBMIT_IND");
                 OnCDX_SUBMIT_INDChanged();
             }
@@ -10596,33 +13257,34 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
         private Nullable<global::System.Boolean> _CDX_SUBMIT_IND;
         partial void OnCDX_SUBMIT_INDChanging(Nullable<global::System.Boolean> value);
         partial void OnCDX_SUBMIT_INDChanged();
-
-        #endregion
-
-    
-        #region Navigation Properties
     
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("OpenEnvironmentModel", "FK__T_WQX_ACT__ORG_I__30F848ED", "T_WQX_ACTIVITY")]
-        public EntityCollection<T_WQX_ACTIVITY> T_WQX_ACTIVITY
+        public global::System.String DEFAULT_TIMEZONE
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<T_WQX_ACTIVITY>("OpenEnvironmentModel.FK__T_WQX_ACT__ORG_I__30F848ED", "T_WQX_ACTIVITY");
+                return _DEFAULT_TIMEZONE;
             }
             set
             {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<T_WQX_ACTIVITY>("OpenEnvironmentModel.FK__T_WQX_ACT__ORG_I__30F848ED", "T_WQX_ACTIVITY", value);
-                }
+                OnDEFAULT_TIMEZONEChanging(value);
+                ReportPropertyChanging("DEFAULT_TIMEZONE");
+                _DEFAULT_TIMEZONE = StructuralObject.SetValidValue(value, true, "DEFAULT_TIMEZONE");
+                ReportPropertyChanged("DEFAULT_TIMEZONE");
+                OnDEFAULT_TIMEZONEChanged();
             }
         }
+        private global::System.String _DEFAULT_TIMEZONE;
+        partial void OnDEFAULT_TIMEZONEChanging(global::System.String value);
+        partial void OnDEFAULT_TIMEZONEChanged();
+
+        #endregion
+
+        #region Navigation Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -10642,28 +13304,6 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<T_WQX_BIO_HABITAT_INDEX>("OpenEnvironmentModel.FK__T_WQX_BIO__ORG_I__34C8D9D1", "T_WQX_BIO_HABITAT_INDEX", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("OpenEnvironmentModel", "FK__T_WQX_IMP__ORG_I__4CA06362", "T_WQX_IMPORT_LOG")]
-        public EntityCollection<T_WQX_IMPORT_LOG> T_WQX_IMPORT_LOG
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<T_WQX_IMPORT_LOG>("OpenEnvironmentModel.FK__T_WQX_IMP__ORG_I__4CA06362", "T_WQX_IMPORT_LOG");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<T_WQX_IMPORT_LOG>("OpenEnvironmentModel.FK__T_WQX_IMP__ORG_I__4CA06362", "T_WQX_IMPORT_LOG", value);
                 }
             }
         }
@@ -10762,28 +13402,6 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("OpenEnvironmentModel", "FK__T_WQX_REF__ORG_I__46E78A0C", "T_WQX_REF_CHAR_ORG")]
-        public EntityCollection<T_WQX_REF_CHAR_ORG> T_WQX_REF_CHAR_ORG
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<T_WQX_REF_CHAR_ORG>("OpenEnvironmentModel.FK__T_WQX_REF__ORG_I__46E78A0C", "T_WQX_REF_CHAR_ORG");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<T_WQX_REF_CHAR_ORG>("OpenEnvironmentModel.FK__T_WQX_REF__ORG_I__46E78A0C", "T_WQX_REF_CHAR_ORG", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("OpenEnvironmentModel", "FK__T_WQX_USE__ORG_I__25869641", "T_WQX_USER_ORGS")]
         public EntityCollection<T_WQX_USER_ORGS> T_WQX_USER_ORGS
         {
@@ -10796,6 +13414,94 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<T_WQX_USER_ORGS>("OpenEnvironmentModel.FK__T_WQX_USE__ORG_I__25869641", "T_WQX_USER_ORGS", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("OpenEnvironmentModel", "FK__T_WQX_ACT__ORG_I__3E52440B", "T_WQX_ACTIVITY")]
+        public EntityCollection<T_WQX_ACTIVITY> T_WQX_ACTIVITY
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<T_WQX_ACTIVITY>("OpenEnvironmentModel.FK__T_WQX_ACT__ORG_I__3E52440B", "T_WQX_ACTIVITY");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<T_WQX_ACTIVITY>("OpenEnvironmentModel.FK__T_WQX_ACT__ORG_I__3E52440B", "T_WQX_ACTIVITY", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("OpenEnvironmentModel", "FK__T_WQX_IMP__ORG_I__534D60F1", "T_WQX_IMPORT_LOG")]
+        public EntityCollection<T_WQX_IMPORT_LOG> T_WQX_IMPORT_LOG
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<T_WQX_IMPORT_LOG>("OpenEnvironmentModel.FK__T_WQX_IMP__ORG_I__534D60F1", "T_WQX_IMPORT_LOG");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<T_WQX_IMPORT_LOG>("OpenEnvironmentModel.FK__T_WQX_IMP__ORG_I__534D60F1", "T_WQX_IMPORT_LOG", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("OpenEnvironmentModel", "FK__T_WQX_REF__ORG_I__756D6ECB", "T_WQX_REF_TAXA_ORG")]
+        public EntityCollection<T_WQX_REF_TAXA_ORG> T_WQX_REF_TAXA_ORG
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<T_WQX_REF_TAXA_ORG>("OpenEnvironmentModel.FK__T_WQX_REF__ORG_I__756D6ECB", "T_WQX_REF_TAXA_ORG");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<T_WQX_REF_TAXA_ORG>("OpenEnvironmentModel.FK__T_WQX_REF__ORG_I__756D6ECB", "T_WQX_REF_TAXA_ORG", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("OpenEnvironmentModel", "FK__T_WQX_REF__ORG_I__4D94879B", "T_WQX_REF_CHAR_ORG")]
+        public EntityCollection<T_WQX_REF_CHAR_ORG> T_WQX_REF_CHAR_ORG
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<T_WQX_REF_CHAR_ORG>("OpenEnvironmentModel.FK__T_WQX_REF__ORG_I__4D94879B", "T_WQX_REF_CHAR_ORG");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<T_WQX_REF_CHAR_ORG>("OpenEnvironmentModel.FK__T_WQX_REF__ORG_I__4D94879B", "T_WQX_REF_CHAR_ORG", value);
                 }
             }
         }
@@ -10833,7 +13539,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
 
         #endregion
 
-        #region Primitive Properties
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -10852,7 +13558,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
                 {
                     OnPROJECT_IDXChanging(value);
                     ReportPropertyChanging("PROJECT_IDX");
-                    _PROJECT_IDX = StructuralObject.SetValidValue(value);
+                    _PROJECT_IDX = StructuralObject.SetValidValue(value, "PROJECT_IDX");
                     ReportPropertyChanged("PROJECT_IDX");
                     OnPROJECT_IDXChanged();
                 }
@@ -10877,7 +13583,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnORG_IDChanging(value);
                 ReportPropertyChanging("ORG_ID");
-                _ORG_ID = StructuralObject.SetValidValue(value, false);
+                _ORG_ID = StructuralObject.SetValidValue(value, false, "ORG_ID");
                 ReportPropertyChanged("ORG_ID");
                 OnORG_IDChanged();
             }
@@ -10901,7 +13607,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnPROJECT_IDChanging(value);
                 ReportPropertyChanging("PROJECT_ID");
-                _PROJECT_ID = StructuralObject.SetValidValue(value, false);
+                _PROJECT_ID = StructuralObject.SetValidValue(value, false, "PROJECT_ID");
                 ReportPropertyChanged("PROJECT_ID");
                 OnPROJECT_IDChanged();
             }
@@ -10925,7 +13631,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnPROJECT_NAMEChanging(value);
                 ReportPropertyChanging("PROJECT_NAME");
-                _PROJECT_NAME = StructuralObject.SetValidValue(value, false);
+                _PROJECT_NAME = StructuralObject.SetValidValue(value, false, "PROJECT_NAME");
                 ReportPropertyChanged("PROJECT_NAME");
                 OnPROJECT_NAMEChanged();
             }
@@ -10949,7 +13655,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnPROJECT_DESCChanging(value);
                 ReportPropertyChanging("PROJECT_DESC");
-                _PROJECT_DESC = StructuralObject.SetValidValue(value, true);
+                _PROJECT_DESC = StructuralObject.SetValidValue(value, true, "PROJECT_DESC");
                 ReportPropertyChanged("PROJECT_DESC");
                 OnPROJECT_DESCChanged();
             }
@@ -10973,7 +13679,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnSAMP_DESIGN_TYPE_CDChanging(value);
                 ReportPropertyChanging("SAMP_DESIGN_TYPE_CD");
-                _SAMP_DESIGN_TYPE_CD = StructuralObject.SetValidValue(value, true);
+                _SAMP_DESIGN_TYPE_CD = StructuralObject.SetValidValue(value, true, "SAMP_DESIGN_TYPE_CD");
                 ReportPropertyChanged("SAMP_DESIGN_TYPE_CD");
                 OnSAMP_DESIGN_TYPE_CDChanged();
             }
@@ -10997,7 +13703,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnQAPP_APPROVAL_INDChanging(value);
                 ReportPropertyChanging("QAPP_APPROVAL_IND");
-                _QAPP_APPROVAL_IND = StructuralObject.SetValidValue(value);
+                _QAPP_APPROVAL_IND = StructuralObject.SetValidValue(value, "QAPP_APPROVAL_IND");
                 ReportPropertyChanged("QAPP_APPROVAL_IND");
                 OnQAPP_APPROVAL_INDChanged();
             }
@@ -11021,7 +13727,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnQAPP_APPROVAL_AGENCYChanging(value);
                 ReportPropertyChanging("QAPP_APPROVAL_AGENCY");
-                _QAPP_APPROVAL_AGENCY = StructuralObject.SetValidValue(value, true);
+                _QAPP_APPROVAL_AGENCY = StructuralObject.SetValidValue(value, true, "QAPP_APPROVAL_AGENCY");
                 ReportPropertyChanged("QAPP_APPROVAL_AGENCY");
                 OnQAPP_APPROVAL_AGENCYChanged();
             }
@@ -11045,7 +13751,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnWQX_INDChanging(value);
                 ReportPropertyChanging("WQX_IND");
-                _WQX_IND = StructuralObject.SetValidValue(value);
+                _WQX_IND = StructuralObject.SetValidValue(value, "WQX_IND");
                 ReportPropertyChanged("WQX_IND");
                 OnWQX_INDChanged();
             }
@@ -11069,7 +13775,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnWQX_SUBMIT_STATUSChanging(value);
                 ReportPropertyChanging("WQX_SUBMIT_STATUS");
-                _WQX_SUBMIT_STATUS = StructuralObject.SetValidValue(value, true);
+                _WQX_SUBMIT_STATUS = StructuralObject.SetValidValue(value, true, "WQX_SUBMIT_STATUS");
                 ReportPropertyChanged("WQX_SUBMIT_STATUS");
                 OnWQX_SUBMIT_STATUSChanged();
             }
@@ -11093,7 +13799,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnWQX_UPDATE_DTChanging(value);
                 ReportPropertyChanging("WQX_UPDATE_DT");
-                _WQX_UPDATE_DT = StructuralObject.SetValidValue(value);
+                _WQX_UPDATE_DT = StructuralObject.SetValidValue(value, "WQX_UPDATE_DT");
                 ReportPropertyChanged("WQX_UPDATE_DT");
                 OnWQX_UPDATE_DTChanged();
             }
@@ -11117,7 +13823,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnACT_INDChanging(value);
                 ReportPropertyChanging("ACT_IND");
-                _ACT_IND = StructuralObject.SetValidValue(value);
+                _ACT_IND = StructuralObject.SetValidValue(value, "ACT_IND");
                 ReportPropertyChanged("ACT_IND");
                 OnACT_INDChanged();
             }
@@ -11141,7 +13847,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnCREATE_DTChanging(value);
                 ReportPropertyChanging("CREATE_DT");
-                _CREATE_DT = StructuralObject.SetValidValue(value);
+                _CREATE_DT = StructuralObject.SetValidValue(value, "CREATE_DT");
                 ReportPropertyChanged("CREATE_DT");
                 OnCREATE_DTChanged();
             }
@@ -11165,7 +13871,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnCREATE_USERIDChanging(value);
                 ReportPropertyChanging("CREATE_USERID");
-                _CREATE_USERID = StructuralObject.SetValidValue(value, true);
+                _CREATE_USERID = StructuralObject.SetValidValue(value, true, "CREATE_USERID");
                 ReportPropertyChanged("CREATE_USERID");
                 OnCREATE_USERIDChanged();
             }
@@ -11189,7 +13895,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnUPDATE_DTChanging(value);
                 ReportPropertyChanging("UPDATE_DT");
-                _UPDATE_DT = StructuralObject.SetValidValue(value);
+                _UPDATE_DT = StructuralObject.SetValidValue(value, "UPDATE_DT");
                 ReportPropertyChanged("UPDATE_DT");
                 OnUPDATE_DTChanged();
             }
@@ -11213,7 +13919,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnUPDATE_USERIDChanging(value);
                 ReportPropertyChanging("UPDATE_USERID");
-                _UPDATE_USERID = StructuralObject.SetValidValue(value, true);
+                _UPDATE_USERID = StructuralObject.SetValidValue(value, true, "UPDATE_USERID");
                 ReportPropertyChanged("UPDATE_USERID");
                 OnUPDATE_USERIDChanged();
             }
@@ -11224,30 +13930,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
 
         #endregion
 
-    
         #region Navigation Properties
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("OpenEnvironmentModel", "FK__T_WQX_ACT__PROJE__1A14E395", "T_WQX_ACTIVITY")]
-        public EntityCollection<T_WQX_ACTIVITY> T_WQX_ACTIVITY
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<T_WQX_ACTIVITY>("OpenEnvironmentModel.FK__T_WQX_ACT__PROJE__1A14E395", "T_WQX_ACTIVITY");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<T_WQX_ACTIVITY>("OpenEnvironmentModel.FK__T_WQX_ACT__PROJE__1A14E395", "T_WQX_ACTIVITY", value);
-                }
-            }
-        }
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -11286,6 +13969,28 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
                 }
             }
         }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("OpenEnvironmentModel", "FK__T_WQX_ACT__PROJE__3C69FB99", "T_WQX_ACTIVITY")]
+        public EntityCollection<T_WQX_ACTIVITY> T_WQX_ACTIVITY
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<T_WQX_ACTIVITY>("OpenEnvironmentModel.FK__T_WQX_ACT__PROJE__3C69FB99", "T_WQX_ACTIVITY");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<T_WQX_ACTIVITY>("OpenEnvironmentModel.FK__T_WQX_ACT__PROJE__3C69FB99", "T_WQX_ACTIVITY", value);
+                }
+            }
+        }
 
         #endregion
 
@@ -11318,7 +14023,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
 
         #endregion
 
-        #region Primitive Properties
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -11337,7 +14042,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
                 {
                     OnANALYTIC_METHOD_IDXChanging(value);
                     ReportPropertyChanging("ANALYTIC_METHOD_IDX");
-                    _ANALYTIC_METHOD_IDX = StructuralObject.SetValidValue(value);
+                    _ANALYTIC_METHOD_IDX = StructuralObject.SetValidValue(value, "ANALYTIC_METHOD_IDX");
                     ReportPropertyChanged("ANALYTIC_METHOD_IDX");
                     OnANALYTIC_METHOD_IDXChanged();
                 }
@@ -11362,7 +14067,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnANALYTIC_METHOD_IDChanging(value);
                 ReportPropertyChanging("ANALYTIC_METHOD_ID");
-                _ANALYTIC_METHOD_ID = StructuralObject.SetValidValue(value, false);
+                _ANALYTIC_METHOD_ID = StructuralObject.SetValidValue(value, false, "ANALYTIC_METHOD_ID");
                 ReportPropertyChanged("ANALYTIC_METHOD_ID");
                 OnANALYTIC_METHOD_IDChanged();
             }
@@ -11386,7 +14091,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnANALYTIC_METHOD_CTXChanging(value);
                 ReportPropertyChanging("ANALYTIC_METHOD_CTX");
-                _ANALYTIC_METHOD_CTX = StructuralObject.SetValidValue(value, false);
+                _ANALYTIC_METHOD_CTX = StructuralObject.SetValidValue(value, false, "ANALYTIC_METHOD_CTX");
                 ReportPropertyChanged("ANALYTIC_METHOD_CTX");
                 OnANALYTIC_METHOD_CTXChanged();
             }
@@ -11410,7 +14115,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnANALYTIC_METHOD_NAMEChanging(value);
                 ReportPropertyChanging("ANALYTIC_METHOD_NAME");
-                _ANALYTIC_METHOD_NAME = StructuralObject.SetValidValue(value, true);
+                _ANALYTIC_METHOD_NAME = StructuralObject.SetValidValue(value, true, "ANALYTIC_METHOD_NAME");
                 ReportPropertyChanged("ANALYTIC_METHOD_NAME");
                 OnANALYTIC_METHOD_NAMEChanged();
             }
@@ -11434,7 +14139,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnANALYTIC_METHOD_DESCChanging(value);
                 ReportPropertyChanging("ANALYTIC_METHOD_DESC");
-                _ANALYTIC_METHOD_DESC = StructuralObject.SetValidValue(value, true);
+                _ANALYTIC_METHOD_DESC = StructuralObject.SetValidValue(value, true, "ANALYTIC_METHOD_DESC");
                 ReportPropertyChanged("ANALYTIC_METHOD_DESC");
                 OnANALYTIC_METHOD_DESCChanged();
             }
@@ -11458,7 +14163,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnACT_INDChanging(value);
                 ReportPropertyChanging("ACT_IND");
-                _ACT_IND = StructuralObject.SetValidValue(value);
+                _ACT_IND = StructuralObject.SetValidValue(value, "ACT_IND");
                 ReportPropertyChanged("ACT_IND");
                 OnACT_INDChanged();
             }
@@ -11482,7 +14187,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnUPDATE_DTChanging(value);
                 ReportPropertyChanging("UPDATE_DT");
-                _UPDATE_DT = StructuralObject.SetValidValue(value);
+                _UPDATE_DT = StructuralObject.SetValidValue(value, "UPDATE_DT");
                 ReportPropertyChanged("UPDATE_DT");
                 OnUPDATE_DTChanged();
             }
@@ -11493,7 +14198,6 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
 
         #endregion
 
-    
         #region Navigation Properties
     
         /// <summary>
@@ -11502,18 +14206,40 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("OpenEnvironmentModel", "FK__T_WQX_RES__ANALY__286302EC", "T_WQX_RESULT")]
+        [EdmRelationshipNavigationPropertyAttribute("OpenEnvironmentModel", "FK__T_WQX_RES__ANALY__4AB81AF0", "T_WQX_RESULT")]
         public EntityCollection<T_WQX_RESULT> T_WQX_RESULT
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<T_WQX_RESULT>("OpenEnvironmentModel.FK__T_WQX_RES__ANALY__286302EC", "T_WQX_RESULT");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<T_WQX_RESULT>("OpenEnvironmentModel.FK__T_WQX_RES__ANALY__4AB81AF0", "T_WQX_RESULT");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<T_WQX_RESULT>("OpenEnvironmentModel.FK__T_WQX_RES__ANALY__286302EC", "T_WQX_RESULT", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<T_WQX_RESULT>("OpenEnvironmentModel.FK__T_WQX_RES__ANALY__4AB81AF0", "T_WQX_RESULT", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("OpenEnvironmentModel", "FK_T_WQX_REF_CHAR_ORG", "T_WQX_REF_CHAR_ORG")]
+        public EntityCollection<T_WQX_REF_CHAR_ORG> T_WQX_REF_CHAR_ORG
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<T_WQX_REF_CHAR_ORG>("OpenEnvironmentModel.FK_T_WQX_REF_CHAR_ORG", "T_WQX_REF_CHAR_ORG");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<T_WQX_REF_CHAR_ORG>("OpenEnvironmentModel.FK_T_WQX_REF_CHAR_ORG", "T_WQX_REF_CHAR_ORG", value);
                 }
             }
         }
@@ -11547,7 +14273,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
 
         #endregion
 
-        #region Primitive Properties
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -11566,7 +14292,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
                 {
                     OnCHAR_NAMEChanging(value);
                     ReportPropertyChanging("CHAR_NAME");
-                    _CHAR_NAME = StructuralObject.SetValidValue(value, false);
+                    _CHAR_NAME = StructuralObject.SetValidValue(value, false, "CHAR_NAME");
                     ReportPropertyChanged("CHAR_NAME");
                     OnCHAR_NAMEChanged();
                 }
@@ -11593,7 +14319,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
                 {
                     OnUNIT_NAMEChanging(value);
                     ReportPropertyChanging("UNIT_NAME");
-                    _UNIT_NAME = StructuralObject.SetValidValue(value, false);
+                    _UNIT_NAME = StructuralObject.SetValidValue(value, false, "UNIT_NAME");
                     ReportPropertyChanged("UNIT_NAME");
                     OnUNIT_NAMEChanged();
                 }
@@ -11618,7 +14344,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnLOWER_BOUNDChanging(value);
                 ReportPropertyChanging("LOWER_BOUND");
-                _LOWER_BOUND = StructuralObject.SetValidValue(value);
+                _LOWER_BOUND = StructuralObject.SetValidValue(value, "LOWER_BOUND");
                 ReportPropertyChanged("LOWER_BOUND");
                 OnLOWER_BOUNDChanged();
             }
@@ -11642,7 +14368,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnUPPER_BOUNDChanging(value);
                 ReportPropertyChanging("UPPER_BOUND");
-                _UPPER_BOUND = StructuralObject.SetValidValue(value);
+                _UPPER_BOUND = StructuralObject.SetValidValue(value, "UPPER_BOUND");
                 ReportPropertyChanged("UPPER_BOUND");
                 OnUPPER_BOUNDChanged();
             }
@@ -11666,7 +14392,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnACT_INDChanging(value);
                 ReportPropertyChanging("ACT_IND");
-                _ACT_IND = StructuralObject.SetValidValue(value);
+                _ACT_IND = StructuralObject.SetValidValue(value, "ACT_IND");
                 ReportPropertyChanged("ACT_IND");
                 OnACT_INDChanged();
             }
@@ -11690,7 +14416,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnCREATE_DTChanging(value);
                 ReportPropertyChanging("CREATE_DT");
-                _CREATE_DT = StructuralObject.SetValidValue(value);
+                _CREATE_DT = StructuralObject.SetValidValue(value, "CREATE_DT");
                 ReportPropertyChanged("CREATE_DT");
                 OnCREATE_DTChanged();
             }
@@ -11714,7 +14440,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnCREATE_USERIDChanging(value);
                 ReportPropertyChanging("CREATE_USERID");
-                _CREATE_USERID = StructuralObject.SetValidValue(value, true);
+                _CREATE_USERID = StructuralObject.SetValidValue(value, true, "CREATE_USERID");
                 ReportPropertyChanged("CREATE_USERID");
                 OnCREATE_USERIDChanged();
             }
@@ -11738,7 +14464,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnUPDATE_DTChanging(value);
                 ReportPropertyChanging("UPDATE_DT");
-                _UPDATE_DT = StructuralObject.SetValidValue(value);
+                _UPDATE_DT = StructuralObject.SetValidValue(value, "UPDATE_DT");
                 ReportPropertyChanged("UPDATE_DT");
                 OnUPDATE_DTChanged();
             }
@@ -11762,7 +14488,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnUPDATE_USERIDChanging(value);
                 ReportPropertyChanging("UPDATE_USERID");
-                _UPDATE_USERID = StructuralObject.SetValidValue(value, true);
+                _UPDATE_USERID = StructuralObject.SetValidValue(value, true, "UPDATE_USERID");
                 ReportPropertyChanged("UPDATE_USERID");
                 OnUPDATE_USERIDChanged();
             }
@@ -11773,7 +14499,6 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
 
         #endregion
 
-    
         #region Navigation Properties
     
         /// <summary>
@@ -11843,7 +14568,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
 
         #endregion
 
-        #region Primitive Properties
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -11862,7 +14587,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
                 {
                     OnCHAR_NAMEChanging(value);
                     ReportPropertyChanging("CHAR_NAME");
-                    _CHAR_NAME = StructuralObject.SetValidValue(value, false);
+                    _CHAR_NAME = StructuralObject.SetValidValue(value, false, "CHAR_NAME");
                     ReportPropertyChanged("CHAR_NAME");
                     OnCHAR_NAMEChanged();
                 }
@@ -11889,7 +14614,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
                 {
                     OnORG_IDChanging(value);
                     ReportPropertyChanging("ORG_ID");
-                    _ORG_ID = StructuralObject.SetValidValue(value, false);
+                    _ORG_ID = StructuralObject.SetValidValue(value, false, "ORG_ID");
                     ReportPropertyChanged("ORG_ID");
                     OnORG_IDChanged();
                 }
@@ -11914,7 +14639,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnCREATE_USERIDChanging(value);
                 ReportPropertyChanging("CREATE_USERID");
-                _CREATE_USERID = StructuralObject.SetValidValue(value, true);
+                _CREATE_USERID = StructuralObject.SetValidValue(value, true, "CREATE_USERID");
                 ReportPropertyChanged("CREATE_USERID");
                 OnCREATE_USERIDChanged();
             }
@@ -11938,7 +14663,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnCREATE_DTChanging(value);
                 ReportPropertyChanging("CREATE_DT");
-                _CREATE_DT = StructuralObject.SetValidValue(value);
+                _CREATE_DT = StructuralObject.SetValidValue(value, "CREATE_DT");
                 ReportPropertyChanged("CREATE_DT");
                 OnCREATE_DTChanged();
             }
@@ -11946,10 +14671,153 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
         private Nullable<global::System.DateTime> _CREATE_DT;
         partial void OnCREATE_DTChanging(Nullable<global::System.DateTime> value);
         partial void OnCREATE_DTChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String DEFAULT_DETECT_LIMIT
+        {
+            get
+            {
+                return _DEFAULT_DETECT_LIMIT;
+            }
+            set
+            {
+                OnDEFAULT_DETECT_LIMITChanging(value);
+                ReportPropertyChanging("DEFAULT_DETECT_LIMIT");
+                _DEFAULT_DETECT_LIMIT = StructuralObject.SetValidValue(value, true, "DEFAULT_DETECT_LIMIT");
+                ReportPropertyChanged("DEFAULT_DETECT_LIMIT");
+                OnDEFAULT_DETECT_LIMITChanged();
+            }
+        }
+        private global::System.String _DEFAULT_DETECT_LIMIT;
+        partial void OnDEFAULT_DETECT_LIMITChanging(global::System.String value);
+        partial void OnDEFAULT_DETECT_LIMITChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String DEFAULT_UNIT
+        {
+            get
+            {
+                return _DEFAULT_UNIT;
+            }
+            set
+            {
+                OnDEFAULT_UNITChanging(value);
+                ReportPropertyChanging("DEFAULT_UNIT");
+                _DEFAULT_UNIT = StructuralObject.SetValidValue(value, true, "DEFAULT_UNIT");
+                ReportPropertyChanged("DEFAULT_UNIT");
+                OnDEFAULT_UNITChanged();
+            }
+        }
+        private global::System.String _DEFAULT_UNIT;
+        partial void OnDEFAULT_UNITChanging(global::System.String value);
+        partial void OnDEFAULT_UNITChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> DEFAULT_ANAL_METHOD_IDX
+        {
+            get
+            {
+                return _DEFAULT_ANAL_METHOD_IDX;
+            }
+            set
+            {
+                OnDEFAULT_ANAL_METHOD_IDXChanging(value);
+                ReportPropertyChanging("DEFAULT_ANAL_METHOD_IDX");
+                _DEFAULT_ANAL_METHOD_IDX = StructuralObject.SetValidValue(value, "DEFAULT_ANAL_METHOD_IDX");
+                ReportPropertyChanged("DEFAULT_ANAL_METHOD_IDX");
+                OnDEFAULT_ANAL_METHOD_IDXChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _DEFAULT_ANAL_METHOD_IDX;
+        partial void OnDEFAULT_ANAL_METHOD_IDXChanging(Nullable<global::System.Int32> value);
+        partial void OnDEFAULT_ANAL_METHOD_IDXChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String DEFAULT_SAMP_FRACTION
+        {
+            get
+            {
+                return _DEFAULT_SAMP_FRACTION;
+            }
+            set
+            {
+                OnDEFAULT_SAMP_FRACTIONChanging(value);
+                ReportPropertyChanging("DEFAULT_SAMP_FRACTION");
+                _DEFAULT_SAMP_FRACTION = StructuralObject.SetValidValue(value, true, "DEFAULT_SAMP_FRACTION");
+                ReportPropertyChanged("DEFAULT_SAMP_FRACTION");
+                OnDEFAULT_SAMP_FRACTIONChanged();
+            }
+        }
+        private global::System.String _DEFAULT_SAMP_FRACTION;
+        partial void OnDEFAULT_SAMP_FRACTIONChanging(global::System.String value);
+        partial void OnDEFAULT_SAMP_FRACTIONChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String DEFAULT_RESULT_STATUS
+        {
+            get
+            {
+                return _DEFAULT_RESULT_STATUS;
+            }
+            set
+            {
+                OnDEFAULT_RESULT_STATUSChanging(value);
+                ReportPropertyChanging("DEFAULT_RESULT_STATUS");
+                _DEFAULT_RESULT_STATUS = StructuralObject.SetValidValue(value, true, "DEFAULT_RESULT_STATUS");
+                ReportPropertyChanged("DEFAULT_RESULT_STATUS");
+                OnDEFAULT_RESULT_STATUSChanged();
+            }
+        }
+        private global::System.String _DEFAULT_RESULT_STATUS;
+        partial void OnDEFAULT_RESULT_STATUSChanging(global::System.String value);
+        partial void OnDEFAULT_RESULT_STATUSChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String DEFAULT_RESULT_VALUE_TYPE
+        {
+            get
+            {
+                return _DEFAULT_RESULT_VALUE_TYPE;
+            }
+            set
+            {
+                OnDEFAULT_RESULT_VALUE_TYPEChanging(value);
+                ReportPropertyChanging("DEFAULT_RESULT_VALUE_TYPE");
+                _DEFAULT_RESULT_VALUE_TYPE = StructuralObject.SetValidValue(value, true, "DEFAULT_RESULT_VALUE_TYPE");
+                ReportPropertyChanged("DEFAULT_RESULT_VALUE_TYPE");
+                OnDEFAULT_RESULT_VALUE_TYPEChanged();
+            }
+        }
+        private global::System.String _DEFAULT_RESULT_VALUE_TYPE;
+        partial void OnDEFAULT_RESULT_VALUE_TYPEChanging(global::System.String value);
+        partial void OnDEFAULT_RESULT_VALUE_TYPEChanged();
 
         #endregion
 
-    
         #region Navigation Properties
     
         /// <summary>
@@ -11958,54 +14826,16 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("OpenEnvironmentModel", "FK__T_WQX_REF__CHAR___19DFD96B", "T_WQX_REF_CHARACTERISTIC")]
-        public T_WQX_REF_CHARACTERISTIC T_WQX_REF_CHARACTERISTIC
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<T_WQX_REF_CHARACTERISTIC>("OpenEnvironmentModel.FK__T_WQX_REF__CHAR___19DFD96B", "T_WQX_REF_CHARACTERISTIC").Value;
-            }
-            set
-            {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<T_WQX_REF_CHARACTERISTIC>("OpenEnvironmentModel.FK__T_WQX_REF__CHAR___19DFD96B", "T_WQX_REF_CHARACTERISTIC").Value = value;
-            }
-        }
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [BrowsableAttribute(false)]
-        [DataMemberAttribute()]
-        public EntityReference<T_WQX_REF_CHARACTERISTIC> T_WQX_REF_CHARACTERISTICReference
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<T_WQX_REF_CHARACTERISTIC>("OpenEnvironmentModel.FK__T_WQX_REF__CHAR___19DFD96B", "T_WQX_REF_CHARACTERISTIC");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<T_WQX_REF_CHARACTERISTIC>("OpenEnvironmentModel.FK__T_WQX_REF__CHAR___19DFD96B", "T_WQX_REF_CHARACTERISTIC", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("OpenEnvironmentModel", "FK__T_WQX_REF__ORG_I__46E78A0C", "T_WQX_ORGANIZATION")]
+        [EdmRelationshipNavigationPropertyAttribute("OpenEnvironmentModel", "FK__T_WQX_REF__ORG_I__4D94879B", "T_WQX_ORGANIZATION")]
         public T_WQX_ORGANIZATION T_WQX_ORGANIZATION
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<T_WQX_ORGANIZATION>("OpenEnvironmentModel.FK__T_WQX_REF__ORG_I__46E78A0C", "T_WQX_ORGANIZATION").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<T_WQX_ORGANIZATION>("OpenEnvironmentModel.FK__T_WQX_REF__ORG_I__4D94879B", "T_WQX_ORGANIZATION").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<T_WQX_ORGANIZATION>("OpenEnvironmentModel.FK__T_WQX_REF__ORG_I__46E78A0C", "T_WQX_ORGANIZATION").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<T_WQX_ORGANIZATION>("OpenEnvironmentModel.FK__T_WQX_REF__ORG_I__4D94879B", "T_WQX_ORGANIZATION").Value = value;
             }
         }
         /// <summary>
@@ -12017,13 +14847,89 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<T_WQX_ORGANIZATION>("OpenEnvironmentModel.FK__T_WQX_REF__ORG_I__46E78A0C", "T_WQX_ORGANIZATION");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<T_WQX_ORGANIZATION>("OpenEnvironmentModel.FK__T_WQX_REF__ORG_I__4D94879B", "T_WQX_ORGANIZATION");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<T_WQX_ORGANIZATION>("OpenEnvironmentModel.FK__T_WQX_REF__ORG_I__46E78A0C", "T_WQX_ORGANIZATION", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<T_WQX_ORGANIZATION>("OpenEnvironmentModel.FK__T_WQX_REF__ORG_I__4D94879B", "T_WQX_ORGANIZATION", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("OpenEnvironmentModel", "FK_T_WQX_REF_CHAR_ORG", "T_WQX_REF_ANAL_METHOD")]
+        public T_WQX_REF_ANAL_METHOD T_WQX_REF_ANAL_METHOD
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<T_WQX_REF_ANAL_METHOD>("OpenEnvironmentModel.FK_T_WQX_REF_CHAR_ORG", "T_WQX_REF_ANAL_METHOD").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<T_WQX_REF_ANAL_METHOD>("OpenEnvironmentModel.FK_T_WQX_REF_CHAR_ORG", "T_WQX_REF_ANAL_METHOD").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<T_WQX_REF_ANAL_METHOD> T_WQX_REF_ANAL_METHODReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<T_WQX_REF_ANAL_METHOD>("OpenEnvironmentModel.FK_T_WQX_REF_CHAR_ORG", "T_WQX_REF_ANAL_METHOD");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<T_WQX_REF_ANAL_METHOD>("OpenEnvironmentModel.FK_T_WQX_REF_CHAR_ORG", "T_WQX_REF_ANAL_METHOD", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("OpenEnvironmentModel", "FK__T_WQX_REF__CHAR___4E88ABD4", "T_WQX_REF_CHARACTERISTIC")]
+        public T_WQX_REF_CHARACTERISTIC T_WQX_REF_CHARACTERISTIC
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<T_WQX_REF_CHARACTERISTIC>("OpenEnvironmentModel.FK__T_WQX_REF__CHAR___4E88ABD4", "T_WQX_REF_CHARACTERISTIC").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<T_WQX_REF_CHARACTERISTIC>("OpenEnvironmentModel.FK__T_WQX_REF__CHAR___4E88ABD4", "T_WQX_REF_CHARACTERISTIC").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<T_WQX_REF_CHARACTERISTIC> T_WQX_REF_CHARACTERISTICReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<T_WQX_REF_CHARACTERISTIC>("OpenEnvironmentModel.FK__T_WQX_REF__CHAR___4E88ABD4", "T_WQX_REF_CHARACTERISTIC");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<T_WQX_REF_CHARACTERISTIC>("OpenEnvironmentModel.FK__T_WQX_REF__CHAR___4E88ABD4", "T_WQX_REF_CHARACTERISTIC", value);
                 }
             }
         }
@@ -12055,7 +14961,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
 
         #endregion
 
-        #region Primitive Properties
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -12074,7 +14980,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
                 {
                     OnCHAR_NAMEChanging(value);
                     ReportPropertyChanging("CHAR_NAME");
-                    _CHAR_NAME = StructuralObject.SetValidValue(value, false);
+                    _CHAR_NAME = StructuralObject.SetValidValue(value, false, "CHAR_NAME");
                     ReportPropertyChanged("CHAR_NAME");
                     OnCHAR_NAMEChanged();
                 }
@@ -12099,7 +15005,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnDEFAULT_DETECT_LIMITChanging(value);
                 ReportPropertyChanging("DEFAULT_DETECT_LIMIT");
-                _DEFAULT_DETECT_LIMIT = StructuralObject.SetValidValue(value);
+                _DEFAULT_DETECT_LIMIT = StructuralObject.SetValidValue(value, "DEFAULT_DETECT_LIMIT");
                 ReportPropertyChanged("DEFAULT_DETECT_LIMIT");
                 OnDEFAULT_DETECT_LIMITChanged();
             }
@@ -12123,7 +15029,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnDEFAULT_UNITChanging(value);
                 ReportPropertyChanging("DEFAULT_UNIT");
-                _DEFAULT_UNIT = StructuralObject.SetValidValue(value, true);
+                _DEFAULT_UNIT = StructuralObject.SetValidValue(value, true, "DEFAULT_UNIT");
                 ReportPropertyChanged("DEFAULT_UNIT");
                 OnDEFAULT_UNITChanged();
             }
@@ -12147,7 +15053,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnUSED_INDChanging(value);
                 ReportPropertyChanging("USED_IND");
-                _USED_IND = StructuralObject.SetValidValue(value);
+                _USED_IND = StructuralObject.SetValidValue(value, "USED_IND");
                 ReportPropertyChanged("USED_IND");
                 OnUSED_INDChanged();
             }
@@ -12171,7 +15077,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnACT_INDChanging(value);
                 ReportPropertyChanging("ACT_IND");
-                _ACT_IND = StructuralObject.SetValidValue(value);
+                _ACT_IND = StructuralObject.SetValidValue(value, "ACT_IND");
                 ReportPropertyChanged("ACT_IND");
                 OnACT_INDChanged();
             }
@@ -12195,7 +15101,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnUPDATE_DTChanging(value);
                 ReportPropertyChanging("UPDATE_DT");
-                _UPDATE_DT = StructuralObject.SetValidValue(value);
+                _UPDATE_DT = StructuralObject.SetValidValue(value, "UPDATE_DT");
                 ReportPropertyChanged("UPDATE_DT");
                 OnUPDATE_DTChanged();
             }
@@ -12206,7 +15112,6 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
 
         #endregion
 
-    
         #region Navigation Properties
     
         /// <summary>
@@ -12237,21 +15142,204 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("OpenEnvironmentModel", "FK__T_WQX_REF__CHAR___19DFD96B", "T_WQX_REF_CHAR_ORG")]
+        [EdmRelationshipNavigationPropertyAttribute("OpenEnvironmentModel", "FK__T_WQX_REF__CHAR___4E88ABD4", "T_WQX_REF_CHAR_ORG")]
         public EntityCollection<T_WQX_REF_CHAR_ORG> T_WQX_REF_CHAR_ORG
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<T_WQX_REF_CHAR_ORG>("OpenEnvironmentModel.FK__T_WQX_REF__CHAR___19DFD96B", "T_WQX_REF_CHAR_ORG");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<T_WQX_REF_CHAR_ORG>("OpenEnvironmentModel.FK__T_WQX_REF__CHAR___4E88ABD4", "T_WQX_REF_CHAR_ORG");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<T_WQX_REF_CHAR_ORG>("OpenEnvironmentModel.FK__T_WQX_REF__CHAR___19DFD96B", "T_WQX_REF_CHAR_ORG", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<T_WQX_REF_CHAR_ORG>("OpenEnvironmentModel.FK__T_WQX_REF__CHAR___4E88ABD4", "T_WQX_REF_CHAR_ORG", value);
                 }
             }
         }
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="OpenEnvironmentModel", Name="T_WQX_REF_COUNTY")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class T_WQX_REF_COUNTY : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new T_WQX_REF_COUNTY object.
+        /// </summary>
+        /// <param name="sTATE_CODE">Initial value of the STATE_CODE property.</param>
+        /// <param name="cOUNTY_CODE">Initial value of the COUNTY_CODE property.</param>
+        /// <param name="cOUNTY_NAME">Initial value of the COUNTY_NAME property.</param>
+        public static T_WQX_REF_COUNTY CreateT_WQX_REF_COUNTY(global::System.String sTATE_CODE, global::System.String cOUNTY_CODE, global::System.String cOUNTY_NAME)
+        {
+            T_WQX_REF_COUNTY t_WQX_REF_COUNTY = new T_WQX_REF_COUNTY();
+            t_WQX_REF_COUNTY.STATE_CODE = sTATE_CODE;
+            t_WQX_REF_COUNTY.COUNTY_CODE = cOUNTY_CODE;
+            t_WQX_REF_COUNTY.COUNTY_NAME = cOUNTY_NAME;
+            return t_WQX_REF_COUNTY;
+        }
+
+        #endregion
+
+        #region Simple Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String STATE_CODE
+        {
+            get
+            {
+                return _STATE_CODE;
+            }
+            set
+            {
+                if (_STATE_CODE != value)
+                {
+                    OnSTATE_CODEChanging(value);
+                    ReportPropertyChanging("STATE_CODE");
+                    _STATE_CODE = StructuralObject.SetValidValue(value, false, "STATE_CODE");
+                    ReportPropertyChanged("STATE_CODE");
+                    OnSTATE_CODEChanged();
+                }
+            }
+        }
+        private global::System.String _STATE_CODE;
+        partial void OnSTATE_CODEChanging(global::System.String value);
+        partial void OnSTATE_CODEChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String COUNTY_CODE
+        {
+            get
+            {
+                return _COUNTY_CODE;
+            }
+            set
+            {
+                if (_COUNTY_CODE != value)
+                {
+                    OnCOUNTY_CODEChanging(value);
+                    ReportPropertyChanging("COUNTY_CODE");
+                    _COUNTY_CODE = StructuralObject.SetValidValue(value, false, "COUNTY_CODE");
+                    ReportPropertyChanged("COUNTY_CODE");
+                    OnCOUNTY_CODEChanged();
+                }
+            }
+        }
+        private global::System.String _COUNTY_CODE;
+        partial void OnCOUNTY_CODEChanging(global::System.String value);
+        partial void OnCOUNTY_CODEChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String COUNTY_NAME
+        {
+            get
+            {
+                return _COUNTY_NAME;
+            }
+            set
+            {
+                OnCOUNTY_NAMEChanging(value);
+                ReportPropertyChanging("COUNTY_NAME");
+                _COUNTY_NAME = StructuralObject.SetValidValue(value, false, "COUNTY_NAME");
+                ReportPropertyChanged("COUNTY_NAME");
+                OnCOUNTY_NAMEChanged();
+            }
+        }
+        private global::System.String _COUNTY_NAME;
+        partial void OnCOUNTY_NAMEChanging(global::System.String value);
+        partial void OnCOUNTY_NAMEChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Boolean> ACT_IND
+        {
+            get
+            {
+                return _ACT_IND;
+            }
+            set
+            {
+                OnACT_INDChanging(value);
+                ReportPropertyChanging("ACT_IND");
+                _ACT_IND = StructuralObject.SetValidValue(value, "ACT_IND");
+                ReportPropertyChanged("ACT_IND");
+                OnACT_INDChanged();
+            }
+        }
+        private Nullable<global::System.Boolean> _ACT_IND;
+        partial void OnACT_INDChanging(Nullable<global::System.Boolean> value);
+        partial void OnACT_INDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Boolean> USED_IND
+        {
+            get
+            {
+                return _USED_IND;
+            }
+            set
+            {
+                OnUSED_INDChanging(value);
+                ReportPropertyChanging("USED_IND");
+                _USED_IND = StructuralObject.SetValidValue(value, "USED_IND");
+                ReportPropertyChanged("USED_IND");
+                OnUSED_INDChanged();
+            }
+        }
+        private Nullable<global::System.Boolean> _USED_IND;
+        partial void OnUSED_INDChanging(Nullable<global::System.Boolean> value);
+        partial void OnUSED_INDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> UPDATE_DT
+        {
+            get
+            {
+                return _UPDATE_DT;
+            }
+            set
+            {
+                OnUPDATE_DTChanging(value);
+                ReportPropertyChanging("UPDATE_DT");
+                _UPDATE_DT = StructuralObject.SetValidValue(value, "UPDATE_DT");
+                ReportPropertyChanged("UPDATE_DT");
+                OnUPDATE_DTChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _UPDATE_DT;
+        partial void OnUPDATE_DTChanging(Nullable<global::System.DateTime> value);
+        partial void OnUPDATE_DTChanged();
 
         #endregion
 
@@ -12286,7 +15374,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
 
         #endregion
 
-        #region Primitive Properties
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -12305,7 +15393,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
                 {
                     OnREF_DATA_IDXChanging(value);
                     ReportPropertyChanging("REF_DATA_IDX");
-                    _REF_DATA_IDX = StructuralObject.SetValidValue(value);
+                    _REF_DATA_IDX = StructuralObject.SetValidValue(value, "REF_DATA_IDX");
                     ReportPropertyChanged("REF_DATA_IDX");
                     OnREF_DATA_IDXChanged();
                 }
@@ -12330,7 +15418,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnTABLEChanging(value);
                 ReportPropertyChanging("TABLE");
-                _TABLE = StructuralObject.SetValidValue(value, false);
+                _TABLE = StructuralObject.SetValidValue(value, false, "TABLE");
                 ReportPropertyChanged("TABLE");
                 OnTABLEChanged();
             }
@@ -12354,7 +15442,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnVALUEChanging(value);
                 ReportPropertyChanging("VALUE");
-                _VALUE = StructuralObject.SetValidValue(value, false);
+                _VALUE = StructuralObject.SetValidValue(value, false, "VALUE");
                 ReportPropertyChanged("VALUE");
                 OnVALUEChanged();
             }
@@ -12378,7 +15466,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnTEXTChanging(value);
                 ReportPropertyChanging("TEXT");
-                _TEXT = StructuralObject.SetValidValue(value, false);
+                _TEXT = StructuralObject.SetValidValue(value, false, "TEXT");
                 ReportPropertyChanged("TEXT");
                 OnTEXTChanged();
             }
@@ -12402,7 +15490,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnACT_INDChanging(value);
                 ReportPropertyChanging("ACT_IND");
-                _ACT_IND = StructuralObject.SetValidValue(value);
+                _ACT_IND = StructuralObject.SetValidValue(value, "ACT_IND");
                 ReportPropertyChanged("ACT_IND");
                 OnACT_INDChanged();
             }
@@ -12426,7 +15514,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnUSED_INDChanging(value);
                 ReportPropertyChanging("USED_IND");
-                _USED_IND = StructuralObject.SetValidValue(value);
+                _USED_IND = StructuralObject.SetValidValue(value, "USED_IND");
                 ReportPropertyChanged("USED_IND");
                 OnUSED_INDChanged();
             }
@@ -12450,7 +15538,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnUPDATE_DTChanging(value);
                 ReportPropertyChanging("UPDATE_DT");
-                _UPDATE_DT = StructuralObject.SetValidValue(value);
+                _UPDATE_DT = StructuralObject.SetValidValue(value, "UPDATE_DT");
                 ReportPropertyChanged("UPDATE_DT");
                 OnUPDATE_DTChanged();
             }
@@ -12461,7 +15549,208 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
 
         #endregion
 
+    }
     
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="OpenEnvironmentModel", Name="T_WQX_REF_DEFAULT_TIME_ZONE")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class T_WQX_REF_DEFAULT_TIME_ZONE : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new T_WQX_REF_DEFAULT_TIME_ZONE object.
+        /// </summary>
+        /// <param name="tIME_ZONE_NAME">Initial value of the TIME_ZONE_NAME property.</param>
+        /// <param name="wQX_CODE_STANDARD">Initial value of the WQX_CODE_STANDARD property.</param>
+        public static T_WQX_REF_DEFAULT_TIME_ZONE CreateT_WQX_REF_DEFAULT_TIME_ZONE(global::System.String tIME_ZONE_NAME, global::System.String wQX_CODE_STANDARD)
+        {
+            T_WQX_REF_DEFAULT_TIME_ZONE t_WQX_REF_DEFAULT_TIME_ZONE = new T_WQX_REF_DEFAULT_TIME_ZONE();
+            t_WQX_REF_DEFAULT_TIME_ZONE.TIME_ZONE_NAME = tIME_ZONE_NAME;
+            t_WQX_REF_DEFAULT_TIME_ZONE.WQX_CODE_STANDARD = wQX_CODE_STANDARD;
+            return t_WQX_REF_DEFAULT_TIME_ZONE;
+        }
+
+        #endregion
+
+        #region Simple Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String TIME_ZONE_NAME
+        {
+            get
+            {
+                return _TIME_ZONE_NAME;
+            }
+            set
+            {
+                if (_TIME_ZONE_NAME != value)
+                {
+                    OnTIME_ZONE_NAMEChanging(value);
+                    ReportPropertyChanging("TIME_ZONE_NAME");
+                    _TIME_ZONE_NAME = StructuralObject.SetValidValue(value, false, "TIME_ZONE_NAME");
+                    ReportPropertyChanged("TIME_ZONE_NAME");
+                    OnTIME_ZONE_NAMEChanged();
+                }
+            }
+        }
+        private global::System.String _TIME_ZONE_NAME;
+        partial void OnTIME_ZONE_NAMEChanging(global::System.String value);
+        partial void OnTIME_ZONE_NAMEChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String OFFICIAL_TIME_ZONE_NAME
+        {
+            get
+            {
+                return _OFFICIAL_TIME_ZONE_NAME;
+            }
+            set
+            {
+                OnOFFICIAL_TIME_ZONE_NAMEChanging(value);
+                ReportPropertyChanging("OFFICIAL_TIME_ZONE_NAME");
+                _OFFICIAL_TIME_ZONE_NAME = StructuralObject.SetValidValue(value, true, "OFFICIAL_TIME_ZONE_NAME");
+                ReportPropertyChanged("OFFICIAL_TIME_ZONE_NAME");
+                OnOFFICIAL_TIME_ZONE_NAMEChanged();
+            }
+        }
+        private global::System.String _OFFICIAL_TIME_ZONE_NAME;
+        partial void OnOFFICIAL_TIME_ZONE_NAMEChanging(global::System.String value);
+        partial void OnOFFICIAL_TIME_ZONE_NAMEChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String WQX_CODE_STANDARD
+        {
+            get
+            {
+                return _WQX_CODE_STANDARD;
+            }
+            set
+            {
+                OnWQX_CODE_STANDARDChanging(value);
+                ReportPropertyChanging("WQX_CODE_STANDARD");
+                _WQX_CODE_STANDARD = StructuralObject.SetValidValue(value, false, "WQX_CODE_STANDARD");
+                ReportPropertyChanged("WQX_CODE_STANDARD");
+                OnWQX_CODE_STANDARDChanged();
+            }
+        }
+        private global::System.String _WQX_CODE_STANDARD;
+        partial void OnWQX_CODE_STANDARDChanging(global::System.String value);
+        partial void OnWQX_CODE_STANDARDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String WQX_CODE_DAYLIGHT
+        {
+            get
+            {
+                return _WQX_CODE_DAYLIGHT;
+            }
+            set
+            {
+                OnWQX_CODE_DAYLIGHTChanging(value);
+                ReportPropertyChanging("WQX_CODE_DAYLIGHT");
+                _WQX_CODE_DAYLIGHT = StructuralObject.SetValidValue(value, true, "WQX_CODE_DAYLIGHT");
+                ReportPropertyChanged("WQX_CODE_DAYLIGHT");
+                OnWQX_CODE_DAYLIGHTChanged();
+            }
+        }
+        private global::System.String _WQX_CODE_DAYLIGHT;
+        partial void OnWQX_CODE_DAYLIGHTChanging(global::System.String value);
+        partial void OnWQX_CODE_DAYLIGHTChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Boolean> ACT_IND
+        {
+            get
+            {
+                return _ACT_IND;
+            }
+            set
+            {
+                OnACT_INDChanging(value);
+                ReportPropertyChanging("ACT_IND");
+                _ACT_IND = StructuralObject.SetValidValue(value, "ACT_IND");
+                ReportPropertyChanged("ACT_IND");
+                OnACT_INDChanged();
+            }
+        }
+        private Nullable<global::System.Boolean> _ACT_IND;
+        partial void OnACT_INDChanging(Nullable<global::System.Boolean> value);
+        partial void OnACT_INDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> UPDATE_DT
+        {
+            get
+            {
+                return _UPDATE_DT;
+            }
+            set
+            {
+                OnUPDATE_DTChanging(value);
+                ReportPropertyChanging("UPDATE_DT");
+                _UPDATE_DT = StructuralObject.SetValidValue(value, "UPDATE_DT");
+                ReportPropertyChanged("UPDATE_DT");
+                OnUPDATE_DTChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _UPDATE_DT;
+        partial void OnUPDATE_DTChanging(Nullable<global::System.DateTime> value);
+        partial void OnUPDATE_DTChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String UPDATE_USERID
+        {
+            get
+            {
+                return _UPDATE_USERID;
+            }
+            set
+            {
+                OnUPDATE_USERIDChanging(value);
+                ReportPropertyChanging("UPDATE_USERID");
+                _UPDATE_USERID = StructuralObject.SetValidValue(value, true, "UPDATE_USERID");
+                ReportPropertyChanged("UPDATE_USERID");
+                OnUPDATE_USERIDChanged();
+            }
+        }
+        private global::System.String _UPDATE_USERID;
+        partial void OnUPDATE_USERIDChanging(global::System.String value);
+        partial void OnUPDATE_USERIDChanged();
+
+        #endregion
+
     }
     
     /// <summary>
@@ -12479,17 +15768,19 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
         /// </summary>
         /// <param name="lAB_IDX">Initial value of the LAB_IDX property.</param>
         /// <param name="lAB_NAME">Initial value of the LAB_NAME property.</param>
-        public static T_WQX_REF_LAB CreateT_WQX_REF_LAB(global::System.Int32 lAB_IDX, global::System.String lAB_NAME)
+        /// <param name="oRG_ID">Initial value of the ORG_ID property.</param>
+        public static T_WQX_REF_LAB CreateT_WQX_REF_LAB(global::System.Int32 lAB_IDX, global::System.String lAB_NAME, global::System.String oRG_ID)
         {
             T_WQX_REF_LAB t_WQX_REF_LAB = new T_WQX_REF_LAB();
             t_WQX_REF_LAB.LAB_IDX = lAB_IDX;
             t_WQX_REF_LAB.LAB_NAME = lAB_NAME;
+            t_WQX_REF_LAB.ORG_ID = oRG_ID;
             return t_WQX_REF_LAB;
         }
 
         #endregion
 
-        #region Primitive Properties
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -12508,7 +15799,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
                 {
                     OnLAB_IDXChanging(value);
                     ReportPropertyChanging("LAB_IDX");
-                    _LAB_IDX = StructuralObject.SetValidValue(value);
+                    _LAB_IDX = StructuralObject.SetValidValue(value, "LAB_IDX");
                     ReportPropertyChanged("LAB_IDX");
                     OnLAB_IDXChanged();
                 }
@@ -12533,7 +15824,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnLAB_NAMEChanging(value);
                 ReportPropertyChanging("LAB_NAME");
-                _LAB_NAME = StructuralObject.SetValidValue(value, false);
+                _LAB_NAME = StructuralObject.SetValidValue(value, false, "LAB_NAME");
                 ReportPropertyChanged("LAB_NAME");
                 OnLAB_NAMEChanged();
             }
@@ -12557,7 +15848,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnLAB_ACCRED_INDChanging(value);
                 ReportPropertyChanging("LAB_ACCRED_IND");
-                _LAB_ACCRED_IND = StructuralObject.SetValidValue(value, true);
+                _LAB_ACCRED_IND = StructuralObject.SetValidValue(value, true, "LAB_ACCRED_IND");
                 ReportPropertyChanged("LAB_ACCRED_IND");
                 OnLAB_ACCRED_INDChanged();
             }
@@ -12581,7 +15872,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnLAB_ACCRED_AUTHORITYChanging(value);
                 ReportPropertyChanging("LAB_ACCRED_AUTHORITY");
-                _LAB_ACCRED_AUTHORITY = StructuralObject.SetValidValue(value, true);
+                _LAB_ACCRED_AUTHORITY = StructuralObject.SetValidValue(value, true, "LAB_ACCRED_AUTHORITY");
                 ReportPropertyChanged("LAB_ACCRED_AUTHORITY");
                 OnLAB_ACCRED_AUTHORITYChanged();
             }
@@ -12605,7 +15896,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnACT_INDChanging(value);
                 ReportPropertyChanging("ACT_IND");
-                _ACT_IND = StructuralObject.SetValidValue(value);
+                _ACT_IND = StructuralObject.SetValidValue(value, "ACT_IND");
                 ReportPropertyChanged("ACT_IND");
                 OnACT_INDChanged();
             }
@@ -12629,7 +15920,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnCREATE_DTChanging(value);
                 ReportPropertyChanging("CREATE_DT");
-                _CREATE_DT = StructuralObject.SetValidValue(value);
+                _CREATE_DT = StructuralObject.SetValidValue(value, "CREATE_DT");
                 ReportPropertyChanged("CREATE_DT");
                 OnCREATE_DTChanged();
             }
@@ -12653,7 +15944,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnCREATE_USERIDChanging(value);
                 ReportPropertyChanging("CREATE_USERID");
-                _CREATE_USERID = StructuralObject.SetValidValue(value, true);
+                _CREATE_USERID = StructuralObject.SetValidValue(value, true, "CREATE_USERID");
                 ReportPropertyChanged("CREATE_USERID");
                 OnCREATE_USERIDChanged();
             }
@@ -12677,7 +15968,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnUPDATE_DTChanging(value);
                 ReportPropertyChanging("UPDATE_DT");
-                _UPDATE_DT = StructuralObject.SetValidValue(value);
+                _UPDATE_DT = StructuralObject.SetValidValue(value, "UPDATE_DT");
                 ReportPropertyChanged("UPDATE_DT");
                 OnUPDATE_DTChanged();
             }
@@ -12701,7 +15992,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnUPDATE_USERIDChanging(value);
                 ReportPropertyChanging("UPDATE_USERID");
-                _UPDATE_USERID = StructuralObject.SetValidValue(value, true);
+                _UPDATE_USERID = StructuralObject.SetValidValue(value, true, "UPDATE_USERID");
                 ReportPropertyChanged("UPDATE_USERID");
                 OnUPDATE_USERIDChanged();
             }
@@ -12709,10 +16000,33 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
         private global::System.String _UPDATE_USERID;
         partial void OnUPDATE_USERIDChanging(global::System.String value);
         partial void OnUPDATE_USERIDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String ORG_ID
+        {
+            get
+            {
+                return _ORG_ID;
+            }
+            set
+            {
+                OnORG_IDChanging(value);
+                ReportPropertyChanging("ORG_ID");
+                _ORG_ID = StructuralObject.SetValidValue(value, false, "ORG_ID");
+                ReportPropertyChanged("ORG_ID");
+                OnORG_IDChanged();
+            }
+        }
+        private global::System.String _ORG_ID;
+        partial void OnORG_IDChanging(global::System.String value);
+        partial void OnORG_IDChanged();
 
         #endregion
 
-    
         #region Navigation Properties
     
         /// <summary>
@@ -12721,18 +16035,601 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("OpenEnvironmentModel", "FK__T_WQX_RES__LAB_I__276EDEB3", "T_WQX_RESULT")]
+        [EdmRelationshipNavigationPropertyAttribute("OpenEnvironmentModel", "FK__T_WQX_RES__LAB_I__2A164134", "T_WQX_RESULT")]
         public EntityCollection<T_WQX_RESULT> T_WQX_RESULT
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<T_WQX_RESULT>("OpenEnvironmentModel.FK__T_WQX_RES__LAB_I__276EDEB3", "T_WQX_RESULT");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<T_WQX_RESULT>("OpenEnvironmentModel.FK__T_WQX_RES__LAB_I__2A164134", "T_WQX_RESULT");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<T_WQX_RESULT>("OpenEnvironmentModel.FK__T_WQX_RES__LAB_I__276EDEB3", "T_WQX_RESULT", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<T_WQX_RESULT>("OpenEnvironmentModel.FK__T_WQX_RES__LAB_I__2A164134", "T_WQX_RESULT", value);
+                }
+            }
+        }
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="OpenEnvironmentModel", Name="T_WQX_REF_SAMP_COL_METHOD")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class T_WQX_REF_SAMP_COL_METHOD : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new T_WQX_REF_SAMP_COL_METHOD object.
+        /// </summary>
+        /// <param name="sAMP_COLL_METHOD_IDX">Initial value of the SAMP_COLL_METHOD_IDX property.</param>
+        /// <param name="sAMP_COLL_METHOD_ID">Initial value of the SAMP_COLL_METHOD_ID property.</param>
+        /// <param name="sAMP_COLL_METHOD_CTX">Initial value of the SAMP_COLL_METHOD_CTX property.</param>
+        public static T_WQX_REF_SAMP_COL_METHOD CreateT_WQX_REF_SAMP_COL_METHOD(global::System.Int32 sAMP_COLL_METHOD_IDX, global::System.String sAMP_COLL_METHOD_ID, global::System.String sAMP_COLL_METHOD_CTX)
+        {
+            T_WQX_REF_SAMP_COL_METHOD t_WQX_REF_SAMP_COL_METHOD = new T_WQX_REF_SAMP_COL_METHOD();
+            t_WQX_REF_SAMP_COL_METHOD.SAMP_COLL_METHOD_IDX = sAMP_COLL_METHOD_IDX;
+            t_WQX_REF_SAMP_COL_METHOD.SAMP_COLL_METHOD_ID = sAMP_COLL_METHOD_ID;
+            t_WQX_REF_SAMP_COL_METHOD.SAMP_COLL_METHOD_CTX = sAMP_COLL_METHOD_CTX;
+            return t_WQX_REF_SAMP_COL_METHOD;
+        }
+
+        #endregion
+
+        #region Simple Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 SAMP_COLL_METHOD_IDX
+        {
+            get
+            {
+                return _SAMP_COLL_METHOD_IDX;
+            }
+            set
+            {
+                if (_SAMP_COLL_METHOD_IDX != value)
+                {
+                    OnSAMP_COLL_METHOD_IDXChanging(value);
+                    ReportPropertyChanging("SAMP_COLL_METHOD_IDX");
+                    _SAMP_COLL_METHOD_IDX = StructuralObject.SetValidValue(value, "SAMP_COLL_METHOD_IDX");
+                    ReportPropertyChanged("SAMP_COLL_METHOD_IDX");
+                    OnSAMP_COLL_METHOD_IDXChanged();
+                }
+            }
+        }
+        private global::System.Int32 _SAMP_COLL_METHOD_IDX;
+        partial void OnSAMP_COLL_METHOD_IDXChanging(global::System.Int32 value);
+        partial void OnSAMP_COLL_METHOD_IDXChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String SAMP_COLL_METHOD_ID
+        {
+            get
+            {
+                return _SAMP_COLL_METHOD_ID;
+            }
+            set
+            {
+                OnSAMP_COLL_METHOD_IDChanging(value);
+                ReportPropertyChanging("SAMP_COLL_METHOD_ID");
+                _SAMP_COLL_METHOD_ID = StructuralObject.SetValidValue(value, false, "SAMP_COLL_METHOD_ID");
+                ReportPropertyChanged("SAMP_COLL_METHOD_ID");
+                OnSAMP_COLL_METHOD_IDChanged();
+            }
+        }
+        private global::System.String _SAMP_COLL_METHOD_ID;
+        partial void OnSAMP_COLL_METHOD_IDChanging(global::System.String value);
+        partial void OnSAMP_COLL_METHOD_IDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String SAMP_COLL_METHOD_CTX
+        {
+            get
+            {
+                return _SAMP_COLL_METHOD_CTX;
+            }
+            set
+            {
+                OnSAMP_COLL_METHOD_CTXChanging(value);
+                ReportPropertyChanging("SAMP_COLL_METHOD_CTX");
+                _SAMP_COLL_METHOD_CTX = StructuralObject.SetValidValue(value, false, "SAMP_COLL_METHOD_CTX");
+                ReportPropertyChanged("SAMP_COLL_METHOD_CTX");
+                OnSAMP_COLL_METHOD_CTXChanged();
+            }
+        }
+        private global::System.String _SAMP_COLL_METHOD_CTX;
+        partial void OnSAMP_COLL_METHOD_CTXChanging(global::System.String value);
+        partial void OnSAMP_COLL_METHOD_CTXChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String SAMP_COLL_METHOD_NAME
+        {
+            get
+            {
+                return _SAMP_COLL_METHOD_NAME;
+            }
+            set
+            {
+                OnSAMP_COLL_METHOD_NAMEChanging(value);
+                ReportPropertyChanging("SAMP_COLL_METHOD_NAME");
+                _SAMP_COLL_METHOD_NAME = StructuralObject.SetValidValue(value, true, "SAMP_COLL_METHOD_NAME");
+                ReportPropertyChanged("SAMP_COLL_METHOD_NAME");
+                OnSAMP_COLL_METHOD_NAMEChanged();
+            }
+        }
+        private global::System.String _SAMP_COLL_METHOD_NAME;
+        partial void OnSAMP_COLL_METHOD_NAMEChanging(global::System.String value);
+        partial void OnSAMP_COLL_METHOD_NAMEChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String SAMP_COLL_METHOD_DESC
+        {
+            get
+            {
+                return _SAMP_COLL_METHOD_DESC;
+            }
+            set
+            {
+                OnSAMP_COLL_METHOD_DESCChanging(value);
+                ReportPropertyChanging("SAMP_COLL_METHOD_DESC");
+                _SAMP_COLL_METHOD_DESC = StructuralObject.SetValidValue(value, true, "SAMP_COLL_METHOD_DESC");
+                ReportPropertyChanged("SAMP_COLL_METHOD_DESC");
+                OnSAMP_COLL_METHOD_DESCChanged();
+            }
+        }
+        private global::System.String _SAMP_COLL_METHOD_DESC;
+        partial void OnSAMP_COLL_METHOD_DESCChanging(global::System.String value);
+        partial void OnSAMP_COLL_METHOD_DESCChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Boolean> ACT_IND
+        {
+            get
+            {
+                return _ACT_IND;
+            }
+            set
+            {
+                OnACT_INDChanging(value);
+                ReportPropertyChanging("ACT_IND");
+                _ACT_IND = StructuralObject.SetValidValue(value, "ACT_IND");
+                ReportPropertyChanged("ACT_IND");
+                OnACT_INDChanged();
+            }
+        }
+        private Nullable<global::System.Boolean> _ACT_IND;
+        partial void OnACT_INDChanging(Nullable<global::System.Boolean> value);
+        partial void OnACT_INDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> UPDATE_DT
+        {
+            get
+            {
+                return _UPDATE_DT;
+            }
+            set
+            {
+                OnUPDATE_DTChanging(value);
+                ReportPropertyChanging("UPDATE_DT");
+                _UPDATE_DT = StructuralObject.SetValidValue(value, "UPDATE_DT");
+                ReportPropertyChanged("UPDATE_DT");
+                OnUPDATE_DTChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _UPDATE_DT;
+        partial void OnUPDATE_DTChanging(Nullable<global::System.DateTime> value);
+        partial void OnUPDATE_DTChanged();
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="OpenEnvironmentModel", Name="T_WQX_REF_SAMP_PREP")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class T_WQX_REF_SAMP_PREP : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new T_WQX_REF_SAMP_PREP object.
+        /// </summary>
+        /// <param name="sAMP_PREP_IDX">Initial value of the SAMP_PREP_IDX property.</param>
+        /// <param name="sAMP_PREP_METHOD_ID">Initial value of the SAMP_PREP_METHOD_ID property.</param>
+        /// <param name="sAMP_PREP_METHOD_CTX">Initial value of the SAMP_PREP_METHOD_CTX property.</param>
+        public static T_WQX_REF_SAMP_PREP CreateT_WQX_REF_SAMP_PREP(global::System.Int32 sAMP_PREP_IDX, global::System.String sAMP_PREP_METHOD_ID, global::System.String sAMP_PREP_METHOD_CTX)
+        {
+            T_WQX_REF_SAMP_PREP t_WQX_REF_SAMP_PREP = new T_WQX_REF_SAMP_PREP();
+            t_WQX_REF_SAMP_PREP.SAMP_PREP_IDX = sAMP_PREP_IDX;
+            t_WQX_REF_SAMP_PREP.SAMP_PREP_METHOD_ID = sAMP_PREP_METHOD_ID;
+            t_WQX_REF_SAMP_PREP.SAMP_PREP_METHOD_CTX = sAMP_PREP_METHOD_CTX;
+            return t_WQX_REF_SAMP_PREP;
+        }
+
+        #endregion
+
+        #region Simple Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 SAMP_PREP_IDX
+        {
+            get
+            {
+                return _SAMP_PREP_IDX;
+            }
+            set
+            {
+                if (_SAMP_PREP_IDX != value)
+                {
+                    OnSAMP_PREP_IDXChanging(value);
+                    ReportPropertyChanging("SAMP_PREP_IDX");
+                    _SAMP_PREP_IDX = StructuralObject.SetValidValue(value, "SAMP_PREP_IDX");
+                    ReportPropertyChanged("SAMP_PREP_IDX");
+                    OnSAMP_PREP_IDXChanged();
+                }
+            }
+        }
+        private global::System.Int32 _SAMP_PREP_IDX;
+        partial void OnSAMP_PREP_IDXChanging(global::System.Int32 value);
+        partial void OnSAMP_PREP_IDXChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String SAMP_PREP_METHOD_ID
+        {
+            get
+            {
+                return _SAMP_PREP_METHOD_ID;
+            }
+            set
+            {
+                OnSAMP_PREP_METHOD_IDChanging(value);
+                ReportPropertyChanging("SAMP_PREP_METHOD_ID");
+                _SAMP_PREP_METHOD_ID = StructuralObject.SetValidValue(value, false, "SAMP_PREP_METHOD_ID");
+                ReportPropertyChanged("SAMP_PREP_METHOD_ID");
+                OnSAMP_PREP_METHOD_IDChanged();
+            }
+        }
+        private global::System.String _SAMP_PREP_METHOD_ID;
+        partial void OnSAMP_PREP_METHOD_IDChanging(global::System.String value);
+        partial void OnSAMP_PREP_METHOD_IDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String SAMP_PREP_METHOD_CTX
+        {
+            get
+            {
+                return _SAMP_PREP_METHOD_CTX;
+            }
+            set
+            {
+                OnSAMP_PREP_METHOD_CTXChanging(value);
+                ReportPropertyChanging("SAMP_PREP_METHOD_CTX");
+                _SAMP_PREP_METHOD_CTX = StructuralObject.SetValidValue(value, false, "SAMP_PREP_METHOD_CTX");
+                ReportPropertyChanged("SAMP_PREP_METHOD_CTX");
+                OnSAMP_PREP_METHOD_CTXChanged();
+            }
+        }
+        private global::System.String _SAMP_PREP_METHOD_CTX;
+        partial void OnSAMP_PREP_METHOD_CTXChanging(global::System.String value);
+        partial void OnSAMP_PREP_METHOD_CTXChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String SAMP_PREP_METHOD_NAME
+        {
+            get
+            {
+                return _SAMP_PREP_METHOD_NAME;
+            }
+            set
+            {
+                OnSAMP_PREP_METHOD_NAMEChanging(value);
+                ReportPropertyChanging("SAMP_PREP_METHOD_NAME");
+                _SAMP_PREP_METHOD_NAME = StructuralObject.SetValidValue(value, true, "SAMP_PREP_METHOD_NAME");
+                ReportPropertyChanged("SAMP_PREP_METHOD_NAME");
+                OnSAMP_PREP_METHOD_NAMEChanged();
+            }
+        }
+        private global::System.String _SAMP_PREP_METHOD_NAME;
+        partial void OnSAMP_PREP_METHOD_NAMEChanging(global::System.String value);
+        partial void OnSAMP_PREP_METHOD_NAMEChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String SAMP_PREP_METHOD_DESC
+        {
+            get
+            {
+                return _SAMP_PREP_METHOD_DESC;
+            }
+            set
+            {
+                OnSAMP_PREP_METHOD_DESCChanging(value);
+                ReportPropertyChanging("SAMP_PREP_METHOD_DESC");
+                _SAMP_PREP_METHOD_DESC = StructuralObject.SetValidValue(value, true, "SAMP_PREP_METHOD_DESC");
+                ReportPropertyChanged("SAMP_PREP_METHOD_DESC");
+                OnSAMP_PREP_METHOD_DESCChanged();
+            }
+        }
+        private global::System.String _SAMP_PREP_METHOD_DESC;
+        partial void OnSAMP_PREP_METHOD_DESCChanging(global::System.String value);
+        partial void OnSAMP_PREP_METHOD_DESCChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Boolean> ACT_IND
+        {
+            get
+            {
+                return _ACT_IND;
+            }
+            set
+            {
+                OnACT_INDChanging(value);
+                ReportPropertyChanging("ACT_IND");
+                _ACT_IND = StructuralObject.SetValidValue(value, "ACT_IND");
+                ReportPropertyChanged("ACT_IND");
+                OnACT_INDChanged();
+            }
+        }
+        private Nullable<global::System.Boolean> _ACT_IND;
+        partial void OnACT_INDChanging(Nullable<global::System.Boolean> value);
+        partial void OnACT_INDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> UPDATE_DT
+        {
+            get
+            {
+                return _UPDATE_DT;
+            }
+            set
+            {
+                OnUPDATE_DTChanging(value);
+                ReportPropertyChanging("UPDATE_DT");
+                _UPDATE_DT = StructuralObject.SetValidValue(value, "UPDATE_DT");
+                ReportPropertyChanged("UPDATE_DT");
+                OnUPDATE_DTChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _UPDATE_DT;
+        partial void OnUPDATE_DTChanging(Nullable<global::System.DateTime> value);
+        partial void OnUPDATE_DTChanged();
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="OpenEnvironmentModel", Name="T_WQX_REF_TAXA_ORG")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class T_WQX_REF_TAXA_ORG : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new T_WQX_REF_TAXA_ORG object.
+        /// </summary>
+        /// <param name="bIO_SUBJECT_TAXONOMY">Initial value of the BIO_SUBJECT_TAXONOMY property.</param>
+        /// <param name="oRG_ID">Initial value of the ORG_ID property.</param>
+        public static T_WQX_REF_TAXA_ORG CreateT_WQX_REF_TAXA_ORG(global::System.String bIO_SUBJECT_TAXONOMY, global::System.String oRG_ID)
+        {
+            T_WQX_REF_TAXA_ORG t_WQX_REF_TAXA_ORG = new T_WQX_REF_TAXA_ORG();
+            t_WQX_REF_TAXA_ORG.BIO_SUBJECT_TAXONOMY = bIO_SUBJECT_TAXONOMY;
+            t_WQX_REF_TAXA_ORG.ORG_ID = oRG_ID;
+            return t_WQX_REF_TAXA_ORG;
+        }
+
+        #endregion
+
+        #region Simple Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String BIO_SUBJECT_TAXONOMY
+        {
+            get
+            {
+                return _BIO_SUBJECT_TAXONOMY;
+            }
+            set
+            {
+                if (_BIO_SUBJECT_TAXONOMY != value)
+                {
+                    OnBIO_SUBJECT_TAXONOMYChanging(value);
+                    ReportPropertyChanging("BIO_SUBJECT_TAXONOMY");
+                    _BIO_SUBJECT_TAXONOMY = StructuralObject.SetValidValue(value, false, "BIO_SUBJECT_TAXONOMY");
+                    ReportPropertyChanged("BIO_SUBJECT_TAXONOMY");
+                    OnBIO_SUBJECT_TAXONOMYChanged();
+                }
+            }
+        }
+        private global::System.String _BIO_SUBJECT_TAXONOMY;
+        partial void OnBIO_SUBJECT_TAXONOMYChanging(global::System.String value);
+        partial void OnBIO_SUBJECT_TAXONOMYChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String ORG_ID
+        {
+            get
+            {
+                return _ORG_ID;
+            }
+            set
+            {
+                if (_ORG_ID != value)
+                {
+                    OnORG_IDChanging(value);
+                    ReportPropertyChanging("ORG_ID");
+                    _ORG_ID = StructuralObject.SetValidValue(value, false, "ORG_ID");
+                    ReportPropertyChanged("ORG_ID");
+                    OnORG_IDChanged();
+                }
+            }
+        }
+        private global::System.String _ORG_ID;
+        partial void OnORG_IDChanging(global::System.String value);
+        partial void OnORG_IDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String CREATE_USERID
+        {
+            get
+            {
+                return _CREATE_USERID;
+            }
+            set
+            {
+                OnCREATE_USERIDChanging(value);
+                ReportPropertyChanging("CREATE_USERID");
+                _CREATE_USERID = StructuralObject.SetValidValue(value, true, "CREATE_USERID");
+                ReportPropertyChanged("CREATE_USERID");
+                OnCREATE_USERIDChanged();
+            }
+        }
+        private global::System.String _CREATE_USERID;
+        partial void OnCREATE_USERIDChanging(global::System.String value);
+        partial void OnCREATE_USERIDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> CREATE_DT
+        {
+            get
+            {
+                return _CREATE_DT;
+            }
+            set
+            {
+                OnCREATE_DTChanging(value);
+                ReportPropertyChanging("CREATE_DT");
+                _CREATE_DT = StructuralObject.SetValidValue(value, "CREATE_DT");
+                ReportPropertyChanged("CREATE_DT");
+                OnCREATE_DTChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _CREATE_DT;
+        partial void OnCREATE_DTChanging(Nullable<global::System.DateTime> value);
+        partial void OnCREATE_DTChanged();
+
+        #endregion
+
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("OpenEnvironmentModel", "FK__T_WQX_REF__ORG_I__756D6ECB", "T_WQX_ORGANIZATION")]
+        public T_WQX_ORGANIZATION T_WQX_ORGANIZATION
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<T_WQX_ORGANIZATION>("OpenEnvironmentModel.FK__T_WQX_REF__ORG_I__756D6ECB", "T_WQX_ORGANIZATION").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<T_WQX_ORGANIZATION>("OpenEnvironmentModel.FK__T_WQX_REF__ORG_I__756D6ECB", "T_WQX_ORGANIZATION").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<T_WQX_ORGANIZATION> T_WQX_ORGANIZATIONReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<T_WQX_ORGANIZATION>("OpenEnvironmentModel.FK__T_WQX_REF__ORG_I__756D6ECB", "T_WQX_ORGANIZATION");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<T_WQX_ORGANIZATION>("OpenEnvironmentModel.FK__T_WQX_REF__ORG_I__756D6ECB", "T_WQX_ORGANIZATION", value);
                 }
             }
         }
@@ -12766,7 +16663,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
 
         #endregion
 
-        #region Primitive Properties
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -12785,7 +16682,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
                 {
                     OnRESULT_IDXChanging(value);
                     ReportPropertyChanging("RESULT_IDX");
-                    _RESULT_IDX = StructuralObject.SetValidValue(value);
+                    _RESULT_IDX = StructuralObject.SetValidValue(value, "RESULT_IDX");
                     ReportPropertyChanged("RESULT_IDX");
                     OnRESULT_IDXChanged();
                 }
@@ -12810,7 +16707,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnACTIVITY_IDXChanging(value);
                 ReportPropertyChanging("ACTIVITY_IDX");
-                _ACTIVITY_IDX = StructuralObject.SetValidValue(value);
+                _ACTIVITY_IDX = StructuralObject.SetValidValue(value, "ACTIVITY_IDX");
                 ReportPropertyChanged("ACTIVITY_IDX");
                 OnACTIVITY_IDXChanged();
             }
@@ -12834,7 +16731,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnDATA_LOGGER_LINEChanging(value);
                 ReportPropertyChanging("DATA_LOGGER_LINE");
-                _DATA_LOGGER_LINE = StructuralObject.SetValidValue(value, true);
+                _DATA_LOGGER_LINE = StructuralObject.SetValidValue(value, true, "DATA_LOGGER_LINE");
                 ReportPropertyChanged("DATA_LOGGER_LINE");
                 OnDATA_LOGGER_LINEChanged();
             }
@@ -12858,7 +16755,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnRESULT_DETECT_CONDITIONChanging(value);
                 ReportPropertyChanging("RESULT_DETECT_CONDITION");
-                _RESULT_DETECT_CONDITION = StructuralObject.SetValidValue(value, true);
+                _RESULT_DETECT_CONDITION = StructuralObject.SetValidValue(value, true, "RESULT_DETECT_CONDITION");
                 ReportPropertyChanged("RESULT_DETECT_CONDITION");
                 OnRESULT_DETECT_CONDITIONChanged();
             }
@@ -12882,7 +16779,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnCHAR_NAMEChanging(value);
                 ReportPropertyChanging("CHAR_NAME");
-                _CHAR_NAME = StructuralObject.SetValidValue(value, true);
+                _CHAR_NAME = StructuralObject.SetValidValue(value, true, "CHAR_NAME");
                 ReportPropertyChanged("CHAR_NAME");
                 OnCHAR_NAMEChanged();
             }
@@ -12906,7 +16803,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnMETHOD_SPECIATION_NAMEChanging(value);
                 ReportPropertyChanging("METHOD_SPECIATION_NAME");
-                _METHOD_SPECIATION_NAME = StructuralObject.SetValidValue(value, true);
+                _METHOD_SPECIATION_NAME = StructuralObject.SetValidValue(value, true, "METHOD_SPECIATION_NAME");
                 ReportPropertyChanged("METHOD_SPECIATION_NAME");
                 OnMETHOD_SPECIATION_NAMEChanged();
             }
@@ -12930,7 +16827,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnRESULT_SAMP_FRACTIONChanging(value);
                 ReportPropertyChanging("RESULT_SAMP_FRACTION");
-                _RESULT_SAMP_FRACTION = StructuralObject.SetValidValue(value, true);
+                _RESULT_SAMP_FRACTION = StructuralObject.SetValidValue(value, true, "RESULT_SAMP_FRACTION");
                 ReportPropertyChanged("RESULT_SAMP_FRACTION");
                 OnRESULT_SAMP_FRACTIONChanged();
             }
@@ -12954,7 +16851,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnRESULT_MSRChanging(value);
                 ReportPropertyChanging("RESULT_MSR");
-                _RESULT_MSR = StructuralObject.SetValidValue(value, true);
+                _RESULT_MSR = StructuralObject.SetValidValue(value, true, "RESULT_MSR");
                 ReportPropertyChanged("RESULT_MSR");
                 OnRESULT_MSRChanged();
             }
@@ -12978,7 +16875,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnRESULT_MSR_UNITChanging(value);
                 ReportPropertyChanging("RESULT_MSR_UNIT");
-                _RESULT_MSR_UNIT = StructuralObject.SetValidValue(value, true);
+                _RESULT_MSR_UNIT = StructuralObject.SetValidValue(value, true, "RESULT_MSR_UNIT");
                 ReportPropertyChanged("RESULT_MSR_UNIT");
                 OnRESULT_MSR_UNITChanged();
             }
@@ -13002,7 +16899,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnRESULT_MSR_QUALChanging(value);
                 ReportPropertyChanging("RESULT_MSR_QUAL");
-                _RESULT_MSR_QUAL = StructuralObject.SetValidValue(value, true);
+                _RESULT_MSR_QUAL = StructuralObject.SetValidValue(value, true, "RESULT_MSR_QUAL");
                 ReportPropertyChanged("RESULT_MSR_QUAL");
                 OnRESULT_MSR_QUALChanged();
             }
@@ -13026,7 +16923,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnRESULT_STATUSChanging(value);
                 ReportPropertyChanging("RESULT_STATUS");
-                _RESULT_STATUS = StructuralObject.SetValidValue(value, true);
+                _RESULT_STATUS = StructuralObject.SetValidValue(value, true, "RESULT_STATUS");
                 ReportPropertyChanged("RESULT_STATUS");
                 OnRESULT_STATUSChanged();
             }
@@ -13050,7 +16947,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnSTATISTIC_BASE_CODEChanging(value);
                 ReportPropertyChanging("STATISTIC_BASE_CODE");
-                _STATISTIC_BASE_CODE = StructuralObject.SetValidValue(value, true);
+                _STATISTIC_BASE_CODE = StructuralObject.SetValidValue(value, true, "STATISTIC_BASE_CODE");
                 ReportPropertyChanged("STATISTIC_BASE_CODE");
                 OnSTATISTIC_BASE_CODEChanged();
             }
@@ -13074,7 +16971,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnRESULT_VALUE_TYPEChanging(value);
                 ReportPropertyChanging("RESULT_VALUE_TYPE");
-                _RESULT_VALUE_TYPE = StructuralObject.SetValidValue(value, true);
+                _RESULT_VALUE_TYPE = StructuralObject.SetValidValue(value, true, "RESULT_VALUE_TYPE");
                 ReportPropertyChanged("RESULT_VALUE_TYPE");
                 OnRESULT_VALUE_TYPEChanged();
             }
@@ -13098,7 +16995,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnWEIGHT_BASISChanging(value);
                 ReportPropertyChanging("WEIGHT_BASIS");
-                _WEIGHT_BASIS = StructuralObject.SetValidValue(value, true);
+                _WEIGHT_BASIS = StructuralObject.SetValidValue(value, true, "WEIGHT_BASIS");
                 ReportPropertyChanged("WEIGHT_BASIS");
                 OnWEIGHT_BASISChanged();
             }
@@ -13122,7 +17019,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnTIME_BASISChanging(value);
                 ReportPropertyChanging("TIME_BASIS");
-                _TIME_BASIS = StructuralObject.SetValidValue(value, true);
+                _TIME_BASIS = StructuralObject.SetValidValue(value, true, "TIME_BASIS");
                 ReportPropertyChanged("TIME_BASIS");
                 OnTIME_BASISChanged();
             }
@@ -13146,7 +17043,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnTEMP_BASISChanging(value);
                 ReportPropertyChanging("TEMP_BASIS");
-                _TEMP_BASIS = StructuralObject.SetValidValue(value, true);
+                _TEMP_BASIS = StructuralObject.SetValidValue(value, true, "TEMP_BASIS");
                 ReportPropertyChanged("TEMP_BASIS");
                 OnTEMP_BASISChanged();
             }
@@ -13170,7 +17067,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnPARTICLESIZE_BASISChanging(value);
                 ReportPropertyChanging("PARTICLESIZE_BASIS");
-                _PARTICLESIZE_BASIS = StructuralObject.SetValidValue(value, true);
+                _PARTICLESIZE_BASIS = StructuralObject.SetValidValue(value, true, "PARTICLESIZE_BASIS");
                 ReportPropertyChanged("PARTICLESIZE_BASIS");
                 OnPARTICLESIZE_BASISChanged();
             }
@@ -13194,7 +17091,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnPRECISION_VALUEChanging(value);
                 ReportPropertyChanging("PRECISION_VALUE");
-                _PRECISION_VALUE = StructuralObject.SetValidValue(value, true);
+                _PRECISION_VALUE = StructuralObject.SetValidValue(value, true, "PRECISION_VALUE");
                 ReportPropertyChanged("PRECISION_VALUE");
                 OnPRECISION_VALUEChanged();
             }
@@ -13218,7 +17115,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnBIAS_VALUEChanging(value);
                 ReportPropertyChanging("BIAS_VALUE");
-                _BIAS_VALUE = StructuralObject.SetValidValue(value, true);
+                _BIAS_VALUE = StructuralObject.SetValidValue(value, true, "BIAS_VALUE");
                 ReportPropertyChanged("BIAS_VALUE");
                 OnBIAS_VALUEChanged();
             }
@@ -13242,7 +17139,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnCONFIDENCE_INTERVAL_VALUEChanging(value);
                 ReportPropertyChanging("CONFIDENCE_INTERVAL_VALUE");
-                _CONFIDENCE_INTERVAL_VALUE = StructuralObject.SetValidValue(value, true);
+                _CONFIDENCE_INTERVAL_VALUE = StructuralObject.SetValidValue(value, true, "CONFIDENCE_INTERVAL_VALUE");
                 ReportPropertyChanged("CONFIDENCE_INTERVAL_VALUE");
                 OnCONFIDENCE_INTERVAL_VALUEChanged();
             }
@@ -13266,7 +17163,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnUPPER_CONFIDENCE_LIMITChanging(value);
                 ReportPropertyChanging("UPPER_CONFIDENCE_LIMIT");
-                _UPPER_CONFIDENCE_LIMIT = StructuralObject.SetValidValue(value, true);
+                _UPPER_CONFIDENCE_LIMIT = StructuralObject.SetValidValue(value, true, "UPPER_CONFIDENCE_LIMIT");
                 ReportPropertyChanged("UPPER_CONFIDENCE_LIMIT");
                 OnUPPER_CONFIDENCE_LIMITChanged();
             }
@@ -13290,7 +17187,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnLOWER_CONFIDENCE_LIMITChanging(value);
                 ReportPropertyChanging("LOWER_CONFIDENCE_LIMIT");
-                _LOWER_CONFIDENCE_LIMIT = StructuralObject.SetValidValue(value, true);
+                _LOWER_CONFIDENCE_LIMIT = StructuralObject.SetValidValue(value, true, "LOWER_CONFIDENCE_LIMIT");
                 ReportPropertyChanged("LOWER_CONFIDENCE_LIMIT");
                 OnLOWER_CONFIDENCE_LIMITChanged();
             }
@@ -13314,7 +17211,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnRESULT_COMMENTChanging(value);
                 ReportPropertyChanging("RESULT_COMMENT");
-                _RESULT_COMMENT = StructuralObject.SetValidValue(value, true);
+                _RESULT_COMMENT = StructuralObject.SetValidValue(value, true, "RESULT_COMMENT");
                 ReportPropertyChanged("RESULT_COMMENT");
                 OnRESULT_COMMENTChanged();
             }
@@ -13338,7 +17235,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnDEPTH_HEIGHT_MSRChanging(value);
                 ReportPropertyChanging("DEPTH_HEIGHT_MSR");
-                _DEPTH_HEIGHT_MSR = StructuralObject.SetValidValue(value, true);
+                _DEPTH_HEIGHT_MSR = StructuralObject.SetValidValue(value, true, "DEPTH_HEIGHT_MSR");
                 ReportPropertyChanged("DEPTH_HEIGHT_MSR");
                 OnDEPTH_HEIGHT_MSRChanged();
             }
@@ -13362,7 +17259,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnDEPTH_HEIGHT_MSR_UNITChanging(value);
                 ReportPropertyChanging("DEPTH_HEIGHT_MSR_UNIT");
-                _DEPTH_HEIGHT_MSR_UNIT = StructuralObject.SetValidValue(value, true);
+                _DEPTH_HEIGHT_MSR_UNIT = StructuralObject.SetValidValue(value, true, "DEPTH_HEIGHT_MSR_UNIT");
                 ReportPropertyChanged("DEPTH_HEIGHT_MSR_UNIT");
                 OnDEPTH_HEIGHT_MSR_UNITChanged();
             }
@@ -13386,7 +17283,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnDEPTHALTITUDEREFPOINTChanging(value);
                 ReportPropertyChanging("DEPTHALTITUDEREFPOINT");
-                _DEPTHALTITUDEREFPOINT = StructuralObject.SetValidValue(value, true);
+                _DEPTHALTITUDEREFPOINT = StructuralObject.SetValidValue(value, true, "DEPTHALTITUDEREFPOINT");
                 ReportPropertyChanged("DEPTHALTITUDEREFPOINT");
                 OnDEPTHALTITUDEREFPOINTChanged();
             }
@@ -13410,7 +17307,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnRESULT_SAMP_POINTChanging(value);
                 ReportPropertyChanging("RESULT_SAMP_POINT");
-                _RESULT_SAMP_POINT = StructuralObject.SetValidValue(value, true);
+                _RESULT_SAMP_POINT = StructuralObject.SetValidValue(value, true, "RESULT_SAMP_POINT");
                 ReportPropertyChanged("RESULT_SAMP_POINT");
                 OnRESULT_SAMP_POINTChanged();
             }
@@ -13434,7 +17331,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnBIO_INTENT_NAMEChanging(value);
                 ReportPropertyChanging("BIO_INTENT_NAME");
-                _BIO_INTENT_NAME = StructuralObject.SetValidValue(value, true);
+                _BIO_INTENT_NAME = StructuralObject.SetValidValue(value, true, "BIO_INTENT_NAME");
                 ReportPropertyChanged("BIO_INTENT_NAME");
                 OnBIO_INTENT_NAMEChanged();
             }
@@ -13458,7 +17355,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnBIO_INDIVIDUAL_IDChanging(value);
                 ReportPropertyChanging("BIO_INDIVIDUAL_ID");
-                _BIO_INDIVIDUAL_ID = StructuralObject.SetValidValue(value, true);
+                _BIO_INDIVIDUAL_ID = StructuralObject.SetValidValue(value, true, "BIO_INDIVIDUAL_ID");
                 ReportPropertyChanged("BIO_INDIVIDUAL_ID");
                 OnBIO_INDIVIDUAL_IDChanged();
             }
@@ -13482,7 +17379,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnBIO_SUBJECT_TAXONOMYChanging(value);
                 ReportPropertyChanging("BIO_SUBJECT_TAXONOMY");
-                _BIO_SUBJECT_TAXONOMY = StructuralObject.SetValidValue(value, true);
+                _BIO_SUBJECT_TAXONOMY = StructuralObject.SetValidValue(value, true, "BIO_SUBJECT_TAXONOMY");
                 ReportPropertyChanged("BIO_SUBJECT_TAXONOMY");
                 OnBIO_SUBJECT_TAXONOMYChanged();
             }
@@ -13506,7 +17403,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnBIO_UNIDENTIFIED_SPECIES_IDChanging(value);
                 ReportPropertyChanging("BIO_UNIDENTIFIED_SPECIES_ID");
-                _BIO_UNIDENTIFIED_SPECIES_ID = StructuralObject.SetValidValue(value, true);
+                _BIO_UNIDENTIFIED_SPECIES_ID = StructuralObject.SetValidValue(value, true, "BIO_UNIDENTIFIED_SPECIES_ID");
                 ReportPropertyChanged("BIO_UNIDENTIFIED_SPECIES_ID");
                 OnBIO_UNIDENTIFIED_SPECIES_IDChanged();
             }
@@ -13530,7 +17427,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnBIO_SAMPLE_TISSUE_ANATOMYChanging(value);
                 ReportPropertyChanging("BIO_SAMPLE_TISSUE_ANATOMY");
-                _BIO_SAMPLE_TISSUE_ANATOMY = StructuralObject.SetValidValue(value, true);
+                _BIO_SAMPLE_TISSUE_ANATOMY = StructuralObject.SetValidValue(value, true, "BIO_SAMPLE_TISSUE_ANATOMY");
                 ReportPropertyChanged("BIO_SAMPLE_TISSUE_ANATOMY");
                 OnBIO_SAMPLE_TISSUE_ANATOMYChanged();
             }
@@ -13554,7 +17451,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnGRP_SUMM_COUNT_WEIGHT_MSRChanging(value);
                 ReportPropertyChanging("GRP_SUMM_COUNT_WEIGHT_MSR");
-                _GRP_SUMM_COUNT_WEIGHT_MSR = StructuralObject.SetValidValue(value, true);
+                _GRP_SUMM_COUNT_WEIGHT_MSR = StructuralObject.SetValidValue(value, true, "GRP_SUMM_COUNT_WEIGHT_MSR");
                 ReportPropertyChanged("GRP_SUMM_COUNT_WEIGHT_MSR");
                 OnGRP_SUMM_COUNT_WEIGHT_MSRChanged();
             }
@@ -13578,7 +17475,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnGRP_SUMM_COUNT_WEIGHT_MSR_UNITChanging(value);
                 ReportPropertyChanging("GRP_SUMM_COUNT_WEIGHT_MSR_UNIT");
-                _GRP_SUMM_COUNT_WEIGHT_MSR_UNIT = StructuralObject.SetValidValue(value, true);
+                _GRP_SUMM_COUNT_WEIGHT_MSR_UNIT = StructuralObject.SetValidValue(value, true, "GRP_SUMM_COUNT_WEIGHT_MSR_UNIT");
                 ReportPropertyChanged("GRP_SUMM_COUNT_WEIGHT_MSR_UNIT");
                 OnGRP_SUMM_COUNT_WEIGHT_MSR_UNITChanged();
             }
@@ -13602,7 +17499,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnTAX_DTL_CELL_FORMChanging(value);
                 ReportPropertyChanging("TAX_DTL_CELL_FORM");
-                _TAX_DTL_CELL_FORM = StructuralObject.SetValidValue(value, true);
+                _TAX_DTL_CELL_FORM = StructuralObject.SetValidValue(value, true, "TAX_DTL_CELL_FORM");
                 ReportPropertyChanged("TAX_DTL_CELL_FORM");
                 OnTAX_DTL_CELL_FORMChanged();
             }
@@ -13626,7 +17523,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnTAX_DTL_CELL_SHAPEChanging(value);
                 ReportPropertyChanging("TAX_DTL_CELL_SHAPE");
-                _TAX_DTL_CELL_SHAPE = StructuralObject.SetValidValue(value, true);
+                _TAX_DTL_CELL_SHAPE = StructuralObject.SetValidValue(value, true, "TAX_DTL_CELL_SHAPE");
                 ReportPropertyChanged("TAX_DTL_CELL_SHAPE");
                 OnTAX_DTL_CELL_SHAPEChanged();
             }
@@ -13650,7 +17547,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnTAX_DTL_HABITChanging(value);
                 ReportPropertyChanging("TAX_DTL_HABIT");
-                _TAX_DTL_HABIT = StructuralObject.SetValidValue(value, true);
+                _TAX_DTL_HABIT = StructuralObject.SetValidValue(value, true, "TAX_DTL_HABIT");
                 ReportPropertyChanged("TAX_DTL_HABIT");
                 OnTAX_DTL_HABITChanged();
             }
@@ -13674,7 +17571,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnTAX_DTL_VOLTINISMChanging(value);
                 ReportPropertyChanging("TAX_DTL_VOLTINISM");
-                _TAX_DTL_VOLTINISM = StructuralObject.SetValidValue(value, true);
+                _TAX_DTL_VOLTINISM = StructuralObject.SetValidValue(value, true, "TAX_DTL_VOLTINISM");
                 ReportPropertyChanged("TAX_DTL_VOLTINISM");
                 OnTAX_DTL_VOLTINISMChanged();
             }
@@ -13698,7 +17595,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnTAX_DTL_POLL_TOLERANCEChanging(value);
                 ReportPropertyChanging("TAX_DTL_POLL_TOLERANCE");
-                _TAX_DTL_POLL_TOLERANCE = StructuralObject.SetValidValue(value, true);
+                _TAX_DTL_POLL_TOLERANCE = StructuralObject.SetValidValue(value, true, "TAX_DTL_POLL_TOLERANCE");
                 ReportPropertyChanged("TAX_DTL_POLL_TOLERANCE");
                 OnTAX_DTL_POLL_TOLERANCEChanged();
             }
@@ -13722,7 +17619,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnTAX_DTL_POLL_TOLERANCE_SCALEChanging(value);
                 ReportPropertyChanging("TAX_DTL_POLL_TOLERANCE_SCALE");
-                _TAX_DTL_POLL_TOLERANCE_SCALE = StructuralObject.SetValidValue(value, true);
+                _TAX_DTL_POLL_TOLERANCE_SCALE = StructuralObject.SetValidValue(value, true, "TAX_DTL_POLL_TOLERANCE_SCALE");
                 ReportPropertyChanged("TAX_DTL_POLL_TOLERANCE_SCALE");
                 OnTAX_DTL_POLL_TOLERANCE_SCALEChanged();
             }
@@ -13746,7 +17643,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnTAX_DTL_TROPHIC_LEVELChanging(value);
                 ReportPropertyChanging("TAX_DTL_TROPHIC_LEVEL");
-                _TAX_DTL_TROPHIC_LEVEL = StructuralObject.SetValidValue(value, true);
+                _TAX_DTL_TROPHIC_LEVEL = StructuralObject.SetValidValue(value, true, "TAX_DTL_TROPHIC_LEVEL");
                 ReportPropertyChanged("TAX_DTL_TROPHIC_LEVEL");
                 OnTAX_DTL_TROPHIC_LEVELChanged();
             }
@@ -13770,7 +17667,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnTAX_DTL_FUNC_FEEDING_GROUP1Changing(value);
                 ReportPropertyChanging("TAX_DTL_FUNC_FEEDING_GROUP1");
-                _TAX_DTL_FUNC_FEEDING_GROUP1 = StructuralObject.SetValidValue(value, true);
+                _TAX_DTL_FUNC_FEEDING_GROUP1 = StructuralObject.SetValidValue(value, true, "TAX_DTL_FUNC_FEEDING_GROUP1");
                 ReportPropertyChanged("TAX_DTL_FUNC_FEEDING_GROUP1");
                 OnTAX_DTL_FUNC_FEEDING_GROUP1Changed();
             }
@@ -13794,7 +17691,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnTAX_DTL_FUNC_FEEDING_GROUP2Changing(value);
                 ReportPropertyChanging("TAX_DTL_FUNC_FEEDING_GROUP2");
-                _TAX_DTL_FUNC_FEEDING_GROUP2 = StructuralObject.SetValidValue(value, true);
+                _TAX_DTL_FUNC_FEEDING_GROUP2 = StructuralObject.SetValidValue(value, true, "TAX_DTL_FUNC_FEEDING_GROUP2");
                 ReportPropertyChanged("TAX_DTL_FUNC_FEEDING_GROUP2");
                 OnTAX_DTL_FUNC_FEEDING_GROUP2Changed();
             }
@@ -13818,7 +17715,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnTAX_DTL_FUNC_FEEDING_GROUP3Changing(value);
                 ReportPropertyChanging("TAX_DTL_FUNC_FEEDING_GROUP3");
-                _TAX_DTL_FUNC_FEEDING_GROUP3 = StructuralObject.SetValidValue(value, true);
+                _TAX_DTL_FUNC_FEEDING_GROUP3 = StructuralObject.SetValidValue(value, true, "TAX_DTL_FUNC_FEEDING_GROUP3");
                 ReportPropertyChanged("TAX_DTL_FUNC_FEEDING_GROUP3");
                 OnTAX_DTL_FUNC_FEEDING_GROUP3Changed();
             }
@@ -13842,7 +17739,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnANALYTIC_METHOD_IDXChanging(value);
                 ReportPropertyChanging("ANALYTIC_METHOD_IDX");
-                _ANALYTIC_METHOD_IDX = StructuralObject.SetValidValue(value);
+                _ANALYTIC_METHOD_IDX = StructuralObject.SetValidValue(value, "ANALYTIC_METHOD_IDX");
                 ReportPropertyChanged("ANALYTIC_METHOD_IDX");
                 OnANALYTIC_METHOD_IDXChanged();
             }
@@ -13866,7 +17763,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnLAB_IDXChanging(value);
                 ReportPropertyChanging("LAB_IDX");
-                _LAB_IDX = StructuralObject.SetValidValue(value);
+                _LAB_IDX = StructuralObject.SetValidValue(value, "LAB_IDX");
                 ReportPropertyChanged("LAB_IDX");
                 OnLAB_IDXChanged();
             }
@@ -13890,7 +17787,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnLAB_ANALYSIS_START_DTChanging(value);
                 ReportPropertyChanging("LAB_ANALYSIS_START_DT");
-                _LAB_ANALYSIS_START_DT = StructuralObject.SetValidValue(value);
+                _LAB_ANALYSIS_START_DT = StructuralObject.SetValidValue(value, "LAB_ANALYSIS_START_DT");
                 ReportPropertyChanged("LAB_ANALYSIS_START_DT");
                 OnLAB_ANALYSIS_START_DTChanged();
             }
@@ -13914,7 +17811,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnLAB_ANALYSIS_END_DTChanging(value);
                 ReportPropertyChanging("LAB_ANALYSIS_END_DT");
-                _LAB_ANALYSIS_END_DT = StructuralObject.SetValidValue(value);
+                _LAB_ANALYSIS_END_DT = StructuralObject.SetValidValue(value, "LAB_ANALYSIS_END_DT");
                 ReportPropertyChanged("LAB_ANALYSIS_END_DT");
                 OnLAB_ANALYSIS_END_DTChanged();
             }
@@ -13938,7 +17835,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnLAB_ANALYSIS_TIMEZONEChanging(value);
                 ReportPropertyChanging("LAB_ANALYSIS_TIMEZONE");
-                _LAB_ANALYSIS_TIMEZONE = StructuralObject.SetValidValue(value, true);
+                _LAB_ANALYSIS_TIMEZONE = StructuralObject.SetValidValue(value, true, "LAB_ANALYSIS_TIMEZONE");
                 ReportPropertyChanged("LAB_ANALYSIS_TIMEZONE");
                 OnLAB_ANALYSIS_TIMEZONEChanged();
             }
@@ -13962,7 +17859,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnRESULT_LAB_COMMENT_CODEChanging(value);
                 ReportPropertyChanging("RESULT_LAB_COMMENT_CODE");
-                _RESULT_LAB_COMMENT_CODE = StructuralObject.SetValidValue(value, true);
+                _RESULT_LAB_COMMENT_CODE = StructuralObject.SetValidValue(value, true, "RESULT_LAB_COMMENT_CODE");
                 ReportPropertyChanged("RESULT_LAB_COMMENT_CODE");
                 OnRESULT_LAB_COMMENT_CODEChanged();
             }
@@ -13986,7 +17883,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnDETECTION_LIMIT_TYPEChanging(value);
                 ReportPropertyChanging("DETECTION_LIMIT_TYPE");
-                _DETECTION_LIMIT_TYPE = StructuralObject.SetValidValue(value, true);
+                _DETECTION_LIMIT_TYPE = StructuralObject.SetValidValue(value, true, "DETECTION_LIMIT_TYPE");
                 ReportPropertyChanged("DETECTION_LIMIT_TYPE");
                 OnDETECTION_LIMIT_TYPEChanged();
             }
@@ -14010,7 +17907,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnDETECTION_LIMITChanging(value);
                 ReportPropertyChanging("DETECTION_LIMIT");
-                _DETECTION_LIMIT = StructuralObject.SetValidValue(value, true);
+                _DETECTION_LIMIT = StructuralObject.SetValidValue(value, true, "DETECTION_LIMIT");
                 ReportPropertyChanged("DETECTION_LIMIT");
                 OnDETECTION_LIMITChanged();
             }
@@ -14034,7 +17931,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnLAB_TAXON_ACCRED_INDChanging(value);
                 ReportPropertyChanging("LAB_TAXON_ACCRED_IND");
-                _LAB_TAXON_ACCRED_IND = StructuralObject.SetValidValue(value, true);
+                _LAB_TAXON_ACCRED_IND = StructuralObject.SetValidValue(value, true, "LAB_TAXON_ACCRED_IND");
                 ReportPropertyChanged("LAB_TAXON_ACCRED_IND");
                 OnLAB_TAXON_ACCRED_INDChanged();
             }
@@ -14058,7 +17955,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnLAB_TAXON_ACCRED_AUTHORITYChanging(value);
                 ReportPropertyChanging("LAB_TAXON_ACCRED_AUTHORITY");
-                _LAB_TAXON_ACCRED_AUTHORITY = StructuralObject.SetValidValue(value, true);
+                _LAB_TAXON_ACCRED_AUTHORITY = StructuralObject.SetValidValue(value, true, "LAB_TAXON_ACCRED_AUTHORITY");
                 ReportPropertyChanged("LAB_TAXON_ACCRED_AUTHORITY");
                 OnLAB_TAXON_ACCRED_AUTHORITYChanged();
             }
@@ -14066,10 +17963,321 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
         private global::System.String _LAB_TAXON_ACCRED_AUTHORITY;
         partial void OnLAB_TAXON_ACCRED_AUTHORITYChanging(global::System.String value);
         partial void OnLAB_TAXON_ACCRED_AUTHORITYChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String LAB_REPORTING_LEVEL
+        {
+            get
+            {
+                return _LAB_REPORTING_LEVEL;
+            }
+            set
+            {
+                OnLAB_REPORTING_LEVELChanging(value);
+                ReportPropertyChanging("LAB_REPORTING_LEVEL");
+                _LAB_REPORTING_LEVEL = StructuralObject.SetValidValue(value, true, "LAB_REPORTING_LEVEL");
+                ReportPropertyChanged("LAB_REPORTING_LEVEL");
+                OnLAB_REPORTING_LEVELChanged();
+            }
+        }
+        private global::System.String _LAB_REPORTING_LEVEL;
+        partial void OnLAB_REPORTING_LEVELChanging(global::System.String value);
+        partial void OnLAB_REPORTING_LEVELChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String PQL
+        {
+            get
+            {
+                return _PQL;
+            }
+            set
+            {
+                OnPQLChanging(value);
+                ReportPropertyChanging("PQL");
+                _PQL = StructuralObject.SetValidValue(value, true, "PQL");
+                ReportPropertyChanged("PQL");
+                OnPQLChanged();
+            }
+        }
+        private global::System.String _PQL;
+        partial void OnPQLChanging(global::System.String value);
+        partial void OnPQLChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String LOWER_QUANT_LIMIT
+        {
+            get
+            {
+                return _LOWER_QUANT_LIMIT;
+            }
+            set
+            {
+                OnLOWER_QUANT_LIMITChanging(value);
+                ReportPropertyChanging("LOWER_QUANT_LIMIT");
+                _LOWER_QUANT_LIMIT = StructuralObject.SetValidValue(value, true, "LOWER_QUANT_LIMIT");
+                ReportPropertyChanged("LOWER_QUANT_LIMIT");
+                OnLOWER_QUANT_LIMITChanged();
+            }
+        }
+        private global::System.String _LOWER_QUANT_LIMIT;
+        partial void OnLOWER_QUANT_LIMITChanging(global::System.String value);
+        partial void OnLOWER_QUANT_LIMITChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String UPPER_QUANT_LIMIT
+        {
+            get
+            {
+                return _UPPER_QUANT_LIMIT;
+            }
+            set
+            {
+                OnUPPER_QUANT_LIMITChanging(value);
+                ReportPropertyChanging("UPPER_QUANT_LIMIT");
+                _UPPER_QUANT_LIMIT = StructuralObject.SetValidValue(value, true, "UPPER_QUANT_LIMIT");
+                ReportPropertyChanged("UPPER_QUANT_LIMIT");
+                OnUPPER_QUANT_LIMITChanged();
+            }
+        }
+        private global::System.String _UPPER_QUANT_LIMIT;
+        partial void OnUPPER_QUANT_LIMITChanging(global::System.String value);
+        partial void OnUPPER_QUANT_LIMITChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String DETECTION_LIMIT_UNIT
+        {
+            get
+            {
+                return _DETECTION_LIMIT_UNIT;
+            }
+            set
+            {
+                OnDETECTION_LIMIT_UNITChanging(value);
+                ReportPropertyChanging("DETECTION_LIMIT_UNIT");
+                _DETECTION_LIMIT_UNIT = StructuralObject.SetValidValue(value, true, "DETECTION_LIMIT_UNIT");
+                ReportPropertyChanged("DETECTION_LIMIT_UNIT");
+                OnDETECTION_LIMIT_UNITChanged();
+            }
+        }
+        private global::System.String _DETECTION_LIMIT_UNIT;
+        partial void OnDETECTION_LIMIT_UNITChanging(global::System.String value);
+        partial void OnDETECTION_LIMIT_UNITChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> LAB_SAMP_PREP_IDX
+        {
+            get
+            {
+                return _LAB_SAMP_PREP_IDX;
+            }
+            set
+            {
+                OnLAB_SAMP_PREP_IDXChanging(value);
+                ReportPropertyChanging("LAB_SAMP_PREP_IDX");
+                _LAB_SAMP_PREP_IDX = StructuralObject.SetValidValue(value, "LAB_SAMP_PREP_IDX");
+                ReportPropertyChanged("LAB_SAMP_PREP_IDX");
+                OnLAB_SAMP_PREP_IDXChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _LAB_SAMP_PREP_IDX;
+        partial void OnLAB_SAMP_PREP_IDXChanging(Nullable<global::System.Int32> value);
+        partial void OnLAB_SAMP_PREP_IDXChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> LAB_SAMP_PREP_START_DT
+        {
+            get
+            {
+                return _LAB_SAMP_PREP_START_DT;
+            }
+            set
+            {
+                OnLAB_SAMP_PREP_START_DTChanging(value);
+                ReportPropertyChanging("LAB_SAMP_PREP_START_DT");
+                _LAB_SAMP_PREP_START_DT = StructuralObject.SetValidValue(value, "LAB_SAMP_PREP_START_DT");
+                ReportPropertyChanged("LAB_SAMP_PREP_START_DT");
+                OnLAB_SAMP_PREP_START_DTChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _LAB_SAMP_PREP_START_DT;
+        partial void OnLAB_SAMP_PREP_START_DTChanging(Nullable<global::System.DateTime> value);
+        partial void OnLAB_SAMP_PREP_START_DTChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> LAB_SAMP_PREP_END_DT
+        {
+            get
+            {
+                return _LAB_SAMP_PREP_END_DT;
+            }
+            set
+            {
+                OnLAB_SAMP_PREP_END_DTChanging(value);
+                ReportPropertyChanging("LAB_SAMP_PREP_END_DT");
+                _LAB_SAMP_PREP_END_DT = StructuralObject.SetValidValue(value, "LAB_SAMP_PREP_END_DT");
+                ReportPropertyChanged("LAB_SAMP_PREP_END_DT");
+                OnLAB_SAMP_PREP_END_DTChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _LAB_SAMP_PREP_END_DT;
+        partial void OnLAB_SAMP_PREP_END_DTChanging(Nullable<global::System.DateTime> value);
+        partial void OnLAB_SAMP_PREP_END_DTChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String DILUTION_FACTOR
+        {
+            get
+            {
+                return _DILUTION_FACTOR;
+            }
+            set
+            {
+                OnDILUTION_FACTORChanging(value);
+                ReportPropertyChanging("DILUTION_FACTOR");
+                _DILUTION_FACTOR = StructuralObject.SetValidValue(value, true, "DILUTION_FACTOR");
+                ReportPropertyChanged("DILUTION_FACTOR");
+                OnDILUTION_FACTORChanged();
+            }
+        }
+        private global::System.String _DILUTION_FACTOR;
+        partial void OnDILUTION_FACTORChanging(global::System.String value);
+        partial void OnDILUTION_FACTORChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String FREQ_CLASS_CODE
+        {
+            get
+            {
+                return _FREQ_CLASS_CODE;
+            }
+            set
+            {
+                OnFREQ_CLASS_CODEChanging(value);
+                ReportPropertyChanging("FREQ_CLASS_CODE");
+                _FREQ_CLASS_CODE = StructuralObject.SetValidValue(value, true, "FREQ_CLASS_CODE");
+                ReportPropertyChanged("FREQ_CLASS_CODE");
+                OnFREQ_CLASS_CODEChanged();
+            }
+        }
+        private global::System.String _FREQ_CLASS_CODE;
+        partial void OnFREQ_CLASS_CODEChanging(global::System.String value);
+        partial void OnFREQ_CLASS_CODEChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String FREQ_CLASS_UNIT
+        {
+            get
+            {
+                return _FREQ_CLASS_UNIT;
+            }
+            set
+            {
+                OnFREQ_CLASS_UNITChanging(value);
+                ReportPropertyChanging("FREQ_CLASS_UNIT");
+                _FREQ_CLASS_UNIT = StructuralObject.SetValidValue(value, true, "FREQ_CLASS_UNIT");
+                ReportPropertyChanged("FREQ_CLASS_UNIT");
+                OnFREQ_CLASS_UNITChanged();
+            }
+        }
+        private global::System.String _FREQ_CLASS_UNIT;
+        partial void OnFREQ_CLASS_UNITChanging(global::System.String value);
+        partial void OnFREQ_CLASS_UNITChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String FREQ_CLASS_UPPER
+        {
+            get
+            {
+                return _FREQ_CLASS_UPPER;
+            }
+            set
+            {
+                OnFREQ_CLASS_UPPERChanging(value);
+                ReportPropertyChanging("FREQ_CLASS_UPPER");
+                _FREQ_CLASS_UPPER = StructuralObject.SetValidValue(value, true, "FREQ_CLASS_UPPER");
+                ReportPropertyChanged("FREQ_CLASS_UPPER");
+                OnFREQ_CLASS_UPPERChanged();
+            }
+        }
+        private global::System.String _FREQ_CLASS_UPPER;
+        partial void OnFREQ_CLASS_UPPERChanging(global::System.String value);
+        partial void OnFREQ_CLASS_UPPERChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String FREQ_CLASS_LOWER
+        {
+            get
+            {
+                return _FREQ_CLASS_LOWER;
+            }
+            set
+            {
+                OnFREQ_CLASS_LOWERChanging(value);
+                ReportPropertyChanging("FREQ_CLASS_LOWER");
+                _FREQ_CLASS_LOWER = StructuralObject.SetValidValue(value, true, "FREQ_CLASS_LOWER");
+                ReportPropertyChanged("FREQ_CLASS_LOWER");
+                OnFREQ_CLASS_LOWERChanged();
+            }
+        }
+        private global::System.String _FREQ_CLASS_LOWER;
+        partial void OnFREQ_CLASS_LOWERChanging(global::System.String value);
+        partial void OnFREQ_CLASS_LOWERChanged();
 
         #endregion
 
-    
         #region Navigation Properties
     
         /// <summary>
@@ -14078,16 +18286,16 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("OpenEnvironmentModel", "FK__T_WQX_RES__ACTIV__267ABA7A", "T_WQX_ACTIVITY")]
+        [EdmRelationshipNavigationPropertyAttribute("OpenEnvironmentModel", "FK__T_WQX_RES__ACTIV__48CFD27E", "T_WQX_ACTIVITY")]
         public T_WQX_ACTIVITY T_WQX_ACTIVITY
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<T_WQX_ACTIVITY>("OpenEnvironmentModel.FK__T_WQX_RES__ACTIV__267ABA7A", "T_WQX_ACTIVITY").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<T_WQX_ACTIVITY>("OpenEnvironmentModel.FK__T_WQX_RES__ACTIV__48CFD27E", "T_WQX_ACTIVITY").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<T_WQX_ACTIVITY>("OpenEnvironmentModel.FK__T_WQX_RES__ACTIV__267ABA7A", "T_WQX_ACTIVITY").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<T_WQX_ACTIVITY>("OpenEnvironmentModel.FK__T_WQX_RES__ACTIV__48CFD27E", "T_WQX_ACTIVITY").Value = value;
             }
         }
         /// <summary>
@@ -14099,13 +18307,13 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<T_WQX_ACTIVITY>("OpenEnvironmentModel.FK__T_WQX_RES__ACTIV__267ABA7A", "T_WQX_ACTIVITY");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<T_WQX_ACTIVITY>("OpenEnvironmentModel.FK__T_WQX_RES__ACTIV__48CFD27E", "T_WQX_ACTIVITY");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<T_WQX_ACTIVITY>("OpenEnvironmentModel.FK__T_WQX_RES__ACTIV__267ABA7A", "T_WQX_ACTIVITY", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<T_WQX_ACTIVITY>("OpenEnvironmentModel.FK__T_WQX_RES__ACTIV__48CFD27E", "T_WQX_ACTIVITY", value);
                 }
             }
         }
@@ -14116,16 +18324,16 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("OpenEnvironmentModel", "FK__T_WQX_RES__ANALY__286302EC", "T_WQX_REF_ANAL_METHOD")]
+        [EdmRelationshipNavigationPropertyAttribute("OpenEnvironmentModel", "FK__T_WQX_RES__ANALY__4AB81AF0", "T_WQX_REF_ANAL_METHOD")]
         public T_WQX_REF_ANAL_METHOD T_WQX_REF_ANAL_METHOD
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<T_WQX_REF_ANAL_METHOD>("OpenEnvironmentModel.FK__T_WQX_RES__ANALY__286302EC", "T_WQX_REF_ANAL_METHOD").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<T_WQX_REF_ANAL_METHOD>("OpenEnvironmentModel.FK__T_WQX_RES__ANALY__4AB81AF0", "T_WQX_REF_ANAL_METHOD").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<T_WQX_REF_ANAL_METHOD>("OpenEnvironmentModel.FK__T_WQX_RES__ANALY__286302EC", "T_WQX_REF_ANAL_METHOD").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<T_WQX_REF_ANAL_METHOD>("OpenEnvironmentModel.FK__T_WQX_RES__ANALY__4AB81AF0", "T_WQX_REF_ANAL_METHOD").Value = value;
             }
         }
         /// <summary>
@@ -14137,13 +18345,13 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<T_WQX_REF_ANAL_METHOD>("OpenEnvironmentModel.FK__T_WQX_RES__ANALY__286302EC", "T_WQX_REF_ANAL_METHOD");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<T_WQX_REF_ANAL_METHOD>("OpenEnvironmentModel.FK__T_WQX_RES__ANALY__4AB81AF0", "T_WQX_REF_ANAL_METHOD");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<T_WQX_REF_ANAL_METHOD>("OpenEnvironmentModel.FK__T_WQX_RES__ANALY__286302EC", "T_WQX_REF_ANAL_METHOD", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<T_WQX_REF_ANAL_METHOD>("OpenEnvironmentModel.FK__T_WQX_RES__ANALY__4AB81AF0", "T_WQX_REF_ANAL_METHOD", value);
                 }
             }
         }
@@ -14154,16 +18362,16 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("OpenEnvironmentModel", "FK__T_WQX_RES__LAB_I__276EDEB3", "T_WQX_REF_LAB")]
+        [EdmRelationshipNavigationPropertyAttribute("OpenEnvironmentModel", "FK__T_WQX_RES__LAB_I__2A164134", "T_WQX_REF_LAB")]
         public T_WQX_REF_LAB T_WQX_REF_LAB
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<T_WQX_REF_LAB>("OpenEnvironmentModel.FK__T_WQX_RES__LAB_I__276EDEB3", "T_WQX_REF_LAB").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<T_WQX_REF_LAB>("OpenEnvironmentModel.FK__T_WQX_RES__LAB_I__2A164134", "T_WQX_REF_LAB").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<T_WQX_REF_LAB>("OpenEnvironmentModel.FK__T_WQX_RES__LAB_I__276EDEB3", "T_WQX_REF_LAB").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<T_WQX_REF_LAB>("OpenEnvironmentModel.FK__T_WQX_RES__LAB_I__2A164134", "T_WQX_REF_LAB").Value = value;
             }
         }
         /// <summary>
@@ -14175,13 +18383,13 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<T_WQX_REF_LAB>("OpenEnvironmentModel.FK__T_WQX_RES__LAB_I__276EDEB3", "T_WQX_REF_LAB");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<T_WQX_REF_LAB>("OpenEnvironmentModel.FK__T_WQX_RES__LAB_I__2A164134", "T_WQX_REF_LAB");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<T_WQX_REF_LAB>("OpenEnvironmentModel.FK__T_WQX_RES__LAB_I__276EDEB3", "T_WQX_REF_LAB", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<T_WQX_REF_LAB>("OpenEnvironmentModel.FK__T_WQX_RES__LAB_I__2A164134", "T_WQX_REF_LAB", value);
                 }
             }
         }
@@ -14221,7 +18429,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
 
         #endregion
 
-        #region Primitive Properties
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -14240,7 +18448,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
                 {
                     OnLOG_IDChanging(value);
                     ReportPropertyChanging("LOG_ID");
-                    _LOG_ID = StructuralObject.SetValidValue(value);
+                    _LOG_ID = StructuralObject.SetValidValue(value, "LOG_ID");
                     ReportPropertyChanged("LOG_ID");
                     OnLOG_IDChanged();
                 }
@@ -14265,7 +18473,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnTABLE_CDChanging(value);
                 ReportPropertyChanging("TABLE_CD");
-                _TABLE_CD = StructuralObject.SetValidValue(value, false);
+                _TABLE_CD = StructuralObject.SetValidValue(value, false, "TABLE_CD");
                 ReportPropertyChanged("TABLE_CD");
                 OnTABLE_CDChanged();
             }
@@ -14289,7 +18497,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnTABLE_IDXChanging(value);
                 ReportPropertyChanging("TABLE_IDX");
-                _TABLE_IDX = StructuralObject.SetValidValue(value);
+                _TABLE_IDX = StructuralObject.SetValidValue(value, "TABLE_IDX");
                 ReportPropertyChanged("TABLE_IDX");
                 OnTABLE_IDXChanged();
             }
@@ -14313,7 +18521,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnSUBMIT_DTChanging(value);
                 ReportPropertyChanging("SUBMIT_DT");
-                _SUBMIT_DT = StructuralObject.SetValidValue(value);
+                _SUBMIT_DT = StructuralObject.SetValidValue(value, "SUBMIT_DT");
                 ReportPropertyChanged("SUBMIT_DT");
                 OnSUBMIT_DTChanged();
             }
@@ -14337,7 +18545,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnSUBMIT_TYPEChanging(value);
                 ReportPropertyChanging("SUBMIT_TYPE");
-                _SUBMIT_TYPE = StructuralObject.SetValidValue(value, false);
+                _SUBMIT_TYPE = StructuralObject.SetValidValue(value, false, "SUBMIT_TYPE");
                 ReportPropertyChanged("SUBMIT_TYPE");
                 OnSUBMIT_TYPEChanged();
             }
@@ -14361,7 +18569,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnRESPONSE_FILEChanging(value);
                 ReportPropertyChanging("RESPONSE_FILE");
-                _RESPONSE_FILE = StructuralObject.SetValidValue(value, true);
+                _RESPONSE_FILE = StructuralObject.SetValidValue(value, true, "RESPONSE_FILE");
                 ReportPropertyChanged("RESPONSE_FILE");
                 OnRESPONSE_FILEChanged();
             }
@@ -14385,7 +18593,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnRESPONSE_TXTChanging(value);
                 ReportPropertyChanging("RESPONSE_TXT");
-                _RESPONSE_TXT = StructuralObject.SetValidValue(value, true);
+                _RESPONSE_TXT = StructuralObject.SetValidValue(value, true, "RESPONSE_TXT");
                 ReportPropertyChanged("RESPONSE_TXT");
                 OnRESPONSE_TXTChanged();
             }
@@ -14409,7 +18617,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnCDX_SUBMIT_TRANSIDChanging(value);
                 ReportPropertyChanging("CDX_SUBMIT_TRANSID");
-                _CDX_SUBMIT_TRANSID = StructuralObject.SetValidValue(value, true);
+                _CDX_SUBMIT_TRANSID = StructuralObject.SetValidValue(value, true, "CDX_SUBMIT_TRANSID");
                 ReportPropertyChanged("CDX_SUBMIT_TRANSID");
                 OnCDX_SUBMIT_TRANSIDChanged();
             }
@@ -14433,7 +18641,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnCDX_SUBMIT_STATUSChanging(value);
                 ReportPropertyChanging("CDX_SUBMIT_STATUS");
-                _CDX_SUBMIT_STATUS = StructuralObject.SetValidValue(value, true);
+                _CDX_SUBMIT_STATUS = StructuralObject.SetValidValue(value, true, "CDX_SUBMIT_STATUS");
                 ReportPropertyChanged("CDX_SUBMIT_STATUS");
                 OnCDX_SUBMIT_STATUSChanged();
             }
@@ -14457,7 +18665,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnORG_IDChanging(value);
                 ReportPropertyChanging("ORG_ID");
-                _ORG_ID = StructuralObject.SetValidValue(value, true);
+                _ORG_ID = StructuralObject.SetValidValue(value, true, "ORG_ID");
                 ReportPropertyChanged("ORG_ID");
                 OnORG_IDChanged();
             }
@@ -14468,7 +18676,6 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
 
         #endregion
 
-    
     }
     
     /// <summary>
@@ -14496,7 +18703,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
 
         #endregion
 
-        #region Primitive Properties
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -14515,7 +18722,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
                 {
                     OnUSER_IDXChanging(value);
                     ReportPropertyChanging("USER_IDX");
-                    _USER_IDX = StructuralObject.SetValidValue(value);
+                    _USER_IDX = StructuralObject.SetValidValue(value, "USER_IDX");
                     ReportPropertyChanged("USER_IDX");
                     OnUSER_IDXChanged();
                 }
@@ -14542,7 +18749,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
                 {
                     OnORG_IDChanging(value);
                     ReportPropertyChanging("ORG_ID");
-                    _ORG_ID = StructuralObject.SetValidValue(value, false);
+                    _ORG_ID = StructuralObject.SetValidValue(value, false, "ORG_ID");
                     ReportPropertyChanged("ORG_ID");
                     OnORG_IDChanged();
                 }
@@ -14567,7 +18774,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnROLE_CDChanging(value);
                 ReportPropertyChanging("ROLE_CD");
-                _ROLE_CD = StructuralObject.SetValidValue(value, true);
+                _ROLE_CD = StructuralObject.SetValidValue(value, true, "ROLE_CD");
                 ReportPropertyChanged("ROLE_CD");
                 OnROLE_CDChanged();
             }
@@ -14591,7 +18798,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnCREATE_USERIDChanging(value);
                 ReportPropertyChanging("CREATE_USERID");
-                _CREATE_USERID = StructuralObject.SetValidValue(value, true);
+                _CREATE_USERID = StructuralObject.SetValidValue(value, true, "CREATE_USERID");
                 ReportPropertyChanged("CREATE_USERID");
                 OnCREATE_USERIDChanged();
             }
@@ -14615,7 +18822,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnCREATE_DTChanging(value);
                 ReportPropertyChanging("CREATE_DT");
-                _CREATE_DT = StructuralObject.SetValidValue(value);
+                _CREATE_DT = StructuralObject.SetValidValue(value, "CREATE_DT");
                 ReportPropertyChanged("CREATE_DT");
                 OnCREATE_DTChanged();
             }
@@ -14626,7 +18833,6 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
 
         #endregion
 
-    
         #region Navigation Properties
     
         /// <summary>
@@ -14744,7 +18950,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
 
         #endregion
 
-        #region Primitive Properties
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -14763,7 +18969,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
                 {
                     OnACTIVITY_IDXChanging(value);
                     ReportPropertyChanging("ACTIVITY_IDX");
-                    _ACTIVITY_IDX = StructuralObject.SetValidValue(value);
+                    _ACTIVITY_IDX = StructuralObject.SetValidValue(value, "ACTIVITY_IDX");
                     ReportPropertyChanged("ACTIVITY_IDX");
                     OnACTIVITY_IDXChanged();
                 }
@@ -14790,7 +18996,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
                 {
                     OnORG_IDChanging(value);
                     ReportPropertyChanging("ORG_ID");
-                    _ORG_ID = StructuralObject.SetValidValue(value, false);
+                    _ORG_ID = StructuralObject.SetValidValue(value, false, "ORG_ID");
                     ReportPropertyChanged("ORG_ID");
                     OnORG_IDChanged();
                 }
@@ -14817,7 +19023,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
                 {
                     OnPROJECT_IDXChanging(value);
                     ReportPropertyChanging("PROJECT_IDX");
-                    _PROJECT_IDX = StructuralObject.SetValidValue(value);
+                    _PROJECT_IDX = StructuralObject.SetValidValue(value, "PROJECT_IDX");
                     ReportPropertyChanged("PROJECT_IDX");
                     OnPROJECT_IDXChanged();
                 }
@@ -14842,7 +19048,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnMONLOC_IDXChanging(value);
                 ReportPropertyChanging("MONLOC_IDX");
-                _MONLOC_IDX = StructuralObject.SetValidValue(value);
+                _MONLOC_IDX = StructuralObject.SetValidValue(value, "MONLOC_IDX");
                 ReportPropertyChanged("MONLOC_IDX");
                 OnMONLOC_IDXChanged();
             }
@@ -14868,7 +19074,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
                 {
                     OnMONLOC_NAMEChanging(value);
                     ReportPropertyChanging("MONLOC_NAME");
-                    _MONLOC_NAME = StructuralObject.SetValidValue(value, false);
+                    _MONLOC_NAME = StructuralObject.SetValidValue(value, false, "MONLOC_NAME");
                     ReportPropertyChanged("MONLOC_NAME");
                     OnMONLOC_NAMEChanged();
                 }
@@ -14895,7 +19101,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
                 {
                     OnACTIVITY_IDChanging(value);
                     ReportPropertyChanging("ACTIVITY_ID");
-                    _ACTIVITY_ID = StructuralObject.SetValidValue(value, false);
+                    _ACTIVITY_ID = StructuralObject.SetValidValue(value, false, "ACTIVITY_ID");
                     ReportPropertyChanged("ACTIVITY_ID");
                     OnACTIVITY_IDChanged();
                 }
@@ -14922,7 +19128,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
                 {
                     OnACT_TYPEChanging(value);
                     ReportPropertyChanging("ACT_TYPE");
-                    _ACT_TYPE = StructuralObject.SetValidValue(value, false);
+                    _ACT_TYPE = StructuralObject.SetValidValue(value, false, "ACT_TYPE");
                     ReportPropertyChanged("ACT_TYPE");
                     OnACT_TYPEChanged();
                 }
@@ -14949,7 +19155,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
                 {
                     OnACT_START_DTChanging(value);
                     ReportPropertyChanging("ACT_START_DT");
-                    _ACT_START_DT = StructuralObject.SetValidValue(value);
+                    _ACT_START_DT = StructuralObject.SetValidValue(value, "ACT_START_DT");
                     ReportPropertyChanged("ACT_START_DT");
                     OnACT_START_DTChanged();
                 }
@@ -14974,7 +19180,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnWQX_INDChanging(value);
                 ReportPropertyChanging("WQX_IND");
-                _WQX_IND = StructuralObject.SetValidValue(value);
+                _WQX_IND = StructuralObject.SetValidValue(value, "WQX_IND");
                 ReportPropertyChanged("WQX_IND");
                 OnWQX_INDChanged();
             }
@@ -14998,7 +19204,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnCREATE_DTChanging(value);
                 ReportPropertyChanging("CREATE_DT");
-                _CREATE_DT = StructuralObject.SetValidValue(value);
+                _CREATE_DT = StructuralObject.SetValidValue(value, "CREATE_DT");
                 ReportPropertyChanged("CREATE_DT");
                 OnCREATE_DTChanged();
             }
@@ -15022,7 +19228,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnCREATE_USERIDChanging(value);
                 ReportPropertyChanging("CREATE_USERID");
-                _CREATE_USERID = StructuralObject.SetValidValue(value, true);
+                _CREATE_USERID = StructuralObject.SetValidValue(value, true, "CREATE_USERID");
                 ReportPropertyChanged("CREATE_USERID");
                 OnCREATE_USERIDChanged();
             }
@@ -15046,7 +19252,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnACT_COMMENTChanging(value);
                 ReportPropertyChanging("ACT_COMMENT");
-                _ACT_COMMENT = StructuralObject.SetValidValue(value, true);
+                _ACT_COMMENT = StructuralObject.SetValidValue(value, true, "ACT_COMMENT");
                 ReportPropertyChanged("ACT_COMMENT");
                 OnACT_COMMENTChanged();
             }
@@ -15070,7 +19276,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnAlkalinity__totalChanging(value);
                 ReportPropertyChanging("Alkalinity__total");
-                _Alkalinity__total = StructuralObject.SetValidValue(value, true);
+                _Alkalinity__total = StructuralObject.SetValidValue(value, true, "Alkalinity__total");
                 ReportPropertyChanged("Alkalinity__total");
                 OnAlkalinity__totalChanged();
             }
@@ -15094,7 +19300,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnAmmoniaChanging(value);
                 ReportPropertyChanging("Ammonia");
-                _Ammonia = StructuralObject.SetValidValue(value, true);
+                _Ammonia = StructuralObject.SetValidValue(value, true, "Ammonia");
                 ReportPropertyChanged("Ammonia");
                 OnAmmoniaChanged();
             }
@@ -15118,7 +19324,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnDissolved_oxygen__DO_Changing(value);
                 ReportPropertyChanging("Dissolved_oxygen__DO_");
-                _Dissolved_oxygen__DO_ = StructuralObject.SetValidValue(value, true);
+                _Dissolved_oxygen__DO_ = StructuralObject.SetValidValue(value, true, "Dissolved_oxygen__DO_");
                 ReportPropertyChanged("Dissolved_oxygen__DO_");
                 OnDissolved_oxygen__DO_Changed();
             }
@@ -15142,7 +19348,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnEscherichia_coliChanging(value);
                 ReportPropertyChanging("Escherichia_coli");
-                _Escherichia_coli = StructuralObject.SetValidValue(value, true);
+                _Escherichia_coli = StructuralObject.SetValidValue(value, true, "Escherichia_coli");
                 ReportPropertyChanged("Escherichia_coli");
                 OnEscherichia_coliChanged();
             }
@@ -15166,7 +19372,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnNitrateChanging(value);
                 ReportPropertyChanging("Nitrate");
-                _Nitrate = StructuralObject.SetValidValue(value, true);
+                _Nitrate = StructuralObject.SetValidValue(value, true, "Nitrate");
                 ReportPropertyChanged("Nitrate");
                 OnNitrateChanged();
             }
@@ -15190,7 +19396,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnNitriteChanging(value);
                 ReportPropertyChanging("Nitrite");
-                _Nitrite = StructuralObject.SetValidValue(value, true);
+                _Nitrite = StructuralObject.SetValidValue(value, true, "Nitrite");
                 ReportPropertyChanged("Nitrite");
                 OnNitriteChanged();
             }
@@ -15214,7 +19420,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnpHChanging(value);
                 ReportPropertyChanging("pH");
-                _pH = StructuralObject.SetValidValue(value, true);
+                _pH = StructuralObject.SetValidValue(value, true, "pH");
                 ReportPropertyChanged("pH");
                 OnpHChanged();
             }
@@ -15238,7 +19444,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnPhosphorusChanging(value);
                 ReportPropertyChanging("Phosphorus");
-                _Phosphorus = StructuralObject.SetValidValue(value, true);
+                _Phosphorus = StructuralObject.SetValidValue(value, true, "Phosphorus");
                 ReportPropertyChanged("Phosphorus");
                 OnPhosphorusChanged();
             }
@@ -15262,7 +19468,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnSalinityChanging(value);
                 ReportPropertyChanging("Salinity");
-                _Salinity = StructuralObject.SetValidValue(value, true);
+                _Salinity = StructuralObject.SetValidValue(value, true, "Salinity");
                 ReportPropertyChanged("Salinity");
                 OnSalinityChanged();
             }
@@ -15286,7 +19492,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnSpecific_ConductanceChanging(value);
                 ReportPropertyChanging("Specific_Conductance");
-                _Specific_Conductance = StructuralObject.SetValidValue(value, true);
+                _Specific_Conductance = StructuralObject.SetValidValue(value, true, "Specific_Conductance");
                 ReportPropertyChanged("Specific_Conductance");
                 OnSpecific_ConductanceChanged();
             }
@@ -15310,7 +19516,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnTemperature__airChanging(value);
                 ReportPropertyChanging("Temperature__air");
-                _Temperature__air = StructuralObject.SetValidValue(value, true);
+                _Temperature__air = StructuralObject.SetValidValue(value, true, "Temperature__air");
                 ReportPropertyChanged("Temperature__air");
                 OnTemperature__airChanged();
             }
@@ -15334,7 +19540,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnTemperature__waterChanging(value);
                 ReportPropertyChanging("Temperature__water");
-                _Temperature__water = StructuralObject.SetValidValue(value, true);
+                _Temperature__water = StructuralObject.SetValidValue(value, true, "Temperature__water");
                 ReportPropertyChanged("Temperature__water");
                 OnTemperature__waterChanged();
             }
@@ -15358,7 +19564,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnTotal_Dissolved_SolidsChanging(value);
                 ReportPropertyChanging("Total_Dissolved_Solids");
-                _Total_Dissolved_Solids = StructuralObject.SetValidValue(value, true);
+                _Total_Dissolved_Solids = StructuralObject.SetValidValue(value, true, "Total_Dissolved_Solids");
                 ReportPropertyChanged("Total_Dissolved_Solids");
                 OnTotal_Dissolved_SolidsChanged();
             }
@@ -15382,7 +19588,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnTurbidityChanging(value);
                 ReportPropertyChanging("Turbidity");
-                _Turbidity = StructuralObject.SetValidValue(value, true);
+                _Turbidity = StructuralObject.SetValidValue(value, true, "Turbidity");
                 ReportPropertyChanged("Turbidity");
                 OnTurbidityChanged();
             }
@@ -15393,7 +19599,115 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
 
         #endregion
 
+    }
     
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="OpenEnvironmentModel", Name="V_WQX_ALL_ORGS")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class V_WQX_ALL_ORGS : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new V_WQX_ALL_ORGS object.
+        /// </summary>
+        /// <param name="oRG_ID">Initial value of the ORG_ID property.</param>
+        /// <param name="oRG_FORMAL_NAME">Initial value of the ORG_FORMAL_NAME property.</param>
+        public static V_WQX_ALL_ORGS CreateV_WQX_ALL_ORGS(global::System.String oRG_ID, global::System.String oRG_FORMAL_NAME)
+        {
+            V_WQX_ALL_ORGS v_WQX_ALL_ORGS = new V_WQX_ALL_ORGS();
+            v_WQX_ALL_ORGS.ORG_ID = oRG_ID;
+            v_WQX_ALL_ORGS.ORG_FORMAL_NAME = oRG_FORMAL_NAME;
+            return v_WQX_ALL_ORGS;
+        }
+
+        #endregion
+
+        #region Simple Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String ORG_ID
+        {
+            get
+            {
+                return _ORG_ID;
+            }
+            set
+            {
+                if (_ORG_ID != value)
+                {
+                    OnORG_IDChanging(value);
+                    ReportPropertyChanging("ORG_ID");
+                    _ORG_ID = StructuralObject.SetValidValue(value, false, "ORG_ID");
+                    ReportPropertyChanged("ORG_ID");
+                    OnORG_IDChanged();
+                }
+            }
+        }
+        private global::System.String _ORG_ID;
+        partial void OnORG_IDChanging(global::System.String value);
+        partial void OnORG_IDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String ORG_FORMAL_NAME
+        {
+            get
+            {
+                return _ORG_FORMAL_NAME;
+            }
+            set
+            {
+                if (_ORG_FORMAL_NAME != value)
+                {
+                    OnORG_FORMAL_NAMEChanging(value);
+                    ReportPropertyChanging("ORG_FORMAL_NAME");
+                    _ORG_FORMAL_NAME = StructuralObject.SetValidValue(value, false, "ORG_FORMAL_NAME");
+                    ReportPropertyChanged("ORG_FORMAL_NAME");
+                    OnORG_FORMAL_NAMEChanged();
+                }
+            }
+        }
+        private global::System.String _ORG_FORMAL_NAME;
+        partial void OnORG_FORMAL_NAMEChanging(global::System.String value);
+        partial void OnORG_FORMAL_NAMEChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String SRC
+        {
+            get
+            {
+                return _SRC;
+            }
+            set
+            {
+                OnSRCChanging(value);
+                ReportPropertyChanging("SRC");
+                _SRC = StructuralObject.SetValidValue(value, true, "SRC");
+                ReportPropertyChanged("SRC");
+                OnSRCChanged();
+            }
+        }
+        private global::System.String _SRC;
+        partial void OnSRCChanging(global::System.String value);
+        partial void OnSRCChanged();
+
+        #endregion
+
     }
     
     /// <summary>
@@ -15427,7 +19741,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
 
         #endregion
 
-        #region Primitive Properties
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -15446,7 +19760,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
                 {
                     OnLOG_IDChanging(value);
                     ReportPropertyChanging("LOG_ID");
-                    _LOG_ID = StructuralObject.SetValidValue(value);
+                    _LOG_ID = StructuralObject.SetValidValue(value, "LOG_ID");
                     ReportPropertyChanged("LOG_ID");
                     OnLOG_IDChanged();
                 }
@@ -15473,7 +19787,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
                 {
                     OnTABLE_CDChanging(value);
                     ReportPropertyChanging("TABLE_CD");
-                    _TABLE_CD = StructuralObject.SetValidValue(value, false);
+                    _TABLE_CD = StructuralObject.SetValidValue(value, false, "TABLE_CD");
                     ReportPropertyChanged("TABLE_CD");
                     OnTABLE_CDChanged();
                 }
@@ -15500,7 +19814,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
                 {
                     OnTABLE_IDXChanging(value);
                     ReportPropertyChanging("TABLE_IDX");
-                    _TABLE_IDX = StructuralObject.SetValidValue(value);
+                    _TABLE_IDX = StructuralObject.SetValidValue(value, "TABLE_IDX");
                     ReportPropertyChanged("TABLE_IDX");
                     OnTABLE_IDXChanged();
                 }
@@ -15527,7 +19841,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
                 {
                     OnSUBMIT_DTChanging(value);
                     ReportPropertyChanging("SUBMIT_DT");
-                    _SUBMIT_DT = StructuralObject.SetValidValue(value);
+                    _SUBMIT_DT = StructuralObject.SetValidValue(value, "SUBMIT_DT");
                     ReportPropertyChanged("SUBMIT_DT");
                     OnSUBMIT_DTChanged();
                 }
@@ -15554,7 +19868,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
                 {
                     OnSUBMIT_TYPEChanging(value);
                     ReportPropertyChanging("SUBMIT_TYPE");
-                    _SUBMIT_TYPE = StructuralObject.SetValidValue(value, false);
+                    _SUBMIT_TYPE = StructuralObject.SetValidValue(value, false, "SUBMIT_TYPE");
                     ReportPropertyChanged("SUBMIT_TYPE");
                     OnSUBMIT_TYPEChanged();
                 }
@@ -15579,7 +19893,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnRESPONSE_FILEChanging(value);
                 ReportPropertyChanging("RESPONSE_FILE");
-                _RESPONSE_FILE = StructuralObject.SetValidValue(value, true);
+                _RESPONSE_FILE = StructuralObject.SetValidValue(value, true, "RESPONSE_FILE");
                 ReportPropertyChanged("RESPONSE_FILE");
                 OnRESPONSE_FILEChanged();
             }
@@ -15603,7 +19917,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnRESPONSE_TXTChanging(value);
                 ReportPropertyChanging("RESPONSE_TXT");
-                _RESPONSE_TXT = StructuralObject.SetValidValue(value, true);
+                _RESPONSE_TXT = StructuralObject.SetValidValue(value, true, "RESPONSE_TXT");
                 ReportPropertyChanged("RESPONSE_TXT");
                 OnRESPONSE_TXTChanged();
             }
@@ -15627,7 +19941,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnCDX_SUBMIT_TRANSIDChanging(value);
                 ReportPropertyChanging("CDX_SUBMIT_TRANSID");
-                _CDX_SUBMIT_TRANSID = StructuralObject.SetValidValue(value, true);
+                _CDX_SUBMIT_TRANSID = StructuralObject.SetValidValue(value, true, "CDX_SUBMIT_TRANSID");
                 ReportPropertyChanged("CDX_SUBMIT_TRANSID");
                 OnCDX_SUBMIT_TRANSIDChanged();
             }
@@ -15651,7 +19965,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnCDX_SUBMIT_STATUSChanging(value);
                 ReportPropertyChanging("CDX_SUBMIT_STATUS");
-                _CDX_SUBMIT_STATUS = StructuralObject.SetValidValue(value, true);
+                _CDX_SUBMIT_STATUS = StructuralObject.SetValidValue(value, true, "CDX_SUBMIT_STATUS");
                 ReportPropertyChanged("CDX_SUBMIT_STATUS");
                 OnCDX_SUBMIT_STATUSChanged();
             }
@@ -15675,7 +19989,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnORG_IDChanging(value);
                 ReportPropertyChanging("ORG_ID");
-                _ORG_ID = StructuralObject.SetValidValue(value, true);
+                _ORG_ID = StructuralObject.SetValidValue(value, true, "ORG_ID");
                 ReportPropertyChanged("ORG_ID");
                 OnORG_IDChanged();
             }
@@ -15699,7 +20013,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnRECORDChanging(value);
                 ReportPropertyChanging("RECORD");
-                _RECORD = StructuralObject.SetValidValue(value, true);
+                _RECORD = StructuralObject.SetValidValue(value, true, "RECORD");
                 ReportPropertyChanged("RECORD");
                 OnRECORDChanged();
             }
@@ -15710,7 +20024,6 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
 
         #endregion
 
-    
     }
 
     #endregion
@@ -15725,7 +20038,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
     [Serializable()]
     public partial class WQXAnalysis_Result : ComplexObject
     {
-        #region Primitive Properties
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -15742,7 +20055,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnMONLOC_NAMEChanging(value);
                 ReportPropertyChanging("MONLOC_NAME");
-                _MONLOC_NAME = StructuralObject.SetValidValue(value, true);
+                _MONLOC_NAME = StructuralObject.SetValidValue(value, true, "MONLOC_NAME");
                 ReportPropertyChanged("MONLOC_NAME");
                 OnMONLOC_NAMEChanged();
             }
@@ -15766,7 +20079,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnCHAR_NAMEChanging(value);
                 ReportPropertyChanging("CHAR_NAME");
-                _CHAR_NAME = StructuralObject.SetValidValue(value, true);
+                _CHAR_NAME = StructuralObject.SetValidValue(value, true, "CHAR_NAME");
                 ReportPropertyChanged("CHAR_NAME");
                 OnCHAR_NAMEChanged();
             }
@@ -15790,7 +20103,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnSTART_DTChanging(value);
                 ReportPropertyChanging("START_DT");
-                _START_DT = StructuralObject.SetValidValue(value);
+                _START_DT = StructuralObject.SetValidValue(value, "START_DT");
                 ReportPropertyChanged("START_DT");
                 OnSTART_DTChanged();
             }
@@ -15814,7 +20127,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnRESULT_MSRChanging(value);
                 ReportPropertyChanging("RESULT_MSR");
-                _RESULT_MSR = StructuralObject.SetValidValue(value);
+                _RESULT_MSR = StructuralObject.SetValidValue(value, "RESULT_MSR");
                 ReportPropertyChanged("RESULT_MSR");
                 OnRESULT_MSRChanged();
             }
@@ -15838,7 +20151,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnRESULT_MSR_UNITChanging(value);
                 ReportPropertyChanging("RESULT_MSR_UNIT");
-                _RESULT_MSR_UNIT = StructuralObject.SetValidValue(value, true);
+                _RESULT_MSR_UNIT = StructuralObject.SetValidValue(value, true, "RESULT_MSR_UNIT");
                 ReportPropertyChanged("RESULT_MSR_UNIT");
                 OnRESULT_MSR_UNITChanged();
             }
@@ -15862,7 +20175,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnDETECTION_LIMITChanging(value);
                 ReportPropertyChanging("DETECTION_LIMIT");
-                _DETECTION_LIMIT = StructuralObject.SetValidValue(value, true);
+                _DETECTION_LIMIT = StructuralObject.SetValidValue(value, true, "DETECTION_LIMIT");
                 ReportPropertyChanged("DETECTION_LIMIT");
                 OnDETECTION_LIMITChanged();
             }
@@ -15877,5 +20190,4 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
 
     #endregion
 
-    
 }

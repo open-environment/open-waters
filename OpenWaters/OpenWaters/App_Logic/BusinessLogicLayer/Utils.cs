@@ -7,7 +7,8 @@ using System.Text;
 using System.Web;
 using System.IO;
 using System.Web.UI;
-
+using System.Xml.Linq;
+using System.Linq;
 
 namespace OpenEnvironment.App_Logic.BusinessLogicLayer
 {
@@ -78,37 +79,53 @@ namespace OpenEnvironment.App_Logic.BusinessLogicLayer
         /// <summary>
         ///  Sends out an email from the application. Returns true if successful.
         /// </summary>
-        public static bool SendEmail(string from, string to, string subj, string body)
+        public static bool SendEmail(string from, List<string> to, List<string> cc, List<string> bcc, string subj, string body, string htmlBody)
         {
             try
             {
-                //*************SET MESSAGE CONTENTS *********************
-                if (from == null)
-                    from = db_Ref.GetT_OE_APP_SETTING("EMAIL FROM");
+                //************* GET SMTP SERVER SETTINGS ****************************
+                string mailServer = db_Ref.GetT_OE_APP_SETTING("Email Server");
+                string Port = db_Ref.GetT_OE_APP_SETTING("Email Port");
+                string smtpUser = db_Ref.GetT_OE_APP_SETTING("Email Secure User");
+                string smtpUserPwd = db_Ref.GetT_OE_APP_SETTING("Email Secure Pwd");
 
+                //*************SET MESSAGE SENDER*********************
+                if (from == null)
+                    from = db_Ref.GetT_OE_APP_SETTING("Email From");
+
+
+                if (mailServer == "smtp.sendgrid.net")
+                {
+                    SendGridHelper.SendGridEmail(from, to, cc, bcc, subj, body, smtpUser, smtpUserPwd);
+                    return true;
+                }
+
+
+                //*************SET MESSAGE RECIPIENTS*********************
                 System.Net.Mail.MailMessage message = new System.Net.Mail.MailMessage();
+
+                if (to != null)
+                {
+                    foreach (string to1 in to)
+                        message.To.Add(to1);
+                }                
+
+                if (cc != null)
+                {
+                    foreach (string cc1 in cc)
+                        message.CC.Add(cc1);
+                }
+                if (bcc != null)
+                {
+                    foreach (string bcc1 in bcc)
+                        message.Bcc.Add(bcc1);
+                }
+
                 message.From = new System.Net.Mail.MailAddress(from);
-                message.To.Add(to);
                 message.Subject = subj;
                 message.Body = body;
 
-
                 //***************SET SMTP SERVER *************************
-                string mailServer = System.Configuration.ConfigurationManager.AppSettings["emailServer"];
-                if (mailServer == null || mailServer == "")
-                    mailServer = db_Ref.GetT_OE_APP_SETTING("EMAIL SERVER");
-
-                string Port = System.Configuration.ConfigurationManager.AppSettings["emailPort"];
-                if (Port == null || Port == "")
-                    Port = db_Ref.GetT_OE_APP_SETTING("EMAIL PORT");
-
-                string smtpUser = System.Configuration.ConfigurationManager.AppSettings["emailUser"];
-                if (smtpUser == null || smtpUser == "")
-                    smtpUser = db_Ref.GetT_OE_APP_SETTING("EMAIL SECURE USER");
-
-                string smtpUserPwd = System.Configuration.ConfigurationManager.AppSettings["emailUser"];
-                if (smtpUserPwd == null || smtpUser == "")
-                    smtpUserPwd = db_Ref.GetT_OE_APP_SETTING("EMAIL SECURE PWD");
 
                 if (string.IsNullOrEmpty(smtpUser) == false)  //smtp server requires authentication
                 {
@@ -118,14 +135,14 @@ namespace OpenEnvironment.App_Logic.BusinessLogicLayer
                         EnableSsl = true
                     };
                     smtp.Send(message);
-                    return true;
                 }
                 else
                 {
                     System.Net.Mail.SmtpClient smtp = new System.Net.Mail.SmtpClient(mailServer);
                     smtp.Send(message);
-                    return true;
                 }
+
+                return true;
 
             }
             catch (Exception ex)
@@ -138,13 +155,6 @@ namespace OpenEnvironment.App_Logic.BusinessLogicLayer
                     db_Ref.InsertT_OE_SYS_LOG("EMAIL ERR", "Unknown error");
 
                 return false;
-
-                    //var client = new System.Net.Mail.SmtpClient("smtp.gmail.com", 587)
-                    //{
-                    //    Credentials = new System.Net.NetworkCredential("openwaters.noreply@gmail.com", "environmentl"),
-                    //    EnableSsl = true
-                    //};
-                    //client.Send(from, to, subj, body);
             }
         }
 
@@ -276,6 +286,37 @@ namespace OpenEnvironment.App_Logic.BusinessLogicLayer
             return str;
         }
 
+        /// <summary>
+        /// This method is to handle if element is missing
+        /// </summary>
+        public static string ElementValueNull(this XElement element)
+        {
+            if (element != null)
+                return element.Value;
+
+            return "";
+        }
+
+        /// <summary>
+        /// Checks whether the given Email-Parameter is a valid E-Mail address.
+        /// </summary>
+        /// <param name="email">Parameter-string that contains an E-Mail address.</param>
+        /// <returns>True, when Parameter-string is not null and 
+        /// contains a valid E-Mail address;
+        /// otherwise false.</returns>
+        public static bool IsEmail(string email)
+        {
+            string MatchEmailPattern = 
+			@"^(([\w-]+\.)+[\w-]+|([a-zA-Z]{1}|[\w-]{2,}))@"
+            + @"((([0-1]?[0-9]{1,2}|25[0-5]|2[0-4][0-9])\.([0-1]?
+				[0-9]{1,2}|25[0-5]|2[0-4][0-9])\."
+            + @"([0-1]?[0-9]{1,2}|25[0-5]|2[0-4][0-9])\.([0-1]?
+				[0-9]{1,2}|25[0-5]|2[0-4][0-9])){1}|"
+            + @"([a-zA-Z]+[\w-]+\.)+[a-zA-Z]{2,4})$";
+
+            if (email != null) return System.Text.RegularExpressions.Regex.IsMatch(email, MatchEmailPattern);
+            else return false;
+        }
 
         public static void LogoutUser()
         {
@@ -284,47 +325,63 @@ namespace OpenEnvironment.App_Logic.BusinessLogicLayer
             System.Web.Security.FormsAuthentication.RedirectToLoginPage();
         }
 
-
-        public static string GetTimeZone(DateTime dt, string TimeZoneName)
+        /// <summary>
+        /// Returns the WQX timezone code based on the supplied time zone and date
+        /// </summary>
+        /// <param name="dt">Sample Date</param>
+        /// <param name="TimeZoneName"></param>
+        /// <param name="TimeZoneStandardCode">WQX Standard Code</param>
+        /// <param name="TimeZoneDaylightCode">WQX Daylight Savings Code</param>
+        /// <returns></returns>
+        public static string GetWQXTimeZoneByDate(DateTime dt)
         {
-            TimeZoneInfo tz = TimeZoneInfo.FindSystemTimeZoneById(TimeZoneName);
-
-            if (TimeZoneName == "Central Standard Time")
+            try
             {
-                if (tz.IsDaylightSavingTime(dt))
-                    return "CDT";
-                else
-                    return "CST";
-            }
+                string OrgID = (HttpContext.Current.Session["OrgID"] ?? "").ToString();
 
-            if (TimeZoneName == "Eastern Standard Time")
+                //see if session has any timezone value
+                if ((HttpContext.Current.Session[OrgID + "_TZ"] ?? "") == "")
+                {
+                    //no default time zone found in session, need to retrieve from database
+                    string TimeZoneID = "";
+
+                    T_WQX_ORGANIZATION org = db_WQX.GetWQX_ORGANIZATION_ByID(OrgID);
+                    if (org != null)
+                    {
+                        if ((org.DEFAULT_TIMEZONE ?? "") != "")
+                            TimeZoneID = org.DEFAULT_TIMEZONE;
+                        else
+                            TimeZoneID = db_Ref.GetT_OE_APP_SETTING("Default Timezone");
+                    }
+
+                    T_WQX_REF_DEFAULT_TIME_ZONE tz = db_Ref.GetT_WQX_REF_DEFAULT_TIME_ZONE_ByName(TimeZoneID);
+                    if (tz != null)
+                    {
+                        HttpContext.Current.Session[OrgID + "_TZ"] = tz.OFFICIAL_TIME_ZONE_NAME;
+                        HttpContext.Current.Session[OrgID + "_TZ_S"] = tz.WQX_CODE_STANDARD;
+                        HttpContext.Current.Session[OrgID + "_TZ_D"] = tz.WQX_CODE_DAYLIGHT;
+                    }
+                }
+
+                TimeZoneInfo tzi = TimeZoneInfo.FindSystemTimeZoneById(HttpContext.Current.Session[OrgID + "_TZ"].ToString());
+                if (tzi.IsDaylightSavingTime(dt))
+                    return HttpContext.Current.Session[OrgID + "_TZ_S"].ToString();
+                else
+                    return HttpContext.Current.Session[OrgID + "_TZ_D"].ToString();
+            }
+            catch
             {
-                if (tz.IsDaylightSavingTime(dt))
-                    return "EDT";
-                else
-                    return "EST";
+                return "";
             }
-
-            if (TimeZoneName == "Mountain Standard Time")
-            {
-                if (tz.IsDaylightSavingTime(dt))
-                    return "MDT";
-                else
-                    return "MST";
-            }
-
-            if (TimeZoneName == "Pacific Standard Time")
-            {
-                if (tz.IsDaylightSavingTime(dt))
-                    return "PDT";
-                else
-                    return "PST";
-            }
-
-            return "";
         }
+        
 
         //***************** EXCEL EXPORT *****************************************
+        /// <summary>
+        /// Excel Export
+        /// </summary>
+        /// <param name="fileName"></param>
+        /// <param name="gv"></param>
         public static void RenderGridToExcelFormat(string fileName, GridView gv)
         {
             HttpContext.Current.Response.Clear();
@@ -416,6 +473,62 @@ namespace OpenEnvironment.App_Logic.BusinessLogicLayer
                 }
             }
         }
+
+
+        //******************** GRID EXTENSION **************************************
+        public static GridView RemoveEmptyColumns(this GridView gv, bool setTableWidth, string exclHeaderText)
+        {
+            int visColCount = 0;
+            
+            // Make sure there are at least header row
+            if (gv.HeaderRow != null)
+            {
+                int columnIndex = 0;
+
+                // For each column
+                foreach (DataControlFieldCell clm in gv.HeaderRow.Cells)
+                {
+                    //skip column if specified to exclude checking this one
+                    if (clm.ContainingField.HeaderText == exclHeaderText)
+                    {
+                        columnIndex++;
+                        continue;
+                    }
+
+                    bool notAvailable = true;
+
+                    // For each row
+                    foreach (GridViewRow row in gv.Rows)
+                    {
+                        string columnData = row.Cells[columnIndex].Text;
+                        if (!(string.IsNullOrEmpty(columnData) || columnData == "&nbsp;"))
+                        {
+                            notAvailable = false;
+                            visColCount++;
+                            break;
+                        }
+                    }
+
+                    if (notAvailable)
+                    {
+                        // Hide the target header cell
+                        gv.HeaderRow.Cells[columnIndex].Visible = false;
+
+                        // Hide the target cell of each row
+                        foreach (GridViewRow row in gv.Rows)
+                            row.Cells[columnIndex].Visible = false;
+                    }
+
+                    columnIndex++;
+                }
+            }
+
+            if (setTableWidth)
+                gv.Width = visColCount <= 14 ? Unit.Percentage(100) : Unit.Percentage(100 + (visColCount-14) * 5);
+
+            return gv;
+        }
+
 
     }
 }
