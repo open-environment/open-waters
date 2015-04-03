@@ -23,6 +23,7 @@
         <asp:ObjectDataSource ID="dsOrg" runat="server" SelectMethod="GetWQX_USER_ORGS_ByUserIDX" TypeName="OpenEnvironment.App_Logic.DataAccessLayer.db_WQX">
         <SelectParameters>
             <asp:SessionParameter DefaultValue="" Name="UserIDX" SessionField="UserIDX" Type="Int32" />
+            <asp:Parameter DefaultValue="true" Name="excludePendingInd" Type="Boolean" />
         </SelectParameters>
         </asp:ObjectDataSource>
         <div class="clear hideSkiplink">
@@ -38,7 +39,7 @@
                                 <asp:MenuItem NavigateUrl="~/App_Pages/Secure/RefData.aspx" Text="Reference Data" />
                                 <asp:MenuItem NavigateUrl="~/Account/UserList.aspx" Text="Administration" />
                                 <asp:MenuItem NavigateUrl="~/App_Pages/Secure/MyAccount.aspx" Text="My Account" />
-                                <asp:MenuItem NavigateUrl="~/App_Docs/UsersGuide.docx" Text="Help" />
+                                <asp:MenuItem NavigateUrl="~/App_Pages/Secure/Help.aspx" Text="Help" />
                             </Items>
                         </asp:Menu>
                     </td>

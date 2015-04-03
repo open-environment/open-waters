@@ -10,7 +10,7 @@
 namespace OpenEnvironment {
     
     
-    public partial class WebForm1 {
+    public partial class Error {
         
         /// <summary>
         /// btnReturn control.
