@@ -707,20 +707,20 @@ BEGIN
             (SELECT MONLOC_ID from T_WQX_MONLOC M WHERE M.MONLOC_IDX = T_WQX_ACTIVITY.MONLOC_IDX)  AS "ActivityDescription/MonitoringLocationIdentifier", 
             ACT_COMMENT as "ActivityDescription/ActivityCommentText",
 			   --SAMPLE BIO
-	           rtrim(BIO_ASSEMBLAGE_SAMPLED) AS "BiologicalActivityDescription/AssemblageSampledName", 
-	           rtrim(BIO_DURATION_MSR) AS "BiologicalActivityDescription/BiologicalHabitatCollectionInformation/CollectionDuration/MeasureValue", 
-	           rtrim(BIO_DURATION_MSR_UNIT) AS "BiologicalActivityDescription/BiologicalHabitatCollectionInformation/CollectionDuration/MeasureUnitCode", 
-	           rtrim(BIO_REACH_LEN_MSR) AS "BiologicalActivityDescription/BiologicalHabitatCollectionInformation/ReachLengthMeasure/MeasureValue", 
-	           rtrim(BIO_REACH_LEN_MSR_UNIT) AS "BiologicalActivityDescription/BiologicalHabitatCollectionInformation/ReachLengthMeasure/MeasureUnitCode", 
-	           rtrim(BIO_REACH_WID_MSR) AS "BiologicalActivityDescription/BiologicalHabitatCollectionInformation/ReachWidthMeasure/MeasureValue", 
-	           rtrim(BIO_REACH_WID_MSR_UNIT) AS "BiologicalActivityDescription/BiologicalHabitatCollectionInformation/ReachWidthMeasure/MeasureUnitCode", 
+	           case when T_WQX_ACTIVITY.BIO_ASSEMBLAGE_SAMPLED is not null then rtrim(BIO_ASSEMBLAGE_SAMPLED) else null end AS "BiologicalActivityDescription/AssemblageSampledName", 
+	           case when T_WQX_ACTIVITY.BIO_DURATION_MSR is not null then rtrim(BIO_DURATION_MSR) else null end AS "BiologicalActivityDescription/BiologicalHabitatCollectionInformation/CollectionDuration/MeasureValue", 
+	           case when T_WQX_ACTIVITY.BIO_DURATION_MSR_UNIT is not null then rtrim(BIO_DURATION_MSR_UNIT) else null end AS "BiologicalActivityDescription/BiologicalHabitatCollectionInformation/CollectionDuration/MeasureUnitCode", 
+	           case when T_WQX_ACTIVITY.BIO_REACH_LEN_MSR is not null then rtrim(BIO_REACH_LEN_MSR) else null end AS "BiologicalActivityDescription/BiologicalHabitatCollectionInformation/ReachLengthMeasure/MeasureValue", 
+	           case when T_WQX_ACTIVITY.BIO_REACH_LEN_MSR_UNIT is not null then rtrim(BIO_REACH_LEN_MSR_UNIT) else null end AS "BiologicalActivityDescription/BiologicalHabitatCollectionInformation/ReachLengthMeasure/MeasureUnitCode", 
+	           case when T_WQX_ACTIVITY.BIO_REACH_WID_MSR is not null then rtrim(BIO_REACH_WID_MSR) else null end AS "BiologicalActivityDescription/BiologicalHabitatCollectionInformation/ReachWidthMeasure/MeasureValue", 
+	           case when T_WQX_ACTIVITY.BIO_REACH_WID_MSR_UNIT is not null then rtrim(BIO_REACH_WID_MSR_UNIT) else null end AS "BiologicalActivityDescription/BiologicalHabitatCollectionInformation/ReachWidthMeasure/MeasureUnitCode", 
 
 			   --SAMPLE DESCRIPTION
 			   case when T_WQX_ACTIVITY.SAMP_COLL_METHOD_IDX is not null then SCL.SAMP_COLL_METHOD_ID else null end as "SampleDescription/SampleCollectionMethod/MethodIdentifier", 
 			   case when T_WQX_ACTIVITY.SAMP_COLL_METHOD_IDX is not null then SCL.SAMP_COLL_METHOD_CTX else null end as "SampleDescription/SampleCollectionMethod/MethodIdentifierContext", 
 			   case when T_WQX_ACTIVITY.SAMP_COLL_METHOD_IDX is not null then SCL.SAMP_COLL_METHOD_NAME else null end as "SampleDescription/SampleCollectionMethod/MethodName", 
-               rtrim(SAMP_COLL_EQUIP) AS "SampleDescription/SampleCollectionEquipmentName",
-               rtrim(SAMP_COLL_EQUIP_COMMENT) AS "SampleDescription/SampleCollectionEquipmentCommentText",
+               case when T_WQX_ACTIVITY.SAMP_COLL_EQUIP is not null then rtrim(SAMP_COLL_EQUIP) else null end as "SampleDescription/SampleCollectionEquipmentName",
+               case when T_WQX_ACTIVITY.SAMP_COLL_EQUIP is not null and T_WQX_ACTIVITY.SAMP_COLL_EQUIP_COMMENT is not null then rtrim(SAMP_COLL_EQUIP_COMMENT) else null end AS "SampleDescription/SampleCollectionEquipmentCommentText",
 
 				--RESULT
     			(SELECT rtrim(DATA_LOGGER_LINE) AS "ResultDescription/DataLoggerLineName",
@@ -1046,20 +1046,20 @@ BEGIN
                (SELECT MONLOC_ID from T_WQX_MONLOC M WHERE M.MONLOC_IDX = T_WQX_ACTIVITY.MONLOC_IDX)  AS "ActivityDescription/MonitoringLocationIdentifier", 
                ACT_COMMENT as "ActivityDescription/ActivityCommentText",
 			   --SAMPLE BIO
-	           rtrim(BIO_ASSEMBLAGE_SAMPLED) AS "BiologicalActivityDescription/AssemblageSampledName", 
-	           rtrim(BIO_DURATION_MSR) AS "BiologicalActivityDescription/BiologicalHabitatCollectionInformation/CollectionDuration/MeasureValue", 
-	           rtrim(BIO_DURATION_MSR_UNIT) AS "BiologicalActivityDescription/BiologicalHabitatCollectionInformation/CollectionDuration/MeasureUnitCode", 
-	           rtrim(BIO_REACH_LEN_MSR) AS "BiologicalActivityDescription/BiologicalHabitatCollectionInformation/ReachLengthMeasure/MeasureValue", 
-	           rtrim(BIO_REACH_LEN_MSR_UNIT) AS "BiologicalActivityDescription/BiologicalHabitatCollectionInformation/ReachLengthMeasure/MeasureUnitCode", 
-	           rtrim(BIO_REACH_WID_MSR) AS "BiologicalActivityDescription/BiologicalHabitatCollectionInformation/ReachWidthMeasure/MeasureValue", 
-	           rtrim(BIO_REACH_WID_MSR_UNIT) AS "BiologicalActivityDescription/BiologicalHabitatCollectionInformation/ReachWidthMeasure/MeasureUnitCode", 
+	           case when T_WQX_ACTIVITY.BIO_ASSEMBLAGE_SAMPLED is not null then rtrim(BIO_ASSEMBLAGE_SAMPLED) else null end AS "BiologicalActivityDescription/AssemblageSampledName", 
+	           case when T_WQX_ACTIVITY.BIO_DURATION_MSR is not null then rtrim(BIO_DURATION_MSR) else null end AS "BiologicalActivityDescription/BiologicalHabitatCollectionInformation/CollectionDuration/MeasureValue", 
+	           case when T_WQX_ACTIVITY.BIO_DURATION_MSR_UNIT is not null then rtrim(BIO_DURATION_MSR_UNIT) else null end AS "BiologicalActivityDescription/BiologicalHabitatCollectionInformation/CollectionDuration/MeasureUnitCode", 
+	           case when T_WQX_ACTIVITY.BIO_REACH_LEN_MSR is not null then rtrim(BIO_REACH_LEN_MSR) else null end AS "BiologicalActivityDescription/BiologicalHabitatCollectionInformation/ReachLengthMeasure/MeasureValue", 
+	           case when T_WQX_ACTIVITY.BIO_REACH_LEN_MSR_UNIT is not null then rtrim(BIO_REACH_LEN_MSR_UNIT) else null end AS "BiologicalActivityDescription/BiologicalHabitatCollectionInformation/ReachLengthMeasure/MeasureUnitCode", 
+	           case when T_WQX_ACTIVITY.BIO_REACH_WID_MSR is not null then rtrim(BIO_REACH_WID_MSR) else null end AS "BiologicalActivityDescription/BiologicalHabitatCollectionInformation/ReachWidthMeasure/MeasureValue", 
+	           case when T_WQX_ACTIVITY.BIO_REACH_WID_MSR_UNIT is not null then rtrim(BIO_REACH_WID_MSR_UNIT) else null end AS "BiologicalActivityDescription/BiologicalHabitatCollectionInformation/ReachWidthMeasure/MeasureUnitCode", 
 
 			   --SAMPLE DESCRIPTION
 			   case when T_WQX_ACTIVITY.SAMP_COLL_METHOD_IDX is not null then SCL.SAMP_COLL_METHOD_ID else null end as "SampleDescription/SampleCollectionMethod/MethodIdentifier", 
 			   case when T_WQX_ACTIVITY.SAMP_COLL_METHOD_IDX is not null then SCL.SAMP_COLL_METHOD_CTX else null end as "SampleDescription/SampleCollectionMethod/MethodIdentifierContext", 
 			   case when T_WQX_ACTIVITY.SAMP_COLL_METHOD_IDX is not null then SCL.SAMP_COLL_METHOD_NAME else null end as "SampleDescription/SampleCollectionMethod/MethodName", 
-               rtrim(SAMP_COLL_EQUIP) AS "SampleDescription/SampleCollectionEquipmentName",
-               rtrim(SAMP_COLL_EQUIP_COMMENT) AS "SampleDescription/SampleCollectionEquipmentCommentText",
+               case when T_WQX_ACTIVITY.SAMP_COLL_EQUIP is not null then rtrim(SAMP_COLL_EQUIP) else null end as "SampleDescription/SampleCollectionEquipmentName",
+               case when T_WQX_ACTIVITY.SAMP_COLL_EQUIP is not null and T_WQX_ACTIVITY.SAMP_COLL_EQUIP_COMMENT is not null then rtrim(SAMP_COLL_EQUIP_COMMENT) else null end AS "SampleDescription/SampleCollectionEquipmentCommentText",
 
 					--RESULT
     				(SELECT rtrim(DATA_LOGGER_LINE) AS "ResultDescription/DataLoggerLineName",
