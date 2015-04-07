@@ -102,6 +102,10 @@ namespace OpenEnvironment
                 {
                     grdTemplateDtl.DataSource = db_WQX.GetWQX_IMPORT_TEMPLATE_DTL_DynamicByTemplateID(TemplateID);
                     grdTemplateDtl.DataBind();
+
+                    ddlFieldMap.SelectedValue = "ACT_COMMENTS";
+                    ddlColChar.SelectedValue = "";
+                    ddlColCharUnit.SelectedValue = "";
                 }
                 else
                     lblMsg.Text = "Error adding new value.";
@@ -136,11 +140,19 @@ namespace OpenEnvironment
 
             if (TemplateID > 0)
             {
-                int SuccID = db_WQX.InsertOrUpdateWQX_IMPORT_TEMPLATE_DTL(null, TemplateID, 0, ddlFieldMapHC.SelectedValue, txtHardCodeValue.Text, "", User.Identity.Name);
+                //get value to insert
+                string HCVal = ddlHardActID.Visible ? ddlHardActID.SelectedValue : txtHardCodeValue.Text;
+
+                int SuccID = db_WQX.InsertOrUpdateWQX_IMPORT_TEMPLATE_DTL(null, TemplateID, 0, ddlFieldMapHC.SelectedValue, HCVal, "", User.Identity.Name);
                 if (SuccID > 0)
                 {
                     grdHardCode.DataSource = db_WQX.GetWQX_IMPORT_TEMPLATE_DTL_HardCodeByTemplateID(TemplateID);
                     grdHardCode.DataBind();
+
+                    ddlFieldMapHC.SelectedValue = "";
+
+                    if (ddlHardActID != null)
+                        ddlHardActID.SelectedValue = "";
                 }
                 else
                     lblMsg.Text = "Error adding new value.";
