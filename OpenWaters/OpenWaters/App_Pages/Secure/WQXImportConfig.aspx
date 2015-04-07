@@ -28,6 +28,8 @@
         $(document).ready(function () {
             $("#divChar1").hide();
             $("#divChar2").hide();
+            $("#HC1").hide();
+            $("#HC2").hide();
 
             $("#ctl00_ctl00_MainContent_BodyContent_ddlFieldMap").change(function (event) {
                 if ($("#ctl00_ctl00_MainContent_BodyContent_ddlFieldMap").val() == "CHAR") {
@@ -40,6 +42,18 @@
                     $("#divChar2").hide();
                 }
             });
+
+            $("#ctl00_ctl00_MainContent_BodyContent_ddlFieldMapHC").change(function (event) {
+                if ($("#ctl00_ctl00_MainContent_BodyContent_ddlFieldMapHC").val() == "ACTIVITY_ID") {
+                    $("#HC2").show();
+                    $("#HC1").hide();
+                }
+                else {
+                    $("#HC1").show();
+                    $("#HC2").hide();
+                }
+            });
+
 
             $("ctl00_ctl00_MainContent_BodyContent_btnAddDynamic").click(function (event) {
   //              alert("f");
@@ -130,7 +144,7 @@
                                     <asp:ImageButton ID="DelButton" runat="server" CausesValidation="False" CommandName="Deletes" OnClientClick="return GetConfirmationCol();"
                                         CommandArgument='<% #Eval("TEMPLATE_DTL_ID") %>' ImageUrl="~/App_Images/ico_del.png" ToolTip="Delete" />
                                 </ItemTemplate>
-                            </asp:TemplateField>
+                            </asp:TemplateField>                            
                             <asp:BoundField DataField="FIELD_MAP" HeaderText="Field Map" SortExpression="FIELD_MAP" />
                             <asp:BoundField DataField="CHAR_NAME" HeaderText="Char Name" SortExpression="CHAR_NAME" />
                         </Columns>
@@ -169,40 +183,6 @@
         </div>
     </asp:Panel>
     <asp:HiddenField ID="hdnTemplateID" runat="server" />
-
-    <!-- modal for add new hard code column -->
-    <ajaxToolkit:ModalPopupExtender ID="MPE_HardCode" runat="server" TargetControlID="btnAddHardCode"
-        PopupControlID="pnlModalHardCode" CancelControlID="btnCloseHC" BackgroundCssClass="modalBackground" PopupDragHandleControlID="pnlModTtl2">
-    </ajaxToolkit:ModalPopupExtender>
-    <asp:Panel ID="pnlModalHardCode" Width="500px" runat="server" CssClass="modalWindow" Style="display: none;" DefaultButton="btnHardCodeAdd">
-        <div style="padding: 6px; background-color: #FFF; border: 1px solid #98B9DB;">
-            <asp:Panel ID="pnlModTtl2" runat="server" CssClass="modalTitle" Style="cursor: move">
-                Add New Hardcoded Column
-            </asp:Panel>
-            <div class="row" >
-                <span class="fldLbl">Field:</span>
-                <asp:DropDownList ID="ddlFieldMapHC" runat="server" >
-                    <asp:ListItem Value="" Text=""></asp:ListItem>
-                    <asp:ListItem Value="ACT_COMMENTS" Text="ACT_COMMENTS"></asp:ListItem>
-                    <asp:ListItem Value="ACT_MEDIA" Text="ACT_MEDIA"></asp:ListItem>
-                    <asp:ListItem Value="ACT_SUBMEDIA" Text="ACT_SUBMEDIA"></asp:ListItem>
-                    <asp:ListItem Value="ACT_TYPE" Text="ACT_TYPE"></asp:ListItem>
-                    <asp:ListItem Value="ACTIVITY_ID" Text="ACTIVITY_ID"></asp:ListItem>
-                    <asp:ListItem Value="RESULT_VALUE_TYPE" Text="RESULT_VALUE_TYPE"></asp:ListItem>
-                    <asp:ListItem Value="RESULT_STATUS" Text="RESULT_STATUS"></asp:ListItem>
-                </asp:DropDownList>
-            </div>
-            <div class="row" >
-                <span class="fldLbl">Hardcoded Value:</span>
-                <asp:TextBox ID="txtHardCodeValue" runat="server"></asp:TextBox>
-            </div>
-            <div class="btnRibbon">
-                <asp:Button ID="btnHardCodeAdd" runat="server" Text="Save" CssClass="btn" OnClick="btnHardCodeAdd_Click" />
-                <asp:Button ID="btnCloseHC" runat="server" Text="Cancel" CssClass="btn" />
-            </div>
-        </div>
-    </asp:Panel>
-
 
     <!-- modal for add new column -->
     <ajaxToolkit:ModalPopupExtender ID="MPE_NewCol" runat="server" TargetControlID="btnAddDynamic"
@@ -248,6 +228,46 @@
         </div>
     </asp:Panel>
 
+
+    <!-- modal for add new hard code column -->
+    <ajaxToolkit:ModalPopupExtender ID="MPE_HardCode" runat="server" TargetControlID="btnAddHardCode"
+        PopupControlID="pnlModalHardCode" CancelControlID="btnCloseHC" BackgroundCssClass="modalBackground" PopupDragHandleControlID="pnlModTtl2">
+    </ajaxToolkit:ModalPopupExtender>
+    <asp:Panel ID="pnlModalHardCode" Width="500px" runat="server" CssClass="modalWindow" Style="display: none;" DefaultButton="btnHardCodeAdd">
+        <div style="padding: 6px; background-color: #FFF; border: 1px solid #98B9DB;">
+            <asp:Panel ID="pnlModTtl2" runat="server" CssClass="modalTitle" Style="cursor: move">
+                Add New Hardcoded Column
+            </asp:Panel>
+            <div class="row" >
+                <span class="fldLbl">Field:</span>
+                <asp:DropDownList ID="ddlFieldMapHC" runat="server" >
+                    <asp:ListItem Value="" Text=""></asp:ListItem>
+                    <asp:ListItem Value="ACT_COMMENTS" Text="ACT_COMMENTS"></asp:ListItem>
+                    <asp:ListItem Value="ACT_MEDIA" Text="ACT_MEDIA"></asp:ListItem>
+                    <asp:ListItem Value="ACT_SUBMEDIA" Text="ACT_SUBMEDIA"></asp:ListItem>
+                    <asp:ListItem Value="ACT_TYPE" Text="ACT_TYPE"></asp:ListItem>
+                    <asp:ListItem Value="ACTIVITY_ID" Text="ACTIVITY_ID"></asp:ListItem>
+                    <asp:ListItem Value="RESULT_VALUE_TYPE" Text="RESULT_VALUE_TYPE"></asp:ListItem>
+                    <asp:ListItem Value="RESULT_STATUS" Text="RESULT_STATUS"></asp:ListItem>
+                </asp:DropDownList>
+            </div>
+            <div class="row" id="HC1">
+                <span class="fldLbl">Hardcoded Value:</span>
+                <asp:TextBox ID="txtHardCodeValue" runat="server"></asp:TextBox>
+            </div>
+            <div class="row" id="HC2">
+                <span class="fldLbl">ID Auto Format:</span>
+                <asp:DropDownList ID="ddlHardActID" runat="server">
+                    <asp:ListItem Value="#M_D_T" Text="MonLoc_Date_Time"></asp:ListItem>
+                    <asp:ListItem Value="#M_D_TS" Text="MOnLoc_Date_Time_Seconds"></asp:ListItem>
+                </asp:DropDownList>
+            </div>
+            <div class="btnRibbon">
+                <asp:Button ID="btnHardCodeAdd" runat="server" Text="Save" CssClass="btn" OnClick="btnHardCodeAdd_Click" />
+                <asp:Button ID="btnCloseHC" runat="server" Text="Cancel" CssClass="btn" />
+            </div>
+        </div>
+    </asp:Panel>
 
 </asp:Content>
 

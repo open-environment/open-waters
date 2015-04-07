@@ -162,6 +162,16 @@ namespace OpenEnvironment
 
                 grdImport.DataSource = db_Ref.GetWQX_IMPORT_LOG(Session["OrgID"].ToString());
                 grdImport.DataBind();
+
+                //disable the import from EPA option if results already exist
+                if (db_WQX.GetT_WQX_RESULTCount(Session["OrgID"].ToString()) > 0)
+                {
+                    rbImportType.Items[1].Enabled = false;
+                    rbImportType.Items[1].Text = "Import data directly from EPA-WQX (only available for initial synchronization)";
+                    rbImportType.Items[0].Selected = true;
+                    pnlLab.Visible = true;
+                    pnlWQX.Visible = false;
+                }
             }
         }
 
@@ -631,9 +641,11 @@ namespace OpenEnvironment
                     if (ActivityStartDateVal != null)
                     {
                         if (ActivityIDCol == null)
-                            ActivityIDVal = MonLocIDVal + "_" + ActivityStartDateVal.Value.ToString("yyyyMMdd_HHmm");
+                            ActivityIDVal = MonLocIDVal.SubStringPlus(0,21) + "_" + ActivityStartDateVal.Value.ToString("yyyyMMdd_HHmm");
                         else if (ActivityIDCol.CHAR_NAME == "#M_D_T")
-                            ActivityIDVal = MonLocIDVal + "_" + ActivityStartDateVal.Value.ToString("yyyyMMdd_HHmm");
+                            ActivityIDVal = MonLocIDVal.SubStringPlus(0, 21) + "_" + ActivityStartDateVal.Value.ToString("yyyyMMdd_HHmm");
+                        else if (ActivityIDCol.CHAR_NAME == "#M_D_TS")
+                            ActivityIDVal = MonLocIDVal.SubStringPlus(0, 19) + "_" + ActivityStartDateVal.Value.ToString("yyyyMMdd_HHmmss");
                         else
                             ActivityIDVal = GetFieldValue(ActivityIDCol, parts);
                     }
