@@ -703,6 +703,38 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             }
         }
         private ObjectSet<T_WQX_IMPORT_TEMP_RESULT> _T_WQX_IMPORT_TEMP_RESULT;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<V_WQX_PENDING_RECORDS> V_WQX_PENDING_RECORDS
+        {
+            get
+            {
+                if ((_V_WQX_PENDING_RECORDS == null))
+                {
+                    _V_WQX_PENDING_RECORDS = base.CreateObjectSet<V_WQX_PENDING_RECORDS>("V_WQX_PENDING_RECORDS");
+                }
+                return _V_WQX_PENDING_RECORDS;
+            }
+        }
+        private ObjectSet<V_WQX_PENDING_RECORDS> _V_WQX_PENDING_RECORDS;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<T_WQX_IMPORT_COL_ALIAS> T_WQX_IMPORT_COL_ALIAS
+        {
+            get
+            {
+                if ((_T_WQX_IMPORT_COL_ALIAS == null))
+                {
+                    _T_WQX_IMPORT_COL_ALIAS = base.CreateObjectSet<T_WQX_IMPORT_COL_ALIAS>("T_WQX_IMPORT_COL_ALIAS");
+                }
+                return _T_WQX_IMPORT_COL_ALIAS;
+            }
+        }
+        private ObjectSet<T_WQX_IMPORT_COL_ALIAS> _T_WQX_IMPORT_COL_ALIAS;
 
         #endregion
 
@@ -1011,84 +1043,26 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
         {
             base.AddObject("T_WQX_IMPORT_TEMP_RESULT", t_WQX_IMPORT_TEMP_RESULT);
         }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the V_WQX_PENDING_RECORDS EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToV_WQX_PENDING_RECORDS(V_WQX_PENDING_RECORDS v_WQX_PENDING_RECORDS)
+        {
+            base.AddObject("V_WQX_PENDING_RECORDS", v_WQX_PENDING_RECORDS);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the T_WQX_IMPORT_COL_ALIAS EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToT_WQX_IMPORT_COL_ALIAS(T_WQX_IMPORT_COL_ALIAS t_WQX_IMPORT_COL_ALIAS)
+        {
+            base.AddObject("T_WQX_IMPORT_COL_ALIAS", t_WQX_IMPORT_COL_ALIAS);
+        }
 
         #endregion
 
         #region Function Imports
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        /// <param name="typeText">No Metadata Documentation available.</param>
-        /// <param name="orgID">No Metadata Documentation available.</param>
-        /// <param name="monLocID">No Metadata Documentation available.</param>
-        /// <param name="charName">No Metadata Documentation available.</param>
-        /// <param name="startDt">No Metadata Documentation available.</param>
-        /// <param name="endDt">No Metadata Documentation available.</param>
-        public ObjectResult<WQXAnalysis_Result> WQXAnalysis(global::System.String typeText, global::System.String orgID, global::System.String monLocID, global::System.String charName, Nullable<global::System.DateTime> startDt, Nullable<global::System.DateTime> endDt)
-        {
-            ObjectParameter typeTextParameter;
-            if (typeText != null)
-            {
-                typeTextParameter = new ObjectParameter("TypeText", typeText);
-            }
-            else
-            {
-                typeTextParameter = new ObjectParameter("TypeText", typeof(global::System.String));
-            }
-    
-            ObjectParameter orgIDParameter;
-            if (orgID != null)
-            {
-                orgIDParameter = new ObjectParameter("OrgID", orgID);
-            }
-            else
-            {
-                orgIDParameter = new ObjectParameter("OrgID", typeof(global::System.String));
-            }
-    
-            ObjectParameter monLocIDParameter;
-            if (monLocID != null)
-            {
-                monLocIDParameter = new ObjectParameter("MonLocID", monLocID);
-            }
-            else
-            {
-                monLocIDParameter = new ObjectParameter("MonLocID", typeof(global::System.String));
-            }
-    
-            ObjectParameter charNameParameter;
-            if (charName != null)
-            {
-                charNameParameter = new ObjectParameter("CharName", charName);
-            }
-            else
-            {
-                charNameParameter = new ObjectParameter("CharName", typeof(global::System.String));
-            }
-    
-            ObjectParameter startDtParameter;
-            if (startDt.HasValue)
-            {
-                startDtParameter = new ObjectParameter("StartDt", startDt);
-            }
-            else
-            {
-                startDtParameter = new ObjectParameter("StartDt", typeof(global::System.DateTime));
-            }
-    
-            ObjectParameter endDtParameter;
-            if (endDt.HasValue)
-            {
-                endDtParameter = new ObjectParameter("EndDt", endDt);
-            }
-            else
-            {
-                endDtParameter = new ObjectParameter("EndDt", typeof(global::System.DateTime));
-            }
-    
-            return base.ExecuteFunction<WQXAnalysis_Result>("WQXAnalysis", typeTextParameter, orgIDParameter, monLocIDParameter, charNameParameter, startDtParameter, endDtParameter);
-        }
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -1172,9 +1146,95 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
+        /// <param name="typeText">No Metadata Documentation available.</param>
+        /// <param name="orgID">No Metadata Documentation available.</param>
+        /// <param name="monLocID">No Metadata Documentation available.</param>
+        /// <param name="charName">No Metadata Documentation available.</param>
+        /// <param name="startDt">No Metadata Documentation available.</param>
+        /// <param name="endDt">No Metadata Documentation available.</param>
+        /// <param name="dataIncludeInd">No Metadata Documentation available.</param>
+        public ObjectResult<WQXAnalysis_Result> WQXAnalysis(global::System.String typeText, global::System.String orgID, global::System.String monLocID, global::System.String charName, Nullable<global::System.DateTime> startDt, Nullable<global::System.DateTime> endDt, global::System.String dataIncludeInd)
+        {
+            ObjectParameter typeTextParameter;
+            if (typeText != null)
+            {
+                typeTextParameter = new ObjectParameter("TypeText", typeText);
+            }
+            else
+            {
+                typeTextParameter = new ObjectParameter("TypeText", typeof(global::System.String));
+            }
+    
+            ObjectParameter orgIDParameter;
+            if (orgID != null)
+            {
+                orgIDParameter = new ObjectParameter("OrgID", orgID);
+            }
+            else
+            {
+                orgIDParameter = new ObjectParameter("OrgID", typeof(global::System.String));
+            }
+    
+            ObjectParameter monLocIDParameter;
+            if (monLocID != null)
+            {
+                monLocIDParameter = new ObjectParameter("MonLocID", monLocID);
+            }
+            else
+            {
+                monLocIDParameter = new ObjectParameter("MonLocID", typeof(global::System.String));
+            }
+    
+            ObjectParameter charNameParameter;
+            if (charName != null)
+            {
+                charNameParameter = new ObjectParameter("CharName", charName);
+            }
+            else
+            {
+                charNameParameter = new ObjectParameter("CharName", typeof(global::System.String));
+            }
+    
+            ObjectParameter startDtParameter;
+            if (startDt.HasValue)
+            {
+                startDtParameter = new ObjectParameter("StartDt", startDt);
+            }
+            else
+            {
+                startDtParameter = new ObjectParameter("StartDt", typeof(global::System.DateTime));
+            }
+    
+            ObjectParameter endDtParameter;
+            if (endDt.HasValue)
+            {
+                endDtParameter = new ObjectParameter("EndDt", endDt);
+            }
+            else
+            {
+                endDtParameter = new ObjectParameter("EndDt", typeof(global::System.DateTime));
+            }
+    
+            ObjectParameter dataIncludeIndParameter;
+            if (dataIncludeInd != null)
+            {
+                dataIncludeIndParameter = new ObjectParameter("DataIncludeInd", dataIncludeInd);
+            }
+            else
+            {
+                dataIncludeIndParameter = new ObjectParameter("DataIncludeInd", typeof(global::System.String));
+            }
+    
+            return base.ExecuteFunction<WQXAnalysis_Result>("WQXAnalysis", typeTextParameter, orgIDParameter, monLocIDParameter, charNameParameter, startDtParameter, endDtParameter, dataIncludeIndParameter);
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
         /// <param name="userID">No Metadata Documentation available.</param>
         /// <param name="wQXInd">No Metadata Documentation available.</param>
-        public int ImportActivityFromTemp(global::System.String userID, global::System.String wQXInd)
+        /// <param name="activityReplaceInd">No Metadata Documentation available.</param>
+        public int ImportActivityFromTemp(global::System.String userID, global::System.String wQXInd, global::System.String activityReplaceInd)
         {
             ObjectParameter userIDParameter;
             if (userID != null)
@@ -1196,7 +1256,17 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
                 wQXIndParameter = new ObjectParameter("WQXInd", typeof(global::System.String));
             }
     
-            return base.ExecuteFunction("ImportActivityFromTemp", userIDParameter, wQXIndParameter);
+            ObjectParameter activityReplaceIndParameter;
+            if (activityReplaceInd != null)
+            {
+                activityReplaceIndParameter = new ObjectParameter("ActivityReplaceInd", activityReplaceInd);
+            }
+            else
+            {
+                activityReplaceIndParameter = new ObjectParameter("ActivityReplaceInd", typeof(global::System.String));
+            }
+    
+            return base.ExecuteFunction("ImportActivityFromTemp", userIDParameter, wQXIndParameter, activityReplaceIndParameter);
         }
 
         #endregion
@@ -6026,6 +6096,162 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
                 }
             }
         }
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="OpenEnvironmentModel", Name="T_WQX_IMPORT_COL_ALIAS")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class T_WQX_IMPORT_COL_ALIAS : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new T_WQX_IMPORT_COL_ALIAS object.
+        /// </summary>
+        /// <param name="iMPORT_COL_ALIAS_IDX">Initial value of the IMPORT_COL_ALIAS_IDX property.</param>
+        /// <param name="cOL_NAME">Initial value of the COL_NAME property.</param>
+        /// <param name="aLIAS_NAME">Initial value of the ALIAS_NAME property.</param>
+        public static T_WQX_IMPORT_COL_ALIAS CreateT_WQX_IMPORT_COL_ALIAS(global::System.Int32 iMPORT_COL_ALIAS_IDX, global::System.String cOL_NAME, global::System.String aLIAS_NAME)
+        {
+            T_WQX_IMPORT_COL_ALIAS t_WQX_IMPORT_COL_ALIAS = new T_WQX_IMPORT_COL_ALIAS();
+            t_WQX_IMPORT_COL_ALIAS.IMPORT_COL_ALIAS_IDX = iMPORT_COL_ALIAS_IDX;
+            t_WQX_IMPORT_COL_ALIAS.COL_NAME = cOL_NAME;
+            t_WQX_IMPORT_COL_ALIAS.ALIAS_NAME = aLIAS_NAME;
+            return t_WQX_IMPORT_COL_ALIAS;
+        }
+
+        #endregion
+
+        #region Simple Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 IMPORT_COL_ALIAS_IDX
+        {
+            get
+            {
+                return _IMPORT_COL_ALIAS_IDX;
+            }
+            set
+            {
+                if (_IMPORT_COL_ALIAS_IDX != value)
+                {
+                    OnIMPORT_COL_ALIAS_IDXChanging(value);
+                    ReportPropertyChanging("IMPORT_COL_ALIAS_IDX");
+                    _IMPORT_COL_ALIAS_IDX = StructuralObject.SetValidValue(value, "IMPORT_COL_ALIAS_IDX");
+                    ReportPropertyChanged("IMPORT_COL_ALIAS_IDX");
+                    OnIMPORT_COL_ALIAS_IDXChanged();
+                }
+            }
+        }
+        private global::System.Int32 _IMPORT_COL_ALIAS_IDX;
+        partial void OnIMPORT_COL_ALIAS_IDXChanging(global::System.Int32 value);
+        partial void OnIMPORT_COL_ALIAS_IDXChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String COL_NAME
+        {
+            get
+            {
+                return _COL_NAME;
+            }
+            set
+            {
+                OnCOL_NAMEChanging(value);
+                ReportPropertyChanging("COL_NAME");
+                _COL_NAME = StructuralObject.SetValidValue(value, false, "COL_NAME");
+                ReportPropertyChanged("COL_NAME");
+                OnCOL_NAMEChanged();
+            }
+        }
+        private global::System.String _COL_NAME;
+        partial void OnCOL_NAMEChanging(global::System.String value);
+        partial void OnCOL_NAMEChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String ALIAS_NAME
+        {
+            get
+            {
+                return _ALIAS_NAME;
+            }
+            set
+            {
+                OnALIAS_NAMEChanging(value);
+                ReportPropertyChanging("ALIAS_NAME");
+                _ALIAS_NAME = StructuralObject.SetValidValue(value, false, "ALIAS_NAME");
+                ReportPropertyChanged("ALIAS_NAME");
+                OnALIAS_NAMEChanged();
+            }
+        }
+        private global::System.String _ALIAS_NAME;
+        partial void OnALIAS_NAMEChanging(global::System.String value);
+        partial void OnALIAS_NAMEChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> CREATE_DT
+        {
+            get
+            {
+                return _CREATE_DT;
+            }
+            set
+            {
+                OnCREATE_DTChanging(value);
+                ReportPropertyChanging("CREATE_DT");
+                _CREATE_DT = StructuralObject.SetValidValue(value, "CREATE_DT");
+                ReportPropertyChanged("CREATE_DT");
+                OnCREATE_DTChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _CREATE_DT;
+        partial void OnCREATE_DTChanging(Nullable<global::System.DateTime> value);
+        partial void OnCREATE_DTChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String CREATE_USERID
+        {
+            get
+            {
+                return _CREATE_USERID;
+            }
+            set
+            {
+                OnCREATE_USERIDChanging(value);
+                ReportPropertyChanging("CREATE_USERID");
+                _CREATE_USERID = StructuralObject.SetValidValue(value, true, "CREATE_USERID");
+                ReportPropertyChanged("CREATE_USERID");
+                OnCREATE_USERIDChanged();
+            }
+        }
+        private global::System.String _CREATE_USERID;
+        partial void OnCREATE_USERIDChanging(global::System.String value);
+        partial void OnCREATE_USERIDChanged();
 
         #endregion
 
@@ -15360,14 +15586,12 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
         /// </summary>
         /// <param name="rEF_DATA_IDX">Initial value of the REF_DATA_IDX property.</param>
         /// <param name="tABLE">Initial value of the TABLE property.</param>
-        /// <param name="vALUE">Initial value of the VALUE property.</param>
         /// <param name="tEXT">Initial value of the TEXT property.</param>
-        public static T_WQX_REF_DATA CreateT_WQX_REF_DATA(global::System.Int32 rEF_DATA_IDX, global::System.String tABLE, global::System.String vALUE, global::System.String tEXT)
+        public static T_WQX_REF_DATA CreateT_WQX_REF_DATA(global::System.Int32 rEF_DATA_IDX, global::System.String tABLE, global::System.String tEXT)
         {
             T_WQX_REF_DATA t_WQX_REF_DATA = new T_WQX_REF_DATA();
             t_WQX_REF_DATA.REF_DATA_IDX = rEF_DATA_IDX;
             t_WQX_REF_DATA.TABLE = tABLE;
-            t_WQX_REF_DATA.VALUE = vALUE;
             t_WQX_REF_DATA.TEXT = tEXT;
             return t_WQX_REF_DATA;
         }
@@ -15430,7 +15654,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String VALUE
         {
@@ -15442,7 +15666,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnVALUEChanging(value);
                 ReportPropertyChanging("VALUE");
-                _VALUE = StructuralObject.SetValidValue(value, false, "VALUE");
+                _VALUE = StructuralObject.SetValidValue(value, true, "VALUE");
                 ReportPropertyChanged("VALUE");
                 OnVALUEChanged();
             }
@@ -19705,6 +19929,197 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
         private global::System.String _SRC;
         partial void OnSRCChanging(global::System.String value);
         partial void OnSRCChanged();
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="OpenEnvironmentModel", Name="V_WQX_PENDING_RECORDS")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class V_WQX_PENDING_RECORDS : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new V_WQX_PENDING_RECORDS object.
+        /// </summary>
+        /// <param name="rEC_IDX">Initial value of the REC_IDX property.</param>
+        /// <param name="tABLE_CD">Initial value of the TABLE_CD property.</param>
+        /// <param name="rEC_ID">Initial value of the REC_ID property.</param>
+        /// <param name="oRG_ID">Initial value of the ORG_ID property.</param>
+        public static V_WQX_PENDING_RECORDS CreateV_WQX_PENDING_RECORDS(global::System.Int32 rEC_IDX, global::System.String tABLE_CD, global::System.String rEC_ID, global::System.String oRG_ID)
+        {
+            V_WQX_PENDING_RECORDS v_WQX_PENDING_RECORDS = new V_WQX_PENDING_RECORDS();
+            v_WQX_PENDING_RECORDS.REC_IDX = rEC_IDX;
+            v_WQX_PENDING_RECORDS.TABLE_CD = tABLE_CD;
+            v_WQX_PENDING_RECORDS.REC_ID = rEC_ID;
+            v_WQX_PENDING_RECORDS.ORG_ID = oRG_ID;
+            return v_WQX_PENDING_RECORDS;
+        }
+
+        #endregion
+
+        #region Simple Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 REC_IDX
+        {
+            get
+            {
+                return _REC_IDX;
+            }
+            set
+            {
+                if (_REC_IDX != value)
+                {
+                    OnREC_IDXChanging(value);
+                    ReportPropertyChanging("REC_IDX");
+                    _REC_IDX = StructuralObject.SetValidValue(value, "REC_IDX");
+                    ReportPropertyChanged("REC_IDX");
+                    OnREC_IDXChanged();
+                }
+            }
+        }
+        private global::System.Int32 _REC_IDX;
+        partial void OnREC_IDXChanging(global::System.Int32 value);
+        partial void OnREC_IDXChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String TABLE_CD
+        {
+            get
+            {
+                return _TABLE_CD;
+            }
+            set
+            {
+                if (_TABLE_CD != value)
+                {
+                    OnTABLE_CDChanging(value);
+                    ReportPropertyChanging("TABLE_CD");
+                    _TABLE_CD = StructuralObject.SetValidValue(value, false, "TABLE_CD");
+                    ReportPropertyChanged("TABLE_CD");
+                    OnTABLE_CDChanged();
+                }
+            }
+        }
+        private global::System.String _TABLE_CD;
+        partial void OnTABLE_CDChanging(global::System.String value);
+        partial void OnTABLE_CDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String REC_ID
+        {
+            get
+            {
+                return _REC_ID;
+            }
+            set
+            {
+                if (_REC_ID != value)
+                {
+                    OnREC_IDChanging(value);
+                    ReportPropertyChanging("REC_ID");
+                    _REC_ID = StructuralObject.SetValidValue(value, false, "REC_ID");
+                    ReportPropertyChanged("REC_ID");
+                    OnREC_IDChanged();
+                }
+            }
+        }
+        private global::System.String _REC_ID;
+        partial void OnREC_IDChanging(global::System.String value);
+        partial void OnREC_IDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String ORG_ID
+        {
+            get
+            {
+                return _ORG_ID;
+            }
+            set
+            {
+                if (_ORG_ID != value)
+                {
+                    OnORG_IDChanging(value);
+                    ReportPropertyChanging("ORG_ID");
+                    _ORG_ID = StructuralObject.SetValidValue(value, false, "ORG_ID");
+                    ReportPropertyChanged("ORG_ID");
+                    OnORG_IDChanged();
+                }
+            }
+        }
+        private global::System.String _ORG_ID;
+        partial void OnORG_IDChanging(global::System.String value);
+        partial void OnORG_IDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String UPDATE_USERID
+        {
+            get
+            {
+                return _UPDATE_USERID;
+            }
+            set
+            {
+                OnUPDATE_USERIDChanging(value);
+                ReportPropertyChanging("UPDATE_USERID");
+                _UPDATE_USERID = StructuralObject.SetValidValue(value, true, "UPDATE_USERID");
+                ReportPropertyChanged("UPDATE_USERID");
+                OnUPDATE_USERIDChanged();
+            }
+        }
+        private global::System.String _UPDATE_USERID;
+        partial void OnUPDATE_USERIDChanging(global::System.String value);
+        partial void OnUPDATE_USERIDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> UPDATE_DT
+        {
+            get
+            {
+                return _UPDATE_DT;
+            }
+            set
+            {
+                OnUPDATE_DTChanging(value);
+                ReportPropertyChanging("UPDATE_DT");
+                _UPDATE_DT = StructuralObject.SetValidValue(value, "UPDATE_DT");
+                ReportPropertyChanged("UPDATE_DT");
+                OnUPDATE_DTChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _UPDATE_DT;
+        partial void OnUPDATE_DTChanging(Nullable<global::System.DateTime> value);
+        partial void OnUPDATE_DTChanged();
 
         #endregion
 

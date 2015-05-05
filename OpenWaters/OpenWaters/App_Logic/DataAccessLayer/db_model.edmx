@@ -219,6 +219,16 @@
           <Property Name="UPDATE_DT" Type="datetime" />
           <Property Name="UPDATE_USERID" Type="varchar" MaxLength="25" />
         </EntityType>
+        <EntityType Name="T_WQX_IMPORT_COL_ALIAS">
+          <Key>
+            <PropertyRef Name="IMPORT_COL_ALIAS_IDX" />
+          </Key>
+          <Property Name="IMPORT_COL_ALIAS_IDX" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="COL_NAME" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="ALIAS_NAME" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="CREATE_DT" Type="datetime" />
+          <Property Name="CREATE_USERID" Type="varchar" MaxLength="25" />
+        </EntityType>
         <EntityType Name="T_WQX_IMPORT_LOG">
           <Key>
             <PropertyRef Name="IMPORT_ID" />
@@ -635,7 +645,7 @@
           </Key>
           <Property Name="REF_DATA_IDX" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="TABLE" Type="varchar" MaxLength="45" Nullable="false" />
-          <Property Name="VALUE" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="VALUE" Type="varchar" MaxLength="100" />
           <Property Name="TEXT" Type="varchar" MaxLength="200" Nullable="false" />
           <Property Name="ACT_IND" Type="bit" />
           <Property Name="USED_IND" Type="bit" />
@@ -804,10 +814,10 @@
 warning 6002: The table/view 'OpenEnvironment.dbo.V_WQX_ACTIVITY_LATEST' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="V_WQX_ACTIVITY_LATEST">
           <Key>
+            <PropertyRef Name="MONLOC_NAME" />
             <PropertyRef Name="ACTIVITY_IDX" />
             <PropertyRef Name="ORG_ID" />
             <PropertyRef Name="PROJECT_IDX" />
-            <PropertyRef Name="MONLOC_NAME" />
             <PropertyRef Name="ACTIVITY_ID" />
             <PropertyRef Name="ACT_TYPE" />
             <PropertyRef Name="ACT_START_DT" />
@@ -849,6 +859,22 @@ warning 6002: The table/view 'OpenEnvironment.dbo.V_WQX_ALL_ORGS' does not have 
           <Property Name="ORG_ID" Type="varchar" MaxLength="30" Nullable="false" />
           <Property Name="ORG_FORMAL_NAME" Type="varchar" MaxLength="120" Nullable="false" />
           <Property Name="SRC" Type="varchar" MaxLength="5" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'OpenEnvironment.dbo.V_WQX_PENDING_RECORDS' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="V_WQX_PENDING_RECORDS">
+          <Key>
+            <PropertyRef Name="REC_IDX" />
+            <PropertyRef Name="TABLE_CD" />
+            <PropertyRef Name="REC_ID" />
+            <PropertyRef Name="ORG_ID" />
+          </Key>
+          <Property Name="REC_IDX" Type="int" Nullable="false" />
+          <Property Name="TABLE_CD" Type="varchar" MaxLength="4" Nullable="false" />
+          <Property Name="REC_ID" Type="varchar" MaxLength="35" Nullable="false" />
+          <Property Name="ORG_ID" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="UPDATE_USERID" Type="varchar" MaxLength="25" />
+          <Property Name="UPDATE_DT" Type="datetime" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'OpenEnvironment.dbo.V_WQX_TRANSACTION_LOG' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -1238,6 +1264,7 @@ warning 6002: The table/view 'OpenEnvironment.dbo.V_WQX_TRANSACTION_LOG' does no
         <Function Name="ImportActivityFromTemp" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="UserID" Type="varchar" Mode="In" />
           <Parameter Name="WQXInd" Type="varchar" Mode="In" />
+          <Parameter Name="ActivityReplaceInd" Type="varchar" Mode="In" />
         </Function>
         <Function Name="WQXAnalysis" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="TypeText" Type="varchar" Mode="In" />
@@ -1246,6 +1273,7 @@ warning 6002: The table/view 'OpenEnvironment.dbo.V_WQX_TRANSACTION_LOG' does no
           <Parameter Name="CharName" Type="varchar" Mode="In" />
           <Parameter Name="StartDt" Type="datetime" Mode="In" />
           <Parameter Name="EndDt" Type="datetime" Mode="In" />
+          <Parameter Name="DataIncludeInd" Type="varchar" Mode="In" />
         </Function>
         <EntityContainer Name="OpenEnvironmentModelStoreContainer">
           <EntitySet Name="T_EPA_ORGS" EntityType="Self.T_EPA_ORGS" Schema="dbo" store:Type="Tables" />
@@ -1258,6 +1286,7 @@ warning 6002: The table/view 'OpenEnvironment.dbo.V_WQX_TRANSACTION_LOG' does no
           <EntitySet Name="T_WQX_ACTIVITY" EntityType="Self.T_WQX_ACTIVITY" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="T_WQX_ACTIVITY_METRIC" EntityType="Self.T_WQX_ACTIVITY_METRIC" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="T_WQX_BIO_HABITAT_INDEX" EntityType="Self.T_WQX_BIO_HABITAT_INDEX" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_WQX_IMPORT_COL_ALIAS" EntityType="Self.T_WQX_IMPORT_COL_ALIAS" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="T_WQX_IMPORT_LOG" EntityType="Self.T_WQX_IMPORT_LOG" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="T_WQX_IMPORT_TEMP_MONLOC" EntityType="Self.T_WQX_IMPORT_TEMP_MONLOC" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="T_WQX_IMPORT_TEMP_PROJECT" EntityType="Self.T_WQX_IMPORT_TEMP_PROJECT" Schema="dbo" store:Type="Tables" />
@@ -1319,6 +1348,16 @@ FROM [dbo].[V_WQX_ACTIVITY_LATEST] AS [V_WQX_ACTIVITY_LATEST]</DefiningQuery>
 [V_WQX_ALL_ORGS].[ORG_FORMAL_NAME] AS [ORG_FORMAL_NAME], 
 [V_WQX_ALL_ORGS].[SRC] AS [SRC]
 FROM [dbo].[V_WQX_ALL_ORGS] AS [V_WQX_ALL_ORGS]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="V_WQX_PENDING_RECORDS" EntityType="Self.V_WQX_PENDING_RECORDS" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[V_WQX_PENDING_RECORDS].[REC_IDX] AS [REC_IDX], 
+[V_WQX_PENDING_RECORDS].[TABLE_CD] AS [TABLE_CD], 
+[V_WQX_PENDING_RECORDS].[REC_ID] AS [REC_ID], 
+[V_WQX_PENDING_RECORDS].[ORG_ID] AS [ORG_ID], 
+[V_WQX_PENDING_RECORDS].[UPDATE_USERID] AS [UPDATE_USERID], 
+[V_WQX_PENDING_RECORDS].[UPDATE_DT] AS [UPDATE_DT]
+FROM [dbo].[V_WQX_PENDING_RECORDS] AS [V_WQX_PENDING_RECORDS]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="V_WQX_TRANSACTION_LOG" EntityType="Self.V_WQX_TRANSACTION_LOG" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
@@ -1474,14 +1513,6 @@ FROM [dbo].[V_WQX_TRANSACTION_LOG] AS [V_WQX_TRANSACTION_LOG]</DefiningQuery>
             <End Role="T_WQX_BIO_HABITAT_INDEX" EntitySet="T_WQX_BIO_HABITAT_INDEX" />
           </AssociationSet>
           <EntitySet Name="T_WQX_REF_CHARACTERISTIC" EntityType="OpenEnvironmentModel.T_WQX_REF_CHARACTERISTIC" />
-          <FunctionImport Name="WQXAnalysis" ReturnType="Collection(OpenEnvironmentModel.WQXAnalysis_Result)">
-            <Parameter Name="TypeText" Mode="In" Type="String" />
-            <Parameter Name="OrgID" Mode="In" Type="String" />
-            <Parameter Name="MonLocID" Mode="In" Type="String" />
-            <Parameter Name="CharName" Mode="In" Type="String" />
-            <Parameter Name="StartDt" Mode="In" Type="DateTime" />
-            <Parameter Name="EndDt" Mode="In" Type="DateTime" />
-          </FunctionImport>
           <EntitySet Name="T_WQX_REF_CHAR_LIMITS" EntityType="OpenEnvironmentModel.T_WQX_REF_CHAR_LIMITS" />
           <AssociationSet Name="FK__T_WQX_REF__CHAR___46E78A0C" Association="OpenEnvironmentModel.FK__T_WQX_REF__CHAR___46E78A0C">
             <End Role="T_WQX_REF_CHARACTERISTIC" EntitySet="T_WQX_REF_CHARACTERISTIC" />
@@ -1583,10 +1614,6 @@ FROM [dbo].[V_WQX_TRANSACTION_LOG] AS [V_WQX_TRANSACTION_LOG]</DefiningQuery>
             <End Role="T_WQX_REF_LAB" EntitySet="T_WQX_REF_LAB" />
             <End Role="T_WQX_RESULT" EntitySet="T_WQX_RESULT" />
           </AssociationSet>
-          <FunctionImport Name="ImportActivityFromTemp">
-            <Parameter Name="UserID" Mode="In" Type="String" />
-            <Parameter Name="WQXInd" Mode="In" Type="String" />
-          </FunctionImport>
           <EntitySet Name="T_WQX_REF_TAXA_ORG" EntityType="OpenEnvironmentModel.T_WQX_REF_TAXA_ORG" />
           <AssociationSet Name="FK__T_WQX_REF__ORG_I__756D6ECB" Association="OpenEnvironmentModel.FK__T_WQX_REF__ORG_I__756D6ECB">
             <End Role="T_WQX_ORGANIZATION" EntitySet="T_WQX_ORGANIZATION" />
@@ -1610,6 +1637,22 @@ FROM [dbo].[V_WQX_TRANSACTION_LOG] AS [V_WQX_TRANSACTION_LOG]</DefiningQuery>
             <End Role="T_WQX_IMPORT_TEMP_SAMPLE" EntitySet="T_WQX_IMPORT_TEMP_SAMPLE" />
             <End Role="T_WQX_IMPORT_TEMP_RESULT" EntitySet="T_WQX_IMPORT_TEMP_RESULT" />
           </AssociationSet>
+          <EntitySet Name="V_WQX_PENDING_RECORDS" EntityType="OpenEnvironmentModel.V_WQX_PENDING_RECORDS" />
+          <FunctionImport Name="WQXAnalysis" ReturnType="Collection(OpenEnvironmentModel.WQXAnalysis_Result)">
+            <Parameter Name="TypeText" Mode="In" Type="String" />
+            <Parameter Name="OrgID" Mode="In" Type="String" />
+            <Parameter Name="MonLocID" Mode="In" Type="String" />
+            <Parameter Name="CharName" Mode="In" Type="String" />
+            <Parameter Name="StartDt" Mode="In" Type="DateTime" />
+            <Parameter Name="EndDt" Mode="In" Type="DateTime" />
+            <Parameter Name="DataIncludeInd" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="T_WQX_IMPORT_COL_ALIAS" EntityType="OpenEnvironmentModel.T_WQX_IMPORT_COL_ALIAS" />
+          <FunctionImport Name="ImportActivityFromTemp">
+            <Parameter Name="UserID" Mode="In" Type="String" />
+            <Parameter Name="WQXInd" Mode="In" Type="String" />
+            <Parameter Name="ActivityReplaceInd" Mode="In" Type="String" />
+          </FunctionImport>
           </EntityContainer>
         <EntityType Name="T_OE_APP_SETTINGS">
           <Key>
@@ -1862,7 +1905,7 @@ FROM [dbo].[V_WQX_TRANSACTION_LOG] AS [V_WQX_TRANSACTION_LOG]</DefiningQuery>
           </Key>
           <Property Type="Int32" Name="REF_DATA_IDX" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Type="String" Name="TABLE" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
-          <Property Type="String" Name="VALUE" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="VALUE" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Type="String" Name="TEXT" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Type="Boolean" Name="ACT_IND" />
           <Property Type="Boolean" Name="USED_IND" />
@@ -1929,14 +1972,6 @@ FROM [dbo].[V_WQX_TRANSACTION_LOG] AS [V_WQX_TRANSACTION_LOG]</DefiningQuery>
           <NavigationProperty Name="T_WQX_REF_CHAR_LIMITS" Relationship="OpenEnvironmentModel.FK__T_WQX_REF__CHAR___46E78A0C" FromRole="T_WQX_REF_CHARACTERISTIC" ToRole="T_WQX_REF_CHAR_LIMITS" />
           <NavigationProperty Name="T_WQX_REF_CHAR_ORG" Relationship="OpenEnvironmentModel.FK__T_WQX_REF__CHAR___4E88ABD4" FromRole="T_WQX_REF_CHARACTERISTIC" ToRole="T_WQX_REF_CHAR_ORG" />
         </EntityType>
-        <ComplexType Name="WQXAnalysis_Result">
-          <Property Type="String" Name="MONLOC_NAME" Nullable="true" MaxLength="255" />
-          <Property Type="String" Name="CHAR_NAME" Nullable="true" MaxLength="120" />
-          <Property Type="DateTime" Name="START_DT" Nullable="true" Precision="23" />
-          <Property Type="Decimal" Name="RESULT_MSR" Nullable="true" Precision="38" Scale="6" />
-          <Property Type="String" Name="RESULT_MSR_UNIT" Nullable="true" MaxLength="12" />
-          <Property Type="String" Name="DETECTION_LIMIT" Nullable="true" MaxLength="12" />
-        </ComplexType>
         <EntityType Name="T_WQX_REF_CHAR_LIMITS">
           <Key>
             <PropertyRef Name="CHAR_NAME" />
@@ -2874,6 +2909,38 @@ FROM [dbo].[V_WQX_TRANSACTION_LOG] AS [V_WQX_TRANSACTION_LOG]</DefiningQuery>
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="V_WQX_PENDING_RECORDS">
+          <Key>
+            <PropertyRef Name="REC_IDX" />
+            <PropertyRef Name="TABLE_CD" />
+            <PropertyRef Name="REC_ID" />
+            <PropertyRef Name="ORG_ID" />
+          </Key>
+          <Property Name="REC_IDX" Type="Int32" Nullable="false" />
+          <Property Name="TABLE_CD" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="REC_ID" Type="String" Nullable="false" MaxLength="35" FixedLength="false" Unicode="false" />
+          <Property Name="ORG_ID" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="UPDATE_USERID" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="UPDATE_DT" Type="DateTime" Precision="3" />
+        </EntityType>
+        <ComplexType Name="WQXAnalysis_Result">
+          <Property Type="String" Name="MONLOC_NAME" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="CHAR_NAME" Nullable="true" MaxLength="120" />
+          <Property Type="DateTime" Name="START_DT" Nullable="true" Precision="23" />
+          <Property Type="Decimal" Name="RESULT_MSR" Nullable="true" Precision="38" Scale="6" />
+          <Property Type="String" Name="RESULT_MSR_UNIT" Nullable="true" MaxLength="12" />
+          <Property Type="String" Name="DETECTION_LIMIT" Nullable="true" MaxLength="12" />
+        </ComplexType>
+        <EntityType Name="T_WQX_IMPORT_COL_ALIAS">
+          <Key>
+            <PropertyRef Name="IMPORT_COL_ALIAS_IDX" />
+          </Key>
+          <Property Name="IMPORT_COL_ALIAS_IDX" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="COL_NAME" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ALIAS_NAME" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CREATE_DT" Type="DateTime" Precision="3" />
+          <Property Name="CREATE_USERID" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -3142,18 +3209,6 @@ FROM [dbo].[V_WQX_TRANSACTION_LOG] AS [V_WQX_TRANSACTION_LOG]</DefiningQuery>
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="WQXAnalysis" FunctionName="OpenEnvironmentModel.Store.WQXAnalysis">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="OpenEnvironmentModel.WQXAnalysis_Result">
-                <ScalarProperty Name="MONLOC_NAME" ColumnName="MONLOC_NAME" />
-                <ScalarProperty Name="CHAR_NAME" ColumnName="CHAR_NAME" />
-                <ScalarProperty Name="START_DT" ColumnName="START_DT" />
-                <ScalarProperty Name="RESULT_MSR" ColumnName="RESULT_MSR" />
-                <ScalarProperty Name="RESULT_MSR_UNIT" ColumnName="RESULT_MSR_UNIT" />
-                <ScalarProperty Name="DETECTION_LIMIT" ColumnName="DETECTION_LIMIT" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
           <EntitySetMapping Name="T_WQX_REF_CHAR_LIMITS">
             <EntityTypeMapping TypeName="OpenEnvironmentModel.T_WQX_REF_CHAR_LIMITS">
               <MappingFragment StoreEntitySet="T_WQX_REF_CHAR_LIMITS">
@@ -3673,7 +3728,6 @@ FROM [dbo].[V_WQX_TRANSACTION_LOG] AS [V_WQX_TRANSACTION_LOG]</DefiningQuery>
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="ImportActivityFromTemp" FunctionName="OpenEnvironmentModel.Store.ImportActivityFromTemp" />
           <EntitySetMapping Name="T_WQX_REF_TAXA_ORG">
             <EntityTypeMapping TypeName="OpenEnvironmentModel.T_WQX_REF_TAXA_ORG">
               <MappingFragment StoreEntitySet="T_WQX_REF_TAXA_ORG">
@@ -3778,6 +3832,42 @@ FROM [dbo].[V_WQX_TRANSACTION_LOG] AS [V_WQX_TRANSACTION_LOG]</DefiningQuery>
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="V_WQX_PENDING_RECORDS">
+            <EntityTypeMapping TypeName="OpenEnvironmentModel.V_WQX_PENDING_RECORDS">
+              <MappingFragment StoreEntitySet="V_WQX_PENDING_RECORDS">
+                <ScalarProperty Name="UPDATE_DT" ColumnName="UPDATE_DT" />
+                <ScalarProperty Name="UPDATE_USERID" ColumnName="UPDATE_USERID" />
+                <ScalarProperty Name="ORG_ID" ColumnName="ORG_ID" />
+                <ScalarProperty Name="REC_ID" ColumnName="REC_ID" />
+                <ScalarProperty Name="TABLE_CD" ColumnName="TABLE_CD" />
+                <ScalarProperty Name="REC_IDX" ColumnName="REC_IDX" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="WQXAnalysis" FunctionName="OpenEnvironmentModel.Store.WQXAnalysis">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="OpenEnvironmentModel.WQXAnalysis_Result">
+                <ScalarProperty Name="MONLOC_NAME" ColumnName="MONLOC_NAME" />
+                <ScalarProperty Name="CHAR_NAME" ColumnName="CHAR_NAME" />
+                <ScalarProperty Name="START_DT" ColumnName="START_DT" />
+                <ScalarProperty Name="RESULT_MSR" ColumnName="RESULT_MSR" />
+                <ScalarProperty Name="RESULT_MSR_UNIT" ColumnName="RESULT_MSR_UNIT" />
+                <ScalarProperty Name="DETECTION_LIMIT" ColumnName="DETECTION_LIMIT" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="T_WQX_IMPORT_COL_ALIAS">
+            <EntityTypeMapping TypeName="OpenEnvironmentModel.T_WQX_IMPORT_COL_ALIAS">
+              <MappingFragment StoreEntitySet="T_WQX_IMPORT_COL_ALIAS">
+                <ScalarProperty Name="CREATE_USERID" ColumnName="CREATE_USERID" />
+                <ScalarProperty Name="CREATE_DT" ColumnName="CREATE_DT" />
+                <ScalarProperty Name="ALIAS_NAME" ColumnName="ALIAS_NAME" />
+                <ScalarProperty Name="COL_NAME" ColumnName="COL_NAME" />
+                <ScalarProperty Name="IMPORT_COL_ALIAS_IDX" ColumnName="IMPORT_COL_ALIAS_IDX" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="ImportActivityFromTemp" FunctionName="OpenEnvironmentModel.Store.ImportActivityFromTemp" />
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -3884,6 +3974,8 @@ FROM [dbo].[V_WQX_TRANSACTION_LOG] AS [V_WQX_TRANSACTION_LOG]</DefiningQuery>
         <AssociationConnector Association="OpenEnvironmentModel.FK__T_WQX_REF__CHAR___4E88ABD4" />
         <EntityTypeShape EntityType="OpenEnvironmentModel.T_WQX_IMPORT_TEMP_RESULT" Width="1.5" PointX="11" PointY="1.25" />
         <AssociationConnector Association="OpenEnvironmentModel.FK__T_WQX_IMP__TEMP___3C34F16F" />
+        <EntityTypeShape EntityType="OpenEnvironmentModel.V_WQX_PENDING_RECORDS" Width="1.5" PointX="16.375" PointY="16.75" />
+        <EntityTypeShape EntityType="OpenEnvironmentModel.T_WQX_IMPORT_COL_ALIAS" Width="1.5" PointX="8.375" PointY="17.75" />
       </Diagram>
     </Diagrams>
   </Designer>
