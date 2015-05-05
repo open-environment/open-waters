@@ -62,12 +62,12 @@
 
             for (var i = 0; i < result.length; i++) {
                 splits = result[i].split("|");
-                createMarker(splits[0], splits[1], splits[2], splits[3]);
+                createMarker(splits[0], splits[1], splits[2], splits[3], splits[6]);
             }
         }
 
 
-        function createMarker(lat, lng, infoTitle, infoBody) {
+        function createMarker(lat, lng, infoTitle, infoBody, infoOrg) {
 
             var myLatLng = new google.maps.LatLng(lat, lng);
             var marker;
@@ -85,7 +85,7 @@
             //**********ADD INFO WINDOW TO MARKER*****************************
             if (marker != null) {
                 google.maps.event.addListener(marker, 'click', function () {
-                    infowindow.setContent('<div class=fltbox><div class="mapInfoTitle">' + infoTitle + '</div><div class=mapInfoMain>' + infoBody + '</div></div>');
+                    infowindow.setContent('<div class=fltbox><div class="mapInfoTitle">' + infoOrg + '<br/>' + infoTitle + '</div><div class=mapInfoMain>' + infoBody + '</div></div>');
                     infowindow.open(map, marker);
                 });
 
@@ -98,6 +98,7 @@
     </script>
     <style type="text/css"> 
         #over_map { position: absolute; background-color: #666666; padding:5px; top: 10px; left: 100px; font-weight:bold; color:White; z-index: 99; border-color:#333333; border-width:1px; border-style:solid; border-radius: 5px 5px / 5px 5px; font-size: 14pt; box-shadow: 3px 3px 3px #888888;  opacity: 0.6; filter: alpha(opacity=60); }
+        #form1 { height: 100%;}
     </style>
 
 </head>
@@ -106,15 +107,19 @@
         <ajaxToolkit:ToolkitScriptManager ID="scriptManager" runat="server" AsyncPostBackTimeout="99999999" EnablePageMethods="true" />
 
         <table style="width:100%; height:100%; padding:0; margin:0;">
-            <tr>
+            <tr style="height:100%;" >
                 <td>
                     <div id="over_map"><asp:Label ID="lblOrgName" runat="server"></asp:Label> Water Quality Map</div>
-                    <div id ="map" class="mapSmall" />
+                    <div id ="map" class="mapSmall" style="height:100%" />
                 </td>
             </tr>    
             <tr>
                 <td>
                     <h2>Most Recent Results</h2>
+                    <asp:DropDownList ID="ddlOrg" runat="server" CssClass="fldTxt" OnSelectedIndexChanged="ddlOrg_SelectedIndexChanged" AutoPostBack="true"></asp:DropDownList>
+                    <asp:ObjectDataSource ID="dsOrg" runat="server" SelectMethod="GetWQX_ORGANIZATION" TypeName="OpenEnvironment.App_Logic.DataAccessLayer.db_WQX">
+                    </asp:ObjectDataSource>
+
                     <asp:GridView ID="grdMonLoc" runat="server" AutoGenerateColumns="False" CssClass="grd" PagerStyle-CssClass="pgr" AlternatingRowStyle-CssClass="alt" 
                             DataSourceID="dsMonLoc" onrowcommand="grdMonLoc_RowCommand" >
                         <Columns>
@@ -137,7 +142,7 @@
                     </asp:GridView>
                     <asp:ObjectDataSource ID="dsMonLoc" runat="server" SelectMethod="GetV_WQX_ACTIVITY_LATEST" TypeName="OpenEnvironment.App_Logic.DataAccessLayer.db_WQX">
                         <SelectParameters>
-                            <asp:SessionParameter DefaultValue="" Name="OrgID" SessionField="OrgID" Type="String" />                        
+                            <asp:ControlParameter Name="OrgID" DefaultValue="" ConvertEmptyStringToNull="false" Type="String" ControlID="ddlOrg" PropertyName="SelectedValue" />
                         </SelectParameters>
                     </asp:ObjectDataSource>
                 </td>
