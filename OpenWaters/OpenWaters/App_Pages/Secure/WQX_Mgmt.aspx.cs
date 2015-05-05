@@ -17,13 +17,20 @@ namespace OpenEnvironment
             {
                 //display left menu as selected
                 ContentPlaceHolder cp = this.Master.Master.FindControl("MainContent") as ContentPlaceHolder;
-                HyperLink hl = (HyperLink)cp.FindControl("lnkWQXList");
+                HyperLink hl = (HyperLink)cp.FindControl("lnkWQXHistory");
                 if (hl != null) hl.CssClass = "leftMnuBody sel";
 
-            
+                //display current task status
                 T_OE_APP_TASKS t = db_Ref.GetT_OE_APP_TASKS_ByName("WQXSubmit");
                 if (t != null)
                     lblStatus.Text = t.TASK_STATUS;
+
+                //hide task options if not admin
+                pnlResubmit.Visible = HttpContext.Current.User.IsInRole("ADMINS");
+                chkAllOrgs.Visible = HttpContext.Current.User.IsInRole("ADMINS");
+
+                //display grid
+                DisplayGrid();
             }
         }
 
@@ -48,7 +55,7 @@ namespace OpenEnvironment
             }
         }
 
-        protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
+        protected void grdWQXLog_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             if (e.CommandName == "GetFile")
             {
@@ -78,9 +85,43 @@ namespace OpenEnvironment
             }
         }
 
+        protected void DisplayGrid()
+        {
+            string OrgID = Session["OrgID"] != null ? Session["OrgID"].ToString() : "xxx";
+            if (chkAllOrgs.Checked && HttpContext.Current.User.IsInRole("ADMINS"))
+                OrgID = null;
+
+            if (rbFilter.SelectedValue == "SUB")
+            {
+                grdWQXLog.Visible = true;
+                grdWQXLog.DataSource = db_Ref.GetV_WQX_TRANSACTION_LOG(null, txtStartDate.Text.ConvertOrDefault<DateTime?>(), txtEndDate.Text.ConvertOrDefault<DateTime?>(), OrgID);
+                grdWQXLog.DataBind();
+                grdWQXPending.Visible = false;
+                
+            }
+            else
+            {
+                grdWQXPending.Visible = true;
+                grdWQXPending.DataSource = db_WQX.GetV_WQX_PENDING_RECORDS(OrgID, txtStartDate.Text.ConvertOrDefault<DateTime?>(), txtEndDate.Text.ConvertOrDefault<DateTime?>());
+                grdWQXPending.DataBind();
+                grdWQXLog.Visible = false;
+            }
+
+        }
+
         protected void btnReset_Click(object sender, EventArgs e)
         {
             db_Ref.UpdateT_OE_APP_TASKS("WQXSubmit", "STOPPED", null, User.Identity.Name);
+        }
+
+        protected void btnFilter_Click(object sender, EventArgs e)
+        {
+            DisplayGrid();
+        }
+
+        protected void btnExcel_Click(object sender, ImageClickEventArgs e)
+        {
+            Utils.RenderGridToExcelFormat("WQXRecordLog.xls", grdWQXLog.Visible ? grdWQXLog : grdWQXPending);
         }
     }
 }

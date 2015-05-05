@@ -23,6 +23,7 @@
         } 
     </script>
     <script type="text/javascript">
+        //handles css for tab clicking
         $(document).ready(function () {
             $(".tabs-menu a").click(function (event) {
                 event.preventDefault();
@@ -33,8 +34,8 @@
                 $(tab).fadeIn();
             });
         });
-
     </script>
+
     <asp:ScriptManager ID="ScriptManager1" runat="server" EnablePartialRendering="true" />
     <asp:ObjectDataSource ID="dsRefData" runat="server" SelectMethod="GetT_WQX_REF_DATA" TypeName="OpenEnvironment.App_Logic.DataAccessLayer.db_Ref">
         <SelectParameters>
@@ -77,6 +78,16 @@
         <selectparameters>
             <asp:SessionParameter DefaultValue="" Name="Context" SessionField="OrgID" Type="String" />
         </selectparameters>
+    </asp:ObjectDataSource>
+    <asp:ObjectDataSource ID="dsLabName" runat="server" SelectMethod="GetT_WQX_REF_LAB" TypeName="OpenEnvironment.App_Logic.DataAccessLayer.db_Ref">
+        <SelectParameters>
+            <asp:SessionParameter DefaultValue="" Name="OrgID" SessionField="OrgID" Type="String" />
+        </SelectParameters>
+    </asp:ObjectDataSource>
+    <asp:ObjectDataSource ID="dsPrepMethod" runat="server" SelectMethod="GetT_WQX_REF_SAMP_PREP_ByContext" TypeName="OpenEnvironment.App_Logic.DataAccessLayer.db_Ref">
+        <SelectParameters>
+            <asp:SessionParameter DefaultValue="" Name="Context" SessionField="OrgID" Type="String" />
+        </SelectParameters>
     </asp:ObjectDataSource>
 
     <h2>Activity</h2>
@@ -236,6 +247,22 @@
 
     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
         <ContentTemplate>
+
+                <script type="text/javascript">
+                    //handles display of more result information div
+                    function displayMore()
+                    {
+                        document.getElementById("pnlModal").style.display = 'block';
+                        document.getElementById("pnlModalBackground").style.display = 'block';
+                    }
+
+                    function hideMore() {
+                        document.getElementById("pnlModal").style.display = 'none';
+                        document.getElementById("pnlModalBackground").style.display = 'none';
+                    }
+                </script>
+
+
             <div><h2 style="display:inline;">Results</h2> (click row to edit)</div> 
             <asp:Label ID="lblMsgDtl" runat="server" CssClass="failureNotification"></asp:Label>
             <asp:GridView ID="grdResults" runat="server" GridLines="None" CssClass="grd" PagerStyle-CssClass="pgr" AutoGenerateColumns="False" AlternatingRowStyle-CssClass="alt" 
@@ -424,6 +451,12 @@
                             <asp:TextBox ID="txtNewComment" CssClass="grdCtrl" Width="98%" runat="server"></asp:TextBox>
                         </FooterTemplate>
                     </asp:TemplateField>
+                    <asp:TemplateField ShowHeader="False" HeaderText="More">
+                        <ItemStyle HorizontalAlign="Center" />
+                        <EditItemTemplate>
+                            <img id="imgMore1" src="../../App_Images/ico_plus.png" class="moreButton" onclick="displayMore();"  />
+                        </EditItemTemplate>
+                    </asp:TemplateField>
                     <asp:TemplateField ShowHeader="False">
                         <ItemStyle HorizontalAlign="Center" />
                         <EditItemTemplate>
@@ -439,8 +472,43 @@
                     </asp:TemplateField>
                 </Columns>
             </asp:GridView>
+
+    <!-- MODAL PANEL FOR MORE INFORMATION -->
+    <div id="pnlModal" class="modalWindow" Style=" width: 500px; position: absolute; z-index: 100001; left: 588px; top: 130.5px; display:none">
+        <div style="padding: 6px; background-color: #FFF; border: 1px solid #98B9DB;">
+            <asp:Panel ID="pnlModTtl" runat="server" CssClass="modalTitle" >
+                Additional Result Information
+            </asp:Panel>
+            <div class="row">
+                <div style="width:380px; float:left"> 
+                    <span class="fldLbl">Laboratory:</span>
+                    <asp:DropDownList ID="ddlLabName" runat="server" CssClass="fldTxt" Width="230px"></asp:DropDownList>
+                </div>
+                <div style="width:380px; float:left"> 
+                    <span class="fldLbl">Prep Method</span>
+                    <asp:DropDownList ID="ddlPrepMethod" runat="server" CssClass="fldTxt" Width="230px"></asp:DropDownList>
+                </div>
+                <div style="width:380px; float:left"> 
+                    <span class="fldLbl">Prep Start Date</span>
+                    <asp:TextBox ID="txtPrepStartDate" runat="server" CssClass="fldTxt" Width="230px" ></asp:TextBox>
+                </div>
+                <div style="width:380px; float:left"> 
+                    <span class="fldLbl">Dilution Factor</span>
+                    <asp:TextBox ID="txtDilution" runat="server" CssClass="fldTxt" Width="230px" ></asp:TextBox>
+                </div>
+            </div>
+            <div class="btnRibbon">
+                <asp:Button ID="btnCloseMore" runat="server" Text="Close" CssClass="btn" UseSubmitBehavior="false" CausesValidation="false" OnClientClick="hideMore(); return false;" />
+            </div>
+        </div>
+    </div>
+    <div id="pnlModalBackground" class="modalBackground" style="position: fixed; left: 0px; top: 0px; z-index: 10000; width: 100%; height: 625px; display:none"></div>
+
+
         </ContentTemplate>
     </asp:UpdatePanel>
+
+
     <asp:Panel ID="pnlResultBtn" runat="server" CssClass="btnRibbon">
         <asp:ImageButton ID="btnExcel" runat="server" Height="24px" ImageUrl="~/App_Images/ico_xls.png" OnClick="btnExcel_Click" ToolTip="Export to Excel" />
     </asp:Panel>
@@ -467,5 +535,7 @@
             </asp:EntityDataSource>
         </ContentTemplate>
     </asp:UpdatePanel>
+
+
 
 </asp:Content>

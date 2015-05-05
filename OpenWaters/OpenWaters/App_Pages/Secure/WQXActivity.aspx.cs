@@ -131,18 +131,15 @@ namespace OpenEnvironment
 
             if (e.CommandName == "Deletes")
             {
-                if (!HttpContext.Current.User.IsInRole("READONLY"))
+                int SuccID = db_WQX.DeleteT_WQX_ACTIVITY(ActivityIDX, User.Identity.Name);
+                if (SuccID == 1)
                 {
-                    int SuccID = db_WQX.DeleteT_WQX_ACTIVITY(ActivityIDX, User.Identity.Name);
-                    if (SuccID == 1)
-                    {
-                        FillGrid();
-                        lblMsg.Text = "Record successfully deleted.";
-                    }
-                    else
-                        lblMsg.Text = "Unable to delete activity.";
-
+                    FillGrid();
+                    lblMsg.Text = "Record successfully deleted.";
                 }
+                else
+                    lblMsg.Text = "Unable to delete activity.";
+
             }
 
             if (e.CommandName == "WQX")

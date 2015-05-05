@@ -288,15 +288,36 @@ namespace OpenEnvironment
                     if (i == 0)
                     {
                         int j = 0;
+
+                        //get column header alias names list
+                        List<string> ActivityIDList = db_WQX.GetWQX_IMPORT_COL_ALIAS_byField("Activity ID");
+                        List<string> ActivityMediaList = db_WQX.GetWQX_IMPORT_COL_ALIAS_byField("Activity Media");
+                        List<string> ActivityStartDateList = db_WQX.GetWQX_IMPORT_COL_ALIAS_byField("Activity Start Date");
+                        List<string> ActivityStartTimeList = db_WQX.GetWQX_IMPORT_COL_ALIAS_byField("Activity Start Time");
+                        List<string> SampPrepList = db_WQX.GetWQX_IMPORT_COL_ALIAS_byField("Sample Prep ID");
+
+
+                        List<string> LabNameList = db_WQX.GetWQX_IMPORT_COL_ALIAS_byField("Lab Name");
+                        List<string> CharacteristicList = db_WQX.GetWQX_IMPORT_COL_ALIAS_byField("Characteristic");
+                        List<string> ResultUnitList = db_WQX.GetWQX_IMPORT_COL_ALIAS_byField("Unit");
+                        List<string> DetectionConditionList = db_WQX.GetWQX_IMPORT_COL_ALIAS_byField("Result Detection Condition");
+                        List<string> DetectionLimitUnit = db_WQX.GetWQX_IMPORT_COL_ALIAS_byField("Detection Threshold Limit Unit");
+
+                        List<string> DilutionList = db_WQX.GetWQX_IMPORT_COL_ALIAS_byField("Dilution Factor");
+
+                        
+
                         foreach (string part in parts)
                         {
-                            if (part == "Station ID") cols.MONLOC_IDCol = j;
-                            if (part == "Activity ID") cols.ACTIVITY_IDCol = j;
-                            if (part == "Activity Type Code") cols.ACT_TYPECol = j;
-                            if (part == "Activity Media") cols.ACT_MEDIACol = j;
-                            if (part == "Activity Submedia") cols.ACT_SUBMEDIACol = j;
-                            if (part == "Activity Start Date") cols.ACTIVITY_START_DTCol = j;
-                            if (part == "Activity Start Time") cols.ACTIVITY_START_TIMECol = j;
+
+                            //detect column headers
+                            if (part.ToUpper() == "STATION ID") cols.MONLOC_IDCol = j;
+                            if (ActivityIDList.Contains(part.ToUpper())) cols.ACTIVITY_IDCol = j;
+                            if (part.ToUpper() == "ACTIVITY TYPE CODE") cols.ACT_TYPECol = j;
+                            if (ActivityMediaList.Contains(part.ToUpper())) cols.ACT_MEDIACol = j;
+                            if (part.ToUpper() == "ACTIVITY SUBMEDIA") cols.ACT_SUBMEDIACol = j;
+                            if (ActivityStartDateList.Contains(part.ToUpper())) cols.ACTIVITY_START_DTCol = j;
+                            if (ActivityStartTimeList.Contains(part.ToUpper())) cols.ACTIVITY_START_TIMECol = j;
                             if (part == "Activity End Date") cols.ACT_END_DTCol = j;
                             if (part == "Activity End Time") cols.ACT_END_TIMECol = j;
                             if (part == "Activity Time Zone") cols.ACT_TIME_ZONECol = j;
@@ -333,7 +354,7 @@ namespace OpenEnvironment
                             if (part == "Collection Method Context") cols.SAMP_COLL_METHOD_CTXCol = j;
                             if (part == "Collection Equipment") cols.SAMP_COLL_EQUIPCol = j;
                             if (part == "Collection Equipment Comment") cols.SAMP_COLL_EQUIP_COMMENTCol = j;
-                            if (part == "Sample Prep ID") cols.SAMP_PREP_IDCol = j;
+                            if (SampPrepList.Contains(part.ToUpper())) cols.SAMP_PREP_IDCol = j;
                             if (part == "Sample Prep Context") cols.SAMP_PREP_CTXCol = j;
                             if (part == "Container Type") cols.SAMP_PREP_CONT_TYPECol = j;
                             if (part == "Container Color") cols.SAMP_PREP_CONT_COLORCol = j;
@@ -342,12 +363,12 @@ namespace OpenEnvironment
                             if (part == "Transport Storage Description") cols.SAMP_PREP_STORAGE_DESCCol = j;
 
                             if (part == "Data Logger Line") cols.DATA_LOGGER_LINECol = j;
-                            if (part == "Result Detection Condition") cols.RESULT_DETECT_CONDITIONCol = j;
-                            if (part == "Characteristic") cols.CHAR_NAMECol = j;
+                            if (DetectionConditionList.Contains(part.ToUpper())) cols.RESULT_DETECT_CONDITIONCol = j;
+                            if (CharacteristicList.Contains(part.ToUpper())) cols.CHAR_NAMECol = j;
                             if (part == "Method Speciation") cols.METHOD_SPECIATION_NAMECol = j;
                             if (part == "Sample Fraction") cols.RESULT_SAMP_FRACTIONCol = j;
-                            if (part == "Result") cols.RESULT_MSRCol = j;
-                            if (part == "Unit") cols.RESULT_MSR_UNITCol = j;
+                            if (part.ToUpper() == "RESULT") cols.RESULT_MSRCol = j;
+                            if (ResultUnitList.Contains(part.ToUpper())) cols.RESULT_MSR_UNITCol = j;
                             if (part == "Measure Qualifier") cols.RESULT_MSR_QUALCol = j;
                             if (part == "Result Status") cols.RESULT_STATUSCol = j;
                             if (part == "Statistical Base Code") cols.STATISTIC_BASE_CODECol = j;
@@ -388,7 +409,7 @@ namespace OpenEnvironment
                             if (part == "Frequency Class Lower") { cols.FREQ_CLASS_LOWERCol = j; bioIndicator = true; }
                             if (part == "Analytical Method ID") cols.ANALYTIC_METHOD_IDCol = j;
                             if (part == "Analytical Method Context") cols.ANALYTIC_METHOD_CTXCol = j;
-                            if (part == "Lab Name") cols.LAB_NAMECol = j;
+                            if (LabNameList.Contains(part.ToUpper())) cols.LAB_NAMECol = j;
                             if (part == "Analysis Start Date") cols.LAB_ANALYSIS_START_DTCol = j;
                             if (part == "Analysis End Date") cols.LAB_ANALYSIS_END_DTCol = j;
                             if (part == "Lab Comment Code") cols.RESULT_LAB_COMMENT_CODECol = j;
@@ -397,12 +418,12 @@ namespace OpenEnvironment
                             if (part == "Practical Quantitation Limit") cols.PQLCol = j;
                             if (part == "Lower Quantitation Limit") cols.LOWER_QUANT_LIMITCol = j;
                             if (part == "Upper Quantitation Limit") cols.UPPER_QUANT_LIMITCol = j;
-                            if (part == "Detection Threshold Limit Unit") cols.DETECTION_LIMIT_UNITCol = j;
+                            if (DetectionLimitUnit.Contains(part.ToUpper())) cols.DETECTION_LIMIT_UNITCol = j;
                             if (part == "Lab Sample Prep ID") cols.LAB_SAMP_PREP_IDCol = j;
                             if (part == "Lab Sample Prep Context") cols.LAB_SAMP_PREP_CTXCol = j;
                             if (part == "Preparation Start Date") cols.LAB_SAMP_PREP_START_DTCol = j;
                             if (part == "Preparation End Date") cols.LAB_SAMP_PREP_END_DTCol = j;
-                            if (part == "Dilution Factor") cols.DILUTION_FACTORCol = j;
+                            if (DilutionList.Contains(part.ToUpper())) cols.DILUTION_FACTORCol = j;
 
                             j = j + 1;
                         }

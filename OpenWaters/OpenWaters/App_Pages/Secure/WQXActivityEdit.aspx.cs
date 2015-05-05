@@ -11,7 +11,6 @@ namespace OpenEnvironment
 {
     public partial class WQXActivityEdit : System.Web.UI.Page
     {
-
         protected override void Render(System.Web.UI.HtmlTextWriter writer)
         {
             foreach (GridViewRow row in grdResults.Rows)
@@ -255,21 +254,26 @@ namespace OpenEnvironment
             }
             //*********************END VALIDATION************************************
 
-            db_WQX.InsertOrUpdateT_WQX_RESULT(grdResults.DataKeys[e.RowIndex].Values[0].ConvertOrDefault<int>(), ActID, null, ddlChar.SelectedValue,
+            int SuccID = db_WQX.InsertOrUpdateT_WQX_RESULT(grdResults.DataKeys[e.RowIndex].Values[0].ConvertOrDefault<int>(), ActID, null, ddlChar.SelectedValue,
                 ddlSampFraction.SelectedValue, txtResultVal.Text, ddlUnit.SelectedValue, 
                 ddlResultStatus.SelectedValue, ddlResultValueType.SelectedValue, txtComment.Text, null, null, ddlTaxa.SelectedValue, null, 
-                ddlAnalMethod.SelectedValue.ConvertOrDefault<int?>(), txtAnalysisDate.Text.ConvertOrDefault<DateTime?>(), txtDetectLimit.Text, txtPQL.Text,
-                txtLowerQuantLimit.Text, txtUpperQuantLimit.Text, ddlFreqClass.SelectedValue, null, User.Identity.Name);
+                ddlAnalMethod.SelectedValue.ConvertOrDefault<int?>(), ddlLabName.SelectedValue.ConvertOrDefault<int?>(), txtAnalysisDate.Text.ConvertOrDefault<DateTime?>(), txtDetectLimit.Text, txtPQL.Text,
+                txtLowerQuantLimit.Text, txtUpperQuantLimit.Text, ddlPrepMethod.SelectedValue.ConvertOrDefault<int?>(), txtPrepStartDate.Text.ConvertOrDefault<DateTime?>(), txtDilution.Text, 
+                ddlFreqClass.SelectedValue, null, User.Identity.Name);
 
-            //also update activity to set to "U" so it will be flagged for submission to EPA
-            db_WQX.UpdateWQX_ACTIVITY_WQXStatus(ActID, "U", null, null, User.Identity.Name);
+            if (SuccID > 0)
+            {
+                //also update activity to set to "U" so it will be flagged for submission to EPA
+                db_WQX.UpdateWQX_ACTIVITY_WQXStatus(ActID, "U", null, null, User.Identity.Name);
 
-            grdResults.EditIndex = -1;
-            PopulateResultsGrid();
-
+                grdResults.EditIndex = -1;
+                PopulateResultsGrid();
+            }
+            else
+                lblMsgDtl.Text = "Error saving update.";
         }
 
-        /// Add a new result.
+        /// Add a new result. 
         /// </summary>
         protected void grdResults_RowCommand(object sender, GridViewCommandEventArgs e)
         {
@@ -323,8 +327,8 @@ namespace OpenEnvironment
 
                 db_WQX.InsertOrUpdateT_WQX_RESULT(null, ActID, null, ddlNewChar.SelectedValue, ddlNewSampFraction.SelectedValue,
                     txtNewResultVal.Text, ddlNewUnit.SelectedValue, ddlNewResultStatus.SelectedValue, ddlNewResultValueType.SelectedValue, txtNewComment.Text,  
-                    ddlNewBioIntent.SelectedValue, null, ddlNewTaxa.SelectedValue, null, ddlNewAnalMethod.SelectedValue.ConvertOrDefault<int?>(), txtNewAnalysisDate.Text.ConvertOrDefault<DateTime?>(), 
-                    txtNewDetectLimit.Text, txtNewPQL.Text, txtNewLowerQuantLimit.Text, txtNewUpperQuantLimit.Text, ddlNewFreqClass.SelectedValue, null, User.Identity.Name);
+                    ddlNewBioIntent.SelectedValue, null, ddlNewTaxa.SelectedValue, null, ddlNewAnalMethod.SelectedValue.ConvertOrDefault<int?>(), null, txtNewAnalysisDate.Text.ConvertOrDefault<DateTime?>(), 
+                    txtNewDetectLimit.Text, txtNewPQL.Text, txtNewLowerQuantLimit.Text, txtNewUpperQuantLimit.Text, null, null, null, ddlNewFreqClass.SelectedValue, null, User.Identity.Name);
 
                 //also update activity to set to "U" so it will be flagged for submission to EPA
                 db_WQX.UpdateWQX_ACTIVITY_WQXStatus(ActID, "U", chkActInd.Checked, chkWQXInd.Checked);
@@ -341,6 +345,19 @@ namespace OpenEnvironment
             if (e.Row.RowType == DataControlRowType.DataRow && 
                 ((e.Row.RowState & DataControlRowState.Edit) == DataControlRowState.Edit))
             {
+                //populate more modal
+                Utils.BindList(ddlLabName, dsLabName, "LAB_IDX", "LAB_NAME");
+                Utils.BindList(ddlPrepMethod, dsPrepMethod, "SAMP_PREP_IDX", "SAMP_PREP_METHOD_ID");
+
+                T_WQX_RESULT r = db_WQX.GetT_WQX_RESULT_ByIDX(grdResults.DataKeys[e.Row.RowIndex].Values[0].ConvertOrDefault<int>());
+                if (r != null)
+                {
+                    ddlLabName.SelectedValue = r.LAB_IDX.ToString();
+                    ddlPrepMethod.SelectedValue = r.LAB_SAMP_PREP_IDX.ToString();
+                    txtPrepStartDate.Text = r.LAB_SAMP_PREP_START_DT.ToString();
+                    txtDilution.Text = r.DILUTION_FACTOR.ToString();
+                }
+
                 //Characteristic
                 DropDownList d1 = (DropDownList)e.Row.FindControl("ddlChar");
                 dsChar.SelectParameters["RBPInd"].DefaultValue = (ddlEntryType.SelectedValue == "H" ? "true" : "false");
