@@ -13,6 +13,14 @@
         <div class="fltMain">
             <div class="row">
                 <asp:CheckBox ID="chkWQXImport" runat="server" Text="Automatically submit imported data to EPA/WQX" CssClass="fldTxt" Checked="true" />
+                <asp:Panel ID="pnlActivityID" Visible="false" runat="server" CssClass="row" >
+                    <span class="row">You are trying to import activity IDs that already exist for this organization. How would you like to handle this conflict?</span>
+                    <br />
+                    <asp:DropDownList ID="ddlActivityReplaceType" runat="server" CssClass="fldTxt">
+                        <asp:ListItem Value="R" Text="Delete any matching Activity IDs and reimport (recommended)" Selected="True"></asp:ListItem>
+                        <asp:ListItem Value="U" Text="Update existing activities, appending results to previous"></asp:ListItem>
+                    </asp:DropDownList>
+                </asp:Panel>
             </div>
             <div class="row">
                 <asp:Button ID="btnImport" runat="server" CssClass="btn" Style="font-size:12pt" Text="Import Selected Rows" OnClick="btnImport_Click" />        
@@ -61,7 +69,6 @@
                 <asp:BoundField DataField="SAMP_COLL_EQUIP_COMMENT" HeaderText="Equipment Comment" SortExpression="SAMP_COLL_EQUIP_COMMENT" />
                 <asp:BoundField DataField="SAMP_PREP_ID" HeaderText="Samp Prep" SortExpression="SAMP_PREP_ID" />
                 <asp:BoundField DataField="SAMP_PREP_CTX" HeaderText="Samp Prep Context" SortExpression="SAMP_PREP_CTX" />
-
                 <asp:BoundField DataField="RESULT_DETECT_CONDITION" HeaderText="Detect Condition" SortExpression="RESULT_DETECT_CONDITION" />
                 <asp:BoundField DataField="CHAR_NAME" HeaderText="Characteristic" SortExpression="CHAR_NAME" />
                 <asp:BoundField DataField="METHOD_SPECIATION_NAME" HeaderText="Method Speciation" SortExpression="METHOD_SPECIATION_NAME" />
@@ -81,22 +88,22 @@
                 <asp:BoundField DataField="RESULT_COMMENT" HeaderText="Result Comment" SortExpression="RESULT_COMMENT" />
                 <asp:BoundField DataField="BIO_INTENT_NAME" HeaderText="Bio Intent" SortExpression="BIO_INTENT_NAME" />
                 <asp:BoundField DataField="BIO_SUBJECT_TAXONOMY" HeaderText="Taxonomy" SortExpression="BIO_SUBJECT_TAXONOMY" />
-
                 <asp:BoundField DataField="FREQ_CLASS_CODE" HeaderText="Freq Class" SortExpression="FREQ_CLASS_CODE" />
                 <asp:BoundField DataField="FREQ_CLASS_UNIT" HeaderText="Freq Class Unit" SortExpression="FREQ_CLASS_UNIT" />
-
                 <asp:BoundField DataField="ANAL_METHOD_ID" HeaderText="Anal Method" SortExpression="ANAL_METHOD_ID" />
                 <asp:BoundField DataField="ANAL_METHOD_CTX" HeaderText="Anal Method Context" SortExpression="ANAL_METHOD_CTX" />
                 <asp:BoundField DataField="LAB_NAME" HeaderText="Lab Name" SortExpression="LAB_NAME" />
+                <asp:BoundField DataField="ANAL_START_DT" HeaderText="Analysis Start Date" SortExpression="ANAL_START_DT" />
+                <asp:BoundField DataField="ANAL_END_DT" HeaderText="Analysis End Date" SortExpression="ANAL_END_DT" />
                 <asp:BoundField DataField="LAB_COMMENT_CODE" HeaderText="Lab Comment" SortExpression="LAB_COMMENT_CODE" />
                 <asp:BoundField DataField="DETECTION_LIMIT" HeaderText="Detection Limit" SortExpression="DETECTION_LIMIT" />
-
                 <asp:BoundField DataField="LAB_REPORTING_LEVEL" HeaderText="Lab Reporting Level" SortExpression="LAB_REPORTING_LEVEL" />
                 <asp:BoundField DataField="PQL" HeaderText="PQL" SortExpression="PQL" />
                 <asp:BoundField DataField="LOWER_QUANT_LIMIT" HeaderText="Lower Quant Limit" SortExpression="LOWER_QUANT_LIMIT" />
                 <asp:BoundField DataField="UPPER_QUANT_LIMIT" HeaderText="Upper Quant Limit" SortExpression="UPPER_QUANT_LIMIT" />
                 <asp:BoundField DataField="DETECTION_LIMIT_UNIT" HeaderText="Detection Limit Unit" SortExpression="DETECTION_LIMIT_UNIT" />
-
+                <asp:BoundField DataField="LAB_SAMP_PREP_START_DT" HeaderText="Lab Prep Start Date" SortExpression="LAB_SAMP_PREP_START_DT" />
+                <asp:BoundField DataField="DILUTION_FACTOR" HeaderText="Dilution Factor" SortExpression="DILUTION_FACTOR" />
             </Columns>
         </asp:GridView>
     </div>

@@ -8,8 +8,12 @@
             <asp:SessionParameter DefaultValue="" Name="OrgID" SessionField="OrgID" Type="String" />
             <asp:ControlParameter ControlID="ddlMonLoc" ConvertEmptyStringToNull="true"  DefaultValue="0" Name="MonLocIDX" PropertyName="SelectedValue" Type="Int32" />
             <asp:ControlParameter ControlID="ddlCharacteristic" PropertyName="SelectedValue" ConvertEmptyStringToNull="true" DefaultValue="" Name="charName" Type="String" />
-            <asp:Parameter DefaultValue="01/02/2000" Name="startDt" Type="DateTime" />
-            <asp:Parameter DefaultValue="12/31/2012" Name="endDt" Type="DateTime" />
+            <asp:ControlParameter ControlID="txtStartDt" PropertyName="Text" ConvertEmptyStringToNull="true" DefaultValue="01/02/1900" Name="startDt" Type="DateTime" />
+            <asp:ControlParameter ControlID="txtEndDt" PropertyName="Text" ConvertEmptyStringToNull="true" DefaultValue="12/31/2050" Name="endDt" Type="DateTime" />
+            <asp:ControlParameter ControlID="ddlDataInclude" PropertyName="SelectedValue" ConvertEmptyStringToNull="true" DefaultValue="A" Name="DataIncludeInd" Type="String" />
+
+<%--            <asp:Parameter DefaultValue="01/02/2000" Name="startDt" Type="DateTime" />
+            <asp:Parameter DefaultValue="12/31/2012" Name="endDt" Type="DateTime" />--%>
         </SelectParameters>
     </asp:ObjectDataSource>
     <asp:ObjectDataSource ID="dsMonLoc" runat="server" SelectMethod="GetWQX_MONLOC" TypeName="OpenEnvironment.App_Logic.DataAccessLayer.db_WQX" >
@@ -21,6 +25,7 @@
     </asp:ObjectDataSource>
     <asp:ObjectDataSource ID="dsChar" runat="server" SelectMethod="GetT_WQX_RESULT_SampledCharacteristics"  TypeName="OpenEnvironment.App_Logic.DataAccessLayer.db_WQX" >
         <selectparameters>
+            <asp:SessionParameter DefaultValue="" Name="OrgID" SessionField="OrgID" Type="String" />
         </selectparameters>
     </asp:ObjectDataSource>
     <asp:Panel ID="pnlFilter" CssClass="fltBox" runat="server" DefaultButton="btnChart">
@@ -38,30 +43,41 @@
             <div class="row">
                 <div style="width:520px; float:left"> 
                     <span class="fldLbl" >Characteristic:</span>
-                    <asp:DropDownList CssClass="fldTxt" ID="ddlCharacteristic" runat="server" ></asp:DropDownList>
+                    <asp:DropDownList CssClass="fldTxt" ID="ddlCharacteristic" runat="server" style="max-width:330px;" ></asp:DropDownList>
                 </div>
                 <div style=" float:left"> 
                     <span class="fldLbl" >Monitoring Location:</span>
                     <asp:DropDownList CssClass="fldTxt" ID="ddlMonLoc" runat="server"  ></asp:DropDownList>
                 </div>
             </div>
+<%--            <div class="row">
+                <div style="width:520px; float:left"> 
+                    <span class="fldLbl" >Characteristic 2:</span>
+                    <asp:DropDownList CssClass="fldTxt" ID="ddlCharacteristic2" runat="server" style="max-width:330px;" ></asp:DropDownList>
+                </div>
+            </div>--%>
             <div class="row">
-                <span class="fldLbl">Date Range:</span>
-                <asp:TextBox ID="txtStartDt" runat="server" Width="80px" CssClass="fldTxt"></asp:TextBox>
-                <ajaxToolkit:MaskedEditExtender ID="txtStartDt_MaskedEditExtender" runat="server"
-                    Enabled="True" TargetControlID="txtStartDt" MaskType="Date" UserDateFormat="MonthDayYear" Mask="99/99/9999">
-                </ajaxToolkit:MaskedEditExtender>
-                <ajaxToolkit:CalendarExtender ID="txtStartDt_CalendarExtender" runat="server" Enabled="True"
-                    TargetControlID="txtStartDt">
-                </ajaxToolkit:CalendarExtender>
-                <span class="fldLbl" style="width:20px; margin:0 4px 0 4px;">to</span>
-                <asp:TextBox ID="txtEndDt" runat="server" Width="80px" CssClass="fldTxt" ></asp:TextBox>
-                &nbsp;&nbsp;
-                <ajaxToolkit:MaskedEditExtender ID="txtEndDt_MaskedEditExtender" runat="server"
-                    Enabled="True" TargetControlID="txtEndDt" MaskType="Date" UserDateFormat="MonthDayYear" Mask="99/99/9999">
-                </ajaxToolkit:MaskedEditExtender>
-                <ajaxToolkit:CalendarExtender ID="txtEndDt_CalExtender" runat="server" Enabled="True" TargetControlID="txtEndDt">
-                </ajaxToolkit:CalendarExtender>
+                <div style="width:520px; float:left"> 
+                    <span class="fldLbl">Date Range:</span>
+                    <asp:TextBox ID="txtStartDt" runat="server" Width="80px" CssClass="fldTxt"></asp:TextBox>
+                    <ajaxToolkit:MaskedEditExtender ID="txtStartDt_MaskedEditExtender" runat="server" Enabled="True" TargetControlID="txtStartDt" MaskType="Date" UserDateFormat="MonthDayYear" Mask="99/99/9999">
+                    </ajaxToolkit:MaskedEditExtender>
+                    <ajaxToolkit:CalendarExtender ID="txtStartDt_CalendarExtender" runat="server" Enabled="True" TargetControlID="txtStartDt">
+                    </ajaxToolkit:CalendarExtender>
+                    <span class="fldLbl" style="width:20px; margin:0 4px 0 4px;">to</span>
+                    <asp:TextBox ID="txtEndDt" runat="server" Width="80px" CssClass="fldTxt" ></asp:TextBox>
+                    <ajaxToolkit:MaskedEditExtender ID="txtEndDt_MaskedEditExtender" runat="server" Enabled="True" TargetControlID="txtEndDt" MaskType="Date" UserDateFormat="MonthDayYear" Mask="99/99/9999">
+                    </ajaxToolkit:MaskedEditExtender>
+                    <ajaxToolkit:CalendarExtender ID="txtEndDt_CalExtender" runat="server" Enabled="True" TargetControlID="txtEndDt">
+                    </ajaxToolkit:CalendarExtender>
+                </div>
+                <div style=" float:left"> 
+                    <span class="fldLbl" >Data to Include:</span>
+                    <asp:DropDownList CssClass="fldTxt" ID="ddlDataInclude" runat="server"  >
+                        <asp:ListItem Value="A" Text="Include all my data" Selected="True"></asp:ListItem>
+                        <asp:ListItem Value="W" Text="Only include data shared with EPA"></asp:ListItem>
+                    </asp:DropDownList>
+                </div>
             </div>
             <div class="row">
                 <asp:Button ID="btnChart" runat="server" CssClass="btn" Text="Generate" onclick="btnChart_Click" />
@@ -74,11 +90,11 @@
     <td style="width:70%; vertical-align:top">
     <asp:Chart ID="Chart1" runat="server" BackColor="LightGray" Width="600px" >
         <Series>
-            <asp:Series Name="Series1" ChartType="Line" XValueMember="START_DT"  XValueType="DateTime" MarkerSize="3" MarkerStyle="Circle" YValueMembers="RESULT_MSR">
+            <asp:Series Name="Series1" ChartType="Line" XValueMember="START_DT"  XValueType="DateTime" MarkerSize="4" MarkerStyle="Circle" YValueMembers="RESULT_MSR">
             </asp:Series>
         </Series>
         <ChartAreas>
-            <asp:ChartArea Name="ChartArea1">
+            <asp:ChartArea Name="ChartArea1" >
             </asp:ChartArea>
         </ChartAreas>
     </asp:Chart>

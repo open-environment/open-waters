@@ -29,72 +29,28 @@ namespace OpenEnvironment
 
         private void PopulateGrid()
         {
+            //display grid
             grdImport.DataSource = db_WQX.GetWQX_IMPORT_TEMP_SAMP_RESULT_Disp(User.Identity.Name);
             grdImport.DataBind();
             grdImport.RemoveEmptyColumns(true, "Include in Import");
+
+            //show activity id conflict resolution panel if needed
+            pnlActivityID.Visible = db_WQX.GetWQX_IMPORT_TEMP_SAMPLE_DupActivityIDs(User.Identity.Name, Session["OrgID"].ToString()) > 0;
         }
 
         protected void btnImport_Click(object sender, EventArgs e)
         {
             string OrgID = "";
 
-            db_WQX.SP_ImportActivityFromTemp(User.Identity.Name, chkWQXImport.Checked == true ? "Y" : "N");
+            db_WQX.SP_ImportActivityFromTemp(User.Identity.Name, chkWQXImport.Checked == true ? "Y" : "N", (ddlActivityReplaceType != null ? ddlActivityReplaceType.SelectedValue : "R"));
 
-            //List<int> SelectedSamples = new List<int>();
-            //List<int> SelectedResults = new List<int>();
-            //List<int> DistinctSamples = new List<int>();
-
-            ////first loop through just to get distinct selected samples and results
-            //foreach (GridViewRow row in grdImport.Rows)
-            //{
-            //    CheckBox check = (CheckBox)row.FindControl("chkImport");
-
-            //    if (check.Checked)
-            //    {
-            //        HiddenField hdSamp = row.FindControl("hdnTempSampleIDX") as HiddenField;
-            //        HiddenField hdResult = row.FindControl("hdnTempSampleIDX") as HiddenField;
-
-            //        int TempSampID = hdSamp.Value.ConvertOrDefault<int>();
-            //        int TempResultID = hdResult.Value.ConvertOrDefault<int>();
-
-            //        SelectedSamples.Add(TempSampID);
-            //        SelectedResults.Add(TempResultID);
-            //    }
-            //}
-
-            ////get distinct listing of TEMP SAMPLE IDX
-            //DistinctSamples = SelectedSamples.Distinct().ToList();
-
-            ////now loop through samples
-            //foreach (int SampID in DistinctSamples)
-            //{
-            //    T_WQX_IMPORT_TEMP_SAMPLE s = db_WQX.GetWQX_IMPORT_TEMP_SAMPLE_ByID(SampID);
-            //    if (s != null)
-            //    {
-            //        OrgID = s.ORG_ID;
-
-            //        int NewActivityID = db_WQX.InsertOrUpdateWQX_ACTIVITY(s.ACTIVITY_IDX, s.ORG_ID, s.PROJECT_IDX, s.MONLOC_IDX, s.ACTIVITY_ID, s.ACT_TYPE, s.ACT_MEDIA, s.ACT_SUBMEDIA, s.ACT_START_DT,
-            //            s.ACT_END_DT, s.ACT_TIME_ZONE, s.ACT_COMMENT, "U", true, chkWQXImport.Checked, User.Identity.Name);
-                        
-            //        List<T_WQX_IMPORT_TEMP_RESULT> rs = db_WQX.GetWQX_IMPORT_TEMP_RESULT_ByTempSampIDX(SampID);
-            //        foreach (T_WQX_IMPORT_TEMP_RESULT r in rs)
-            //        {
-            //            if (SelectedResults.Contains(r.TEMP_RESULT_IDX))
-            //                // db_WQX.InsertOrUpdateT_WQX_RESULT(null, NewActivityID, r.CHAR_NAME, r.RESULT_MSR, r.RESULT_MSR_UNIT, r.ANALYTIC_METHOD_IDX, r.DETECTION_LIMIT, r.RESULT_COMMENT, null, null, null, null, User.Identity.Name);
-            //        }
-            //    }
-            //}
-
-            grdImport.Visible = false;
-            btnSample.Visible = true;
-            btnImport.Visible = false;
-            btnCancel.Visible = false;
             pnlFilter.Visible = false;
-
-            db_WQX.DeleteT_WQX_IMPORT_TEMP_SAMPLE(User.Identity.Name);
+            grdImport.Visible = false;
+            btnCancel.Visible = false;
+            btnSample.Visible = true;
 
             //update import log
-            db_Ref.UpdateWQX_IMPORT_LOG_MarkPendingSampImportAsComplete(OrgID);
+            db_Ref.UpdateWQX_IMPORT_LOG_MarkPendingSampImportAsComplete(Session["OrgID"].ToString());
 
             lblMsg.Text = "All selected data has been imported.";
 

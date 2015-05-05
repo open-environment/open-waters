@@ -24,7 +24,7 @@ namespace OpenEnvironment
                 //populate drop-downs                
                 Utils.BindList(ddlMonLoc, dsMonLoc, "MONLOC_IDX", "MONLOC_NAME");
                 Utils.BindList(ddlCharacteristic, dsChar, "CHAR_NAME", "CHAR_NAME");
-
+                //Utils.BindList(ddlCharacteristic2, dsChar, "CHAR_NAME", "CHAR_NAME");
             }
         }
 
@@ -43,14 +43,24 @@ namespace OpenEnvironment
             else
                 Chart1.Series[0].ChartType = System.Web.UI.DataVisualization.Charting.SeriesChartType.Spline;
 
-            Chart1.Series[0].MarkerSize = 4;
-
             if (ddlChartType.SelectedValue == "SERIES")
             {
-                dsChartTS.SelectParameters["startDt"].DefaultValue = txtStartDt.Text;
-                dsChartTS.SelectParameters["endDt"].DefaultValue = txtEndDt.Text;
+                Chart1.ChartAreas[0].AxisY.ScaleBreakStyle.StartFromZero = System.Web.UI.DataVisualization.Charting.StartFromZero.No;
                 Chart1.DataSource = dsChartTS;
                 Chart1.DataBind();
+                Chart1.ChartAreas[0].AxisY.ScaleBreakStyle.StartFromZero = System.Web.UI.DataVisualization.Charting.StartFromZero.No;
+
+                //second characteristic
+                //System.Web.UI.DataVisualization.Charting.Series s1 = new System.Web.UI.DataVisualization.Charting.Series();
+                //s1.Name = "Series2";
+                //s1.ChartType = Chart1.Series[0].ChartType;
+                //s1.XValueMember = Chart1.Series[0].XValueMember;
+                //s1.XValueType = Chart1.Series[0].XValueType;
+                //s1.MarkerSize = 3;
+                //s1.MarkerStyle = System.Web.UI.DataVisualization.Charting.MarkerStyle.Circle;
+                //s1.YValueMembers = "RESULT_MSR";
+                //Chart1.Series.Add(s1);
+
                 grdResults.DataSource = dsChartTS;
                 grdResults.DataBind();
             }
