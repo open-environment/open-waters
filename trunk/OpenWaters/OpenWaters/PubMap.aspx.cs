@@ -15,13 +15,18 @@ namespace OpenEnvironment.App_Pages.Public
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack)
+            {
+                //populate drop-down lists
+                Utils.BindList(ddlOrg, dsOrg, "ORG_ID", "ORG_FORMAL_NAME");
+            }
+
             //if this installation only has one organization, display on map header
             if (db_WQX.GetWQX_ORGANIZATION().Count == 1)
                 lblOrgName.Text = db_WQX.GetWQX_ORGANIZATION().FirstOrDefault().ORG_FORMAL_NAME + " - ";
             else
                 lblOrgName.Text = "";
         }
-
 
         //Web method used for retrieving sites to place on map
         [WebMethod(EnableSession = true)]
@@ -53,7 +58,14 @@ namespace OpenEnvironment.App_Pages.Public
                             comments = "<br/><i>" + l.ACT_COMMENT + "</i><br/>";
                     }
 
-                    myCollection.Add(m.LATITUDE_MSR + "|" + m.LONGITUDE_MSR + "|" + m.MONLOC_NAME + " - " + m.MONLOC_TYPE + "|" + m.MONLOC_DESC + "<br/>" + comments + samps + "|" + m.MONLOC_ID + "|" + m.STATE_CODE + "|" + "test" + "|" + "test2");
+                    myCollection.Add(m.LATITUDE_MSR + "|" + 
+                        m.LONGITUDE_MSR + "|" + 
+                        m.MONLOC_NAME + " - " + m.MONLOC_TYPE + "|" + 
+                        m.MONLOC_DESC + "<br/>" + comments + samps + "|" + 
+                        m.MONLOC_ID + "|" + 
+                        m.STATE_CODE + "|" + 
+                        m.ORG_ID + "|" + 
+                        "test2");
                 }
             }
 
@@ -71,6 +83,11 @@ namespace OpenEnvironment.App_Pages.Public
             }
             if (e.CommandName.Equals("Data"))
                 Response.Redirect("~/App_Pages/Secure/WQXActivity.aspx");     
+
+        }
+
+        protected void ddlOrg_SelectedIndexChanged(object sender, EventArgs e)
+        {
 
         }
     }

@@ -100,9 +100,9 @@
     <Content Include="App_Data\Create_DB.sql" />
     <Content Include="App_Data\DatabasePatch_v1.3.sql" />
     <Content Include="App_Data\DatabasePatch_v1.5.sql" />
-    <Content Include="App_Data\DatabasePatch_v1.6.1.sql" />
+    <Content Include="App_Data\DatabasePatch_v1.6.2.sql" />
     <Content Include="App_Data\DatabasePatch_v1.6.sql" />
-    <Content Include="App_Data\SeminoleData.sql" />
+    <None Include="App_Data\SeminoleData.sql" />
     <Content Include="App_Images\loading.gif" />
     <Content Include="App_Images\wiz_1.png" />
     <Content Include="App_Images\bg.png" />
