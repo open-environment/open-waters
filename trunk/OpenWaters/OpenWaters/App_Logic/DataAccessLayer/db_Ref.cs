@@ -166,7 +166,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
                 try
                 {
                     return (from i in ctx.V_WQX_TRANSACTION_LOG
-                            where i.ORG_ID == OrgID
+                            where (OrgID == null ? true : i.ORG_ID == OrgID)
                             && (TableCD == null ? true : i.TABLE_CD == TableCD)
                             && (startDt == null ? true : i.SUBMIT_DT >= startDt)
                             && (endDt == null ? true : i.SUBMIT_DT <= endDt)
@@ -412,7 +412,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
                     int iCount = (from a in ctx.T_WQX_REF_DATA
                             where (a.ACT_IND == true)
                             && a.TABLE == tABLE
-                            && a.VALUE == vALUE
+                            && a.VALUE == vALUE 
                             orderby a.TEXT
                             select a).Count();
 
@@ -732,7 +732,6 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
         }
 
 
-
         //******************REF COUNTY ****************************************
         public static int InsertOrUpdateT_WQX_REF_COUNTY(global::System.String sTATE_CODE, global::System.String cOUNTY_CODE, global::System.String cOUNTY_NAME, global::System.Boolean? UsedInd)
         {
@@ -968,7 +967,6 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             }
         }
 
-
         public static int InsertOrUpdateT_WQX_REF_SAMP_COL_METHOD(global::System.Int32? sAMP_COLL_METHOD_IDX, global::System.String sAMP_COLL_METHOD_ID, 
             string sAMP_COLL_METHOD_CTX, string sAMP_COLL_METHOD_NAME, string sAMP_COLL_METHOD_DESC, bool aCT_IND)
         {
@@ -1041,6 +1039,24 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
                 }
             }
         }
+
+        public static List<T_WQX_REF_SAMP_PREP> GetT_WQX_REF_SAMP_PREP_ByContext(string Context)
+        {
+            using (OpenEnvironmentEntities ctx = new OpenEnvironmentEntities())
+            {
+                try
+                {
+                    return (from a in ctx.T_WQX_REF_SAMP_PREP
+                            where a.SAMP_PREP_METHOD_CTX == Context
+                            select a).ToList();
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+        }
+
 
         public static int InsertOrUpdateT_WQX_REF_SAMP_PREP(global::System.Int32? sAMP_PREP_IDX, global::System.String sAMP_PREP_METHOD_ID,
             string sAMP_PREP_METHOD_CTX, string sAMP_PREP_METHOD_NAME, string sAMP_PREP_METHOD_DESC, bool aCT_IND)
@@ -1277,6 +1293,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
                     t = (from c in ctx.T_WQX_IMPORT_LOG
                          where c.IMPORT_PROGRESS == "P"
                          && c.TYPE_CD == "Sample"
+                         && c.ORG_ID == oRG_ID
                          select c).FirstOrDefault();
 
                     t.IMPORT_STATUS = "Success";

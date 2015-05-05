@@ -86,7 +86,8 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
         public string LOWER_QUANT_LIMIT { get; set; }
         public string UPPER_QUANT_LIMIT { get; set; }
         public string DETECTION_LIMIT_UNIT { get; set; }
-
+        public DateTime? LAB_SAMP_PREP_START_DT { get; set; }
+        public string DILUTION_FACTOR { get; set; }
         public string IMPORT_STATUS_CD { get; set; }
         public string IMPORT_STATUS_DESC { get; set; }
     }
@@ -176,7 +177,6 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
         public string LAB_SAMP_PREP_ID { get; set; }
 
     }
-
 
     public class UserOrgDisplay
     {
@@ -806,7 +806,6 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             }
         }
 
-
         public static List<T_WQX_ACTIVITY> GetWQX_ACTIVITY(bool ActInd, string OrgID, int? MonLocIDX, DateTime? startDt, DateTime? endDt, string ActType, bool WQXPending, int? ProjectIDX)
         {
             using (OpenEnvironmentEntities ctx = new OpenEnvironmentEntities())
@@ -967,9 +966,9 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
                     T_WQX_ACTIVITY a = db_WQX.GetWQX_ACTIVITY_ByID(ActivityIDX);
                     if (a != null)
                     {
-                        if (a.WQX_SUBMIT_STATUS == "Y" && a.ACT_IND == false)
+                        if (a.ACT_IND == false && (a.WQX_IND == false || a.WQX_SUBMIT_STATUS != "U"))
                         {
-                            //only actually delete record from database if it has already been set to inactive and WQX status is passed ("Y")
+                            //only actually delete record from database if it has already been set to inactive and WQX status is not pending ("U")
                             string sql = "DELETE FROM T_WQX_ACTIVITY WHERE ACTIVITY_IDX = " + ActivityIDX;
                             ctx.ExecuteStoreCommand(sql);
                             return 1;
@@ -1179,6 +1178,24 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             }
         }
 
+        public static T_WQX_RESULT GetT_WQX_RESULT_ByIDX(int ResultIDX)
+        {
+            using (OpenEnvironmentEntities ctx = new OpenEnvironmentEntities())
+            {
+                try
+                {
+                    return (from a in ctx.T_WQX_RESULT
+                            where a.RESULT_IDX == ResultIDX
+                            select a).FirstOrDefault();
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+        }
+
+
         public static int GetT_WQX_RESULTCount(string OrgID)
         {
             using (OpenEnvironmentEntities ctx = new OpenEnvironmentEntities())
@@ -1221,8 +1238,9 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             global::System.String cHAR_NAME, global::System.String rESULT_SAMP_FRACTION, global::System.String rESULT_MSR, global::System.String rESULT_MSR_UNIT,
             global::System.String rESULT_STATUS, global::System.String rESULT_VALUE_TYPE, global::System.String rESULT_COMMENT, 
             global::System.String bIO_INTENT_NAME, global::System.String bIO_INDIVIDUAL_ID, global::System.String bIO_TAXONOMY, global::System.String bIO_SAMPLE_TISSUE_ANATOMY,
-            global::System.Int32? aNALYTIC_METHOD_IDX, DateTime? lAB_ANALYSIS_START_DT, global::System.String dETECTION_LIMIT, global::System.String pQL,
-            global::System.String lOWER_QUANT_LIMIT, global::System.String uPPER_QUANT_LIMIT, string fREQ_CLASS_CODE, string fREQ_CLASS_UNIT,
+            global::System.Int32? aNALYTIC_METHOD_IDX, int? lAB_IDX, DateTime? lAB_ANALYSIS_START_DT, global::System.String dETECTION_LIMIT, global::System.String pQL,
+            global::System.String lOWER_QUANT_LIMIT, global::System.String uPPER_QUANT_LIMIT, int? lAB_SAMP_PREP_IDX, DateTime? lAB_SAMP_PREP_START_DT, string dILUTION_FACTOR, 
+            string fREQ_CLASS_CODE, string fREQ_CLASS_UNIT,
             String cREATE_USER = "system")
         {
             using (OpenEnvironmentEntities ctx = new OpenEnvironmentEntities())
@@ -1259,11 +1277,15 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
                     if (bIO_TAXONOMY != null) a.BIO_SUBJECT_TAXONOMY = bIO_TAXONOMY;
                     if (bIO_SAMPLE_TISSUE_ANATOMY != null) a.BIO_SAMPLE_TISSUE_ANATOMY = bIO_SAMPLE_TISSUE_ANATOMY;
                     if (aNALYTIC_METHOD_IDX != null) a.ANALYTIC_METHOD_IDX = aNALYTIC_METHOD_IDX;
+                    if (lAB_IDX != null) a.LAB_IDX = lAB_IDX;
                     if (lAB_ANALYSIS_START_DT != null) a.LAB_ANALYSIS_START_DT = lAB_ANALYSIS_START_DT;
                     if (dETECTION_LIMIT != null) a.DETECTION_LIMIT = dETECTION_LIMIT;
                     if (pQL != null) a.PQL = pQL;
                     if (lOWER_QUANT_LIMIT != null) a.LOWER_QUANT_LIMIT = lOWER_QUANT_LIMIT;
                     if (uPPER_QUANT_LIMIT != null) a.UPPER_QUANT_LIMIT = uPPER_QUANT_LIMIT;
+                    if (lAB_SAMP_PREP_IDX != null) a.LAB_SAMP_PREP_IDX = lAB_SAMP_PREP_IDX;
+                    if (lAB_SAMP_PREP_START_DT != null) a.LAB_SAMP_PREP_START_DT = lAB_SAMP_PREP_START_DT;
+                    if (dILUTION_FACTOR != null) a.DILUTION_FACTOR = dILUTION_FACTOR;
                     if (fREQ_CLASS_CODE != null) a.FREQ_CLASS_CODE = fREQ_CLASS_CODE;
                     if (fREQ_CLASS_UNIT != null) a.FREQ_CLASS_UNIT = fREQ_CLASS_UNIT;
                     //set freq class unit to count if not provided
@@ -1283,13 +1305,15 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             }
         }
 
-        public static List<CharDisplay> GetT_WQX_RESULT_SampledCharacteristics()
+        public static List<CharDisplay> GetT_WQX_RESULT_SampledCharacteristics(string OrgID)
         {
             using (OpenEnvironmentEntities ctx = new OpenEnvironmentEntities())
             {
                 try
                 {
                     return (from r in ctx.T_WQX_RESULT
+                            join a in ctx.T_WQX_ACTIVITY on r.ACTIVITY_IDX equals a.ACTIVITY_IDX
+                            where a.ORG_ID == OrgID
                             select new CharDisplay{
                             CHAR_NAME = r.CHAR_NAME
                             }).Distinct().ToList();
@@ -1511,6 +1535,28 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
                 {
                     return (from a in ctx.V_WQX_ALL_ORGS
                             orderby a.ORG_FORMAL_NAME
+                            select a).ToList();
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+        }
+
+        // *************************** V_WQX_PENDING_RECORDS   ************************
+        // *********************************************************************
+        public static List<V_WQX_PENDING_RECORDS> GetV_WQX_PENDING_RECORDS(string OrgID, DateTime? startDate, DateTime? endDate)
+        {
+            using (OpenEnvironmentEntities ctx = new OpenEnvironmentEntities())
+            {
+                try
+                {
+                    return (from a in ctx.V_WQX_PENDING_RECORDS
+                            where (OrgID != null ? a.ORG_ID == OrgID : true)
+                            && (startDate != null ? a.UPDATE_DT >= startDate : true)
+                            && (endDate != null ? a.UPDATE_DT <= endDate : true)
+                            orderby a.TABLE_CD, a.UPDATE_DT
                             select a).ToList();
                 }
                 catch (Exception ex)
@@ -1863,6 +1909,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
         }
 
 
+
         // *************************** IMPORT_TEMPLATE_DTL    ******************************
         // *****************************************************************************
         public static T_WQX_IMPORT_TEMPLATE_DTL GetWQX_IMPORT_TEMPLATE_DTL_byFieldMap(int TemplateID, string FieldMap)
@@ -2001,7 +2048,28 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
                 }
             }
         }
-                
+
+
+
+        // *************************** IMPORT_COL_ALIAS    ******************************
+        // *****************************************************************************
+        public static List<string> GetWQX_IMPORT_COL_ALIAS_byField(string ColName)
+        {
+            using (OpenEnvironmentEntities ctx = new OpenEnvironmentEntities())
+            {
+                try
+                {
+                    return (from a in ctx.T_WQX_IMPORT_COL_ALIAS
+                            where a.COL_NAME == ColName
+                            select a.ALIAS_NAME).ToList();
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+        }
+        
 
 
 
@@ -2778,7 +2846,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
                         
                         if (!string.IsNullOrEmpty(sAMP_PREP_ID) && !string.IsNullOrEmpty(sAMP_PREP_CTX))
                         {
-                            //see if matching collection method exists
+                            //see if matching prep method exists
                             T_WQX_REF_SAMP_PREP sp = db_Ref.GetT_WQX_REF_SAMP_PREP_ByIDandContext(sAMP_PREP_ID.Trim(), sAMP_PREP_CTX.Trim());
                             if (sp != null)
                                 a.SAMP_PREP_IDX = sp.SAMP_PREP_IDX;
@@ -2898,13 +2966,32 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             }
         }
 
-        public static int SP_ImportActivityFromTemp(string userID, string WQXInd)
+        public static int GetWQX_IMPORT_TEMP_SAMPLE_DupActivityIDs(string UserID, string OrgID)
         {
             using (OpenEnvironmentEntities ctx = new OpenEnvironmentEntities())
             {
                 try
                 {
-                    return ctx.ImportActivityFromTemp(userID, WQXInd);
+                    return (from t in ctx.T_WQX_IMPORT_TEMP_SAMPLE
+                            join a in ctx.T_WQX_ACTIVITY on t.ACTIVITY_ID equals a.ACTIVITY_ID
+                            where t.USER_ID == UserID
+                            && a.ORG_ID == OrgID
+                            select a).Count();
+                }
+                catch (Exception ex)
+                {
+                    return 0;
+                }
+            }
+        }
+
+        public static int SP_ImportActivityFromTemp(string userID, string WQXInd, string activityReplacedInd)
+        {
+            using (OpenEnvironmentEntities ctx = new OpenEnvironmentEntities())
+            {
+                try
+                {
+                    return ctx.ImportActivityFromTemp(userID, WQXInd, activityReplacedInd);
                 }
                 catch (Exception ex)
                 {
@@ -2956,6 +3043,13 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
                     if (!string.IsNullOrEmpty(rESULT_DETECT_CONDITION))
                     {
                         a.RESULT_DETECT_CONDITION = rESULT_DETECT_CONDITION.Trim().SubStringPlus(0, 35);
+
+                        if (rESULT_DETECT_CONDITION == "ND") rESULT_DETECT_CONDITION = "Not Detected";
+                        if (rESULT_DETECT_CONDITION == "NR") rESULT_DETECT_CONDITION = "Not Reported";
+                        if (rESULT_DETECT_CONDITION == "DNQ") rESULT_DETECT_CONDITION = "Detected Not Quantified";
+                        if (rESULT_DETECT_CONDITION == "PAQL") rESULT_DETECT_CONDITION = "Present Above Quantification Limit";
+                        if (rESULT_DETECT_CONDITION == "PBQL") rESULT_DETECT_CONDITION = "Present Below Quantification Limit";
+
                         if (db_Ref.GetT_WQX_REF_DATA_ByKey("ResultDetectionCondition", rESULT_DETECT_CONDITION.Trim()) == false) { sTATUS_CD = "F"; sTATUS_DESC += "Result Detection Condition not valid. "; }
 
                         if (rESULT_DETECT_CONDITION == "Detected Not Quantified" && string.IsNullOrEmpty(rESULT_MSR))
@@ -3281,8 +3375,8 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
                             if (string.IsNullOrEmpty(lAB_SAMP_PREP_CTX))
                                 lAB_SAMP_PREP_CTX = orgID;
 
-                            a.LAB_SAMP_PREP_ID = lAB_SAMP_PREP_ID;
-                            a.LAB_SAMP_PREP_CTX = lAB_SAMP_PREP_CTX;
+                            a.LAB_SAMP_PREP_ID = lAB_SAMP_PREP_ID.Trim().SubStringPlus(0, 20);
+                            a.LAB_SAMP_PREP_CTX = lAB_SAMP_PREP_CTX.Trim().SubStringPlus(0, 120);
 
                             //see if matching lab prep method exists for this org
                             T_WQX_REF_SAMP_PREP ppp = db_Ref.GetT_WQX_REF_SAMP_PREP_ByIDandContext(lAB_SAMP_PREP_ID, lAB_SAMP_PREP_CTX);
@@ -3426,6 +3520,8 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
                                 LOWER_QUANT_LIMIT = b.LOWER_QUANT_LIMIT,
                                 UPPER_QUANT_LIMIT = b.UPPER_QUANT_LIMIT,
                                 DETECTION_LIMIT_UNIT = b.DETECTION_LIMIT_UNIT,
+                                LAB_SAMP_PREP_START_DT = b.LAB_SAMP_PREP_START_DT,
+                                DILUTION_FACTOR = b.DILUTION_FACTOR,
                                 IMPORT_STATUS_CD = (a.IMPORT_STATUS_CD == "F" || b.IMPORT_STATUS_CD == null ) ? a.IMPORT_STATUS_CD : b.IMPORT_STATUS_CD,
                                 IMPORT_STATUS_DESC = (a.IMPORT_STATUS_DESC ?? " ") + " " + (b.IMPORT_STATUS_DESC ?? "")
                             }).ToList();
@@ -3489,13 +3585,13 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
 
         // *************************** ANALYSIS *********************************
         //***********************************************************************
-        public static List<WQXAnalysis_Result> SP_WQXAnalysis(string TypeText, string OrgID, int? MonLocIDX, string charName, DateTime? startDt, DateTime? endDt)
+        public static List<WQXAnalysis_Result> SP_WQXAnalysis(string TypeText, string OrgID, int? MonLocIDX, string charName, DateTime? startDt, DateTime? endDt, string DataIncludeInd)
         {
             using (OpenEnvironmentEntities ctx = new OpenEnvironmentEntities())
             {
                 try
                 {
-                    return ctx.WQXAnalysis(TypeText, OrgID, MonLocIDX.ToString(), charName, startDt, endDt).ToList();
+                    return ctx.WQXAnalysis(TypeText, OrgID, MonLocIDX.ToString(), charName, startDt, endDt, DataIncludeInd).ToList();
                 }
                 catch (Exception ex)
                 {
@@ -3511,7 +3607,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
                 try
                 {
                     return (from a in ctx.V_WQX_ACTIVITY_LATEST
-                            where a.ORG_ID == OrgID
+                            where (OrgID != null ? a.ORG_ID == OrgID : true)
                             select a).ToList();
                 }
                 catch (Exception ex)
