@@ -259,7 +259,7 @@
                 <span class="fldLbl">ID Auto Format:</span>
                 <asp:DropDownList ID="ddlHardActID" runat="server">
                     <asp:ListItem Value="#M_D_T" Text="MonLoc_Date_Time"></asp:ListItem>
-                    <asp:ListItem Value="#M_D_TS" Text="MOnLoc_Date_Time_Seconds"></asp:ListItem>
+                    <asp:ListItem Value="#M_D_TS" Text="MonLoc_Date_Time_Seconds"></asp:ListItem>
                 </asp:DropDownList>
             </div>
             <div class="btnRibbon">
