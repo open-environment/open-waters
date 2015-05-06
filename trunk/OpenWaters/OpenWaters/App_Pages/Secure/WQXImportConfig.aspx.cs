@@ -141,7 +141,7 @@ namespace OpenEnvironment
             if (TemplateID > 0)
             {
                 //get value to insert
-                string HCVal = ddlHardActID.Visible ? ddlHardActID.SelectedValue : txtHardCodeValue.Text;
+                string HCVal = ddlFieldMapHC.SelectedValue == "ACTIVITY_ID" ? ddlHardActID.SelectedValue : txtHardCodeValue.Text;
 
                 int SuccID = db_WQX.InsertOrUpdateWQX_IMPORT_TEMPLATE_DTL(null, TemplateID, 0, ddlFieldMapHC.SelectedValue, HCVal, "", User.Identity.Name);
                 if (SuccID > 0)
