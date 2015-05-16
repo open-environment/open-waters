@@ -48,7 +48,7 @@ namespace OpenEnvironment
                 //*******************************************
                 //grab latest Organizations from WQX Portal
                 //*******************************************
-                WebRequest request = WebRequest.Create("http://www.waterqualitydata.us/codes/organization?mimeType=xml");
+                WebRequest request = WebRequest.Create("http://www.waterqualitydata.us/Codes/Organization?mimeType=xml");
                 HttpWebResponse response = (HttpWebResponse)request.GetResponse();
                 // Get the stream containing content returned by the server.
                 Stream dataStream = response.GetResponseStream();
