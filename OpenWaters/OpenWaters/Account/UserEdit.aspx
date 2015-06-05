@@ -24,7 +24,7 @@
     </p>
     <asp:Panel ID="pnl1" runat="server" DefaultButton="btnSave">
         <div class="row">
-            <span class="fldLbl">User ID</span>
+            <span class="fldLbl">User Name</span>
             <asp:TextBox ID="txtUserIDX" style="display:none;" runat="server" ></asp:TextBox>
             <asp:TextBox ID="txtUserID" runat="server" MaxLength="25" CssClass="fldTxt" Enabled="False"></asp:TextBox>
             <asp:CheckBox ID="chkActive" CssClass="fldTxt" runat="server" Text="Active" />

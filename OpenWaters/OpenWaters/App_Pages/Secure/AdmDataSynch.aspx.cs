@@ -276,11 +276,13 @@ namespace OpenEnvironment
                                select new
                                {
                                    ID = lv1.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}WQXElementRowColumn").First(ID2 => ID2.Attribute("colname").Value == ValueString).Attribute("value"),
+                                   SampFracReq = lv1.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}WQXElementRowColumn").First(Text2 => Text2.Attribute("colname").Value == "SampleFractionRequired").Attribute("value"),
+                                   PickList = lv1.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}WQXElementRowColumn").First(Text2 => Text2.Attribute("colname").Value == "PickList").Attribute("value")
                                };
 
                     foreach (var lv1 in lv1s)
                     {
-                        db_Ref.InsertOrUpdateT_WQX_REF_CHARACTERISTIC(lv1.ID.Value, null, null, null, true);
+                        db_Ref.InsertOrUpdateT_WQX_REF_CHARACTERISTIC(lv1.ID.Value, null, null, null, true, lv1.SampFracReq.Value, lv1.PickList.Value);
                     }
                 }
 

@@ -467,8 +467,8 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
 
 
         //******************REF CHARACTERISTIC****************************************
-        public static int InsertOrUpdateT_WQX_REF_CHARACTERISTIC(global::System.String cHAR_NAME, global::System.Decimal? dETECT_LIMIT, global::System.String dEFAULT_UNIT, global::System.Boolean? uSED_IND, 
-            global::System.Boolean aCT_IND)
+        public static int InsertOrUpdateT_WQX_REF_CHARACTERISTIC(global::System.String cHAR_NAME, global::System.Decimal? dETECT_LIMIT, global::System.String dEFAULT_UNIT, global::System.Boolean? uSED_IND,
+            global::System.Boolean aCT_IND, global::System.String sAMP_FRAC_REQ, global::System.String pICK_LIST)
         {
             using (OpenEnvironmentEntities ctx = new OpenEnvironmentEntities())
             {
@@ -490,6 +490,8 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
                     if (dETECT_LIMIT != null) a.DEFAULT_DETECT_LIMIT = dETECT_LIMIT;
                     if (dEFAULT_UNIT != null) a.DEFAULT_UNIT = dEFAULT_UNIT;
                     if (uSED_IND != null) a.USED_IND = uSED_IND;
+                    if (sAMP_FRAC_REQ != null) a.SAMP_FRAC_REQ = sAMP_FRAC_REQ;
+                    if (pICK_LIST != null) a.PICK_LIST = pICK_LIST;
 
                     a.UPDATE_DT = System.DateTime.Now;
                     a.ACT_IND = true;
@@ -567,6 +569,31 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
                 }
             }
         }
+
+        public static bool GetT_WQX_REF_CHARACTERISTIC_SampFracReqCheck(string CharName)
+        {
+            using (OpenEnvironmentEntities ctx = new OpenEnvironmentEntities())
+            {
+                try
+                {
+                    string SampFrac = (from a in ctx.T_WQX_REF_CHARACTERISTIC
+                                  where (a.ACT_IND == true)
+                                  && a.CHAR_NAME == CharName
+                                  select a).FirstOrDefault().SAMP_FRAC_REQ;
+
+                    if (SampFrac == "Y")
+                        return true;
+                    else
+                        return false;
+
+                }
+                catch (Exception ex)
+                {
+                    return false;
+                }
+            }
+        }
+
 
         public static List<T_WQX_REF_CHARACTERISTIC> GetT_WQX_REF_CHARACTERISTIC_ByOrg(string OrgID, Boolean RBPInd)
         {
@@ -794,6 +821,27 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
                 catch (Exception ex)
                 {
                     return null;
+                }
+            }
+        }
+
+        public static List<T_WQX_REF_COUNTY> GetT_WQX_REF_COUNTY()
+        {
+            using (OpenEnvironmentEntities ctx = new OpenEnvironmentEntities())
+            {
+                try
+                {
+                    //get default state
+                    string State = GetT_OE_APP_SETTING("Default State");
+
+                    return (from a in ctx.T_WQX_REF_COUNTY
+                            where a.STATE_CODE == State
+                            orderby a.COUNTY_NAME descending
+                            select a).ToList();
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
                 }
             }
         }

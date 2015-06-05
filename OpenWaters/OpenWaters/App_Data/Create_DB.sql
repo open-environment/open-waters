@@ -271,8 +271,6 @@ CREATE TABLE [dbo].[T_WQX_REF_DATA](
 ) ON [PRIMARY]
 
 GO
-ALTER TABLE T_WQX_REF_DATA ALTER COLUMN [Value] varchar(100) COLLATE SQL_Latin1_General_CP1_CS_AS
-GO
 
 CREATE TABLE [dbo].[T_WQX_REF_COUNTY](
 	[STATE_CODE] [varchar](2) NOT NULL,
@@ -509,6 +507,7 @@ CREATE TABLE [dbo].[T_WQX_ACTIVITY](
 	[UPDATE_DT] [datetime] NULL,
 	[UPDATE_USERID] [varchar](25) NULL,
 	[TEMP_SAMPLE_IDX] [int] NULL,
+	[ENTRY_TYPE] varchar(1) NULL,
  CONSTRAINT [PK_WQX_ACTIVITY] PRIMARY KEY CLUSTERED ([ACTIVITY_IDX] ASC),
  FOREIGN KEY (PROJECT_IDX) references T_WQX_PROJECT (PROJECT_IDX) ,
  FOREIGN KEY (MONLOC_IDX) references T_WQX_MONLOC (MONLOC_IDX) ,
@@ -1024,6 +1023,8 @@ GO
 -- ****************************************************************************************************************************************
 -- ************************* [VIEWS]                      *********************************************************************************
 -- ****************************************************************************************************************************************
+
+-- ************************** TRANSACTION_LOG*****************************************************************************************
 CREATE VIEW V_WQX_TRANSACTION_LOG AS
 	SELECT L.*, 
 	       isnull(isnull((select MONLOC_ID from T_WQX_MONLOC M where M.MONLOC_IDX = L.TABLE_IDX and L.TABLE_CD='MLOC'),
@@ -1034,6 +1035,7 @@ CREATE VIEW V_WQX_TRANSACTION_LOG AS
 GO
 
 
+-- ************************** ACTIVITY_LATEST*****************************************************************************************
 create view V_WQX_ACTIVITY_LATEST as
 select A.ACTIVITY_IDX, A.ORG_ID, A.PROJECT_IDX, A.MONLOC_IDX, MM.MONLOC_NAME, A.ACTIVITY_ID, A.ACT_TYPE, A.ACT_START_DT, A.WQX_IND, A.CREATE_DT, A.CREATE_USERID, A.ACT_COMMENT
 ,(select top 1 R.RESULT_MSR from T_WQX_RESULT R where R.ACTIVITY_IDX=A.ACTIVITY_IDX and R.CHAR_NAME='Alkalinity, total') AS 'Alkalinity, total'
@@ -1053,21 +1055,12 @@ select A.ACTIVITY_IDX, A.ORG_ID, A.PROJECT_IDX, A.MONLOC_IDX, MM.MONLOC_NAME, A.
 from T_WQX_MONLOC MM
 left join T_WQX_ACTIVITY A on MM.MONLOC_IDX = A.MONLOC_IDX and A.ACT_START_DT = (select MAX(AAA.ACT_START_DT) from T_WQX_ACTIVITY AAA where AAA.MONLOC_IDX = MM.MONLOC_IDX)
 where MM.ACT_IND=1;
---from T_WQX_ACTIVITY A
--- inner join 
---    (
---        Select max(ACT_START_DT) as LatestDate, MONLOC_IDX
---        from T_WQX_ACTIVITY
---        Group by MONLOC_IDX
---    ) SubMax
---    on A.MONLOC_IDX = SubMax.MONLOC_IDX and a.ACT_START_DT = SubMax.LatestDate
---inner join T_WQX_MONLOC MM on A.MONLOC_IDX = MM.MONLOC_IDX
---where MM.ACT_IND=1;
 
 GO
 
 
 
+-- ************************** ALL_ORGS*****************************************************************************************
 CREATE VIEW V_WQX_ALL_ORGS as
 	select Z.ORG_ID, Z.ORG_FORMAL_NAME, max(SRC) as SRC from
 	(select ORG_ID, ORG_FORMAL_NAME, 'LOCAL' as SRC from T_WQX_ORGANIZATION
@@ -1078,6 +1071,7 @@ CREATE VIEW V_WQX_ALL_ORGS as
 GO
 
 
+-- ************************** PENDING_RECORDS*****************************************************************************************
 CREATE VIEW V_WQX_PENDING_RECORDS
 as
 select ACTIVITY_IDX as REC_IDX, 'ACT' as TABLE_CD, ACTIVITY_ID as REC_ID, ORG_ID, COALESCE(UPDATE_USERID, CREATE_USERID) as UPDATE_USERID, COALESCE(UPDATE_DT, CREATE_DT) as UPDATE_DT from T_WQX_ACTIVITY where WQX_IND=1 and WQX_SUBMIT_STATUS='U'
@@ -1092,6 +1086,7 @@ GO
 -- ****************************************************************************************************************************************
 -- ************************* [STORED PROCS]*********************************************************************************
 -- ****************************************************************************************************************************************
+
 CREATE PROCEDURE GenWQXXML_Org
 @OrgID varchar(30)
 AS
@@ -1254,20 +1249,20 @@ BEGIN
             (SELECT MONLOC_ID from T_WQX_MONLOC M WHERE M.MONLOC_IDX = T_WQX_ACTIVITY.MONLOC_IDX)  AS "ActivityDescription/MonitoringLocationIdentifier", 
             ACT_COMMENT as "ActivityDescription/ActivityCommentText",
 			   --SAMPLE BIO
-	           rtrim(BIO_ASSEMBLAGE_SAMPLED) AS "BiologicalActivityDescription/AssemblageSampledName", 
-	           rtrim(BIO_DURATION_MSR) AS "BiologicalActivityDescription/BiologicalHabitatCollectionInformation/CollectionDuration/MeasureValue", 
-	           rtrim(BIO_DURATION_MSR_UNIT) AS "BiologicalActivityDescription/BiologicalHabitatCollectionInformation/CollectionDuration/MeasureUnitCode", 
-	           rtrim(BIO_REACH_LEN_MSR) AS "BiologicalActivityDescription/BiologicalHabitatCollectionInformation/ReachLengthMeasure/MeasureValue", 
-	           rtrim(BIO_REACH_LEN_MSR_UNIT) AS "BiologicalActivityDescription/BiologicalHabitatCollectionInformation/ReachLengthMeasure/MeasureUnitCode", 
-	           rtrim(BIO_REACH_WID_MSR) AS "BiologicalActivityDescription/BiologicalHabitatCollectionInformation/ReachWidthMeasure/MeasureValue", 
-	           rtrim(BIO_REACH_WID_MSR_UNIT) AS "BiologicalActivityDescription/BiologicalHabitatCollectionInformation/ReachWidthMeasure/MeasureUnitCode", 
+	           case when isnull(T_WQX_ACTIVITY.BIO_ASSEMBLAGE_SAMPLED,'') <> '' then rtrim(BIO_ASSEMBLAGE_SAMPLED) else null end AS "BiologicalActivityDescription/AssemblageSampledName", 
+	           case when isnull(T_WQX_ACTIVITY.BIO_DURATION_MSR,'') <> '' then rtrim(BIO_DURATION_MSR) else null end AS "BiologicalActivityDescription/BiologicalHabitatCollectionInformation/CollectionDuration/MeasureValue", 
+	           case when isnull(T_WQX_ACTIVITY.BIO_DURATION_MSR_UNIT,'') <> '' then rtrim(BIO_DURATION_MSR_UNIT) else null end AS "BiologicalActivityDescription/BiologicalHabitatCollectionInformation/CollectionDuration/MeasureUnitCode", 
+	           case when isnull(T_WQX_ACTIVITY.BIO_REACH_LEN_MSR,'') <> '' then rtrim(BIO_REACH_LEN_MSR) else null end AS "BiologicalActivityDescription/BiologicalHabitatCollectionInformation/ReachLengthMeasure/MeasureValue", 
+	           case when isnull(T_WQX_ACTIVITY.BIO_REACH_LEN_MSR_UNIT,'') <> '' then rtrim(BIO_REACH_LEN_MSR_UNIT) else null end AS "BiologicalActivityDescription/BiologicalHabitatCollectionInformation/ReachLengthMeasure/MeasureUnitCode", 
+	           case when isnull(T_WQX_ACTIVITY.BIO_REACH_WID_MSR,'') <> '' then rtrim(BIO_REACH_WID_MSR) else null end AS "BiologicalActivityDescription/BiologicalHabitatCollectionInformation/ReachWidthMeasure/MeasureValue", 
+	           case when isnull(T_WQX_ACTIVITY.BIO_REACH_WID_MSR_UNIT,'') <> '' then rtrim(BIO_REACH_WID_MSR_UNIT) else null end AS "BiologicalActivityDescription/BiologicalHabitatCollectionInformation/ReachWidthMeasure/MeasureUnitCode", 
 
 			   --SAMPLE DESCRIPTION
-			   case when T_WQX_ACTIVITY.SAMP_COLL_METHOD_IDX is not null then SCL.SAMP_COLL_METHOD_ID else null end as "SampleDescription/SampleCollectionMethod/MethodIdentifier", 
-			   case when T_WQX_ACTIVITY.SAMP_COLL_METHOD_IDX is not null then SCL.SAMP_COLL_METHOD_CTX else null end as "SampleDescription/SampleCollectionMethod/MethodIdentifierContext", 
-			   case when T_WQX_ACTIVITY.SAMP_COLL_METHOD_IDX is not null then SCL.SAMP_COLL_METHOD_NAME else null end as "SampleDescription/SampleCollectionMethod/MethodName", 
-               rtrim(SAMP_COLL_EQUIP) AS "SampleDescription/SampleCollectionEquipmentName",
-               rtrim(SAMP_COLL_EQUIP_COMMENT) AS "SampleDescription/SampleCollectionEquipmentCommentText",
+			   case when isnull(T_WQX_ACTIVITY.SAMP_COLL_METHOD_IDX,'') <> '' then SCL.SAMP_COLL_METHOD_ID else null end as "SampleDescription/SampleCollectionMethod/MethodIdentifier", 
+			   case when isnull(T_WQX_ACTIVITY.SAMP_COLL_METHOD_IDX,'') <> '' then SCL.SAMP_COLL_METHOD_CTX else null end as "SampleDescription/SampleCollectionMethod/MethodIdentifierContext", 
+			   case when isnull(T_WQX_ACTIVITY.SAMP_COLL_METHOD_IDX,'') <> '' then SCL.SAMP_COLL_METHOD_NAME else null end as "SampleDescription/SampleCollectionMethod/MethodName", 
+               case when isnull(T_WQX_ACTIVITY.SAMP_COLL_EQUIP,'') <> '' then rtrim(SAMP_COLL_EQUIP) else null end as "SampleDescription/SampleCollectionEquipmentName",
+               case when isnull(T_WQX_ACTIVITY.SAMP_COLL_EQUIP,'') <> '' and isnull(T_WQX_ACTIVITY.SAMP_COLL_EQUIP_COMMENT,'') <> '' then rtrim(SAMP_COLL_EQUIP_COMMENT) else null end AS "SampleDescription/SampleCollectionEquipmentCommentText",
 
 				--RESULT
     			(SELECT rtrim(DATA_LOGGER_LINE) AS "ResultDescription/DataLoggerLineName",
@@ -1364,8 +1359,8 @@ BEGIN
 	set @strWQX = '<?xml version="1.0" encoding="UTF-8"?>
 	<Document Id="UI_' + convert(varchar, getdate(), 112) + '" xmlns="http://www.exchangenetwork.net/schema/v1.0/ExchangeNetworkDocument.xsd">
 		<Header>
-			<Author>Doug Timms</Author>
-			<Organization>EPA</Organization>
+			<Author>Open Waters</Author>
+			<Organization>Open Environment</Organization>
 			<Title>WQX</Title>
 			<CreationTime>' + LEFT(CONVERT(varchar, getdate(), 120), 10) + 'T' + RIGHT(convert(varchar, getdate(), 120), 8) + '</CreationTime>
 			<ContactInfo>doug.timms@open-environment.org</ContactInfo>
@@ -1383,7 +1378,6 @@ BEGIN
 	BEGIN
 		insert into T_WQX_TRANSACTION_LOG(TABLE_CD, TABLE_IDX, SUBMIT_DT, SUBMIT_TYPE, RESPONSE_TXT) values ('',0,GetDate(), 'I', @strWQX);
 	END
-
 
 END
 

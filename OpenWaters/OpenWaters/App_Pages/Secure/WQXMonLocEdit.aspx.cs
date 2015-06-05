@@ -49,15 +49,15 @@ namespace OpenEnvironment
                 dsRefData.SelectParameters["tABLE"].DefaultValue = "VerticalCollectionMethod";
                 Utils.BindList(ddlVertMethod, dsRefData, "VALUE", "VALUE");
                 dsRefData.SelectParameters["tABLE"].DefaultValue = "VerticalCoordinateReferenceSystemDatum";
-                Utils.BindList(ddlVertDatum, dsRefData, "VALUE", "VALUE");
-                dsRefData.SelectParameters["tABLE"].DefaultValue = "County";
-                Utils.BindList(ddlCounty, dsRefData, "VALUE", "TEXT");
+                Utils.BindList(ddlVertDatum, dsRefData, "VALUE", "VALUE");              
                 dsRefData.SelectParameters["tABLE"].DefaultValue = "State";
                 Utils.BindList(ddlState, dsRefData, "VALUE", "VALUE");
                 dsRefData.SelectParameters["tABLE"].DefaultValue = "Country";
                 Utils.BindList(ddlCountry, dsRefData, "VALUE", "VALUE");
                 dsRefData.SelectParameters["tABLE"].DefaultValue = "WellType";
                 Utils.BindList(ddlWellType, dsRefData, "VALUE", "VALUE");
+
+                Utils.BindList(ddlCounty, dsCounty, "COUNTY_CODE", "COUNTY_NAME");
 
                 //******************* Populate monitoring location information on form
                 T_WQX_MONLOC m = db_WQX.GetWQX_MONLOC_ByID(MonLocIDX);

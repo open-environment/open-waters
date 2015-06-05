@@ -7,6 +7,10 @@
             <asp:Parameter DefaultValue="true" Name="UsedInd" Type="Boolean" />
         </SelectParameters>
     </asp:ObjectDataSource>
+    <asp:ObjectDataSource ID="dsCounty" runat="server" SelectMethod="GetT_WQX_REF_COUNTY" TypeName="OpenEnvironment.App_Logic.DataAccessLayer.db_Ref">
+        <SelectParameters>
+        </SelectParameters>
+    </asp:ObjectDataSource>
     <h2>
         Edit Monitoring Location
     </h2>

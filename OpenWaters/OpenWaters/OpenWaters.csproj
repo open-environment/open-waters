@@ -103,6 +103,7 @@
     <Content Include="App_Data\DatabasePatch_v1.6.2.sql" />
     <Content Include="App_Data\DatabasePatch_v1.6.sql" />
     <None Include="App_Data\SeminoleData.sql" />
+    <Content Include="App_Data\DatabasePatch_v1.7.sql" />
     <Content Include="App_Images\loading.gif" />
     <Content Include="App_Images\wiz_1.png" />
     <Content Include="App_Images\bg.png" />

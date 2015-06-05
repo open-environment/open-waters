@@ -99,7 +99,7 @@
         <div class="row">
             <div style="width:380px; float:left"> 
                 <span class="fldLbl">Activity ID:</span>
-                <asp:TextBox ID="txtActivityID" runat="server" MaxLength="35" Width="210px" CssClass="fldTxt"></asp:TextBox>
+                <asp:TextBox ID="txtActivityID" runat="server" MaxLength="35" Width="220px" CssClass="fldTxt"></asp:TextBox>
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtActivityID" ErrorMessage="Required" Display="Dynamic"  
                 CssClass="failureNotification"></asp:RequiredFieldValidator>
             </div>
