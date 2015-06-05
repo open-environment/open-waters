@@ -15335,6 +15335,54 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
         private Nullable<global::System.DateTime> _UPDATE_DT;
         partial void OnUPDATE_DTChanging(Nullable<global::System.DateTime> value);
         partial void OnUPDATE_DTChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String SAMP_FRAC_REQ
+        {
+            get
+            {
+                return _SAMP_FRAC_REQ;
+            }
+            set
+            {
+                OnSAMP_FRAC_REQChanging(value);
+                ReportPropertyChanging("SAMP_FRAC_REQ");
+                _SAMP_FRAC_REQ = StructuralObject.SetValidValue(value, true, "SAMP_FRAC_REQ");
+                ReportPropertyChanged("SAMP_FRAC_REQ");
+                OnSAMP_FRAC_REQChanged();
+            }
+        }
+        private global::System.String _SAMP_FRAC_REQ;
+        partial void OnSAMP_FRAC_REQChanging(global::System.String value);
+        partial void OnSAMP_FRAC_REQChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String PICK_LIST
+        {
+            get
+            {
+                return _PICK_LIST;
+            }
+            set
+            {
+                OnPICK_LISTChanging(value);
+                ReportPropertyChanging("PICK_LIST");
+                _PICK_LIST = StructuralObject.SetValidValue(value, true, "PICK_LIST");
+                ReportPropertyChanged("PICK_LIST");
+                OnPICK_LISTChanged();
+            }
+        }
+        private global::System.String _PICK_LIST;
+        partial void OnPICK_LISTChanging(global::System.String value);
+        partial void OnPICK_LISTChanged();
 
         #endregion
 

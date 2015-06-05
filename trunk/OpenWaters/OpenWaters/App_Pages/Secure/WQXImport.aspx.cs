@@ -662,11 +662,11 @@ namespace OpenEnvironment
                     if (ActivityStartDateVal != null)
                     {
                         if (ActivityIDCol == null)
-                            ActivityIDVal = MonLocIDVal.SubStringPlus(0,21) + "_" + ActivityStartDateVal.Value.ToString("yyyyMMdd_HHmm");
+                            ActivityIDVal = (MonLocIDVal ?? "").SubStringPlus(0,21) + "_" + ActivityStartDateVal.Value.ToString("yyyyMMdd_HHmm");
                         else if (ActivityIDCol.CHAR_NAME == "#M_D_T")
-                            ActivityIDVal = MonLocIDVal.SubStringPlus(0, 21) + "_" + ActivityStartDateVal.Value.ToString("yyyyMMdd_HHmm");
+                            ActivityIDVal = (MonLocIDVal ?? "").SubStringPlus(0, 21) + "_" + ActivityStartDateVal.Value.ToString("yyyyMMdd_HHmm");
                         else if (ActivityIDCol.CHAR_NAME == "#M_D_TS")
-                            ActivityIDVal = MonLocIDVal.SubStringPlus(0, 19) + "_" + ActivityStartDateVal.Value.ToString("yyyyMMdd_HHmmss");
+                            ActivityIDVal = (MonLocIDVal ?? "").SubStringPlus(0, 19) + "_" + ActivityStartDateVal.Value.ToString("yyyyMMdd_HHmmss");
                         else
                             ActivityIDVal = GetFieldValue(ActivityIDCol, parts);
                     }

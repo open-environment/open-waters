@@ -111,7 +111,7 @@ namespace OpenEnvironment
             string charName = e.CommandArgument.ToString();
 
             if (e.CommandName == "Deletes")
-                db_Ref.InsertOrUpdateT_WQX_REF_CHARACTERISTIC(charName, null, null, null, false);
+                db_Ref.InsertOrUpdateT_WQX_REF_CHARACTERISTIC(charName, null, null, null, false, null, null);
         }
 
         protected void grdChar_PageIndexChanging(object sender, System.Web.UI.WebControls.GridViewPageEventArgs e)

@@ -67,23 +67,31 @@ namespace OpenEnvironment
                 int SuccID;
 
                 if (txtUserIDX.Text.Length > 0)
-                    //update existing user
+                    //***********************update existing user scenario***********************
                     SuccID = db_Accounts.UpdateT_OE_USERS(int.Parse(txtUserIDX.Text), null, null, txtFName.Text, txtLName.Text, txtEmail.Text, chkActive.Checked, null, null, null, txtPhone.Text, txtPhoneExt.Text, User.Identity.Name);
                 else
                 {
-                    //create new user
+                    //***********************create new user scenario***********************
+
+                    //validation start
                     if (txtPassword.Text.Length == 0 || txtFName.Text.Length == 0 || txtLName.Text.Length == 0 || txtUserID.Text.Length == 0)
                     {
                         lblMsg.Text = "You must supply a user ID, user's name, and password.";
                         return;
                     }
+                    //validation end
 
-                    //first create user 
+                    //attempt to create user 
                     MembershipCreateStatus t;
                     Membership.CreateUser(txtUserID.Text, txtPassword.Text, txtEmail.Text, null, null, true, out t);
                     if (t == MembershipCreateStatus.InvalidPassword)
                     {
                         lblMsg.Text = "Invalid password. Password must be at least 8 characters long.";
+                        return;
+                    }
+                    else if (t == MembershipCreateStatus.InvalidEmail)
+                    {
+                        lblMsg.Text = "Unable to create user because email server has not been configured.";
                         return;
                     }
 

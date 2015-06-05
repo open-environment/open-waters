@@ -3082,6 +3082,10 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
                         a.RESULT_SAMP_FRACTION = rESULT_SAMP_FRACTION.Trim().SubStringPlus(0, 25);
                         if (db_Ref.GetT_WQX_REF_DATA_ByKey("ResultSampleFraction", rESULT_SAMP_FRACTION.Trim()) == false) { sTATUS_CD = "F"; sTATUS_DESC += "Result Sample Fraction not valid. "; }
                     }
+                    else
+                    {
+                        if (db_Ref.GetT_WQX_REF_CHARACTERISTIC_SampFracReqCheck(cHAR_NAME.Trim()) == true) { sTATUS_CD = "F"; sTATUS_DESC += "Sample Fraction must be reported."; }
+                    }
 
                     if (!string.IsNullOrEmpty(rESULT_MSR))
                     {
