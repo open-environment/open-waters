@@ -104,9 +104,7 @@ namespace OpenEnvironment
                     return "~/App_Images/ico_alert.png";
             }
             else
-            {
                 return "~/App_Images/0.png";
-            }
         }
 
         protected void btnConfigSave_Click(object sender, EventArgs e)
@@ -159,7 +157,7 @@ namespace OpenEnvironment
             
             grdActivity.DataSource = db_WQX.GetWQX_ACTIVITYDisplay(!chkDeletedInd.Checked, Session["OrgID"].ConvertOrDefault<string>(), ddlMonLoc.SelectedValue.ConvertOrDefault<int?>(),
                 dateFrom, dateTo, ddlActType.SelectedValue == "" ? null : ddlActType.SelectedValue, false, 
-                ddlProject.SelectedValue.ConvertOrDefault<int?>());
+                ddlProject.SelectedValue.ConvertOrDefault<int?>(), ddlWQXStatus.SelectedValue);
             grdActivity.DataBind();
             
             Session["filtMonLoc"] = ddlMonLoc.SelectedValue;

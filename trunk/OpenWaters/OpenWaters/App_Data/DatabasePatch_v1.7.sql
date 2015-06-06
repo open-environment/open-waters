@@ -17,6 +17,8 @@ MINOR ENHANCEMENTS:
 ----1.7.1 update
 9. Fix bug on Activity Edit page
 10. Add warning for users if they attempt to enter data before making the initial pull of reference data from EPA
+----1.7.2 update
+11. Added new data filter to Activity Page: WQX Submit status 
 */
 
 ALTER TABLE T_WQX_REF_DATA ALTER COLUMN [Value] varchar(100) COLLATE SQL_Latin1_General_CP1_CI_AS

@@ -79,6 +79,15 @@
                     <span class="fldLbl" style="width:100px" >Project:</span>
                     <asp:DropDownList CssClass="fldTxt" ID="ddlProject" runat="server" Width="250px"></asp:DropDownList>
                 </div>
+                <div style="float:left"> 
+                    <span class="fldLbl" style="width:100px" >WQX Status:</span>
+                    <asp:DropDownList CssClass="fldTxt" ID="ddlWQXStatus" runat="server" Width="250px">
+                        <asp:ListItem Value="" Text="All Records" Selected="True"></asp:ListItem>
+                        <asp:ListItem Value="U" Text="Only Pending Records"></asp:ListItem>
+                        <asp:ListItem Value="N" Text="Only Failed Records" ></asp:ListItem>
+                        <asp:ListItem Value="Y" Text="Only Passing Records" ></asp:ListItem>
+                    </asp:DropDownList>
+                </div>
             </div>
             <div class="row">
                 <asp:Button ID="btnFilter" runat="server" CssClass="btn" Text="Apply" onclick="btnFilter_Click" />

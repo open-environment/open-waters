@@ -832,7 +832,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             }
         }
 
-        public static List<ActivityListDisplay> GetWQX_ACTIVITYDisplay(bool ActInd, string OrgID, int? MonLocIDX, DateTime? startDt, DateTime? endDt, string ActType, bool WQXPending, int? ProjectIDX)
+        public static List<ActivityListDisplay> GetWQX_ACTIVITYDisplay(bool ActInd, string OrgID, int? MonLocIDX, DateTime? startDt, DateTime? endDt, string ActType, bool WQXPending, int? ProjectIDX, string WQXStatus)
         {
             using (OpenEnvironmentEntities ctx = new OpenEnvironmentEntities())
             {
@@ -850,6 +850,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
                             && (endDt == null ? true : a.ACT_START_DT <= endDt)
                             && (ActType == null ? true : a.ACT_TYPE == ActType)
                             && (ProjectIDX == null ? true : a.PROJECT_IDX == ProjectIDX)
+                            && (WQXStatus == "" ? true : (a.WQX_IND==true && a.WQX_SUBMIT_STATUS == WQXStatus))
                             orderby a.ACT_START_DT descending, a.ACTIVITY_IDX descending
                             select new ActivityListDisplay {
                                 ACTIVITY_IDX = a.ACTIVITY_IDX,
