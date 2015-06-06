@@ -98,8 +98,8 @@
     <asp:Panel ID="Panel1" runat="server" DefaultButton="btnSave" style="min-width:800px" >
         <div class="row">
             <div style="width:380px; float:left"> 
-                <span class="fldLbl">Activity ID:</span>
-                <asp:TextBox ID="txtActivityID" runat="server" MaxLength="35" Width="220px" CssClass="fldTxt"></asp:TextBox>
+                <span class="fldLbl" style="width:130px">Activity ID:</span>
+                <asp:TextBox ID="txtActivityID" runat="server" MaxLength="35" Width="230px" CssClass="fldTxt"></asp:TextBox>
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtActivityID" ErrorMessage="Required" Display="Dynamic"  
                 CssClass="failureNotification"></asp:RequiredFieldValidator>
             </div>
@@ -121,8 +121,8 @@
         </div>
         <div class="row">
             <div style="width:380px; float:left"> 
-                <span class="fldLbl">Monitoring Location:</span>
-                <asp:DropDownList ID="ddlMonLoc" runat="server" CssClass="fldTxt" Width="215px"></asp:DropDownList>
+                <span class="fldLbl" style="width:130px"">Monitoring Location:</span>
+                <asp:DropDownList ID="ddlMonLoc" runat="server" CssClass="fldTxt" Width="230px"></asp:DropDownList>
                 <asp:RequiredFieldValidator Display="Dynamic" ID="RequiredFieldValidator2" runat="server" ControlToValidate="ddlMonLoc" ErrorMessage="Required"  
                 CssClass="failureNotification"></asp:RequiredFieldValidator>
             </div>
@@ -242,6 +242,7 @@
                 <asp:ListItem Value="H" Text="Habitat Assessment"></asp:ListItem>
                 <asp:ListItem Value="T" Text="Taxonomy Counts"></asp:ListItem>
             </asp:DropDownList>
+            <asp:Label ID="lblModifyDate" runat="server" CssClass="smallnote" style="margin-left:40px;"></asp:Label>
         </div>
     </asp:Panel>
 
@@ -454,7 +455,7 @@
                     <asp:TemplateField ShowHeader="False" HeaderText="More">
                         <ItemStyle HorizontalAlign="Center" />
                         <EditItemTemplate>
-                            <img id="imgMore1" src="../../App_Images/ico_plus.png" class="moreButton" onclick="displayMore();"  />
+                            <img id="imgMore1" src="../../App_Images/ico_plus.png" alt="more" class="moreButton" onclick="displayMore();"  />
                         </EditItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField ShowHeader="False">

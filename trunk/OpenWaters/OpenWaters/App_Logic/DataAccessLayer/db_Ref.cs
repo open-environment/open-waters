@@ -465,6 +465,23 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             }
         }
 
+        public static int GetT_WQX_REF_DATA_Count()
+        {
+            using (OpenEnvironmentEntities ctx = new OpenEnvironmentEntities())
+            {
+                try
+                {
+                    return (from a in ctx.T_WQX_REF_DATA
+                            select a).Count();
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+        }
+
+
 
         //******************REF CHARACTERISTIC****************************************
         public static int InsertOrUpdateT_WQX_REF_CHARACTERISTIC(global::System.String cHAR_NAME, global::System.Decimal? dETECT_LIMIT, global::System.String dEFAULT_UNIT, global::System.Boolean? uSED_IND,
@@ -593,7 +610,6 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
                 }
             }
         }
-
 
         public static List<T_WQX_REF_CHARACTERISTIC> GetT_WQX_REF_CHARACTERISTIC_ByOrg(string OrgID, Boolean RBPInd)
         {

@@ -31,21 +31,27 @@ namespace OpenEnvironment
 
             if (!IsPostBack)
             {
-                //redirect to org settings page if no org chars defined yet
-                if (db_Ref.GetT_WQX_REF_CHAR_ORG_Count(Session["OrgID"].ToString()) == 0)
-                    Response.Redirect("~/App_Pages/Secure/WQXOrgSettings.aspx");
-
-
                 //display left menu as selected
                 ContentPlaceHolder cp = this.Master.Master.FindControl("MainContent") as ContentPlaceHolder;
                 HyperLink hl = (HyperLink)cp.FindControl("lnkActivityList");
                 if (hl != null) hl.CssClass = "leftMnuBody sel";
 
+                //display warning if no reference data imported yet
+                if (db_Ref.GetT_WQX_REF_DATA_Count() == 0)
+                {
+                    lblMsg.Text = "You must import reference data from EPA before you can enter sample data.";
+                    return;
+                }
+
+                //redirect to org settings page if no org chars defined yet
+                if (db_Ref.GetT_WQX_REF_CHAR_ORG_Count(Session["OrgID"].ToString()) == 0)
+                {
+                    lblMsg.Text = "You must define the characteristics that your organization will use (Organization screen) before you can enter sample data.";
+                    return;
+                }
 
                 //ONLY ALLOW EDIT FOR AUTHORIZED USERS OF ORG
-                bool CanEditOrg = db_WQX.CanUserEditOrg(Session["UserIDX"].ConvertOrDefault<int>(), Session["OrgID"].ToString());
-                btnSave.Visible = CanEditOrg;
-
+                btnSave.Visible = db_WQX.CanUserEditOrg(Session["UserIDX"].ConvertOrDefault<int>(), Session["OrgID"].ToString());
 
                 //populate drop-downs - sample level
                 dsRefData.SelectParameters["tABLE"].DefaultValue = "ActivityType";
@@ -75,12 +81,13 @@ namespace OpenEnvironment
                     ddlProject.SelectedValue = a.PROJECT_IDX.ToString();
                     if (a.ACT_IND != null) chkActInd.Checked = (bool)a.ACT_IND;
                     if (a.WQX_IND != null) chkWQXInd.Checked = (bool)a.WQX_IND;
+                    if (a.CREATE_DT != null) lblModifyDate.Text = "Last modified: " + a.CREATE_DT.ToString();
+                    if (a.UPDATE_DT != null) lblModifyDate.Text = "Last modified: " + a.UPDATE_DT.ToString();
 
                     //populate activity tab
                     ddlActivityType.SelectedValue = a.ACT_TYPE;
                     ddlActMedia.SelectedValue = a.ACT_MEDIA;
                     ddlActSubMedia.SelectedValue = a.ACT_SUBMEDIA;
-
                     txtEndDate.Text = (a.ACT_END_DT != null) ? ((DateTime)a.ACT_END_DT).ToString("MM/dd/yyyy hh:mm tt") : "";
                     txtDepth.Text = a.ACT_DEPTHHEIGHT_MSR;
                     ddlDepthUnit.SelectedValue = a.ACT_DEPTHHEIGHT_MSR_UNIT;
@@ -352,10 +359,10 @@ namespace OpenEnvironment
                 T_WQX_RESULT r = db_WQX.GetT_WQX_RESULT_ByIDX(grdResults.DataKeys[e.Row.RowIndex].Values[0].ConvertOrDefault<int>());
                 if (r != null)
                 {
-                    ddlLabName.SelectedValue = r.LAB_IDX.ToString();
-                    ddlPrepMethod.SelectedValue = r.LAB_SAMP_PREP_IDX.ToString();
-                    txtPrepStartDate.Text = r.LAB_SAMP_PREP_START_DT.ToString();
-                    txtDilution.Text = r.DILUTION_FACTOR.ToString();
+                    ddlLabName.SelectedValue = r.LAB_IDX.ToStringNullSafe();
+                    ddlPrepMethod.SelectedValue = r.LAB_SAMP_PREP_IDX.ToStringNullSafe();
+                    txtPrepStartDate.Text = r.LAB_SAMP_PREP_START_DT.ToStringNullSafe();
+                    txtDilution.Text = r.DILUTION_FACTOR.ToStringNullSafe();
                 }
 
                 //Characteristic
@@ -368,31 +375,31 @@ namespace OpenEnvironment
                 int col = GetColumnIndexByName(grdResults,"Taxonomy");
                 if (grdResults.Columns[col].Visible)
                 {
-                    PopulateDropDown((DropDownList)e.Row.FindControl("ddlTaxa"), dsTaxa, (grdResults.DataKeys[e.Row.RowIndex].Values[1] ?? "").ToString(), "VALUE", "TEXT");
+                    PopulateDropDown((DropDownList)e.Row.FindControl("ddlTaxa"), dsTaxa, grdResults.DataKeys[e.Row.RowIndex].Values[1].ToStringNullSafe(), "VALUE", "TEXT");
                 }
 
                 //Unit
                 dsRefData.SelectParameters["tABLE"].DefaultValue = "MeasureUnit";
-                PopulateDropDown((DropDownList)e.Row.FindControl("ddlUnit"), dsRefData, (grdResults.DataKeys[e.Row.RowIndex].Values[2] ?? "").ToString(), "VALUE", "VALUE");
+                PopulateDropDown((DropDownList)e.Row.FindControl("ddlUnit"), dsRefData, grdResults.DataKeys[e.Row.RowIndex].Values[2].ToStringNullSafe(), "VALUE", "VALUE");
 
                 //Anal Method
                 col = GetColumnIndexByName(grdResults, "Analytical Method");
                 if (grdResults.Columns[col].Visible)
                 {
-                    PopulateDropDown((DropDownList)e.Row.FindControl("ddlAnalMethod"), dsAnalMethod, (grdResults.DataKeys[e.Row.RowIndex].Values[3] ?? "").ToString(), "ANALYTIC_METHOD_IDX", "AnalMethodDisplayName");
+                    PopulateDropDown((DropDownList)e.Row.FindControl("ddlAnalMethod"), dsAnalMethod, grdResults.DataKeys[e.Row.RowIndex].Values[3].ToStringNullSafe(), "ANALYTIC_METHOD_IDX", "AnalMethodDisplayName");
                 }
 
                 //Samp Fraction
                 dsRefData.SelectParameters["tABLE"].DefaultValue = "ResultSampleFraction";
-                PopulateDropDown((DropDownList)e.Row.FindControl("ddlSampFraction"), dsRefData, (grdResults.DataKeys[e.Row.RowIndex].Values[4] ?? "").ToString(), "VALUE", "VALUE");
+                PopulateDropDown((DropDownList)e.Row.FindControl("ddlSampFraction"), dsRefData, grdResults.DataKeys[e.Row.RowIndex].Values[4].ToStringNullSafe(), "VALUE", "VALUE");
 
                 //value type
                 dsRefData.SelectParameters["tABLE"].DefaultValue = "ResultValueType";
-                PopulateDropDown((DropDownList)e.Row.FindControl("ddlResultValueType"), dsRefData, (grdResults.DataKeys[e.Row.RowIndex].Values[5] ?? "").ToString(), "VALUE", "VALUE");
+                PopulateDropDown((DropDownList)e.Row.FindControl("ddlResultValueType"), dsRefData, grdResults.DataKeys[e.Row.RowIndex].Values[5].ToStringNullSafe(), "VALUE", "VALUE");
 
                 //result status
                 dsRefData.SelectParameters["tABLE"].DefaultValue = "ResultStatus";
-                PopulateDropDown((DropDownList)e.Row.FindControl("ddlResultStatus"), dsRefData, (grdResults.DataKeys[e.Row.RowIndex].Values[6] ?? "").ToString(), "VALUE", "VALUE");
+                PopulateDropDown((DropDownList)e.Row.FindControl("ddlResultStatus"), dsRefData, grdResults.DataKeys[e.Row.RowIndex].Values[6].ToStringNullSafe(), "VALUE", "VALUE");
 
                 
                 //Bio Intent
@@ -400,7 +407,7 @@ namespace OpenEnvironment
                 if (grdResults.Columns[col].Visible)
                 {
                     dsRefData.SelectParameters["tABLE"].DefaultValue = "BiologicalIntent";
-                    PopulateDropDown((DropDownList)e.Row.FindControl("ddlBioIntent"), dsRefData, (grdResults.DataKeys[e.Row.RowIndex].Values[7] ?? "").ToString(), "VALUE", "VALUE");
+                    PopulateDropDown((DropDownList)e.Row.FindControl("ddlBioIntent"), dsRefData, grdResults.DataKeys[e.Row.RowIndex].Values[7].ToStringNullSafe(), "VALUE", "VALUE");
                 }
 
 
@@ -409,7 +416,7 @@ namespace OpenEnvironment
                 if (grdResults.Columns[col].Visible)
                 {
                     dsRefData.SelectParameters["tABLE"].DefaultValue = "FrequencyClassDescriptor";
-                    PopulateDropDown((DropDownList)e.Row.FindControl("ddlFreqClass"), dsRefData, (grdResults.DataKeys[e.Row.RowIndex].Values[8] ?? "").ToString(), "VALUE", "VALUE");
+                    PopulateDropDown((DropDownList)e.Row.FindControl("ddlFreqClass"), dsRefData, grdResults.DataKeys[e.Row.RowIndex].Values[8].ToStringNullSafe(), "VALUE", "VALUE");
                 }
 
 

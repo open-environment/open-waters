@@ -232,6 +232,16 @@ namespace OpenEnvironment.App_Logic.BusinessLogicLayer
         }
 
         /// <summary>
+        /// Safe tostring with null handling
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        public static string ToStringNullSafe(this object obj)
+        {
+            return obj != null ? obj.ToString() : String.Empty;
+        }
+
+        /// <summary>
         /// Remove HTML tags from string using char array.
         /// </summary>
         public static string StripTagsCharArray(string source)
