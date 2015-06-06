@@ -1,5 +1,5 @@
 ﻿/*
-Only run this script if upgrading from v1.6.2 to v1.7
+Only run this script if upgrading from v1.6.2 to v1.7x
 
 After running this script it is recommended that you reimport the Characteristic Reference Table from EPA (go to Admin --> Data Synch screen)
 
@@ -14,6 +14,9 @@ MINOR ENHANCEMENTS:
 6. Fix monitoring location edit page to pull counties drop-down from county reference table 
 7. Better error handling when importing crosstab and monitoring location is missing
 8. Updated Installation/Users Guide 
+----1.7.1 update
+9. Fix bug on Activity Edit page
+10. Add warning for users if they attempt to enter data before making the initial pull of reference data from EPA
 */
 
 ALTER TABLE T_WQX_REF_DATA ALTER COLUMN [Value] varchar(100) COLLATE SQL_Latin1_General_CP1_CI_AS
