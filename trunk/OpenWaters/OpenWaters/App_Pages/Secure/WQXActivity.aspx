@@ -80,8 +80,8 @@
                     <asp:DropDownList CssClass="fldTxt" ID="ddlProject" runat="server" Width="250px"></asp:DropDownList>
                 </div>
                 <div style="float:left"> 
-                    <span class="fldLbl" style="width:100px" >WQX Status:</span>
-                    <asp:DropDownList CssClass="fldTxt" ID="ddlWQXStatus" runat="server" Width="250px">
+                    <span class="fldLbl" style="width:80px; margin-left:10px" >WQX Status:</span>
+                    <asp:DropDownList CssClass="fldTxt" ID="ddlWQXStatus" runat="server" >
                         <asp:ListItem Value="" Text="All Records" Selected="True"></asp:ListItem>
                         <asp:ListItem Value="U" Text="Only Pending Records"></asp:ListItem>
                         <asp:ListItem Value="N" Text="Only Failed Records" ></asp:ListItem>

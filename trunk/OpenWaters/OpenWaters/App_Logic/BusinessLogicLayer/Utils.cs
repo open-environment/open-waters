@@ -297,6 +297,20 @@ namespace OpenEnvironment.App_Logic.BusinessLogicLayer
         }
 
         /// <summary>
+        /// Converts a stream into a byte array.
+        /// </summary>
+        /// <param name="str"></param>
+        /// <returns></returns>
+        public static byte[] StreamToByteArray(Stream str)
+        {
+            using (var memoryStream = new MemoryStream())
+            {
+                str.CopyTo(memoryStream);
+                return memoryStream.ToArray();
+            }
+        }
+
+        /// <summary>
         /// This method is to handle if element is missing
         /// </summary>
         public static string ElementValueNull(this XElement element)
