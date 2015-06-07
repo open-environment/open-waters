@@ -1099,6 +1099,7 @@ BEGIN
 	9/22/2012 DOUG TIMMS, fix error with project sampling design type code
 	11/24/2014 DOUG TIMMS, split procedure out from individual record version
 	3/26/2015 DOUG TIMMS, added sample collection and bio fields, expanded detection limit handling
+    6/6/2015 DOUG TIMMS, handle situation where ResultStatus or Value Type is empty string
 	*/
 	SET NOCOUNT ON;
 
@@ -1280,9 +1281,9 @@ BEGIN
 				case when RESULT_MSR in ('ND', 'NR', 'PAQL', 'PBQL', 'DNQ') then null else rtrim(RESULT_MSR) END AS "ResultDescription/ResultMeasure/ResultMeasureValue",
 				rtrim(RESULT_MSR_UNIT) AS "ResultDescription/ResultMeasure/MeasureUnitCode",
 				rtrim(RESULT_MSR_QUAL) AS "ResultDescription/ResultMeasure/MeasureQualifierCode",
-                isnull(RESULT_STATUS,'Final') AS "ResultDescription/ResultStatusIdentifier",
+                coalesce(nullif(RESULT_STATUS,''),'Final') AS "ResultDescription/ResultStatusIdentifier",
                 rtrim(STATISTIC_BASE_CODE) AS "ResultDescription/StatisticalBaseCode",
-                isnull(RESULT_VALUE_TYPE,'Actual') AS "ResultDescription/ResultValueTypeName",
+                coalesce(nullif(RESULT_VALUE_TYPE,''),'Actual') AS "ResultDescription/ResultValueTypeName",
                 RTRIM(WEIGHT_BASIS) AS "ResultDescription/ResultWeightBasisText",
                 rtrim(TIME_BASIS) AS "ResultDescription/ResultTimeBasisText",
                 rtrim(TEMP_BASIS) AS "ResultDescription/ResultTemperatureBasisText",
@@ -1463,6 +1464,7 @@ BEGIN
 	            9/22/2012 DOUG TIMMS, fix error with project sampling design type code
 	            11/24/2014 DOUG TIMMS, added support to submit for single organization within multi-organization database; split into 2 stored procs for performance
 				3/26/2015 DOUG TIMMS, added sample collection and bio fields, expanded detection limit handling
+				6/6/2015 DOUG TIMMS, handle situation where ResultStatus or Value Type is empty string
 	*/
 	SET NOCOUNT ON;
 
@@ -1661,9 +1663,9 @@ BEGIN
 					case when RESULT_MSR in ('ND', 'NR', 'PAQL', 'PBQL', 'DNQ') then null else rtrim(RESULT_MSR) END AS "ResultDescription/ResultMeasure/ResultMeasureValue",
 					rtrim(RESULT_MSR_UNIT) AS "ResultDescription/ResultMeasure/MeasureUnitCode",
 					rtrim(RESULT_MSR_QUAL) AS "ResultDescription/ResultMeasure/MeasureQualifierCode",
-                    isnull(RESULT_STATUS,'Final') AS "ResultDescription/ResultStatusIdentifier",
+                    coalesce(nullif(RESULT_STATUS,''),'Final') AS "ResultDescription/ResultStatusIdentifier",
                     rtrim(STATISTIC_BASE_CODE) AS "ResultDescription/StatisticalBaseCode",
-                    isnull(RESULT_VALUE_TYPE,'Actual') AS "ResultDescription/ResultValueTypeName",
+                    coalesce(nullif(RESULT_VALUE_TYPE,''),'Actual') AS "ResultDescription/ResultValueTypeName",
                     RTRIM(WEIGHT_BASIS) AS "ResultDescription/ResultWeightBasisText",
                     rtrim(TIME_BASIS) AS "ResultDescription/ResultTimeBasisText",
                     rtrim(TEMP_BASIS) AS "ResultDescription/ResultTemperatureBasisText",

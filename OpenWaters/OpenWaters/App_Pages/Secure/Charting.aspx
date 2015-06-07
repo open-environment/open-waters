@@ -105,8 +105,7 @@
         <div class="fltMain">
             <div class="row">
                     <span class="fldLbl" style="width:100px" >Line Type:</span>
-                    <asp:DropDownList CssClass="fldTxt" ID="ddlLineType" runat="server" 
-                        AutoPostBack="True" onselectedindexchanged="ddlLineType_SelectedIndexChanged" >
+                    <asp:DropDownList CssClass="fldTxt" ID="ddlLineType" runat="server" AutoPostBack="True" onselectedindexchanged="ddlLineType_SelectedIndexChanged" >
                         <asp:ListItem Text="Curved Line" Value="SLINE"></asp:ListItem>
                         <asp:ListItem Text="Line" Value="LINE"></asp:ListItem>
                         <asp:ListItem Text="Points" Value="POINT"></asp:ListItem>
