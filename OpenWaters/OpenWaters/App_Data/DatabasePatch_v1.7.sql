@@ -15,6 +15,7 @@ MINOR ENHANCEMENTS:
 ----1.7.2 update
 6. New data filter added to Activity Search Page: WQX Submit status
 7. When submitting to EPA and a record fails, error report now displays in human-readable format instead of XML report 
+8. Additional data validation on import samples
 
 BUG FIXES:
 1. Bug fix: Collation error in create database script for REF_DATA table.

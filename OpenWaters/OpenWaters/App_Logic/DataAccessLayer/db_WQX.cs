@@ -3092,6 +3092,10 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
                     {
                         a.RESULT_MSR = rESULT_MSR.Trim().SubStringPlus(0, 60);
                     }
+                    else
+                    {
+                        if ( string.IsNullOrEmpty(rESULT_DETECT_CONDITION) ) { sTATUS_CD = "F"; sTATUS_DESC += "Either Result Measure or Result Detection Condition must be reported."; }
+                    }
 
                     if (!string.IsNullOrEmpty(rESULT_MSR_UNIT))
                     {
