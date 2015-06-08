@@ -295,17 +295,13 @@ namespace OpenEnvironment
                         List<string> ActivityStartDateList = db_WQX.GetWQX_IMPORT_COL_ALIAS_byField("Activity Start Date");
                         List<string> ActivityStartTimeList = db_WQX.GetWQX_IMPORT_COL_ALIAS_byField("Activity Start Time");
                         List<string> SampPrepList = db_WQX.GetWQX_IMPORT_COL_ALIAS_byField("Sample Prep ID");
-
-
                         List<string> LabNameList = db_WQX.GetWQX_IMPORT_COL_ALIAS_byField("Lab Name");
                         List<string> CharacteristicList = db_WQX.GetWQX_IMPORT_COL_ALIAS_byField("Characteristic");
                         List<string> ResultUnitList = db_WQX.GetWQX_IMPORT_COL_ALIAS_byField("Unit");
                         List<string> DetectionConditionList = db_WQX.GetWQX_IMPORT_COL_ALIAS_byField("Result Detection Condition");
                         List<string> DetectionLimitUnit = db_WQX.GetWQX_IMPORT_COL_ALIAS_byField("Detection Threshold Limit Unit");
-
                         List<string> DilutionList = db_WQX.GetWQX_IMPORT_COL_ALIAS_byField("Dilution Factor");
-
-                        
+                       
 
                         foreach (string part in parts)
                         {
