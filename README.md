@@ -19,7 +19,7 @@ Open Waters is a web-based water quality data management system that allows you 
 * Application Customization: Customize app to show or hide various data elements, allowing application administrator to streamline data entry to only include the data elements of interest to the Agency staff.
 * Security: Role-based application security and additional layered security measures to ensure data security
 * Multi-Organization Support: Support multiple agencies to share the application; all data is segmented by Organization.
-* Open Source: Application is free to use, free to share, and free to modify
+* Open Source: Application is free to use, free to share, and free to modify License: GNU GPL v3
 
 
 ## More Information and Example Screens
