@@ -25,6 +25,7 @@
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -103,6 +104,7 @@
     <Content Include="App_Data\DatabasePatch_v1.6.2.sql" />
     <Content Include="App_Data\DatabasePatch_v1.6.sql" />
     <None Include="App_Data\SeminoleData.sql" />
+    <Content Include="App_Data\DatabasePatch_v1.8.sql" />
     <Content Include="App_Data\DatabasePatch_v1.7.sql" />
     <Content Include="App_Docs\validation.xsl" />
     <Content Include="App_Images\loading.gif" />
@@ -165,13 +167,9 @@
     <Content Include="Scripts\chosen.css" />
     <Content Include="Scripts\chosen.jquery.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
-    <Content Include="Scripts\list.js" />
     <Content Include="Styles\Site.css" />
     <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
-    <Content Include="Scripts\jquery-1.4.1-vsdoc.js" />
-    <Content Include="Scripts\jquery-1.4.1.js" />
-    <Content Include="Scripts\jquery-1.4.1.min.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

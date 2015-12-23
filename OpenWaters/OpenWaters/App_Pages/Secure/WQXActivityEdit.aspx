@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="Open Waters - Activity Details" Language="C#" MasterPageFile="~/MasterWQX.master" AutoEventWireup="true" CodeBehind="WQXActivityEdit.aspx.cs" Inherits="OpenEnvironment.WQXActivityEdit" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="BodyContent" runat="server">
-    <script src="../../Scripts/jquery-1.4.1.js" type="text/javascript"></script>
+    <script src="../../Scripts/jquery-1.10.2.min.js" type="text/javascript"></script>
     <script type="text/javascript">
         function GetConfirmation() {
             var reply = confirm("WARNING: This will delete the result - are you sure you want to continue?");

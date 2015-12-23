@@ -2,8 +2,8 @@
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="BodyContent" runat="server">
-    <script src="../../Scripts/jquery-1.4.1.js" type="text/javascript"></script>
-    <script>
+    <script src="../../Scripts/jquery-1.10.2.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
         function DisplayLoadingDiv()
         {
             $('#openModal').show();
@@ -46,7 +46,7 @@
        	    <h2>Data Review in Progress</h2>
             <p>Please be patient while your sampling data is parsed and validated. Do not refresh this page. Data validation results will be shown shortly. </p>
             <br />
-            <img src="../../App_Images/loading.gif" style="padding-left:85px;" />
+            <img alt="loading" src="../../App_Images/loading.gif" style="padding-left:85px;" />
             <br />
         </div>
     </div>

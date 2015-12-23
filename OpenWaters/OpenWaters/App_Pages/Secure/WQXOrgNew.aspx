@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterWQX.master" AutoEventWireup="true" CodeBehind="WQXOrgNew.aspx.cs" Inherits="OpenEnvironment.WQXOrgNew" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="BodyContent" runat="server">
-    <script src="../../Scripts/jquery-1.4.1.js" type="text/javascript"></script>
-    <script src="http://listjs.com/no-cdn/list.js"></script>
+    <script type="text/javascript" src="../../Scripts/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="http://listjs.com/no-cdn/list.js"></script>
     <script type="text/javascript">
         $(document).ready(function ($) {
             $("#ctl00_ctl00_MainContent_BodyContent_grdOrg tbody").addClass('list');

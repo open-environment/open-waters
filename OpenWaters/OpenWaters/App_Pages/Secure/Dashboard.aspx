@@ -2,7 +2,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">    
-    <script src="../../Scripts/jquery-1.4.1.js" type="text/javascript"></script>
+    <script src="../../Scripts/jquery-1.10.2.min.js" type="text/javascript"></script>
     <script type="text/javascript">
         $(document).ready(function ($) {
             $('#signup_1').hide();

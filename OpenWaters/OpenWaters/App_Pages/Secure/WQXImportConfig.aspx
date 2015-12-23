@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="Open Waters - Import Logic" Language="C#" MasterPageFile="~/MasterWQX.master" AutoEventWireup="true" CodeBehind="WQXImportConfig.aspx.cs" Inherits="OpenEnvironment.WQXImportConfig" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="BodyContent" runat="server">
     <asp:ScriptManager ID="ScriptManager1" runat="server" EnablePartialRendering="true" />
-   <script src="../../Scripts/jquery-1.4.1.js" type="text/javascript"></script>
+   <script src="../../Scripts/jquery-1.10.2.min.js" type="text/javascript"></script>
     <script type="text/javascript">
         function GetConfirmation() {
             var reply = confirm("WARNING: This will delete the import template - are you sure you want to continue?");

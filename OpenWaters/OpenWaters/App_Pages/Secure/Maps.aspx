@@ -1,6 +1,6 @@
 ﻿<%@ Page Title="Open Waters - Map" Language="C#" MasterPageFile="~/MasterWQX.master" AutoEventWireup="true" CodeBehind="Maps.aspx.cs" Inherits="OpenEnvironment.Map2" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="BodyContent" runat="server" >
-    <script src="../../Scripts/jquery-1.4.1.js" type="text/javascript"></script>
+    <script type="text/javascript" src="../../Scripts/jquery-1.10.2.min.js" ></script>
     <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
     <script type="text/javascript">
         var map;

@@ -3,8 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>Water Quality Map</title>
-    <script src="Scripts/jquery-1.4.1.js" type="text/javascript"></script>
-    <link href="Styles/Site.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="Scripts/jquery-1.10.2.min.js" ></script>
+    <link type="text/css" href="Styles/Site.css" rel="stylesheet" />
     <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
     <script type="text/javascript">
         var map;

@@ -466,6 +466,19 @@
           <Property Name="CHAR_DEFAULT_UNIT" Type="varchar" MaxLength="12" />
           <Property Name="CREATE_DT" Type="datetime" />
           <Property Name="CREATE_USERID" Type="varchar" MaxLength="25" />
+          <Property Name="CHAR_DEFAULT_SAMP_FRACTION" Type="varchar" MaxLength="25" />
+        </EntityType>
+        <EntityType Name="T_WQX_IMPORT_TRANSLATE">
+          <Key>
+            <PropertyRef Name="TRANSLATE_IDX" />
+          </Key>
+          <Property Name="TRANSLATE_IDX" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ORG_ID" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="COL_NAME" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DATA_FROM" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="DATA_TO" Type="varchar" MaxLength="150" />
+          <Property Name="CREATE_DT" Type="datetime" />
+          <Property Name="CREATE_USERID" Type="varchar" MaxLength="25" />
         </EntityType>
         <EntityType Name="T_WQX_MONLOC">
           <Key>
@@ -1016,6 +1029,20 @@ warning 6002: The table/view 'OpenEnvironment.dbo.V_WQX_TRANSACTION_LOG' does no
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__T_WQX_IMP__ORG_I__44952D46">
+          <End Role="T_WQX_ORGANIZATION" Type="Self.T_WQX_ORGANIZATION" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="T_WQX_IMPORT_TRANSLATE" Type="Self.T_WQX_IMPORT_TRANSLATE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_WQX_ORGANIZATION">
+              <PropertyRef Name="ORG_ID" />
+            </Principal>
+            <Dependent Role="T_WQX_IMPORT_TRANSLATE">
+              <PropertyRef Name="ORG_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__T_WQX_IMP__ORG_I__534D60F1">
           <End Role="T_WQX_ORGANIZATION" Type="Self.T_WQX_ORGANIZATION" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -1296,6 +1323,7 @@ warning 6002: The table/view 'OpenEnvironment.dbo.V_WQX_TRANSACTION_LOG' does no
           <EntitySet Name="T_WQX_IMPORT_TEMP_SAMPLE" EntityType="Self.T_WQX_IMPORT_TEMP_SAMPLE" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="T_WQX_IMPORT_TEMPLATE" EntityType="Self.T_WQX_IMPORT_TEMPLATE" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="T_WQX_IMPORT_TEMPLATE_DTL" EntityType="Self.T_WQX_IMPORT_TEMPLATE_DTL" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_WQX_IMPORT_TRANSLATE" EntityType="Self.T_WQX_IMPORT_TRANSLATE" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="T_WQX_MONLOC" EntityType="Self.T_WQX_MONLOC" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="T_WQX_ORG_ADDRESS" EntityType="Self.T_WQX_ORG_ADDRESS" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="T_WQX_ORGANIZATION" EntityType="Self.T_WQX_ORGANIZATION" Schema="dbo" store:Type="Tables" />
@@ -1411,6 +1439,10 @@ FROM [dbo].[V_WQX_TRANSACTION_LOG] AS [V_WQX_TRANSACTION_LOG]</DefiningQuery>
           <AssociationSet Name="FK__T_WQX_BIO__ORG_I__4222D4EF" Association="Self.FK__T_WQX_BIO__ORG_I__4222D4EF">
             <End Role="T_WQX_ORGANIZATION" EntitySet="T_WQX_ORGANIZATION" />
             <End Role="T_WQX_BIO_HABITAT_INDEX" EntitySet="T_WQX_BIO_HABITAT_INDEX" />
+          </AssociationSet>
+          <AssociationSet Name="FK__T_WQX_IMP__ORG_I__44952D46" Association="Self.FK__T_WQX_IMP__ORG_I__44952D46">
+            <End Role="T_WQX_ORGANIZATION" EntitySet="T_WQX_ORGANIZATION" />
+            <End Role="T_WQX_IMPORT_TRANSLATE" EntitySet="T_WQX_IMPORT_TRANSLATE" />
           </AssociationSet>
           <AssociationSet Name="FK__T_WQX_IMP__ORG_I__534D60F1" Association="Self.FK__T_WQX_IMP__ORG_I__534D60F1">
             <End Role="T_WQX_ORGANIZATION" EntitySet="T_WQX_ORGANIZATION" />
@@ -1655,6 +1687,11 @@ FROM [dbo].[V_WQX_TRANSACTION_LOG] AS [V_WQX_TRANSACTION_LOG]</DefiningQuery>
             <Parameter Name="WQXInd" Mode="In" Type="String" />
             <Parameter Name="ActivityReplaceInd" Mode="In" Type="String" />
           </FunctionImport>
+          <EntitySet Name="T_WQX_IMPORT_TRANSLATE" EntityType="OpenEnvironmentModel.T_WQX_IMPORT_TRANSLATE" />
+          <AssociationSet Name="FK__T_WQX_IMP__ORG_I__44952D46" Association="OpenEnvironmentModel.FK__T_WQX_IMP__ORG_I__44952D46">
+            <End Role="T_WQX_ORGANIZATION" EntitySet="T_WQX_ORGANIZATION" />
+            <End Role="T_WQX_IMPORT_TRANSLATE" EntitySet="T_WQX_IMPORT_TRANSLATE" />
+          </AssociationSet>
           </EntityContainer>
         <EntityType Name="T_OE_APP_SETTINGS">
           <Key>
@@ -2092,6 +2129,7 @@ FROM [dbo].[V_WQX_TRANSACTION_LOG] AS [V_WQX_TRANSACTION_LOG]</DefiningQuery>
           <Property Name="CREATE_DT" Type="DateTime" Precision="3" />
           <Property Name="CREATE_USERID" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="T_WQX_IMPORT_TEMPLATE" Relationship="OpenEnvironmentModel.FK__T_WQX_IMP__TEMPL__66603565" FromRole="T_WQX_IMPORT_TEMPLATE_DTL" ToRole="T_WQX_IMPORT_TEMPLATE" />
+          <Property Name="CHAR_DEFAULT_SAMP_FRACTION" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
         </EntityType>
         <Association Name="FK__T_WQX_IMP__TEMPL__66603565">
           <End Type="OpenEnvironmentModel.T_WQX_IMPORT_TEMPLATE" Role="T_WQX_IMPORT_TEMPLATE" Multiplicity="1">
@@ -2244,6 +2282,7 @@ FROM [dbo].[V_WQX_TRANSACTION_LOG] AS [V_WQX_TRANSACTION_LOG]</DefiningQuery>
           <NavigationProperty Name="T_WQX_IMPORT_LOG" Relationship="OpenEnvironmentModel.FK__T_WQX_IMP__ORG_I__534D60F1" FromRole="T_WQX_ORGANIZATION" ToRole="T_WQX_IMPORT_LOG" />
           <NavigationProperty Name="T_WQX_REF_TAXA_ORG" Relationship="OpenEnvironmentModel.FK__T_WQX_REF__ORG_I__756D6ECB" FromRole="T_WQX_ORGANIZATION" ToRole="T_WQX_REF_TAXA_ORG" />
           <NavigationProperty Name="T_WQX_REF_CHAR_ORG" Relationship="OpenEnvironmentModel.FK__T_WQX_REF__ORG_I__4D94879B" FromRole="T_WQX_ORGANIZATION" ToRole="T_WQX_REF_CHAR_ORG" />
+          <NavigationProperty Name="T_WQX_IMPORT_TRANSLATE" Relationship="OpenEnvironmentModel.FK__T_WQX_IMP__ORG_I__44952D46" FromRole="T_WQX_ORGANIZATION" ToRole="T_WQX_IMPORT_TRANSLATE" />
         </EntityType>
         <Association Name="FK__T_WQX_BIO__ORG_I__34C8D9D1">
           <End Type="OpenEnvironmentModel.T_WQX_ORGANIZATION" Role="T_WQX_ORGANIZATION" Multiplicity="1" />
@@ -2945,6 +2984,33 @@ FROM [dbo].[V_WQX_TRANSACTION_LOG] AS [V_WQX_TRANSACTION_LOG]</DefiningQuery>
           <Property Name="CREATE_DT" Type="DateTime" Precision="3" />
           <Property Name="CREATE_USERID" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
         </EntityType>
+        <EntityType Name="T_WQX_IMPORT_TRANSLATE">
+          <Key>
+            <PropertyRef Name="TRANSLATE_IDX" />
+          </Key>
+          <Property Name="TRANSLATE_IDX" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ORG_ID" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="COL_NAME" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DATA_FROM" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="DATA_TO" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="CREATE_DT" Type="DateTime" Precision="3" />
+          <Property Name="CREATE_USERID" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="T_WQX_ORGANIZATION" Relationship="OpenEnvironmentModel.FK__T_WQX_IMP__ORG_I__44952D46" FromRole="T_WQX_IMPORT_TRANSLATE" ToRole="T_WQX_ORGANIZATION" />
+        </EntityType>
+        <Association Name="FK__T_WQX_IMP__ORG_I__44952D46">
+          <End Type="OpenEnvironmentModel.T_WQX_ORGANIZATION" Role="T_WQX_ORGANIZATION" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="OpenEnvironmentModel.T_WQX_IMPORT_TRANSLATE" Role="T_WQX_IMPORT_TRANSLATE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_WQX_ORGANIZATION">
+              <PropertyRef Name="ORG_ID" />
+            </Principal>
+            <Dependent Role="T_WQX_IMPORT_TRANSLATE">
+              <PropertyRef Name="ORG_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -3290,6 +3356,7 @@ FROM [dbo].[V_WQX_TRANSACTION_LOG] AS [V_WQX_TRANSACTION_LOG]</DefiningQuery>
           <EntitySetMapping Name="T_WQX_IMPORT_TEMPLATE_DTL">
             <EntityTypeMapping TypeName="OpenEnvironmentModel.T_WQX_IMPORT_TEMPLATE_DTL">
               <MappingFragment StoreEntitySet="T_WQX_IMPORT_TEMPLATE_DTL">
+                <ScalarProperty Name="CHAR_DEFAULT_SAMP_FRACTION" ColumnName="CHAR_DEFAULT_SAMP_FRACTION" />
                 <ScalarProperty Name="CREATE_USERID" ColumnName="CREATE_USERID" />
                 <ScalarProperty Name="CREATE_DT" ColumnName="CREATE_DT" />
                 <ScalarProperty Name="CHAR_DEFAULT_UNIT" ColumnName="CHAR_DEFAULT_UNIT" />
@@ -3874,6 +3941,19 @@ FROM [dbo].[V_WQX_TRANSACTION_LOG] AS [V_WQX_TRANSACTION_LOG]</DefiningQuery>
             </EntityTypeMapping>
           </EntitySetMapping>
           <FunctionImportMapping FunctionImportName="ImportActivityFromTemp" FunctionName="OpenEnvironmentModel.Store.ImportActivityFromTemp" />
+          <EntitySetMapping Name="T_WQX_IMPORT_TRANSLATE">
+            <EntityTypeMapping TypeName="OpenEnvironmentModel.T_WQX_IMPORT_TRANSLATE">
+              <MappingFragment StoreEntitySet="T_WQX_IMPORT_TRANSLATE">
+                <ScalarProperty Name="CREATE_USERID" ColumnName="CREATE_USERID" />
+                <ScalarProperty Name="CREATE_DT" ColumnName="CREATE_DT" />
+                <ScalarProperty Name="DATA_TO" ColumnName="DATA_TO" />
+                <ScalarProperty Name="DATA_FROM" ColumnName="DATA_FROM" />
+                <ScalarProperty Name="COL_NAME" ColumnName="COL_NAME" />
+                <ScalarProperty Name="ORG_ID" ColumnName="ORG_ID" />
+                <ScalarProperty Name="TRANSLATE_IDX" ColumnName="TRANSLATE_IDX" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -3982,6 +4062,8 @@ FROM [dbo].[V_WQX_TRANSACTION_LOG] AS [V_WQX_TRANSACTION_LOG]</DefiningQuery>
         <AssociationConnector Association="OpenEnvironmentModel.FK__T_WQX_IMP__TEMP___3C34F16F" />
         <EntityTypeShape EntityType="OpenEnvironmentModel.V_WQX_PENDING_RECORDS" Width="1.5" PointX="16.375" PointY="16.75" />
         <EntityTypeShape EntityType="OpenEnvironmentModel.T_WQX_IMPORT_COL_ALIAS" Width="1.5" PointX="8.375" PointY="17.75" />
+        <EntityTypeShape EntityType="OpenEnvironmentModel.T_WQX_IMPORT_TRANSLATE" Width="1.5" PointX="3" PointY="34.25" />
+        <AssociationConnector Association="OpenEnvironmentModel.FK__T_WQX_IMP__ORG_I__44952D46" />
       </Diagram>
     </Diagrams>
   </Designer>

@@ -130,7 +130,16 @@ namespace OpenEnvironment
         public int? LAB_SAMP_PREP_CTXCol { get; set; }
         public int? LAB_SAMP_PREP_START_DTCol { get; set; }
         public int? LAB_SAMP_PREP_END_DTCol { get; set; }
-        public int?  DILUTION_FACTORCol { get; set; }
+        public int? DILUTION_FACTORCol { get; set; }
+
+        public int? specialACTIVITY_ID__ACT_TYPECol { get; set; }   //special column that merges activity ID and activity type
+    }
+
+    public class TranslateArray {
+        public Dictionary<string, string> MONLOC_IDTrans { get; set; }
+        public Dictionary<string, string> ACT_TYPETrans { get; set; }
+        public Dictionary<string, string> ACT_MEDIATrans { get; set; }
+        public Dictionary<string, string> ACT_SUBMEDIATrans { get; set; }
     }
 
     public partial class WQXImport : System.Web.UI.Page
@@ -269,8 +278,17 @@ namespace OpenEnvironment
 
             int i = 0;
 
-            //initialize column aray object 
+            //initialize column array object 
             ImportSampleColumnArray cols = new ImportSampleColumnArray();
+
+            //initialize translation object 
+            TranslateArray trans = new TranslateArray
+            {
+                MONLOC_IDTrans = db_WQX.GetWQX_IMPORT_TRANSLATE_byColName(OrgID, "Station ID"),
+                ACT_TYPETrans = db_WQX.GetWQX_IMPORT_TRANSLATE_byColName(OrgID, "Activity Type Code"),
+                ACT_MEDIATrans = db_WQX.GetWQX_IMPORT_TRANSLATE_byColName(OrgID, "Activity Media"),
+                ACT_SUBMEDIATrans = db_WQX.GetWQX_IMPORT_TRANSLATE_byColName(OrgID, "Activity Submedia")
+            };
 
             //initialize indicators
             bool bioIndicator = false;
@@ -278,16 +296,16 @@ namespace OpenEnvironment
             //loop through each record
             foreach (string row in rows)
             {
-                char[] delimiters = new char[] { '\t' };   //tab delimiter
-                string[] parts = row.Split(delimiters, StringSplitOptions.None); //columns split into parts
+                char[] delimiters = new char[] { '\t' };   //define tab delimiter
+                string[] parts = row.Split(delimiters, StringSplitOptions.None); //split row into parts (columns)
                 if (parts.Length > 0)
                 {
-                    //start of field-by-field validation
-
-                    //special logic to read header to determine what is in each column
+                    //**********************************************************
+                    //HEADER ROW - LOGIC TO DETERMING WHAT IS IN EACH COLUMN
+                    //**********************************************************
                     if (i == 0)
                     {
-                        int j = 0;
+                        int j = 0;  //j is the header column index
 
                         //get column header alias names list
                         List<string> ActivityIDList = db_WQX.GetWQX_IMPORT_COL_ALIAS_byField("Activity ID");
@@ -302,145 +320,35 @@ namespace OpenEnvironment
                         List<string> DetectionLimitUnit = db_WQX.GetWQX_IMPORT_COL_ALIAS_byField("Detection Threshold Limit Unit");
                         List<string> DilutionList = db_WQX.GetWQX_IMPORT_COL_ALIAS_byField("Dilution Factor");
                        
-
+                        //loop through every column in the header row
                         foreach (string part in parts)
                         {
-
-                            //detect column headers
-                            if (part.ToUpper() == "STATION ID") cols.MONLOC_IDCol = j;
-                            if (ActivityIDList.Contains(part.ToUpper())) cols.ACTIVITY_IDCol = j;
-                            if (part.ToUpper() == "ACTIVITY TYPE CODE") cols.ACT_TYPECol = j;
-                            if (ActivityMediaList.Contains(part.ToUpper())) cols.ACT_MEDIACol = j;
-                            if (part.ToUpper() == "ACTIVITY SUBMEDIA") cols.ACT_SUBMEDIACol = j;
-                            if (ActivityStartDateList.Contains(part.ToUpper())) cols.ACTIVITY_START_DTCol = j;
-                            if (ActivityStartTimeList.Contains(part.ToUpper())) cols.ACTIVITY_START_TIMECol = j;
-                            if (part == "Activity End Date") cols.ACT_END_DTCol = j;
-                            if (part == "Activity End Time") cols.ACT_END_TIMECol = j;
-                            if (part == "Activity Time Zone") cols.ACT_TIME_ZONECol = j;
-                            if (part == "Relative Depth") cols.RELATIVE_DEPTH_NAMECol = j;
-                            if (part == "Depth Measure") cols.ACT_DEPTHHEIGHT_MSRCol = j;
-                            if (part == "Depth Measure Unit") cols.ACT_DEPTHHEIGHT_MSR_UNITCol = j;
-                            if (part == "Top Depth Measure") cols.TOP_DEPTHHEIGHT_MSRCol = j;
-                            if (part == "Top Depth Measure Unit") cols.TOP_DEPTHHEIGHT_MSR_UNITCol = j;
-                            if (part == "Bottom Depth Measure") cols.BOT_DEPTHHEIGHT_MSRCol = j;
-                            if (part == "Bottom Depth Measure Unit") cols.BOT_DEPTHHEIGHT_MSR_UNITCol = j;
-                            if (part == "Depth Ref Point") cols.DEPTH_REF_POINTCol = j;
-                            if (part == "Activity Comment") cols.ACT_COMMENTCol = j;
-                            if (part == "Bio Assemblage Sampled") { cols.BIO_ASSEMBLAGE_SAMPLEDCol = j; bioIndicator = true; }
-                            if (part == "Bio Duration") { cols.BIO_DURATION_MSRCol = j; bioIndicator = true; }
-                            if (part == "Bio Duration Unit") { cols.BIO_DURATION_MSR_UNITCol = j; bioIndicator = true; }
-                            if (part == "Sampling Component") { cols.BIO_SAMP_COMPONENTCol = j; bioIndicator = true; }
-                            if (part == "Sampling Component Place") { cols.BIO_SAMP_COMPONENT_SEQCol = j; bioIndicator = true; }
-                            if (part == "Reach Length") { cols.BIO_REACH_LEN_MSRCol = j; bioIndicator = true; }
-                            if (part == "Reach Length Unit") { cols.BIO_REACH_LEN_MSR_UNITCol = j; bioIndicator = true; }
-                            if (part == "Reach Width") { cols.BIO_REACH_WID_MSRCol = j; bioIndicator = true; }
-                            if (part == "Reach Width Unit") { cols.BIO_REACH_WID_MSR_UNITCol = j; bioIndicator = true; }
-                            if (part == "Pass Count") { cols.BIO_PASS_COUNTCol = j; bioIndicator = true; }
-                            if (part == "Net Type") { cols.BIO_NET_TYPECol = j; bioIndicator = true; }
-                            if (part == "Net Surface Area") { cols.BIO_NET_AREA_MSRCol = j; bioIndicator = true; }
-                            if (part == "Surface Area Unit") { cols.BIO_NET_AREA_MSR_UNITCol = j; bioIndicator = true; }
-                            if (part == "Net Mesh Size") { cols.BIO_NET_MESHSIZE_MSRCol = j; bioIndicator = true; }
-                            if (part == "Mesh Size Unit") { cols.BIO_MESHSIZE_MSR_UNITCol = j; bioIndicator = true; }
-                            if (part == "Boat Speed") { cols.BIO_BOAT_SPEED_MSRCol = j; bioIndicator = true; }
-                            if (part == "Boat Speed Unit") { cols.BIO_BOAT_SPEED_MSR_UNITCol = j; bioIndicator = true; }
-                            if (part == "Current Speed") { cols.BIO_CURR_SPEED_MSRCol = j; bioIndicator = true; }
-                            if (part == "Current Speed Unit") { cols.BIO_CURR_SPEED_MSR_UNITCol = j; bioIndicator = true; }
-                            if (part == "Toxicity Test Type") { cols.BIO_TOXICITY_TEST_TYPECol = j; bioIndicator = true; }
-                            if (part == "Collection Method ID") cols.SAMP_COLL_METHOD_IDCol = j;
-                            if (part == "Collection Method Context") cols.SAMP_COLL_METHOD_CTXCol = j;
-                            if (part == "Collection Equipment") cols.SAMP_COLL_EQUIPCol = j;
-                            if (part == "Collection Equipment Comment") cols.SAMP_COLL_EQUIP_COMMENTCol = j;
-                            if (SampPrepList.Contains(part.ToUpper())) cols.SAMP_PREP_IDCol = j;
-                            if (part == "Sample Prep Context") cols.SAMP_PREP_CTXCol = j;
-                            if (part == "Container Type") cols.SAMP_PREP_CONT_TYPECol = j;
-                            if (part == "Container Color") cols.SAMP_PREP_CONT_COLORCol = j;
-                            if (part == "Chem Preservative Used") cols.SAMP_PREP_CHEM_PRESERVCol = j;
-                            if (part == "Thermal Preservative Used") cols.SAMP_PREP_THERM_PRESERVCol = j;
-                            if (part == "Transport Storage Description") cols.SAMP_PREP_STORAGE_DESCCol = j;
-
-                            if (part == "Data Logger Line") cols.DATA_LOGGER_LINECol = j;
-                            if (DetectionConditionList.Contains(part.ToUpper())) cols.RESULT_DETECT_CONDITIONCol = j;
-                            if (CharacteristicList.Contains(part.ToUpper())) cols.CHAR_NAMECol = j;
-                            if (part == "Method Speciation") cols.METHOD_SPECIATION_NAMECol = j;
-                            if (part == "Sample Fraction") cols.RESULT_SAMP_FRACTIONCol = j;
-                            if (part.ToUpper() == "RESULT") cols.RESULT_MSRCol = j;
-                            if (ResultUnitList.Contains(part.ToUpper())) cols.RESULT_MSR_UNITCol = j;
-                            if (part == "Measure Qualifier") cols.RESULT_MSR_QUALCol = j;
-                            if (part == "Result Status") cols.RESULT_STATUSCol = j;
-                            if (part == "Statistical Base Code") cols.STATISTIC_BASE_CODECol = j;
-                            if (part == "Result Value Type") cols.RESULT_VALUE_TYPECol = j;
-                            if (part == "Weight Basis") cols.WEIGHT_BASISCol = j;
-                            if (part == "Time Basis") cols.TIME_BASISCol = j;
-                            if (part == "Temperature Basis") cols.TEMP_BASISCol = j;
-                            if (part == "Particle Size Basis") cols.PARTICLESIZE_BASISCol = j;
-                            if (part == "Precision") cols.PRECISION_VALUECol = j;
-                            if (part == "Bias") cols.BIAS_VALUECol = j;
-                            if (part == "Confidence Interval") cols.CONFIDENCE_INTERVAL_VALUECol = j;
-                            if (part == "Confidence Upper") cols.UPPER_CONFIDENCE_LIMITCol = j;
-                            if (part == "Confidence Lower") cols.LOWER_CONFIDENCE_LIMITCol = j;
-                            if (part == "Result Comments") cols.RESULT_COMMENTCol = j;
-                            if (part == "Result Depth") cols.RESULT_DEPTH_HEIGHT_MSRCol = j;
-                            if (part == "Result Depth Unit") cols.RESULT_DEPTH_HEIGHT_MSR_UNITCol = j;
-                            if (part == "Result Depth Ref Point") cols.RESULT_DEPTH_REF_POINTCol = j;
-                            if (part == "Bio Intent Name") { cols.BIO_INTENT_NAMECol = j; bioIndicator = true; }
-                            if (part == "Bio Individual ID") { cols.BIO_INDIVIDUAL_IDCol = j; bioIndicator = true; }
-                            if (part == "Taxonomic Name") { cols.TAXON_NameCol = j; bioIndicator = true; }
-                            if (part == "Unidentified Species") { cols.UNIDENT_SPECIES_IDCol = j; bioIndicator = true; }
-                            if (part == "Tissue Anatomy") { cols.TISSUE_ANATOMYCol = j; bioIndicator = true; }
-                            if (part == "Group Summary Total") { cols.GROUP_SUMM_TOTALCol = j; bioIndicator = true; }
-                            if (part == "Group Summary Total Unit") { cols.GROUP_SUMM_TOTAL_UNITCol = j; bioIndicator = true; }
-                            if (part == "Cell Form") { cols.CELL_FORMCol = j; bioIndicator = true; }
-                            if (part == "Cell Shape") { cols.CELL_SHAPECol = j; bioIndicator = true; }
-                            if (part == "Habit Name") { cols.HABIT_NAMECol = j; bioIndicator = true; }
-                            if (part == "Voltinism Name") { cols.VOLTINISM_NAMECol = j; bioIndicator = true; }
-                            if (part == "Pollution Tolerance") { cols.POLL_TOLERANCECol = j; bioIndicator = true; }
-                            if (part == "Pollution Tolerance Scale") { cols.POLL_TOLERANCE_SCALECol = j; bioIndicator = true; }
-                            if (part == "Trophic Level") { cols.TROPHIC_LEVELCol = j; bioIndicator = true; }
-                            if (part == "Functional Feeding Group") { cols.FEEDING_GROUP1Col = j; bioIndicator = true; }
-                            if (part == "Functional Feeding Group 2") { cols.FEEDING_GROUP2Col = j; bioIndicator = true; }
-                            if (part == "Functional Feeding Group 3") { cols.FEEDING_GROUP3Col = j; bioIndicator = true; }
-                            if (part == "Frequency Class") { cols.FREQ_CLASS_CODECol = j; bioIndicator = true; }
-                            if (part == "Frequency Class Unit") { cols.FREQ_CLASS_UNITCol = j; bioIndicator = true; }
-                            if (part == "Frequency Class Upper") { cols.FREQ_CLASS_UPPERCol = j; bioIndicator = true; }
-                            if (part == "Frequency Class Lower") { cols.FREQ_CLASS_LOWERCol = j; bioIndicator = true; }
-                            if (part == "Analytical Method ID") cols.ANALYTIC_METHOD_IDCol = j;
-                            if (part == "Analytical Method Context") cols.ANALYTIC_METHOD_CTXCol = j;
-                            if (LabNameList.Contains(part.ToUpper())) cols.LAB_NAMECol = j;
-                            if (part == "Analysis Start Date") cols.LAB_ANALYSIS_START_DTCol = j;
-                            if (part == "Analysis End Date") cols.LAB_ANALYSIS_END_DTCol = j;
-                            if (part == "Lab Comment Code") cols.RESULT_LAB_COMMENT_CODECol = j;
-                            if (part == "Method Detection Level") cols.METHOD_DETECTION_LEVELCol = j;
-                            if (part == "Laboratory Reporting Level") cols.LAB_REPORTING_LEVELCol = j;
-                            if (part == "Practical Quantitation Limit") cols.PQLCol = j;
-                            if (part == "Lower Quantitation Limit") cols.LOWER_QUANT_LIMITCol = j;
-                            if (part == "Upper Quantitation Limit") cols.UPPER_QUANT_LIMITCol = j;
-                            if (DetectionLimitUnit.Contains(part.ToUpper())) cols.DETECTION_LIMIT_UNITCol = j;
-                            if (part == "Lab Sample Prep ID") cols.LAB_SAMP_PREP_IDCol = j;
-                            if (part == "Lab Sample Prep Context") cols.LAB_SAMP_PREP_CTXCol = j;
-                            if (part == "Preparation Start Date") cols.LAB_SAMP_PREP_START_DTCol = j;
-                            if (part == "Preparation End Date") cols.LAB_SAMP_PREP_END_DTCol = j;
-                            if (DilutionList.Contains(part.ToUpper())) cols.DILUTION_FACTORCol = j;
-
+                            SetColInfo(cols, part, bioIndicator, j, ActivityIDList, ActivityMediaList, ActivityStartDateList, ActivityStartTimeList, SampPrepList, LabNameList, CharacteristicList, ResultUnitList, DetectionConditionList, DetectionLimitUnit, DilutionList);
                             j = j + 1;
                         }
                     }
+                    //**********************************************************
+                    //NOT HEADER ROW - READING IN VALUES
+                    //**********************************************************
                     else
                     {
                         //****************** RESULT COLUMN VALIDATION ************************
                         if (cols.MONLOC_IDCol == null) { lblMsg.Text = "No column with header of 'Station ID' found. Make sure you include the column header row when pasting data."; return false; }
-                        if (cols.ACTIVITY_IDCol == null) { lblMsg.Text = "No column with header of 'Activity ID' found. Make sure you include the column header row when pasting data."; return false; }
+                        if (cols.ACTIVITY_IDCol == null && cols.specialACTIVITY_ID__ACT_TYPECol == null) { lblMsg.Text = "No column with header of 'Activity ID' found. Make sure you include the column header row when pasting data."; return false; }
                         if (cols.ACTIVITY_START_DTCol == null) { lblMsg.Text = "No column with header of 'Activity Start Date' found. Make sure you include the column header row when pasting data."; return false; }
                         //if (cols.RESULTCol == null) { lblMsg.Text = "No column with header of 'Result' found. Make sure you include the column header row when pasting data."; return false; }
                         //if (cols.CHAR_NAMECol == null) { lblMsg.Text = "No column with header of 'Characteristic' found. Make sure you include the column header row when pasting data."; return false; }
                         //****************** END RESULT COLUMN VALIDATION ************************
 
+
+
                         int TempImportSampID = db_WQX.InsertOrUpdateWQX_IMPORT_TEMP_SAMPLE(null, User.Identity.Name, OrgID, ProjectID, ProjectIDName, null,
-                            (cols.MONLOC_IDCol != null ? parts[cols.MONLOC_IDCol.ConvertOrDefault<int>()] : null), 
+                            (cols.MONLOC_IDCol != null ? TranslateField(parts[cols.MONLOC_IDCol.ConvertOrDefault<int>()], trans.MONLOC_IDTrans) : null),
                             null,
                             (cols.ACTIVITY_IDCol != null ? parts[cols.ACTIVITY_IDCol.ConvertOrDefault<int>()] : null),
-                            (cols.ACT_TYPECol != null ? parts[cols.ACT_TYPECol.ConvertOrDefault<int>()] : null),
-                            (cols.ACT_MEDIACol != null ? parts[cols.ACT_MEDIACol.ConvertOrDefault<int>()] : null),
-                            (cols.ACT_SUBMEDIACol != null ? parts[cols.ACT_SUBMEDIACol.ConvertOrDefault<int>()] : null),
+                            (cols.ACT_TYPECol != null ? TranslateField(parts[cols.ACT_TYPECol.ConvertOrDefault<int>()], trans.ACT_TYPETrans) : null),
+                            (cols.ACT_MEDIACol != null ? TranslateField(parts[cols.ACT_MEDIACol.ConvertOrDefault<int>()], trans.ACT_MEDIATrans) : null),
+                            (cols.ACT_SUBMEDIACol != null ? TranslateField(parts[cols.ACT_SUBMEDIACol.ConvertOrDefault<int>()], trans.ACT_SUBMEDIATrans) : null),
                             ((cols.ACTIVITY_START_DTCol != null ? parts[cols.ACTIVITY_START_DTCol.ConvertOrDefault<int>()] : null) + " " + (cols.ACTIVITY_START_TIMECol != null ? parts[cols.ACTIVITY_START_TIMECol.ConvertOrDefault<int>()] : null)).ConvertOrDefault<DateTime?>(),
                             ((cols.ACT_END_DTCol != null ? parts[cols.ACT_END_DTCol.ConvertOrDefault<int>()] : null) + " " + (cols.ACT_END_TIMECol != null ? parts[cols.ACT_END_TIMECol.ConvertOrDefault<int>()] : null)).ConvertOrDefault<DateTime?>(),
                             (cols.ACT_TIME_ZONECol != null ? parts[cols.ACT_TIME_ZONECol.ConvertOrDefault<int>()] : null),
@@ -578,6 +486,124 @@ namespace OpenEnvironment
 
 
             return true;
+        }
+
+        private static ImportSampleColumnArray SetColInfo(ImportSampleColumnArray cols, string part, bool bioIndicator, int j, List<string> ActivityIDList, List<string> ActivityMediaList, List<string> ActivityStartDateList, List<string> ActivityStartTimeList, List<string> SampPrepList, List<string> LabNameList, List<string> CharacteristicList, List<string> ResultUnitList, List<string> DetectionConditionList, List<string> DetectionLimitUnit, List<string> DilutionList)
+        {
+            if (part.ToUpper() == "STATION ID") cols.MONLOC_IDCol = j;
+            if (ActivityIDList.Contains(part.ToUpper())) cols.ACTIVITY_IDCol = j;
+            if (part.ToUpper() == "ACTIVITY TYPE CODE") cols.ACT_TYPECol = j;
+            if (ActivityMediaList.Contains(part.ToUpper())) cols.ACT_MEDIACol = j;
+            if (part.ToUpper() == "ACTIVITY SUBMEDIA") cols.ACT_SUBMEDIACol = j;
+            if (ActivityStartDateList.Contains(part.ToUpper())) cols.ACTIVITY_START_DTCol = j;
+            if (ActivityStartTimeList.Contains(part.ToUpper())) cols.ACTIVITY_START_TIMECol = j;
+            if (part == "Activity End Date") cols.ACT_END_DTCol = j;
+            if (part == "Activity End Time") cols.ACT_END_TIMECol = j;
+            if (part == "Activity Time Zone") cols.ACT_TIME_ZONECol = j;
+            if (part == "Relative Depth") cols.RELATIVE_DEPTH_NAMECol = j;
+            if (part == "Depth Measure") cols.ACT_DEPTHHEIGHT_MSRCol = j;
+            if (part == "Depth Measure Unit") cols.ACT_DEPTHHEIGHT_MSR_UNITCol = j;
+            if (part == "Top Depth Measure") cols.TOP_DEPTHHEIGHT_MSRCol = j;
+            if (part == "Top Depth Measure Unit") cols.TOP_DEPTHHEIGHT_MSR_UNITCol = j;
+            if (part == "Bottom Depth Measure") cols.BOT_DEPTHHEIGHT_MSRCol = j;
+            if (part == "Bottom Depth Measure Unit") cols.BOT_DEPTHHEIGHT_MSR_UNITCol = j;
+            if (part == "Depth Ref Point") cols.DEPTH_REF_POINTCol = j;
+            if (part == "Activity Comment") cols.ACT_COMMENTCol = j;
+            if (part == "Bio Assemblage Sampled") { cols.BIO_ASSEMBLAGE_SAMPLEDCol = j; bioIndicator = true; }
+            if (part == "Bio Duration") { cols.BIO_DURATION_MSRCol = j; bioIndicator = true; }
+            if (part == "Bio Duration Unit") { cols.BIO_DURATION_MSR_UNITCol = j; bioIndicator = true; }
+            if (part == "Sampling Component") { cols.BIO_SAMP_COMPONENTCol = j; bioIndicator = true; }
+            if (part == "Sampling Component Place") { cols.BIO_SAMP_COMPONENT_SEQCol = j; bioIndicator = true; }
+            if (part == "Reach Length") { cols.BIO_REACH_LEN_MSRCol = j; bioIndicator = true; }
+            if (part == "Reach Length Unit") { cols.BIO_REACH_LEN_MSR_UNITCol = j; bioIndicator = true; }
+            if (part == "Reach Width") { cols.BIO_REACH_WID_MSRCol = j; bioIndicator = true; }
+            if (part == "Reach Width Unit") { cols.BIO_REACH_WID_MSR_UNITCol = j; bioIndicator = true; }
+            if (part == "Pass Count") { cols.BIO_PASS_COUNTCol = j; bioIndicator = true; }
+            if (part == "Net Type") { cols.BIO_NET_TYPECol = j; bioIndicator = true; }
+            if (part == "Net Surface Area") { cols.BIO_NET_AREA_MSRCol = j; bioIndicator = true; }
+            if (part == "Surface Area Unit") { cols.BIO_NET_AREA_MSR_UNITCol = j; bioIndicator = true; }
+            if (part == "Net Mesh Size") { cols.BIO_NET_MESHSIZE_MSRCol = j; bioIndicator = true; }
+            if (part == "Mesh Size Unit") { cols.BIO_MESHSIZE_MSR_UNITCol = j; bioIndicator = true; }
+            if (part == "Boat Speed") { cols.BIO_BOAT_SPEED_MSRCol = j; bioIndicator = true; }
+            if (part == "Boat Speed Unit") { cols.BIO_BOAT_SPEED_MSR_UNITCol = j; bioIndicator = true; }
+            if (part == "Current Speed") { cols.BIO_CURR_SPEED_MSRCol = j; bioIndicator = true; }
+            if (part == "Current Speed Unit") { cols.BIO_CURR_SPEED_MSR_UNITCol = j; bioIndicator = true; }
+            if (part == "Toxicity Test Type") { cols.BIO_TOXICITY_TEST_TYPECol = j; bioIndicator = true; }
+            if (part == "Collection Method ID") cols.SAMP_COLL_METHOD_IDCol = j;
+            if (part == "Collection Method Context") cols.SAMP_COLL_METHOD_CTXCol = j;
+            if (part == "Collection Equipment") cols.SAMP_COLL_EQUIPCol = j;
+            if (part == "Collection Equipment Comment") cols.SAMP_COLL_EQUIP_COMMENTCol = j;
+            if (SampPrepList.Contains(part.ToUpper())) cols.SAMP_PREP_IDCol = j;
+            if (part == "Sample Prep Context") cols.SAMP_PREP_CTXCol = j;
+            if (part == "Container Type") cols.SAMP_PREP_CONT_TYPECol = j;
+            if (part == "Container Color") cols.SAMP_PREP_CONT_COLORCol = j;
+            if (part == "Chem Preservative Used") cols.SAMP_PREP_CHEM_PRESERVCol = j;
+            if (part == "Thermal Preservative Used") cols.SAMP_PREP_THERM_PRESERVCol = j;
+            if (part == "Transport Storage Description") cols.SAMP_PREP_STORAGE_DESCCol = j;
+            if (part == "Data Logger Line") cols.DATA_LOGGER_LINECol = j;
+            if (DetectionConditionList.Contains(part.ToUpper())) cols.RESULT_DETECT_CONDITIONCol = j;
+            if (CharacteristicList.Contains(part.ToUpper())) cols.CHAR_NAMECol = j;
+            if (part == "Method Speciation") cols.METHOD_SPECIATION_NAMECol = j;
+            if (part == "Sample Fraction") cols.RESULT_SAMP_FRACTIONCol = j;
+            if (part.ToUpper() == "RESULT") cols.RESULT_MSRCol = j;
+            if (ResultUnitList.Contains(part.ToUpper())) cols.RESULT_MSR_UNITCol = j;
+            if (part == "Measure Qualifier") cols.RESULT_MSR_QUALCol = j;
+            if (part == "Result Status") cols.RESULT_STATUSCol = j;
+            if (part == "Statistical Base Code") cols.STATISTIC_BASE_CODECol = j;
+            if (part == "Result Value Type") cols.RESULT_VALUE_TYPECol = j;
+            if (part == "Weight Basis") cols.WEIGHT_BASISCol = j;
+            if (part == "Time Basis") cols.TIME_BASISCol = j;
+            if (part == "Temperature Basis") cols.TEMP_BASISCol = j;
+            if (part == "Particle Size Basis") cols.PARTICLESIZE_BASISCol = j;
+            if (part == "Precision") cols.PRECISION_VALUECol = j;
+            if (part == "Bias") cols.BIAS_VALUECol = j;
+            if (part == "Confidence Interval") cols.CONFIDENCE_INTERVAL_VALUECol = j;
+            if (part == "Confidence Upper") cols.UPPER_CONFIDENCE_LIMITCol = j;
+            if (part == "Confidence Lower") cols.LOWER_CONFIDENCE_LIMITCol = j;
+            if (part == "Result Comments") cols.RESULT_COMMENTCol = j;
+            if (part == "Result Depth") cols.RESULT_DEPTH_HEIGHT_MSRCol = j;
+            if (part == "Result Depth Unit") cols.RESULT_DEPTH_HEIGHT_MSR_UNITCol = j;
+            if (part == "Result Depth Ref Point") cols.RESULT_DEPTH_REF_POINTCol = j;
+            if (part == "Bio Intent Name") { cols.BIO_INTENT_NAMECol = j; bioIndicator = true; }
+            if (part == "Bio Individual ID") { cols.BIO_INDIVIDUAL_IDCol = j; bioIndicator = true; }
+            if (part == "Taxonomic Name") { cols.TAXON_NameCol = j; bioIndicator = true; }
+            if (part == "Unidentified Species") { cols.UNIDENT_SPECIES_IDCol = j; bioIndicator = true; }
+            if (part == "Tissue Anatomy") { cols.TISSUE_ANATOMYCol = j; bioIndicator = true; }
+            if (part == "Group Summary Total") { cols.GROUP_SUMM_TOTALCol = j; bioIndicator = true; }
+            if (part == "Group Summary Total Unit") { cols.GROUP_SUMM_TOTAL_UNITCol = j; bioIndicator = true; }
+            if (part == "Cell Form") { cols.CELL_FORMCol = j; bioIndicator = true; }
+            if (part == "Cell Shape") { cols.CELL_SHAPECol = j; bioIndicator = true; }
+            if (part == "Habit Name") { cols.HABIT_NAMECol = j; bioIndicator = true; }
+            if (part == "Voltinism Name") { cols.VOLTINISM_NAMECol = j; bioIndicator = true; }
+            if (part == "Pollution Tolerance") { cols.POLL_TOLERANCECol = j; bioIndicator = true; }
+            if (part == "Pollution Tolerance Scale") { cols.POLL_TOLERANCE_SCALECol = j; bioIndicator = true; }
+            if (part == "Trophic Level") { cols.TROPHIC_LEVELCol = j; bioIndicator = true; }
+            if (part == "Functional Feeding Group") { cols.FEEDING_GROUP1Col = j; bioIndicator = true; }
+            if (part == "Functional Feeding Group 2") { cols.FEEDING_GROUP2Col = j; bioIndicator = true; }
+            if (part == "Functional Feeding Group 3") { cols.FEEDING_GROUP3Col = j; bioIndicator = true; }
+            if (part == "Frequency Class") { cols.FREQ_CLASS_CODECol = j; bioIndicator = true; }
+            if (part == "Frequency Class Unit") { cols.FREQ_CLASS_UNITCol = j; bioIndicator = true; }
+            if (part == "Frequency Class Upper") { cols.FREQ_CLASS_UPPERCol = j; bioIndicator = true; }
+            if (part == "Frequency Class Lower") { cols.FREQ_CLASS_LOWERCol = j; bioIndicator = true; }
+            if (part == "Analytical Method ID") cols.ANALYTIC_METHOD_IDCol = j;
+            if (part == "Analytical Method Context") cols.ANALYTIC_METHOD_CTXCol = j;
+            if (LabNameList.Contains(part.ToUpper())) cols.LAB_NAMECol = j;
+            if (part == "Analysis Start Date") cols.LAB_ANALYSIS_START_DTCol = j;
+            if (part == "Analysis End Date") cols.LAB_ANALYSIS_END_DTCol = j;
+            if (part == "Lab Comment Code") cols.RESULT_LAB_COMMENT_CODECol = j;
+            if (part == "Method Detection Level") cols.METHOD_DETECTION_LEVELCol = j;
+            if (part == "Laboratory Reporting Level") cols.LAB_REPORTING_LEVELCol = j;
+            if (part == "Practical Quantitation Limit") cols.PQLCol = j;
+            if (part == "Lower Quantitation Limit") cols.LOWER_QUANT_LIMITCol = j;
+            if (part == "Upper Quantitation Limit") cols.UPPER_QUANT_LIMITCol = j;
+            if (DetectionLimitUnit.Contains(part.ToUpper())) cols.DETECTION_LIMIT_UNITCol = j;
+            if (part == "Lab Sample Prep ID") cols.LAB_SAMP_PREP_IDCol = j;
+            if (part == "Lab Sample Prep Context") cols.LAB_SAMP_PREP_CTXCol = j;
+            if (part == "Preparation Start Date") cols.LAB_SAMP_PREP_START_DTCol = j;
+            if (part == "Preparation End Date") cols.LAB_SAMP_PREP_END_DTCol = j;
+            if (DilutionList.Contains(part.ToUpper())) cols.DILUTION_FACTORCol = j;
+            if (part == "Activity ID and Type") cols.specialACTIVITY_ID__ACT_TYPECol = j;
+            return cols;
         }
 
         private bool ImportSampleCT(string OrgID, int TemplateID, int? ProjectID, string ProjectIDName, string[] rows)
@@ -985,6 +1011,18 @@ namespace OpenEnvironment
             }
         }
 
+        private static string TranslateField(string fromField, Dictionary<string, string> transPiece)
+        {
+            if (transPiece.Count > 0)
+            {
+                if (transPiece.ContainsKey(fromField))
+                    return transPiece[fromField];
+                else
+                    return fromField;
+            }
+            else
+                return fromField;
+        }
 
         //*************************** IMPORT LOGIC FROM EPA-WQX ******************************************************
         protected void btnWQXContinue_Click(object sender, EventArgs e)

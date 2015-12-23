@@ -187,6 +187,12 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
         public string ROLE_CD { get; set; }
     }
 
+    public class TranslateTable
+    {
+        public string valFrom { get; set; }
+        public string valTo { get; set; }
+    }
+
     public class db_WQX
     {
 
@@ -2049,6 +2055,31 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
                 }
             }
         }
+
+
+        // *************************** IMPORT_TRANSLATE   ******************************
+        // *****************************************************************************
+        public static Dictionary<string, string> GetWQX_IMPORT_TRANSLATE_byColName(string OrgID, string ColName)
+        {
+            using (OpenEnvironmentEntities ctx = new OpenEnvironmentEntities())
+            {
+                try
+                {
+                    var translators = (from a in ctx.T_WQX_IMPORT_TRANSLATE
+                            where a.COL_NAME == ColName
+                            && a.ORG_ID == OrgID
+                            select a).ToList();
+
+                    var xxx = translators.ToDictionary(DataFrom => DataFrom.DATA_FROM, DataTo => DataTo.DATA_TO);
+                    return xxx;
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+
 
 
 
