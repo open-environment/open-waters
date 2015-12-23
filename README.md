@@ -36,7 +36,7 @@ SQL Server 2008 or later (Express edition is OK)
 
 
 ## Change Log
-<ul><li><strong>12/23/2015</strong> Version 1.8 released: </li>
+<ul><li><strong>12/23/2015</strong> Version 1.8 released: </li><ul>
 <li>Added import translations: now before importing data you can define a mapping of your data to EPA acceptable data. This is helpful in cases where you receive 
 data from labs using codes different from EPA and don't want to have to update the import spreadsheet every time. </li>
 <li>Additional code cleanup </li>
