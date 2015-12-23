@@ -41,7 +41,7 @@ SQL Server 2008 or later (Express edition is OK)
 data from labs using codes different from EPA and don't want to have to update the import spreadsheet every time. </li>
 <li>Additional code cleanup </li>
 </ul>
-
+</ul>
 
 <ul><li><strong>6/5/2015</strong> Version 1.7 released: </li><ul><li>MINOR ENHANCEMENTS:  </li><ul><li>Sample result import validation enhancement: sample fraction required for certain characteristics </li><li>Better error message when creating new user and email server not configured properly </li><li>Admin --&gt; Data Synch --&gt; updated to new URL for pulling Org list from EPA </li><li>Bug fix: Fix collation error in create database script for REF_DATA table. </li><li>Fix display issues when using Internet Explorer Version 7 or Compatibility View </li><li>Fix monitoring location edit page to pull counties drop-down from county reference table  </li><li>Better error handling when importing crosstab and monitoring location is missing </li><li>Updated Installation/Users Guide  </li></ul><blockquote>----1.7.1 update 
 </blockquote><ul><li>Fix bug on Activity Edit page </li><li>Add warning for users if they attempt to enter data before making the initial pull of reference data from EPA </li></ul><blockquote>----1.7.2 update 
