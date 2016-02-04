@@ -1866,6 +1866,7 @@ BEGIN
 	DESCRIPTION: COPIES DATA FROM TEMP ACTIVITY AND RESULT TABLES INTO PERMANENT TABLES
 	CHANGE LOG: 3/14/2015 DOUG TIMMS, OPEN-ENVIRONMENT.ORG
 	5/2/2015 DOUG TIMMS: added ability to update matching activity
+	2/3/2016 DOUG TIMMS: fix bug 
 
 	@ActivityReplaceInd: "R": delete existing activity and replace with new one (*recommended*)
 						 "U": update existing activity (appending results if found)  (*not recommended)						 
@@ -1888,8 +1889,8 @@ BEGIN
 
 	--insert and update activity case
     merge into T_WQX_ACTIVITY A
-    USING T_WQX_IMPORT_TEMP_SAMPLE T
-    ON A.ACTIVITY_ID = T.ACTIVITY_ID and T.IMPORT_STATUS_CD = 'P' and UPPER(USER_ID) = UPPER('KAP')
+    USING (select * from T_WQX_IMPORT_TEMP_SAMPLE where IMPORT_STATUS_CD = 'P' and UPPER(USER_ID) = UPPER(@UserID)) as T
+    ON A.ACTIVITY_ID = T.ACTIVITY_ID     
     when MATCHED then 
 	    UPDATE SET A.PROJECT_IDX = T.PROJECT_IDX, A.MONLOC_IDX = T.MONLOC_IDX, A.ACT_TYPE = T.ACT_TYPE, A.ACT_MEDIA = T.ACT_MEDIA, A.ACT_SUBMEDIA = T.ACT_SUBMEDIA, 
 		A.ACT_START_DT = T.ACT_START_DT, A.ACT_END_DT = T.ACT_END_DT, A.ACT_TIME_ZONE = T.ACT_TIME_ZONE, A.RELATIVE_DEPTH_NAME = T.RELATIVE_DEPTH_NAME, 
