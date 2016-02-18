@@ -23,7 +23,7 @@ Open Waters is a web-based water quality data management system that allows you 
 
 
 ## More Information and Example Screens
-* More information can be found at: http://open-environment.org/openwaters.html
+* More information can be found at: http://open-environment.org/open-waters
 
 ## Prerequisites
 Web Server
