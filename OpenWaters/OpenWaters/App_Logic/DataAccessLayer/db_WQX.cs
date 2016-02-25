@@ -2012,7 +2012,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
         }
 
         public static int InsertOrUpdateWQX_IMPORT_TEMPLATE_DTL(global::System.Int32? tEMPLATE_DTL_ID, global::System.Int32? tEMPLATE_ID, global::System.Int32? cOL_NUM, global::System.String fIELD_MAP,
-            string cHAR_NAME, string cHAR_DEFAULT_UNIT, String cREATE_USER = "system")
+            string cHAR_NAME, string cHAR_DEFAULT_UNIT, String cREATE_USER = "system", string cHAR_DEFAULT_SAMP_FRACTION = null)
         {
             using (OpenEnvironmentEntities ctx = new OpenEnvironmentEntities())
             {
@@ -2037,6 +2037,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
                     if (fIELD_MAP != null) a.FIELD_MAP = fIELD_MAP;
                     if (cHAR_NAME != null) a.CHAR_NAME = cHAR_NAME;
                     if (cHAR_DEFAULT_UNIT != null) a.CHAR_DEFAULT_UNIT = cHAR_DEFAULT_UNIT;
+                    if (cHAR_DEFAULT_SAMP_FRACTION != null) a.CHAR_DEFAULT_SAMP_FRACTION = cHAR_DEFAULT_SAMP_FRACTION;
 
                     if (insInd) //insert case
                     {

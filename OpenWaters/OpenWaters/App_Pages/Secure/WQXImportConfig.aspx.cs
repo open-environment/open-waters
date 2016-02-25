@@ -30,6 +30,8 @@ namespace OpenEnvironment
                 //populate drop-downs
                 Utils.BindList(ddlColChar, dsChar, "CHAR_NAME", "CHAR_NAME");
                 Utils.BindList(ddlColCharUnit, dsRefData, "VALUE", "VALUE");
+                dsRefData.SelectParameters["tABLE"].DefaultValue = "ResultSampleFraction";
+                Utils.BindList(ddlSampFraction, dsRefData, "VALUE", "VALUE");
 
                 DisplayTemplate();
             }
@@ -97,7 +99,7 @@ namespace OpenEnvironment
 
             if (TemplateID > 0)
             {
-                int SuccID = db_WQX.InsertOrUpdateWQX_IMPORT_TEMPLATE_DTL(null, TemplateID, txtColumn.Text.ConvertOrDefault<int>(), ddlFieldMap.SelectedValue, ddlColChar.SelectedValue, ddlColCharUnit.SelectedValue, User.Identity.Name);
+                int SuccID = db_WQX.InsertOrUpdateWQX_IMPORT_TEMPLATE_DTL(null, TemplateID, txtColumn.Text.ConvertOrDefault<int>(), ddlFieldMap.SelectedValue, ddlColChar.SelectedValue, ddlColCharUnit.SelectedValue, User.Identity.Name, ddlSampFraction.SelectedValue);
                 if (SuccID > 0)
                 {
                     grdTemplateDtl.DataSource = db_WQX.GetWQX_IMPORT_TEMPLATE_DTL_DynamicByTemplateID(TemplateID);
@@ -143,7 +145,7 @@ namespace OpenEnvironment
                 //get value to insert
                 string HCVal = ddlFieldMapHC.SelectedValue == "ACTIVITY_ID" ? ddlHardActID.SelectedValue : txtHardCodeValue.Text;
 
-                int SuccID = db_WQX.InsertOrUpdateWQX_IMPORT_TEMPLATE_DTL(null, TemplateID, 0, ddlFieldMapHC.SelectedValue, HCVal, "", User.Identity.Name);
+                int SuccID = db_WQX.InsertOrUpdateWQX_IMPORT_TEMPLATE_DTL(null, TemplateID, 0, ddlFieldMapHC.SelectedValue, HCVal, "", User.Identity.Name, null);
                 if (SuccID > 0)
                 {
                     grdHardCode.DataSource = db_WQX.GetWQX_IMPORT_TEMPLATE_DTL_HardCodeByTemplateID(TemplateID);

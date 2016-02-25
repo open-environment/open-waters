@@ -130,6 +130,7 @@
                             <asp:BoundField DataField="FIELD_MAP" HeaderText="Field Map" SortExpression="FIELD_MAP" />
                             <asp:BoundField DataField="CHAR_NAME" HeaderText="Char Name" SortExpression="CHAR_NAME" />
                             <asp:BoundField DataField="CHAR_DEFAULT_UNIT" HeaderText="Default Unit" SortExpression="CHAR_DEFAULT_UNIT"  />
+                            <asp:BoundField DataField="CHAR_DEFAULT_SAMP_FRACTION" HeaderText="Default Sample Fraction" SortExpression="CHAR_DEFAULT_SAMP_FRACTION"  />
                         </Columns>
                     </asp:GridView>
                     <asp:Button ID="btnAddDynamic" runat="server" CssClass="btn" Text="Add New" />
@@ -220,6 +221,10 @@
             <div class="row" id="divChar2" >
                 <span class="fldLbl">Characteristic Unit Code:</span>
                 <asp:DropDownList ID="ddlColCharUnit" runat="server" CssClass="fldTxt"  style="width:300px"></asp:DropDownList>
+            </div>
+            <div class="row" id="divChar3" >
+                <span class="fldLbl">Sample Fraction:</span>
+                <asp:DropDownList ID="ddlSampFraction" runat="server" CssClass="fldTxt"  style="width:300px"></asp:DropDownList>
             </div>
             <div class="btnRibbon">
                 <asp:Button ID="btnAddColumn" runat="server" Text="Save" CssClass="btn" OnClick="btnAddColumn_Click" />

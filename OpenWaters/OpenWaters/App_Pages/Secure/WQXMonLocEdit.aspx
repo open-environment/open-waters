@@ -21,15 +21,22 @@
     <asp:Panel ID="Panel1" runat="server" DefaultButton="btnSave">
         <div class="row">
             <span class="fldLbl">Mon Loc ID:</span>
-            <asp:TextBox ID="txtMonLocID" runat="server" Width="250px" CssClass="fldTxt" MaxLength="35"></asp:TextBox>
+            <asp:TextBox ID="txtMonLocID" runat="server" Width="250px" CssClass="fldTxt" MaxLength="35" ></asp:TextBox>
+            <asp:RequiredFieldValidator Display="Dynamic" ID="RequiredFieldValidator6" runat="server" ControlToValidate="txtMonLocID" ErrorMessage="Required"   
+            CssClass="failureNotification"></asp:RequiredFieldValidator>
+
         </div>
         <div class="row">
             <span class="fldLbl">Mon Loc Name:</span>
             <asp:TextBox ID="txtMonLocName" Width="250px" runat="server" CssClass="fldTxt" MaxLength="255"></asp:TextBox>
+            <asp:RequiredFieldValidator Display="Dynamic" ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtMonLocName" ErrorMessage="Required"   
+            CssClass="failureNotification"></asp:RequiredFieldValidator>
         </div>
         <div class="row">
             <span class="fldLbl">Mon Loc Type:</span>
             <asp:DropDownList ID="ddlMonLocType" runat="server" CssClass="fldTxt" ></asp:DropDownList>
+            <asp:RequiredFieldValidator Display="Dynamic" ID="RequiredFieldValidator2" runat="server" ControlToValidate="ddlMonLocType" ErrorMessage="Required"   
+            CssClass="failureNotification"></asp:RequiredFieldValidator>
         </div>
         <div class="row">
             <span class="fldLbl">Mon Loc Desc:</span>
@@ -51,8 +58,12 @@
         <div class="row">
             <span class="fldLbl">Latitude:</span>
             <asp:TextBox ID="txtLatitude" runat="server" Width="90px" MaxLength="12"  CssClass="fldTxt"></asp:TextBox>
+            <asp:RequiredFieldValidator Display="Dynamic" ID="RequiredFieldValidator3" runat="server" ControlToValidate="txtLatitude" ErrorMessage="Required"   
+            CssClass="failureNotification"></asp:RequiredFieldValidator>
             <span class="fldLbl" style="width:80px">&nbsp;&nbsp;&nbsp;Longitude:</span>
             <asp:TextBox ID="txtLongitude" runat="server" Width="90px" MaxLength="14"  CssClass="fldTxt"></asp:TextBox>
+            <asp:RequiredFieldValidator Display="Dynamic" ID="RequiredFieldValidator4" runat="server" ControlToValidate="txtLongitude" ErrorMessage="Required"   
+            CssClass="failureNotification"></asp:RequiredFieldValidator>
             <asp:ImageButton ID="btnMap" runat="server" ImageUrl="~/App_Images/ico_map.png" PostBackUrl="http://maps.google.com/?q=-37.866963,144.980615" />
         </div>
         <div class="row">
@@ -62,10 +73,14 @@
         <div class="row">
             <span class="fldLbl">Horiz. Collection Method</span>
             <asp:DropDownList ID="ddlHorizMethod" runat="server" CssClass="fldTxt" Width="250px"></asp:DropDownList>
+            <asp:RequiredFieldValidator Display="Dynamic" ID="RequiredFieldValidator5" runat="server" ControlToValidate="ddlHorizMethod" ErrorMessage="Required"   
+            CssClass="failureNotification"></asp:RequiredFieldValidator>
         </div>
         <div class="row">
             <span class="fldLbl">Horiz. Reference Datum</span>
             <asp:DropDownList ID="ddlHorizDatum" runat="server" CssClass="fldTxt" Width="250px"></asp:DropDownList>
+            <asp:RequiredFieldValidator Display="Dynamic" ID="RequiredFieldValidator7" runat="server" ControlToValidate="ddlHorizDatum" ErrorMessage="Required"   
+            CssClass="failureNotification"></asp:RequiredFieldValidator>
         </div>
         <div class="row">
             <span class="fldLbl">Vertical Measure:</span>

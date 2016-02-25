@@ -635,7 +635,7 @@ namespace OpenEnvironment
                 DateTime? ActivityStartDateVal = null, ActivityEndDateVal = null;
 
                 char[] delimiters = new char[] { '\t' };   //tab delimiter
-                string[] parts = row.Split(delimiters, StringSplitOptions.RemoveEmptyEntries); //columns split into parts
+                string[] parts = row.Split(delimiters, StringSplitOptions.None); //columns split into parts  //2/24/2016 change from RemoveEmptyEntries to None
                 if (parts.Length > 0)
                 {
                     //start of field-by-field validation
@@ -706,7 +706,8 @@ namespace OpenEnvironment
                     foreach (T_WQX_IMPORT_TEMPLATE_DTL character in chars)
                     {
                         string resultVal = GetFieldValue(character, parts);
-                        int TempImportResultID = db_WQX.InsertOrUpdateWQX_IMPORT_TEMP_RESULT(null, TempImportSampID, null, null, null, character.CHAR_NAME, null, null, resultVal,
+                        int TempImportResultID = db_WQX.InsertOrUpdateWQX_IMPORT_TEMP_RESULT(null, TempImportSampID, null, null, null, character.CHAR_NAME, null, 
+                            (string.IsNullOrEmpty(character.CHAR_DEFAULT_SAMP_FRACTION) ? null : character.CHAR_DEFAULT_SAMP_FRACTION), resultVal,
                             character.CHAR_DEFAULT_UNIT, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null,
                             null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null,
                             null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null,

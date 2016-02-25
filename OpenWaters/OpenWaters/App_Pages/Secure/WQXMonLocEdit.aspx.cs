@@ -103,6 +103,12 @@ namespace OpenEnvironment
 
         protected void btnSave_Click(object sender, EventArgs e)
         {
+            //***************** data validation start *************************
+            if (string.IsNullOrEmpty(txtMonLocID.Text))
+                lblMsg.Text = "Monitoring Location ID is required.";
+
+            //***************** data validation end *************************
+
             //save updates to Mon Loc
             int SuccID = db_WQX.InsertOrUpdateWQX_MONLOC(lblMonLocIDX.Text.ConvertOrDefault<int?>(), Session["OrgID"].ToString(), txtMonLocID.Text, txtMonLocName.Text, 
                 ddlMonLocType.SelectedValue, txtMonLocDesc.Text, txtHUC8.Text, txtHUC12.Text, null, txtLandName.Text, txtLatitude.Text, txtLongitude.Text, 
