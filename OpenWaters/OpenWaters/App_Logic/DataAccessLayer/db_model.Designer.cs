@@ -15360,6 +15360,54 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
         private global::System.String _DEFAULT_RESULT_VALUE_TYPE;
         partial void OnDEFAULT_RESULT_VALUE_TYPEChanging(global::System.String value);
         partial void OnDEFAULT_RESULT_VALUE_TYPEChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String DEFAULT_LOWER_QUANT_LIMIT
+        {
+            get
+            {
+                return _DEFAULT_LOWER_QUANT_LIMIT;
+            }
+            set
+            {
+                OnDEFAULT_LOWER_QUANT_LIMITChanging(value);
+                ReportPropertyChanging("DEFAULT_LOWER_QUANT_LIMIT");
+                _DEFAULT_LOWER_QUANT_LIMIT = StructuralObject.SetValidValue(value, true, "DEFAULT_LOWER_QUANT_LIMIT");
+                ReportPropertyChanged("DEFAULT_LOWER_QUANT_LIMIT");
+                OnDEFAULT_LOWER_QUANT_LIMITChanged();
+            }
+        }
+        private global::System.String _DEFAULT_LOWER_QUANT_LIMIT;
+        partial void OnDEFAULT_LOWER_QUANT_LIMITChanging(global::System.String value);
+        partial void OnDEFAULT_LOWER_QUANT_LIMITChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String DEFAULT_UPPER_QUANT_LIMIT
+        {
+            get
+            {
+                return _DEFAULT_UPPER_QUANT_LIMIT;
+            }
+            set
+            {
+                OnDEFAULT_UPPER_QUANT_LIMITChanging(value);
+                ReportPropertyChanging("DEFAULT_UPPER_QUANT_LIMIT");
+                _DEFAULT_UPPER_QUANT_LIMIT = StructuralObject.SetValidValue(value, true, "DEFAULT_UPPER_QUANT_LIMIT");
+                ReportPropertyChanged("DEFAULT_UPPER_QUANT_LIMIT");
+                OnDEFAULT_UPPER_QUANT_LIMITChanged();
+            }
+        }
+        private global::System.String _DEFAULT_UPPER_QUANT_LIMIT;
+        partial void OnDEFAULT_UPPER_QUANT_LIMITChanging(global::System.String value);
+        partial void OnDEFAULT_UPPER_QUANT_LIMITChanged();
 
         #endregion
 

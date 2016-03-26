@@ -118,6 +118,7 @@
                             </SelectParameters>
                         </asp:ObjectDataSource>
                 </asp:Panel>
+                <asp:Button ID="btnDefaults" runat="server" CssClass="btn" Text="Defaults" OnClick="btnDefaults_Click" Visible="false" />
                 <div class="row">
                     Copy and paste your data from a spreadsheet into the text area below:<br />
                     <asp:TextBox ID="txtPaste" TextMode="MultiLine" Width="98%" Height="98%" Rows="10" runat="server"></asp:TextBox>

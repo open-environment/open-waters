@@ -166,6 +166,15 @@ namespace OpenEnvironment {
         protected global::System.Web.UI.WebControls.ObjectDataSource dsProject;
         
         /// <summary>
+        /// btnDefaults control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnDefaults;
+        
+        /// <summary>
         /// txtPaste control.
         /// </summary>
         /// <remarks>

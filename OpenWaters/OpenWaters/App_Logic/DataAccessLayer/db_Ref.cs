@@ -190,6 +190,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
                 {
                     return (from a in ctx.T_WQX_REF_ANAL_METHOD
                             where (ActInd ? a.ACT_IND == true : true)
+                            orderby a.ANALYTIC_METHOD_CTX, a.ANALYTIC_METHOD_ID
                             select new AnalMethodDisplay{
                                 ANALYTIC_METHOD_IDX = a.ANALYTIC_METHOD_IDX,
                                 AnalMethodDisplayName = a.ANALYTIC_METHOD_CTX + " - " + a.ANALYTIC_METHOD_ID
@@ -272,8 +273,25 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             }
         }
 
+        public static T_WQX_REF_ANAL_METHOD GetT_WQX_REF_ANAL_METHODByIDX(int IDX)
+        {
+            using (OpenEnvironmentEntities ctx = new OpenEnvironmentEntities())
+            {
+                try
+                {
+                    return (from a in ctx.T_WQX_REF_ANAL_METHOD
+                            where a.ANALYTIC_METHOD_IDX == IDX
+                            select a).FirstOrDefault();
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+        }
 
-        
+
+
         //******************REF DATA****************************************
         public static int InsertOrUpdateT_WQX_REF_DATA(global::System.String tABLE, global::System.String vALUE, global::System.String tEXT, global::System.Boolean? UsedInd)
         {
@@ -710,7 +728,8 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
         }
 
         public static int InsertOrUpdateT_WQX_REF_CHAR_ORG(global::System.String cHAR_NAME, global::System.String oRG_NAME, global::System.String cREATE_USER_ID,
-            string dEFAULT_DETECT_LIMIT, string dEFAULT_UNIT, int? dEFAULT_ANAL_METHOD_IDX, string dEFAULT_SAMP_FRACTION, string dEFAULT_RESULT_STATUS, string dEFAULT_RESULT_VALUE_TYPE)
+            string dEFAULT_DETECT_LIMIT, string dEFAULT_UNIT, int? dEFAULT_ANAL_METHOD_IDX, string dEFAULT_SAMP_FRACTION, string dEFAULT_RESULT_STATUS, 
+            string dEFAULT_RESULT_VALUE_TYPE, string dEFAULT_LOWER_QUANT_LIMIT, string dEFAULT_UPPER_QUANT_LIMIT)
         {
             using (OpenEnvironmentEntities ctx = new OpenEnvironmentEntities())
             {
@@ -732,6 +751,8 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
                     a.CHAR_NAME = cHAR_NAME;
                     a.ORG_ID = oRG_NAME;
                     if (dEFAULT_DETECT_LIMIT != null) a.DEFAULT_DETECT_LIMIT = dEFAULT_DETECT_LIMIT;
+                    if (dEFAULT_LOWER_QUANT_LIMIT != null) a.DEFAULT_LOWER_QUANT_LIMIT = dEFAULT_LOWER_QUANT_LIMIT;
+                    if (dEFAULT_UPPER_QUANT_LIMIT != null) a.DEFAULT_UPPER_QUANT_LIMIT = dEFAULT_UPPER_QUANT_LIMIT;
                     if (dEFAULT_UNIT != null) a.DEFAULT_UNIT = dEFAULT_UNIT;
                     if (dEFAULT_ANAL_METHOD_IDX != null) a.DEFAULT_ANAL_METHOD_IDX = dEFAULT_ANAL_METHOD_IDX;
                     if (dEFAULT_SAMP_FRACTION != null) a.DEFAULT_SAMP_FRACTION = dEFAULT_SAMP_FRACTION;

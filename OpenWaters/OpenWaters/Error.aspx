@@ -6,6 +6,6 @@
         <link href="Styles/Site.css" rel="stylesheet" type="text/css" />
         An error has been encountered in the Open Waters application.
         <br />
-        <asp:Button ID="btnReturn" runat="server" Text="Return" CssClass="btn" />
+        <asp:Button ID="btnReturn" runat="server" Text="Return" CssClass="btn" OnClick="btnReturn_Click" />
     </div>
 </asp:Content>

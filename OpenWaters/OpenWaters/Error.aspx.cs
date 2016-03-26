@@ -13,5 +13,10 @@ namespace OpenEnvironment
         {
 
         }
+
+        protected void btnReturn_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/App_Pages/Secure/Dashboard.aspx");
+        }
     }
 }

@@ -106,6 +106,7 @@
     <None Include="App_Data\SeminoleData.sql" />
     <Content Include="App_Data\DatabasePatch_v1.8.sql" />
     <Content Include="App_Data\DatabasePatch_v1.7.sql" />
+    <Content Include="App_Data\DatabasePatch_v1.9.sql" />
     <Content Include="App_Docs\validation.xsl" />
     <Content Include="App_Images\loading.gif" />
     <Content Include="App_Images\wiz_1.png" />
@@ -420,7 +421,6 @@
     </Compile>
     <Compile Include="App_Pages\Secure\WQXImport.aspx.cs">
       <DependentUpon>WQXImport.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="App_Pages\Secure\WQXImport.aspx.designer.cs">
       <DependentUpon>WQXImport.aspx</DependentUpon>

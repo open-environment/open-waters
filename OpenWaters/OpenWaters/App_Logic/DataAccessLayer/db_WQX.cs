@@ -2092,9 +2092,10 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 try
                 {
-                    return (from a in ctx.T_WQX_IMPORT_COL_ALIAS
+                    var x = (from a in ctx.T_WQX_IMPORT_COL_ALIAS
                             where a.COL_NAME == ColName
-                            select a.ALIAS_NAME).ToList();
+                            select a.ALIAS_NAME.ToUpper()).ToList();
+                    return x;
                 }
                 catch (Exception ex)
                 {
@@ -2558,6 +2559,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
                     {
                         a = (from c in ctx.T_WQX_IMPORT_TEMP_SAMPLE
                              where c.ACTIVITY_ID == aCTIVITY_ID
+                             && c.ORG_ID == oRG_ID
                              select c).FirstOrDefault();
                     }
 
@@ -2605,7 +2607,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
                     if (aCTIVITY_IDX != null) a.ACTIVITY_IDX = aCTIVITY_IDX;
                     if (!string.IsNullOrEmpty(aCTIVITY_ID)) a.ACTIVITY_ID = aCTIVITY_ID.Trim().SubStringPlus(0, 35);
 
-                    
+
                     if (!string.IsNullOrEmpty(aCT_TYPE))
                     {
                         a.ACT_TYPE = aCT_TYPE.SubStringPlus(0, 70) ?? "";
@@ -2947,6 +2949,34 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
 
         }
 
+        public static int InsertOrUpdateWQX_IMPORT_TEMP_SAMPLE_Status(int tEMP_SAMPLE_IDX, string sTATUS_CD, string sTATUS_DESC)
+        {
+            try
+            {
+                using (OpenEnvironmentEntities ctx = new OpenEnvironmentEntities())
+                {
+                    T_WQX_IMPORT_TEMP_SAMPLE a = 
+                        (from c in ctx.T_WQX_IMPORT_TEMP_SAMPLE
+                         where c.TEMP_SAMPLE_IDX == tEMP_SAMPLE_IDX
+                         select c).FirstOrDefault();
+
+                    a.IMPORT_STATUS_CD = sTATUS_CD;
+                    a.IMPORT_STATUS_DESC = (a.IMPORT_STATUS_DESC + " " + sTATUS_DESC).SubStringPlus(0,100);
+
+                    ctx.SaveChanges();
+
+                    return tEMP_SAMPLE_IDX;
+                }
+            }
+            catch (Exception ex)
+            {
+                sTATUS_CD = "F";
+                sTATUS_DESC += "Unspecified error";
+                return 0;
+            }
+
+        }
+
         public static int DeleteT_WQX_IMPORT_TEMP_SAMPLE(global::System.String uSER_ID)
         {
             using (OpenEnvironmentEntities ctx = new OpenEnvironmentEntities())
@@ -3073,29 +3103,16 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
                         a.DATA_LOGGER_LINE = dATA_LOGGER_LINE.Trim().SubStringPlus(0, 15);
                     }
 
+                    if (rESULT_DETECT_CONDITION == "DNQ" || rESULT_MSR == "DNQ") { rESULT_DETECT_CONDITION = "Detected Not Quantified"; rESULT_MSR = "DNQ"; }
+                    if (rESULT_DETECT_CONDITION == "ND" || rESULT_MSR == "ND") { rESULT_DETECT_CONDITION = "Not Detected"; rESULT_MSR = "ND"; }
+                    if (rESULT_DETECT_CONDITION == "NR" || rESULT_MSR == "NR") { rESULT_DETECT_CONDITION = "Not Reported"; rESULT_MSR = "NR"; }
+                    if (rESULT_DETECT_CONDITION == "PAQL" || rESULT_MSR == "PAQL") { rESULT_DETECT_CONDITION = "Present Above Quantification Limit"; rESULT_MSR = "PAQL"; }
+                    if (rESULT_DETECT_CONDITION == "PBQL" || rESULT_MSR == "PBQL") { rESULT_DETECT_CONDITION = "Present Below Quantification Limit"; rESULT_MSR = "PBQL"; }
+
                     if (!string.IsNullOrEmpty(rESULT_DETECT_CONDITION))
                     {
                         a.RESULT_DETECT_CONDITION = rESULT_DETECT_CONDITION.Trim().SubStringPlus(0, 35);
-
-                        if (rESULT_DETECT_CONDITION == "ND") rESULT_DETECT_CONDITION = "Not Detected";
-                        if (rESULT_DETECT_CONDITION == "NR") rESULT_DETECT_CONDITION = "Not Reported";
-                        if (rESULT_DETECT_CONDITION == "DNQ") rESULT_DETECT_CONDITION = "Detected Not Quantified";
-                        if (rESULT_DETECT_CONDITION == "PAQL") rESULT_DETECT_CONDITION = "Present Above Quantification Limit";
-                        if (rESULT_DETECT_CONDITION == "PBQL") rESULT_DETECT_CONDITION = "Present Below Quantification Limit";
-
-                        if (db_Ref.GetT_WQX_REF_DATA_ByKey("ResultDetectionCondition", rESULT_DETECT_CONDITION.Trim()) == false) { sTATUS_CD = "F"; sTATUS_DESC += "Result Detection Condition not valid. "; }
-
-                        if (rESULT_DETECT_CONDITION == "Detected Not Quantified" && string.IsNullOrEmpty(rESULT_MSR))
-                            rESULT_MSR = "DNQ";
-                        else if (rESULT_DETECT_CONDITION == "Not Detected" && string.IsNullOrEmpty(rESULT_MSR))
-                            rESULT_MSR = "ND";
-                        else if (rESULT_DETECT_CONDITION == "Not Reported" && string.IsNullOrEmpty(rESULT_MSR))
-                            rESULT_MSR = "NR";
-                        else if (rESULT_DETECT_CONDITION == "Present Above Quantification Limit" && string.IsNullOrEmpty(rESULT_MSR))
-                            rESULT_MSR = "PAQL";
-                        else if (rESULT_DETECT_CONDITION == "Present Below Quantification Limit" && string.IsNullOrEmpty(rESULT_MSR))
-                            rESULT_MSR = "PBQL";
-
+                        if (db_Ref.GetT_WQX_REF_DATA_ByKey("ResultDetectionCondition", rESULT_DETECT_CONDITION.Trim()) == false) { sTATUS_CD = "F"; sTATUS_DESC += "Result Detection Condition not valid. "; }                            
                     }
 
                     if (!string.IsNullOrEmpty(cHAR_NAME))
@@ -3122,7 +3139,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
 
                     if (!string.IsNullOrEmpty(rESULT_MSR))
                     {
-                        a.RESULT_MSR = rESULT_MSR.Trim().SubStringPlus(0, 60);
+                        a.RESULT_MSR = rESULT_MSR.Trim().SubStringPlus(0, 60).Replace(",","");
                     }
                     else
                     {
@@ -3307,14 +3324,16 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
                     
                     
                     //analysis method
+                    //first populate the IDX if it is supplied
                     if (aNALYTIC_METHOD_IDX != null)
                         a.ANALYTIC_METHOD_IDX = aNALYTIC_METHOD_IDX;
                     else
                     {
-                        //set context to org id if none is provided 
+                        //if ID is supplied but Context is not, set context to org id 
                         if (!string.IsNullOrEmpty(aNALYTIC_METHOD_ID) && string.IsNullOrEmpty(aNALYTIC_METHOD_CTX))
                             aNALYTIC_METHOD_CTX = orgID;
 
+                        //if we now have values for the ID and context
                         if (!string.IsNullOrEmpty(aNALYTIC_METHOD_ID) && !string.IsNullOrEmpty(aNALYTIC_METHOD_CTX))
                         {
                             //see if matching collection method exists
@@ -3337,6 +3356,26 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
 
                             if (!string.IsNullOrEmpty(aNALYTIC_METHOD_NAME))
                                 a.ANALYTIC_METHOD_NAME = aNALYTIC_METHOD_NAME.Trim().SubStringPlus(0, 120);
+                        }
+                        else
+                        {
+                            //if IDX, ID, and Context not supplied, lookup the method from the default Org Char reference list
+                            T_WQX_REF_CHAR_ORG rco = db_Ref.GetT_WQX_REF_CHAR_ORGByName(orgID, cHAR_NAME.Trim().SubStringPlus(0, 120));
+                            if (rco != null)
+                            {
+                                a.ANALYTIC_METHOD_IDX = rco.DEFAULT_ANAL_METHOD_IDX;
+                                if (rco.DEFAULT_ANAL_METHOD_IDX != null)
+                                {
+                                    T_WQX_REF_ANAL_METHOD anal = db_Ref.GetT_WQX_REF_ANAL_METHODByIDX(rco.DEFAULT_ANAL_METHOD_IDX.ConvertOrDefault<int>());
+                                    if (anal != null)
+                                    {
+                                        a.ANALYTIC_METHOD_ID = anal.ANALYTIC_METHOD_ID;
+                                        a.ANALYTIC_METHOD_NAME = anal.ANALYTIC_METHOD_NAME;
+                                        a.ANALYTIC_METHOD_CTX = anal.ANALYTIC_METHOD_CTX;
+                                    }
+                                }
+                            }
+
                         }
                     }
 
@@ -3394,9 +3433,41 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
 
                     if (!string.IsNullOrEmpty(lOWER_QUANT_LIMIT))
                         a.LOWER_QUANT_LIMIT = lOWER_QUANT_LIMIT.Trim().SubStringPlus(0, 12);
+                    else
+                    {
+                        //populate default PBQL
+                        if (rESULT_DETECT_CONDITION == "Present Below Quantification Limit")
+                        {
+                            T_WQX_REF_CHAR_ORG rco = db_Ref.GetT_WQX_REF_CHAR_ORGByName(orgID, cHAR_NAME);
+                            if (rco != null)
+                                a.LOWER_QUANT_LIMIT = rco.DEFAULT_LOWER_QUANT_LIMIT;
+
+                            //if still null, then error
+                            if (a.LOWER_QUANT_LIMIT == null)
+                                { sTATUS_CD = "F"; sTATUS_DESC += "No Lower Quantification limit reported. "; }
+
+
+                        }
+                    }
 
                     if (!string.IsNullOrEmpty(uPPER_QUANT_LIMIT))
                         a.UPPER_QUANT_LIMIT = uPPER_QUANT_LIMIT.Trim().SubStringPlus(0, 12);
+                    else
+                    {
+                        //populate default PAQL
+                        if (rESULT_DETECT_CONDITION == "Present Above Quantification Limit")
+                        {
+                            T_WQX_REF_CHAR_ORG rco = db_Ref.GetT_WQX_REF_CHAR_ORGByName(orgID, cHAR_NAME);
+                            if (rco != null)
+                                a.UPPER_QUANT_LIMIT = rco.DEFAULT_UPPER_QUANT_LIMIT;
+
+                            //if still null, then error
+                            if (a.UPPER_QUANT_LIMIT == null)
+                            { sTATUS_CD = "F"; sTATUS_DESC += "No Upper Quantification limit reported. "; }
+
+
+                        }
+                    }
 
                     if (!string.IsNullOrEmpty(dETECTION_LIMIT_UNIT))
                     {

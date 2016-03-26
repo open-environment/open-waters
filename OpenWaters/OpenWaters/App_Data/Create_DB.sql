@@ -295,6 +295,7 @@ CREATE TABLE [dbo].[T_WQX_REF_CHARACTERISTIC](
  CONSTRAINT [PK_T_WQX_REF_CHARACTERISTIC] PRIMARY KEY CLUSTERED (CHAR_NAME ASC)
 ) ON [PRIMARY]
 
+
 CREATE TABLE [dbo].[T_WQX_REF_CHAR_LIMITS](
 	[CHAR_NAME] [varchar](120) NOT NULL,
 	[UNIT_NAME] [varchar](12) NOT NULL,
@@ -688,6 +689,8 @@ ALTER TABLE T_WQX_REF_CHAR_ORG add DEFAULT_SAMP_FRACTION varchar(25) NULL;
 ALTER TABLE T_WQX_REF_CHAR_ORG add DEFAULT_RESULT_STATUS varchar(12) NULL;
 ALTER TABLE T_WQX_REF_CHAR_ORG add DEFAULT_RESULT_VALUE_TYPE varchar(20) NULL;
 ALTER TABLE T_WQX_REF_CHAR_ORG ADD CONSTRAINT FK_T_WQX_REF_CHAR_ORG FOREIGN KEY (DEFAULT_ANAL_METHOD_IDX) REFERENCES T_WQX_REF_ANAL_METHOD([ANALYTIC_METHOD_IDX]);
+ALTER TABLE T_WQX_REF_CHAR_ORG ADD DEFAULT_LOWER_QUANT_LIMIT varchar(12) NULL;
+ALTER TABLE T_WQX_REF_CHAR_ORG ADD DEFAULT_UPPER_QUANT_LIMIT varchar(12) NULL;
 
 GO
 
@@ -770,7 +773,6 @@ insert into T_WQX_IMPORT_COL_ALIAS ([COL_NAME], [ALIAS_NAME]) values ('Character
 insert into T_WQX_IMPORT_COL_ALIAS ([COL_NAME], [ALIAS_NAME]) values ('Sample Prep ID', 'SAMPLE PREP ID');
 insert into T_WQX_IMPORT_COL_ALIAS ([COL_NAME], [ALIAS_NAME]) values ('Sample Prep ID', 'PREPNAME');
 insert into T_WQX_IMPORT_COL_ALIAS ([COL_NAME], [ALIAS_NAME]) values ('Sample Prep ID', 'PREPID');
-
 insert into T_WQX_IMPORT_COL_ALIAS ([COL_NAME], [ALIAS_NAME]) values ('Unit', 'UNIT');
 insert into T_WQX_IMPORT_COL_ALIAS ([COL_NAME], [ALIAS_NAME]) values ('Unit', 'UNITS_RESULT');
 insert into T_WQX_IMPORT_COL_ALIAS ([COL_NAME], [ALIAS_NAME]) values ('Result Detection Condition', 'RESULT DETECTION CONDITION');
@@ -1021,6 +1023,24 @@ CREATE TABLE [dbo].[T_WQX_IMPORT_TEMP_MONLOC](
 ) ON [PRIMARY]
 
 GO
+
+CREATE TABLE [dbo].[T_WQX_IMPORT_TRANSLATE](
+	[TRANSLATE_IDX] [int] IDENTITY(1,1) NOT NULL,
+	[ORG_ID] [varchar](30) NOT NULL,
+	[COL_NAME] [varchar](50) NOT NULL,
+	[DATA_FROM] [varchar](150) NOT NULL,
+	[DATA_TO] [varchar](150) NULL,
+	[CREATE_DT] [datetime] NULL,
+	[CREATE_USERID] [varchar](25) NULL,
+ CONSTRAINT [PK_WQX_IMPORT_TRANSLATE] PRIMARY KEY CLUSTERED  ([TRANSLATE_IDX] ),
+ FOREIGN KEY (ORG_ID) references T_WQX_ORGANIZATION (ORG_ID) 
+	ON UPDATE CASCADE 
+	ON DELETE CASCADE, 
+) ON [PRIMARY];
+
+
+GO
+
 
 -- ****************************************************************************************************************************************
 -- ************************* [VIEWS]                      *********************************************************************************

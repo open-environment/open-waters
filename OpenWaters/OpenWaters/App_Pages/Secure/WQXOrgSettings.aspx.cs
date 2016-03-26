@@ -127,6 +127,8 @@ namespace OpenEnvironment
 
                     txtSelChar.Text = rco.CHAR_NAME;
                     txtDetectLimit.Text = rco.DEFAULT_DETECT_LIMIT;
+                    txtQuantLower.Text = rco.DEFAULT_LOWER_QUANT_LIMIT;
+                    txtQuantUpper.Text = rco.DEFAULT_UPPER_QUANT_LIMIT;
                     ddlUnit.SelectedValue = rco.DEFAULT_UNIT;
                     ddlAnalMethod.SelectedValue = rco.DEFAULT_ANAL_METHOD_IDX.ToString();
                     ddlFraction.SelectedValue = rco.DEFAULT_SAMP_FRACTION;
@@ -138,7 +140,7 @@ namespace OpenEnvironment
 
         protected void btnAddChar_Click(object sender, EventArgs e)
         {
-            db_Ref.InsertOrUpdateT_WQX_REF_CHAR_ORG(ddlChar.SelectedValue, txtOrgID.Text, User.Identity.Name, null, null, null, null, null, null);
+            db_Ref.InsertOrUpdateT_WQX_REF_CHAR_ORG(ddlChar.SelectedValue, txtOrgID.Text, User.Identity.Name, null, null, null, null, null, null, null, null);
             PopulateCharGrid();
         }
 
@@ -168,7 +170,7 @@ namespace OpenEnvironment
         protected void btnSaveDtl_Click(object sender, EventArgs e)
         {
             db_Ref.InsertOrUpdateT_WQX_REF_CHAR_ORG(txtSelChar.Text, Session["OrgID"].ToString(), User.Identity.Name, txtDetectLimit.Text, ddlUnit.SelectedValue,
-                ddlAnalMethod.SelectedValue.ConvertOrDefault<int?>(), ddlFraction.SelectedValue, ddlStatus.SelectedValue, ddlValueType.SelectedValue);
+                ddlAnalMethod.SelectedValue.ConvertOrDefault<int?>(), ddlFraction.SelectedValue, ddlStatus.SelectedValue, ddlValueType.SelectedValue, txtQuantLower.Text, txtQuantUpper.Text);
             lblMsgDtl.Text = "Updated Successfully";
 
             PopulateCharGrid();

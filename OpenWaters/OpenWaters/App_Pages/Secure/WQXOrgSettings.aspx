@@ -96,6 +96,8 @@
                                     <asp:BoundField DataField="CHAR_NAME" HeaderText="Characteristic" SortExpression="CHAR_NAME" ControlStyle-Width="98%" />
                                     <asp:BoundField DataField="DEFAULT_UNIT" HeaderText="Unit" SortExpression="DEFAULT_UNIT" ControlStyle-Width="98%" />
                                     <asp:BoundField DataField="DEFAULT_DETECT_LIMIT" HeaderText="Detect Limit" SortExpression="DEFAULT_DETECT_LIMIT" ControlStyle-Width="98%" />
+                                    <asp:BoundField DataField="DEFAULT_LOWER_QUANT_LIMIT" HeaderText="Detect Limit" SortExpression="DEFAULT_LOWER_QUANT_LIMIT" ControlStyle-Width="98%" />
+                                    <asp:BoundField DataField="DEFAULT_UPPER_QUANT_LIMIT" HeaderText="Detect Limit" SortExpression="DEFAULT_UPPER_QUANT_LIMIT" ControlStyle-Width="98%" />
                                     <asp:BoundField DataField="T_WQX_REF_ANAL_METHOD.ANALYTIC_METHOD_ID" HeaderText="Analysis Method"  ControlStyle-Width="98%" />
                                     <asp:BoundField DataField="DEFAULT_SAMP_FRACTION" HeaderText="Sample Fraction" SortExpression="DEFAULT_SAMP_FRACTION" ControlStyle-Width="98%" />
                                     <asp:BoundField DataField="DEFAULT_RESULT_STATUS" HeaderText="Status" SortExpression="DEFAULT_RESULT_STATUS" ControlStyle-Width="98%" />
@@ -144,6 +146,14 @@
                             <div class="row" > 
                                 <span class="fldLbl">Detection Limit:</span>
                                 <asp:TextBox ID="txtDetectLimit" runat="server" CssClass="fldTxt"  Width="220px" MaxLength="12" ></asp:TextBox>
+                            </div>
+                            <div class="row" > 
+                                <span class="fldLbl">Lower Quant Limit:</span>
+                                <asp:TextBox ID="txtQuantLower" runat="server" CssClass="fldTxt"  Width="220px" MaxLength="12" ></asp:TextBox>
+                            </div>
+                            <div class="row" > 
+                                <span class="fldLbl">Upper Quant Limit:</span>
+                                <asp:TextBox ID="txtQuantUpper" runat="server" CssClass="fldTxt"  Width="220px" MaxLength="12" ></asp:TextBox>
                             </div>
                             <div class="row" > 
                                 <span class="fldLbl">Analysis Method:</span>

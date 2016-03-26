@@ -26,20 +26,17 @@
     </script>
     <script type="text/javascript">
         $(document).ready(function () {
-            $("#divChar1").hide();
-            $("#divChar2").hide();
+            $(".charRelated").hide();
             $("#HC1").hide();
             $("#HC2").hide();
 
             $("#ctl00_ctl00_MainContent_BodyContent_ddlFieldMap").change(function (event) {
                 if ($("#ctl00_ctl00_MainContent_BodyContent_ddlFieldMap").val() == "CHAR") {
-                    $("#divChar1").show();
-                    $("#divChar2").show();
+                    $(".charRelated").show();
                 }
                 else
                 {
-                    $("#divChar1").hide();
-                    $("#divChar2").hide();
+                    $(".charRelated").hide();
                 }
             });
 
@@ -54,10 +51,6 @@
                 }
             });
 
-
-            $("ctl00_ctl00_MainContent_BodyContent_btnAddDynamic").click(function (event) {
-  //              alert("f");
-            });
         });
 
     </script>
@@ -214,15 +207,15 @@
                     <asp:ListItem Value="RESULT_STATUS" Text="RESULT_STATUS"></asp:ListItem>
                 </asp:DropDownList>
             </div>
-            <div class="row" id="divChar1" >
+            <div class="row charRelated" id="divChar1" >
                 <span class="fldLbl">Characteristic Name:</span>
                 <asp:DropDownList ID="ddlColChar" runat="server" CssClass="fldTxt"  style="width:300px"></asp:DropDownList>
             </div>
-            <div class="row" id="divChar2" >
+            <div class="row charRelated" id="divChar2" >
                 <span class="fldLbl">Characteristic Unit Code:</span>
                 <asp:DropDownList ID="ddlColCharUnit" runat="server" CssClass="fldTxt"  style="width:300px"></asp:DropDownList>
             </div>
-            <div class="row" id="divChar3" >
+            <div class="row charRelated" id="divChar3" >
                 <span class="fldLbl">Sample Fraction:</span>
                 <asp:DropDownList ID="ddlSampFraction" runat="server" CssClass="fldTxt"  style="width:300px"></asp:DropDownList>
             </div>

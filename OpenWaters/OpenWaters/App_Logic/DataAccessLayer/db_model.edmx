@@ -628,6 +628,8 @@
           <Property Name="DEFAULT_SAMP_FRACTION" Type="varchar" MaxLength="25" />
           <Property Name="DEFAULT_RESULT_STATUS" Type="varchar" MaxLength="12" />
           <Property Name="DEFAULT_RESULT_VALUE_TYPE" Type="varchar" MaxLength="20" />
+          <Property Name="DEFAULT_LOWER_QUANT_LIMIT" Type="varchar" MaxLength="12" />
+          <Property Name="DEFAULT_UPPER_QUANT_LIMIT" Type="varchar" MaxLength="12" />
         </EntityType>
         <EntityType Name="T_WQX_REF_CHARACTERISTIC">
           <Key>
@@ -2819,6 +2821,8 @@ FROM [dbo].[V_WQX_TRANSACTION_LOG] AS [V_WQX_TRANSACTION_LOG]</DefiningQuery>
           <NavigationProperty Name="T_WQX_ORGANIZATION" Relationship="OpenEnvironmentModel.FK__T_WQX_REF__ORG_I__4D94879B" FromRole="T_WQX_REF_CHAR_ORG" ToRole="T_WQX_ORGANIZATION" />
           <NavigationProperty Name="T_WQX_REF_ANAL_METHOD" Relationship="OpenEnvironmentModel.FK_T_WQX_REF_CHAR_ORG" FromRole="T_WQX_REF_CHAR_ORG" ToRole="T_WQX_REF_ANAL_METHOD" />
           <NavigationProperty Name="T_WQX_REF_CHARACTERISTIC" Relationship="OpenEnvironmentModel.FK__T_WQX_REF__CHAR___4E88ABD4" FromRole="T_WQX_REF_CHAR_ORG" ToRole="T_WQX_REF_CHARACTERISTIC" />
+          <Property Name="DEFAULT_LOWER_QUANT_LIMIT" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="DEFAULT_UPPER_QUANT_LIMIT" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
         </EntityType>
         <Association Name="FK__T_WQX_REF__ORG_I__4D94879B">
           <End Type="OpenEnvironmentModel.T_WQX_ORGANIZATION" Role="T_WQX_ORGANIZATION" Multiplicity="1">
@@ -3814,6 +3818,8 @@ FROM [dbo].[V_WQX_TRANSACTION_LOG] AS [V_WQX_TRANSACTION_LOG]</DefiningQuery>
           <EntitySetMapping Name="T_WQX_REF_CHAR_ORG">
             <EntityTypeMapping TypeName="OpenEnvironmentModel.T_WQX_REF_CHAR_ORG">
               <MappingFragment StoreEntitySet="T_WQX_REF_CHAR_ORG">
+                <ScalarProperty Name="DEFAULT_UPPER_QUANT_LIMIT" ColumnName="DEFAULT_UPPER_QUANT_LIMIT" />
+                <ScalarProperty Name="DEFAULT_LOWER_QUANT_LIMIT" ColumnName="DEFAULT_LOWER_QUANT_LIMIT" />
                 <ScalarProperty Name="DEFAULT_RESULT_VALUE_TYPE" ColumnName="DEFAULT_RESULT_VALUE_TYPE" />
                 <ScalarProperty Name="DEFAULT_RESULT_STATUS" ColumnName="DEFAULT_RESULT_STATUS" />
                 <ScalarProperty Name="DEFAULT_SAMP_FRACTION" ColumnName="DEFAULT_SAMP_FRACTION" />
