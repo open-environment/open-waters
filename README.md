@@ -1,18 +1,18 @@
 # Open Waters
 
 ## What is Open Waters?
-Open Waters is web-based water quality data management software that helps people track monitoring locations, projects, samples, and results. Open Waters is intended for Tribal and State water quality data managers who collect and manage water quality data, and have the need to submit this data to EPA's WQX program. Open Waters is unique in that people can manage their data locally, but submission to EPA is completely automated and handled behind-the-scenes, thus eliminating the burden of separate data submission to EPA. This makes it ideal for agencies who would rather focus their time and energy on data collection and analysis. Plus, Open Waters is completely free and open source. Open Waters has been in use since 2012 and has been adopted by several agencies.
+Open Waters is web-based water quality data management software that helps people track monitoring locations, projects, samples, and results. Open Waters is intended for Tribal and State water quality data managers who collect and manage water quality data, and have the need to submit this data to EPA's WQX program. Open Waters is unique in that people can manage their data locally, but submission to EPA is completely automated and handled behind-the-scenes, thus eliminating the burden of separate data submission to EPA. This makes it ideal for agencies who would rather focus their time and energy on data collection and analysis. Plus, Open Waters is completely free and open source. Open Waters has been in use since 2012 and is actively used by several agencies.
 
 ## File Downloads
-* [**Full Installation Package - Version 1.7.2**](http://www.open-environment.org/downloads/OpenWatersFullInstall_v1.7.2.zip)
-* [**Patch Installation Package - Version 1.7.2**](http://www.open-environment.org/downloads/OpenWatersPatchOnly_v1.7.2.zip) (only use if upgrading from version v1.6 to v1.7x)
+* [**Full Installation Package - Version 1.9**](http://www.open-environment.org/downloads/OpenWatersFullInstall_v1.9.zip)
+* [**Patch Installation Package - Version 1.9**](http://www.open-environment.org/downloads/OpenWatersPatchOnly_v1.9.zip) (only use if upgrading from version v1.8 to v1.9x)
 * [**User's Guide / Installation Guide**](https://github.com/open-environment/open-waters/raw/master/OpenWaters/OpenWaters/App_Docs/UsersGuide.docx)
 
 ## Open Waters Features
 
 * **Water Quality Data Management:** Manage monitoring locations, projects, samples & results. This includes chemical results, field data, and biological metrics/indices.
-* **Automatic WQX Submission:** Data is automatically submitted to EPA’s WQX program (http://www.epa.gov/storet/wqx/) as it is entered. But you can still control which data is shared with EPA and which stays locally.
 * **Bulk Data Import:** Samples, results, and monitoring locations can be bulk imported from your favorite spreadsheet program, saving time on data entry. You can define you own import templates, or use Excel templates provided by Open Waters.
+* **Automatic WQX Submission:** Data is automatically submitted to EPA’s WQX program (http://www.epa.gov/storet/wqx/) as it is entered. But you can still control which data is shared with EPA and which stays locally.
 * **Data Retrieval From WQX:** Does your organization already have data stored at EPA-WQX? Open Waters lets you download this data to the Open Waters database, which is a handy way to quickly setup you data locally.
 * **Reference Data Synchronization:** Reference data (e.g. Pollutant names, Taxonomic names, analytical methods, etc) are fully synchronized with EPA’s reference data, ensuring that submissions will not fail due to mismatches in reference values.
 * **Mapping:** View monitoring locations geospatially and see latest sampling results. Publish public map.
@@ -37,6 +37,16 @@ Open Waters is web-based water quality data management software that helps peopl
 
 
 ## Change Log
+* **3/25/2016 - Version 1.9:**
+    * When importing using cross tab, now only validates a result if a result value is reported
+    * When importing using cross tab, warn if activity ID already exists
+    * When importing using traditional sample template, column headers no longer must be case sensitive.
+    * When importing using traditional sample template, sample preparation date and time can now be stored in separate columns (or combined in a single column)
+    * When importing using traditional sample template, analysis start date and time can now be stored in separate columns (or combined in a single column)
+    * Automatically remove commas (e.g. thousand separators) when importing result values
+    * Organizations can now specify a default lower and upper quantitation limit for each characteristic, which is then automatically applied when PABL or PBQL is reported
+    * Organizations can now specify a default analytical method for each characteristic, which is then automatically applied if none is explicitly included in an import file
+    * Slight import performance speed improvements
 * **2/24/2016 - Version 1.8.1:**
     * Add validation when entering monitoring locations
     * Add ability to set default Sample Fraction when importing using cross-tab templates
