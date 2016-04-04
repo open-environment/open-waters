@@ -638,6 +638,8 @@ namespace OpenEnvironment
             T_WQX_IMPORT_TEMPLATE_DTL ActivityEndDateCol = db_WQX.GetWQX_IMPORT_TEMPLATE_DTL_byFieldMap(TemplateID, "ACT_END_DATE");
             T_WQX_IMPORT_TEMPLATE_DTL ActivityEndTimeCol = db_WQX.GetWQX_IMPORT_TEMPLATE_DTL_byFieldMap(TemplateID, "ACT_TIME_TIME");
             T_WQX_IMPORT_TEMPLATE_DTL ActivityCommentsCol = db_WQX.GetWQX_IMPORT_TEMPLATE_DTL_byFieldMap(TemplateID, "ACT_COMMENTS");
+            T_WQX_IMPORT_TEMPLATE_DTL SampleMethodCol = db_WQX.GetWQX_IMPORT_TEMPLATE_DTL_byFieldMap(TemplateID, "SAMP_COLL_METHOD_IDX");
+            T_WQX_IMPORT_TEMPLATE_DTL SampleEquipmentCol = db_WQX.GetWQX_IMPORT_TEMPLATE_DTL_byFieldMap(TemplateID, "SAMP_COLL_EQUIP");
 
             //***********************************
             //loop through each sample
@@ -712,8 +714,8 @@ namespace OpenEnvironment
                     int TempImportSampID = db_WQX.InsertOrUpdateWQX_IMPORT_TEMP_SAMPLE(null, User.Identity.Name, OrgID, ProjectID, ProjectIDName, MonLocIDXVal, MonLocIDVal, null, ActivityIDVal,
                         ActivityTypeVal, ActivityMediaVal, ActivitySubMediaVal, ActivityStartDateVal, ActivityStartDateVal, null, null, null, null, null, null, null, null, null,
                         GetFieldValue(ActivityCommentsCol, parts),
-                        null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 
-                        null, null, null, null, null, null, null, null, null, null, null, null, null, null,
+                        null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, GetFieldValue(SampleMethodCol, parts).ConvertOrDefault<int?>(), 
+                        null, null, null, GetFieldValue(SampleEquipmentCol, parts), null, null, null, null, null, null, null, null, null, null,
                         (valMsg.Length > 0 ? "F" : "P"), valMsg, false, false);
 
 

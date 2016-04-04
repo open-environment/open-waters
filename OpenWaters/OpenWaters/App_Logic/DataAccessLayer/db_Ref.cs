@@ -1017,6 +1017,23 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
 
 
         //***************** REF_SAMP_COL_METHOD *********************************************
+        public static T_WQX_REF_SAMP_COL_METHOD GetT_WQX_REF_SAMP_COL_METHOD_ByIDX(int? IDX)
+        {
+            using (OpenEnvironmentEntities ctx = new OpenEnvironmentEntities())
+            {
+                try
+                {
+                    return (from a in ctx.T_WQX_REF_SAMP_COL_METHOD
+                            where a.SAMP_COLL_METHOD_IDX == IDX
+                            select a).FirstOrDefault();
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+        }
+
         public static T_WQX_REF_SAMP_COL_METHOD GetT_WQX_REF_SAMP_COL_METHOD_ByIDandContext(string ID, string Context)
         {
             using (OpenEnvironmentEntities ctx = new OpenEnvironmentEntities())

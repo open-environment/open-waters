@@ -3,3 +3,8 @@
 ################################################################################
 
 /OpenWatersSvc/OpenWatersSvc/bin/Release
+/OpenWaters/packages
+/OpenWatersSvc/OpenWatersSvc/obj/x86/Release
+/OpenWaters/OpenWaters/obj
+/OpenWaters/OpenWaters/Properties/PublishProfiles
+/OpenWaters/.vs/config

@@ -12,6 +12,12 @@ ENHANCEMENTS:
   6. When importing using traditional sample template, column headers no longer must be case sensitive.
   7. When importing using traditional sample template, sample preparation date and time can now be stored in separate columns (or combined in a single column)
   8. When importing using traditional sample template, analysis start date and time can now be stored in separate columns (or combined in a single column)
+
+1.9.1 Changes
+--------------
+  1. When importing using cross tab, added ability to specify default Sample Collection Equipment and Collection Method when defining the template
+  2. New validation check when importing samples: if activity type includes "Sample", then Sample Collection Method and Equipments are required
+  3. Improved import template configuration screen: now when specifying hard coded fields, you can select reference data from drop-down instead of typing in.
 */
 
 

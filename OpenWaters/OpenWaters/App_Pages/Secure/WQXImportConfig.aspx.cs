@@ -11,7 +11,6 @@ namespace OpenEnvironment
 {
     public partial class WQXImportConfig : System.Web.UI.Page
     {
-
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -135,7 +134,8 @@ namespace OpenEnvironment
             }
         }
 
-        //******************************* HARD CODE **********************************************
+
+        //******************************* HARD CODE COL ******************************************
         protected void btnHardCodeAdd_Click(object sender, EventArgs e)
         {
             int TemplateID = hdnTemplateID.Value.ConvertOrDefault<int>();
@@ -143,7 +143,7 @@ namespace OpenEnvironment
             if (TemplateID > 0)
             {
                 //get value to insert
-                string HCVal = ddlFieldMapHC.SelectedValue == "ACTIVITY_ID" ? ddlHardActID.SelectedValue : txtHardCodeValue.Text;
+                string HCVal = txtHardCodeValue.Visible ? txtHardCodeValue.Text : (ddlHardActID.Visible ? ddlHardActID.SelectedValue : (ddlHardCodeValue.Visible ? ddlHardCodeValue.SelectedValue : ""));
 
                 int SuccID = db_WQX.InsertOrUpdateWQX_IMPORT_TEMPLATE_DTL(null, TemplateID, 0, ddlFieldMapHC.SelectedValue, HCVal, "", User.Identity.Name, null);
                 if (SuccID > 0)
@@ -152,9 +152,6 @@ namespace OpenEnvironment
                     grdHardCode.DataBind();
 
                     ddlFieldMapHC.SelectedValue = "";
-
-                    if (ddlHardActID != null)
-                        ddlHardActID.SelectedValue = "";
                 }
                 else
                     lblMsg.Text = "Error adding new value.";
@@ -183,8 +180,34 @@ namespace OpenEnvironment
 
         }
 
+        protected void ddlFieldMapHC_OnSelectedIndexChanged(object sender, EventArgs e)
+        {
+            //initialize
+            HC1.Visible = false;
+            HC2.Visible = false;
+            HC3.Visible = false;
+            txtHardCodeValue.Text = "";
+            ddlHardCodeValue.SelectedIndex = -1;
 
+            //make controls visible based on selection
+            if (ddlFieldMapHC.SelectedValue == "ACTIVITY_ID")
+                HC2.Visible = true;
+            else if (ddlFieldMapHC.SelectedValue == "ACT_COMMENTS")
+                HC1.Visible = true;
+            else if (ddlFieldMapHC.SelectedValue == "SAMP_COLL_METHOD_IDX")
+            {
+                HC3.Visible = true;
+                Utils.BindList(ddlHardCodeValue, dsSampColl, "SAMP_COLL_METHOD_IDX", "SAMP_COLL_METHOD_ID");
+            }
+            else
+            {
+                HC3.Visible = true;
+                dsRefData.SelectParameters["tABLE"].DefaultValue = ddlFieldMapHC.SelectedItem.Text;
+                Utils.BindList(ddlHardCodeValue, dsRefData, "VALUE", "VALUE");
+            }
 
-
+            //ensure modal popup is visible after postback
+            MPE_HardCode.Show();
+        }
     }
 }

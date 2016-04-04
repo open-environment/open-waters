@@ -40,6 +40,15 @@ namespace OpenEnvironment {
         protected global::System.Web.UI.WebControls.ObjectDataSource dsChar;
         
         /// <summary>
+        /// dsSampColl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ObjectDataSource dsSampColl;
+        
+        /// <summary>
         /// lblMsg control.
         /// </summary>
         /// <remarks>
@@ -319,6 +328,15 @@ namespace OpenEnvironment {
         protected global::System.Web.UI.WebControls.DropDownList ddlFieldMapHC;
         
         /// <summary>
+        /// HC1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel HC1;
+        
+        /// <summary>
         /// txtHardCodeValue control.
         /// </summary>
         /// <remarks>
@@ -328,6 +346,15 @@ namespace OpenEnvironment {
         protected global::System.Web.UI.WebControls.TextBox txtHardCodeValue;
         
         /// <summary>
+        /// HC2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel HC2;
+        
+        /// <summary>
         /// ddlHardActID control.
         /// </summary>
         /// <remarks>
@@ -335,6 +362,24 @@ namespace OpenEnvironment {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlHardActID;
+        
+        /// <summary>
+        /// HC3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel HC3;
+        
+        /// <summary>
+        /// ddlHardCodeValue control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlHardCodeValue;
         
         /// <summary>
         /// btnHardCodeAdd control.

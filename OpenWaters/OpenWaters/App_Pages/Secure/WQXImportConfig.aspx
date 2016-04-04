@@ -27,9 +27,8 @@
     <script type="text/javascript">
         $(document).ready(function () {
             $(".charRelated").hide();
-            $("#HC1").hide();
-            $("#HC2").hide();
 
+            //change of modal's mapped column dropdown
             $("#ctl00_ctl00_MainContent_BodyContent_ddlFieldMap").change(function (event) {
                 if ($("#ctl00_ctl00_MainContent_BodyContent_ddlFieldMap").val() == "CHAR") {
                     $(".charRelated").show();
@@ -37,17 +36,6 @@
                 else
                 {
                     $(".charRelated").hide();
-                }
-            });
-
-            $("#ctl00_ctl00_MainContent_BodyContent_ddlFieldMapHC").change(function (event) {
-                if ($("#ctl00_ctl00_MainContent_BodyContent_ddlFieldMapHC").val() == "ACTIVITY_ID") {
-                    $("#HC2").show();
-                    $("#HC1").hide();
-                }
-                else {
-                    $("#HC1").show();
-                    $("#HC2").hide();
                 }
             });
 
@@ -65,6 +53,11 @@
         <selectparameters>
             <asp:Parameter DefaultValue="true" Name="ActInd" Type="Boolean" />
             <asp:Parameter DefaultValue="false" Name="onlyUsedInd" Type="Boolean" />
+        </selectparameters>
+    </asp:ObjectDataSource>
+    <asp:ObjectDataSource ID="dsSampColl" runat="server" SelectMethod="GetT_WQX_REF_SAMP_COL_METHOD_ByContext"  TypeName="OpenEnvironment.App_Logic.DataAccessLayer.db_Ref" >
+        <selectparameters>
+            <asp:SessionParameter DefaultValue="" Name="Context" SessionField="OrgID" Type="String" />
         </selectparameters>
     </asp:ObjectDataSource>
 
@@ -207,17 +200,17 @@
                     <asp:ListItem Value="RESULT_STATUS" Text="RESULT_STATUS"></asp:ListItem>
                 </asp:DropDownList>
             </div>
-            <div class="row charRelated" id="divChar1" >
+            <div class="row charRelated">
                 <span class="fldLbl">Characteristic Name:</span>
-                <asp:DropDownList ID="ddlColChar" runat="server" CssClass="fldTxt"  style="width:300px"></asp:DropDownList>
+                <asp:DropDownList ID="ddlColChar" runat="server" CssClass="fldTxt" style="width:300px"></asp:DropDownList>
             </div>
-            <div class="row charRelated" id="divChar2" >
+            <div class="row charRelated">
                 <span class="fldLbl">Characteristic Unit Code:</span>
-                <asp:DropDownList ID="ddlColCharUnit" runat="server" CssClass="fldTxt"  style="width:300px"></asp:DropDownList>
+                <asp:DropDownList ID="ddlColCharUnit" runat="server" CssClass="fldTxt" style="width:300px"></asp:DropDownList>
             </div>
-            <div class="row charRelated" id="divChar3" >
+            <div class="row charRelated">
                 <span class="fldLbl">Sample Fraction:</span>
-                <asp:DropDownList ID="ddlSampFraction" runat="server" CssClass="fldTxt"  style="width:300px"></asp:DropDownList>
+                <asp:DropDownList ID="ddlSampFraction" runat="server" CssClass="fldTxt" style="width:300px"></asp:DropDownList>
             </div>
             <div class="btnRibbon">
                 <asp:Button ID="btnAddColumn" runat="server" Text="Save" CssClass="btn" OnClick="btnAddColumn_Click" />
@@ -231,35 +224,41 @@
     <ajaxToolkit:ModalPopupExtender ID="MPE_HardCode" runat="server" TargetControlID="btnAddHardCode"
         PopupControlID="pnlModalHardCode" CancelControlID="btnCloseHC" BackgroundCssClass="modalBackground" PopupDragHandleControlID="pnlModTtl2">
     </ajaxToolkit:ModalPopupExtender>
-    <asp:Panel ID="pnlModalHardCode" Width="500px" runat="server" CssClass="modalWindow" Style="display: none;" DefaultButton="btnHardCodeAdd">
+    <asp:Panel ID="pnlModalHardCode" Width="700px" runat="server" CssClass="modalWindow" Style="display: none;" DefaultButton="btnHardCodeAdd">
         <div style="padding: 6px; background-color: #FFF; border: 1px solid #98B9DB;">
             <asp:Panel ID="pnlModTtl2" runat="server" CssClass="modalTitle" Style="cursor: move">
                 Add New Hardcoded Column
             </asp:Panel>
             <div class="row" >
                 <span class="fldLbl">Field:</span>
-                <asp:DropDownList ID="ddlFieldMapHC" runat="server" >
+                <asp:DropDownList ID="ddlFieldMapHC" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlFieldMapHC_OnSelectedIndexChanged" >
                     <asp:ListItem Value="" Text=""></asp:ListItem>
-                    <asp:ListItem Value="ACT_COMMENTS" Text="ACT_COMMENTS"></asp:ListItem>
-                    <asp:ListItem Value="ACT_MEDIA" Text="ACT_MEDIA"></asp:ListItem>
-                    <asp:ListItem Value="ACT_SUBMEDIA" Text="ACT_SUBMEDIA"></asp:ListItem>
-                    <asp:ListItem Value="ACT_TYPE" Text="ACT_TYPE"></asp:ListItem>
-                    <asp:ListItem Value="ACTIVITY_ID" Text="ACTIVITY_ID"></asp:ListItem>
-                    <asp:ListItem Value="RESULT_VALUE_TYPE" Text="RESULT_VALUE_TYPE"></asp:ListItem>
-                    <asp:ListItem Value="RESULT_STATUS" Text="RESULT_STATUS"></asp:ListItem>
+                    <asp:ListItem Value="ACTIVITY_ID" Text="Activity ID"></asp:ListItem>
+                    <asp:ListItem Value="ACT_TYPE" Text="ActivityType"></asp:ListItem>
+                    <asp:ListItem Value="ACT_MEDIA" Text="ActivityMedia"></asp:ListItem>
+                    <asp:ListItem Value="ACT_SUBMEDIA" Text="ActivityMediaSubdivision"></asp:ListItem>
+                    <asp:ListItem Value="ACT_COMMENTS" Text="Activity Comments"></asp:ListItem>
+                    <asp:ListItem Value="SAMP_COLL_METHOD_IDX" Text="Sample Collection Method"></asp:ListItem>
+                    <asp:ListItem Value="SAMP_COLL_EQUIP" Text="SampleCollectionEquipment"></asp:ListItem>
+                    <asp:ListItem Value="RESULT_VALUE_TYPE" Text="ResultValueType"></asp:ListItem>
+                    <asp:ListItem Value="RESULT_STATUS" Text="ResultStatus"></asp:ListItem>
                 </asp:DropDownList>
             </div>
-            <div class="row" id="HC1">
+            <asp:Panel runat="server" CssClass="row" ID="HC1" Visible="false">
                 <span class="fldLbl">Hardcoded Value:</span>
                 <asp:TextBox ID="txtHardCodeValue" runat="server"></asp:TextBox>
-            </div>
-            <div class="row" id="HC2">
+            </asp:Panel>
+            <asp:Panel runat="server" CssClass="row" ID="HC2" Visible="false">
                 <span class="fldLbl">ID Auto Format:</span>
                 <asp:DropDownList ID="ddlHardActID" runat="server">
                     <asp:ListItem Value="#M_D_T" Text="MonLoc_Date_Time"></asp:ListItem>
                     <asp:ListItem Value="#M_D_TS" Text="MonLoc_Date_Time_Seconds"></asp:ListItem>
                 </asp:DropDownList>
-            </div>
+            </asp:Panel>
+            <asp:Panel runat="server" CssClass="row" ID="HC3" Visible="false">
+                <span class="fldLbl">Hardcoded Value:</span>
+                <asp:DropDownList ID="ddlHardCodeValue" runat="server"></asp:DropDownList>
+            </asp:Panel>
             <div class="btnRibbon">
                 <asp:Button ID="btnHardCodeAdd" runat="server" Text="Save" CssClass="btn" OnClick="btnHardCodeAdd_Click" />
                 <asp:Button ID="btnCloseHC" runat="server" Text="Cancel" CssClass="btn" />

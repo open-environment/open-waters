@@ -2584,7 +2584,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
                         a.PROJECT_ID = pROJECT_ID.Trim().SubStringPlus(0, 35);
 
                         T_WQX_PROJECT ptemp = db_WQX.GetWQX_PROJECT_ByIDString(pROJECT_ID, oRG_ID);
-                        if (ptemp == null) { sTATUS_CD = "F"; sTATUS_DESC += "Project ID does not exist. Import Projects first."; }
+                        if (ptemp == null) { sTATUS_CD = "F"; sTATUS_DESC += "Project ID does not exist. Create project first."; }
                         else { a.PROJECT_IDX = ptemp.PROJECT_IDX; }
                     }
 
@@ -2602,16 +2602,17 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
                     }
 
 
-                    //ACTIVITY HANDLING
+                    //ACTIVITY ID HANDLING
                     if (aCTIVITY_IDX == null && aCTIVITY_ID == null) { sTATUS_CD = "F"; sTATUS_DESC += "Activity ID must be provided. "; }
                     if (aCTIVITY_IDX != null) a.ACTIVITY_IDX = aCTIVITY_IDX;
                     if (!string.IsNullOrEmpty(aCTIVITY_ID)) a.ACTIVITY_ID = aCTIVITY_ID.Trim().SubStringPlus(0, 35);
 
 
+                    //ACTIVITY TYPE HANDLING
                     if (!string.IsNullOrEmpty(aCT_TYPE))
                     {
                         a.ACT_TYPE = aCT_TYPE.SubStringPlus(0, 70) ?? "";
-                        if (db_Ref.GetT_WQX_REF_DATA_ByKey("ActivityType", aCT_TYPE.Trim()) == false) { sTATUS_CD = "F"; sTATUS_DESC += "Activity Type not valid. ";  }                        
+                        if (db_Ref.GetT_WQX_REF_DATA_ByKey("ActivityType", aCT_TYPE.Trim()) == false) { sTATUS_CD = "F"; sTATUS_DESC += "Activity Type not valid. "; }
                     }
                     else
                     { a.ACT_TYPE = "";  sTATUS_CD = "F"; sTATUS_DESC += "Activity Type is required."; }
@@ -2823,7 +2824,18 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
                     }
 
                     if (sAMP_COLL_METHOD_IDX != null)
+                    {
                         a.SAMP_COLL_METHOD_IDX = sAMP_COLL_METHOD_IDX;
+
+                        //if IDX is populated but ID/Name/Ctx aren't then grab them
+                        T_WQX_REF_SAMP_COL_METHOD scm = db_Ref.GetT_WQX_REF_SAMP_COL_METHOD_ByIDX(a.SAMP_COLL_METHOD_IDX);
+                        if (scm != null)
+                        {
+                            a.SAMP_COLL_METHOD_ID = scm.SAMP_COLL_METHOD_ID;
+                            a.SAMP_COLL_METHOD_NAME = scm.SAMP_COLL_METHOD_NAME;
+                            a.SAMP_COLL_METHOD_CTX = scm.SAMP_COLL_METHOD_CTX;                           
+                        }
+                    }
                     else
                     {
                         //set context to org id if none is provided 
@@ -2859,11 +2871,22 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
                         }
                     }
 
+                    if (a.SAMP_COLL_METHOD_IDX == null && a.ACT_TYPE.ToUpper().Contains("SAMPLE"))
+                    { sTATUS_CD = "F"; sTATUS_DESC += "Sample Collection Method is required when Activity Type contains the term -Sample-. "; }
+
+
                     if (!string.IsNullOrEmpty(sAMP_COLL_EQUIP))
                     {
                         a.SAMP_COLL_EQUIP = sAMP_COLL_EQUIP.Trim().SubStringPlus(0, 40);
                         if (db_Ref.GetT_WQX_REF_DATA_ByKey("SampleCollectionEquipment", sAMP_COLL_EQUIP.Trim()) == false) { sTATUS_CD = "F"; sTATUS_DESC += "Sample Collection Equipment not valid. "; }
                     }
+                    else
+                    {
+                        //special validation requiring sampling collection equipment if activity type contains "Sample"
+                        if (a.ACT_TYPE.ToUpper().Contains("SAMPLE"))
+                        { sTATUS_CD = "F"; sTATUS_DESC += "Sample Collection Equipment is required when Activity Type contains the term -Sample-. "; }
+                    }
+
 
                     if (!string.IsNullOrEmpty(sAMP_COLL_EQUIP_COMMENT))
                     {
