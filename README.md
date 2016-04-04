@@ -47,6 +47,10 @@ Open Waters is web-based water quality data management software that helps peopl
     * Organizations can now specify a default lower and upper quantitation limit for each characteristic, which is then automatically applied when PABL or PBQL is reported
     * Organizations can now specify a default analytical method for each characteristic, which is then automatically applied if none is explicitly included in an import file
     * Slight import performance speed improvements
+    * --1.9.1--
+    * When importing using cross tab, added ability to specify default Sample Collection Equipment and Collection Method
+    * New validation check when importing samples: if activity type includes "Sample", then Sample Collection Method and Equipments are required
+    * Improved import template configuration screen: now when specifying hard coded fields, you can select reference data from drop-down instead of typing in
 * **2/24/2016 - Version 1.8.1:**
     * Add validation when entering monitoring locations
     * Add ability to set default Sample Fraction when importing using cross-tab templates
