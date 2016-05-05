@@ -18,8 +18,26 @@ ENHANCEMENTS:
   1. When importing using cross tab, added ability to specify default Sample Collection Equipment and Collection Method when defining the template
   2. New validation check when importing samples: if activity type includes "Sample", then Sample Collection Method and Equipments are required
   3. Improved import template configuration screen: now when specifying hard coded fields, you can select reference data from drop-down instead of typing in.
+
+1.9.2 Changes
+--------------
+  1. Updated Terms and Conditions
+  2. Added Description field to Admin --> Global Settings page 
+  3. Three new global settings: Hosting Organization Name, Registration Message, and Notify Register 
+  4. Added ability to display custom message on registration page
+  5. Added an option to have the site administrator get automatically emailed any time a new user registers an account
+  6. Moved 3rd party javascript dependency (list.js) to local resource
+  7. Added a message informing new users to contact STORET helpdesk if WQX organization ID cannot be found in list
 */
 
 
   ALTER TABLE T_WQX_REF_CHAR_ORG ADD DEFAULT_LOWER_QUANT_LIMIT varchar(12) NULL;
   ALTER TABLE T_WQX_REF_CHAR_ORG ADD DEFAULT_UPPER_QUANT_LIMIT varchar(12) NULL;
+
+
+  --1.9.2
+  INSERT INTO T_OE_APP_SETTINGS ([SETTING_NAME],[SETTING_VALUE],[SETTING_DESC],[MODIFY_USERID],[MODIFY_DT]) VALUES ('Hosting Org','Open Environment Software','The name of the organization hosting this installation of Open Waters. This is used on the Terms and Conditions.','SYSTEM',GetDate());
+--  INSERT INTO T_OE_APP_SETTINGS ([SETTING_NAME],[SETTING_VALUE],[SETTING_DESC],[MODIFY_USERID],[MODIFY_DT]) VALUES ('Signup Message','If you are authorized to collect and submit WQX data, you can register for a FREE Open Waters account and submit up to 100 samples per year. ','An optional message that can be displayed on the account registration page.','SYSTEM',GetDate());
+  INSERT INTO T_OE_APP_SETTINGS ([SETTING_NAME],[SETTING_VALUE],[SETTING_DESC],[MODIFY_USERID],[MODIFY_DT]) VALUES ('Signup Message','','An optional message that can be displayed on the account registration page.','SYSTEM',GetDate());
+  INSERT INTO T_OE_APP_SETTINGS ([SETTING_NAME],[SETTING_VALUE],[SETTING_DESC],[MODIFY_USERID],[MODIFY_DT]) VALUES ('Notify Register','Y','When set to Y Open Waters will send a notification email to the site administrator any time a new user registers an account.','SYSTEM',GetDate());
+  

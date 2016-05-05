@@ -342,7 +342,7 @@ END
 
 GO
 
-CREATE PROCEDURE GenWQXXML_Single
+ALTER PROCEDURE GenWQXXML_Single
   @TypeText varchar(4),
   @RecordIDX int
 AS

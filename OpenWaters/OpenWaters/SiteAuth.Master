@@ -71,7 +71,9 @@
     </div>
     <div class="footer">
         Copyright ©2012-2016 open-environment.org |  
-        <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/App_Pages/Public/License.aspx" Text="License"></asp:HyperLink>
+        <asp:HyperLink runat="server" NavigateUrl="~/App_Pages/Public/License.aspx" Text="License"></asp:HyperLink> | 
+        <asp:HyperLink runat="server" NavigateUrl="~/App_Pages/Public/Terms.aspx" Target="_blank" Text="Terms and Conditions"></asp:HyperLink>
+
     </div>
     </form>
 </body>

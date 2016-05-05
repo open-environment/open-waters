@@ -51,7 +51,7 @@ namespace OpenEnvironment
 
         protected void btnAdd_Click(object sender, EventArgs e)
         {
-
+            lblMsg.Text = "If your organization is not found here, please contact EPA's STORET Team at 800-424-9067 to request a WQX Organization ID";
         }
 
         protected void btnConfirm_Click(object sender, EventArgs e)

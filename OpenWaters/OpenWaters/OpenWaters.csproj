@@ -168,6 +168,7 @@
     <Content Include="Scripts\chosen.css" />
     <Content Include="Scripts\chosen.jquery.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <Content Include="Scripts\list.min.js" />
     <Content Include="Styles\Site.css" />
     <Content Include="Default.aspx" />
     <Content Include="Global.asax" />

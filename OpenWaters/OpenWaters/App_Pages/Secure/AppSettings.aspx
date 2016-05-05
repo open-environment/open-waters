@@ -17,6 +17,7 @@
         <Columns>
             <asp:BoundField DataField="SETTING_IDX" HeaderText="ID" SortExpression="SETTING_IDX" />
             <asp:BoundField DataField="SETTING_NAME" HeaderText="Setting Name" SortExpression="SETTING_NAME" />
+            <asp:BoundField DataField="SETTING_DESC" HeaderText="Description" SortExpression="SETTING_DESC" />
             <asp:BoundField DataField="SETTING_VALUE" HeaderText="Setting Value" SortExpression="SETTING_VALUE" />
         </Columns>
     </asp:GridView>

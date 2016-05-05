@@ -85,6 +85,10 @@ INSERT INTO T_OE_APP_SETTINGS ([SETTING_NAME],[SETTING_VALUE],[SETTING_DESC],[MO
 INSERT INTO T_OE_APP_SETTINGS ([SETTING_NAME],[SETTING_VALUE],[SETTING_DESC],[MODIFY_USERID],[MODIFY_DT]) VALUES ('Beta Invite Code','','Beta invite code.','SYSTEM',GetDate());
 INSERT INTO T_OE_APP_SETTINGS ([SETTING_NAME],[SETTING_VALUE],[SETTING_DESC],[MODIFY_USERID],[MODIFY_DT]) VALUES ('Task App Path','C:\OpenWatersSvc','Define the path to the windows service.','SYSTEM',GetDate());
 
+INSERT INTO T_OE_APP_SETTINGS ([SETTING_NAME],[SETTING_VALUE],[SETTING_DESC],[MODIFY_USERID],[MODIFY_DT]) VALUES ('Hosting Org','Open Environment Software','The name of the organization hosting this installation of Open Waters. This is used on the Terms and Conditions.','SYSTEM',GetDate());
+INSERT INTO T_OE_APP_SETTINGS ([SETTING_NAME],[SETTING_VALUE],[SETTING_DESC],[MODIFY_USERID],[MODIFY_DT]) VALUES ('Signup Message','','An optional message that can be displayed on the account registration page.','SYSTEM',GetDate());
+INSERT INTO T_OE_APP_SETTINGS ([SETTING_NAME],[SETTING_VALUE],[SETTING_DESC],[MODIFY_USERID],[MODIFY_DT]) VALUES ('Notify Register','Y','When set to Y Open Waters will send a notification email to the site administrator any time a new user registers an account.','SYSTEM',GetDate());
+
 	 
 GO
 

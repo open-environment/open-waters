@@ -17,6 +17,8 @@ namespace OpenEnvironment.Account
             //only require Beta invite code if hosted at open waters
             if (db_Ref.GetT_OE_APP_SETTING("Beta Program") == "Y")
                 pnlBeta.Visible = true;
+
+            lblSignupMsg.Text = db_Ref.GetT_OE_APP_SETTING("Signup Message");
         }
 
         protected void btnBack_Click(object sender, EventArgs e)

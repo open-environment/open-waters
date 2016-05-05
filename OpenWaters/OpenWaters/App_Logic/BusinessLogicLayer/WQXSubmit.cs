@@ -130,8 +130,7 @@ namespace OpenEnvironment.App_Logic.BusinessLogicLayer
                         UpdateRecordStatus(typeText, RecordIDX, "Y");
                         db_Ref.InsertUpdateWQX_TRANSACTION_LOG(null, typeText, RecordIDX, "I", null, null, subStatus.transactionId, status, orgID);
                     }
-
-                    if (status == "Failed")
+                    else if (status == "Failed")
                     {
                         UpdateRecordStatus(typeText, RecordIDX, "N");
 

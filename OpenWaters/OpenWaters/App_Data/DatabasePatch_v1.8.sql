@@ -28,7 +28,7 @@ CREATE TABLE [dbo].[T_WQX_IMPORT_TRANSLATE](
 
 GO
 
-CREATE PROCEDURE [dbo].[ImportActivityFromTemp]
+ALTER PROCEDURE [dbo].[ImportActivityFromTemp]
   @UserID varchar(25),
   @WQXInd varchar(1),
   @ActivityReplaceInd varchar(1)

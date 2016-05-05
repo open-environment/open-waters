@@ -5,6 +5,7 @@ using System.Web.Security;
 using OpenEnvironment.App_Logic.BusinessLogicLayer;
 using OpenEnvironment.App_Logic.DataAccessLayer;
 using System.Linq;
+using System.Collections.Generic;
 
 namespace OpenEnvironment.Account
 {
@@ -160,6 +161,16 @@ namespace OpenEnvironment.Account
                     {
                         status = MembershipCreateStatus.InvalidEmail;
                         db_Accounts.DeleteT_OE_USERS(createUser);
+                    }
+
+                    //if enabled, send email to admin notifying of account creation
+                    if (db_Ref.GetT_OE_APP_SETTING("Notify Register") == "Y")
+                    {
+                        T_OE_USERS adm = db_Accounts.GetT_OE_USERSInRole(2).FirstOrDefault();
+                        if (adm != null)
+                        {
+                            Utils.SendEmail(null, adm.EMAIL.Split(';').ToList(), null, null, "Notification: Open Waters Account", "An Open Waters account has just been created by " + username + " (" + email + ")", null);
+                        }
                     }
 
                     return new MembershipUser("CustMembershipProvider", username, createUser, email, passwordQuestion, null, isApproved, false, System.DateTime.Now, System.DateTime.Now, System.DateTime.Now, System.DateTime.Now, System.DateTime.Now);

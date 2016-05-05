@@ -14,41 +14,52 @@
             Use the form below to create a new account.
         </p>
 
-        <div class="row">
-            <span class="fldLbl">User ID</span>
-            <asp:TextBox ID="txtUserID" runat="server" MaxLength="25" Width="200px" CssClass="fldTxt" ></asp:TextBox>
-        </div>
-        <div class="row">
-            <span class="fldLbl">First Name</span>
-            <asp:TextBox ID="txtFName" runat="server" CssClass="fldTxt" Width="200px" MaxLength="40"></asp:TextBox>
-        </div>
-        <div class="row">
-            <span class="fldLbl" >Last Name</span>
-            <asp:TextBox ID="txtLName" runat="server" CssClass="fldTxt" Width="200px" MaxLength="40"></asp:TextBox>
-        </div>
-        <div class="row">
-            <span class="fldLbl">Email</span>
-            <asp:TextBox ID="txtEmail" runat="server" CssClass="fldTxt" Width="200px"  MaxLength="150"></asp:TextBox>
-        </div>
-        <div class="row">
-            <span class="fldLbl">Phone</span>
-            <asp:TextBox ID="txtPhone" runat="server" CssClass="fldTxt" Width="100px" MaxLength="12"></asp:TextBox>
-            <span class="fldLbl" style="width:10px" ></span>
-            <span class="fldLbl" style="width:75px" >Extention</span>
-            <asp:TextBox ID="txtPhoneExt" runat="server" CssClass="fldTxt"  Width="50px" MaxLength="4"></asp:TextBox>
-        </div>
-        <asp:Panel ID="pnlBeta" runat="server"  Visible="false" CssClass="row">
-            <span class="fldLbl">Beta Invite Code</span>
-            <asp:TextBox ID="txtBetaKey" runat="server" CssClass="fldTxt" Width="200px"  MaxLength="10"></asp:TextBox>
-        </asp:Panel>
-        <br />
-        <div class="smallnote row">
-            By signing up for Open Waters, you agree to the <a href="../App_Pages/Public/Terms.aspx" target="_blank">Terms of Service</a>.
-        </div>
-        <div class="btnRibbon">
-            <asp:Button ID="btnBack" runat="server" CssClass="btn" OnClick="btnBack_Click" Text="Go Back" />
-            <asp:Button ID="btnSave" runat="server" CssClass="btn" OnClick="btnSave_Click" Text="Save" />
-        </div>
+        <table>
+            <tr >
+                <td style="width:50%; vertical-align:top">
+                    <div class="row">
+                        <span class="fldLbl">User ID</span>
+                        <asp:TextBox ID="txtUserID" runat="server" MaxLength="25" Width="225px" CssClass="fldTxt" ></asp:TextBox>
+                    </div>
+                    <div class="row">
+                        <span class="fldLbl">First Name</span>
+                        <asp:TextBox ID="txtFName" runat="server" CssClass="fldTxt" Width="225px" MaxLength="40"></asp:TextBox>
+                    </div>
+                    <div class="row">
+                        <span class="fldLbl" >Last Name</span>
+                        <asp:TextBox ID="txtLName" runat="server" CssClass="fldTxt" Width="225px" MaxLength="40"></asp:TextBox>
+                    </div>
+                    <div class="row">
+                        <span class="fldLbl">Email</span>
+                        <asp:TextBox ID="txtEmail" runat="server" CssClass="fldTxt" Width="225px"  MaxLength="150"></asp:TextBox>
+                    </div>
+                    <div class="row">
+                        <span class="fldLbl">Phone</span>
+                        <asp:TextBox ID="txtPhone" runat="server" CssClass="fldTxt" Width="90px" MaxLength="12"></asp:TextBox>
+                        <span class="fldLbl" style="width:10px" ></span>
+                        <span class="fldLbl" style="width:75px" >Extention</span>
+                        <asp:TextBox ID="txtPhoneExt" runat="server" CssClass="fldTxt"  Width="50px" MaxLength="4"></asp:TextBox>
+                    </div>
+                    <asp:Panel ID="pnlBeta" runat="server"  Visible="false" CssClass="row">
+                        <span class="fldLbl">Beta Invite Code</span>
+                        <asp:TextBox ID="txtBetaKey" runat="server" CssClass="fldTxt" Width="225px"  MaxLength="10"></asp:TextBox>
+                    </asp:Panel>
+                    <br />
+                    <div class="smallnote row">
+                        By signing up for Open Waters, you agree to the <a href="../App_Pages/Public/Terms.aspx" target="_blank">Terms of Service</a>.
+                    </div>
+                </td>
+                <td style="width:50%; vertical-align:top">
+                    <asp:Label ID="lblSignupMsg" runat="server" Text="" style="color:#2e5c0e; font-size:large; "></asp:Label>
+                </td>
+            </tr>
+
+        </table>
+                    <div class="btnRibbon">
+                        <asp:Button ID="btnBack" runat="server" CssClass="btn" OnClick="btnBack_Click" Text="Go Back" />
+                        <asp:Button ID="btnSave" runat="server" CssClass="btn" OnClick="btnSave_Click" Text="Save" />
+                    </div>
+
     </asp:Panel>
     <asp:Panel ID="pnl2" runat="server" Visible="false" >
         <div class="row">
