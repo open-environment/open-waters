@@ -4,7 +4,7 @@
 Open Waters is web-based water quality data management software that helps people track monitoring locations, projects, samples, and results. Open Waters is intended for Tribal and State water quality data managers who collect and manage water quality data, and have the need to submit this data to EPA's WQX program. Open Waters is unique in that people can manage their data locally, but submission to EPA is completely automated and handled behind-the-scenes, thus eliminating the burden of separate data submission to EPA. This makes it ideal for agencies who would rather focus their time and energy on data collection and analysis. Plus, Open Waters is completely free and open source. Open Waters has been in use since 2012 and is actively used by several agencies.
 
 ## File Downloads
-* [**Full Installation Package - Version 1.9**](http://www.open-environment.org/downloads/OpenWatersFullInstall_v1.9.zip)
+* [**Full Installation Package - Version 1.9.2**](http://www.open-environment.org/downloads/OpenWatersFullInstall_v1.9.2.zip)
 * [**Patch Installation Package - Version 1.9**](http://www.open-environment.org/downloads/OpenWatersPatchOnly_v1.9.zip) (only use if upgrading from version v1.8 to v1.9x)
 * [**User's Guide / Installation Guide**](https://github.com/open-environment/open-waters/raw/master/OpenWaters/OpenWaters/App_Docs/UsersGuide.docx)
 
@@ -37,6 +37,12 @@ Open Waters is web-based water quality data management software that helps peopl
 
 
 ## Change Log
+* **5/5/2016 - Version 1.9.2:**
+    * Updated Terms and Conditions
+    * Added Description field to Admin --> Global Settings page
+    * Three new global settings: Hosting Organization Name, Registration Message, and Notify Register
+    * Added an option to have the site administrator get automatically emailed any time a new user registers an account
+    * Added an option to display custom message on registration page
 * **4/3/2016 - Version 1.9.1:**
     * When importing using cross tab, added ability to specify default Sample Collection Equipment and Collection Method
     * New validation check when importing samples: if activity type includes "Sample", then Sample Collection Method and Equipments are required
