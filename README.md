@@ -37,6 +37,10 @@ Open Waters is web-based water quality data management software that helps peopl
 
 
 ## Change Log
+* **4/3/2016 - Version 1.9.1:**
+    * When importing using cross tab, added ability to specify default Sample Collection Equipment and Collection Method
+    * New validation check when importing samples: if activity type includes "Sample", then Sample Collection Method and Equipments are required
+    * Improved import template configuration screen: now when specifying hard coded fields, you can select reference data from drop-down instead of typing in
 * **3/25/2016 - Version 1.9:**
     * When importing using cross tab, now only validates a result if a result value is reported
     * When importing using cross tab, warn if activity ID already exists
