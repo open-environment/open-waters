@@ -1,4 +1,4 @@
-# Open Waters
+# Open Waters: Water Quality Data Management System
 
 ## What is Open Waters?
 Open Waters is web-based water quality data management software that helps people track monitoring locations, projects, samples, and results. Open Waters is intended for Tribal and State water quality data managers who collect and manage water quality data, and have the need to submit this data to EPA's WQX program. Open Waters is unique in that people can manage their data locally, but submission to EPA is completely automated and handled behind-the-scenes, thus eliminating the burden of separate data submission to EPA. This makes it ideal for agencies who would rather focus their time and energy on data collection and analysis. Plus, Open Waters is completely free and open source. Open Waters has been in use since 2012 and is actively used by several agencies.
@@ -37,6 +37,8 @@ Open Waters is web-based water quality data management software that helps peopl
 
 
 ## Change Log
+* **6/2/2016 - Version 1.9.3:**
+    * Fixed a data validation error when submitting results labeled PBQL
 * **5/5/2016 - Version 1.9.2:**
     * Updated Terms and Conditions
     * Added Description field to Admin --> Global Settings page
