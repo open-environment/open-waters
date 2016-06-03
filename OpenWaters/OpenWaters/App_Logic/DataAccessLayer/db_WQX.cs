@@ -3456,40 +3456,32 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
 
                     if (!string.IsNullOrEmpty(lOWER_QUANT_LIMIT))
                         a.LOWER_QUANT_LIMIT = lOWER_QUANT_LIMIT.Trim().SubStringPlus(0, 12);
-                    else
+
+                    //if result is PBQL, but no value has been reported for MDL, LRL, PQL, or Lower Quant Limit, then grab from Org Char default
+                    if (rESULT_DETECT_CONDITION == "Present Below Quantification Limit" && string.IsNullOrEmpty(mETHOD_DETECTION_LEVEL) && string.IsNullOrEmpty(lAB_REPORTING_LEVEL) && string.IsNullOrEmpty(pQL) && string.IsNullOrEmpty(lOWER_QUANT_LIMIT))
                     {
-                        //populate default PBQL
-                        if (rESULT_DETECT_CONDITION == "Present Below Quantification Limit")
-                        {
-                            T_WQX_REF_CHAR_ORG rco = db_Ref.GetT_WQX_REF_CHAR_ORGByName(orgID, cHAR_NAME);
-                            if (rco != null)
-                                a.LOWER_QUANT_LIMIT = rco.DEFAULT_LOWER_QUANT_LIMIT;
+                        T_WQX_REF_CHAR_ORG rco = db_Ref.GetT_WQX_REF_CHAR_ORGByName(orgID, cHAR_NAME);
+                        if (rco != null)
+                            a.LOWER_QUANT_LIMIT = rco.DEFAULT_LOWER_QUANT_LIMIT;
 
-                            //if still null, then error
-                            if (a.LOWER_QUANT_LIMIT == null)
-                                { sTATUS_CD = "F"; sTATUS_DESC += "No Lower Quantification limit reported. "; }
-
-
-                        }
+                        //if still null, then error
+                        if (a.LOWER_QUANT_LIMIT == null)
+                            { sTATUS_CD = "F"; sTATUS_DESC += "No Lower Quantification limit reported or default value specified. "; }
                     }
 
                     if (!string.IsNullOrEmpty(uPPER_QUANT_LIMIT))
                         a.UPPER_QUANT_LIMIT = uPPER_QUANT_LIMIT.Trim().SubStringPlus(0, 12);
-                    else
+
+                    //if result is PAQL, but no value has been reported for MDL, LRL, PQL, or Lower Quant Limit, then grab from Org Char default
+                    if (rESULT_DETECT_CONDITION == "Present Above Quantification Limit" && string.IsNullOrEmpty(mETHOD_DETECTION_LEVEL) && string.IsNullOrEmpty(lAB_REPORTING_LEVEL) && string.IsNullOrEmpty(pQL) && string.IsNullOrEmpty(uPPER_QUANT_LIMIT))
                     {
-                        //populate default PAQL
-                        if (rESULT_DETECT_CONDITION == "Present Above Quantification Limit")
-                        {
-                            T_WQX_REF_CHAR_ORG rco = db_Ref.GetT_WQX_REF_CHAR_ORGByName(orgID, cHAR_NAME);
-                            if (rco != null)
-                                a.UPPER_QUANT_LIMIT = rco.DEFAULT_UPPER_QUANT_LIMIT;
+                        T_WQX_REF_CHAR_ORG rco = db_Ref.GetT_WQX_REF_CHAR_ORGByName(orgID, cHAR_NAME);
+                        if (rco != null)
+                            a.UPPER_QUANT_LIMIT = rco.DEFAULT_UPPER_QUANT_LIMIT;
 
-                            //if still null, then error
-                            if (a.UPPER_QUANT_LIMIT == null)
-                            { sTATUS_CD = "F"; sTATUS_DESC += "No Upper Quantification limit reported. "; }
-
-
-                        }
+                        //if still null, then error
+                        if (a.UPPER_QUANT_LIMIT == null)
+                        { sTATUS_CD = "F"; sTATUS_DESC += "No Upper Quantification limit reported. "; }
                     }
 
                     if (!string.IsNullOrEmpty(dETECTION_LIMIT_UNIT))

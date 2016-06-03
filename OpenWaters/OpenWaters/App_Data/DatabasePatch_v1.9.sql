@@ -24,10 +24,15 @@ ENHANCEMENTS:
   1. Updated Terms and Conditions
   2. Added Description field to Admin --> Global Settings page 
   3. Three new global settings: Hosting Organization Name, Registration Message, and Notify Register 
-  4. Added ability to display custom message on registration page
+  4. Added an option to display custom message on registration page
   5. Added an option to have the site administrator get automatically emailed any time a new user registers an account
   6. Moved 3rd party javascript dependency (list.js) to local resource
   7. Added a message informing new users to contact STORET helpdesk if WQX organization ID cannot be found in list
+
+1.9.3 Changes
+--------------
+  1. Fix error in data validation when PAQL or PBQL reported along with PQL.
+
 */
 
 
