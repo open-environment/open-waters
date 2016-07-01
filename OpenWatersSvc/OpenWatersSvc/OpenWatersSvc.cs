@@ -81,7 +81,7 @@ namespace OpenWatersSvc
             }
             catch 
             {
-                EventLog.WriteEntry("Failed");
+                EventLog.WriteEntry("Failed - Unspecified error.");
             }
         }
 

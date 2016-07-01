@@ -91,7 +91,6 @@ namespace OpenEnvironment
 
         protected void btnRefData_Click(object sender, EventArgs e)
         {
-            lblMsg.Text = "";
             int SuccID = 1;
 
             //******* ORGANIZATION LEVEL *********************
@@ -100,8 +99,10 @@ namespace OpenEnvironment
 
             //if it fails on the first, it will likely fail for all - so exit code
             if (SuccID == 0)
+            {
+                lblMsg.Text = "Data retrieval failed";
                 return;
-
+            }
 
             //******* PROJECT LEVEL *********************
             if (ddlRefTable.SelectedValue == "ALL" || ddlRefTable.SelectedValue == "SamplingDesignType")
@@ -205,26 +206,6 @@ namespace OpenEnvironment
             DisplayDates();
 
             lblMsg.Text = "Data Retrieval Complete.";
-
-            ////****here's an alternative way using the EN compatible web services (kept here for possible future reference)
-            ////get CDX username, password, and CDX destination URL
-            //CDXCredentials cred = WQXSubmit.GetCDXSubmitCredentials2(Session["OrgID"].ToString());
-
-            ////*******AUTHENTICATE***********************************
-            //string token = WQXSubmit.AuthHelper(cred.userID, cred.credential, "Password", "default", cred.NodeURL);
-
-            ////*******QUERY*****************************************
-            //if (token.Length > 0)
-            //{
-            //    List<net.epacdxnode.test.ParameterType> pars = new List<net.epacdxnode.test.ParameterType>();
-
-            //    net.epacdxnode.test.ParameterType p = new net.epacdxnode.test.ParameterType();
-            //    p.parameterName = "elementName";
-            //    p.Value = "ActivityType";
-            //    pars.Add(p);
-
-            //    net.epacdxnode.test.ResultSetType r1 = WQXSubmit.QueryHelper(cred.NodeURL, token, "WQX", "WQX.GetDomainValueByElementName_v2.1", null, null, pars);
-            //}
         }
 
         protected int GetAndStoreRefTable(string tableName, string ValueString, string TextString, string CustomParseName)
@@ -268,9 +249,8 @@ namespace OpenEnvironment
                     }
                 }
 
-
                 // ***************** CUSTOM PARSING for CHARACTERSTIC **************************************
-                if (CustomParseName == "Characteristic")
+                else if (CustomParseName == "Characteristic")
                 {
                     var lv1s = from lv1 in xdoc.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}WQXElementRow")
                                select new
@@ -287,7 +267,7 @@ namespace OpenEnvironment
                 }
 
                 // ***************** CUSTOM PARSING for ANALYTICAL METHOD **************************************
-                if (CustomParseName == "AnalMethod")
+                else if (CustomParseName == "AnalMethod")
                 {
                     var lv1s = from lv1 in xdoc.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}WQXElementRow")
                                select new
@@ -305,7 +285,7 @@ namespace OpenEnvironment
                 }
 
                 // ***************** CUSTOM PARSING for COUNTY **************************************
-                if (CustomParseName == "County")
+                else if (CustomParseName == "County")
                 {
                     var lv1s = from lv1 in xdoc.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}WQXElementRow")
                                select new
@@ -322,7 +302,6 @@ namespace OpenEnvironment
                     }
                 }
 
-
                 return 1;
             }
             catch (Exception e)
@@ -330,9 +309,6 @@ namespace OpenEnvironment
                 lblMsg.Text = e.Message;
                 return 0;
             }
-
         }
-
-
     }
 }
