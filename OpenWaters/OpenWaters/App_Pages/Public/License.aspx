@@ -12,8 +12,7 @@
     warranty; without even the implied warranty of merchantability or fitness for a 
     particular purpose. See the GNU General Public License for more details. See 
     here for a complete text of the license terms:
-    <a href="http://www.gnu.org/licenses/gpl.txt">
-    http://www.gnu.org/licenses/gpl.txt</a>
+    <a href="http://www.gnu.org/licenses/gpl.txt">http://www.gnu.org/licenses/gpl.txt</a>
 </p>
 <asp:Button ID="btnBack" runat="server" Text="Back" CssClass="btn" />
 
