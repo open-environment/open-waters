@@ -68,7 +68,7 @@
     <StartupObject>OpenWatersSvc.OpenWatersSvc</StartupObject>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="OpenEnvironment, Version=1.9.4.31789, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="OpenEnvironment, Version=1.9.4.35287, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>.\OpenEnvironment.dll</HintPath>
     </Reference>

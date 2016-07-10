@@ -79,11 +79,17 @@ namespace OpenEnvironment.App_Logic.BusinessLogicLayer
             foreach (T_WQX_PROJECT p in ps)
                 WQX_Submit_OneByOne("PROJ", p.PROJECT_IDX, cred.userID, cred.credential, cred.NodeURL, OrgID, p.ACT_IND);
 
-            //Loop through all pending activities and submit one at a time
-            List<T_WQX_ACTIVITY> as1 = db_WQX.GetWQX_ACTIVITY(false, OrgID, null, null, null, null, true, null);
-            foreach (T_WQX_ACTIVITY a in as1)
-                WQX_Submit_OneByOne("ACT", a.ACTIVITY_IDX, cred.userID, cred.credential, cred.NodeURL, OrgID, a.ACT_IND);
-
+            try
+            {
+                //Loop through all pending activities and submit one at a time
+                List<T_WQX_ACTIVITY> as1 = db_WQX.GetWQX_ACTIVITY(false, OrgID, null, null, null, null, true, null);
+                foreach (T_WQX_ACTIVITY a in as1)
+                    WQX_Submit_OneByOne("ACT", a.ACTIVITY_IDX, cred.userID, cred.credential, cred.NodeURL, OrgID, a.ACT_IND);
+            }
+            catch (Exception ex)
+            {
+                db_Ref.InsertT_OE_SYS_LOG("ERROR", "Exception during activity submit: " + ex.Message.SubStringPlus(1,200));
+            }
         }
 
         /// <summary>
@@ -116,16 +122,19 @@ namespace OpenEnvironment.App_Logic.BusinessLogicLayer
                     int i = 0;
                     do
                     {
+                        i += 1;
                         Thread.Sleep(10000);
                         StatusResponseType gsResp = GetStatusHelper(NodeURL, token, subStatus.transactionId);
-                        status = gsResp.status.ToString();
-                        i += 1;
-                        //exit if waiting too long
-                        if (i > 30)
+                        if (gsResp != null)
                         {
-                            UpdateRecordStatus(typeText, RecordIDX, "N");
-                            db_Ref.InsertUpdateWQX_TRANSACTION_LOG(null, typeText, RecordIDX, "I", null, "Timed out while getting status from EPA", subStatus.transactionId, "Failed", orgID);
-                            return;
+                            status = gsResp.status.ToString();
+                            //exit if waiting too long
+                            if (i > 30)
+                            {
+                                UpdateRecordStatus(typeText, RecordIDX, "N");
+                                db_Ref.InsertUpdateWQX_TRANSACTION_LOG(null, typeText, RecordIDX, "I", null, "Timed out while getting status from EPA", subStatus.transactionId, "Failed", orgID);
+                                return;
+                            }
                         }
                     } while (status != "Failed" && status != "Completed");
 
@@ -159,13 +168,15 @@ namespace OpenEnvironment.App_Logic.BusinessLogicLayer
                     DisableWQXForOrg(orgID, "Submission failed for supplied for " + orgID);
                 }
             }
-            catch (SoapException sExept)
+            catch (Exception ex)
             {
-                string execption1;
-                if (sExept.Detail != null)
-                    execption1 = sExept.Detail.InnerText;
-                else
-                    execption1 = sExept.Message;
+                db_Ref.InsertT_OE_SYS_LOG("ERROR", "Exception during activity submitType 2");
+
+                //string execption1;
+                //if (sExept.Detail != null)
+                //    execption1 = sExept.Detail.InnerText;
+                //else
+                //    execption1 = sExept.Message;
             }
 
         }        
