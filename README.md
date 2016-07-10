@@ -39,6 +39,8 @@ Open Waters is web-based water quality data management software that helps peopl
 
 
 ## Change Log
+* **7/9/2016 - Version 1.9.5:**
+    * Streamline WQX submission service for better reliability (less starting/stopping of windows service, and only perform CDX authentication test for organizations with pending data)
 * **6/2/2016 - Version 1.9.3:**
     * Fixed a data validation error when submitting results labeled PBQL
 * **5/5/2016 - Version 1.9.2:**
