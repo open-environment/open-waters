@@ -94,10 +94,10 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Docs\Account\ChangePassword.aspx" />
-    <Content Include="App_Docs\Account\ChangePasswordSuccess.aspx" />
-    <Content Include="App_Docs\Account\Login.aspx" />
-    <Content Include="App_Docs\Account\Register.aspx" />
+    <Content Include="Account\ChangePassword.aspx" />
+    <Content Include="Account\ChangePasswordSuccess.aspx" />
+    <Content Include="Account\Login.aspx" />
+    <Content Include="Account\Register.aspx" />
     <Content Include="App_Data\Create_DB.sql" />
     <Content Include="App_Data\DatabasePatch_v1.3.sql" />
     <Content Include="App_Data\DatabasePatch_v1.5.sql" />
@@ -123,17 +123,17 @@
     <Content Include="PubMap.aspx" />
     <Content Include="App_Pages\Secure\Charting.aspx" />
     <Content Include="App_Pages\Secure\WQXOrgEdit.aspx" />
-    <Content Include="App_Docs\Account\UserEdit.aspx" />
+    <Content Include="Account\UserEdit.aspx" />
     <Content Include="Error.aspx" />
-    <Content Include="App_Docs\Account\ResetPassword.aspx" />
+    <Content Include="Account\ResetPassword.aspx" />
     <Content Include="App_Pages\Secure\Maps.aspx" />
     <Content Include="App_Pages\Secure\WQXImportMonLoc.aspx" />
     <Content Include="App_Pages\Secure\WQXImportSample.aspx" />
     <Content Include="App_Pages\Secure\WQXImportConfig.aspx" />
     <Content Include="App_Pages\Secure\WQXImportProject.aspx" />
     <Content Include="App_Pages\Secure\AdmAdminTools.aspx" />
-    <Content Include="App_Docs\Account\Verify.aspx" />
-    <Content Include="App_Docs\Account\Redirect.aspx" />
+    <Content Include="Account\Verify.aspx" />
+    <Content Include="Account\Redirect.aspx" />
     <Content Include="App_Pages\Public\Terms.aspx" />
     <Content Include="App_Pages\Secure\WQXOrgNew.aspx" />
     <Content Include="App_Pages\Secure\AdmDataSynch.aspx" />
@@ -186,11 +186,11 @@
     <Content Include="App_Pages\Secure\MyAccount.aspx" />
     <Content Include="App_Pages\Secure\AppSettings.aspx" />
     <Content Include="App_Pages\Secure\WQXMonLocEdit.aspx" />
-    <Content Include="App_Docs\Account\UserList.aspx" />
-    <Content Include="App_Docs\Account\RoleList.aspx" />
+    <Content Include="Account\UserList.aspx" />
+    <Content Include="Account\RoleList.aspx" />
     <Content Include="App_Pages\Public\AccessDenied.aspx" />
-    <Content Include="App_Docs\Account\RoleEdit.aspx" />
-    <Content Include="App_Docs\Account\RoleAdd.aspx" />
+    <Content Include="Account\RoleEdit.aspx" />
+    <Content Include="Account\RoleAdd.aspx" />
     <Content Include="App_Pages\Secure\WQXOrg.aspx" />
     <Content Include="App_Pages\Secure\WQXProject.aspx" />
     <Content Include="App_Pages\Secure\WQXActivity.aspx" />
@@ -198,34 +198,34 @@
     <Content Include="App_Pages\Secure\WQXProjectEdit.aspx" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="App_Docs\Account\ChangePassword.aspx.cs">
+    <Compile Include="Account\ChangePassword.aspx.cs">
       <DependentUpon>ChangePassword.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="App_Docs\Account\ChangePassword.aspx.designer.cs">
+    <Compile Include="Account\ChangePassword.aspx.designer.cs">
       <DependentUpon>ChangePassword.aspx</DependentUpon>
     </Compile>
-    <Compile Include="App_Docs\Account\ChangePasswordSuccess.aspx.cs">
+    <Compile Include="Account\ChangePasswordSuccess.aspx.cs">
       <DependentUpon>ChangePasswordSuccess.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="App_Docs\Account\ChangePasswordSuccess.aspx.designer.cs">
+    <Compile Include="Account\ChangePasswordSuccess.aspx.designer.cs">
       <DependentUpon>ChangePasswordSuccess.aspx</DependentUpon>
     </Compile>
-    <Compile Include="App_Docs\Account\CustomMembership.cs" />
-    <Compile Include="App_Docs\Account\CustomRoleProvider.cs" />
-    <Compile Include="App_Docs\Account\Login.aspx.cs">
+    <Compile Include="Account\CustomMembership.cs" />
+    <Compile Include="Account\CustomRoleProvider.cs" />
+    <Compile Include="Account\Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="App_Docs\Account\Login.aspx.designer.cs">
+    <Compile Include="Account\Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
-    <Compile Include="App_Docs\Account\Register.aspx.cs">
+    <Compile Include="Account\Register.aspx.cs">
       <DependentUpon>Register.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="App_Docs\Account\Register.aspx.designer.cs">
+    <Compile Include="Account\Register.aspx.designer.cs">
       <DependentUpon>Register.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Logic\BusinessLogicLayer\Crypto.cs" />
@@ -357,18 +357,18 @@
     <Compile Include="App_Pages\Secure\WQXMonLocEdit.aspx.designer.cs">
       <DependentUpon>WQXMonLocEdit.aspx</DependentUpon>
     </Compile>
-    <Compile Include="App_Docs\Account\UserList.aspx.cs">
+    <Compile Include="Account\UserList.aspx.cs">
       <DependentUpon>UserList.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="App_Docs\Account\UserList.aspx.designer.cs">
+    <Compile Include="Account\UserList.aspx.designer.cs">
       <DependentUpon>UserList.aspx</DependentUpon>
     </Compile>
-    <Compile Include="App_Docs\Account\RoleList.aspx.cs">
+    <Compile Include="Account\RoleList.aspx.cs">
       <DependentUpon>RoleList.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="App_Docs\Account\RoleList.aspx.designer.cs">
+    <Compile Include="Account\RoleList.aspx.designer.cs">
       <DependentUpon>RoleList.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Pages\Public\AccessDenied.aspx.cs">
@@ -378,18 +378,18 @@
     <Compile Include="App_Pages\Public\AccessDenied.aspx.designer.cs">
       <DependentUpon>AccessDenied.aspx</DependentUpon>
     </Compile>
-    <Compile Include="App_Docs\Account\RoleEdit.aspx.cs">
+    <Compile Include="Account\RoleEdit.aspx.cs">
       <DependentUpon>RoleEdit.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="App_Docs\Account\RoleEdit.aspx.designer.cs">
+    <Compile Include="Account\RoleEdit.aspx.designer.cs">
       <DependentUpon>RoleEdit.aspx</DependentUpon>
     </Compile>
-    <Compile Include="App_Docs\Account\RoleAdd.aspx.cs">
+    <Compile Include="Account\RoleAdd.aspx.cs">
       <DependentUpon>RoleAdd.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="App_Docs\Account\RoleAdd.aspx.designer.cs">
+    <Compile Include="Account\RoleAdd.aspx.designer.cs">
       <DependentUpon>RoleAdd.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Pages\Secure\WQXOrg.aspx.cs">
@@ -454,11 +454,11 @@
     <Compile Include="App_Pages\Secure\WQXOrgEdit.aspx.designer.cs">
       <DependentUpon>WQXOrgEdit.aspx</DependentUpon>
     </Compile>
-    <Compile Include="App_Docs\Account\UserEdit.aspx.cs">
+    <Compile Include="Account\UserEdit.aspx.cs">
       <DependentUpon>UserEdit.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="App_Docs\Account\UserEdit.aspx.designer.cs">
+    <Compile Include="Account\UserEdit.aspx.designer.cs">
       <DependentUpon>UserEdit.aspx</DependentUpon>
     </Compile>
     <Compile Include="Error.aspx.cs">
@@ -468,11 +468,11 @@
     <Compile Include="Error.aspx.designer.cs">
       <DependentUpon>Error.aspx</DependentUpon>
     </Compile>
-    <Compile Include="App_Docs\Account\ResetPassword.aspx.cs">
+    <Compile Include="Account\ResetPassword.aspx.cs">
       <DependentUpon>ResetPassword.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="App_Docs\Account\ResetPassword.aspx.designer.cs">
+    <Compile Include="Account\ResetPassword.aspx.designer.cs">
       <DependentUpon>ResetPassword.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Pages\Secure\Maps.aspx.cs">
@@ -517,18 +517,18 @@
     <Compile Include="App_Pages\Secure\AdmAdminTools.aspx.designer.cs">
       <DependentUpon>AdmAdminTools.aspx</DependentUpon>
     </Compile>
-    <Compile Include="App_Docs\Account\Verify.aspx.cs">
+    <Compile Include="Account\Verify.aspx.cs">
       <DependentUpon>Verify.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="App_Docs\Account\Verify.aspx.designer.cs">
+    <Compile Include="Account\Verify.aspx.designer.cs">
       <DependentUpon>Verify.aspx</DependentUpon>
     </Compile>
-    <Compile Include="App_Docs\Account\Redirect.aspx.cs">
+    <Compile Include="Account\Redirect.aspx.cs">
       <DependentUpon>Redirect.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="App_Docs\Account\Redirect.aspx.designer.cs">
+    <Compile Include="Account\Redirect.aspx.designer.cs">
       <DependentUpon>Redirect.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Pages\Public\Terms.aspx.cs">
