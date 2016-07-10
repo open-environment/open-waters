@@ -1,14 +1,9 @@
 ﻿using System;
 using System.Diagnostics;
 using System.ServiceProcess;
-using System.Web.Services.Protocols;
 using System.Timers;
-using System.Data;
-using System.Data.SqlClient;
-using OpenWatersSvc.net.epacdxnode.test;
-using OpenEnvironment;
+using OpenEnvironment.App_Logic.BusinessLogicLayer;
 using OpenEnvironment.App_Logic.DataAccessLayer;
-using System.Collections.Generic;
 
 namespace OpenWatersSvc
 {
@@ -64,7 +59,7 @@ namespace OpenWatersSvc
             try
             { 
                 //Reset the Open Waters service status so it will run again (in case it failed previously)
-                int SuccID = OpenEnvironment.App_Logic.DataAccessLayer.db_Ref.UpdateT_OE_APP_TASKS("WQXSubmit", "STOPPED", null, "TASK");
+                int SuccID = db_Ref.UpdateT_OE_APP_TASKS("WQXSubmit", "STOPPED", null, "TASK");
                 if (SuccID > 0)
                 {
                     //Start the service timer
@@ -90,11 +85,11 @@ namespace OpenWatersSvc
             try
             {
                 //submitting any pending data to EPA
-                OpenEnvironment.App_Logic.BusinessLogicLayer.WQXSubmit.WQX_MasterAllOrgs();
+                WQXSubmit.WQX_MasterAllOrgs();
                 //EventLog.WriteEntry("Submission attempt completed");
 
                 //importing activity data from EPA
-                OpenEnvironment.App_Logic.BusinessLogicLayer.WQXSubmit.ImportActivityMaster();
+                WQXSubmit.ImportActivityMaster();
             }
             catch (Exception ex)
             {

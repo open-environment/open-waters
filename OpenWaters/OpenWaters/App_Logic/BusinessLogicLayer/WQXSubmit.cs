@@ -27,19 +27,6 @@ namespace OpenEnvironment.App_Logic.BusinessLogicLayer
         /// </summary>
         public static void WQX_MasterAllOrgs()
         {
-            //loop through all registered organizations and submit pending for each
-            List<T_WQX_ORGANIZATION> orgs = db_WQX.GetWQX_ORGANIZATIONCanSubmit();
-            foreach (T_WQX_ORGANIZATION org in orgs)
-            {
-                WQX_Master(org.ORG_ID);
-            }
-        }
-
-        /// <summary>
-        /// Scans database for all pending data for the selected organization and submits pending data to EPA one record at a time
-        /// </summary>
-        public static void WQX_Master(string OrgID)
-        {
             T_OE_APP_TASKS t = db_Ref.GetT_OE_APP_TASKS_ByName("WQXSubmit");
             if (t != null)
             {
@@ -48,30 +35,12 @@ namespace OpenEnvironment.App_Logic.BusinessLogicLayer
                     //set status to RUNNING so tasks won't execute simultaneously
                     db_Ref.UpdateT_OE_APP_TASKS("WQXSubmit", "RUNNING", null, "SYSTEM");
 
-                    //get CDX username, password, and CDX destination URL
-                    CDXCredentials cred = GetCDXSubmitCredentials2(OrgID);
-
-                    //make 1 authenticate attempt just to verify. if failed, then exit, send email, and cancel for org
-                    if (AuthHelper(cred.userID, cred.credential, "Password", "default", cred.NodeURL) == "")
+                    //loop through all registered organizations that have pending data to send, and submit pending data for each
+                    List<string> orgs = db_WQX.GetWQX_ORGANIZATION_PendingDataToSubmit();
+                    foreach (string org in orgs)
                     {
-                        DisableWQXForOrg(OrgID, "Login failed for supplied NAAS Username and Password for " + OrgID);
-                        return;  
+                        WQX_Master(org);
                     }
-
-                    //Loop through all pending monitoring locations (including both active and inactive) and submit one at a time
-                    List<T_WQX_MONLOC> ms = db_WQX.GetWQX_MONLOC(false, OrgID, true);
-                    foreach (T_WQX_MONLOC m in ms)
-                        WQX_Submit_OneByOne("MLOC", m.MONLOC_IDX, cred.userID, cred.credential, cred.NodeURL, OrgID, m.ACT_IND);
-
-                    //Loop through all pending projects and submit one at a time
-                    List<T_WQX_PROJECT> ps = db_WQX.GetWQX_PROJECT(false, OrgID, true);
-                    foreach (T_WQX_PROJECT p in ps)
-                        WQX_Submit_OneByOne("PROJ", p.PROJECT_IDX, cred.userID, cred.credential, cred.NodeURL, OrgID, p.ACT_IND);
-
-                    //Loop through all pending activities and submit one at a time
-                    List<T_WQX_ACTIVITY> as1 = db_WQX.GetWQX_ACTIVITY(false, OrgID, null, null, null, null, true, null);
-                    foreach (T_WQX_ACTIVITY a in as1)
-                        WQX_Submit_OneByOne("ACT", a.ACTIVITY_IDX, cred.userID, cred.credential, cred.NodeURL, OrgID, a.ACT_IND);
 
                     //when done, update status back to stopped
                     db_Ref.UpdateT_OE_APP_TASKS("WQXSubmit", "STOPPED", null, "SYSTEM");
@@ -79,6 +48,42 @@ namespace OpenEnvironment.App_Logic.BusinessLogicLayer
             }
             else
                 db_Ref.InsertT_OE_SYS_LOG("ERROR", "WQX Submission task not found");
+
+        }
+
+        /// <summary>
+        /// Scans database for all pending data for the selected organization and submits pending data to EPA one record at a time
+        /// </summary>
+        public static void WQX_Master(string OrgID)
+        {
+            //log start of send
+            db_Ref.InsertT_OE_SYS_LOG("INFO", "Starting WQX submission for " + OrgID);
+
+            //get CDX username, password, and CDX destination URL
+            CDXCredentials cred = GetCDXSubmitCredentials2(OrgID);
+
+            //make 1 authenticate attempt just to verify. if failed, then exit, send email, and cancel for org
+            if (AuthHelper(cred.userID, cred.credential, "Password", "default", cred.NodeURL) == "")
+            {
+                DisableWQXForOrg(OrgID, "Login failed for supplied NAAS Username and Password for " + OrgID);
+                return;  
+            }
+
+            //Loop through all pending monitoring locations (including both active and inactive) and submit one at a time
+            List<T_WQX_MONLOC> ms = db_WQX.GetWQX_MONLOC(false, OrgID, true);
+            foreach (T_WQX_MONLOC m in ms)
+                WQX_Submit_OneByOne("MLOC", m.MONLOC_IDX, cred.userID, cred.credential, cred.NodeURL, OrgID, m.ACT_IND);
+
+            //Loop through all pending projects and submit one at a time
+            List<T_WQX_PROJECT> ps = db_WQX.GetWQX_PROJECT(false, OrgID, true);
+            foreach (T_WQX_PROJECT p in ps)
+                WQX_Submit_OneByOne("PROJ", p.PROJECT_IDX, cred.userID, cred.credential, cred.NodeURL, OrgID, p.ACT_IND);
+
+            //Loop through all pending activities and submit one at a time
+            List<T_WQX_ACTIVITY> as1 = db_WQX.GetWQX_ACTIVITY(false, OrgID, null, null, null, null, true, null);
+            foreach (T_WQX_ACTIVITY a in as1)
+                WQX_Submit_OneByOne("ACT", a.ACTIVITY_IDX, cred.userID, cred.credential, cred.NodeURL, OrgID, a.ACT_IND);
+
         }
 
         /// <summary>

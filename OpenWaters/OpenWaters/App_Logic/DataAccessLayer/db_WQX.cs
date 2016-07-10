@@ -1353,16 +1353,32 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             }
         }
 
-        public static List<T_WQX_ORGANIZATION> GetWQX_ORGANIZATIONCanSubmit()
+        public static List<string> GetWQX_ORGANIZATION_PendingDataToSubmit()
         {
             using (OpenEnvironmentEntities ctx = new OpenEnvironmentEntities())
             {
                 try
                 {
-                    return (from a in ctx.T_WQX_ORGANIZATION
-                            where a.CDX_SUBMIT_IND == true
-                            orderby a.ORG_FORMAL_NAME
-                            select a).ToList();
+                    var x = (from m in ctx.T_WQX_MONLOC
+                             join o in ctx.T_WQX_ORGANIZATION on m.ORG_ID equals o.ORG_ID
+                             where o.CDX_SUBMIT_IND == true
+                             && m.WQX_SUBMIT_STATUS == "U"
+                             && m.WQX_IND == true
+                             select m.ORG_ID).Union
+                             (from a in ctx.T_WQX_ACTIVITY
+                              join o in ctx.T_WQX_ORGANIZATION on a.ORG_ID equals o.ORG_ID
+                              where o.CDX_SUBMIT_IND == true
+                              && a.WQX_SUBMIT_STATUS == "U"
+                              && a.WQX_IND == true
+                              select a.ORG_ID).Union
+                              (from p in ctx.T_WQX_PROJECT
+                               join o in ctx.T_WQX_ORGANIZATION on p.ORG_ID equals o.ORG_ID
+                               where o.CDX_SUBMIT_IND == true
+                               && p.WQX_SUBMIT_STATUS == "U"
+                               && p.WQX_IND == true
+                               select p.ORG_ID);
+
+                    return x.Distinct().ToList();                               
                 }
                 catch (Exception ex)
                 {
