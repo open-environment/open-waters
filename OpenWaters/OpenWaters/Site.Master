@@ -37,7 +37,7 @@
         </div>
     </div>
     <div class="footer">
-        Copyright ©2012-2016 open-environment.org | 
+        Copyright ©2012-2016 Open Environment Software | 
         Version: <asp:Label ID="lblVer" runat="server"></asp:Label> | 
         <asp:HyperLink runat="server" NavigateUrl="~/App_Pages/Public/License.aspx" Text="License"></asp:HyperLink> | 
         <asp:HyperLink runat="server" NavigateUrl="~/App_Pages/Public/Terms.aspx" Target="_blank" Text="Terms and Conditions"></asp:HyperLink>

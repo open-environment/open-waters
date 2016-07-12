@@ -99,8 +99,8 @@
                             CommandArgument='<%# Eval("REF_DATA_IDX") %>' ImageUrl="~/App_Images/ico_del.png" ToolTip="Delete" />
                     </ItemTemplate>
                     <EditItemTemplate>
-                        <asp:ImageButton ID="UpdateButton" ImageUrl="~/App_Images/ico_save.png" CommandName="Update" runat="server" /> 
-                        <asp:ImageButton ID="CancelButton" ImageUrl="~/App_Images/ico_del.png" CommandName="Cancel" runat="server" /> 
+                        <asp:ImageButton ID="UpdateButton" ImageUrl="~/App_Images/ico_save.png" CommandName="Update" runat="server" ToolTip="Save" /> 
+                        <asp:ImageButton ID="CancelButton" ImageUrl="~/App_Images/ico_del.png" CommandName="Cancel" runat="server" ToolTip="Cancel" /> 
                     </EditItemTemplate>
                 </asp:TemplateField>
                 <asp:BoundField DataField="VALUE" HeaderText="Value" SortExpression="VALUE" ControlStyle-Width="98%" />

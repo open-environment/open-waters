@@ -15,32 +15,32 @@
         <asp:Panel runat="server" DefaultButton="btnSave">
             <div class="row">
                 <span class="fldLbl">User Name:</span>
-                <asp:TextBox ID="txtUserName" runat="server" CssClass="fldTxt" ReadOnly="true"></asp:TextBox>
+                <asp:TextBox ID="txtUserName" runat="server" Width="200px" CssClass="fldTxt" ReadOnly="true"></asp:TextBox>
             </div>
             <div class="row">
                     <span class="fldLbl">First Name:</span>
-                    <asp:TextBox ID="txtFName" runat="server" CssClass="fldTxt" MaxLength="40"></asp:TextBox>
+                    <asp:TextBox ID="txtFName" runat="server" Width="200px" CssClass="fldTxt" MaxLength="40"></asp:TextBox>
             </div>
             <div class="row">
                 <span class="fldLbl">Last Name:</span>
-                <asp:TextBox ID="txtLName" runat="server" CssClass="fldTxt" MaxLength="40"></asp:TextBox>
+                <asp:TextBox ID="txtLName" runat="server" Width="200px" CssClass="fldTxt" MaxLength="40"></asp:TextBox>
             </div>
             <div class="row">
                     <span class="fldLbl">Email:</span>
-                    <asp:TextBox ID="txtEmail" runat="server" CssClass="fldTxt" MaxLength="150"></asp:TextBox>
+                    <asp:TextBox ID="txtEmail" runat="server" Width="200px" CssClass="fldTxt" MaxLength="150"></asp:TextBox>
             </div>
             <div class="row">
                     <span class="fldLbl">Phone:</span>
-                    <asp:TextBox ID="txtPhone" runat="server" CssClass="fldTxt" MaxLength="12"></asp:TextBox>
+                    <asp:TextBox ID="txtPhone" runat="server" Width="200px" CssClass="fldTxt" MaxLength="12"></asp:TextBox>
             </div>
             <div class="row">
                 <span class="fldLbl">Roles:</span>
-                <asp:ListBox ID="lbRoleList" Width="150px" CssClass="fldTxt" runat="server" ></asp:ListBox>
+                <asp:ListBox ID="lbRoleList" Width="200px" CssClass="fldTxt" runat="server" Height="100%" ></asp:ListBox>
                 <br />
             </div>
             <div class="row">
                 <span class="fldLbl">Organizations:</span>
-                <asp:ListBox ID="lblOrgList" Width="150px" CssClass="fldTxt" runat="server" ></asp:ListBox>
+                <asp:ListBox ID="lblOrgList" Width="200px" CssClass="fldTxt" runat="server" Height="100%" ></asp:ListBox>
                 <br />
             </div>
             <br />
