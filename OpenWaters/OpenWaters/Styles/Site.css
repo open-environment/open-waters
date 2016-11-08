@@ -133,6 +133,14 @@ legend  { font-size: 1.1em; font-weight: 600; padding: 2px 4px 8px 4px; }
 .modalBackground { background-color:Gray; filter: alpha(opacity=70); opacity:0.7; }
 .modalTitle { clear: both; background-color:#666666; padding: 3px 8px; font: bold 9pt Tahoma; color: #FFFFFF; margin: 3px 0 0 0;}
 
+/* SECONDARY MODAL STYLE*/
+.modalDialog { position: fixed; font-family: Arial, Helvetica, sans-serif; top: 0; right: 0; bottom: 0; left: 0; background: rgba(0, 0, 0, 0.9); z-index: 99999; opacity:1; 
+               -webkit-transition: opacity 400ms ease-in; -moz-transition: opacity 400ms ease-in; transition: opacity 400ms ease-in; pointer-events: none; }
+.modalDialog > div { width: 400px; position: relative; margin: 10% auto; padding: 5px 20px 13px 20px; border-radius: 10px; background: #fff;
+                     background: -moz-linear-gradient(#fff, #999);
+                     background: -webkit-linear-gradient(#fff, #999);
+                     background: -o-linear-gradient(#fff, #999);   }
+
 /* GETTING STARTED WIZARD
 ----------------------------------------------------------*/
 #signup_steps{ margin:20px auto;width:663px; }

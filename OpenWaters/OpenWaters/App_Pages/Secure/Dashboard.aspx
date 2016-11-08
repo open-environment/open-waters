@@ -21,7 +21,6 @@
                 $('#signup_6').show();
 
 
-
             $('#signup_steps').find('.ui-accordion-header').click(function () {
                 $(this).next().slideToggle('fast');
                 //hide the other panels

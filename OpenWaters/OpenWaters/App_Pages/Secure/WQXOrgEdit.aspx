@@ -68,11 +68,21 @@
         </div>
         <div class="row">
             <span class="fldLbl">Phone:</span>
-            <asp:TextBox ID="txtOrgPhone" MaxLength="15" runat="server" Width="250px"  CssClass="fldTxt"></asp:TextBox>
+            <asp:TextBox ID="txtOrgPhone" MaxLength="15" runat="server" Width="150px"  CssClass="fldTxt"></asp:TextBox>
+            <span class="fldLbl" style="margin-left:12px; width:30px">Ext:</span>
+            <asp:TextBox ID="txtOrgPhoneExt" runat="server" Width="50px" MaxLength="6" CssClass="fldTxt"></asp:TextBox>
         </div>
         <div class="row">
-            <span class="fldLbl">Phone Extension:</span>
-            <asp:TextBox ID="txtOrgPhoneExt" runat="server" Width="250px" MaxLength="6" CssClass="fldTxt"></asp:TextBox>
+            <span class="fldLbl">Mailing Address:</span>
+            <asp:TextBox ID="txtMailingAddress" runat="server" Width="250px" MaxLength="30" CssClass="fldTxt"></asp:TextBox>
+        </div>
+        <div class="row">
+            <span class="fldLbl">City:</span>
+            <asp:TextBox ID="txtMailCity" runat="server" Width="100px" MaxLength="30" CssClass="fldTxt"></asp:TextBox>
+            <span class="fldLbl" style="margin-left:12px; width:40px">State:</span>
+            <asp:TextBox ID="txtMailState" runat="server" Width="50px" MaxLength="2" CssClass="fldTxt"></asp:TextBox>
+            <span class="fldLbl" style="margin-left:12px; width:30px">ZIP:</span>
+            <asp:TextBox ID="txtMailZIP" runat="server" Width="50px" MaxLength="14" CssClass="fldTxt"></asp:TextBox>
         </div>
         <asp:Panel ID="pnlCDX" runat="server" CssClass="" style="margin-top:20px; width: 600px; background:#dedede repeat-x top; border:1px solid #808080;" >
             <h3 style="margin-top:0px">Credentials for Submitting to EPA</h3>

@@ -24,6 +24,7 @@ namespace OpenEnvironment
 
             //read session variables
             OrgEditID = Session["OrgID"].ToString();
+
             if (!IsPostBack)
             {
                 //display left menu as selected 
@@ -48,6 +49,10 @@ namespace OpenEnvironment
                     txtOrgEmail.Text = o.ELECTRONICADDRESS;
                     txtOrgPhone.Text = o.TELEPHONE_NUM;
                     txtOrgPhoneExt.Text = o.TELEPHONE_EXT;
+                    txtMailingAddress.Text = o.MAILING_ADDRESS;
+                    txtMailCity.Text = o.MAILING_ADD_CITY;
+                    txtMailState.Text = o.MAILING_ADD_STATE;
+                    txtMailZIP.Text = o.MAILING_ADD_ZIP;
 
                     //CDX submission information*************************************8
                     if (o.CDX_SUBMIT_IND == true)
@@ -121,7 +126,8 @@ namespace OpenEnvironment
 
             //save updates to Organization
             return db_WQX.InsertOrUpdateT_WQX_ORGANIZATION(txtOrgID.Text, txtOrgName.Text, txtOrgDesc.Text, ddlTribalCode.SelectedValue.ToString(),
-                txtOrgEmail.Text, "Email", txtOrgPhone.Text, "Office", txtOrgPhoneExt.Text, txtCDX.Visible ? txtCDX.Text : "", txtCDX.Visible ? txtCDXPwd.Text : "", null, null, User.Identity.Name);
+                txtOrgEmail.Text, "Email", txtOrgPhone.Text, "Office", txtOrgPhoneExt.Text, txtCDX.Visible ? txtCDX.Text : "", txtCDX.Visible ? txtCDXPwd.Text : "", null, null, 
+                User.Identity.Name, txtMailingAddress.Text, txtMailCity.Text, txtMailState.Text, txtMailZIP.Text);
         }
 
 

@@ -107,6 +107,9 @@
     <Content Include="App_Data\DatabasePatch_v1.8.sql" />
     <Content Include="App_Data\DatabasePatch_v1.7.sql" />
     <Content Include="App_Data\DatabasePatch_v1.9.sql" />
+    <Content Include="App_Docs\FieldConfig.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="App_Docs\validation.xsl" />
     <Content Include="App_Images\loading.gif" />
     <Content Include="App_Images\wiz_1.png" />
@@ -119,6 +122,14 @@
     <Content Include="App_Images\ico_save2.png" />
     <Content Include="App_Images\selectbutton.png" />
     <Content Include="App_Images\wiz_progress.png" />
+    <Content Include="App_Pages\Secure\Assess.aspx" />
+    <Content Include="App_Pages\Secure\AssessEdit.aspx" />
+    <Content Include="App_Pages\Secure\Assess_Action.aspx" />
+    <Content Include="App_Pages\Secure\Assess_Assess.aspx" />
+    <Content Include="App_Pages\Secure\Assess_Priority.aspx" />
+    <Content Include="App_Pages\Secure\Assess_Unit.aspx" />
+    <Content Include="App_Pages\Secure\WQXImportNew.aspx" />
+    <Content Include="App_Pages\Secure\WQXImportTranslate.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="PubMap.aspx" />
     <Content Include="App_Pages\Secure\Charting.aspx" />
@@ -228,11 +239,13 @@
     <Compile Include="Account\Register.aspx.designer.cs">
       <DependentUpon>Register.aspx</DependentUpon>
     </Compile>
+    <Compile Include="App_Logic\BusinessLogicLayer\ATTAINSSubmit.cs" />
     <Compile Include="App_Logic\BusinessLogicLayer\Crypto.cs" />
     <Compile Include="App_Logic\BusinessLogicLayer\SendGridHelper.cs" />
     <Compile Include="App_Logic\BusinessLogicLayer\Utils.cs" />
     <Compile Include="App_Logic\BusinessLogicLayer\WQXSubmit.cs" />
     <Compile Include="App_Logic\DataAccessLayer\db_Accounts.cs" />
+    <Compile Include="App_Logic\DataAccessLayer\db_Attains.cs" />
     <Compile Include="App_Logic\DataAccessLayer\db_model.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -240,6 +253,62 @@
     </Compile>
     <Compile Include="App_Logic\DataAccessLayer\db_Ref.cs" />
     <Compile Include="App_Logic\DataAccessLayer\db_WQX.cs" />
+    <Compile Include="App_Pages\Secure\Assess.aspx.cs">
+      <DependentUpon>Assess.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Pages\Secure\Assess.aspx.designer.cs">
+      <DependentUpon>Assess.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Pages\Secure\AssessEdit.aspx.cs">
+      <DependentUpon>AssessEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Pages\Secure\AssessEdit.aspx.designer.cs">
+      <DependentUpon>AssessEdit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Pages\Secure\Assess_Action.aspx.cs">
+      <DependentUpon>Assess_Action.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Pages\Secure\Assess_Action.aspx.designer.cs">
+      <DependentUpon>Assess_Action.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Pages\Secure\Assess_Assess.aspx.cs">
+      <DependentUpon>Assess_Assess.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Pages\Secure\Assess_Assess.aspx.designer.cs">
+      <DependentUpon>Assess_Assess.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Pages\Secure\Assess_Priority.aspx.cs">
+      <DependentUpon>Assess_Priority.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Pages\Secure\Assess_Priority.aspx.designer.cs">
+      <DependentUpon>Assess_Priority.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Pages\Secure\Assess_Unit.aspx.cs">
+      <DependentUpon>Assess_Unit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Pages\Secure\Assess_Unit.aspx.designer.cs">
+      <DependentUpon>Assess_Unit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Pages\Secure\WQXImportNew.aspx.cs">
+      <DependentUpon>WQXImportNew.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Pages\Secure\WQXImportNew.aspx.designer.cs">
+      <DependentUpon>WQXImportNew.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Pages\Secure\WQXImportTranslate.aspx.cs">
+      <DependentUpon>WQXImportTranslate.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Pages\Secure\WQXImportTranslate.aspx.designer.cs">
+      <DependentUpon>WQXImportTranslate.aspx</DependentUpon>
+    </Compile>
     <Compile Include="PubMap.aspx.cs">
       <DependentUpon>PubMap.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

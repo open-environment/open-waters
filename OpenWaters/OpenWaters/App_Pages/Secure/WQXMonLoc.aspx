@@ -1,5 +1,4 @@
-﻿<%@ Page Title="Open Waters - Monitoring Locations" Language="C#" MasterPageFile="~/MasterWQX.master" AutoEventWireup="true"
-    CodeBehind="WQXMonLoc.aspx.cs" Inherits="OpenEnvironment.WQXMonLoc" %>
+﻿<%@ Page Title="Open Waters - Monitoring Locations" Language="C#" MasterPageFile="~/MasterWQX.master" AutoEventWireup="true" CodeBehind="WQXMonLoc.aspx.cs" Inherits="OpenEnvironment.WQXMonLoc" %>
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
 <asp:Content ID="Content2" ContentPlaceHolderID="BodyContent" runat="server">
     <script type="text/javascript">

@@ -202,6 +202,7 @@ namespace OpenEnvironment
             hlTemplate.Visible = (ddlImportType.SelectedValue.Length > 0);
             btnParse.Visible = (ddlImportType.SelectedValue.Length > 0);
             btnDefaults.Visible = ddlImportType.SelectedValue == "SAMP";
+            btnTranslate.Visible = ddlImportType.SelectedValue == "SAMP";
 
             if (ddlImportType.SelectedValue == "MLOC")
                 hlTemplate.NavigateUrl = "~/App_Docs/MonLoc_ImportTemplate.xlsx";
@@ -259,7 +260,7 @@ namespace OpenEnvironment
             string[] rows = txt.Split(new Char[] { '\n', '\r' }, StringSplitOptions.RemoveEmptyEntries);
             int colCount = 50;
 
-            //**************** IMPORTING MONITORING LOCATION RESULTS *********************************
+            //**************** IMPORTING MONITORING LOCATION or RESULTS *********************************
             if (ddlImportType.SelectedValue == "MLOC")
                 ImportMonLoc(OrgID, rows);
 
@@ -329,6 +330,10 @@ namespace OpenEnvironment
                             SetColInfo(cols, part, bioIndicator, j, ActivityIDList, ActivityMediaList, ActivityStartDateList, ActivityStartTimeList, SampPrepList, LabNameList, CharacteristicList, ResultUnitList, DetectionConditionList, DetectionLimitUnit, DilutionList);
                             j = j + 1;
                         }
+
+                        //temp fix for biological monitoring 
+                        if (cols.BIO_ASSEMBLAGE_SAMPLEDCol != null || cols.TAXON_NameCol != null || cols.TISSUE_ANATOMYCol != null)
+                            bioIndicator = true;
                     }
                     //**********************************************************
                     //NOT HEADER ROW - READING IN VALUES
@@ -1258,6 +1263,11 @@ namespace OpenEnvironment
         protected void btnDefaults_Click(object sender, EventArgs e)
         {
             Response.Redirect("~/App_Pages/Secure/WQXOrgSettings.aspx");
+        }
+
+        protected void btnTranslate_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/App_Pages/Secure/WQXImportTranslate.aspx");
         }
 
 

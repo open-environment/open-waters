@@ -1,11 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using OpenEnvironment.App_Logic.BusinessLogicLayer;
-//using System.Web.Security;
-using System.Security.Cryptography;
-using System.Text;
 
 namespace OpenEnvironment.App_Logic.DataAccessLayer
 {
@@ -1202,7 +1198,6 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             }
         }
 
-
         public static int GetT_WQX_RESULTCount(string OrgID)
         {
             using (OpenEnvironmentEntities ctx = new OpenEnvironmentEntities())
@@ -1404,10 +1399,10 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             }
         }
 
-        public static int InsertOrUpdateT_WQX_ORGANIZATION(global::System.String oRG_ID, global::System.String oRG_NAME, global::System.String oRG_DESC,
-            global::System.String tRIBAL_CODE, global::System.String eLECTRONIC_ADDRESS, global::System.String eLECTRONICADDRESSTYPE,
-            global::System.String tELEPHONE_NUM, global::System.String tELEPHONE_NUM_TYPE, global::System.String TELEPHONE_EXT, global::System.String cDX_SUBMITTER_ID, 
-            global::System.String cDX_SUBMITTER_PWD, global::System.Boolean? cDX_SUBMIT_IND, String dEFAULT_TIMEZONE, String cREATE_USER = "system")
+        public static int InsertOrUpdateT_WQX_ORGANIZATION(string oRG_ID, string oRG_NAME, string oRG_DESC, string tRIBAL_CODE, string eLECTRONIC_ADDRESS, 
+            string eLECTRONICADDRESSTYPE, string tELEPHONE_NUM, string tELEPHONE_NUM_TYPE, string TELEPHONE_EXT, string cDX_SUBMITTER_ID, 
+            string cDX_SUBMITTER_PWD, bool? cDX_SUBMIT_IND, string dEFAULT_TIMEZONE, string cREATE_USER = "system", string mAIL_ADDRESS = null, 
+            string mAIL_ADD_CITY = null, string mAIL_ADD_STATE = null, string mAIL_ADD_ZIP = null)
         {
             using (OpenEnvironmentEntities ctx = new OpenEnvironmentEntities())
             {
@@ -1447,6 +1442,10 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
                         a.CDX_SUBMITTER_PWD_HASH = encryptOauth;
                     }
                     if (dEFAULT_TIMEZONE != null) a.DEFAULT_TIMEZONE = dEFAULT_TIMEZONE;
+                    if (mAIL_ADDRESS != null) a.MAILING_ADDRESS = mAIL_ADDRESS;
+                    if (mAIL_ADD_CITY != null) a.MAILING_ADD_CITY = mAIL_ADD_CITY;
+                    if (mAIL_ADD_STATE != null) a.MAILING_ADD_STATE = mAIL_ADD_STATE;
+                    if (mAIL_ADD_ZIP != null) a.MAILING_ADD_ZIP = mAIL_ADD_ZIP;
 
                     if (insInd) //insert case
                     {
@@ -2093,6 +2092,124 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
                 catch (Exception ex)
                 {
                     return null;
+                }
+            }
+        }
+
+        public static List<string> GetWQX_IMPORT_TRANSLATE_byColName(string OrgID)
+        {
+            using (OpenEnvironmentEntities ctx = new OpenEnvironmentEntities())
+            {
+                try
+                {
+                    return (from a in ctx.T_WQX_IMPORT_TRANSLATE
+                                       where a.ORG_ID == OrgID
+                                       select a.COL_NAME).Distinct().ToList();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+
+        public static string GetWQX_IMPORT_TRANSLATE_byColNameAndValue(string OrgID, string ColName, string Value)
+        {
+            using (OpenEnvironmentEntities ctx = new OpenEnvironmentEntities())
+            {
+                try
+                {
+                    var xxx = (from a in ctx.T_WQX_IMPORT_TRANSLATE
+                            where a.ORG_ID == OrgID
+                            && a.COL_NAME == ColName
+                            && a.DATA_FROM == Value
+                            select a).FirstOrDefault();
+
+                    return xxx != null ? xxx.DATA_TO : Value;
+
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+
+        public static List<T_WQX_IMPORT_TRANSLATE> GetWQX_IMPORT_TRANSLATE_byOrg(string OrgID)
+        {
+            using (OpenEnvironmentEntities ctx = new OpenEnvironmentEntities())
+            {
+                try
+                {
+                    return (from a in ctx.T_WQX_IMPORT_TRANSLATE
+                            where a.ORG_ID == OrgID
+                            orderby a.COL_NAME, a.DATA_FROM
+                            select a).ToList();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+
+        public static int DeleteT_WQX_IMPORT_TRANSLATE(int TranslateID)
+        {
+            using (OpenEnvironmentEntities ctx = new OpenEnvironmentEntities())
+            {
+                try
+                {
+                    string sql = "DELETE FROM T_WQX_IMPORT_TRANSLATE WHERE TRANSLATE_IDX = " + TranslateID;
+                    ctx.ExecuteStoreCommand(sql);
+                    return 1;
+                }
+                catch
+                {
+                    return 0;
+                }
+            }
+
+        }
+
+        public static int InsertOrUpdateWQX_IMPORT_TRANSLATE(int? tRANSLATE_IDX, string oRG_ID, string cOL_NAME, string dATA_FROM, string dATA_TO, string cREATE_USER = "system")
+        {
+            using (OpenEnvironmentEntities ctx = new OpenEnvironmentEntities())
+            {
+                Boolean insInd = false;
+                try
+                {
+                    T_WQX_IMPORT_TRANSLATE a = null;
+
+                    if (tRANSLATE_IDX != null)
+                        a = (from c in ctx.T_WQX_IMPORT_TRANSLATE
+                             where c.TRANSLATE_IDX == tRANSLATE_IDX
+                             select c).FirstOrDefault();
+
+                    if (a == null) //insert case
+                    {
+                        insInd = true;
+                        a = new T_WQX_IMPORT_TRANSLATE();
+                    }
+
+                    if (oRG_ID != null) a.ORG_ID = oRG_ID;
+                    if (cOL_NAME != null) a.COL_NAME = cOL_NAME;
+                    if (dATA_FROM != null) a.DATA_FROM = dATA_FROM;
+                    if (dATA_TO != null) a.DATA_TO = dATA_TO;
+
+                    if (insInd) //insert case
+                    {
+                        a.CREATE_DT = DateTime.Now;
+                        a.CREATE_USERID = cREATE_USER;
+                        ctx.AddToT_WQX_IMPORT_TRANSLATE(a);
+                    }
+
+                    ctx.SaveChanges();
+
+                    return a.TRANSLATE_IDX;
+                }
+                catch (Exception ex)
+                {
+                    return 0;
                 }
             }
         }
@@ -3274,6 +3391,8 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
                         {
                             if (db_Ref.GetT_WQX_REF_DATA_ByKey("BiologicalIntent", bIO_INTENT_NAME.Trim()) == false) { sTATUS_CD = "F"; sTATUS_DESC += "Biological Intent not valid. "; }
                             a.BIO_INTENT_NAME = bIO_INTENT_NAME.Trim().SubStringPlus(0, 35);
+
+                            if (string.IsNullOrEmpty(bIO_SUBJECT_TAXONOMY)) { sTATUS_CD = "F"; sTATUS_DESC += "Taxonomy must be reported when intent is reported. "; }
                         }
 
                         if (!string.IsNullOrEmpty(bIO_INDIVIDUAL_ID))
@@ -3283,6 +3402,8 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
                         {
                             if (db_Ref.GetT_WQX_REF_DATA_ByKey("Taxon", bIO_SUBJECT_TAXONOMY.Trim()) == false) { sTATUS_CD = "F"; sTATUS_DESC += "Subject Taxonomy not valid. "; }
                             a.BIO_SUBJECT_TAXONOMY = bIO_SUBJECT_TAXONOMY.Trim().SubStringPlus(0, 120);
+
+                            if (string.IsNullOrEmpty(bIO_INTENT_NAME)) { sTATUS_CD = "F"; sTATUS_DESC += "Biological intent must be reported when taxonomy is reported. "; }
                         }
 
                         if (!string.IsNullOrEmpty(bIO_UNIDENTIFIED_SPECIES_ID))
@@ -3442,8 +3563,22 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
                     }
 
 
-                    if (lAB_ANALYSIS_START_DT != null) a.LAB_ANALYSIS_START_DT = lAB_ANALYSIS_START_DT;
-                    if (lAB_ANALYSIS_END_DT != null) a.LAB_ANALYSIS_END_DT = lAB_ANALYSIS_END_DT;
+                    if (lAB_ANALYSIS_START_DT != null)
+                    {
+                        //fix improperly formatted datetime
+                        if (lAB_ANALYSIS_START_DT.ConvertOrDefault<DateTime>().Year < 1900)
+                            lAB_ANALYSIS_START_DT = null;
+
+                        a.LAB_ANALYSIS_START_DT = lAB_ANALYSIS_START_DT;
+                    }
+                    if (lAB_ANALYSIS_END_DT != null)
+                    {
+                        //fix improperly formatted datetime
+                        if (lAB_ANALYSIS_END_DT.ConvertOrDefault<DateTime>().Year < 1900)
+                            lAB_ANALYSIS_END_DT = null;
+
+                        a.LAB_ANALYSIS_END_DT = lAB_ANALYSIS_END_DT;
+                    }
 
 
                     if (!string.IsNullOrEmpty(lAB_ANALYSIS_TIMEZONE))
@@ -3538,8 +3673,23 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
                         }
                     }
 
-                    if (lAB_SAMP_PREP_START_DT != null) a.LAB_SAMP_PREP_START_DT = lAB_SAMP_PREP_START_DT;
-                    if (lAB_SAMP_PREP_END_DT != null) a.LAB_SAMP_PREP_END_DT = lAB_SAMP_PREP_END_DT;
+                    if (lAB_SAMP_PREP_START_DT != null)
+                    {
+                        //fix improperly formatted datetime
+                        if (lAB_SAMP_PREP_START_DT.ConvertOrDefault<DateTime>().Year < 1900)
+                            lAB_SAMP_PREP_START_DT = null;
+
+                        a.LAB_SAMP_PREP_START_DT = lAB_SAMP_PREP_START_DT;
+                    }
+
+                    if (lAB_SAMP_PREP_END_DT != null)
+                    {
+                        //fix improperly formatted datetime
+                        if (lAB_SAMP_PREP_END_DT.ConvertOrDefault<DateTime>().Year < 1900)
+                            lAB_SAMP_PREP_END_DT = null;
+
+                        a.LAB_SAMP_PREP_END_DT = lAB_SAMP_PREP_END_DT;
+                    }
 
                     if (!string.IsNullOrEmpty(dILUTION_FACTOR))
                         a.DILUTION_FACTOR = dILUTION_FACTOR.Trim().SubStringPlus(0, 12);

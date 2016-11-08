@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterWQX.master" AutoEventWireup="true"  CodeBehind="WQXImport.aspx.cs" Inherits="OpenEnvironment.WQXImport" %>
+﻿<%@ Page Title="Open Waters - Import" Language="C#" MasterPageFile="~/MasterWQX.master" AutoEventWireup="true"  CodeBehind="WQXImport.aspx.cs" Inherits="OpenEnvironment.WQXImport" %>
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="BodyContent" runat="server">
@@ -9,34 +9,6 @@
             $('#openModal').show();
         }
     </script>
-    <style type="text/css">
-        .modalDialog {
-        position: fixed;
-        font-family: Arial, Helvetica, sans-serif;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        background: rgba(0, 0, 0, 0.9);
-        z-index: 99999;
-        opacity:1;
-        -webkit-transition: opacity 400ms ease-in;
-        -moz-transition: opacity 400ms ease-in;
-        transition: opacity 400ms ease-in;
-        pointer-events: none;
-    }
-    .modalDialog > div {
-        width: 400px;
-        position: relative;
-        margin: 10% auto;
-        padding: 5px 20px 13px 20px;
-        border-radius: 10px;
-        background: #fff;
-        background: -moz-linear-gradient(#fff, #999);
-        background: -webkit-linear-gradient(#fff, #999);
-        background: -o-linear-gradient(#fff, #999);
-    }
-    </style>
     <h1>
         Bulk Import Data
     </h1>
@@ -119,6 +91,7 @@
                         </asp:ObjectDataSource>
                 </asp:Panel>
                 <asp:Button ID="btnDefaults" runat="server" CssClass="btn" Text="Defaults" OnClick="btnDefaults_Click" Visible="false" />
+                <asp:Button ID="btnTranslate" runat="server" CssClass="btn" Text="Translations" OnClick="btnTranslate_Click" Visible="false" />
                 <div class="row">
                     Copy and paste your data from a spreadsheet into the text area below:<br />
                     <asp:TextBox ID="txtPaste" TextMode="MultiLine" Width="98%" Height="98%" Rows="10" runat="server"></asp:TextBox>

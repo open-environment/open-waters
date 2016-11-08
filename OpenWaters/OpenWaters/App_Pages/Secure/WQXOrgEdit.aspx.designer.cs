@@ -103,6 +103,42 @@ namespace OpenEnvironment {
         protected global::System.Web.UI.WebControls.TextBox txtOrgPhoneExt;
         
         /// <summary>
+        /// txtMailingAddress control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtMailingAddress;
+        
+        /// <summary>
+        /// txtMailCity control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtMailCity;
+        
+        /// <summary>
+        /// txtMailState control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtMailState;
+        
+        /// <summary>
+        /// txtMailZIP control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtMailZIP;
+        
+        /// <summary>
         /// pnlCDX control.
         /// </summary>
         /// <remarks>

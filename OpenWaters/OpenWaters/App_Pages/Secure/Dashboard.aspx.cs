@@ -24,17 +24,16 @@ namespace OpenEnvironment
 
                 if (!string.IsNullOrEmpty(Session["OrgID"] as string))
                 {
-                    lblOrgName.Text = db_WQX.GetWQX_ORGANIZATION_ByID(Session["OrgID"].ToString()).ORG_FORMAL_NAME;
+                    string orgID = Session["OrgID"].ToString();
                     pnlOrgSpecific.Visible = true;
-                    lblProject2.Text = db_WQX.GetWQX_PROJECT(true, Session["OrgID"].ToString(), false).Count.ToString();
-                    lblSamp.Text = db_WQX.GetWQX_ACTIVITY(true, Session["OrgID"].ToString(), null, null, null, null, false, null).Count().ToString();
-                    lblSampPend2.Text = db_WQX.GetWQX_ACTIVITY(true, Session["OrgID"].ToString(), null, null, null, null, true, null).Count().ToString();
-                    lblResult.Text = db_WQX.GetT_WQX_RESULTCount(Session["OrgID"].ToString()).ToString();
+                    lblOrgName.Text = db_WQX.GetWQX_ORGANIZATION_ByID(orgID).ORG_FORMAL_NAME;
+                    lblProject2.Text = db_WQX.GetWQX_PROJECT(true, orgID, false).Count.ToString();
+                    lblSamp.Text = db_WQX.GetWQX_ACTIVITY(true, orgID, null, null, null, null, false, null).Count().ToString();
+                    lblSampPend2.Text = db_WQX.GetWQX_ACTIVITY(true, orgID, null, null, null, null, true, null).Count().ToString();
+                    lblResult.Text = db_WQX.GetT_WQX_RESULTCount(orgID).ToString();
                 }
                 else
-                {
                     pnlOrgSpecific.Visible = false;
-                }
                 //****************************************************************************
 
 
@@ -45,10 +44,8 @@ namespace OpenEnvironment
                 if (HttpContext.Current.User.IsInRole("ADMINS") || db_WQX.CanUserAdminOrgs(UserIDX))
                 {
                     pnlAdminTasks.Visible = true;
-
                     DisplayPendingUsersGrid();
                 }
-
 
                 
 

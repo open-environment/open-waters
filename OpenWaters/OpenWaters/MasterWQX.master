@@ -19,6 +19,7 @@
                 <div class="leftMnu">
                     <div class="leftMnuTitle">Data Analysis</div>
                     <div class="leftMnuBody">
+                        <asp:HyperLink runat="server" ID="lnkAssess" NavigateUrl="~/App_Pages/Secure/Assess.aspx">&bull; Assessment Rpts</asp:HyperLink>
                         <asp:HyperLink runat="server" ID="lnkMap" NavigateUrl="~/App_Pages/Secure/Maps.aspx">&bull; Map</asp:HyperLink>
                         <asp:HyperLink runat="server" ID="lnkChart" NavigateUrl="~/App_Pages/Secure/Charting.aspx">&bull; Graphs</asp:HyperLink>
                     </div>

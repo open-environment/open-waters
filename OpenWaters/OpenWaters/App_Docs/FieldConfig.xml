@@ -1,0 +1,7 @@
+﻿<FieldConfig>
+  <Fields>
+    <Field Level="M" FieldName="MONLOC_ID" ReqInd="Y" Length="35" UniqueInd="Y" FKey="" DataType="" Aliases="Station ID,Station Identifier">
+      <Alias>Station ID</Alias>
+    </Field>
+  </Fields>
+</FieldConfig>

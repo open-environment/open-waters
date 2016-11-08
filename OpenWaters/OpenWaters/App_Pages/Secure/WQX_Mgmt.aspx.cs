@@ -76,9 +76,14 @@ namespace OpenEnvironment
                         b = Utils.StrToByteArray(aa.RESPONSE_TXT);
                  
                     lblMsg.Text = "";
+
+                    Response.Clear();
+
                     Response.ContentType = "application/x-unknown";
-                    Response.AppendHeader("Content-Disposition", "attachment; filename=\"" + aa.RESPONSE_TXT + "\"");
-                    Response.BinaryWrite(b);
+                    Response.AppendHeader("Content-Disposition", "attachment; filename=\"" + (aa.RESPONSE_FILE != null ? aa.RESPONSE_TXT : "download.xml") + "\"");
+                    Response.Buffer = true;
+                    Response.OutputStream.Write(b, 0, b.Length);
+//                    Response.BinaryWrite(b);
                     Response.End();
                     Response.Close();
                 }

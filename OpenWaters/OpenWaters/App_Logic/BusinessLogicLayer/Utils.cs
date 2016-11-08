@@ -8,26 +8,13 @@ using System.Web;
 using System.IO;
 using System.Web.UI;
 using System.Xml.Linq;
+using System.Xml;
 using System.Linq;
 
 namespace OpenEnvironment.App_Logic.BusinessLogicLayer
 {
     internal static class Utils
     {
-        internal static bool ValidateParameter(ref string param, int maxSize)
-        {
-            if (param == null)
-                return false;
-
-            if (param.Trim().Length < 1)
-                return false;
-
-            if (maxSize > 0 && param.Length > maxSize)
-                return false;
-
-            return true;
-        }
-
         internal static bool ValidateParameter(ref string param, bool checkForNull, bool checkIfEmpty, bool checkForCommas, int maxSize)
         {
             if (param == null)
@@ -398,7 +385,7 @@ namespace OpenEnvironment.App_Logic.BusinessLogicLayer
                 return "";
             }
         }
-        
+
 
         //***************** EXCEL EXPORT *****************************************
         /// <summary>
@@ -551,6 +538,32 @@ namespace OpenEnvironment.App_Logic.BusinessLogicLayer
                 gv.Width = visColCount <= 14 ? Unit.Percentage(100) : Unit.Percentage(100 + (visColCount-14) * 5);
 
             return gv;
+        }
+
+
+        //******************* XML FILE HANDLING**********************************
+        public static Dictionary<string, Tuple<string, string>> GetFieldConfig_Fields()
+        {
+            // Loading from a file, you can also load from a stream
+            var xml = XDocument.Load(HttpContext.Current.Server.MapPath("~/App_Docs/FieldConfig.xml"));
+
+            // Query the data
+            var fields = from c in xml.Root.Descendants("Field")
+                        select new
+                        {
+                            Name = c.Attribute("FieldName").Value,
+                            Aliases = c.Descendants("Alias")
+                        };
+
+            Dictionary<string, Tuple<string, string>> headersPool = new Dictionary<string, Tuple<string, string>>();
+            foreach (var field in fields)
+            {
+                string ddd = field.Name;
+                foreach (var Alias in field.Aliases)
+                    headersPool.Add(Alias.Value.ToString(), new Tuple<string, string>("MON_LOC", "A"));
+            }
+
+            return headersPool;
         }
 
 

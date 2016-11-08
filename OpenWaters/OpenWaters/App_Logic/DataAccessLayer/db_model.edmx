@@ -5,6 +5,154 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="OpenEnvironmentModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="T_ATTAINS_ASSESS">
+          <Key>
+            <PropertyRef Name="ATTAINS_ASSESS_IDX" />
+          </Key>
+          <Property Name="ATTAINS_ASSESS_IDX" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="REPORTING_CYCLE" Type="varchar" MaxLength="4" Nullable="false" />
+          <Property Name="REPORT_STATUS" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="ATTAINS_ASSESS_UNIT_IDX" Type="int" Nullable="false" />
+          <Property Name="AGENCY_CODE" Type="varchar" MaxLength="1" />
+          <Property Name="CYCLE_LAST_ASSESSED" Type="varchar" MaxLength="4" />
+          <Property Name="CYCLE_LAST_MONITORED" Type="varchar" MaxLength="4" />
+          <Property Name="TROPHIC_STATUS_CODE" Type="varchar" MaxLength="30" />
+          <Property Name="CREATE_DT" Type="datetime" />
+          <Property Name="CREATE_USERID" Type="varchar" MaxLength="25" />
+          <Property Name="MODIFY_DT" Type="datetime" />
+          <Property Name="MODIFY_USERID" Type="varchar" MaxLength="25" />
+        </EntityType>
+        <EntityType Name="T_ATTAINS_ASSESS_CAUSE">
+          <Key>
+            <PropertyRef Name="ATTAINS_ASSESS_CAUSE_IDX" />
+          </Key>
+          <Property Name="ATTAINS_ASSESS_CAUSE_IDX" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ATTAINS_ASSESS_IDX" Type="int" Nullable="false" />
+          <Property Name="CAUSE_NAME" Type="varchar" MaxLength="240" />
+          <Property Name="POLLUTANT_IND" Type="varchar" MaxLength="1" />
+          <Property Name="AGENCY_CODE" Type="varchar" MaxLength="1" />
+          <Property Name="CYCLE_FIRST_LISTED" Type="varchar" MaxLength="4" />
+          <Property Name="CYCLE_SCHED_TMDL" Type="varchar" MaxLength="4" />
+          <Property Name="TMDL_PRIORITY_NAME" Type="varchar" MaxLength="25" />
+          <Property Name="CONSENT_DECREE_CYCLE" Type="varchar" MaxLength="4" />
+          <Property Name="TMDL_CAUSE_REPORT_ID" Type="varchar" MaxLength="45" />
+          <Property Name="CYCLE_EXPECTED_ATTAIN" Type="varchar" MaxLength="4" />
+          <Property Name="CAUSE_COMMENT" Type="varchar" MaxLength="1000" />
+          <Property Name="CREATE_DT" Type="datetime" />
+          <Property Name="CREATE_USERID" Type="varchar" MaxLength="25" />
+          <Property Name="MODIFY_DT" Type="datetime" />
+          <Property Name="MODIFY_USERID" Type="varchar" MaxLength="25" />
+        </EntityType>
+        <EntityType Name="T_ATTAINS_ASSESS_UNITS">
+          <Key>
+            <PropertyRef Name="ATTAINS_ASSESS_UNIT_IDX" />
+          </Key>
+          <Property Name="ATTAINS_ASSESS_UNIT_IDX" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ATTAINS_REPORT_IDX" Type="int" Nullable="false" />
+          <Property Name="ASSESS_UNIT_ID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ASSESS_UNIT_NAME" Type="varchar" MaxLength="255" />
+          <Property Name="LOCATION_DESC" Type="varchar" MaxLength="2000" />
+          <Property Name="AGENCY_CODE" Type="varchar" MaxLength="1" />
+          <Property Name="STATE_CODE" Type="varchar" MaxLength="2" />
+          <Property Name="ACT_IND" Type="varchar" MaxLength="1" />
+          <Property Name="WATER_TYPE_CODE" Type="varchar" MaxLength="40" />
+          <Property Name="WATER_SIZE" Type="decimal" Precision="18" Scale="4" />
+          <Property Name="WATER_UNIT_CODE" Type="varchar" MaxLength="15" />
+          <Property Name="USE_CLASS_CODE" Type="varchar" MaxLength="15" />
+          <Property Name="USE_CLASS_NAME" Type="varchar" MaxLength="50" />
+          <Property Name="CREATE_DT" Type="datetime" />
+          <Property Name="CREATE_USERID" Type="varchar" MaxLength="25" />
+          <Property Name="MODIFY_DT" Type="datetime" />
+          <Property Name="MODIFY_USERID" Type="varchar" MaxLength="25" />
+        </EntityType>
+        <EntityType Name="T_ATTAINS_ASSESS_UNITS_MLOC">
+          <Key>
+            <PropertyRef Name="ATTAINS_ASSESS_UNIT_IDX" />
+            <PropertyRef Name="MONLOC_IDX" />
+          </Key>
+          <Property Name="ATTAINS_ASSESS_UNIT_IDX" Type="int" Nullable="false" />
+          <Property Name="MONLOC_IDX" Type="int" Nullable="false" />
+          <Property Name="CREATE_DT" Type="datetime" />
+          <Property Name="CREATE_USERID" Type="varchar" MaxLength="25" />
+          <Property Name="MODIFY_DT" Type="datetime" />
+          <Property Name="MODIFY_USERID" Type="varchar" MaxLength="25" />
+        </EntityType>
+        <EntityType Name="T_ATTAINS_ASSESS_USE">
+          <Key>
+            <PropertyRef Name="ATTAINS_ASSESS_USE_IDX" />
+          </Key>
+          <Property Name="ATTAINS_ASSESS_USE_IDX" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ATTAINS_ASSESS_IDX" Type="int" Nullable="false" />
+          <Property Name="USE_NAME" Type="varchar" MaxLength="255" />
+          <Property Name="USE_ATTAINMENT_CODE" Type="varchar" MaxLength="1" />
+          <Property Name="THREATENED_IND" Type="varchar" MaxLength="1" />
+          <Property Name="TREND_CODE" Type="varchar" MaxLength="25" />
+          <Property Name="IR_CAT_CODE" Type="varchar" MaxLength="5" />
+          <Property Name="IR_CAT_DESC" Type="varchar" MaxLength="255" />
+          <Property Name="ASSESS_BASIS" Type="varchar" MaxLength="30" />
+          <Property Name="ASSESS_TYPE" Type="varchar" MaxLength="30" />
+          <Property Name="ASSESS_CONFIDENCE" Type="varchar" MaxLength="30" />
+          <Property Name="MON_DATE_START" Type="datetime" />
+          <Property Name="MON_DATE_END" Type="datetime" />
+          <Property Name="ASSESS_DATE" Type="datetime" />
+          <Property Name="ASSESSOR_NAME" Type="varchar" MaxLength="80" />
+          <Property Name="CREATE_DT" Type="datetime" />
+          <Property Name="CREATE_USERID" Type="varchar" MaxLength="25" />
+          <Property Name="MODIFY_DT" Type="datetime" />
+          <Property Name="MODIFY_USERID" Type="varchar" MaxLength="25" />
+        </EntityType>
+        <EntityType Name="T_ATTAINS_ASSESS_USE_PAR">
+          <Key>
+            <PropertyRef Name="ATTAINS_ASSESS_USE_PAR_IDX" />
+          </Key>
+          <Property Name="ATTAINS_ASSESS_USE_PAR_IDX" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ATTAINS_ASSESS_USE_IDX" Type="int" Nullable="false" />
+          <Property Name="PARAM_NAME" Type="varchar" MaxLength="240" />
+          <Property Name="PARAM_ATTAINMENT_CODE" Type="varchar" MaxLength="1" />
+          <Property Name="TREND_CODE" Type="varchar" MaxLength="25" />
+          <Property Name="PARAM_COMMENT" Type="varchar" MaxLength="1000" />
+          <Property Name="CREATE_DT" Type="datetime" />
+          <Property Name="CREATE_USERID" Type="varchar" MaxLength="25" />
+          <Property Name="MODIFY_DT" Type="datetime" />
+          <Property Name="MODIFY_USERID" Type="varchar" MaxLength="25" />
+        </EntityType>
+        <EntityType Name="T_ATTAINS_REF_WATER_TYPE">
+          <Key>
+            <PropertyRef Name="WATER_TYPE_CODE" />
+          </Key>
+          <Property Name="WATER_TYPE_CODE" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="CREATE_DT" Type="datetime" />
+          <Property Name="CREATE_USERID" Type="varchar" MaxLength="25" />
+        </EntityType>
+        <EntityType Name="T_ATTAINS_REPORT">
+          <Key>
+            <PropertyRef Name="ATTAINS_REPORT_IDX" />
+          </Key>
+          <Property Name="ATTAINS_REPORT_IDX" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ORG_ID" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="REPORT_NAME" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="DATA_FROM" Type="datetime" />
+          <Property Name="DATA_TO" Type="datetime" />
+          <Property Name="ATTAINS_IND" Type="bit" />
+          <Property Name="ATTAINS_SUBMIT_STATUS" Type="varchar" MaxLength="1" />
+          <Property Name="ATTAINS_UPDATE_DT" Type="datetime" />
+          <Property Name="CREATE_DT" Type="datetime" />
+          <Property Name="CREATE_USERID" Type="varchar" MaxLength="25" />
+        </EntityType>
+        <EntityType Name="T_ATTAINS_REPORT_LOG">
+          <Key>
+            <PropertyRef Name="ATTAINS_LOG_IDX" />
+          </Key>
+          <Property Name="ATTAINS_LOG_IDX" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ATTAINS_REPORT_IDX" Type="int" Nullable="false" />
+          <Property Name="SUBMIT_DT" Type="datetime" Nullable="false" />
+          <Property Name="SUBMIT_FILE" Type="varchar(max)" />
+          <Property Name="RESPONSE_FILE" Type="varbinary(max)" />
+          <Property Name="RESPONSE_TXT" Type="varchar(max)" />
+          <Property Name="CDX_SUBMIT_TRANSID" Type="varchar" MaxLength="100" />
+          <Property Name="CDX_SUBMIT_STATUS" Type="varchar" MaxLength="20" />
+          <Property Name="ORG_ID" Type="varchar" MaxLength="30" />
+        </EntityType>
         <EntityType Name="T_EPA_ORGS">
           <Key>
             <PropertyRef Name="ORG_ID" />
@@ -564,6 +712,11 @@
           <Property Name="CREATE_USERID" Type="varchar" MaxLength="25" />
           <Property Name="UPDATE_DT" Type="datetime" />
           <Property Name="UPDATE_USERID" Type="varchar" MaxLength="25" />
+          <Property Name="MAILING_ADDRESS" Type="varchar" MaxLength="30" />
+          <Property Name="MAILING_ADDRESS2" Type="varchar" MaxLength="30" />
+          <Property Name="MAILING_ADD_CITY" Type="varchar" MaxLength="25" />
+          <Property Name="MAILING_ADD_STATE" Type="varchar" MaxLength="2" />
+          <Property Name="MAILING_ADD_ZIP" Type="varchar" MaxLength="14" />
         </EntityType>
         <EntityType Name="T_WQX_PROJECT">
           <Key>
@@ -915,6 +1068,144 @@ warning 6002: The table/view 'OpenEnvironment.dbo.V_WQX_TRANSACTION_LOG' does no
           <Property Name="ORG_ID" Type="varchar" MaxLength="30" />
           <Property Name="RECORD" Type="varchar" MaxLength="35" />
         </EntityType>
+        <Association Name="FK__T_ATTAINS__ATTAI__056ECC6A">
+          <End Role="T_ATTAINS_REPORT" Type="Self.T_ATTAINS_REPORT" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="T_ATTAINS_ASSESS_UNITS" Type="Self.T_ATTAINS_ASSESS_UNITS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_ATTAINS_REPORT">
+              <PropertyRef Name="ATTAINS_REPORT_IDX" />
+            </Principal>
+            <Dependent Role="T_ATTAINS_ASSESS_UNITS">
+              <PropertyRef Name="ATTAINS_REPORT_IDX" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__T_ATTAINS__ATTAI__0D0FEE32">
+          <End Role="T_ATTAINS_ASSESS_UNITS" Type="Self.T_ATTAINS_ASSESS_UNITS" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="T_ATTAINS_ASSESS_UNITS_MLOC" Type="Self.T_ATTAINS_ASSESS_UNITS_MLOC" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_ATTAINS_ASSESS_UNITS">
+              <PropertyRef Name="ATTAINS_ASSESS_UNIT_IDX" />
+            </Principal>
+            <Dependent Role="T_ATTAINS_ASSESS_UNITS_MLOC">
+              <PropertyRef Name="ATTAINS_ASSESS_UNIT_IDX" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__T_ATTAINS__ATTAI__2116E6DF">
+          <End Role="T_ATTAINS_ASSESS_UNITS" Type="Self.T_ATTAINS_ASSESS_UNITS" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="T_ATTAINS_ASSESS" Type="Self.T_ATTAINS_ASSESS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_ATTAINS_ASSESS_UNITS">
+              <PropertyRef Name="ATTAINS_ASSESS_UNIT_IDX" />
+            </Principal>
+            <Dependent Role="T_ATTAINS_ASSESS">
+              <PropertyRef Name="ATTAINS_ASSESS_UNIT_IDX" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__T_ATTAINS__ATTAI__473C8FC7">
+          <End Role="T_ATTAINS_REPORT" Type="Self.T_ATTAINS_REPORT" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="T_ATTAINS_REPORT_LOG" Type="Self.T_ATTAINS_REPORT_LOG" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_ATTAINS_REPORT">
+              <PropertyRef Name="ATTAINS_REPORT_IDX" />
+            </Principal>
+            <Dependent Role="T_ATTAINS_REPORT_LOG">
+              <PropertyRef Name="ATTAINS_REPORT_IDX" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__T_ATTAINS__ATTAI__4A18FC72">
+          <End Role="T_ATTAINS_ASSESS" Type="Self.T_ATTAINS_ASSESS" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="T_ATTAINS_ASSESS_USE" Type="Self.T_ATTAINS_ASSESS_USE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_ATTAINS_ASSESS">
+              <PropertyRef Name="ATTAINS_ASSESS_IDX" />
+            </Principal>
+            <Dependent Role="T_ATTAINS_ASSESS_USE">
+              <PropertyRef Name="ATTAINS_ASSESS_IDX" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__T_ATTAINS__ATTAI__5A4F643B">
+          <End Role="T_ATTAINS_ASSESS_USE" Type="Self.T_ATTAINS_ASSESS_USE" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="T_ATTAINS_ASSESS_USE_PAR" Type="Self.T_ATTAINS_ASSESS_USE_PAR" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_ATTAINS_ASSESS_USE">
+              <PropertyRef Name="ATTAINS_ASSESS_USE_IDX" />
+            </Principal>
+            <Dependent Role="T_ATTAINS_ASSESS_USE_PAR">
+              <PropertyRef Name="ATTAINS_ASSESS_USE_IDX" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__T_ATTAINS__ATTAI__5D2BD0E6">
+          <End Role="T_ATTAINS_ASSESS" Type="Self.T_ATTAINS_ASSESS" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="T_ATTAINS_ASSESS_CAUSE" Type="Self.T_ATTAINS_ASSESS_CAUSE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_ATTAINS_ASSESS">
+              <PropertyRef Name="ATTAINS_ASSESS_IDX" />
+            </Principal>
+            <Dependent Role="T_ATTAINS_ASSESS_CAUSE">
+              <PropertyRef Name="ATTAINS_ASSESS_IDX" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__T_ATTAINS__MONLO__0E04126B">
+          <End Role="T_WQX_MONLOC" Type="Self.T_WQX_MONLOC" Multiplicity="1" />
+          <End Role="T_ATTAINS_ASSESS_UNITS_MLOC" Type="Self.T_ATTAINS_ASSESS_UNITS_MLOC" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_WQX_MONLOC">
+              <PropertyRef Name="MONLOC_IDX" />
+            </Principal>
+            <Dependent Role="T_ATTAINS_ASSESS_UNITS_MLOC">
+              <PropertyRef Name="MONLOC_IDX" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__T_ATTAINS__ORG_I__6ABAD62E">
+          <End Role="T_WQX_ORGANIZATION" Type="Self.T_WQX_ORGANIZATION" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="T_ATTAINS_REPORT" Type="Self.T_ATTAINS_REPORT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_WQX_ORGANIZATION">
+              <PropertyRef Name="ORG_ID" />
+            </Principal>
+            <Dependent Role="T_ATTAINS_REPORT">
+              <PropertyRef Name="ORG_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__T_ATTAINS__WATER__0662F0A3">
+          <End Role="T_ATTAINS_REF_WATER_TYPE" Type="Self.T_ATTAINS_REF_WATER_TYPE" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="T_ATTAINS_ASSESS_UNITS" Type="Self.T_ATTAINS_ASSESS_UNITS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_ATTAINS_REF_WATER_TYPE">
+              <PropertyRef Name="WATER_TYPE_CODE" />
+            </Principal>
+            <Dependent Role="T_ATTAINS_ASSESS_UNITS">
+              <PropertyRef Name="WATER_TYPE_CODE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__T_OE_USER__ROLE___1B0907CE">
           <End Role="T_OE_ROLES" Type="Self.T_OE_ROLES" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -1281,6 +1572,9 @@ warning 6002: The table/view 'OpenEnvironment.dbo.V_WQX_TRANSACTION_LOG' does no
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="GenATTAINSXML" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ReportIDX" Type="int" Mode="In" />
+        </Function>
         <Function Name="GenWQXXML_Org" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="OrgID" Type="varchar" Mode="In" />
         </Function>
@@ -1307,6 +1601,15 @@ warning 6002: The table/view 'OpenEnvironment.dbo.V_WQX_TRANSACTION_LOG' does no
           <Parameter Name="DataIncludeInd" Type="varchar" Mode="In" />
         </Function>
         <EntityContainer Name="OpenEnvironmentModelStoreContainer">
+          <EntitySet Name="T_ATTAINS_ASSESS" EntityType="Self.T_ATTAINS_ASSESS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_ATTAINS_ASSESS_CAUSE" EntityType="Self.T_ATTAINS_ASSESS_CAUSE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_ATTAINS_ASSESS_UNITS" EntityType="Self.T_ATTAINS_ASSESS_UNITS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_ATTAINS_ASSESS_UNITS_MLOC" EntityType="Self.T_ATTAINS_ASSESS_UNITS_MLOC" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_ATTAINS_ASSESS_USE" EntityType="Self.T_ATTAINS_ASSESS_USE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_ATTAINS_ASSESS_USE_PAR" EntityType="Self.T_ATTAINS_ASSESS_USE_PAR" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_ATTAINS_REF_WATER_TYPE" EntityType="Self.T_ATTAINS_REF_WATER_TYPE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_ATTAINS_REPORT" EntityType="Self.T_ATTAINS_REPORT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_ATTAINS_REPORT_LOG" EntityType="Self.T_ATTAINS_REPORT_LOG" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="T_EPA_ORGS" EntityType="Self.T_EPA_ORGS" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="T_OE_APP_SETTINGS" EntityType="Self.T_OE_APP_SETTINGS" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="T_OE_APP_TASKS" EntityType="Self.T_OE_APP_TASKS" Schema="dbo" store:Type="Tables" />
@@ -1406,6 +1709,46 @@ FROM [dbo].[V_WQX_PENDING_RECORDS] AS [V_WQX_PENDING_RECORDS]</DefiningQuery>
 [V_WQX_TRANSACTION_LOG].[RECORD] AS [RECORD]
 FROM [dbo].[V_WQX_TRANSACTION_LOG] AS [V_WQX_TRANSACTION_LOG]</DefiningQuery>
           </EntitySet>
+          <AssociationSet Name="FK__T_ATTAINS__ATTAI__056ECC6A" Association="Self.FK__T_ATTAINS__ATTAI__056ECC6A">
+            <End Role="T_ATTAINS_REPORT" EntitySet="T_ATTAINS_REPORT" />
+            <End Role="T_ATTAINS_ASSESS_UNITS" EntitySet="T_ATTAINS_ASSESS_UNITS" />
+          </AssociationSet>
+          <AssociationSet Name="FK__T_ATTAINS__ATTAI__0D0FEE32" Association="Self.FK__T_ATTAINS__ATTAI__0D0FEE32">
+            <End Role="T_ATTAINS_ASSESS_UNITS" EntitySet="T_ATTAINS_ASSESS_UNITS" />
+            <End Role="T_ATTAINS_ASSESS_UNITS_MLOC" EntitySet="T_ATTAINS_ASSESS_UNITS_MLOC" />
+          </AssociationSet>
+          <AssociationSet Name="FK__T_ATTAINS__ATTAI__2116E6DF" Association="Self.FK__T_ATTAINS__ATTAI__2116E6DF">
+            <End Role="T_ATTAINS_ASSESS_UNITS" EntitySet="T_ATTAINS_ASSESS_UNITS" />
+            <End Role="T_ATTAINS_ASSESS" EntitySet="T_ATTAINS_ASSESS" />
+          </AssociationSet>
+          <AssociationSet Name="FK__T_ATTAINS__ATTAI__473C8FC7" Association="Self.FK__T_ATTAINS__ATTAI__473C8FC7">
+            <End Role="T_ATTAINS_REPORT" EntitySet="T_ATTAINS_REPORT" />
+            <End Role="T_ATTAINS_REPORT_LOG" EntitySet="T_ATTAINS_REPORT_LOG" />
+          </AssociationSet>
+          <AssociationSet Name="FK__T_ATTAINS__ATTAI__4A18FC72" Association="Self.FK__T_ATTAINS__ATTAI__4A18FC72">
+            <End Role="T_ATTAINS_ASSESS" EntitySet="T_ATTAINS_ASSESS" />
+            <End Role="T_ATTAINS_ASSESS_USE" EntitySet="T_ATTAINS_ASSESS_USE" />
+          </AssociationSet>
+          <AssociationSet Name="FK__T_ATTAINS__ATTAI__5A4F643B" Association="Self.FK__T_ATTAINS__ATTAI__5A4F643B">
+            <End Role="T_ATTAINS_ASSESS_USE" EntitySet="T_ATTAINS_ASSESS_USE" />
+            <End Role="T_ATTAINS_ASSESS_USE_PAR" EntitySet="T_ATTAINS_ASSESS_USE_PAR" />
+          </AssociationSet>
+          <AssociationSet Name="FK__T_ATTAINS__ATTAI__5D2BD0E6" Association="Self.FK__T_ATTAINS__ATTAI__5D2BD0E6">
+            <End Role="T_ATTAINS_ASSESS" EntitySet="T_ATTAINS_ASSESS" />
+            <End Role="T_ATTAINS_ASSESS_CAUSE" EntitySet="T_ATTAINS_ASSESS_CAUSE" />
+          </AssociationSet>
+          <AssociationSet Name="FK__T_ATTAINS__MONLO__0E04126B" Association="Self.FK__T_ATTAINS__MONLO__0E04126B">
+            <End Role="T_WQX_MONLOC" EntitySet="T_WQX_MONLOC" />
+            <End Role="T_ATTAINS_ASSESS_UNITS_MLOC" EntitySet="T_ATTAINS_ASSESS_UNITS_MLOC" />
+          </AssociationSet>
+          <AssociationSet Name="FK__T_ATTAINS__ORG_I__6ABAD62E" Association="Self.FK__T_ATTAINS__ORG_I__6ABAD62E">
+            <End Role="T_WQX_ORGANIZATION" EntitySet="T_WQX_ORGANIZATION" />
+            <End Role="T_ATTAINS_REPORT" EntitySet="T_ATTAINS_REPORT" />
+          </AssociationSet>
+          <AssociationSet Name="FK__T_ATTAINS__WATER__0662F0A3" Association="Self.FK__T_ATTAINS__WATER__0662F0A3">
+            <End Role="T_ATTAINS_REF_WATER_TYPE" EntitySet="T_ATTAINS_REF_WATER_TYPE" />
+            <End Role="T_ATTAINS_ASSESS_UNITS" EntitySet="T_ATTAINS_ASSESS_UNITS" />
+          </AssociationSet>
           <AssociationSet Name="FK__T_OE_USER__ROLE___1B0907CE" Association="Self.FK__T_OE_USER__ROLE___1B0907CE">
             <End Role="T_OE_ROLES" EntitySet="T_OE_ROLES" />
             <End Role="T_OE_USER_ROLES" EntitySet="T_OE_USER_ROLES" />
@@ -1694,6 +2037,58 @@ FROM [dbo].[V_WQX_TRANSACTION_LOG] AS [V_WQX_TRANSACTION_LOG]</DefiningQuery>
             <End Role="T_WQX_ORGANIZATION" EntitySet="T_WQX_ORGANIZATION" />
             <End Role="T_WQX_IMPORT_TRANSLATE" EntitySet="T_WQX_IMPORT_TRANSLATE" />
           </AssociationSet>
+          <EntitySet Name="T_ATTAINS_REPORT" EntityType="OpenEnvironmentModel.T_ATTAINS_REPORT" />
+          <AssociationSet Name="FK__T_ATTAINS__ORG_I__6ABAD62E" Association="OpenEnvironmentModel.FK__T_ATTAINS__ORG_I__6ABAD62E">
+            <End Role="T_WQX_ORGANIZATION" EntitySet="T_WQX_ORGANIZATION" />
+            <End Role="T_ATTAINS_REPORT" EntitySet="T_ATTAINS_REPORT" />
+          </AssociationSet>
+          <EntitySet Name="T_ATTAINS_REF_WATER_TYPE" EntityType="OpenEnvironmentModel.T_ATTAINS_REF_WATER_TYPE" />
+          <EntitySet Name="T_ATTAINS_ASSESS_UNITS" EntityType="OpenEnvironmentModel.T_ATTAINS_ASSESS_UNITS" />
+          <AssociationSet Name="FK__T_ATTAINS__ATTAI__056ECC6A" Association="OpenEnvironmentModel.FK__T_ATTAINS__ATTAI__056ECC6A">
+            <End Role="T_ATTAINS_REPORT" EntitySet="T_ATTAINS_REPORT" />
+            <End Role="T_ATTAINS_ASSESS_UNITS" EntitySet="T_ATTAINS_ASSESS_UNITS" />
+          </AssociationSet>
+          <AssociationSet Name="FK__T_ATTAINS__WATER__0662F0A3" Association="OpenEnvironmentModel.FK__T_ATTAINS__WATER__0662F0A3">
+            <End Role="T_ATTAINS_REF_WATER_TYPE" EntitySet="T_ATTAINS_REF_WATER_TYPE" />
+            <End Role="T_ATTAINS_ASSESS_UNITS" EntitySet="T_ATTAINS_ASSESS_UNITS" />
+          </AssociationSet>
+          <EntitySet Name="T_ATTAINS_ASSESS_UNITS_MLOC" EntityType="OpenEnvironmentModel.T_ATTAINS_ASSESS_UNITS_MLOC" />
+          <AssociationSet Name="FK__T_ATTAINS__ATTAI__0D0FEE32" Association="OpenEnvironmentModel.FK__T_ATTAINS__ATTAI__0D0FEE32">
+            <End Role="T_ATTAINS_ASSESS_UNITS" EntitySet="T_ATTAINS_ASSESS_UNITS" />
+            <End Role="T_ATTAINS_ASSESS_UNITS_MLOC" EntitySet="T_ATTAINS_ASSESS_UNITS_MLOC" />
+          </AssociationSet>
+          <AssociationSet Name="FK__T_ATTAINS__MONLO__0E04126B" Association="OpenEnvironmentModel.FK__T_ATTAINS__MONLO__0E04126B">
+            <End Role="T_WQX_MONLOC" EntitySet="T_WQX_MONLOC" />
+            <End Role="T_ATTAINS_ASSESS_UNITS_MLOC" EntitySet="T_ATTAINS_ASSESS_UNITS_MLOC" />
+          </AssociationSet>
+          <EntitySet Name="T_ATTAINS_ASSESS" EntityType="OpenEnvironmentModel.T_ATTAINS_ASSESS" />
+          <AssociationSet Name="FK__T_ATTAINS__ATTAI__2116E6DF" Association="OpenEnvironmentModel.FK__T_ATTAINS__ATTAI__2116E6DF">
+            <End Role="T_ATTAINS_ASSESS_UNITS" EntitySet="T_ATTAINS_ASSESS_UNITS" />
+            <End Role="T_ATTAINS_ASSESS" EntitySet="T_ATTAINS_ASSESS" />
+          </AssociationSet>
+          <EntitySet Name="T_ATTAINS_ASSESS_CAUSE" EntityType="OpenEnvironmentModel.T_ATTAINS_ASSESS_CAUSE" />
+          <EntitySet Name="T_ATTAINS_ASSESS_USE" EntityType="OpenEnvironmentModel.T_ATTAINS_ASSESS_USE" />
+          <EntitySet Name="T_ATTAINS_ASSESS_USE_PAR" EntityType="OpenEnvironmentModel.T_ATTAINS_ASSESS_USE_PAR" />
+          <EntitySet Name="T_ATTAINS_REPORT_LOG" EntityType="OpenEnvironmentModel.T_ATTAINS_REPORT_LOG" />
+          <AssociationSet Name="FK__T_ATTAINS__ATTAI__4A18FC72" Association="OpenEnvironmentModel.FK__T_ATTAINS__ATTAI__4A18FC72">
+            <End Role="T_ATTAINS_ASSESS" EntitySet="T_ATTAINS_ASSESS" />
+            <End Role="T_ATTAINS_ASSESS_USE" EntitySet="T_ATTAINS_ASSESS_USE" />
+          </AssociationSet>
+          <AssociationSet Name="FK__T_ATTAINS__ATTAI__5D2BD0E6" Association="OpenEnvironmentModel.FK__T_ATTAINS__ATTAI__5D2BD0E6">
+            <End Role="T_ATTAINS_ASSESS" EntitySet="T_ATTAINS_ASSESS" />
+            <End Role="T_ATTAINS_ASSESS_CAUSE" EntitySet="T_ATTAINS_ASSESS_CAUSE" />
+          </AssociationSet>
+          <AssociationSet Name="FK__T_ATTAINS__ATTAI__5A4F643B" Association="OpenEnvironmentModel.FK__T_ATTAINS__ATTAI__5A4F643B">
+            <End Role="T_ATTAINS_ASSESS_USE" EntitySet="T_ATTAINS_ASSESS_USE" />
+            <End Role="T_ATTAINS_ASSESS_USE_PAR" EntitySet="T_ATTAINS_ASSESS_USE_PAR" />
+          </AssociationSet>
+          <AssociationSet Name="FK__T_ATTAINS__ATTAI__473C8FC7" Association="OpenEnvironmentModel.FK__T_ATTAINS__ATTAI__473C8FC7">
+            <End Role="T_ATTAINS_REPORT" EntitySet="T_ATTAINS_REPORT" />
+            <End Role="T_ATTAINS_REPORT_LOG" EntitySet="T_ATTAINS_REPORT_LOG" />
+          </AssociationSet>
+          <FunctionImport Name="GenATTAINSXML" ReturnType="Collection(String)">
+            <Parameter Name="ReportIDX" Mode="In" Type="Int32" />
+          </FunctionImport>
           </EntityContainer>
         <EntityType Name="T_OE_APP_SETTINGS">
           <Key>
@@ -1882,6 +2277,7 @@ FROM [dbo].[V_WQX_TRANSACTION_LOG] AS [V_WQX_TRANSACTION_LOG]</DefiningQuery>
           <NavigationProperty Name="T_WQX_BIO_HABITAT_INDEX" Relationship="OpenEnvironmentModel.FK__T_WQX_BIO__MONLO__1ED998B2" FromRole="T_WQX_MONLOC" ToRole="T_WQX_BIO_HABITAT_INDEX" />
           <NavigationProperty Name="T_WQX_ORGANIZATION" Relationship="OpenEnvironmentModel.FK__T_WQX_MON__ORG_I__2C3393D0" FromRole="T_WQX_MONLOC" ToRole="T_WQX_ORGANIZATION" />
           <NavigationProperty Name="T_WQX_ACTIVITY" Relationship="OpenEnvironmentModel.FK__T_WQX_ACT__MONLO__3D5E1FD2" FromRole="T_WQX_MONLOC" ToRole="T_WQX_ACTIVITY" />
+          <NavigationProperty Name="T_ATTAINS_ASSESS_UNITS_MLOC" Relationship="OpenEnvironmentModel.FK__T_ATTAINS__MONLO__0E04126B" FromRole="T_WQX_MONLOC" ToRole="T_ATTAINS_ASSESS_UNITS_MLOC" />
         </EntityType>
         <EntityType Name="T_WQX_ORG_ADDRESS">
           <Key>
@@ -2285,6 +2681,12 @@ FROM [dbo].[V_WQX_TRANSACTION_LOG] AS [V_WQX_TRANSACTION_LOG]</DefiningQuery>
           <NavigationProperty Name="T_WQX_REF_TAXA_ORG" Relationship="OpenEnvironmentModel.FK__T_WQX_REF__ORG_I__756D6ECB" FromRole="T_WQX_ORGANIZATION" ToRole="T_WQX_REF_TAXA_ORG" />
           <NavigationProperty Name="T_WQX_REF_CHAR_ORG" Relationship="OpenEnvironmentModel.FK__T_WQX_REF__ORG_I__4D94879B" FromRole="T_WQX_ORGANIZATION" ToRole="T_WQX_REF_CHAR_ORG" />
           <NavigationProperty Name="T_WQX_IMPORT_TRANSLATE" Relationship="OpenEnvironmentModel.FK__T_WQX_IMP__ORG_I__44952D46" FromRole="T_WQX_ORGANIZATION" ToRole="T_WQX_IMPORT_TRANSLATE" />
+          <NavigationProperty Name="T_ATTAINS_REPORT" Relationship="OpenEnvironmentModel.FK__T_ATTAINS__ORG_I__6ABAD62E" FromRole="T_WQX_ORGANIZATION" ToRole="T_ATTAINS_REPORT" />
+          <Property Name="MAILING_ADDRESS" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="MAILING_ADDRESS2" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="MAILING_ADD_CITY" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="MAILING_ADD_STATE" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="MAILING_ADD_ZIP" Type="String" MaxLength="14" FixedLength="false" Unicode="false" />
         </EntityType>
         <Association Name="FK__T_WQX_BIO__ORG_I__34C8D9D1">
           <End Type="OpenEnvironmentModel.T_WQX_ORGANIZATION" Role="T_WQX_ORGANIZATION" Multiplicity="1" />
@@ -3015,6 +3417,313 @@ FROM [dbo].[V_WQX_TRANSACTION_LOG] AS [V_WQX_TRANSACTION_LOG]</DefiningQuery>
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="T_ATTAINS_REPORT">
+          <Key>
+            <PropertyRef Name="ATTAINS_REPORT_IDX" />
+          </Key>
+          <Property Name="ATTAINS_REPORT_IDX" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ORG_ID" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="REPORT_NAME" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="DATA_FROM" Type="DateTime" Precision="3" />
+          <Property Name="DATA_TO" Type="DateTime" Precision="3" />
+          <Property Name="ATTAINS_IND" Type="Boolean" />
+          <Property Name="ATTAINS_SUBMIT_STATUS" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="ATTAINS_UPDATE_DT" Type="DateTime" Precision="3" />
+          <Property Name="CREATE_DT" Type="DateTime" Precision="3" />
+          <Property Name="CREATE_USERID" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="T_WQX_ORGANIZATION" Relationship="OpenEnvironmentModel.FK__T_ATTAINS__ORG_I__6ABAD62E" FromRole="T_ATTAINS_REPORT" ToRole="T_WQX_ORGANIZATION" />
+          <NavigationProperty Name="T_ATTAINS_ASSESS_UNITS" Relationship="OpenEnvironmentModel.FK__T_ATTAINS__ATTAI__056ECC6A" FromRole="T_ATTAINS_REPORT" ToRole="T_ATTAINS_ASSESS_UNITS" />
+          <NavigationProperty Name="T_ATTAINS_REPORT_LOG" Relationship="OpenEnvironmentModel.FK__T_ATTAINS__ATTAI__473C8FC7" FromRole="T_ATTAINS_REPORT" ToRole="T_ATTAINS_REPORT_LOG" />
+        </EntityType>
+        <Association Name="FK__T_ATTAINS__ORG_I__6ABAD62E">
+          <End Type="OpenEnvironmentModel.T_WQX_ORGANIZATION" Role="T_WQX_ORGANIZATION" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="OpenEnvironmentModel.T_ATTAINS_REPORT" Role="T_ATTAINS_REPORT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_WQX_ORGANIZATION">
+              <PropertyRef Name="ORG_ID" />
+            </Principal>
+            <Dependent Role="T_ATTAINS_REPORT">
+              <PropertyRef Name="ORG_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="T_ATTAINS_REF_WATER_TYPE">
+          <Key>
+            <PropertyRef Name="WATER_TYPE_CODE" />
+          </Key>
+          <Property Name="WATER_TYPE_CODE" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="CREATE_DT" Type="DateTime" Precision="3" />
+          <Property Name="CREATE_USERID" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="T_ATTAINS_ASSESS_UNITS" Relationship="OpenEnvironmentModel.FK__T_ATTAINS__WATER__0662F0A3" FromRole="T_ATTAINS_REF_WATER_TYPE" ToRole="T_ATTAINS_ASSESS_UNITS" />
+        </EntityType>
+        <EntityType Name="T_ATTAINS_ASSESS_UNITS">
+          <Key>
+            <PropertyRef Name="ATTAINS_ASSESS_UNIT_IDX" />
+          </Key>
+          <Property Name="ATTAINS_ASSESS_UNIT_IDX" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ATTAINS_REPORT_IDX" Type="Int32" Nullable="false" />
+          <Property Name="ASSESS_UNIT_ID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ASSESS_UNIT_NAME" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="LOCATION_DESC" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="AGENCY_CODE" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="STATE_CODE" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="ACT_IND" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="WATER_TYPE_CODE" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="WATER_SIZE" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="WATER_UNIT_CODE" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="USE_CLASS_CODE" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="USE_CLASS_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CREATE_DT" Type="DateTime" Precision="3" />
+          <Property Name="CREATE_USERID" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="MODIFY_DT" Type="DateTime" Precision="3" />
+          <Property Name="MODIFY_USERID" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="T_ATTAINS_REPORT" Relationship="OpenEnvironmentModel.FK__T_ATTAINS__ATTAI__056ECC6A" FromRole="T_ATTAINS_ASSESS_UNITS" ToRole="T_ATTAINS_REPORT" />
+          <NavigationProperty Name="T_ATTAINS_REF_WATER_TYPE" Relationship="OpenEnvironmentModel.FK__T_ATTAINS__WATER__0662F0A3" FromRole="T_ATTAINS_ASSESS_UNITS" ToRole="T_ATTAINS_REF_WATER_TYPE" />
+          <NavigationProperty Name="T_ATTAINS_ASSESS_UNITS_MLOC" Relationship="OpenEnvironmentModel.FK__T_ATTAINS__ATTAI__0D0FEE32" FromRole="T_ATTAINS_ASSESS_UNITS" ToRole="T_ATTAINS_ASSESS_UNITS_MLOC" />
+          <NavigationProperty Name="T_ATTAINS_ASSESS" Relationship="OpenEnvironmentModel.FK__T_ATTAINS__ATTAI__2116E6DF" FromRole="T_ATTAINS_ASSESS_UNITS" ToRole="T_ATTAINS_ASSESS" />
+        </EntityType>
+        <Association Name="FK__T_ATTAINS__ATTAI__056ECC6A">
+          <End Type="OpenEnvironmentModel.T_ATTAINS_REPORT" Role="T_ATTAINS_REPORT" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="OpenEnvironmentModel.T_ATTAINS_ASSESS_UNITS" Role="T_ATTAINS_ASSESS_UNITS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_ATTAINS_REPORT">
+              <PropertyRef Name="ATTAINS_REPORT_IDX" />
+            </Principal>
+            <Dependent Role="T_ATTAINS_ASSESS_UNITS">
+              <PropertyRef Name="ATTAINS_REPORT_IDX" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__T_ATTAINS__WATER__0662F0A3">
+          <End Type="OpenEnvironmentModel.T_ATTAINS_REF_WATER_TYPE" Role="T_ATTAINS_REF_WATER_TYPE" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="OpenEnvironmentModel.T_ATTAINS_ASSESS_UNITS" Role="T_ATTAINS_ASSESS_UNITS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_ATTAINS_REF_WATER_TYPE">
+              <PropertyRef Name="WATER_TYPE_CODE" />
+            </Principal>
+            <Dependent Role="T_ATTAINS_ASSESS_UNITS">
+              <PropertyRef Name="WATER_TYPE_CODE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="T_ATTAINS_ASSESS_UNITS_MLOC">
+          <Key>
+            <PropertyRef Name="ATTAINS_ASSESS_UNIT_IDX" />
+            <PropertyRef Name="MONLOC_IDX" />
+          </Key>
+          <Property Name="ATTAINS_ASSESS_UNIT_IDX" Type="Int32" Nullable="false" />
+          <Property Name="MONLOC_IDX" Type="Int32" Nullable="false" />
+          <Property Name="CREATE_DT" Type="DateTime" Precision="3" />
+          <Property Name="CREATE_USERID" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="MODIFY_DT" Type="DateTime" Precision="3" />
+          <Property Name="MODIFY_USERID" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="T_ATTAINS_ASSESS_UNITS" Relationship="OpenEnvironmentModel.FK__T_ATTAINS__ATTAI__0D0FEE32" FromRole="T_ATTAINS_ASSESS_UNITS_MLOC" ToRole="T_ATTAINS_ASSESS_UNITS" />
+          <NavigationProperty Name="T_WQX_MONLOC" Relationship="OpenEnvironmentModel.FK__T_ATTAINS__MONLO__0E04126B" FromRole="T_ATTAINS_ASSESS_UNITS_MLOC" ToRole="T_WQX_MONLOC" />
+        </EntityType>
+        <Association Name="FK__T_ATTAINS__ATTAI__0D0FEE32">
+          <End Type="OpenEnvironmentModel.T_ATTAINS_ASSESS_UNITS" Role="T_ATTAINS_ASSESS_UNITS" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="OpenEnvironmentModel.T_ATTAINS_ASSESS_UNITS_MLOC" Role="T_ATTAINS_ASSESS_UNITS_MLOC" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_ATTAINS_ASSESS_UNITS">
+              <PropertyRef Name="ATTAINS_ASSESS_UNIT_IDX" />
+            </Principal>
+            <Dependent Role="T_ATTAINS_ASSESS_UNITS_MLOC">
+              <PropertyRef Name="ATTAINS_ASSESS_UNIT_IDX" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__T_ATTAINS__MONLO__0E04126B">
+          <End Type="OpenEnvironmentModel.T_WQX_MONLOC" Role="T_WQX_MONLOC" Multiplicity="1" />
+          <End Type="OpenEnvironmentModel.T_ATTAINS_ASSESS_UNITS_MLOC" Role="T_ATTAINS_ASSESS_UNITS_MLOC" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_WQX_MONLOC">
+              <PropertyRef Name="MONLOC_IDX" />
+            </Principal>
+            <Dependent Role="T_ATTAINS_ASSESS_UNITS_MLOC">
+              <PropertyRef Name="MONLOC_IDX" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="T_ATTAINS_ASSESS">
+          <Key>
+            <PropertyRef Name="ATTAINS_ASSESS_IDX" />
+          </Key>
+          <Property Name="ATTAINS_ASSESS_IDX" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="REPORTING_CYCLE" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="REPORT_STATUS" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="ATTAINS_ASSESS_UNIT_IDX" Type="Int32" Nullable="false" />
+          <Property Name="AGENCY_CODE" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="CYCLE_LAST_ASSESSED" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="CYCLE_LAST_MONITORED" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="TROPHIC_STATUS_CODE" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="CREATE_DT" Type="DateTime" Precision="3" />
+          <Property Name="CREATE_USERID" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="MODIFY_DT" Type="DateTime" Precision="3" />
+          <Property Name="MODIFY_USERID" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="T_ATTAINS_ASSESS_UNITS" Relationship="OpenEnvironmentModel.FK__T_ATTAINS__ATTAI__2116E6DF" FromRole="T_ATTAINS_ASSESS" ToRole="T_ATTAINS_ASSESS_UNITS" />
+          <NavigationProperty Name="T_ATTAINS_ASSESS_USE" Relationship="OpenEnvironmentModel.FK__T_ATTAINS__ATTAI__4A18FC72" FromRole="T_ATTAINS_ASSESS" ToRole="T_ATTAINS_ASSESS_USE" />
+          <NavigationProperty Name="T_ATTAINS_ASSESS_CAUSE" Relationship="OpenEnvironmentModel.FK__T_ATTAINS__ATTAI__5D2BD0E6" FromRole="T_ATTAINS_ASSESS" ToRole="T_ATTAINS_ASSESS_CAUSE" />
+        </EntityType>
+        <Association Name="FK__T_ATTAINS__ATTAI__2116E6DF">
+          <End Type="OpenEnvironmentModel.T_ATTAINS_ASSESS_UNITS" Role="T_ATTAINS_ASSESS_UNITS" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="OpenEnvironmentModel.T_ATTAINS_ASSESS" Role="T_ATTAINS_ASSESS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_ATTAINS_ASSESS_UNITS">
+              <PropertyRef Name="ATTAINS_ASSESS_UNIT_IDX" />
+            </Principal>
+            <Dependent Role="T_ATTAINS_ASSESS">
+              <PropertyRef Name="ATTAINS_ASSESS_UNIT_IDX" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="T_ATTAINS_ASSESS_CAUSE">
+          <Key>
+            <PropertyRef Name="ATTAINS_ASSESS_CAUSE_IDX" />
+          </Key>
+          <Property Name="ATTAINS_ASSESS_CAUSE_IDX" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ATTAINS_ASSESS_IDX" Type="Int32" Nullable="false" />
+          <Property Name="CAUSE_NAME" Type="String" MaxLength="240" FixedLength="false" Unicode="false" />
+          <Property Name="POLLUTANT_IND" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="AGENCY_CODE" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="CYCLE_FIRST_LISTED" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="CYCLE_SCHED_TMDL" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="TMDL_PRIORITY_NAME" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="CONSENT_DECREE_CYCLE" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="TMDL_CAUSE_REPORT_ID" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="CYCLE_EXPECTED_ATTAIN" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="CAUSE_COMMENT" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="CREATE_DT" Type="DateTime" Precision="3" />
+          <Property Name="CREATE_USERID" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="MODIFY_DT" Type="DateTime" Precision="3" />
+          <Property Name="MODIFY_USERID" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="T_ATTAINS_ASSESS" Relationship="OpenEnvironmentModel.FK__T_ATTAINS__ATTAI__5D2BD0E6" FromRole="T_ATTAINS_ASSESS_CAUSE" ToRole="T_ATTAINS_ASSESS" />
+        </EntityType>
+        <EntityType Name="T_ATTAINS_ASSESS_USE">
+          <Key>
+            <PropertyRef Name="ATTAINS_ASSESS_USE_IDX" />
+          </Key>
+          <Property Name="ATTAINS_ASSESS_USE_IDX" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ATTAINS_ASSESS_IDX" Type="Int32" Nullable="false" />
+          <Property Name="USE_NAME" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="USE_ATTAINMENT_CODE" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="THREATENED_IND" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="TREND_CODE" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="IR_CAT_CODE" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="IR_CAT_DESC" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ASSESS_BASIS" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="ASSESS_TYPE" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="ASSESS_CONFIDENCE" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="MON_DATE_START" Type="DateTime" Precision="3" />
+          <Property Name="MON_DATE_END" Type="DateTime" Precision="3" />
+          <Property Name="ASSESS_DATE" Type="DateTime" Precision="3" />
+          <Property Name="ASSESSOR_NAME" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="CREATE_DT" Type="DateTime" Precision="3" />
+          <Property Name="CREATE_USERID" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="MODIFY_DT" Type="DateTime" Precision="3" />
+          <Property Name="MODIFY_USERID" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="T_ATTAINS_ASSESS" Relationship="OpenEnvironmentModel.FK__T_ATTAINS__ATTAI__4A18FC72" FromRole="T_ATTAINS_ASSESS_USE" ToRole="T_ATTAINS_ASSESS" />
+          <NavigationProperty Name="T_ATTAINS_ASSESS_USE_PAR" Relationship="OpenEnvironmentModel.FK__T_ATTAINS__ATTAI__5A4F643B" FromRole="T_ATTAINS_ASSESS_USE" ToRole="T_ATTAINS_ASSESS_USE_PAR" />
+        </EntityType>
+        <EntityType Name="T_ATTAINS_ASSESS_USE_PAR">
+          <Key>
+            <PropertyRef Name="ATTAINS_ASSESS_USE_PAR_IDX" />
+          </Key>
+          <Property Name="ATTAINS_ASSESS_USE_PAR_IDX" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ATTAINS_ASSESS_USE_IDX" Type="Int32" Nullable="false" />
+          <Property Name="PARAM_NAME" Type="String" MaxLength="240" FixedLength="false" Unicode="false" />
+          <Property Name="PARAM_ATTAINMENT_CODE" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="TREND_CODE" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="PARAM_COMMENT" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="CREATE_DT" Type="DateTime" Precision="3" />
+          <Property Name="CREATE_USERID" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="MODIFY_DT" Type="DateTime" Precision="3" />
+          <Property Name="MODIFY_USERID" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="T_ATTAINS_ASSESS_USE" Relationship="OpenEnvironmentModel.FK__T_ATTAINS__ATTAI__5A4F643B" FromRole="T_ATTAINS_ASSESS_USE_PAR" ToRole="T_ATTAINS_ASSESS_USE" />
+        </EntityType>
+        <EntityType Name="T_ATTAINS_REPORT_LOG">
+          <Key>
+            <PropertyRef Name="ATTAINS_LOG_IDX" />
+          </Key>
+          <Property Name="ATTAINS_LOG_IDX" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ATTAINS_REPORT_IDX" Type="Int32" Nullable="false" />
+          <Property Name="SUBMIT_DT" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="SUBMIT_FILE" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="RESPONSE_FILE" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="RESPONSE_TXT" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CDX_SUBMIT_TRANSID" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CDX_SUBMIT_STATUS" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="ORG_ID" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="T_ATTAINS_REPORT" Relationship="OpenEnvironmentModel.FK__T_ATTAINS__ATTAI__473C8FC7" FromRole="T_ATTAINS_REPORT_LOG" ToRole="T_ATTAINS_REPORT" />
+        </EntityType>
+        <Association Name="FK__T_ATTAINS__ATTAI__4A18FC72">
+          <End Type="OpenEnvironmentModel.T_ATTAINS_ASSESS" Role="T_ATTAINS_ASSESS" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="OpenEnvironmentModel.T_ATTAINS_ASSESS_USE" Role="T_ATTAINS_ASSESS_USE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_ATTAINS_ASSESS">
+              <PropertyRef Name="ATTAINS_ASSESS_IDX" />
+            </Principal>
+            <Dependent Role="T_ATTAINS_ASSESS_USE">
+              <PropertyRef Name="ATTAINS_ASSESS_IDX" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__T_ATTAINS__ATTAI__5D2BD0E6">
+          <End Type="OpenEnvironmentModel.T_ATTAINS_ASSESS" Role="T_ATTAINS_ASSESS" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="OpenEnvironmentModel.T_ATTAINS_ASSESS_CAUSE" Role="T_ATTAINS_ASSESS_CAUSE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_ATTAINS_ASSESS">
+              <PropertyRef Name="ATTAINS_ASSESS_IDX" />
+            </Principal>
+            <Dependent Role="T_ATTAINS_ASSESS_CAUSE">
+              <PropertyRef Name="ATTAINS_ASSESS_IDX" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__T_ATTAINS__ATTAI__5A4F643B">
+          <End Type="OpenEnvironmentModel.T_ATTAINS_ASSESS_USE" Role="T_ATTAINS_ASSESS_USE" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="OpenEnvironmentModel.T_ATTAINS_ASSESS_USE_PAR" Role="T_ATTAINS_ASSESS_USE_PAR" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_ATTAINS_ASSESS_USE">
+              <PropertyRef Name="ATTAINS_ASSESS_USE_IDX" />
+            </Principal>
+            <Dependent Role="T_ATTAINS_ASSESS_USE_PAR">
+              <PropertyRef Name="ATTAINS_ASSESS_USE_IDX" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__T_ATTAINS__ATTAI__473C8FC7">
+          <End Type="OpenEnvironmentModel.T_ATTAINS_REPORT" Role="T_ATTAINS_REPORT" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="OpenEnvironmentModel.T_ATTAINS_REPORT_LOG" Role="T_ATTAINS_REPORT_LOG" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_ATTAINS_REPORT">
+              <PropertyRef Name="ATTAINS_REPORT_IDX" />
+            </Principal>
+            <Dependent Role="T_ATTAINS_REPORT_LOG">
+              <PropertyRef Name="ATTAINS_REPORT_IDX" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="GenATTAINSXML1_Result">
+          <Property Type="String" Name="Column1" Nullable="true" />
+        </ComplexType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -3481,6 +4190,11 @@ FROM [dbo].[V_WQX_TRANSACTION_LOG] AS [V_WQX_TRANSACTION_LOG]</DefiningQuery>
           <EntitySetMapping Name="T_WQX_ORGANIZATION">
             <EntityTypeMapping TypeName="OpenEnvironmentModel.T_WQX_ORGANIZATION">
               <MappingFragment StoreEntitySet="T_WQX_ORGANIZATION">
+                <ScalarProperty Name="MAILING_ADD_ZIP" ColumnName="MAILING_ADD_ZIP" />
+                <ScalarProperty Name="MAILING_ADD_STATE" ColumnName="MAILING_ADD_STATE" />
+                <ScalarProperty Name="MAILING_ADD_CITY" ColumnName="MAILING_ADD_CITY" />
+                <ScalarProperty Name="MAILING_ADDRESS2" ColumnName="MAILING_ADDRESS2" />
+                <ScalarProperty Name="MAILING_ADDRESS" ColumnName="MAILING_ADDRESS" />
                 <ScalarProperty Name="DEFAULT_TIMEZONE" ColumnName="DEFAULT_TIMEZONE" />
                 <ScalarProperty Name="CDX_SUBMIT_IND" ColumnName="CDX_SUBMIT_IND" />
                 <ScalarProperty Name="UPDATE_USERID" ColumnName="UPDATE_USERID" />
@@ -3960,6 +4674,163 @@ FROM [dbo].[V_WQX_TRANSACTION_LOG] AS [V_WQX_TRANSACTION_LOG]</DefiningQuery>
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="T_ATTAINS_REPORT">
+            <EntityTypeMapping TypeName="OpenEnvironmentModel.T_ATTAINS_REPORT">
+              <MappingFragment StoreEntitySet="T_ATTAINS_REPORT">
+                <ScalarProperty Name="CREATE_USERID" ColumnName="CREATE_USERID" />
+                <ScalarProperty Name="CREATE_DT" ColumnName="CREATE_DT" />
+                <ScalarProperty Name="ATTAINS_UPDATE_DT" ColumnName="ATTAINS_UPDATE_DT" />
+                <ScalarProperty Name="ATTAINS_SUBMIT_STATUS" ColumnName="ATTAINS_SUBMIT_STATUS" />
+                <ScalarProperty Name="ATTAINS_IND" ColumnName="ATTAINS_IND" />
+                <ScalarProperty Name="DATA_TO" ColumnName="DATA_TO" />
+                <ScalarProperty Name="DATA_FROM" ColumnName="DATA_FROM" />
+                <ScalarProperty Name="REPORT_NAME" ColumnName="REPORT_NAME" />
+                <ScalarProperty Name="ORG_ID" ColumnName="ORG_ID" />
+                <ScalarProperty Name="ATTAINS_REPORT_IDX" ColumnName="ATTAINS_REPORT_IDX" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_ATTAINS_REF_WATER_TYPE">
+            <EntityTypeMapping TypeName="OpenEnvironmentModel.T_ATTAINS_REF_WATER_TYPE">
+              <MappingFragment StoreEntitySet="T_ATTAINS_REF_WATER_TYPE">
+                <ScalarProperty Name="CREATE_USERID" ColumnName="CREATE_USERID" />
+                <ScalarProperty Name="CREATE_DT" ColumnName="CREATE_DT" />
+                <ScalarProperty Name="WATER_TYPE_CODE" ColumnName="WATER_TYPE_CODE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_ATTAINS_ASSESS_UNITS">
+            <EntityTypeMapping TypeName="OpenEnvironmentModel.T_ATTAINS_ASSESS_UNITS">
+              <MappingFragment StoreEntitySet="T_ATTAINS_ASSESS_UNITS">
+                <ScalarProperty Name="MODIFY_USERID" ColumnName="MODIFY_USERID" />
+                <ScalarProperty Name="MODIFY_DT" ColumnName="MODIFY_DT" />
+                <ScalarProperty Name="CREATE_USERID" ColumnName="CREATE_USERID" />
+                <ScalarProperty Name="CREATE_DT" ColumnName="CREATE_DT" />
+                <ScalarProperty Name="USE_CLASS_NAME" ColumnName="USE_CLASS_NAME" />
+                <ScalarProperty Name="USE_CLASS_CODE" ColumnName="USE_CLASS_CODE" />
+                <ScalarProperty Name="WATER_UNIT_CODE" ColumnName="WATER_UNIT_CODE" />
+                <ScalarProperty Name="WATER_SIZE" ColumnName="WATER_SIZE" />
+                <ScalarProperty Name="WATER_TYPE_CODE" ColumnName="WATER_TYPE_CODE" />
+                <ScalarProperty Name="ACT_IND" ColumnName="ACT_IND" />
+                <ScalarProperty Name="STATE_CODE" ColumnName="STATE_CODE" />
+                <ScalarProperty Name="AGENCY_CODE" ColumnName="AGENCY_CODE" />
+                <ScalarProperty Name="LOCATION_DESC" ColumnName="LOCATION_DESC" />
+                <ScalarProperty Name="ASSESS_UNIT_NAME" ColumnName="ASSESS_UNIT_NAME" />
+                <ScalarProperty Name="ASSESS_UNIT_ID" ColumnName="ASSESS_UNIT_ID" />
+                <ScalarProperty Name="ATTAINS_REPORT_IDX" ColumnName="ATTAINS_REPORT_IDX" />
+                <ScalarProperty Name="ATTAINS_ASSESS_UNIT_IDX" ColumnName="ATTAINS_ASSESS_UNIT_IDX" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_ATTAINS_ASSESS_UNITS_MLOC">
+            <EntityTypeMapping TypeName="OpenEnvironmentModel.T_ATTAINS_ASSESS_UNITS_MLOC">
+              <MappingFragment StoreEntitySet="T_ATTAINS_ASSESS_UNITS_MLOC">
+                <ScalarProperty Name="MODIFY_USERID" ColumnName="MODIFY_USERID" />
+                <ScalarProperty Name="MODIFY_DT" ColumnName="MODIFY_DT" />
+                <ScalarProperty Name="CREATE_USERID" ColumnName="CREATE_USERID" />
+                <ScalarProperty Name="CREATE_DT" ColumnName="CREATE_DT" />
+                <ScalarProperty Name="MONLOC_IDX" ColumnName="MONLOC_IDX" />
+                <ScalarProperty Name="ATTAINS_ASSESS_UNIT_IDX" ColumnName="ATTAINS_ASSESS_UNIT_IDX" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_ATTAINS_ASSESS">
+            <EntityTypeMapping TypeName="OpenEnvironmentModel.T_ATTAINS_ASSESS">
+              <MappingFragment StoreEntitySet="T_ATTAINS_ASSESS">
+                <ScalarProperty Name="MODIFY_USERID" ColumnName="MODIFY_USERID" />
+                <ScalarProperty Name="MODIFY_DT" ColumnName="MODIFY_DT" />
+                <ScalarProperty Name="CREATE_USERID" ColumnName="CREATE_USERID" />
+                <ScalarProperty Name="CREATE_DT" ColumnName="CREATE_DT" />
+                <ScalarProperty Name="TROPHIC_STATUS_CODE" ColumnName="TROPHIC_STATUS_CODE" />
+                <ScalarProperty Name="CYCLE_LAST_MONITORED" ColumnName="CYCLE_LAST_MONITORED" />
+                <ScalarProperty Name="CYCLE_LAST_ASSESSED" ColumnName="CYCLE_LAST_ASSESSED" />
+                <ScalarProperty Name="AGENCY_CODE" ColumnName="AGENCY_CODE" />
+                <ScalarProperty Name="ATTAINS_ASSESS_UNIT_IDX" ColumnName="ATTAINS_ASSESS_UNIT_IDX" />
+                <ScalarProperty Name="REPORT_STATUS" ColumnName="REPORT_STATUS" />
+                <ScalarProperty Name="REPORTING_CYCLE" ColumnName="REPORTING_CYCLE" />
+                <ScalarProperty Name="ATTAINS_ASSESS_IDX" ColumnName="ATTAINS_ASSESS_IDX" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_ATTAINS_ASSESS_CAUSE">
+            <EntityTypeMapping TypeName="OpenEnvironmentModel.T_ATTAINS_ASSESS_CAUSE">
+              <MappingFragment StoreEntitySet="T_ATTAINS_ASSESS_CAUSE">
+                <ScalarProperty Name="MODIFY_USERID" ColumnName="MODIFY_USERID" />
+                <ScalarProperty Name="MODIFY_DT" ColumnName="MODIFY_DT" />
+                <ScalarProperty Name="CREATE_USERID" ColumnName="CREATE_USERID" />
+                <ScalarProperty Name="CREATE_DT" ColumnName="CREATE_DT" />
+                <ScalarProperty Name="CAUSE_COMMENT" ColumnName="CAUSE_COMMENT" />
+                <ScalarProperty Name="CYCLE_EXPECTED_ATTAIN" ColumnName="CYCLE_EXPECTED_ATTAIN" />
+                <ScalarProperty Name="TMDL_CAUSE_REPORT_ID" ColumnName="TMDL_CAUSE_REPORT_ID" />
+                <ScalarProperty Name="CONSENT_DECREE_CYCLE" ColumnName="CONSENT_DECREE_CYCLE" />
+                <ScalarProperty Name="TMDL_PRIORITY_NAME" ColumnName="TMDL_PRIORITY_NAME" />
+                <ScalarProperty Name="CYCLE_SCHED_TMDL" ColumnName="CYCLE_SCHED_TMDL" />
+                <ScalarProperty Name="CYCLE_FIRST_LISTED" ColumnName="CYCLE_FIRST_LISTED" />
+                <ScalarProperty Name="AGENCY_CODE" ColumnName="AGENCY_CODE" />
+                <ScalarProperty Name="POLLUTANT_IND" ColumnName="POLLUTANT_IND" />
+                <ScalarProperty Name="CAUSE_NAME" ColumnName="CAUSE_NAME" />
+                <ScalarProperty Name="ATTAINS_ASSESS_IDX" ColumnName="ATTAINS_ASSESS_IDX" />
+                <ScalarProperty Name="ATTAINS_ASSESS_CAUSE_IDX" ColumnName="ATTAINS_ASSESS_CAUSE_IDX" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_ATTAINS_ASSESS_USE">
+            <EntityTypeMapping TypeName="OpenEnvironmentModel.T_ATTAINS_ASSESS_USE">
+              <MappingFragment StoreEntitySet="T_ATTAINS_ASSESS_USE">
+                <ScalarProperty Name="MODIFY_USERID" ColumnName="MODIFY_USERID" />
+                <ScalarProperty Name="MODIFY_DT" ColumnName="MODIFY_DT" />
+                <ScalarProperty Name="CREATE_USERID" ColumnName="CREATE_USERID" />
+                <ScalarProperty Name="CREATE_DT" ColumnName="CREATE_DT" />
+                <ScalarProperty Name="ASSESSOR_NAME" ColumnName="ASSESSOR_NAME" />
+                <ScalarProperty Name="ASSESS_DATE" ColumnName="ASSESS_DATE" />
+                <ScalarProperty Name="MON_DATE_END" ColumnName="MON_DATE_END" />
+                <ScalarProperty Name="MON_DATE_START" ColumnName="MON_DATE_START" />
+                <ScalarProperty Name="ASSESS_CONFIDENCE" ColumnName="ASSESS_CONFIDENCE" />
+                <ScalarProperty Name="ASSESS_TYPE" ColumnName="ASSESS_TYPE" />
+                <ScalarProperty Name="ASSESS_BASIS" ColumnName="ASSESS_BASIS" />
+                <ScalarProperty Name="IR_CAT_DESC" ColumnName="IR_CAT_DESC" />
+                <ScalarProperty Name="IR_CAT_CODE" ColumnName="IR_CAT_CODE" />
+                <ScalarProperty Name="TREND_CODE" ColumnName="TREND_CODE" />
+                <ScalarProperty Name="THREATENED_IND" ColumnName="THREATENED_IND" />
+                <ScalarProperty Name="USE_ATTAINMENT_CODE" ColumnName="USE_ATTAINMENT_CODE" />
+                <ScalarProperty Name="USE_NAME" ColumnName="USE_NAME" />
+                <ScalarProperty Name="ATTAINS_ASSESS_IDX" ColumnName="ATTAINS_ASSESS_IDX" />
+                <ScalarProperty Name="ATTAINS_ASSESS_USE_IDX" ColumnName="ATTAINS_ASSESS_USE_IDX" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_ATTAINS_ASSESS_USE_PAR">
+            <EntityTypeMapping TypeName="OpenEnvironmentModel.T_ATTAINS_ASSESS_USE_PAR">
+              <MappingFragment StoreEntitySet="T_ATTAINS_ASSESS_USE_PAR">
+                <ScalarProperty Name="MODIFY_USERID" ColumnName="MODIFY_USERID" />
+                <ScalarProperty Name="MODIFY_DT" ColumnName="MODIFY_DT" />
+                <ScalarProperty Name="CREATE_USERID" ColumnName="CREATE_USERID" />
+                <ScalarProperty Name="CREATE_DT" ColumnName="CREATE_DT" />
+                <ScalarProperty Name="PARAM_COMMENT" ColumnName="PARAM_COMMENT" />
+                <ScalarProperty Name="TREND_CODE" ColumnName="TREND_CODE" />
+                <ScalarProperty Name="PARAM_ATTAINMENT_CODE" ColumnName="PARAM_ATTAINMENT_CODE" />
+                <ScalarProperty Name="PARAM_NAME" ColumnName="PARAM_NAME" />
+                <ScalarProperty Name="ATTAINS_ASSESS_USE_IDX" ColumnName="ATTAINS_ASSESS_USE_IDX" />
+                <ScalarProperty Name="ATTAINS_ASSESS_USE_PAR_IDX" ColumnName="ATTAINS_ASSESS_USE_PAR_IDX" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_ATTAINS_REPORT_LOG">
+            <EntityTypeMapping TypeName="OpenEnvironmentModel.T_ATTAINS_REPORT_LOG">
+              <MappingFragment StoreEntitySet="T_ATTAINS_REPORT_LOG">
+                <ScalarProperty Name="ORG_ID" ColumnName="ORG_ID" />
+                <ScalarProperty Name="CDX_SUBMIT_STATUS" ColumnName="CDX_SUBMIT_STATUS" />
+                <ScalarProperty Name="CDX_SUBMIT_TRANSID" ColumnName="CDX_SUBMIT_TRANSID" />
+                <ScalarProperty Name="RESPONSE_TXT" ColumnName="RESPONSE_TXT" />
+                <ScalarProperty Name="RESPONSE_FILE" ColumnName="RESPONSE_FILE" />
+                <ScalarProperty Name="SUBMIT_FILE" ColumnName="SUBMIT_FILE" />
+                <ScalarProperty Name="SUBMIT_DT" ColumnName="SUBMIT_DT" />
+                <ScalarProperty Name="ATTAINS_REPORT_IDX" ColumnName="ATTAINS_REPORT_IDX" />
+                <ScalarProperty Name="ATTAINS_LOG_IDX" ColumnName="ATTAINS_LOG_IDX" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="GenATTAINSXML" FunctionName="OpenEnvironmentModel.Store.GenATTAINSXML" />
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -4070,7 +4941,26 @@ FROM [dbo].[V_WQX_TRANSACTION_LOG] AS [V_WQX_TRANSACTION_LOG]</DefiningQuery>
         <EntityTypeShape EntityType="OpenEnvironmentModel.T_WQX_IMPORT_COL_ALIAS" Width="1.5" PointX="8.375" PointY="17.75" />
         <EntityTypeShape EntityType="OpenEnvironmentModel.T_WQX_IMPORT_TRANSLATE" Width="1.5" PointX="3" PointY="34.25" />
         <AssociationConnector Association="OpenEnvironmentModel.FK__T_WQX_IMP__ORG_I__44952D46" />
-      </Diagram>
+        <EntityTypeShape EntityType="OpenEnvironmentModel.T_ATTAINS_REPORT" Width="1.5" PointX="3" PointY="58.125" />
+        <AssociationConnector Association="OpenEnvironmentModel.FK__T_ATTAINS__ORG_I__6ABAD62E" />
+        <EntityTypeShape EntityType="OpenEnvironmentModel.T_ATTAINS_REF_WATER_TYPE" Width="1.5" PointX="3" PointY="62.875" />
+        <EntityTypeShape EntityType="OpenEnvironmentModel.T_ATTAINS_ASSESS_UNITS" Width="1.5" PointX="5.25" PointY="59" />
+        <AssociationConnector Association="OpenEnvironmentModel.FK__T_ATTAINS__ATTAI__056ECC6A" />
+        <AssociationConnector Association="OpenEnvironmentModel.FK__T_ATTAINS__WATER__0662F0A3" />
+        <EntityTypeShape EntityType="OpenEnvironmentModel.T_ATTAINS_ASSESS_UNITS_MLOC" Width="1.5" PointX="7.5" PointY="51.125" />
+        <AssociationConnector Association="OpenEnvironmentModel.FK__T_ATTAINS__ATTAI__0D0FEE32" />
+        <AssociationConnector Association="OpenEnvironmentModel.FK__T_ATTAINS__MONLO__0E04126B" />
+        <EntityTypeShape EntityType="OpenEnvironmentModel.T_ATTAINS_ASSESS" Width="1.5" PointX="7.5" PointY="59.75" />
+        <AssociationConnector Association="OpenEnvironmentModel.FK__T_ATTAINS__ATTAI__2116E6DF" />
+        <EntityTypeShape EntityType="OpenEnvironmentModel.T_ATTAINS_ASSESS_CAUSE" Width="1.5" PointX="9.75" PointY="62.5" />
+        <EntityTypeShape EntityType="OpenEnvironmentModel.T_ATTAINS_ASSESS_USE" Width="1.5" PointX="9.75" PointY="56.625" />
+        <EntityTypeShape EntityType="OpenEnvironmentModel.T_ATTAINS_ASSESS_USE_PAR" Width="1.5" PointX="12" PointY="57.625" />
+        <EntityTypeShape EntityType="OpenEnvironmentModel.T_ATTAINS_REPORT_LOG" Width="1.5" PointX="5.25" PointY="54.375" />
+        <AssociationConnector Association="OpenEnvironmentModel.FK__T_ATTAINS__ATTAI__4A18FC72" />
+        <AssociationConnector Association="OpenEnvironmentModel.FK__T_ATTAINS__ATTAI__5D2BD0E6" />
+        <AssociationConnector Association="OpenEnvironmentModel.FK__T_ATTAINS__ATTAI__5A4F643B" />
+        <AssociationConnector Association="OpenEnvironmentModel.FK__T_ATTAINS__ATTAI__473C8FC7" />
+        </Diagram>
     </Diagrams>
   </Designer>
 </edmx:Edmx>

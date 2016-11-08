@@ -46,6 +46,16 @@ using System.Xml.Serialization;
 [assembly: EdmRelationshipAttribute("OpenEnvironmentModel", "FK__T_WQX_REF__CHAR___4E88ABD4", "T_WQX_REF_CHARACTERISTIC", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(OpenEnvironment.App_Logic.DataAccessLayer.T_WQX_REF_CHARACTERISTIC), "T_WQX_REF_CHAR_ORG", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(OpenEnvironment.App_Logic.DataAccessLayer.T_WQX_REF_CHAR_ORG), true)]
 [assembly: EdmRelationshipAttribute("OpenEnvironmentModel", "FK__T_WQX_IMP__TEMP___3C34F16F", "T_WQX_IMPORT_TEMP_SAMPLE", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(OpenEnvironment.App_Logic.DataAccessLayer.T_WQX_IMPORT_TEMP_SAMPLE), "T_WQX_IMPORT_TEMP_RESULT", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(OpenEnvironment.App_Logic.DataAccessLayer.T_WQX_IMPORT_TEMP_RESULT), true)]
 [assembly: EdmRelationshipAttribute("OpenEnvironmentModel", "FK__T_WQX_IMP__ORG_I__44952D46", "T_WQX_ORGANIZATION", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(OpenEnvironment.App_Logic.DataAccessLayer.T_WQX_ORGANIZATION), "T_WQX_IMPORT_TRANSLATE", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(OpenEnvironment.App_Logic.DataAccessLayer.T_WQX_IMPORT_TRANSLATE), true)]
+[assembly: EdmRelationshipAttribute("OpenEnvironmentModel", "FK__T_ATTAINS__ORG_I__6ABAD62E", "T_WQX_ORGANIZATION", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(OpenEnvironment.App_Logic.DataAccessLayer.T_WQX_ORGANIZATION), "T_ATTAINS_REPORT", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(OpenEnvironment.App_Logic.DataAccessLayer.T_ATTAINS_REPORT), true)]
+[assembly: EdmRelationshipAttribute("OpenEnvironmentModel", "FK__T_ATTAINS__ATTAI__056ECC6A", "T_ATTAINS_REPORT", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(OpenEnvironment.App_Logic.DataAccessLayer.T_ATTAINS_REPORT), "T_ATTAINS_ASSESS_UNITS", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(OpenEnvironment.App_Logic.DataAccessLayer.T_ATTAINS_ASSESS_UNITS), true)]
+[assembly: EdmRelationshipAttribute("OpenEnvironmentModel", "FK__T_ATTAINS__WATER__0662F0A3", "T_ATTAINS_REF_WATER_TYPE", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(OpenEnvironment.App_Logic.DataAccessLayer.T_ATTAINS_REF_WATER_TYPE), "T_ATTAINS_ASSESS_UNITS", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(OpenEnvironment.App_Logic.DataAccessLayer.T_ATTAINS_ASSESS_UNITS), true)]
+[assembly: EdmRelationshipAttribute("OpenEnvironmentModel", "FK__T_ATTAINS__ATTAI__0D0FEE32", "T_ATTAINS_ASSESS_UNITS", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(OpenEnvironment.App_Logic.DataAccessLayer.T_ATTAINS_ASSESS_UNITS), "T_ATTAINS_ASSESS_UNITS_MLOC", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(OpenEnvironment.App_Logic.DataAccessLayer.T_ATTAINS_ASSESS_UNITS_MLOC), true)]
+[assembly: EdmRelationshipAttribute("OpenEnvironmentModel", "FK__T_ATTAINS__MONLO__0E04126B", "T_WQX_MONLOC", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(OpenEnvironment.App_Logic.DataAccessLayer.T_WQX_MONLOC), "T_ATTAINS_ASSESS_UNITS_MLOC", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(OpenEnvironment.App_Logic.DataAccessLayer.T_ATTAINS_ASSESS_UNITS_MLOC), true)]
+[assembly: EdmRelationshipAttribute("OpenEnvironmentModel", "FK__T_ATTAINS__ATTAI__2116E6DF", "T_ATTAINS_ASSESS_UNITS", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(OpenEnvironment.App_Logic.DataAccessLayer.T_ATTAINS_ASSESS_UNITS), "T_ATTAINS_ASSESS", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(OpenEnvironment.App_Logic.DataAccessLayer.T_ATTAINS_ASSESS), true)]
+[assembly: EdmRelationshipAttribute("OpenEnvironmentModel", "FK__T_ATTAINS__ATTAI__4A18FC72", "T_ATTAINS_ASSESS", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(OpenEnvironment.App_Logic.DataAccessLayer.T_ATTAINS_ASSESS), "T_ATTAINS_ASSESS_USE", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(OpenEnvironment.App_Logic.DataAccessLayer.T_ATTAINS_ASSESS_USE), true)]
+[assembly: EdmRelationshipAttribute("OpenEnvironmentModel", "FK__T_ATTAINS__ATTAI__5D2BD0E6", "T_ATTAINS_ASSESS", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(OpenEnvironment.App_Logic.DataAccessLayer.T_ATTAINS_ASSESS), "T_ATTAINS_ASSESS_CAUSE", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(OpenEnvironment.App_Logic.DataAccessLayer.T_ATTAINS_ASSESS_CAUSE), true)]
+[assembly: EdmRelationshipAttribute("OpenEnvironmentModel", "FK__T_ATTAINS__ATTAI__5A4F643B", "T_ATTAINS_ASSESS_USE", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(OpenEnvironment.App_Logic.DataAccessLayer.T_ATTAINS_ASSESS_USE), "T_ATTAINS_ASSESS_USE_PAR", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(OpenEnvironment.App_Logic.DataAccessLayer.T_ATTAINS_ASSESS_USE_PAR), true)]
+[assembly: EdmRelationshipAttribute("OpenEnvironmentModel", "FK__T_ATTAINS__ATTAI__473C8FC7", "T_ATTAINS_REPORT", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(OpenEnvironment.App_Logic.DataAccessLayer.T_ATTAINS_REPORT), "T_ATTAINS_REPORT_LOG", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(OpenEnvironment.App_Logic.DataAccessLayer.T_ATTAINS_REPORT_LOG), true)]
 
 #endregion
 
@@ -752,6 +762,150 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             }
         }
         private ObjectSet<T_WQX_IMPORT_TRANSLATE> _T_WQX_IMPORT_TRANSLATE;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<T_ATTAINS_REPORT> T_ATTAINS_REPORT
+        {
+            get
+            {
+                if ((_T_ATTAINS_REPORT == null))
+                {
+                    _T_ATTAINS_REPORT = base.CreateObjectSet<T_ATTAINS_REPORT>("T_ATTAINS_REPORT");
+                }
+                return _T_ATTAINS_REPORT;
+            }
+        }
+        private ObjectSet<T_ATTAINS_REPORT> _T_ATTAINS_REPORT;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<T_ATTAINS_REF_WATER_TYPE> T_ATTAINS_REF_WATER_TYPE
+        {
+            get
+            {
+                if ((_T_ATTAINS_REF_WATER_TYPE == null))
+                {
+                    _T_ATTAINS_REF_WATER_TYPE = base.CreateObjectSet<T_ATTAINS_REF_WATER_TYPE>("T_ATTAINS_REF_WATER_TYPE");
+                }
+                return _T_ATTAINS_REF_WATER_TYPE;
+            }
+        }
+        private ObjectSet<T_ATTAINS_REF_WATER_TYPE> _T_ATTAINS_REF_WATER_TYPE;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<T_ATTAINS_ASSESS_UNITS> T_ATTAINS_ASSESS_UNITS
+        {
+            get
+            {
+                if ((_T_ATTAINS_ASSESS_UNITS == null))
+                {
+                    _T_ATTAINS_ASSESS_UNITS = base.CreateObjectSet<T_ATTAINS_ASSESS_UNITS>("T_ATTAINS_ASSESS_UNITS");
+                }
+                return _T_ATTAINS_ASSESS_UNITS;
+            }
+        }
+        private ObjectSet<T_ATTAINS_ASSESS_UNITS> _T_ATTAINS_ASSESS_UNITS;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<T_ATTAINS_ASSESS_UNITS_MLOC> T_ATTAINS_ASSESS_UNITS_MLOC
+        {
+            get
+            {
+                if ((_T_ATTAINS_ASSESS_UNITS_MLOC == null))
+                {
+                    _T_ATTAINS_ASSESS_UNITS_MLOC = base.CreateObjectSet<T_ATTAINS_ASSESS_UNITS_MLOC>("T_ATTAINS_ASSESS_UNITS_MLOC");
+                }
+                return _T_ATTAINS_ASSESS_UNITS_MLOC;
+            }
+        }
+        private ObjectSet<T_ATTAINS_ASSESS_UNITS_MLOC> _T_ATTAINS_ASSESS_UNITS_MLOC;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<T_ATTAINS_ASSESS> T_ATTAINS_ASSESS
+        {
+            get
+            {
+                if ((_T_ATTAINS_ASSESS == null))
+                {
+                    _T_ATTAINS_ASSESS = base.CreateObjectSet<T_ATTAINS_ASSESS>("T_ATTAINS_ASSESS");
+                }
+                return _T_ATTAINS_ASSESS;
+            }
+        }
+        private ObjectSet<T_ATTAINS_ASSESS> _T_ATTAINS_ASSESS;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<T_ATTAINS_ASSESS_CAUSE> T_ATTAINS_ASSESS_CAUSE
+        {
+            get
+            {
+                if ((_T_ATTAINS_ASSESS_CAUSE == null))
+                {
+                    _T_ATTAINS_ASSESS_CAUSE = base.CreateObjectSet<T_ATTAINS_ASSESS_CAUSE>("T_ATTAINS_ASSESS_CAUSE");
+                }
+                return _T_ATTAINS_ASSESS_CAUSE;
+            }
+        }
+        private ObjectSet<T_ATTAINS_ASSESS_CAUSE> _T_ATTAINS_ASSESS_CAUSE;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<T_ATTAINS_ASSESS_USE> T_ATTAINS_ASSESS_USE
+        {
+            get
+            {
+                if ((_T_ATTAINS_ASSESS_USE == null))
+                {
+                    _T_ATTAINS_ASSESS_USE = base.CreateObjectSet<T_ATTAINS_ASSESS_USE>("T_ATTAINS_ASSESS_USE");
+                }
+                return _T_ATTAINS_ASSESS_USE;
+            }
+        }
+        private ObjectSet<T_ATTAINS_ASSESS_USE> _T_ATTAINS_ASSESS_USE;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<T_ATTAINS_ASSESS_USE_PAR> T_ATTAINS_ASSESS_USE_PAR
+        {
+            get
+            {
+                if ((_T_ATTAINS_ASSESS_USE_PAR == null))
+                {
+                    _T_ATTAINS_ASSESS_USE_PAR = base.CreateObjectSet<T_ATTAINS_ASSESS_USE_PAR>("T_ATTAINS_ASSESS_USE_PAR");
+                }
+                return _T_ATTAINS_ASSESS_USE_PAR;
+            }
+        }
+        private ObjectSet<T_ATTAINS_ASSESS_USE_PAR> _T_ATTAINS_ASSESS_USE_PAR;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<T_ATTAINS_REPORT_LOG> T_ATTAINS_REPORT_LOG
+        {
+            get
+            {
+                if ((_T_ATTAINS_REPORT_LOG == null))
+                {
+                    _T_ATTAINS_REPORT_LOG = base.CreateObjectSet<T_ATTAINS_REPORT_LOG>("T_ATTAINS_REPORT_LOG");
+                }
+                return _T_ATTAINS_REPORT_LOG;
+            }
+        }
+        private ObjectSet<T_ATTAINS_REPORT_LOG> _T_ATTAINS_REPORT_LOG;
 
         #endregion
 
@@ -1084,6 +1238,78 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
         {
             base.AddObject("T_WQX_IMPORT_TRANSLATE", t_WQX_IMPORT_TRANSLATE);
         }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the T_ATTAINS_REPORT EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToT_ATTAINS_REPORT(T_ATTAINS_REPORT t_ATTAINS_REPORT)
+        {
+            base.AddObject("T_ATTAINS_REPORT", t_ATTAINS_REPORT);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the T_ATTAINS_REF_WATER_TYPE EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToT_ATTAINS_REF_WATER_TYPE(T_ATTAINS_REF_WATER_TYPE t_ATTAINS_REF_WATER_TYPE)
+        {
+            base.AddObject("T_ATTAINS_REF_WATER_TYPE", t_ATTAINS_REF_WATER_TYPE);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the T_ATTAINS_ASSESS_UNITS EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToT_ATTAINS_ASSESS_UNITS(T_ATTAINS_ASSESS_UNITS t_ATTAINS_ASSESS_UNITS)
+        {
+            base.AddObject("T_ATTAINS_ASSESS_UNITS", t_ATTAINS_ASSESS_UNITS);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the T_ATTAINS_ASSESS_UNITS_MLOC EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToT_ATTAINS_ASSESS_UNITS_MLOC(T_ATTAINS_ASSESS_UNITS_MLOC t_ATTAINS_ASSESS_UNITS_MLOC)
+        {
+            base.AddObject("T_ATTAINS_ASSESS_UNITS_MLOC", t_ATTAINS_ASSESS_UNITS_MLOC);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the T_ATTAINS_ASSESS EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToT_ATTAINS_ASSESS(T_ATTAINS_ASSESS t_ATTAINS_ASSESS)
+        {
+            base.AddObject("T_ATTAINS_ASSESS", t_ATTAINS_ASSESS);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the T_ATTAINS_ASSESS_CAUSE EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToT_ATTAINS_ASSESS_CAUSE(T_ATTAINS_ASSESS_CAUSE t_ATTAINS_ASSESS_CAUSE)
+        {
+            base.AddObject("T_ATTAINS_ASSESS_CAUSE", t_ATTAINS_ASSESS_CAUSE);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the T_ATTAINS_ASSESS_USE EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToT_ATTAINS_ASSESS_USE(T_ATTAINS_ASSESS_USE t_ATTAINS_ASSESS_USE)
+        {
+            base.AddObject("T_ATTAINS_ASSESS_USE", t_ATTAINS_ASSESS_USE);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the T_ATTAINS_ASSESS_USE_PAR EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToT_ATTAINS_ASSESS_USE_PAR(T_ATTAINS_ASSESS_USE_PAR t_ATTAINS_ASSESS_USE_PAR)
+        {
+            base.AddObject("T_ATTAINS_ASSESS_USE_PAR", t_ATTAINS_ASSESS_USE_PAR);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the T_ATTAINS_REPORT_LOG EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToT_ATTAINS_REPORT_LOG(T_ATTAINS_REPORT_LOG t_ATTAINS_REPORT_LOG)
+        {
+            base.AddObject("T_ATTAINS_REPORT_LOG", t_ATTAINS_REPORT_LOG);
+        }
 
         #endregion
 
@@ -1293,6 +1519,25 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
     
             return base.ExecuteFunction("ImportActivityFromTemp", userIDParameter, wQXIndParameter, activityReplaceIndParameter);
         }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        /// <param name="reportIDX">No Metadata Documentation available.</param>
+        public ObjectResult<global::System.String> GenATTAINSXML(Nullable<global::System.Int32> reportIDX)
+        {
+            ObjectParameter reportIDXParameter;
+            if (reportIDX.HasValue)
+            {
+                reportIDXParameter = new ObjectParameter("ReportIDX", reportIDX);
+            }
+            else
+            {
+                reportIDXParameter = new ObjectParameter("ReportIDX", typeof(global::System.Int32));
+            }
+    
+            return base.ExecuteFunction<global::System.String>("GenATTAINSXML", reportIDXParameter);
+        }
 
         #endregion
 
@@ -1301,6 +1546,3363 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
     #endregion
 
     #region Entities
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="OpenEnvironmentModel", Name="T_ATTAINS_ASSESS")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class T_ATTAINS_ASSESS : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new T_ATTAINS_ASSESS object.
+        /// </summary>
+        /// <param name="aTTAINS_ASSESS_IDX">Initial value of the ATTAINS_ASSESS_IDX property.</param>
+        /// <param name="rEPORTING_CYCLE">Initial value of the REPORTING_CYCLE property.</param>
+        /// <param name="rEPORT_STATUS">Initial value of the REPORT_STATUS property.</param>
+        /// <param name="aTTAINS_ASSESS_UNIT_IDX">Initial value of the ATTAINS_ASSESS_UNIT_IDX property.</param>
+        public static T_ATTAINS_ASSESS CreateT_ATTAINS_ASSESS(global::System.Int32 aTTAINS_ASSESS_IDX, global::System.String rEPORTING_CYCLE, global::System.String rEPORT_STATUS, global::System.Int32 aTTAINS_ASSESS_UNIT_IDX)
+        {
+            T_ATTAINS_ASSESS t_ATTAINS_ASSESS = new T_ATTAINS_ASSESS();
+            t_ATTAINS_ASSESS.ATTAINS_ASSESS_IDX = aTTAINS_ASSESS_IDX;
+            t_ATTAINS_ASSESS.REPORTING_CYCLE = rEPORTING_CYCLE;
+            t_ATTAINS_ASSESS.REPORT_STATUS = rEPORT_STATUS;
+            t_ATTAINS_ASSESS.ATTAINS_ASSESS_UNIT_IDX = aTTAINS_ASSESS_UNIT_IDX;
+            return t_ATTAINS_ASSESS;
+        }
+
+        #endregion
+
+        #region Simple Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ATTAINS_ASSESS_IDX
+        {
+            get
+            {
+                return _ATTAINS_ASSESS_IDX;
+            }
+            set
+            {
+                if (_ATTAINS_ASSESS_IDX != value)
+                {
+                    OnATTAINS_ASSESS_IDXChanging(value);
+                    ReportPropertyChanging("ATTAINS_ASSESS_IDX");
+                    _ATTAINS_ASSESS_IDX = StructuralObject.SetValidValue(value, "ATTAINS_ASSESS_IDX");
+                    ReportPropertyChanged("ATTAINS_ASSESS_IDX");
+                    OnATTAINS_ASSESS_IDXChanged();
+                }
+            }
+        }
+        private global::System.Int32 _ATTAINS_ASSESS_IDX;
+        partial void OnATTAINS_ASSESS_IDXChanging(global::System.Int32 value);
+        partial void OnATTAINS_ASSESS_IDXChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String REPORTING_CYCLE
+        {
+            get
+            {
+                return _REPORTING_CYCLE;
+            }
+            set
+            {
+                OnREPORTING_CYCLEChanging(value);
+                ReportPropertyChanging("REPORTING_CYCLE");
+                _REPORTING_CYCLE = StructuralObject.SetValidValue(value, false, "REPORTING_CYCLE");
+                ReportPropertyChanged("REPORTING_CYCLE");
+                OnREPORTING_CYCLEChanged();
+            }
+        }
+        private global::System.String _REPORTING_CYCLE;
+        partial void OnREPORTING_CYCLEChanging(global::System.String value);
+        partial void OnREPORTING_CYCLEChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String REPORT_STATUS
+        {
+            get
+            {
+                return _REPORT_STATUS;
+            }
+            set
+            {
+                OnREPORT_STATUSChanging(value);
+                ReportPropertyChanging("REPORT_STATUS");
+                _REPORT_STATUS = StructuralObject.SetValidValue(value, false, "REPORT_STATUS");
+                ReportPropertyChanged("REPORT_STATUS");
+                OnREPORT_STATUSChanged();
+            }
+        }
+        private global::System.String _REPORT_STATUS;
+        partial void OnREPORT_STATUSChanging(global::System.String value);
+        partial void OnREPORT_STATUSChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ATTAINS_ASSESS_UNIT_IDX
+        {
+            get
+            {
+                return _ATTAINS_ASSESS_UNIT_IDX;
+            }
+            set
+            {
+                OnATTAINS_ASSESS_UNIT_IDXChanging(value);
+                ReportPropertyChanging("ATTAINS_ASSESS_UNIT_IDX");
+                _ATTAINS_ASSESS_UNIT_IDX = StructuralObject.SetValidValue(value, "ATTAINS_ASSESS_UNIT_IDX");
+                ReportPropertyChanged("ATTAINS_ASSESS_UNIT_IDX");
+                OnATTAINS_ASSESS_UNIT_IDXChanged();
+            }
+        }
+        private global::System.Int32 _ATTAINS_ASSESS_UNIT_IDX;
+        partial void OnATTAINS_ASSESS_UNIT_IDXChanging(global::System.Int32 value);
+        partial void OnATTAINS_ASSESS_UNIT_IDXChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String AGENCY_CODE
+        {
+            get
+            {
+                return _AGENCY_CODE;
+            }
+            set
+            {
+                OnAGENCY_CODEChanging(value);
+                ReportPropertyChanging("AGENCY_CODE");
+                _AGENCY_CODE = StructuralObject.SetValidValue(value, true, "AGENCY_CODE");
+                ReportPropertyChanged("AGENCY_CODE");
+                OnAGENCY_CODEChanged();
+            }
+        }
+        private global::System.String _AGENCY_CODE;
+        partial void OnAGENCY_CODEChanging(global::System.String value);
+        partial void OnAGENCY_CODEChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String CYCLE_LAST_ASSESSED
+        {
+            get
+            {
+                return _CYCLE_LAST_ASSESSED;
+            }
+            set
+            {
+                OnCYCLE_LAST_ASSESSEDChanging(value);
+                ReportPropertyChanging("CYCLE_LAST_ASSESSED");
+                _CYCLE_LAST_ASSESSED = StructuralObject.SetValidValue(value, true, "CYCLE_LAST_ASSESSED");
+                ReportPropertyChanged("CYCLE_LAST_ASSESSED");
+                OnCYCLE_LAST_ASSESSEDChanged();
+            }
+        }
+        private global::System.String _CYCLE_LAST_ASSESSED;
+        partial void OnCYCLE_LAST_ASSESSEDChanging(global::System.String value);
+        partial void OnCYCLE_LAST_ASSESSEDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String CYCLE_LAST_MONITORED
+        {
+            get
+            {
+                return _CYCLE_LAST_MONITORED;
+            }
+            set
+            {
+                OnCYCLE_LAST_MONITOREDChanging(value);
+                ReportPropertyChanging("CYCLE_LAST_MONITORED");
+                _CYCLE_LAST_MONITORED = StructuralObject.SetValidValue(value, true, "CYCLE_LAST_MONITORED");
+                ReportPropertyChanged("CYCLE_LAST_MONITORED");
+                OnCYCLE_LAST_MONITOREDChanged();
+            }
+        }
+        private global::System.String _CYCLE_LAST_MONITORED;
+        partial void OnCYCLE_LAST_MONITOREDChanging(global::System.String value);
+        partial void OnCYCLE_LAST_MONITOREDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String TROPHIC_STATUS_CODE
+        {
+            get
+            {
+                return _TROPHIC_STATUS_CODE;
+            }
+            set
+            {
+                OnTROPHIC_STATUS_CODEChanging(value);
+                ReportPropertyChanging("TROPHIC_STATUS_CODE");
+                _TROPHIC_STATUS_CODE = StructuralObject.SetValidValue(value, true, "TROPHIC_STATUS_CODE");
+                ReportPropertyChanged("TROPHIC_STATUS_CODE");
+                OnTROPHIC_STATUS_CODEChanged();
+            }
+        }
+        private global::System.String _TROPHIC_STATUS_CODE;
+        partial void OnTROPHIC_STATUS_CODEChanging(global::System.String value);
+        partial void OnTROPHIC_STATUS_CODEChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> CREATE_DT
+        {
+            get
+            {
+                return _CREATE_DT;
+            }
+            set
+            {
+                OnCREATE_DTChanging(value);
+                ReportPropertyChanging("CREATE_DT");
+                _CREATE_DT = StructuralObject.SetValidValue(value, "CREATE_DT");
+                ReportPropertyChanged("CREATE_DT");
+                OnCREATE_DTChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _CREATE_DT;
+        partial void OnCREATE_DTChanging(Nullable<global::System.DateTime> value);
+        partial void OnCREATE_DTChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String CREATE_USERID
+        {
+            get
+            {
+                return _CREATE_USERID;
+            }
+            set
+            {
+                OnCREATE_USERIDChanging(value);
+                ReportPropertyChanging("CREATE_USERID");
+                _CREATE_USERID = StructuralObject.SetValidValue(value, true, "CREATE_USERID");
+                ReportPropertyChanged("CREATE_USERID");
+                OnCREATE_USERIDChanged();
+            }
+        }
+        private global::System.String _CREATE_USERID;
+        partial void OnCREATE_USERIDChanging(global::System.String value);
+        partial void OnCREATE_USERIDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> MODIFY_DT
+        {
+            get
+            {
+                return _MODIFY_DT;
+            }
+            set
+            {
+                OnMODIFY_DTChanging(value);
+                ReportPropertyChanging("MODIFY_DT");
+                _MODIFY_DT = StructuralObject.SetValidValue(value, "MODIFY_DT");
+                ReportPropertyChanged("MODIFY_DT");
+                OnMODIFY_DTChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _MODIFY_DT;
+        partial void OnMODIFY_DTChanging(Nullable<global::System.DateTime> value);
+        partial void OnMODIFY_DTChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String MODIFY_USERID
+        {
+            get
+            {
+                return _MODIFY_USERID;
+            }
+            set
+            {
+                OnMODIFY_USERIDChanging(value);
+                ReportPropertyChanging("MODIFY_USERID");
+                _MODIFY_USERID = StructuralObject.SetValidValue(value, true, "MODIFY_USERID");
+                ReportPropertyChanged("MODIFY_USERID");
+                OnMODIFY_USERIDChanged();
+            }
+        }
+        private global::System.String _MODIFY_USERID;
+        partial void OnMODIFY_USERIDChanging(global::System.String value);
+        partial void OnMODIFY_USERIDChanged();
+
+        #endregion
+
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("OpenEnvironmentModel", "FK__T_ATTAINS__ATTAI__2116E6DF", "T_ATTAINS_ASSESS_UNITS")]
+        public T_ATTAINS_ASSESS_UNITS T_ATTAINS_ASSESS_UNITS
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<T_ATTAINS_ASSESS_UNITS>("OpenEnvironmentModel.FK__T_ATTAINS__ATTAI__2116E6DF", "T_ATTAINS_ASSESS_UNITS").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<T_ATTAINS_ASSESS_UNITS>("OpenEnvironmentModel.FK__T_ATTAINS__ATTAI__2116E6DF", "T_ATTAINS_ASSESS_UNITS").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<T_ATTAINS_ASSESS_UNITS> T_ATTAINS_ASSESS_UNITSReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<T_ATTAINS_ASSESS_UNITS>("OpenEnvironmentModel.FK__T_ATTAINS__ATTAI__2116E6DF", "T_ATTAINS_ASSESS_UNITS");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<T_ATTAINS_ASSESS_UNITS>("OpenEnvironmentModel.FK__T_ATTAINS__ATTAI__2116E6DF", "T_ATTAINS_ASSESS_UNITS", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("OpenEnvironmentModel", "FK__T_ATTAINS__ATTAI__4A18FC72", "T_ATTAINS_ASSESS_USE")]
+        public EntityCollection<T_ATTAINS_ASSESS_USE> T_ATTAINS_ASSESS_USE
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<T_ATTAINS_ASSESS_USE>("OpenEnvironmentModel.FK__T_ATTAINS__ATTAI__4A18FC72", "T_ATTAINS_ASSESS_USE");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<T_ATTAINS_ASSESS_USE>("OpenEnvironmentModel.FK__T_ATTAINS__ATTAI__4A18FC72", "T_ATTAINS_ASSESS_USE", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("OpenEnvironmentModel", "FK__T_ATTAINS__ATTAI__5D2BD0E6", "T_ATTAINS_ASSESS_CAUSE")]
+        public EntityCollection<T_ATTAINS_ASSESS_CAUSE> T_ATTAINS_ASSESS_CAUSE
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<T_ATTAINS_ASSESS_CAUSE>("OpenEnvironmentModel.FK__T_ATTAINS__ATTAI__5D2BD0E6", "T_ATTAINS_ASSESS_CAUSE");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<T_ATTAINS_ASSESS_CAUSE>("OpenEnvironmentModel.FK__T_ATTAINS__ATTAI__5D2BD0E6", "T_ATTAINS_ASSESS_CAUSE", value);
+                }
+            }
+        }
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="OpenEnvironmentModel", Name="T_ATTAINS_ASSESS_CAUSE")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class T_ATTAINS_ASSESS_CAUSE : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new T_ATTAINS_ASSESS_CAUSE object.
+        /// </summary>
+        /// <param name="aTTAINS_ASSESS_CAUSE_IDX">Initial value of the ATTAINS_ASSESS_CAUSE_IDX property.</param>
+        /// <param name="aTTAINS_ASSESS_IDX">Initial value of the ATTAINS_ASSESS_IDX property.</param>
+        public static T_ATTAINS_ASSESS_CAUSE CreateT_ATTAINS_ASSESS_CAUSE(global::System.Int32 aTTAINS_ASSESS_CAUSE_IDX, global::System.Int32 aTTAINS_ASSESS_IDX)
+        {
+            T_ATTAINS_ASSESS_CAUSE t_ATTAINS_ASSESS_CAUSE = new T_ATTAINS_ASSESS_CAUSE();
+            t_ATTAINS_ASSESS_CAUSE.ATTAINS_ASSESS_CAUSE_IDX = aTTAINS_ASSESS_CAUSE_IDX;
+            t_ATTAINS_ASSESS_CAUSE.ATTAINS_ASSESS_IDX = aTTAINS_ASSESS_IDX;
+            return t_ATTAINS_ASSESS_CAUSE;
+        }
+
+        #endregion
+
+        #region Simple Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ATTAINS_ASSESS_CAUSE_IDX
+        {
+            get
+            {
+                return _ATTAINS_ASSESS_CAUSE_IDX;
+            }
+            set
+            {
+                if (_ATTAINS_ASSESS_CAUSE_IDX != value)
+                {
+                    OnATTAINS_ASSESS_CAUSE_IDXChanging(value);
+                    ReportPropertyChanging("ATTAINS_ASSESS_CAUSE_IDX");
+                    _ATTAINS_ASSESS_CAUSE_IDX = StructuralObject.SetValidValue(value, "ATTAINS_ASSESS_CAUSE_IDX");
+                    ReportPropertyChanged("ATTAINS_ASSESS_CAUSE_IDX");
+                    OnATTAINS_ASSESS_CAUSE_IDXChanged();
+                }
+            }
+        }
+        private global::System.Int32 _ATTAINS_ASSESS_CAUSE_IDX;
+        partial void OnATTAINS_ASSESS_CAUSE_IDXChanging(global::System.Int32 value);
+        partial void OnATTAINS_ASSESS_CAUSE_IDXChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ATTAINS_ASSESS_IDX
+        {
+            get
+            {
+                return _ATTAINS_ASSESS_IDX;
+            }
+            set
+            {
+                OnATTAINS_ASSESS_IDXChanging(value);
+                ReportPropertyChanging("ATTAINS_ASSESS_IDX");
+                _ATTAINS_ASSESS_IDX = StructuralObject.SetValidValue(value, "ATTAINS_ASSESS_IDX");
+                ReportPropertyChanged("ATTAINS_ASSESS_IDX");
+                OnATTAINS_ASSESS_IDXChanged();
+            }
+        }
+        private global::System.Int32 _ATTAINS_ASSESS_IDX;
+        partial void OnATTAINS_ASSESS_IDXChanging(global::System.Int32 value);
+        partial void OnATTAINS_ASSESS_IDXChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String CAUSE_NAME
+        {
+            get
+            {
+                return _CAUSE_NAME;
+            }
+            set
+            {
+                OnCAUSE_NAMEChanging(value);
+                ReportPropertyChanging("CAUSE_NAME");
+                _CAUSE_NAME = StructuralObject.SetValidValue(value, true, "CAUSE_NAME");
+                ReportPropertyChanged("CAUSE_NAME");
+                OnCAUSE_NAMEChanged();
+            }
+        }
+        private global::System.String _CAUSE_NAME;
+        partial void OnCAUSE_NAMEChanging(global::System.String value);
+        partial void OnCAUSE_NAMEChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String POLLUTANT_IND
+        {
+            get
+            {
+                return _POLLUTANT_IND;
+            }
+            set
+            {
+                OnPOLLUTANT_INDChanging(value);
+                ReportPropertyChanging("POLLUTANT_IND");
+                _POLLUTANT_IND = StructuralObject.SetValidValue(value, true, "POLLUTANT_IND");
+                ReportPropertyChanged("POLLUTANT_IND");
+                OnPOLLUTANT_INDChanged();
+            }
+        }
+        private global::System.String _POLLUTANT_IND;
+        partial void OnPOLLUTANT_INDChanging(global::System.String value);
+        partial void OnPOLLUTANT_INDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String AGENCY_CODE
+        {
+            get
+            {
+                return _AGENCY_CODE;
+            }
+            set
+            {
+                OnAGENCY_CODEChanging(value);
+                ReportPropertyChanging("AGENCY_CODE");
+                _AGENCY_CODE = StructuralObject.SetValidValue(value, true, "AGENCY_CODE");
+                ReportPropertyChanged("AGENCY_CODE");
+                OnAGENCY_CODEChanged();
+            }
+        }
+        private global::System.String _AGENCY_CODE;
+        partial void OnAGENCY_CODEChanging(global::System.String value);
+        partial void OnAGENCY_CODEChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String CYCLE_FIRST_LISTED
+        {
+            get
+            {
+                return _CYCLE_FIRST_LISTED;
+            }
+            set
+            {
+                OnCYCLE_FIRST_LISTEDChanging(value);
+                ReportPropertyChanging("CYCLE_FIRST_LISTED");
+                _CYCLE_FIRST_LISTED = StructuralObject.SetValidValue(value, true, "CYCLE_FIRST_LISTED");
+                ReportPropertyChanged("CYCLE_FIRST_LISTED");
+                OnCYCLE_FIRST_LISTEDChanged();
+            }
+        }
+        private global::System.String _CYCLE_FIRST_LISTED;
+        partial void OnCYCLE_FIRST_LISTEDChanging(global::System.String value);
+        partial void OnCYCLE_FIRST_LISTEDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String CYCLE_SCHED_TMDL
+        {
+            get
+            {
+                return _CYCLE_SCHED_TMDL;
+            }
+            set
+            {
+                OnCYCLE_SCHED_TMDLChanging(value);
+                ReportPropertyChanging("CYCLE_SCHED_TMDL");
+                _CYCLE_SCHED_TMDL = StructuralObject.SetValidValue(value, true, "CYCLE_SCHED_TMDL");
+                ReportPropertyChanged("CYCLE_SCHED_TMDL");
+                OnCYCLE_SCHED_TMDLChanged();
+            }
+        }
+        private global::System.String _CYCLE_SCHED_TMDL;
+        partial void OnCYCLE_SCHED_TMDLChanging(global::System.String value);
+        partial void OnCYCLE_SCHED_TMDLChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String TMDL_PRIORITY_NAME
+        {
+            get
+            {
+                return _TMDL_PRIORITY_NAME;
+            }
+            set
+            {
+                OnTMDL_PRIORITY_NAMEChanging(value);
+                ReportPropertyChanging("TMDL_PRIORITY_NAME");
+                _TMDL_PRIORITY_NAME = StructuralObject.SetValidValue(value, true, "TMDL_PRIORITY_NAME");
+                ReportPropertyChanged("TMDL_PRIORITY_NAME");
+                OnTMDL_PRIORITY_NAMEChanged();
+            }
+        }
+        private global::System.String _TMDL_PRIORITY_NAME;
+        partial void OnTMDL_PRIORITY_NAMEChanging(global::System.String value);
+        partial void OnTMDL_PRIORITY_NAMEChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String CONSENT_DECREE_CYCLE
+        {
+            get
+            {
+                return _CONSENT_DECREE_CYCLE;
+            }
+            set
+            {
+                OnCONSENT_DECREE_CYCLEChanging(value);
+                ReportPropertyChanging("CONSENT_DECREE_CYCLE");
+                _CONSENT_DECREE_CYCLE = StructuralObject.SetValidValue(value, true, "CONSENT_DECREE_CYCLE");
+                ReportPropertyChanged("CONSENT_DECREE_CYCLE");
+                OnCONSENT_DECREE_CYCLEChanged();
+            }
+        }
+        private global::System.String _CONSENT_DECREE_CYCLE;
+        partial void OnCONSENT_DECREE_CYCLEChanging(global::System.String value);
+        partial void OnCONSENT_DECREE_CYCLEChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String TMDL_CAUSE_REPORT_ID
+        {
+            get
+            {
+                return _TMDL_CAUSE_REPORT_ID;
+            }
+            set
+            {
+                OnTMDL_CAUSE_REPORT_IDChanging(value);
+                ReportPropertyChanging("TMDL_CAUSE_REPORT_ID");
+                _TMDL_CAUSE_REPORT_ID = StructuralObject.SetValidValue(value, true, "TMDL_CAUSE_REPORT_ID");
+                ReportPropertyChanged("TMDL_CAUSE_REPORT_ID");
+                OnTMDL_CAUSE_REPORT_IDChanged();
+            }
+        }
+        private global::System.String _TMDL_CAUSE_REPORT_ID;
+        partial void OnTMDL_CAUSE_REPORT_IDChanging(global::System.String value);
+        partial void OnTMDL_CAUSE_REPORT_IDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String CYCLE_EXPECTED_ATTAIN
+        {
+            get
+            {
+                return _CYCLE_EXPECTED_ATTAIN;
+            }
+            set
+            {
+                OnCYCLE_EXPECTED_ATTAINChanging(value);
+                ReportPropertyChanging("CYCLE_EXPECTED_ATTAIN");
+                _CYCLE_EXPECTED_ATTAIN = StructuralObject.SetValidValue(value, true, "CYCLE_EXPECTED_ATTAIN");
+                ReportPropertyChanged("CYCLE_EXPECTED_ATTAIN");
+                OnCYCLE_EXPECTED_ATTAINChanged();
+            }
+        }
+        private global::System.String _CYCLE_EXPECTED_ATTAIN;
+        partial void OnCYCLE_EXPECTED_ATTAINChanging(global::System.String value);
+        partial void OnCYCLE_EXPECTED_ATTAINChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String CAUSE_COMMENT
+        {
+            get
+            {
+                return _CAUSE_COMMENT;
+            }
+            set
+            {
+                OnCAUSE_COMMENTChanging(value);
+                ReportPropertyChanging("CAUSE_COMMENT");
+                _CAUSE_COMMENT = StructuralObject.SetValidValue(value, true, "CAUSE_COMMENT");
+                ReportPropertyChanged("CAUSE_COMMENT");
+                OnCAUSE_COMMENTChanged();
+            }
+        }
+        private global::System.String _CAUSE_COMMENT;
+        partial void OnCAUSE_COMMENTChanging(global::System.String value);
+        partial void OnCAUSE_COMMENTChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> CREATE_DT
+        {
+            get
+            {
+                return _CREATE_DT;
+            }
+            set
+            {
+                OnCREATE_DTChanging(value);
+                ReportPropertyChanging("CREATE_DT");
+                _CREATE_DT = StructuralObject.SetValidValue(value, "CREATE_DT");
+                ReportPropertyChanged("CREATE_DT");
+                OnCREATE_DTChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _CREATE_DT;
+        partial void OnCREATE_DTChanging(Nullable<global::System.DateTime> value);
+        partial void OnCREATE_DTChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String CREATE_USERID
+        {
+            get
+            {
+                return _CREATE_USERID;
+            }
+            set
+            {
+                OnCREATE_USERIDChanging(value);
+                ReportPropertyChanging("CREATE_USERID");
+                _CREATE_USERID = StructuralObject.SetValidValue(value, true, "CREATE_USERID");
+                ReportPropertyChanged("CREATE_USERID");
+                OnCREATE_USERIDChanged();
+            }
+        }
+        private global::System.String _CREATE_USERID;
+        partial void OnCREATE_USERIDChanging(global::System.String value);
+        partial void OnCREATE_USERIDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> MODIFY_DT
+        {
+            get
+            {
+                return _MODIFY_DT;
+            }
+            set
+            {
+                OnMODIFY_DTChanging(value);
+                ReportPropertyChanging("MODIFY_DT");
+                _MODIFY_DT = StructuralObject.SetValidValue(value, "MODIFY_DT");
+                ReportPropertyChanged("MODIFY_DT");
+                OnMODIFY_DTChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _MODIFY_DT;
+        partial void OnMODIFY_DTChanging(Nullable<global::System.DateTime> value);
+        partial void OnMODIFY_DTChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String MODIFY_USERID
+        {
+            get
+            {
+                return _MODIFY_USERID;
+            }
+            set
+            {
+                OnMODIFY_USERIDChanging(value);
+                ReportPropertyChanging("MODIFY_USERID");
+                _MODIFY_USERID = StructuralObject.SetValidValue(value, true, "MODIFY_USERID");
+                ReportPropertyChanged("MODIFY_USERID");
+                OnMODIFY_USERIDChanged();
+            }
+        }
+        private global::System.String _MODIFY_USERID;
+        partial void OnMODIFY_USERIDChanging(global::System.String value);
+        partial void OnMODIFY_USERIDChanged();
+
+        #endregion
+
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("OpenEnvironmentModel", "FK__T_ATTAINS__ATTAI__5D2BD0E6", "T_ATTAINS_ASSESS")]
+        public T_ATTAINS_ASSESS T_ATTAINS_ASSESS
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<T_ATTAINS_ASSESS>("OpenEnvironmentModel.FK__T_ATTAINS__ATTAI__5D2BD0E6", "T_ATTAINS_ASSESS").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<T_ATTAINS_ASSESS>("OpenEnvironmentModel.FK__T_ATTAINS__ATTAI__5D2BD0E6", "T_ATTAINS_ASSESS").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<T_ATTAINS_ASSESS> T_ATTAINS_ASSESSReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<T_ATTAINS_ASSESS>("OpenEnvironmentModel.FK__T_ATTAINS__ATTAI__5D2BD0E6", "T_ATTAINS_ASSESS");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<T_ATTAINS_ASSESS>("OpenEnvironmentModel.FK__T_ATTAINS__ATTAI__5D2BD0E6", "T_ATTAINS_ASSESS", value);
+                }
+            }
+        }
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="OpenEnvironmentModel", Name="T_ATTAINS_ASSESS_UNITS")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class T_ATTAINS_ASSESS_UNITS : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new T_ATTAINS_ASSESS_UNITS object.
+        /// </summary>
+        /// <param name="aTTAINS_ASSESS_UNIT_IDX">Initial value of the ATTAINS_ASSESS_UNIT_IDX property.</param>
+        /// <param name="aTTAINS_REPORT_IDX">Initial value of the ATTAINS_REPORT_IDX property.</param>
+        /// <param name="aSSESS_UNIT_ID">Initial value of the ASSESS_UNIT_ID property.</param>
+        public static T_ATTAINS_ASSESS_UNITS CreateT_ATTAINS_ASSESS_UNITS(global::System.Int32 aTTAINS_ASSESS_UNIT_IDX, global::System.Int32 aTTAINS_REPORT_IDX, global::System.String aSSESS_UNIT_ID)
+        {
+            T_ATTAINS_ASSESS_UNITS t_ATTAINS_ASSESS_UNITS = new T_ATTAINS_ASSESS_UNITS();
+            t_ATTAINS_ASSESS_UNITS.ATTAINS_ASSESS_UNIT_IDX = aTTAINS_ASSESS_UNIT_IDX;
+            t_ATTAINS_ASSESS_UNITS.ATTAINS_REPORT_IDX = aTTAINS_REPORT_IDX;
+            t_ATTAINS_ASSESS_UNITS.ASSESS_UNIT_ID = aSSESS_UNIT_ID;
+            return t_ATTAINS_ASSESS_UNITS;
+        }
+
+        #endregion
+
+        #region Simple Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ATTAINS_ASSESS_UNIT_IDX
+        {
+            get
+            {
+                return _ATTAINS_ASSESS_UNIT_IDX;
+            }
+            set
+            {
+                if (_ATTAINS_ASSESS_UNIT_IDX != value)
+                {
+                    OnATTAINS_ASSESS_UNIT_IDXChanging(value);
+                    ReportPropertyChanging("ATTAINS_ASSESS_UNIT_IDX");
+                    _ATTAINS_ASSESS_UNIT_IDX = StructuralObject.SetValidValue(value, "ATTAINS_ASSESS_UNIT_IDX");
+                    ReportPropertyChanged("ATTAINS_ASSESS_UNIT_IDX");
+                    OnATTAINS_ASSESS_UNIT_IDXChanged();
+                }
+            }
+        }
+        private global::System.Int32 _ATTAINS_ASSESS_UNIT_IDX;
+        partial void OnATTAINS_ASSESS_UNIT_IDXChanging(global::System.Int32 value);
+        partial void OnATTAINS_ASSESS_UNIT_IDXChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ATTAINS_REPORT_IDX
+        {
+            get
+            {
+                return _ATTAINS_REPORT_IDX;
+            }
+            set
+            {
+                OnATTAINS_REPORT_IDXChanging(value);
+                ReportPropertyChanging("ATTAINS_REPORT_IDX");
+                _ATTAINS_REPORT_IDX = StructuralObject.SetValidValue(value, "ATTAINS_REPORT_IDX");
+                ReportPropertyChanged("ATTAINS_REPORT_IDX");
+                OnATTAINS_REPORT_IDXChanged();
+            }
+        }
+        private global::System.Int32 _ATTAINS_REPORT_IDX;
+        partial void OnATTAINS_REPORT_IDXChanging(global::System.Int32 value);
+        partial void OnATTAINS_REPORT_IDXChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String ASSESS_UNIT_ID
+        {
+            get
+            {
+                return _ASSESS_UNIT_ID;
+            }
+            set
+            {
+                OnASSESS_UNIT_IDChanging(value);
+                ReportPropertyChanging("ASSESS_UNIT_ID");
+                _ASSESS_UNIT_ID = StructuralObject.SetValidValue(value, false, "ASSESS_UNIT_ID");
+                ReportPropertyChanged("ASSESS_UNIT_ID");
+                OnASSESS_UNIT_IDChanged();
+            }
+        }
+        private global::System.String _ASSESS_UNIT_ID;
+        partial void OnASSESS_UNIT_IDChanging(global::System.String value);
+        partial void OnASSESS_UNIT_IDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String ASSESS_UNIT_NAME
+        {
+            get
+            {
+                return _ASSESS_UNIT_NAME;
+            }
+            set
+            {
+                OnASSESS_UNIT_NAMEChanging(value);
+                ReportPropertyChanging("ASSESS_UNIT_NAME");
+                _ASSESS_UNIT_NAME = StructuralObject.SetValidValue(value, true, "ASSESS_UNIT_NAME");
+                ReportPropertyChanged("ASSESS_UNIT_NAME");
+                OnASSESS_UNIT_NAMEChanged();
+            }
+        }
+        private global::System.String _ASSESS_UNIT_NAME;
+        partial void OnASSESS_UNIT_NAMEChanging(global::System.String value);
+        partial void OnASSESS_UNIT_NAMEChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String LOCATION_DESC
+        {
+            get
+            {
+                return _LOCATION_DESC;
+            }
+            set
+            {
+                OnLOCATION_DESCChanging(value);
+                ReportPropertyChanging("LOCATION_DESC");
+                _LOCATION_DESC = StructuralObject.SetValidValue(value, true, "LOCATION_DESC");
+                ReportPropertyChanged("LOCATION_DESC");
+                OnLOCATION_DESCChanged();
+            }
+        }
+        private global::System.String _LOCATION_DESC;
+        partial void OnLOCATION_DESCChanging(global::System.String value);
+        partial void OnLOCATION_DESCChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String AGENCY_CODE
+        {
+            get
+            {
+                return _AGENCY_CODE;
+            }
+            set
+            {
+                OnAGENCY_CODEChanging(value);
+                ReportPropertyChanging("AGENCY_CODE");
+                _AGENCY_CODE = StructuralObject.SetValidValue(value, true, "AGENCY_CODE");
+                ReportPropertyChanged("AGENCY_CODE");
+                OnAGENCY_CODEChanged();
+            }
+        }
+        private global::System.String _AGENCY_CODE;
+        partial void OnAGENCY_CODEChanging(global::System.String value);
+        partial void OnAGENCY_CODEChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String STATE_CODE
+        {
+            get
+            {
+                return _STATE_CODE;
+            }
+            set
+            {
+                OnSTATE_CODEChanging(value);
+                ReportPropertyChanging("STATE_CODE");
+                _STATE_CODE = StructuralObject.SetValidValue(value, true, "STATE_CODE");
+                ReportPropertyChanged("STATE_CODE");
+                OnSTATE_CODEChanged();
+            }
+        }
+        private global::System.String _STATE_CODE;
+        partial void OnSTATE_CODEChanging(global::System.String value);
+        partial void OnSTATE_CODEChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String ACT_IND
+        {
+            get
+            {
+                return _ACT_IND;
+            }
+            set
+            {
+                OnACT_INDChanging(value);
+                ReportPropertyChanging("ACT_IND");
+                _ACT_IND = StructuralObject.SetValidValue(value, true, "ACT_IND");
+                ReportPropertyChanged("ACT_IND");
+                OnACT_INDChanged();
+            }
+        }
+        private global::System.String _ACT_IND;
+        partial void OnACT_INDChanging(global::System.String value);
+        partial void OnACT_INDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String WATER_TYPE_CODE
+        {
+            get
+            {
+                return _WATER_TYPE_CODE;
+            }
+            set
+            {
+                OnWATER_TYPE_CODEChanging(value);
+                ReportPropertyChanging("WATER_TYPE_CODE");
+                _WATER_TYPE_CODE = StructuralObject.SetValidValue(value, true, "WATER_TYPE_CODE");
+                ReportPropertyChanged("WATER_TYPE_CODE");
+                OnWATER_TYPE_CODEChanged();
+            }
+        }
+        private global::System.String _WATER_TYPE_CODE;
+        partial void OnWATER_TYPE_CODEChanging(global::System.String value);
+        partial void OnWATER_TYPE_CODEChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Decimal> WATER_SIZE
+        {
+            get
+            {
+                return _WATER_SIZE;
+            }
+            set
+            {
+                OnWATER_SIZEChanging(value);
+                ReportPropertyChanging("WATER_SIZE");
+                _WATER_SIZE = StructuralObject.SetValidValue(value, "WATER_SIZE");
+                ReportPropertyChanged("WATER_SIZE");
+                OnWATER_SIZEChanged();
+            }
+        }
+        private Nullable<global::System.Decimal> _WATER_SIZE;
+        partial void OnWATER_SIZEChanging(Nullable<global::System.Decimal> value);
+        partial void OnWATER_SIZEChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String WATER_UNIT_CODE
+        {
+            get
+            {
+                return _WATER_UNIT_CODE;
+            }
+            set
+            {
+                OnWATER_UNIT_CODEChanging(value);
+                ReportPropertyChanging("WATER_UNIT_CODE");
+                _WATER_UNIT_CODE = StructuralObject.SetValidValue(value, true, "WATER_UNIT_CODE");
+                ReportPropertyChanged("WATER_UNIT_CODE");
+                OnWATER_UNIT_CODEChanged();
+            }
+        }
+        private global::System.String _WATER_UNIT_CODE;
+        partial void OnWATER_UNIT_CODEChanging(global::System.String value);
+        partial void OnWATER_UNIT_CODEChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String USE_CLASS_CODE
+        {
+            get
+            {
+                return _USE_CLASS_CODE;
+            }
+            set
+            {
+                OnUSE_CLASS_CODEChanging(value);
+                ReportPropertyChanging("USE_CLASS_CODE");
+                _USE_CLASS_CODE = StructuralObject.SetValidValue(value, true, "USE_CLASS_CODE");
+                ReportPropertyChanged("USE_CLASS_CODE");
+                OnUSE_CLASS_CODEChanged();
+            }
+        }
+        private global::System.String _USE_CLASS_CODE;
+        partial void OnUSE_CLASS_CODEChanging(global::System.String value);
+        partial void OnUSE_CLASS_CODEChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String USE_CLASS_NAME
+        {
+            get
+            {
+                return _USE_CLASS_NAME;
+            }
+            set
+            {
+                OnUSE_CLASS_NAMEChanging(value);
+                ReportPropertyChanging("USE_CLASS_NAME");
+                _USE_CLASS_NAME = StructuralObject.SetValidValue(value, true, "USE_CLASS_NAME");
+                ReportPropertyChanged("USE_CLASS_NAME");
+                OnUSE_CLASS_NAMEChanged();
+            }
+        }
+        private global::System.String _USE_CLASS_NAME;
+        partial void OnUSE_CLASS_NAMEChanging(global::System.String value);
+        partial void OnUSE_CLASS_NAMEChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> CREATE_DT
+        {
+            get
+            {
+                return _CREATE_DT;
+            }
+            set
+            {
+                OnCREATE_DTChanging(value);
+                ReportPropertyChanging("CREATE_DT");
+                _CREATE_DT = StructuralObject.SetValidValue(value, "CREATE_DT");
+                ReportPropertyChanged("CREATE_DT");
+                OnCREATE_DTChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _CREATE_DT;
+        partial void OnCREATE_DTChanging(Nullable<global::System.DateTime> value);
+        partial void OnCREATE_DTChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String CREATE_USERID
+        {
+            get
+            {
+                return _CREATE_USERID;
+            }
+            set
+            {
+                OnCREATE_USERIDChanging(value);
+                ReportPropertyChanging("CREATE_USERID");
+                _CREATE_USERID = StructuralObject.SetValidValue(value, true, "CREATE_USERID");
+                ReportPropertyChanged("CREATE_USERID");
+                OnCREATE_USERIDChanged();
+            }
+        }
+        private global::System.String _CREATE_USERID;
+        partial void OnCREATE_USERIDChanging(global::System.String value);
+        partial void OnCREATE_USERIDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> MODIFY_DT
+        {
+            get
+            {
+                return _MODIFY_DT;
+            }
+            set
+            {
+                OnMODIFY_DTChanging(value);
+                ReportPropertyChanging("MODIFY_DT");
+                _MODIFY_DT = StructuralObject.SetValidValue(value, "MODIFY_DT");
+                ReportPropertyChanged("MODIFY_DT");
+                OnMODIFY_DTChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _MODIFY_DT;
+        partial void OnMODIFY_DTChanging(Nullable<global::System.DateTime> value);
+        partial void OnMODIFY_DTChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String MODIFY_USERID
+        {
+            get
+            {
+                return _MODIFY_USERID;
+            }
+            set
+            {
+                OnMODIFY_USERIDChanging(value);
+                ReportPropertyChanging("MODIFY_USERID");
+                _MODIFY_USERID = StructuralObject.SetValidValue(value, true, "MODIFY_USERID");
+                ReportPropertyChanged("MODIFY_USERID");
+                OnMODIFY_USERIDChanged();
+            }
+        }
+        private global::System.String _MODIFY_USERID;
+        partial void OnMODIFY_USERIDChanging(global::System.String value);
+        partial void OnMODIFY_USERIDChanged();
+
+        #endregion
+
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("OpenEnvironmentModel", "FK__T_ATTAINS__ATTAI__056ECC6A", "T_ATTAINS_REPORT")]
+        public T_ATTAINS_REPORT T_ATTAINS_REPORT
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<T_ATTAINS_REPORT>("OpenEnvironmentModel.FK__T_ATTAINS__ATTAI__056ECC6A", "T_ATTAINS_REPORT").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<T_ATTAINS_REPORT>("OpenEnvironmentModel.FK__T_ATTAINS__ATTAI__056ECC6A", "T_ATTAINS_REPORT").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<T_ATTAINS_REPORT> T_ATTAINS_REPORTReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<T_ATTAINS_REPORT>("OpenEnvironmentModel.FK__T_ATTAINS__ATTAI__056ECC6A", "T_ATTAINS_REPORT");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<T_ATTAINS_REPORT>("OpenEnvironmentModel.FK__T_ATTAINS__ATTAI__056ECC6A", "T_ATTAINS_REPORT", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("OpenEnvironmentModel", "FK__T_ATTAINS__WATER__0662F0A3", "T_ATTAINS_REF_WATER_TYPE")]
+        public T_ATTAINS_REF_WATER_TYPE T_ATTAINS_REF_WATER_TYPE
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<T_ATTAINS_REF_WATER_TYPE>("OpenEnvironmentModel.FK__T_ATTAINS__WATER__0662F0A3", "T_ATTAINS_REF_WATER_TYPE").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<T_ATTAINS_REF_WATER_TYPE>("OpenEnvironmentModel.FK__T_ATTAINS__WATER__0662F0A3", "T_ATTAINS_REF_WATER_TYPE").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<T_ATTAINS_REF_WATER_TYPE> T_ATTAINS_REF_WATER_TYPEReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<T_ATTAINS_REF_WATER_TYPE>("OpenEnvironmentModel.FK__T_ATTAINS__WATER__0662F0A3", "T_ATTAINS_REF_WATER_TYPE");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<T_ATTAINS_REF_WATER_TYPE>("OpenEnvironmentModel.FK__T_ATTAINS__WATER__0662F0A3", "T_ATTAINS_REF_WATER_TYPE", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("OpenEnvironmentModel", "FK__T_ATTAINS__ATTAI__0D0FEE32", "T_ATTAINS_ASSESS_UNITS_MLOC")]
+        public EntityCollection<T_ATTAINS_ASSESS_UNITS_MLOC> T_ATTAINS_ASSESS_UNITS_MLOC
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<T_ATTAINS_ASSESS_UNITS_MLOC>("OpenEnvironmentModel.FK__T_ATTAINS__ATTAI__0D0FEE32", "T_ATTAINS_ASSESS_UNITS_MLOC");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<T_ATTAINS_ASSESS_UNITS_MLOC>("OpenEnvironmentModel.FK__T_ATTAINS__ATTAI__0D0FEE32", "T_ATTAINS_ASSESS_UNITS_MLOC", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("OpenEnvironmentModel", "FK__T_ATTAINS__ATTAI__2116E6DF", "T_ATTAINS_ASSESS")]
+        public EntityCollection<T_ATTAINS_ASSESS> T_ATTAINS_ASSESS
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<T_ATTAINS_ASSESS>("OpenEnvironmentModel.FK__T_ATTAINS__ATTAI__2116E6DF", "T_ATTAINS_ASSESS");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<T_ATTAINS_ASSESS>("OpenEnvironmentModel.FK__T_ATTAINS__ATTAI__2116E6DF", "T_ATTAINS_ASSESS", value);
+                }
+            }
+        }
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="OpenEnvironmentModel", Name="T_ATTAINS_ASSESS_UNITS_MLOC")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class T_ATTAINS_ASSESS_UNITS_MLOC : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new T_ATTAINS_ASSESS_UNITS_MLOC object.
+        /// </summary>
+        /// <param name="aTTAINS_ASSESS_UNIT_IDX">Initial value of the ATTAINS_ASSESS_UNIT_IDX property.</param>
+        /// <param name="mONLOC_IDX">Initial value of the MONLOC_IDX property.</param>
+        public static T_ATTAINS_ASSESS_UNITS_MLOC CreateT_ATTAINS_ASSESS_UNITS_MLOC(global::System.Int32 aTTAINS_ASSESS_UNIT_IDX, global::System.Int32 mONLOC_IDX)
+        {
+            T_ATTAINS_ASSESS_UNITS_MLOC t_ATTAINS_ASSESS_UNITS_MLOC = new T_ATTAINS_ASSESS_UNITS_MLOC();
+            t_ATTAINS_ASSESS_UNITS_MLOC.ATTAINS_ASSESS_UNIT_IDX = aTTAINS_ASSESS_UNIT_IDX;
+            t_ATTAINS_ASSESS_UNITS_MLOC.MONLOC_IDX = mONLOC_IDX;
+            return t_ATTAINS_ASSESS_UNITS_MLOC;
+        }
+
+        #endregion
+
+        #region Simple Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ATTAINS_ASSESS_UNIT_IDX
+        {
+            get
+            {
+                return _ATTAINS_ASSESS_UNIT_IDX;
+            }
+            set
+            {
+                if (_ATTAINS_ASSESS_UNIT_IDX != value)
+                {
+                    OnATTAINS_ASSESS_UNIT_IDXChanging(value);
+                    ReportPropertyChanging("ATTAINS_ASSESS_UNIT_IDX");
+                    _ATTAINS_ASSESS_UNIT_IDX = StructuralObject.SetValidValue(value, "ATTAINS_ASSESS_UNIT_IDX");
+                    ReportPropertyChanged("ATTAINS_ASSESS_UNIT_IDX");
+                    OnATTAINS_ASSESS_UNIT_IDXChanged();
+                }
+            }
+        }
+        private global::System.Int32 _ATTAINS_ASSESS_UNIT_IDX;
+        partial void OnATTAINS_ASSESS_UNIT_IDXChanging(global::System.Int32 value);
+        partial void OnATTAINS_ASSESS_UNIT_IDXChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 MONLOC_IDX
+        {
+            get
+            {
+                return _MONLOC_IDX;
+            }
+            set
+            {
+                if (_MONLOC_IDX != value)
+                {
+                    OnMONLOC_IDXChanging(value);
+                    ReportPropertyChanging("MONLOC_IDX");
+                    _MONLOC_IDX = StructuralObject.SetValidValue(value, "MONLOC_IDX");
+                    ReportPropertyChanged("MONLOC_IDX");
+                    OnMONLOC_IDXChanged();
+                }
+            }
+        }
+        private global::System.Int32 _MONLOC_IDX;
+        partial void OnMONLOC_IDXChanging(global::System.Int32 value);
+        partial void OnMONLOC_IDXChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> CREATE_DT
+        {
+            get
+            {
+                return _CREATE_DT;
+            }
+            set
+            {
+                OnCREATE_DTChanging(value);
+                ReportPropertyChanging("CREATE_DT");
+                _CREATE_DT = StructuralObject.SetValidValue(value, "CREATE_DT");
+                ReportPropertyChanged("CREATE_DT");
+                OnCREATE_DTChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _CREATE_DT;
+        partial void OnCREATE_DTChanging(Nullable<global::System.DateTime> value);
+        partial void OnCREATE_DTChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String CREATE_USERID
+        {
+            get
+            {
+                return _CREATE_USERID;
+            }
+            set
+            {
+                OnCREATE_USERIDChanging(value);
+                ReportPropertyChanging("CREATE_USERID");
+                _CREATE_USERID = StructuralObject.SetValidValue(value, true, "CREATE_USERID");
+                ReportPropertyChanged("CREATE_USERID");
+                OnCREATE_USERIDChanged();
+            }
+        }
+        private global::System.String _CREATE_USERID;
+        partial void OnCREATE_USERIDChanging(global::System.String value);
+        partial void OnCREATE_USERIDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> MODIFY_DT
+        {
+            get
+            {
+                return _MODIFY_DT;
+            }
+            set
+            {
+                OnMODIFY_DTChanging(value);
+                ReportPropertyChanging("MODIFY_DT");
+                _MODIFY_DT = StructuralObject.SetValidValue(value, "MODIFY_DT");
+                ReportPropertyChanged("MODIFY_DT");
+                OnMODIFY_DTChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _MODIFY_DT;
+        partial void OnMODIFY_DTChanging(Nullable<global::System.DateTime> value);
+        partial void OnMODIFY_DTChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String MODIFY_USERID
+        {
+            get
+            {
+                return _MODIFY_USERID;
+            }
+            set
+            {
+                OnMODIFY_USERIDChanging(value);
+                ReportPropertyChanging("MODIFY_USERID");
+                _MODIFY_USERID = StructuralObject.SetValidValue(value, true, "MODIFY_USERID");
+                ReportPropertyChanged("MODIFY_USERID");
+                OnMODIFY_USERIDChanged();
+            }
+        }
+        private global::System.String _MODIFY_USERID;
+        partial void OnMODIFY_USERIDChanging(global::System.String value);
+        partial void OnMODIFY_USERIDChanged();
+
+        #endregion
+
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("OpenEnvironmentModel", "FK__T_ATTAINS__ATTAI__0D0FEE32", "T_ATTAINS_ASSESS_UNITS")]
+        public T_ATTAINS_ASSESS_UNITS T_ATTAINS_ASSESS_UNITS
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<T_ATTAINS_ASSESS_UNITS>("OpenEnvironmentModel.FK__T_ATTAINS__ATTAI__0D0FEE32", "T_ATTAINS_ASSESS_UNITS").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<T_ATTAINS_ASSESS_UNITS>("OpenEnvironmentModel.FK__T_ATTAINS__ATTAI__0D0FEE32", "T_ATTAINS_ASSESS_UNITS").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<T_ATTAINS_ASSESS_UNITS> T_ATTAINS_ASSESS_UNITSReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<T_ATTAINS_ASSESS_UNITS>("OpenEnvironmentModel.FK__T_ATTAINS__ATTAI__0D0FEE32", "T_ATTAINS_ASSESS_UNITS");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<T_ATTAINS_ASSESS_UNITS>("OpenEnvironmentModel.FK__T_ATTAINS__ATTAI__0D0FEE32", "T_ATTAINS_ASSESS_UNITS", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("OpenEnvironmentModel", "FK__T_ATTAINS__MONLO__0E04126B", "T_WQX_MONLOC")]
+        public T_WQX_MONLOC T_WQX_MONLOC
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<T_WQX_MONLOC>("OpenEnvironmentModel.FK__T_ATTAINS__MONLO__0E04126B", "T_WQX_MONLOC").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<T_WQX_MONLOC>("OpenEnvironmentModel.FK__T_ATTAINS__MONLO__0E04126B", "T_WQX_MONLOC").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<T_WQX_MONLOC> T_WQX_MONLOCReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<T_WQX_MONLOC>("OpenEnvironmentModel.FK__T_ATTAINS__MONLO__0E04126B", "T_WQX_MONLOC");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<T_WQX_MONLOC>("OpenEnvironmentModel.FK__T_ATTAINS__MONLO__0E04126B", "T_WQX_MONLOC", value);
+                }
+            }
+        }
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="OpenEnvironmentModel", Name="T_ATTAINS_ASSESS_USE")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class T_ATTAINS_ASSESS_USE : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new T_ATTAINS_ASSESS_USE object.
+        /// </summary>
+        /// <param name="aTTAINS_ASSESS_USE_IDX">Initial value of the ATTAINS_ASSESS_USE_IDX property.</param>
+        /// <param name="aTTAINS_ASSESS_IDX">Initial value of the ATTAINS_ASSESS_IDX property.</param>
+        public static T_ATTAINS_ASSESS_USE CreateT_ATTAINS_ASSESS_USE(global::System.Int32 aTTAINS_ASSESS_USE_IDX, global::System.Int32 aTTAINS_ASSESS_IDX)
+        {
+            T_ATTAINS_ASSESS_USE t_ATTAINS_ASSESS_USE = new T_ATTAINS_ASSESS_USE();
+            t_ATTAINS_ASSESS_USE.ATTAINS_ASSESS_USE_IDX = aTTAINS_ASSESS_USE_IDX;
+            t_ATTAINS_ASSESS_USE.ATTAINS_ASSESS_IDX = aTTAINS_ASSESS_IDX;
+            return t_ATTAINS_ASSESS_USE;
+        }
+
+        #endregion
+
+        #region Simple Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ATTAINS_ASSESS_USE_IDX
+        {
+            get
+            {
+                return _ATTAINS_ASSESS_USE_IDX;
+            }
+            set
+            {
+                if (_ATTAINS_ASSESS_USE_IDX != value)
+                {
+                    OnATTAINS_ASSESS_USE_IDXChanging(value);
+                    ReportPropertyChanging("ATTAINS_ASSESS_USE_IDX");
+                    _ATTAINS_ASSESS_USE_IDX = StructuralObject.SetValidValue(value, "ATTAINS_ASSESS_USE_IDX");
+                    ReportPropertyChanged("ATTAINS_ASSESS_USE_IDX");
+                    OnATTAINS_ASSESS_USE_IDXChanged();
+                }
+            }
+        }
+        private global::System.Int32 _ATTAINS_ASSESS_USE_IDX;
+        partial void OnATTAINS_ASSESS_USE_IDXChanging(global::System.Int32 value);
+        partial void OnATTAINS_ASSESS_USE_IDXChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ATTAINS_ASSESS_IDX
+        {
+            get
+            {
+                return _ATTAINS_ASSESS_IDX;
+            }
+            set
+            {
+                OnATTAINS_ASSESS_IDXChanging(value);
+                ReportPropertyChanging("ATTAINS_ASSESS_IDX");
+                _ATTAINS_ASSESS_IDX = StructuralObject.SetValidValue(value, "ATTAINS_ASSESS_IDX");
+                ReportPropertyChanged("ATTAINS_ASSESS_IDX");
+                OnATTAINS_ASSESS_IDXChanged();
+            }
+        }
+        private global::System.Int32 _ATTAINS_ASSESS_IDX;
+        partial void OnATTAINS_ASSESS_IDXChanging(global::System.Int32 value);
+        partial void OnATTAINS_ASSESS_IDXChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String USE_NAME
+        {
+            get
+            {
+                return _USE_NAME;
+            }
+            set
+            {
+                OnUSE_NAMEChanging(value);
+                ReportPropertyChanging("USE_NAME");
+                _USE_NAME = StructuralObject.SetValidValue(value, true, "USE_NAME");
+                ReportPropertyChanged("USE_NAME");
+                OnUSE_NAMEChanged();
+            }
+        }
+        private global::System.String _USE_NAME;
+        partial void OnUSE_NAMEChanging(global::System.String value);
+        partial void OnUSE_NAMEChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String USE_ATTAINMENT_CODE
+        {
+            get
+            {
+                return _USE_ATTAINMENT_CODE;
+            }
+            set
+            {
+                OnUSE_ATTAINMENT_CODEChanging(value);
+                ReportPropertyChanging("USE_ATTAINMENT_CODE");
+                _USE_ATTAINMENT_CODE = StructuralObject.SetValidValue(value, true, "USE_ATTAINMENT_CODE");
+                ReportPropertyChanged("USE_ATTAINMENT_CODE");
+                OnUSE_ATTAINMENT_CODEChanged();
+            }
+        }
+        private global::System.String _USE_ATTAINMENT_CODE;
+        partial void OnUSE_ATTAINMENT_CODEChanging(global::System.String value);
+        partial void OnUSE_ATTAINMENT_CODEChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String THREATENED_IND
+        {
+            get
+            {
+                return _THREATENED_IND;
+            }
+            set
+            {
+                OnTHREATENED_INDChanging(value);
+                ReportPropertyChanging("THREATENED_IND");
+                _THREATENED_IND = StructuralObject.SetValidValue(value, true, "THREATENED_IND");
+                ReportPropertyChanged("THREATENED_IND");
+                OnTHREATENED_INDChanged();
+            }
+        }
+        private global::System.String _THREATENED_IND;
+        partial void OnTHREATENED_INDChanging(global::System.String value);
+        partial void OnTHREATENED_INDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String TREND_CODE
+        {
+            get
+            {
+                return _TREND_CODE;
+            }
+            set
+            {
+                OnTREND_CODEChanging(value);
+                ReportPropertyChanging("TREND_CODE");
+                _TREND_CODE = StructuralObject.SetValidValue(value, true, "TREND_CODE");
+                ReportPropertyChanged("TREND_CODE");
+                OnTREND_CODEChanged();
+            }
+        }
+        private global::System.String _TREND_CODE;
+        partial void OnTREND_CODEChanging(global::System.String value);
+        partial void OnTREND_CODEChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String IR_CAT_CODE
+        {
+            get
+            {
+                return _IR_CAT_CODE;
+            }
+            set
+            {
+                OnIR_CAT_CODEChanging(value);
+                ReportPropertyChanging("IR_CAT_CODE");
+                _IR_CAT_CODE = StructuralObject.SetValidValue(value, true, "IR_CAT_CODE");
+                ReportPropertyChanged("IR_CAT_CODE");
+                OnIR_CAT_CODEChanged();
+            }
+        }
+        private global::System.String _IR_CAT_CODE;
+        partial void OnIR_CAT_CODEChanging(global::System.String value);
+        partial void OnIR_CAT_CODEChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String IR_CAT_DESC
+        {
+            get
+            {
+                return _IR_CAT_DESC;
+            }
+            set
+            {
+                OnIR_CAT_DESCChanging(value);
+                ReportPropertyChanging("IR_CAT_DESC");
+                _IR_CAT_DESC = StructuralObject.SetValidValue(value, true, "IR_CAT_DESC");
+                ReportPropertyChanged("IR_CAT_DESC");
+                OnIR_CAT_DESCChanged();
+            }
+        }
+        private global::System.String _IR_CAT_DESC;
+        partial void OnIR_CAT_DESCChanging(global::System.String value);
+        partial void OnIR_CAT_DESCChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String ASSESS_BASIS
+        {
+            get
+            {
+                return _ASSESS_BASIS;
+            }
+            set
+            {
+                OnASSESS_BASISChanging(value);
+                ReportPropertyChanging("ASSESS_BASIS");
+                _ASSESS_BASIS = StructuralObject.SetValidValue(value, true, "ASSESS_BASIS");
+                ReportPropertyChanged("ASSESS_BASIS");
+                OnASSESS_BASISChanged();
+            }
+        }
+        private global::System.String _ASSESS_BASIS;
+        partial void OnASSESS_BASISChanging(global::System.String value);
+        partial void OnASSESS_BASISChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String ASSESS_TYPE
+        {
+            get
+            {
+                return _ASSESS_TYPE;
+            }
+            set
+            {
+                OnASSESS_TYPEChanging(value);
+                ReportPropertyChanging("ASSESS_TYPE");
+                _ASSESS_TYPE = StructuralObject.SetValidValue(value, true, "ASSESS_TYPE");
+                ReportPropertyChanged("ASSESS_TYPE");
+                OnASSESS_TYPEChanged();
+            }
+        }
+        private global::System.String _ASSESS_TYPE;
+        partial void OnASSESS_TYPEChanging(global::System.String value);
+        partial void OnASSESS_TYPEChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String ASSESS_CONFIDENCE
+        {
+            get
+            {
+                return _ASSESS_CONFIDENCE;
+            }
+            set
+            {
+                OnASSESS_CONFIDENCEChanging(value);
+                ReportPropertyChanging("ASSESS_CONFIDENCE");
+                _ASSESS_CONFIDENCE = StructuralObject.SetValidValue(value, true, "ASSESS_CONFIDENCE");
+                ReportPropertyChanged("ASSESS_CONFIDENCE");
+                OnASSESS_CONFIDENCEChanged();
+            }
+        }
+        private global::System.String _ASSESS_CONFIDENCE;
+        partial void OnASSESS_CONFIDENCEChanging(global::System.String value);
+        partial void OnASSESS_CONFIDENCEChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> MON_DATE_START
+        {
+            get
+            {
+                return _MON_DATE_START;
+            }
+            set
+            {
+                OnMON_DATE_STARTChanging(value);
+                ReportPropertyChanging("MON_DATE_START");
+                _MON_DATE_START = StructuralObject.SetValidValue(value, "MON_DATE_START");
+                ReportPropertyChanged("MON_DATE_START");
+                OnMON_DATE_STARTChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _MON_DATE_START;
+        partial void OnMON_DATE_STARTChanging(Nullable<global::System.DateTime> value);
+        partial void OnMON_DATE_STARTChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> MON_DATE_END
+        {
+            get
+            {
+                return _MON_DATE_END;
+            }
+            set
+            {
+                OnMON_DATE_ENDChanging(value);
+                ReportPropertyChanging("MON_DATE_END");
+                _MON_DATE_END = StructuralObject.SetValidValue(value, "MON_DATE_END");
+                ReportPropertyChanged("MON_DATE_END");
+                OnMON_DATE_ENDChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _MON_DATE_END;
+        partial void OnMON_DATE_ENDChanging(Nullable<global::System.DateTime> value);
+        partial void OnMON_DATE_ENDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> ASSESS_DATE
+        {
+            get
+            {
+                return _ASSESS_DATE;
+            }
+            set
+            {
+                OnASSESS_DATEChanging(value);
+                ReportPropertyChanging("ASSESS_DATE");
+                _ASSESS_DATE = StructuralObject.SetValidValue(value, "ASSESS_DATE");
+                ReportPropertyChanged("ASSESS_DATE");
+                OnASSESS_DATEChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _ASSESS_DATE;
+        partial void OnASSESS_DATEChanging(Nullable<global::System.DateTime> value);
+        partial void OnASSESS_DATEChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String ASSESSOR_NAME
+        {
+            get
+            {
+                return _ASSESSOR_NAME;
+            }
+            set
+            {
+                OnASSESSOR_NAMEChanging(value);
+                ReportPropertyChanging("ASSESSOR_NAME");
+                _ASSESSOR_NAME = StructuralObject.SetValidValue(value, true, "ASSESSOR_NAME");
+                ReportPropertyChanged("ASSESSOR_NAME");
+                OnASSESSOR_NAMEChanged();
+            }
+        }
+        private global::System.String _ASSESSOR_NAME;
+        partial void OnASSESSOR_NAMEChanging(global::System.String value);
+        partial void OnASSESSOR_NAMEChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> CREATE_DT
+        {
+            get
+            {
+                return _CREATE_DT;
+            }
+            set
+            {
+                OnCREATE_DTChanging(value);
+                ReportPropertyChanging("CREATE_DT");
+                _CREATE_DT = StructuralObject.SetValidValue(value, "CREATE_DT");
+                ReportPropertyChanged("CREATE_DT");
+                OnCREATE_DTChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _CREATE_DT;
+        partial void OnCREATE_DTChanging(Nullable<global::System.DateTime> value);
+        partial void OnCREATE_DTChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String CREATE_USERID
+        {
+            get
+            {
+                return _CREATE_USERID;
+            }
+            set
+            {
+                OnCREATE_USERIDChanging(value);
+                ReportPropertyChanging("CREATE_USERID");
+                _CREATE_USERID = StructuralObject.SetValidValue(value, true, "CREATE_USERID");
+                ReportPropertyChanged("CREATE_USERID");
+                OnCREATE_USERIDChanged();
+            }
+        }
+        private global::System.String _CREATE_USERID;
+        partial void OnCREATE_USERIDChanging(global::System.String value);
+        partial void OnCREATE_USERIDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> MODIFY_DT
+        {
+            get
+            {
+                return _MODIFY_DT;
+            }
+            set
+            {
+                OnMODIFY_DTChanging(value);
+                ReportPropertyChanging("MODIFY_DT");
+                _MODIFY_DT = StructuralObject.SetValidValue(value, "MODIFY_DT");
+                ReportPropertyChanged("MODIFY_DT");
+                OnMODIFY_DTChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _MODIFY_DT;
+        partial void OnMODIFY_DTChanging(Nullable<global::System.DateTime> value);
+        partial void OnMODIFY_DTChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String MODIFY_USERID
+        {
+            get
+            {
+                return _MODIFY_USERID;
+            }
+            set
+            {
+                OnMODIFY_USERIDChanging(value);
+                ReportPropertyChanging("MODIFY_USERID");
+                _MODIFY_USERID = StructuralObject.SetValidValue(value, true, "MODIFY_USERID");
+                ReportPropertyChanged("MODIFY_USERID");
+                OnMODIFY_USERIDChanged();
+            }
+        }
+        private global::System.String _MODIFY_USERID;
+        partial void OnMODIFY_USERIDChanging(global::System.String value);
+        partial void OnMODIFY_USERIDChanged();
+
+        #endregion
+
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("OpenEnvironmentModel", "FK__T_ATTAINS__ATTAI__4A18FC72", "T_ATTAINS_ASSESS")]
+        public T_ATTAINS_ASSESS T_ATTAINS_ASSESS
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<T_ATTAINS_ASSESS>("OpenEnvironmentModel.FK__T_ATTAINS__ATTAI__4A18FC72", "T_ATTAINS_ASSESS").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<T_ATTAINS_ASSESS>("OpenEnvironmentModel.FK__T_ATTAINS__ATTAI__4A18FC72", "T_ATTAINS_ASSESS").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<T_ATTAINS_ASSESS> T_ATTAINS_ASSESSReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<T_ATTAINS_ASSESS>("OpenEnvironmentModel.FK__T_ATTAINS__ATTAI__4A18FC72", "T_ATTAINS_ASSESS");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<T_ATTAINS_ASSESS>("OpenEnvironmentModel.FK__T_ATTAINS__ATTAI__4A18FC72", "T_ATTAINS_ASSESS", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("OpenEnvironmentModel", "FK__T_ATTAINS__ATTAI__5A4F643B", "T_ATTAINS_ASSESS_USE_PAR")]
+        public EntityCollection<T_ATTAINS_ASSESS_USE_PAR> T_ATTAINS_ASSESS_USE_PAR
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<T_ATTAINS_ASSESS_USE_PAR>("OpenEnvironmentModel.FK__T_ATTAINS__ATTAI__5A4F643B", "T_ATTAINS_ASSESS_USE_PAR");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<T_ATTAINS_ASSESS_USE_PAR>("OpenEnvironmentModel.FK__T_ATTAINS__ATTAI__5A4F643B", "T_ATTAINS_ASSESS_USE_PAR", value);
+                }
+            }
+        }
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="OpenEnvironmentModel", Name="T_ATTAINS_ASSESS_USE_PAR")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class T_ATTAINS_ASSESS_USE_PAR : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new T_ATTAINS_ASSESS_USE_PAR object.
+        /// </summary>
+        /// <param name="aTTAINS_ASSESS_USE_PAR_IDX">Initial value of the ATTAINS_ASSESS_USE_PAR_IDX property.</param>
+        /// <param name="aTTAINS_ASSESS_USE_IDX">Initial value of the ATTAINS_ASSESS_USE_IDX property.</param>
+        public static T_ATTAINS_ASSESS_USE_PAR CreateT_ATTAINS_ASSESS_USE_PAR(global::System.Int32 aTTAINS_ASSESS_USE_PAR_IDX, global::System.Int32 aTTAINS_ASSESS_USE_IDX)
+        {
+            T_ATTAINS_ASSESS_USE_PAR t_ATTAINS_ASSESS_USE_PAR = new T_ATTAINS_ASSESS_USE_PAR();
+            t_ATTAINS_ASSESS_USE_PAR.ATTAINS_ASSESS_USE_PAR_IDX = aTTAINS_ASSESS_USE_PAR_IDX;
+            t_ATTAINS_ASSESS_USE_PAR.ATTAINS_ASSESS_USE_IDX = aTTAINS_ASSESS_USE_IDX;
+            return t_ATTAINS_ASSESS_USE_PAR;
+        }
+
+        #endregion
+
+        #region Simple Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ATTAINS_ASSESS_USE_PAR_IDX
+        {
+            get
+            {
+                return _ATTAINS_ASSESS_USE_PAR_IDX;
+            }
+            set
+            {
+                if (_ATTAINS_ASSESS_USE_PAR_IDX != value)
+                {
+                    OnATTAINS_ASSESS_USE_PAR_IDXChanging(value);
+                    ReportPropertyChanging("ATTAINS_ASSESS_USE_PAR_IDX");
+                    _ATTAINS_ASSESS_USE_PAR_IDX = StructuralObject.SetValidValue(value, "ATTAINS_ASSESS_USE_PAR_IDX");
+                    ReportPropertyChanged("ATTAINS_ASSESS_USE_PAR_IDX");
+                    OnATTAINS_ASSESS_USE_PAR_IDXChanged();
+                }
+            }
+        }
+        private global::System.Int32 _ATTAINS_ASSESS_USE_PAR_IDX;
+        partial void OnATTAINS_ASSESS_USE_PAR_IDXChanging(global::System.Int32 value);
+        partial void OnATTAINS_ASSESS_USE_PAR_IDXChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ATTAINS_ASSESS_USE_IDX
+        {
+            get
+            {
+                return _ATTAINS_ASSESS_USE_IDX;
+            }
+            set
+            {
+                OnATTAINS_ASSESS_USE_IDXChanging(value);
+                ReportPropertyChanging("ATTAINS_ASSESS_USE_IDX");
+                _ATTAINS_ASSESS_USE_IDX = StructuralObject.SetValidValue(value, "ATTAINS_ASSESS_USE_IDX");
+                ReportPropertyChanged("ATTAINS_ASSESS_USE_IDX");
+                OnATTAINS_ASSESS_USE_IDXChanged();
+            }
+        }
+        private global::System.Int32 _ATTAINS_ASSESS_USE_IDX;
+        partial void OnATTAINS_ASSESS_USE_IDXChanging(global::System.Int32 value);
+        partial void OnATTAINS_ASSESS_USE_IDXChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String PARAM_NAME
+        {
+            get
+            {
+                return _PARAM_NAME;
+            }
+            set
+            {
+                OnPARAM_NAMEChanging(value);
+                ReportPropertyChanging("PARAM_NAME");
+                _PARAM_NAME = StructuralObject.SetValidValue(value, true, "PARAM_NAME");
+                ReportPropertyChanged("PARAM_NAME");
+                OnPARAM_NAMEChanged();
+            }
+        }
+        private global::System.String _PARAM_NAME;
+        partial void OnPARAM_NAMEChanging(global::System.String value);
+        partial void OnPARAM_NAMEChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String PARAM_ATTAINMENT_CODE
+        {
+            get
+            {
+                return _PARAM_ATTAINMENT_CODE;
+            }
+            set
+            {
+                OnPARAM_ATTAINMENT_CODEChanging(value);
+                ReportPropertyChanging("PARAM_ATTAINMENT_CODE");
+                _PARAM_ATTAINMENT_CODE = StructuralObject.SetValidValue(value, true, "PARAM_ATTAINMENT_CODE");
+                ReportPropertyChanged("PARAM_ATTAINMENT_CODE");
+                OnPARAM_ATTAINMENT_CODEChanged();
+            }
+        }
+        private global::System.String _PARAM_ATTAINMENT_CODE;
+        partial void OnPARAM_ATTAINMENT_CODEChanging(global::System.String value);
+        partial void OnPARAM_ATTAINMENT_CODEChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String TREND_CODE
+        {
+            get
+            {
+                return _TREND_CODE;
+            }
+            set
+            {
+                OnTREND_CODEChanging(value);
+                ReportPropertyChanging("TREND_CODE");
+                _TREND_CODE = StructuralObject.SetValidValue(value, true, "TREND_CODE");
+                ReportPropertyChanged("TREND_CODE");
+                OnTREND_CODEChanged();
+            }
+        }
+        private global::System.String _TREND_CODE;
+        partial void OnTREND_CODEChanging(global::System.String value);
+        partial void OnTREND_CODEChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String PARAM_COMMENT
+        {
+            get
+            {
+                return _PARAM_COMMENT;
+            }
+            set
+            {
+                OnPARAM_COMMENTChanging(value);
+                ReportPropertyChanging("PARAM_COMMENT");
+                _PARAM_COMMENT = StructuralObject.SetValidValue(value, true, "PARAM_COMMENT");
+                ReportPropertyChanged("PARAM_COMMENT");
+                OnPARAM_COMMENTChanged();
+            }
+        }
+        private global::System.String _PARAM_COMMENT;
+        partial void OnPARAM_COMMENTChanging(global::System.String value);
+        partial void OnPARAM_COMMENTChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> CREATE_DT
+        {
+            get
+            {
+                return _CREATE_DT;
+            }
+            set
+            {
+                OnCREATE_DTChanging(value);
+                ReportPropertyChanging("CREATE_DT");
+                _CREATE_DT = StructuralObject.SetValidValue(value, "CREATE_DT");
+                ReportPropertyChanged("CREATE_DT");
+                OnCREATE_DTChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _CREATE_DT;
+        partial void OnCREATE_DTChanging(Nullable<global::System.DateTime> value);
+        partial void OnCREATE_DTChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String CREATE_USERID
+        {
+            get
+            {
+                return _CREATE_USERID;
+            }
+            set
+            {
+                OnCREATE_USERIDChanging(value);
+                ReportPropertyChanging("CREATE_USERID");
+                _CREATE_USERID = StructuralObject.SetValidValue(value, true, "CREATE_USERID");
+                ReportPropertyChanged("CREATE_USERID");
+                OnCREATE_USERIDChanged();
+            }
+        }
+        private global::System.String _CREATE_USERID;
+        partial void OnCREATE_USERIDChanging(global::System.String value);
+        partial void OnCREATE_USERIDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> MODIFY_DT
+        {
+            get
+            {
+                return _MODIFY_DT;
+            }
+            set
+            {
+                OnMODIFY_DTChanging(value);
+                ReportPropertyChanging("MODIFY_DT");
+                _MODIFY_DT = StructuralObject.SetValidValue(value, "MODIFY_DT");
+                ReportPropertyChanged("MODIFY_DT");
+                OnMODIFY_DTChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _MODIFY_DT;
+        partial void OnMODIFY_DTChanging(Nullable<global::System.DateTime> value);
+        partial void OnMODIFY_DTChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String MODIFY_USERID
+        {
+            get
+            {
+                return _MODIFY_USERID;
+            }
+            set
+            {
+                OnMODIFY_USERIDChanging(value);
+                ReportPropertyChanging("MODIFY_USERID");
+                _MODIFY_USERID = StructuralObject.SetValidValue(value, true, "MODIFY_USERID");
+                ReportPropertyChanged("MODIFY_USERID");
+                OnMODIFY_USERIDChanged();
+            }
+        }
+        private global::System.String _MODIFY_USERID;
+        partial void OnMODIFY_USERIDChanging(global::System.String value);
+        partial void OnMODIFY_USERIDChanged();
+
+        #endregion
+
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("OpenEnvironmentModel", "FK__T_ATTAINS__ATTAI__5A4F643B", "T_ATTAINS_ASSESS_USE")]
+        public T_ATTAINS_ASSESS_USE T_ATTAINS_ASSESS_USE
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<T_ATTAINS_ASSESS_USE>("OpenEnvironmentModel.FK__T_ATTAINS__ATTAI__5A4F643B", "T_ATTAINS_ASSESS_USE").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<T_ATTAINS_ASSESS_USE>("OpenEnvironmentModel.FK__T_ATTAINS__ATTAI__5A4F643B", "T_ATTAINS_ASSESS_USE").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<T_ATTAINS_ASSESS_USE> T_ATTAINS_ASSESS_USEReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<T_ATTAINS_ASSESS_USE>("OpenEnvironmentModel.FK__T_ATTAINS__ATTAI__5A4F643B", "T_ATTAINS_ASSESS_USE");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<T_ATTAINS_ASSESS_USE>("OpenEnvironmentModel.FK__T_ATTAINS__ATTAI__5A4F643B", "T_ATTAINS_ASSESS_USE", value);
+                }
+            }
+        }
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="OpenEnvironmentModel", Name="T_ATTAINS_REF_WATER_TYPE")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class T_ATTAINS_REF_WATER_TYPE : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new T_ATTAINS_REF_WATER_TYPE object.
+        /// </summary>
+        /// <param name="wATER_TYPE_CODE">Initial value of the WATER_TYPE_CODE property.</param>
+        public static T_ATTAINS_REF_WATER_TYPE CreateT_ATTAINS_REF_WATER_TYPE(global::System.String wATER_TYPE_CODE)
+        {
+            T_ATTAINS_REF_WATER_TYPE t_ATTAINS_REF_WATER_TYPE = new T_ATTAINS_REF_WATER_TYPE();
+            t_ATTAINS_REF_WATER_TYPE.WATER_TYPE_CODE = wATER_TYPE_CODE;
+            return t_ATTAINS_REF_WATER_TYPE;
+        }
+
+        #endregion
+
+        #region Simple Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String WATER_TYPE_CODE
+        {
+            get
+            {
+                return _WATER_TYPE_CODE;
+            }
+            set
+            {
+                if (_WATER_TYPE_CODE != value)
+                {
+                    OnWATER_TYPE_CODEChanging(value);
+                    ReportPropertyChanging("WATER_TYPE_CODE");
+                    _WATER_TYPE_CODE = StructuralObject.SetValidValue(value, false, "WATER_TYPE_CODE");
+                    ReportPropertyChanged("WATER_TYPE_CODE");
+                    OnWATER_TYPE_CODEChanged();
+                }
+            }
+        }
+        private global::System.String _WATER_TYPE_CODE;
+        partial void OnWATER_TYPE_CODEChanging(global::System.String value);
+        partial void OnWATER_TYPE_CODEChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> CREATE_DT
+        {
+            get
+            {
+                return _CREATE_DT;
+            }
+            set
+            {
+                OnCREATE_DTChanging(value);
+                ReportPropertyChanging("CREATE_DT");
+                _CREATE_DT = StructuralObject.SetValidValue(value, "CREATE_DT");
+                ReportPropertyChanged("CREATE_DT");
+                OnCREATE_DTChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _CREATE_DT;
+        partial void OnCREATE_DTChanging(Nullable<global::System.DateTime> value);
+        partial void OnCREATE_DTChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String CREATE_USERID
+        {
+            get
+            {
+                return _CREATE_USERID;
+            }
+            set
+            {
+                OnCREATE_USERIDChanging(value);
+                ReportPropertyChanging("CREATE_USERID");
+                _CREATE_USERID = StructuralObject.SetValidValue(value, true, "CREATE_USERID");
+                ReportPropertyChanged("CREATE_USERID");
+                OnCREATE_USERIDChanged();
+            }
+        }
+        private global::System.String _CREATE_USERID;
+        partial void OnCREATE_USERIDChanging(global::System.String value);
+        partial void OnCREATE_USERIDChanged();
+
+        #endregion
+
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("OpenEnvironmentModel", "FK__T_ATTAINS__WATER__0662F0A3", "T_ATTAINS_ASSESS_UNITS")]
+        public EntityCollection<T_ATTAINS_ASSESS_UNITS> T_ATTAINS_ASSESS_UNITS
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<T_ATTAINS_ASSESS_UNITS>("OpenEnvironmentModel.FK__T_ATTAINS__WATER__0662F0A3", "T_ATTAINS_ASSESS_UNITS");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<T_ATTAINS_ASSESS_UNITS>("OpenEnvironmentModel.FK__T_ATTAINS__WATER__0662F0A3", "T_ATTAINS_ASSESS_UNITS", value);
+                }
+            }
+        }
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="OpenEnvironmentModel", Name="T_ATTAINS_REPORT")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class T_ATTAINS_REPORT : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new T_ATTAINS_REPORT object.
+        /// </summary>
+        /// <param name="aTTAINS_REPORT_IDX">Initial value of the ATTAINS_REPORT_IDX property.</param>
+        /// <param name="oRG_ID">Initial value of the ORG_ID property.</param>
+        /// <param name="rEPORT_NAME">Initial value of the REPORT_NAME property.</param>
+        public static T_ATTAINS_REPORT CreateT_ATTAINS_REPORT(global::System.Int32 aTTAINS_REPORT_IDX, global::System.String oRG_ID, global::System.String rEPORT_NAME)
+        {
+            T_ATTAINS_REPORT t_ATTAINS_REPORT = new T_ATTAINS_REPORT();
+            t_ATTAINS_REPORT.ATTAINS_REPORT_IDX = aTTAINS_REPORT_IDX;
+            t_ATTAINS_REPORT.ORG_ID = oRG_ID;
+            t_ATTAINS_REPORT.REPORT_NAME = rEPORT_NAME;
+            return t_ATTAINS_REPORT;
+        }
+
+        #endregion
+
+        #region Simple Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ATTAINS_REPORT_IDX
+        {
+            get
+            {
+                return _ATTAINS_REPORT_IDX;
+            }
+            set
+            {
+                if (_ATTAINS_REPORT_IDX != value)
+                {
+                    OnATTAINS_REPORT_IDXChanging(value);
+                    ReportPropertyChanging("ATTAINS_REPORT_IDX");
+                    _ATTAINS_REPORT_IDX = StructuralObject.SetValidValue(value, "ATTAINS_REPORT_IDX");
+                    ReportPropertyChanged("ATTAINS_REPORT_IDX");
+                    OnATTAINS_REPORT_IDXChanged();
+                }
+            }
+        }
+        private global::System.Int32 _ATTAINS_REPORT_IDX;
+        partial void OnATTAINS_REPORT_IDXChanging(global::System.Int32 value);
+        partial void OnATTAINS_REPORT_IDXChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String ORG_ID
+        {
+            get
+            {
+                return _ORG_ID;
+            }
+            set
+            {
+                OnORG_IDChanging(value);
+                ReportPropertyChanging("ORG_ID");
+                _ORG_ID = StructuralObject.SetValidValue(value, false, "ORG_ID");
+                ReportPropertyChanged("ORG_ID");
+                OnORG_IDChanged();
+            }
+        }
+        private global::System.String _ORG_ID;
+        partial void OnORG_IDChanging(global::System.String value);
+        partial void OnORG_IDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String REPORT_NAME
+        {
+            get
+            {
+                return _REPORT_NAME;
+            }
+            set
+            {
+                OnREPORT_NAMEChanging(value);
+                ReportPropertyChanging("REPORT_NAME");
+                _REPORT_NAME = StructuralObject.SetValidValue(value, false, "REPORT_NAME");
+                ReportPropertyChanged("REPORT_NAME");
+                OnREPORT_NAMEChanged();
+            }
+        }
+        private global::System.String _REPORT_NAME;
+        partial void OnREPORT_NAMEChanging(global::System.String value);
+        partial void OnREPORT_NAMEChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> DATA_FROM
+        {
+            get
+            {
+                return _DATA_FROM;
+            }
+            set
+            {
+                OnDATA_FROMChanging(value);
+                ReportPropertyChanging("DATA_FROM");
+                _DATA_FROM = StructuralObject.SetValidValue(value, "DATA_FROM");
+                ReportPropertyChanged("DATA_FROM");
+                OnDATA_FROMChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _DATA_FROM;
+        partial void OnDATA_FROMChanging(Nullable<global::System.DateTime> value);
+        partial void OnDATA_FROMChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> DATA_TO
+        {
+            get
+            {
+                return _DATA_TO;
+            }
+            set
+            {
+                OnDATA_TOChanging(value);
+                ReportPropertyChanging("DATA_TO");
+                _DATA_TO = StructuralObject.SetValidValue(value, "DATA_TO");
+                ReportPropertyChanged("DATA_TO");
+                OnDATA_TOChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _DATA_TO;
+        partial void OnDATA_TOChanging(Nullable<global::System.DateTime> value);
+        partial void OnDATA_TOChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Boolean> ATTAINS_IND
+        {
+            get
+            {
+                return _ATTAINS_IND;
+            }
+            set
+            {
+                OnATTAINS_INDChanging(value);
+                ReportPropertyChanging("ATTAINS_IND");
+                _ATTAINS_IND = StructuralObject.SetValidValue(value, "ATTAINS_IND");
+                ReportPropertyChanged("ATTAINS_IND");
+                OnATTAINS_INDChanged();
+            }
+        }
+        private Nullable<global::System.Boolean> _ATTAINS_IND;
+        partial void OnATTAINS_INDChanging(Nullable<global::System.Boolean> value);
+        partial void OnATTAINS_INDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String ATTAINS_SUBMIT_STATUS
+        {
+            get
+            {
+                return _ATTAINS_SUBMIT_STATUS;
+            }
+            set
+            {
+                OnATTAINS_SUBMIT_STATUSChanging(value);
+                ReportPropertyChanging("ATTAINS_SUBMIT_STATUS");
+                _ATTAINS_SUBMIT_STATUS = StructuralObject.SetValidValue(value, true, "ATTAINS_SUBMIT_STATUS");
+                ReportPropertyChanged("ATTAINS_SUBMIT_STATUS");
+                OnATTAINS_SUBMIT_STATUSChanged();
+            }
+        }
+        private global::System.String _ATTAINS_SUBMIT_STATUS;
+        partial void OnATTAINS_SUBMIT_STATUSChanging(global::System.String value);
+        partial void OnATTAINS_SUBMIT_STATUSChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> ATTAINS_UPDATE_DT
+        {
+            get
+            {
+                return _ATTAINS_UPDATE_DT;
+            }
+            set
+            {
+                OnATTAINS_UPDATE_DTChanging(value);
+                ReportPropertyChanging("ATTAINS_UPDATE_DT");
+                _ATTAINS_UPDATE_DT = StructuralObject.SetValidValue(value, "ATTAINS_UPDATE_DT");
+                ReportPropertyChanged("ATTAINS_UPDATE_DT");
+                OnATTAINS_UPDATE_DTChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _ATTAINS_UPDATE_DT;
+        partial void OnATTAINS_UPDATE_DTChanging(Nullable<global::System.DateTime> value);
+        partial void OnATTAINS_UPDATE_DTChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> CREATE_DT
+        {
+            get
+            {
+                return _CREATE_DT;
+            }
+            set
+            {
+                OnCREATE_DTChanging(value);
+                ReportPropertyChanging("CREATE_DT");
+                _CREATE_DT = StructuralObject.SetValidValue(value, "CREATE_DT");
+                ReportPropertyChanged("CREATE_DT");
+                OnCREATE_DTChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _CREATE_DT;
+        partial void OnCREATE_DTChanging(Nullable<global::System.DateTime> value);
+        partial void OnCREATE_DTChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String CREATE_USERID
+        {
+            get
+            {
+                return _CREATE_USERID;
+            }
+            set
+            {
+                OnCREATE_USERIDChanging(value);
+                ReportPropertyChanging("CREATE_USERID");
+                _CREATE_USERID = StructuralObject.SetValidValue(value, true, "CREATE_USERID");
+                ReportPropertyChanged("CREATE_USERID");
+                OnCREATE_USERIDChanged();
+            }
+        }
+        private global::System.String _CREATE_USERID;
+        partial void OnCREATE_USERIDChanging(global::System.String value);
+        partial void OnCREATE_USERIDChanged();
+
+        #endregion
+
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("OpenEnvironmentModel", "FK__T_ATTAINS__ORG_I__6ABAD62E", "T_WQX_ORGANIZATION")]
+        public T_WQX_ORGANIZATION T_WQX_ORGANIZATION
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<T_WQX_ORGANIZATION>("OpenEnvironmentModel.FK__T_ATTAINS__ORG_I__6ABAD62E", "T_WQX_ORGANIZATION").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<T_WQX_ORGANIZATION>("OpenEnvironmentModel.FK__T_ATTAINS__ORG_I__6ABAD62E", "T_WQX_ORGANIZATION").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<T_WQX_ORGANIZATION> T_WQX_ORGANIZATIONReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<T_WQX_ORGANIZATION>("OpenEnvironmentModel.FK__T_ATTAINS__ORG_I__6ABAD62E", "T_WQX_ORGANIZATION");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<T_WQX_ORGANIZATION>("OpenEnvironmentModel.FK__T_ATTAINS__ORG_I__6ABAD62E", "T_WQX_ORGANIZATION", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("OpenEnvironmentModel", "FK__T_ATTAINS__ATTAI__056ECC6A", "T_ATTAINS_ASSESS_UNITS")]
+        public EntityCollection<T_ATTAINS_ASSESS_UNITS> T_ATTAINS_ASSESS_UNITS
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<T_ATTAINS_ASSESS_UNITS>("OpenEnvironmentModel.FK__T_ATTAINS__ATTAI__056ECC6A", "T_ATTAINS_ASSESS_UNITS");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<T_ATTAINS_ASSESS_UNITS>("OpenEnvironmentModel.FK__T_ATTAINS__ATTAI__056ECC6A", "T_ATTAINS_ASSESS_UNITS", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("OpenEnvironmentModel", "FK__T_ATTAINS__ATTAI__473C8FC7", "T_ATTAINS_REPORT_LOG")]
+        public EntityCollection<T_ATTAINS_REPORT_LOG> T_ATTAINS_REPORT_LOG
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<T_ATTAINS_REPORT_LOG>("OpenEnvironmentModel.FK__T_ATTAINS__ATTAI__473C8FC7", "T_ATTAINS_REPORT_LOG");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<T_ATTAINS_REPORT_LOG>("OpenEnvironmentModel.FK__T_ATTAINS__ATTAI__473C8FC7", "T_ATTAINS_REPORT_LOG", value);
+                }
+            }
+        }
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="OpenEnvironmentModel", Name="T_ATTAINS_REPORT_LOG")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class T_ATTAINS_REPORT_LOG : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new T_ATTAINS_REPORT_LOG object.
+        /// </summary>
+        /// <param name="aTTAINS_LOG_IDX">Initial value of the ATTAINS_LOG_IDX property.</param>
+        /// <param name="aTTAINS_REPORT_IDX">Initial value of the ATTAINS_REPORT_IDX property.</param>
+        /// <param name="sUBMIT_DT">Initial value of the SUBMIT_DT property.</param>
+        public static T_ATTAINS_REPORT_LOG CreateT_ATTAINS_REPORT_LOG(global::System.Int32 aTTAINS_LOG_IDX, global::System.Int32 aTTAINS_REPORT_IDX, global::System.DateTime sUBMIT_DT)
+        {
+            T_ATTAINS_REPORT_LOG t_ATTAINS_REPORT_LOG = new T_ATTAINS_REPORT_LOG();
+            t_ATTAINS_REPORT_LOG.ATTAINS_LOG_IDX = aTTAINS_LOG_IDX;
+            t_ATTAINS_REPORT_LOG.ATTAINS_REPORT_IDX = aTTAINS_REPORT_IDX;
+            t_ATTAINS_REPORT_LOG.SUBMIT_DT = sUBMIT_DT;
+            return t_ATTAINS_REPORT_LOG;
+        }
+
+        #endregion
+
+        #region Simple Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ATTAINS_LOG_IDX
+        {
+            get
+            {
+                return _ATTAINS_LOG_IDX;
+            }
+            set
+            {
+                if (_ATTAINS_LOG_IDX != value)
+                {
+                    OnATTAINS_LOG_IDXChanging(value);
+                    ReportPropertyChanging("ATTAINS_LOG_IDX");
+                    _ATTAINS_LOG_IDX = StructuralObject.SetValidValue(value, "ATTAINS_LOG_IDX");
+                    ReportPropertyChanged("ATTAINS_LOG_IDX");
+                    OnATTAINS_LOG_IDXChanged();
+                }
+            }
+        }
+        private global::System.Int32 _ATTAINS_LOG_IDX;
+        partial void OnATTAINS_LOG_IDXChanging(global::System.Int32 value);
+        partial void OnATTAINS_LOG_IDXChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ATTAINS_REPORT_IDX
+        {
+            get
+            {
+                return _ATTAINS_REPORT_IDX;
+            }
+            set
+            {
+                OnATTAINS_REPORT_IDXChanging(value);
+                ReportPropertyChanging("ATTAINS_REPORT_IDX");
+                _ATTAINS_REPORT_IDX = StructuralObject.SetValidValue(value, "ATTAINS_REPORT_IDX");
+                ReportPropertyChanged("ATTAINS_REPORT_IDX");
+                OnATTAINS_REPORT_IDXChanged();
+            }
+        }
+        private global::System.Int32 _ATTAINS_REPORT_IDX;
+        partial void OnATTAINS_REPORT_IDXChanging(global::System.Int32 value);
+        partial void OnATTAINS_REPORT_IDXChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.DateTime SUBMIT_DT
+        {
+            get
+            {
+                return _SUBMIT_DT;
+            }
+            set
+            {
+                OnSUBMIT_DTChanging(value);
+                ReportPropertyChanging("SUBMIT_DT");
+                _SUBMIT_DT = StructuralObject.SetValidValue(value, "SUBMIT_DT");
+                ReportPropertyChanged("SUBMIT_DT");
+                OnSUBMIT_DTChanged();
+            }
+        }
+        private global::System.DateTime _SUBMIT_DT;
+        partial void OnSUBMIT_DTChanging(global::System.DateTime value);
+        partial void OnSUBMIT_DTChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String SUBMIT_FILE
+        {
+            get
+            {
+                return _SUBMIT_FILE;
+            }
+            set
+            {
+                OnSUBMIT_FILEChanging(value);
+                ReportPropertyChanging("SUBMIT_FILE");
+                _SUBMIT_FILE = StructuralObject.SetValidValue(value, true, "SUBMIT_FILE");
+                ReportPropertyChanged("SUBMIT_FILE");
+                OnSUBMIT_FILEChanged();
+            }
+        }
+        private global::System.String _SUBMIT_FILE;
+        partial void OnSUBMIT_FILEChanging(global::System.String value);
+        partial void OnSUBMIT_FILEChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.Byte[] RESPONSE_FILE
+        {
+            get
+            {
+                return StructuralObject.GetValidValue(_RESPONSE_FILE);
+            }
+            set
+            {
+                OnRESPONSE_FILEChanging(value);
+                ReportPropertyChanging("RESPONSE_FILE");
+                _RESPONSE_FILE = StructuralObject.SetValidValue(value, true, "RESPONSE_FILE");
+                ReportPropertyChanged("RESPONSE_FILE");
+                OnRESPONSE_FILEChanged();
+            }
+        }
+        private global::System.Byte[] _RESPONSE_FILE;
+        partial void OnRESPONSE_FILEChanging(global::System.Byte[] value);
+        partial void OnRESPONSE_FILEChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String RESPONSE_TXT
+        {
+            get
+            {
+                return _RESPONSE_TXT;
+            }
+            set
+            {
+                OnRESPONSE_TXTChanging(value);
+                ReportPropertyChanging("RESPONSE_TXT");
+                _RESPONSE_TXT = StructuralObject.SetValidValue(value, true, "RESPONSE_TXT");
+                ReportPropertyChanged("RESPONSE_TXT");
+                OnRESPONSE_TXTChanged();
+            }
+        }
+        private global::System.String _RESPONSE_TXT;
+        partial void OnRESPONSE_TXTChanging(global::System.String value);
+        partial void OnRESPONSE_TXTChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String CDX_SUBMIT_TRANSID
+        {
+            get
+            {
+                return _CDX_SUBMIT_TRANSID;
+            }
+            set
+            {
+                OnCDX_SUBMIT_TRANSIDChanging(value);
+                ReportPropertyChanging("CDX_SUBMIT_TRANSID");
+                _CDX_SUBMIT_TRANSID = StructuralObject.SetValidValue(value, true, "CDX_SUBMIT_TRANSID");
+                ReportPropertyChanged("CDX_SUBMIT_TRANSID");
+                OnCDX_SUBMIT_TRANSIDChanged();
+            }
+        }
+        private global::System.String _CDX_SUBMIT_TRANSID;
+        partial void OnCDX_SUBMIT_TRANSIDChanging(global::System.String value);
+        partial void OnCDX_SUBMIT_TRANSIDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String CDX_SUBMIT_STATUS
+        {
+            get
+            {
+                return _CDX_SUBMIT_STATUS;
+            }
+            set
+            {
+                OnCDX_SUBMIT_STATUSChanging(value);
+                ReportPropertyChanging("CDX_SUBMIT_STATUS");
+                _CDX_SUBMIT_STATUS = StructuralObject.SetValidValue(value, true, "CDX_SUBMIT_STATUS");
+                ReportPropertyChanged("CDX_SUBMIT_STATUS");
+                OnCDX_SUBMIT_STATUSChanged();
+            }
+        }
+        private global::System.String _CDX_SUBMIT_STATUS;
+        partial void OnCDX_SUBMIT_STATUSChanging(global::System.String value);
+        partial void OnCDX_SUBMIT_STATUSChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String ORG_ID
+        {
+            get
+            {
+                return _ORG_ID;
+            }
+            set
+            {
+                OnORG_IDChanging(value);
+                ReportPropertyChanging("ORG_ID");
+                _ORG_ID = StructuralObject.SetValidValue(value, true, "ORG_ID");
+                ReportPropertyChanged("ORG_ID");
+                OnORG_IDChanged();
+            }
+        }
+        private global::System.String _ORG_ID;
+        partial void OnORG_IDChanging(global::System.String value);
+        partial void OnORG_IDChanged();
+
+        #endregion
+
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("OpenEnvironmentModel", "FK__T_ATTAINS__ATTAI__473C8FC7", "T_ATTAINS_REPORT")]
+        public T_ATTAINS_REPORT T_ATTAINS_REPORT
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<T_ATTAINS_REPORT>("OpenEnvironmentModel.FK__T_ATTAINS__ATTAI__473C8FC7", "T_ATTAINS_REPORT").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<T_ATTAINS_REPORT>("OpenEnvironmentModel.FK__T_ATTAINS__ATTAI__473C8FC7", "T_ATTAINS_REPORT").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<T_ATTAINS_REPORT> T_ATTAINS_REPORTReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<T_ATTAINS_REPORT>("OpenEnvironmentModel.FK__T_ATTAINS__ATTAI__473C8FC7", "T_ATTAINS_REPORT");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<T_ATTAINS_REPORT>("OpenEnvironmentModel.FK__T_ATTAINS__ATTAI__473C8FC7", "T_ATTAINS_REPORT", value);
+                }
+            }
+        }
+
+        #endregion
+
+    }
     
     /// <summary>
     /// No Metadata Documentation available.
@@ -12941,6 +16543,28 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
                 }
             }
         }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("OpenEnvironmentModel", "FK__T_ATTAINS__MONLO__0E04126B", "T_ATTAINS_ASSESS_UNITS_MLOC")]
+        public EntityCollection<T_ATTAINS_ASSESS_UNITS_MLOC> T_ATTAINS_ASSESS_UNITS_MLOC
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<T_ATTAINS_ASSESS_UNITS_MLOC>("OpenEnvironmentModel.FK__T_ATTAINS__MONLO__0E04126B", "T_ATTAINS_ASSESS_UNITS_MLOC");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<T_ATTAINS_ASSESS_UNITS_MLOC>("OpenEnvironmentModel.FK__T_ATTAINS__MONLO__0E04126B", "T_ATTAINS_ASSESS_UNITS_MLOC", value);
+                }
+            }
+        }
 
         #endregion
 
@@ -13804,6 +17428,126 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
         private global::System.String _DEFAULT_TIMEZONE;
         partial void OnDEFAULT_TIMEZONEChanging(global::System.String value);
         partial void OnDEFAULT_TIMEZONEChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String MAILING_ADDRESS
+        {
+            get
+            {
+                return _MAILING_ADDRESS;
+            }
+            set
+            {
+                OnMAILING_ADDRESSChanging(value);
+                ReportPropertyChanging("MAILING_ADDRESS");
+                _MAILING_ADDRESS = StructuralObject.SetValidValue(value, true, "MAILING_ADDRESS");
+                ReportPropertyChanged("MAILING_ADDRESS");
+                OnMAILING_ADDRESSChanged();
+            }
+        }
+        private global::System.String _MAILING_ADDRESS;
+        partial void OnMAILING_ADDRESSChanging(global::System.String value);
+        partial void OnMAILING_ADDRESSChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String MAILING_ADDRESS2
+        {
+            get
+            {
+                return _MAILING_ADDRESS2;
+            }
+            set
+            {
+                OnMAILING_ADDRESS2Changing(value);
+                ReportPropertyChanging("MAILING_ADDRESS2");
+                _MAILING_ADDRESS2 = StructuralObject.SetValidValue(value, true, "MAILING_ADDRESS2");
+                ReportPropertyChanged("MAILING_ADDRESS2");
+                OnMAILING_ADDRESS2Changed();
+            }
+        }
+        private global::System.String _MAILING_ADDRESS2;
+        partial void OnMAILING_ADDRESS2Changing(global::System.String value);
+        partial void OnMAILING_ADDRESS2Changed();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String MAILING_ADD_CITY
+        {
+            get
+            {
+                return _MAILING_ADD_CITY;
+            }
+            set
+            {
+                OnMAILING_ADD_CITYChanging(value);
+                ReportPropertyChanging("MAILING_ADD_CITY");
+                _MAILING_ADD_CITY = StructuralObject.SetValidValue(value, true, "MAILING_ADD_CITY");
+                ReportPropertyChanged("MAILING_ADD_CITY");
+                OnMAILING_ADD_CITYChanged();
+            }
+        }
+        private global::System.String _MAILING_ADD_CITY;
+        partial void OnMAILING_ADD_CITYChanging(global::System.String value);
+        partial void OnMAILING_ADD_CITYChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String MAILING_ADD_STATE
+        {
+            get
+            {
+                return _MAILING_ADD_STATE;
+            }
+            set
+            {
+                OnMAILING_ADD_STATEChanging(value);
+                ReportPropertyChanging("MAILING_ADD_STATE");
+                _MAILING_ADD_STATE = StructuralObject.SetValidValue(value, true, "MAILING_ADD_STATE");
+                ReportPropertyChanged("MAILING_ADD_STATE");
+                OnMAILING_ADD_STATEChanged();
+            }
+        }
+        private global::System.String _MAILING_ADD_STATE;
+        partial void OnMAILING_ADD_STATEChanging(global::System.String value);
+        partial void OnMAILING_ADD_STATEChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String MAILING_ADD_ZIP
+        {
+            get
+            {
+                return _MAILING_ADD_ZIP;
+            }
+            set
+            {
+                OnMAILING_ADD_ZIPChanging(value);
+                ReportPropertyChanging("MAILING_ADD_ZIP");
+                _MAILING_ADD_ZIP = StructuralObject.SetValidValue(value, true, "MAILING_ADD_ZIP");
+                ReportPropertyChanged("MAILING_ADD_ZIP");
+                OnMAILING_ADD_ZIPChanged();
+            }
+        }
+        private global::System.String _MAILING_ADD_ZIP;
+        partial void OnMAILING_ADD_ZIPChanging(global::System.String value);
+        partial void OnMAILING_ADD_ZIPChanged();
 
         #endregion
 
@@ -14047,6 +17791,28 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<T_WQX_IMPORT_TRANSLATE>("OpenEnvironmentModel.FK__T_WQX_IMP__ORG_I__44952D46", "T_WQX_IMPORT_TRANSLATE", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("OpenEnvironmentModel", "FK__T_ATTAINS__ORG_I__6ABAD62E", "T_ATTAINS_REPORT")]
+        public EntityCollection<T_ATTAINS_REPORT> T_ATTAINS_REPORT
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<T_ATTAINS_REPORT>("OpenEnvironmentModel.FK__T_ATTAINS__ORG_I__6ABAD62E", "T_ATTAINS_REPORT");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<T_ATTAINS_REPORT>("OpenEnvironmentModel.FK__T_ATTAINS__ORG_I__6ABAD62E", "T_ATTAINS_REPORT", value);
                 }
             }
         }
@@ -20859,6 +24625,44 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
     #endregion
 
     #region ComplexTypes
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmComplexTypeAttribute(NamespaceName="OpenEnvironmentModel", Name="GenATTAINSXML1_Result")]
+    [DataContractAttribute(IsReference=true)]
+    [Serializable()]
+    public partial class GenATTAINSXML1_Result : ComplexObject
+    {
+        #region Simple Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Column1
+        {
+            get
+            {
+                return _Column1;
+            }
+            set
+            {
+                OnColumn1Changing(value);
+                ReportPropertyChanging("Column1");
+                _Column1 = StructuralObject.SetValidValue(value, true, "Column1");
+                ReportPropertyChanged("Column1");
+                OnColumn1Changed();
+            }
+        }
+        private global::System.String _Column1;
+        partial void OnColumn1Changing(global::System.String value);
+        partial void OnColumn1Changed();
+
+        #endregion
+
+    }
     
     /// <summary>
     /// No Metadata Documentation available.
