@@ -62,7 +62,7 @@ namespace OpenEnvironment
             int SuccID = db_WQX.DeleteT_WQX_IMPORT_TEMP_SAMPLE(User.Identity.Name);
 
             //then redirect
-            Response.Redirect("~/App_Pages/Secure/WQXImportNew.aspx", false);
+            Response.Redirect("~/App_Pages/Secure/WQXImport.aspx", false);
             Context.ApplicationInstance.CompleteRequest();
         }
 

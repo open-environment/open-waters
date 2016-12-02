@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/MasterWQX.master" AutoEventWireup="true" CodeBehind="WQXImportNew.aspx.cs" Inherits="OpenEnvironment.App_Pages.Secure.WQXImportNew" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/MasterWQX.master" AutoEventWireup="true" CodeBehind="WQXImport.aspx.cs" Inherits="OpenEnvironment.App_Pages.Secure.WQXImport" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="BodyContent" runat="server">
     <script src="../../Scripts/jquery-1.10.2.min.js" type="text/javascript"></script>
     <script type="text/javascript">

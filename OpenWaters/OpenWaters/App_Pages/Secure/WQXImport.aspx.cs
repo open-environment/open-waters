@@ -7,7 +7,7 @@ using OpenEnvironment.App_Logic.BusinessLogicLayer;
 
 namespace OpenEnvironment.App_Pages.Secure
 {
-    public partial class WQXImportNew : System.Web.UI.Page
+    public partial class WQXImport : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -15,7 +15,7 @@ namespace OpenEnvironment.App_Pages.Secure
             if (!IsPostBack)
             {
                 ContentPlaceHolder cp = this.Master.Master.FindControl("MainContent") as ContentPlaceHolder;
-                HyperLink hl = (HyperLink)cp.FindControl("lnkImportNew");
+                HyperLink hl = (HyperLink)cp.FindControl("lnkImport");
                 if (hl != null) hl.CssClass = "leftMnuBody sel";
 
                 //redirect to sample page if any are in progress

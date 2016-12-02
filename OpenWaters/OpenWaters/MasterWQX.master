@@ -12,7 +12,7 @@
                         <asp:HyperLink runat="server" ID="lnkMonLocList" NavigateUrl="~/App_Pages/Secure/WQXMonLoc.aspx">&bull; Monitoring Locs</asp:HyperLink>
                         <asp:HyperLink runat="server" ID="lnkProjectList" NavigateUrl="~/App_Pages/Secure/WQXProject.aspx">&bull; Projects</asp:HyperLink>
                         <asp:HyperLink runat="server" ID="lnkActivityList" NavigateUrl="~/App_Pages/Secure/WQXActivity.aspx">&bull; Activity/Result</asp:HyperLink>
-                        <asp:HyperLink runat="server" ID="lnkImport" NavigateUrl="~/App_Pages/Secure/WQXImportNew.aspx">&bull; Import Data</asp:HyperLink>
+                        <asp:HyperLink runat="server" ID="lnkImport" NavigateUrl="~/App_Pages/Secure/WQXImport.aspx">&bull; Import Data</asp:HyperLink>
                         <asp:HyperLink runat="server" ID="lnkWQXHistory" NavigateUrl="~/App_Pages/Secure/WQX_Mgmt.aspx">&bull; WQX History</asp:HyperLink>
                     </div>
                 </div>

@@ -128,7 +128,7 @@
     <Content Include="App_Pages\Secure\Assess_Assess.aspx" />
     <Content Include="App_Pages\Secure\Assess_Priority.aspx" />
     <Content Include="App_Pages\Secure\Assess_Unit.aspx" />
-    <Content Include="App_Pages\Secure\WQXImportNew.aspx" />
+    <Content Include="App_Pages\Secure\WQXImport.aspx" />
     <Content Include="App_Pages\Secure\WQXImportDefaults.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="PubMap.aspx" />
@@ -295,12 +295,12 @@
     <Compile Include="App_Pages\Secure\Assess_Unit.aspx.designer.cs">
       <DependentUpon>Assess_Unit.aspx</DependentUpon>
     </Compile>
-    <Compile Include="App_Pages\Secure\WQXImportNew.aspx.cs">
-      <DependentUpon>WQXImportNew.aspx</DependentUpon>
+    <Compile Include="App_Pages\Secure\WQXImport.aspx.cs">
+      <DependentUpon>WQXImport.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="App_Pages\Secure\WQXImportNew.aspx.designer.cs">
-      <DependentUpon>WQXImportNew.aspx</DependentUpon>
+    <Compile Include="App_Pages\Secure\WQXImport.aspx.designer.cs">
+      <DependentUpon>WQXImport.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Pages\Secure\WQXImportDefaults.aspx.cs">
       <DependentUpon>WQXImportDefaults.aspx</DependentUpon>

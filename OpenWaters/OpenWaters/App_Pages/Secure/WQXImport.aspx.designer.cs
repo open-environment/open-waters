@@ -10,7 +10,7 @@
 namespace OpenEnvironment.App_Pages.Secure {
     
     
-    public partial class WQXImportNew {
+    public partial class WQXImport {
         
         /// <summary>
         /// dsProject control.

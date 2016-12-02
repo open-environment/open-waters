@@ -82,7 +82,7 @@ namespace OpenEnvironment
             int SuccID = db_WQX.DeleteT_WQX_IMPORT_TEMP_MONLOC(User.Identity.Name);
 
             //then redirect
-            Response.Redirect("~/App_Pages/Secure/WQXImportNew.aspx");
+            Response.Redirect("~/App_Pages/Secure/WQXImport.aspx");
         }
 
         protected Boolean VerifyCheck(object r)
