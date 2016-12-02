@@ -107,7 +107,7 @@
     <Content Include="App_Data\DatabasePatch_v1.8.sql" />
     <Content Include="App_Data\DatabasePatch_v1.7.sql" />
     <Content Include="App_Data\DatabasePatch_v1.9.sql" />
-    <Content Include="App_Docs\FieldConfig.xml">
+    <Content Include="App_Docs\ImportColumnsConfig.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="App_Docs\validation.xsl" />
@@ -129,7 +129,7 @@
     <Content Include="App_Pages\Secure\Assess_Priority.aspx" />
     <Content Include="App_Pages\Secure\Assess_Unit.aspx" />
     <Content Include="App_Pages\Secure\WQXImportNew.aspx" />
-    <Content Include="App_Pages\Secure\WQXImportTranslate.aspx" />
+    <Content Include="App_Pages\Secure\WQXImportDefaults.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="PubMap.aspx" />
     <Content Include="App_Pages\Secure\Charting.aspx" />
@@ -174,7 +174,7 @@
     <Content Include="App_Images\progress.gif" />
     <Content Include="App_Pages\Secure\RefData.aspx" />
     <Content Include="App_Pages\Secure\WQXActivityEdit.aspx" />
-    <Content Include="App_Pages\Secure\WQXImport.aspx" />
+    <Content Include="App_Pages\Secure\WQXImportOld.aspx" />
     <Content Include="Scripts\chosen-sprite.png" />
     <Content Include="Scripts\chosen.css" />
     <Content Include="Scripts\chosen.jquery.js" />
@@ -302,12 +302,12 @@
     <Compile Include="App_Pages\Secure\WQXImportNew.aspx.designer.cs">
       <DependentUpon>WQXImportNew.aspx</DependentUpon>
     </Compile>
-    <Compile Include="App_Pages\Secure\WQXImportTranslate.aspx.cs">
-      <DependentUpon>WQXImportTranslate.aspx</DependentUpon>
+    <Compile Include="App_Pages\Secure\WQXImportDefaults.aspx.cs">
+      <DependentUpon>WQXImportDefaults.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="App_Pages\Secure\WQXImportTranslate.aspx.designer.cs">
-      <DependentUpon>WQXImportTranslate.aspx</DependentUpon>
+    <Compile Include="App_Pages\Secure\WQXImportDefaults.aspx.designer.cs">
+      <DependentUpon>WQXImportDefaults.aspx</DependentUpon>
     </Compile>
     <Compile Include="PubMap.aspx.cs">
       <DependentUpon>PubMap.aspx</DependentUpon>
@@ -489,11 +489,11 @@
     <Compile Include="App_Pages\Secure\WQXActivityEdit.aspx.designer.cs">
       <DependentUpon>WQXActivityEdit.aspx</DependentUpon>
     </Compile>
-    <Compile Include="App_Pages\Secure\WQXImport.aspx.cs">
-      <DependentUpon>WQXImport.aspx</DependentUpon>
+    <Compile Include="App_Pages\Secure\WQXImportOld.aspx.cs">
+      <DependentUpon>WQXImportOld.aspx</DependentUpon>
     </Compile>
-    <Compile Include="App_Pages\Secure\WQXImport.aspx.designer.cs">
-      <DependentUpon>WQXImport.aspx</DependentUpon>
+    <Compile Include="App_Pages\Secure\WQXImportOld.aspx.designer.cs">
+      <DependentUpon>WQXImportOld.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Pages\Secure\WQX_Mgmt.aspx.cs">
       <DependentUpon>WQX_Mgmt.aspx</DependentUpon>
@@ -664,6 +664,8 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <Content Include="SiteAuth.Master" />
+    <Content Include="Tests\MonLoc_Example.xlsx" />
+    <Content Include="Tests\Samp_Example.xlsx" />
     <None Include="Web References\gov.epa.cdx\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>

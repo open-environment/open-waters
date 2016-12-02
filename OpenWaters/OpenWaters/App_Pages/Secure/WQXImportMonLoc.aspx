@@ -1,9 +1,5 @@
 ﻿<%@ Page Title="Open Waters - Import Mon Loc" Language="C#" MasterPageFile="~/MasterWQX.master" AutoEventWireup="true" CodeBehind="WQXImportMonLoc.aspx.cs" Inherits="OpenEnvironment.WQXImportMonLoc" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="BodyContent" runat="server">
-    <style>
-        #container { float:left;
-        }
-    </style>
     <h1>
         Confirm Monitoring Location Data to Import
     </h1>
@@ -19,8 +15,8 @@
             </div>
         </div>
     </asp:Panel>
-    <div style="height: 500px; overflow-x: auto;">
-    <asp:GridView ID="grdImport" runat="server" GridLines="None" CssClass="grd" PagerStyle-CssClass="pgr"  AutoGenerateColumns="False" OnRowDataBound="grdImport_RowDataBound" >
+    <div style="height: 500px; width:100%; overflow: auto;">
+    <asp:GridView ID="grdImport" runat="server" GridLines="None" CssClass="grd" PagerStyle-CssClass="pgr"  AutoGenerateColumns="False" OnRowDataBound="grdImport_RowDataBound" Style="word-wrap: break-word; " >
         <Columns>
             <asp:TemplateField HeaderText="Include in Import">
                 <ItemStyle HorizontalAlign="Center" Width="60px" />
@@ -38,6 +34,8 @@
             <asp:BoundField DataField="HUC_TWELVE" HeaderText="HUC 12" SortExpression="HUC_TWELVE" />
             <asp:BoundField DataField="LATITUDE_MSR" HeaderText="Latitude" SortExpression="LATITUDE_MSR" />
             <asp:BoundField DataField="LONGITUDE_MSR" HeaderText="Longitude" SortExpression="LONGITUDE_MSR" />
+            <asp:BoundField DataField="HORIZ_COLL_METHOD" HeaderText="Collection Method" SortExpression="HORIZ_COLL_METHOD" />
+            <asp:BoundField DataField="HORIZ_REF_DATUM" HeaderText="Reference Datum" SortExpression="HORIZ_REF_DATUM" />
             <asp:BoundField DataField="COUNTRY_CODE" HeaderText="Country" SortExpression="COUNTRY_CODE" />
             <asp:BoundField DataField="STATE_CODE" HeaderText="State Code" SortExpression="STATE_CODE" />
             <asp:BoundField DataField="COUNTY_CODE" HeaderText="County Code" SortExpression="COUNTY_CODE" />

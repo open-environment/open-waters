@@ -46,6 +46,14 @@ ENHANCEMENTS:
   3. Fix error when importing Lab Analysis Date or Lab Sample Prep date and leaving blank
   4. Fix error on activity delete.
   5. Improve speed of file download at WQX History page.
+
+
+1.9.8 Changes
+-------------
+  1. Monitoring Location data import: add ability to cancel import
+  2. Added new data import module:
+  3. Increase length of import error message
+  4. Expanded Import Translation feature to all Activity/Result columns 
 */
 
 
@@ -310,6 +318,8 @@ insert into T_ATTAINS_REF_WATER_TYPE (WATER_TYPE_CODE, CREATE_DT, CREATE_USERID)
 
 GO
 
+
+
 CREATE PROCEDURE [dbo].[GenATTAINSXML]
   @ReportIDX int
 AS
@@ -427,7 +437,32 @@ BEGIN
 	and R.ATTAINS_REPORT_IDX = @ReportIDX
 	for xml path('Organization'), root('ATTAINS'));
 
-	select @strXML;
+	select '<?xml version="1.0" encoding="UTF-8"?>
+<Document
+        id="D1' + convert(varchar, getdate(), 112) + '"
+        xmlns="http://www.exchangenetwork.net/schema/header/2" 
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+		xsi:schemaLocation="http://www.exchangenetwork.net/schema/header/2 http://www.exchangenetwork.net/schema/header/2/header_v2.0.xsd"> 
+	<Header>
+		<AuthorName>Doug Timms</AuthorName>
+		<OrganizationName>MCN</OrganizationName>
+		<DocumentTitle>ATTAINS</DocumentTitle>
+		<CreationDateTime>' + LEFT(CONVERT(varchar, getdate(), 120), 10) + 'T' + RIGHT(convert(varchar, getdate(), 120), 8) + '</CreationDateTime>
+		<DataFlowName>ATTAINS</DataFlowName>
+		<SenderContact>Doug Timms</SenderContact>
+		<SenderAddress></SenderAddress>
+	</Header>
+	<Payload operation="Update-Insert">' + @strXML + '	</Payload>
+</Document>';
 
 END
 
+
+
+--1.9.8
+alter table T_WQX_IMPORT_TEMP_SAMPLE ALTER column IMPORT_STATUS_DESC varchar(200);
+
+update T_WQX_IMPORT_TRANSLATE set COL_NAME = 'MONLOC_ID' where COL_NAME='Station ID';
+update T_WQX_IMPORT_TRANSLATE set COL_NAME = 'ACT_TYPE' where COL_NAME='Activity Type Code';
+update T_WQX_IMPORT_TRANSLATE set COL_NAME = 'ACT_MEDIA' where COL_NAME='Activity Media';
+update T_WQX_IMPORT_TRANSLATE set COL_NAME = 'ACT_SUBMEDIA' where COL_NAME='Activity Submedia';

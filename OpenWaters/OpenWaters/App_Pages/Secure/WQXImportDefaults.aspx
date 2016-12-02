@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Open Waters-Import Translations" Language="C#" MasterPageFile="~/MasterWQX.master" AutoEventWireup="true" CodeBehind="WQXImportTranslate.aspx.cs" Inherits="OpenEnvironment.App_Pages.Secure.WQXImportTranslate" %>
+﻿<%@ Page Title="Open Waters-Import Translations" Language="C#" MasterPageFile="~/MasterWQX.master" AutoEventWireup="true" CodeBehind="WQXImportDefaults.aspx.cs" Inherits="OpenEnvironment.App_Pages.Secure.WQXImportTranslate" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="BodyContent" runat="server">
     <asp:ScriptManager ID="ScriptManager1" runat="server" EnablePartialRendering="true" />
     <script type="text/javascript">
@@ -55,11 +55,11 @@
             <div class="row" >
                 <span class="fldLbl">Field:</span>
                 <asp:DropDownList ID="ddlField" runat="server" >
-                    <asp:ListItem Value="" Text=""></asp:ListItem>
+<%--                    <asp:ListItem Value="" Text=""></asp:ListItem>
                     <asp:ListItem Value="Station ID" Text="Station ID"></asp:ListItem>
                     <asp:ListItem Value="Activity Type Code" Text="Activity Type Code"></asp:ListItem>
                     <asp:ListItem Value="Activity Media" Text="Activity Media"></asp:ListItem>
-                    <asp:ListItem Value="Activity Submedia" Text="Activity Submedia"></asp:ListItem>
+                    <asp:ListItem Value="Activity Submedia" Text="Activity Submedia"></asp:ListItem>--%>
                 </asp:DropDownList>
             </div>
             <div class="row" >

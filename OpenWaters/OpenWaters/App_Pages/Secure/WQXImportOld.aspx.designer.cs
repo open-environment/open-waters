@@ -7,37 +7,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace OpenEnvironment.App_Pages.Secure {
+namespace OpenEnvironment {
     
     
-    public partial class WQXImportNew {
-        
-        /// <summary>
-        /// dsProject control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ObjectDataSource dsProject;
-        
-        /// <summary>
-        /// dsTemplate control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ObjectDataSource dsTemplate;
-        
-        /// <summary>
-        /// btnClassic control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnClassic;
+    public partial class WQXImportOld {
         
         /// <summary>
         /// lblMsg control.
@@ -47,6 +20,60 @@ namespace OpenEnvironment.App_Pages.Secure {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblMsg;
+        
+        /// <summary>
+        /// txtOrgTest control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtOrgTest;
+        
+        /// <summary>
+        /// pnlFilter control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnlFilter;
+        
+        /// <summary>
+        /// rbImportType control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RadioButtonList rbImportType;
+        
+        /// <summary>
+        /// pnlWQX control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnlWQX;
+        
+        /// <summary>
+        /// ddlWQXImportType control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlWQXImportType;
+        
+        /// <summary>
+        /// btnWQXContinue control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnWQXContinue;
         
         /// <summary>
         /// pnlLab control.
@@ -76,49 +103,13 @@ namespace OpenEnvironment.App_Pages.Secure {
         protected global::System.Web.UI.WebControls.HyperLink hlTemplate;
         
         /// <summary>
-        /// pnlStep2 control.
+        /// pnlImportLogic control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel pnlStep2;
-        
-        /// <summary>
-        /// btnDefaults control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnDefaults;
-        
-        /// <summary>
-        /// pnlSampOptions control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel pnlSampOptions;
-        
-        /// <summary>
-        /// rbTemplateInd control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButtonList rbTemplateInd;
-        
-        /// <summary>
-        /// pnlSampTempOptions control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel pnlSampTempOptions;
+        protected global::System.Web.UI.WebControls.Panel pnlImportLogic;
         
         /// <summary>
         /// ddlTemplate control.
@@ -130,6 +121,15 @@ namespace OpenEnvironment.App_Pages.Secure {
         protected global::System.Web.UI.WebControls.DropDownList ddlTemplate;
         
         /// <summary>
+        /// dsTemplate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ObjectDataSource dsTemplate;
+        
+        /// <summary>
         /// btnNewTemplate control.
         /// </summary>
         /// <remarks>
@@ -137,6 +137,15 @@ namespace OpenEnvironment.App_Pages.Secure {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnNewTemplate;
+        
+        /// <summary>
+        /// pnlProject control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnlProject;
         
         /// <summary>
         /// ddlProject control.
@@ -148,31 +157,31 @@ namespace OpenEnvironment.App_Pages.Secure {
         protected global::System.Web.UI.WebControls.DropDownList ddlProject;
         
         /// <summary>
-        /// ObjectDataSource1 control.
+        /// dsProject control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ObjectDataSource ObjectDataSource1;
+        protected global::System.Web.UI.WebControls.ObjectDataSource dsProject;
         
         /// <summary>
-        /// pnlPasteData control.
+        /// btnDefaults control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel pnlPasteData;
+        protected global::System.Web.UI.WebControls.Button btnDefaults;
         
         /// <summary>
-        /// lblPasteInst control.
+        /// btnTranslate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblPasteInst;
+        protected global::System.Web.UI.WebControls.Button btnTranslate;
         
         /// <summary>
         /// txtPaste control.
@@ -191,5 +200,14 @@ namespace OpenEnvironment.App_Pages.Secure {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnParse;
+        
+        /// <summary>
+        /// grdImport control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView grdImport;
     }
 }

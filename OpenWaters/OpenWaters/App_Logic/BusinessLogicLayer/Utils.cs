@@ -13,6 +13,16 @@ using System.Linq;
 
 namespace OpenEnvironment.App_Logic.BusinessLogicLayer
 {
+    public class ConfigInfoType
+    {
+        public string _name { get; set; }
+        public string _req { get; set; }
+        public int? _length { get; set; }
+        public string _datatype { get; set; }
+        public string _fkey { get; set; }
+        public string _addfield { get; set; }
+    }
+
     internal static class Utils
     {
         internal static bool ValidateParameter(ref string param, bool checkForNull, bool checkIfEmpty, bool checkForCommas, int maxSize)
@@ -61,7 +71,6 @@ namespace OpenEnvironment.App_Logic.BusinessLogicLayer
 
             return true;
         }
-
 
         /// <summary>
         ///  Sends out an email from the application. Returns true if successful.
@@ -386,6 +395,20 @@ namespace OpenEnvironment.App_Logic.BusinessLogicLayer
             }
         }
 
+        /// <summary>
+        /// Returns the lookup value from a dictionary if found, otherwise returns default value based on datatype
+        /// </summary>
+        /// <typeparam name="K"></typeparam>
+        /// <typeparam name="V"></typeparam>
+        /// <param name="dict"></param>
+        /// <param name="key"></param>
+        /// <returns></returns>
+        public static V GetValueOrDefault<K, V>(this Dictionary<K, V> dict, K key)
+        {
+            V ret;
+            dict.TryGetValue(key, out ret);
+            return ret;
+        }
 
         //***************** EXCEL EXPORT *****************************************
         /// <summary>
@@ -541,31 +564,70 @@ namespace OpenEnvironment.App_Logic.BusinessLogicLayer
         }
 
 
-        //******************* XML FILE HANDLING**********************************
-        public static Dictionary<string, Tuple<string, string>> GetFieldConfig_Fields()
+        //******************* XML IMPORT CONFIG FILE HANDLING**********************************
+        public static Dictionary<string, int> GetColumnMapping(string ImportType, string[] headerCols)
         {
-            // Loading from a file, you can also load from a stream
-            var xml = XDocument.Load(HttpContext.Current.Server.MapPath("~/App_Docs/FieldConfig.xml"));
+            // Loading configuration file listing all data import columns
+            var xml = XDocument.Load(HttpContext.Current.Server.MapPath("~/App_Docs/ImportColumnsConfig.xml"));
 
-            // Query the data
-            var fields = from c in xml.Root.Descendants("Field")
-                        select new
-                        {
-                            Name = c.Attribute("FieldName").Value,
-                            Aliases = c.Descendants("Alias")
-                        };
+            // Query list of all columns for the type
+            var allFields = (from c in xml.Root.Descendants("Alias")
+                          .Where(i => i.Parent.Attribute("Level").Value == ImportType)
+                          select new
+                          {
+                              Name = c.Parent.Attribute("FieldName").Value,
+                              Alias = c.Value.ToUpper()
+                          }).ToList();
 
-            Dictionary<string, Tuple<string, string>> headersPool = new Dictionary<string, Tuple<string, string>>();
-            foreach (var field in fields)
-            {
-                string ddd = field.Name;
-                foreach (var Alias in field.Aliases)
-                    headersPool.Add(Alias.Value.ToString(), new Tuple<string, string>("MON_LOC", "A"));
-            }
+            //list of fields supplied by user
+            var headerColList = headerCols.Select((value, index) => new { value, index }).ToList();
 
-            return headersPool;
+            //return matches with index
+            var colMapping = (from f in allFields
+                              join h in headerColList
+                              on f.Alias.Trim() equals h.value.ToUpper().Trim()
+                              select new
+                              {
+                                  _Name = f.Name.Trim(),
+                                  _Col = h.index
+                              }).ToDictionary(x => x._Name, x => x._Col.ConvertOrDefault<int>());
+
+            return colMapping;
         }
 
 
+        //******************* DATA IMPORT HELPERS ********************************************
+        public static List<ConfigInfoType> GetAllColumnInfo(string ImportType)
+        {
+            // Loading configuration file listing all data import columns
+            var xml = XDocument.Load(HttpContext.Current.Server.MapPath("~/App_Docs/ImportColumnsConfig.xml"));
+
+            // Query list of all columns for the type
+            return (from c in xml.Root.Descendants("Alias")
+                    .Where(i => i.Parent.Attribute("Level").Value == ImportType)
+                    select new ConfigInfoType
+                    {
+                        _name = c.Parent.Attribute("FieldName").Value,
+                        _req = c.Parent.Attribute("ReqInd").Value,
+                        _length = c.Parent.Attribute("Length").Value.ConvertOrDefault<int?>(),
+                        _datatype = c.Parent.Attribute("DataType").Value,
+                        _fkey = c.Parent.Attribute("FKey").Value,
+                        _addfield = c.Parent.Attribute("AddField") != null ? c.Parent.Attribute("AddField").Value : ""
+                    }).ToList();
+        }
+
+
+        public static List<string> GetAllColumnBasic(string ImportType)
+        {
+            // Loading configuration file listing all data import columns
+            var xml = XDocument.Load(HttpContext.Current.Server.MapPath("~/App_Docs/ImportColumnsConfig.xml"));
+
+            return (from c in xml.Root.Descendants("Field")
+                    .Where(i => i.Attribute("Level").Value == ImportType)
+                    select c.Attribute("FieldName").Value
+                    ).ToList();
+        }
+
     }
+
 }

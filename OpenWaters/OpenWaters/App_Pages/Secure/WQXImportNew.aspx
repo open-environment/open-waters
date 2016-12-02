@@ -19,6 +19,9 @@
             <asp:SessionParameter DefaultValue="" Name="OrgID" SessionField="OrgID" Type="String" />
         </SelectParameters>
     </asp:ObjectDataSource>
+    <div style="float:right"> 
+        <asp:Button ID="btnClassic" runat="server" Text="Return to Classic Import" CssClass="btn" style="" OnClick="btnClassic_Click" />
+    </div>
 
     <h1>
         Bulk Import Data
@@ -37,34 +40,52 @@
         <div class="fltTitle">Step 1: Select Data to Import</div>
         <div class="fltMain">
             <div class="row"> 
-                <span class="fldLbl">Data to Import:</span>
+                <span class="fldLbl" style="width:180px">Data to Import:</span>
                 <asp:DropDownList CssClass="fldTxt" ID="ddlImportType" runat="server" OnSelectedIndexChanged="ddlImportType_SelectedIndexChanged" AutoPostBack="True" >
                     <asp:ListItem Text="" Value=""></asp:ListItem>
-                    <asp:ListItem Text="Monitoring Locations" Value="MLOC"></asp:ListItem>
-                    <asp:ListItem Text="Activities" Value="SAMP"></asp:ListItem>
+                    <asp:ListItem Text="Monitoring Locations" Value="M"></asp:ListItem>
+                    <asp:ListItem Text="Activities" Value="S"></asp:ListItem>
+                    <asp:ListItem Text="Bio Metrics/Indices" Value="I"></asp:ListItem>
                 </asp:DropDownList>
                 &nbsp;
-                <asp:HyperLink ID="hlTemplate" runat="server" Target="_blank" Visible="false">Download a Blank Import Template</asp:HyperLink>
+                <asp:HyperLink ID="hlTemplate" runat="server" Target="_blank" Visible="false">Download Default Import Template</asp:HyperLink>
             </div>                
         </div>
     </asp:Panel>
-    <asp:Panel ID="pnlSampOptions" runat="server" Visible="false" > 
+    <asp:Panel ID="pnlStep2" runat="server" Visible="false" > 
         <div class="fltTitle">Step 2: Define Data Import Rules</div>
         <div class="fltMain">
             <div class="row">
-                <asp:Button ID="btnDefaults" runat="server" CssClass="btn" Text="Global Import Rules" OnClick="btnDefaults_Click"  />
+                <span class="fldLbl" style="width:180px">Set Global Import Rules:</span>
+                <asp:Button ID="btnDefaults" runat="server" CssClass="btn" Text="Global Import Rules (optional)" OnClick="btnDefaults_Click"  />
             </div>
-            <div class="row">
-                <span class="fldLbl">Select Import Logic:</span>
-                <asp:DropDownList CssClass="fldTxt" ID="ddlTemplate" runat="server" DataSourceID="dsTemplate" DataTextField="TEMPLATE_NAME"  DataValueField="TEMPLATE_ID">
-                </asp:DropDownList>
-                <asp:Button ID="btnNewTemplate" runat="server" CssClass="btn" Text="Define New / Edit Import Logic" OnClick="btnNewTemplate_Click" />
-            </div>
-            <div class="row">
-                <span class="fldLbl">Import to Project:</span>
-                <asp:DropDownList CssClass="fldTxt" ID="ddlProject" runat="server"  DataSourceID="dsProject" DataTextField="PROJECT_ID"  DataValueField="PROJECT_IDX">
-                </asp:DropDownList>
-            </div>
+            <asp:Panel ID="pnlSampOptions" runat="server" Visible="false" > 
+                <div class="row">
+                    <span class="fldLbl" style="width:180px">Use Custom Import Template:</span>
+                    <asp:RadioButtonList ID="rbTemplateInd" runat="server" RepeatDirection="Horizontal" OnSelectedIndexChanged="rbTemplateInd_SelectedIndexChanged" AutoPostBack="true">
+                        <asp:ListItem Value="N" Text="No"></asp:ListItem>
+                        <asp:ListItem Value="Y" Text="Yes"></asp:ListItem>
+                    </asp:RadioButtonList>
+                    <asp:Panel ID="pnlSampTempOptions" runat="server" Visible="false" > 
+                        <span class="fldLbl" style="width:180px"></span>
+                        <asp:DropDownList CssClass="fldTxt" ID="ddlTemplate" runat="server">
+                        </asp:DropDownList>
+                        <asp:Button ID="btnNewTemplate" runat="server" CssClass="btn" Text="Edit Custom Import Templates" OnClick="btnNewTemplate_Click" />
+                    </asp:Panel>
+                </div>
+                <div class="row">
+                    <span class="fldLbl" style="width:180px">Import to Project:</span>
+                    <asp:DropDownList CssClass="fldTxt" ID="ddlProject" runat="server" DataSourceID="dsProject" DataTextField="PROJECT_ID"  DataValueField="PROJECT_IDX">
+                    </asp:DropDownList>
+                    <asp:ObjectDataSource ID="ObjectDataSource1" runat="server" SelectMethod="GetWQX_PROJECT"  TypeName="OpenEnvironment.App_Logic.DataAccessLayer.db_WQX">
+                        <SelectParameters>
+                            <asp:Parameter DefaultValue="true" Name="ActInd" Type="Boolean" />
+                            <asp:SessionParameter DefaultValue="" Name="OrgID" SessionField="OrgID" Type="String" />
+                            <asp:Parameter DefaultValue="false" Name="WQXPending" Type="Boolean" />
+                        </SelectParameters>
+                    </asp:ObjectDataSource>
+                </div>
+            </asp:Panel>
         </div>
     </asp:Panel>
     <div class="clear"></div>
@@ -73,6 +94,7 @@
         <div class="fltMain">
             <div class="row">
                 Copy and paste your data from a spreadsheet into the text area below:<br />
+                <asp:Label runat="server" ID="lblPasteInst" CssClass="bold" ForeColor="#006600"></asp:Label>
                 <asp:TextBox ID="txtPaste" TextMode="MultiLine" Width="98%" Height="98%" Rows="10" runat="server"></asp:TextBox>
             </div>
             <div class="row">

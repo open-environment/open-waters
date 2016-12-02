@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using OpenEnvironment.App_Logic.BusinessLogicLayer;
 
 namespace OpenEnvironment.App_Pages.Secure
 {
@@ -22,6 +23,10 @@ namespace OpenEnvironment.App_Pages.Secure
                 HyperLink hl = (HyperLink)cp.FindControl("lnkMonLocList");
                 if (hl != null) hl.CssClass = "leftMnuBody sel";
 
+                List<string> ds = Utils.GetAllColumnBasic("S");
+                foreach (string ds1 in ds)
+                    ddlField.Items.Add(new ListItem(ds1, ds1));
+
                 PopulateGrid();
             }
         }
@@ -34,7 +39,8 @@ namespace OpenEnvironment.App_Pages.Secure
 
         protected void btnExit_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/App_Pages/Secure/WQXImport.aspx");
+            Response.Redirect("~/App_Pages/Secure/WQXImport.aspx", false);
+            Context.ApplicationInstance.CompleteRequest();
         }
 
         protected void btnAddTranslate_Click(object sender, EventArgs e)

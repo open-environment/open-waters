@@ -14,9 +14,12 @@
 *.user
 *.userosscache
 *.sln.docstates
+*.vcxproj.filters
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
+*.VC.opendb
+*.VC.db 
 
 # Build results
 [Dd]ebug/
@@ -30,4 +33,29 @@ bld/
 [Oo]bj/
 [Ll]og/
 
+# Visual Studio profiler
+*.psess
+*.vsp
+*.vspx
+*.sap
 
+# Click-Once directory
+publish/
+
+# Visual Studio cache files
+# files ending in .cache can be ignored
+*.[Cc]ache
+# but keep track of directories ending in .cache
+!*.[Cc]ache/
+
+# Others
+ClientBin/
+~$*
+*~
+*.dbmdl
+*.dbproj.schemaview
+*.jfm
+*.pfx
+*.publishsettings
+node_modules/
+orleans.codegen.cs

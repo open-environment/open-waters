@@ -1,0 +1,153 @@
+﻿<FieldConfig>
+  <Fields>
+    <!-- MONITORING LOCATION -->
+    <Field Level="M" FieldName="MONLOC_ID" ReqInd="Y" Length="35" UniqueInd="Y" FKey="" DataType=""><Alias>Station ID</Alias><Alias>MonLoc ID</Alias></Field>
+    <Field Level="M" FieldName="MONLOC_NAME" ReqInd="Y" Length="255" UniqueInd="Y" FKey="" DataType=""><Alias>Station Name</Alias></Field>
+    <Field Level="M" FieldName="MONLOC_TYPE" ReqInd="Y" Length="45" UniqueInd="N" FKey="MonitoringLocationType" DataType=""><Alias>Primary Type</Alias></Field>
+    <Field Level="M" FieldName="MONLOC_DESC" ReqInd="N" Length="1999" UniqueInd="N" FKey="" DataType=""><Alias>Description Text</Alias></Field>
+    <Field Level="M" FieldName="HUC_EIGHT" ReqInd="N" Length="8" UniqueInd="N" FKey="" DataType=""><Alias>HUC Eight Digit Code</Alias><Alias>Generated Hydrologic Unit Code</Alias></Field>
+    <Field Level="M" FieldName="HUC_TWELVE" ReqInd="N" Length="12" UniqueInd="N" FKey="" DataType=""><Alias>HUC Twelve Digit Code</Alias><Alias>Generated HUC Twelve Digit Code</Alias></Field>
+    <Field Level="M" FieldName="TRIBAL_LAND_IND" ReqInd="N" Length="1" UniqueInd="N" FKey="" DataType=""><Alias>Tribal Land Indicator</Alias></Field>
+    <Field Level="M" FieldName="TRIBAL_LAND_NAME" ReqInd="N" Length="200" UniqueInd="N" FKey="" DataType=""><Alias>Tribal Land Name</Alias></Field>
+    <Field Level="M" FieldName="LATITUDE_MSR" ReqInd="Y" Length="30" UniqueInd="N" FKey="" DataType=""><Alias>Latitude</Alias></Field>
+    <Field Level="M" FieldName="LONGITUDE_MSR" ReqInd="Y" Length="30" UniqueInd="N" FKey="" DataType=""><Alias>Longitude</Alias></Field>
+    <Field Level="M" FieldName="SOURCE_MAP_SCALE" ReqInd="N" Length="" UniqueInd="N" FKey="" DataType="int"><Alias>Map Scale</Alias></Field>
+    <Field Level="M" FieldName="HORIZ_COLL_METHOD" ReqInd="Y" Length="150" UniqueInd="N" FKey="HorizontalCollectionMethod" DataType=""><Alias>Geopositioning Method</Alias></Field>
+    <Field Level="M" FieldName="HORIZ_REF_DATUM" ReqInd="Y" Length="6" UniqueInd="N" FKey="HorizontalCoordinateReferenceSystemDatum" DataType=""><Alias>Horizontal Datum</Alias></Field>
+    <Field Level="M" FieldName="VERT_MEASURE" ReqInd="N" Length="12" UniqueInd="N" FKey="" DataType=""><Alias>Elevation</Alias></Field>
+    <Field Level="M" FieldName="VERT_MEASURE_UNIT" ReqInd="N" Length="12" UniqueInd="N" FKey="MeasureUnit" DataType=""><Alias>Elevation Unit</Alias></Field>
+    <Field Level="M" FieldName="VERT_COLL_METHOD" ReqInd="N" Length="50" UniqueInd="N" FKey="VerticalCollectionMethod" DataType=""><Alias>Elevation Method</Alias></Field>
+    <Field Level="M" FieldName="VERT_REF_DATUM" ReqInd="N" Length="10" UniqueInd="N" FKey="VerticalCoordinateReferenceSystemDatum" DataType=""><Alias>Elevation Datum</Alias></Field>
+    <Field Level="M" FieldName="COUNTRY_CODE" ReqInd="N" Length="2" UniqueInd="N" FKey="Country" DataType=""><Alias>Country Code</Alias><Alias>Country Name</Alias></Field>
+    <Field Level="M" FieldName="STATE_CODE" ReqInd="N" Length="2" UniqueInd="N" FKey="State" DataType=""><Alias>State Code</Alias><Alias>State</Alias></Field>
+    <Field Level="M" FieldName="COUNTY_CODE" ReqInd="N" Length="3" UniqueInd="N" FKey="" DataType=""><Alias>County Code</Alias><Alias>County</Alias></Field>
+    <Field Level="M" FieldName="WELL_TYPE" ReqInd="N" Length="255" UniqueInd="N" FKey="WellType" DataType=""><Alias>Well Type</Alias></Field>
+    <Field Level="M" FieldName="AQUIFER_NAME" ReqInd="N" Length="120" UniqueInd="N" FKey="" DataType=""><Alias>Aquifer Name</Alias></Field>
+    <Field Level="M" FieldName="FORMATION_TYPE" ReqInd="N" Length="50" UniqueInd="N" FKey="WellFormationType" DataType=""><Alias>Formation Type</Alias></Field>
+    <Field Level="M" FieldName="WELLHOLE_DEPTH_MSR" ReqInd="N" Length="12" UniqueInd="N" FKey="" DataType=""><Alias>Well Hole Depth Measure</Alias></Field>
+    <Field Level="M" FieldName="WELLHOLE_DEPTH_MSR_UNIT" ReqInd="N" Length="12" UniqueInd="N" FKey="MeasureUnit" DataType=""><Alias>Well Hole Depth Measure Unit</Alias></Field>
+
+    <!-- SAMPLE -->
+    <Field Level="S" FieldName="MONLOC_ID" ReqInd="Y" Length="35" UniqueInd="N" FKey="" DataType=""><Alias>Station ID</Alias></Field>
+    <Field Level="S" FieldName="ACTIVITY_ID" ReqInd="Y" Length="35" UniqueInd="Y" FKey="" DataType=""><Alias>Activity ID</Alias><Alias>Sample ID</Alias><Alias>LabSampID</Alias></Field>
+    <Field Level="S" FieldName="ACT_TYPE" ReqInd="Y" Length="70" UniqueInd="N" FKey="ActivityType" DataType=""><Alias>Activity Type Code</Alias></Field>
+    <Field Level="S" FieldName="ACT_MEDIA" ReqInd="Y" Length="20" UniqueInd="N" FKey="ActivityMedia" DataType=""><Alias>Activity Media</Alias><Alias>Media</Alias><Alias>Matrix</Alias></Field>
+    <Field Level="S" FieldName="ACT_SUBMEDIA" ReqInd="N" Length="45" UniqueInd="N" FKey="ActivityMediaSubdivision" DataType="" ><Alias>Activity Submedia</Alias></Field>
+    <Field Level="S" FieldName="ACT_START_DT" ReqInd="Y" Length="" UniqueInd="N" FKey="" DataType="datetime" AddField="ACT_START_TIME"><Alias>Activity Start Date</Alias><Alias>Sample Date</Alias><Alias>SampDate</Alias></Field>
+    <Field Level="S" FieldName="ACT_START_TIME" ReqInd="N" Length="" UniqueInd="N" FKey="" DataType="datetime"><Alias>Activity Start Time</Alias><Alias>Sample Time</Alias><Alias>SampTime</Alias></Field>
+    <Field Level="S" FieldName="ACT_END_DT" ReqInd="N" Length="" UniqueInd="N" FKey="" DataType="datetime" AddField="ACT_END_TIME"><Alias>Activity End Date</Alias></Field>
+    <Field Level="S" FieldName="ACT_END_TIME" ReqInd="N" Length="" UniqueInd="N" FKey="" DataType="datetime"><Alias>Activity End Time</Alias></Field>
+    <Field Level="S" FieldName="ACT_TIME_ZONE" ReqInd="N" Length="4" UniqueInd="N" FKey="TimeZone" DataType=""><Alias>Activity Time Zone</Alias></Field>
+    <Field Level="S" FieldName="RELATIVE_DEPTH_NAME" ReqInd="N" Length="15" UniqueInd="N" FKey="ActivityRelativeDepth" DataType=""><Alias>Relative Depth</Alias></Field>
+    <Field Level="S" FieldName="ACT_DEPTHHEIGHT_MSR" ReqInd="N" Length="12" UniqueInd="N" FKey="" DataType=""><Alias>Depth Measure</Alias></Field>
+    <Field Level="S" FieldName="ACT_DEPTHHEIGHT_MSR_UNIT" ReqInd="N" Length="12" UniqueInd="N" FKey="MeasureUnit" DataType=""><Alias>Depth Measure Unit</Alias></Field>
+    <Field Level="S" FieldName="TOP_DEPTHHEIGHT_MSR" ReqInd="N" Length="12" UniqueInd="N" FKey="" DataType=""><Alias>Top Depth Measure</Alias></Field>
+    <Field Level="S" FieldName="TOP_DEPTHHEIGHT_MSR_UNIT" ReqInd="N" Length="12" UniqueInd="N" FKey="MeasureUnit" DataType=""><Alias>Top Depth Measure Unit</Alias></Field>
+    <Field Level="S" FieldName="BOT_DEPTHHEIGHT_MSR" ReqInd="N" Length="12" UniqueInd="N" FKey="" DataType=""><Alias>Bottom Depth Measure</Alias></Field>
+    <Field Level="S" FieldName="BOT_DEPTHHEIGHT_MSR_UNIT" ReqInd="N" Length="12" UniqueInd="N" FKey="MeasureUnit" DataType=""><Alias>Bottom Depth Measure Unit</Alias></Field>
+    <Field Level="S" FieldName="DEPTH_REF_POINT" ReqInd="N" Length="125" UniqueInd="N" FKey="" DataType=""><Alias>Depth Ref Point</Alias></Field>
+    <Field Level="S" FieldName="ACT_COMMENT" ReqInd="N" Length="4000" UniqueInd="N" FKey="" DataType=""><Alias>Activity Comment</Alias></Field>
+    
+    <Field Level="S" FieldName="BIO_ASSEMBLAGE_SAMPLED" ReqInd="N" Length="50" UniqueInd="N" FKey="Assemblage" DataType=""><Alias>Bio Assemblage Sampled</Alias></Field>
+    <Field Level="S" FieldName="BIO_DURATION_MSR" ReqInd="N" Length="12" UniqueInd="N" FKey="" DataType=""><Alias>Bio Duration</Alias></Field>
+    <Field Level="S" FieldName="BIO_DURATION_MSR_UNIT" ReqInd="N" Length="12" UniqueInd="N" FKey="MeasureUnit" DataType=""><Alias>Bio Duration Unit</Alias></Field>
+    <Field Level="S" FieldName="BIO_SAMP_COMPONENT" ReqInd="N" Length="15" UniqueInd="N" FKey="" DataType=""><Alias>Sampling Component</Alias></Field>
+    <Field Level="S" FieldName="BIO_SAMP_COMPONENT_SEQ" ReqInd="N" Length="" UniqueInd="N" FKey="" DataType="int"><Alias>Sampling Component Place</Alias></Field>
+    <Field Level="S" FieldName="BIO_REACH_LEN_MSR" ReqInd="N" Length="12" UniqueInd="N" FKey="" DataType=""><Alias>Reach Length</Alias></Field>
+    <Field Level="S" FieldName="BIO_REACH_LEN_MSR_UNIT" ReqInd="N" Length="12" UniqueInd="N" FKey="MeasureUnit" DataType=""><Alias>Reach Length Unit</Alias></Field>
+    <Field Level="S" FieldName="BIO_REACH_WID_MSR" ReqInd="N" Length="12" UniqueInd="N" FKey="" DataType=""><Alias>Reach Width</Alias></Field>
+    <Field Level="S" FieldName="BIO_REACH_WID_MSR_UNIT" ReqInd="N" Length="12" UniqueInd="N" FKey="MeasureUnit" DataType=""><Alias>Reach Width Unit</Alias></Field>
+    <Field Level="S" FieldName="BIO_PASS_COUNT" ReqInd="N" Length="" UniqueInd="N" FKey="" DataType="int"><Alias>Pass Count</Alias></Field>
+    <Field Level="S" FieldName="BIO_NET_TYPE" ReqInd="N" Length="30" UniqueInd="N" FKey="NetType" DataType=""><Alias>Net Type</Alias></Field>
+    <Field Level="S" FieldName="BIO_NET_AREA_MSR" ReqInd="N" Length="12" UniqueInd="N" FKey="" DataType=""><Alias>Net Surface Area</Alias></Field>
+    <Field Level="S" FieldName="BIO_NET_AREA_MSR_UNIT" ReqInd="N" Length="12" UniqueInd="N" FKey="MeasureUnit" DataType=""><Alias>Surface Area Unit</Alias></Field>
+    <Field Level="S" FieldName="BIO_NET_MESHSIZE_MSR" ReqInd="N" Length="12" UniqueInd="N" FKey="" DataType=""><Alias>Net Mesh Size</Alias></Field>
+    <Field Level="S" FieldName="BIO_MESHSIZE_MSR_UNIT" ReqInd="N" Length="12" UniqueInd="N" FKey="MeasureUnit" DataType=""><Alias>Mesh Size Unit</Alias></Field>
+    <Field Level="S" FieldName="BIO_BOAT_SPEED_MSR" ReqInd="N" Length="12" UniqueInd="N" FKey="" DataType=""><Alias>Boat Speed</Alias></Field>
+    <Field Level="S" FieldName="BIO_BOAT_SPEED_MSR_UNIT" ReqInd="N" Length="12" UniqueInd="N" FKey="MeasureUnit" DataType=""><Alias>Boat Speed Unit</Alias></Field>
+    <Field Level="S" FieldName="BIO_CURR_SPEED_MSR" ReqInd="N" Length="12" UniqueInd="N" FKey="" DataType=""><Alias>Current Speed</Alias></Field>
+    <Field Level="S" FieldName="BIO_CURR_SPEED_MSR_UNIT" ReqInd="N" Length="12" UniqueInd="N" FKey="MeasureUnit" DataType=""><Alias>Current Speed Unit</Alias></Field>
+    <Field Level="S" FieldName="BIO_TOXICITY_TEST_TYPE" ReqInd="N" Length="7" UniqueInd="N" FKey="ToxicityTestType" DataType=""><Alias>Toxicity Test Type</Alias></Field>
+
+    <Field Level="S" FieldName="SAMP_COLL_METHOD_IDX" ReqInd="N" Length="" UniqueInd="N" FKey="" DataType="int"><Alias>Collection Method IDX</Alias></Field>
+    <Field Level="S" FieldName="SAMP_COLL_METHOD_ID" ReqInd="N" Length="20" UniqueInd="N" FKey="" DataType=""><Alias>Collection Method ID</Alias></Field>
+    <Field Level="S" FieldName="SAMP_COLL_METHOD_CTX" ReqInd="N" Length="120" UniqueInd="N" FKey="" DataType=""><Alias>Collection Method Context</Alias></Field>
+    <Field Level="S" FieldName="SAMP_COLL_EQUIP" ReqInd="N" Length="40" UniqueInd="N" FKey="SampleCollectionEquipment" DataType=""><Alias>Collection Equipment</Alias></Field>
+    <Field Level="S" FieldName="SAMP_COLL_EQUIP_COMMENT" ReqInd="N" Length="4000" UniqueInd="N" FKey="" DataType=""><Alias>Collection Equipment Comment</Alias></Field>
+    <Field Level="S" FieldName="SAMP_PREP_IDX" ReqInd="N" Length="" UniqueInd="N" FKey="" DataType="int"><Alias>Sample Prep IDX</Alias></Field>
+    <Field Level="S" FieldName="SAMP_PREP_ID" ReqInd="N" Length="20" UniqueInd="N" FKey="" DataType=""><Alias>Sample Prep ID</Alias><Alias>PrepName</Alias><Alias>PrepID</Alias></Field>
+    <Field Level="S" FieldName="SAMP_PREP_CTX" ReqInd="N" Length="120" UniqueInd="N" FKey="" DataType=""><Alias>Sample Prep Context</Alias></Field>
+    <Field Level="S" FieldName="SAMP_PREP_CONT_TYPE" ReqInd="N" Length="35" UniqueInd="N" FKey="SampleContainerType" DataType=""><Alias>Container Type</Alias></Field>
+    <Field Level="S" FieldName="SAMP_PREP_CONT_COLOR" ReqInd="N" Length="15" UniqueInd="N" FKey="SampleContainerColor" DataType=""><Alias>Container Color</Alias></Field>
+    <Field Level="S" FieldName="SAMP_PREP_CHEM_PRESERV" ReqInd="N" Length="250" UniqueInd="N" FKey="" DataType=""><Alias>Chem Preservative Used</Alias></Field>
+    <Field Level="S" FieldName="SAMP_PREP_THERM_PRESERV" ReqInd="N" Length="25" UniqueInd="N" FKey="ThermalPreservativeUsed" DataType=""><Alias>Thermal Preservative Used</Alias></Field>
+    <Field Level="S" FieldName="SAMP_PREP_STORAGE_DESC" ReqInd="N" Length="250" UniqueInd="N" FKey="" DataType=""><Alias>Transport Storage Description</Alias></Field>
+
+    <!-- RESULT -->
+    <Field Level="S" FieldName="DATA_LOGGER_LINE" ReqInd="N" Length="15" UniqueInd="N" FKey="" DataType=""><Alias>Data Logger Line</Alias></Field>
+    <Field Level="S" FieldName="RESULT_DETECT_CONDITION" ReqInd="N" Length="35" UniqueInd="N" FKey="" DataType=""><Alias>Result Detection Condition</Alias><Alias>DETECTIONCONDITION</Alias><Alias>DETECTION CONDITION</Alias></Field>
+    <Field Level="S" FieldName="CHAR_NAME" ReqInd="N" Length="120" UniqueInd="N" FKey="" DataType=""><Alias>Characteristic</Alias><Alias>ANALYTE</Alias></Field>
+    <Field Level="S" FieldName="METHOD_SPECIATION_NAME" ReqInd="N" Length="20" UniqueInd="N" FKey="" DataType=""><Alias>Method Speciation</Alias></Field>
+    <Field Level="S" FieldName="RESULT_SAMP_FRACTION" ReqInd="N" Length="25" UniqueInd="N" FKey="" DataType=""><Alias>Sample Fraction</Alias></Field>
+    <Field Level="S" FieldName="RESULT_MSR" ReqInd="N" Length="60" UniqueInd="N" FKey="" DataType=""><Alias>Result</Alias></Field>
+    <Field Level="S" FieldName="RESULT_MSR_UNIT" ReqInd="N" Length="12" UniqueInd="N" FKey="MeasureUnit" DataType=""><Alias>Unit</Alias><Alias>UNITS_RESULT</Alias></Field>
+    <Field Level="S" FieldName="RESULT_MSR_QUAL" ReqInd="N" Length="5" UniqueInd="N" FKey="" DataType=""><Alias>Measure Qualifier</Alias></Field>
+    <Field Level="S" FieldName="RESULT_STATUS" ReqInd="N" Length="12" UniqueInd="N" FKey="" DataType=""><Alias>Result Status</Alias></Field>
+    <Field Level="S" FieldName="STATISTIC_BASE_CODE" ReqInd="N" Length="25" UniqueInd="N" FKey="" DataType=""><Alias>Statistical Base Code</Alias></Field>
+    <Field Level="S" FieldName="RESULT_VALUE_TYPE" ReqInd="N" Length="20" UniqueInd="N" FKey="" DataType=""><Alias>Result Value Type</Alias></Field>
+    <Field Level="S" FieldName="WEIGHT_BASIS" ReqInd="N" Length="15" UniqueInd="N" FKey="" DataType=""><Alias>Weight Basis</Alias></Field>
+    <Field Level="S" FieldName="TIME_BASIS" ReqInd="N" Length="12" UniqueInd="N" FKey="" DataType=""><Alias>Time Basis</Alias></Field>
+    <Field Level="S" FieldName="TEMP_BASIS" ReqInd="N" Length="12" UniqueInd="N" FKey="" DataType=""><Alias>Temperature Basis</Alias></Field>
+    <Field Level="S" FieldName="PARTICLESIZE_BASIS" ReqInd="N" Length="40" UniqueInd="N" FKey="" DataType=""><Alias>Particle Size Basis</Alias></Field>
+    <Field Level="S" FieldName="PRECISION_VALUE" ReqInd="N" Length="60" UniqueInd="N" FKey="" DataType=""><Alias>Precision</Alias></Field>
+    <Field Level="S" FieldName="BIAS_VALUE" ReqInd="N" Length="60" UniqueInd="N" FKey="" DataType=""><Alias>Bias</Alias></Field>
+    <Field Level="S" FieldName="CONFIDENCE_INTERVAL_VALUE" ReqInd="N" Length="15" UniqueInd="N" FKey="" DataType=""><Alias>Confidence Interval</Alias></Field>
+    <Field Level="S" FieldName="UPPER_CONFIDENCE_LIMIT" ReqInd="N" Length="15" UniqueInd="N" FKey="" DataType=""><Alias>Confidence Upper</Alias></Field>
+    <Field Level="S" FieldName="LOWER_CONFIDENCE_LIMIT" ReqInd="N" Length="15" UniqueInd="N" FKey="" DataType=""><Alias>Confidence Lower</Alias></Field>
+    <Field Level="S" FieldName="RESULT_COMMENT" ReqInd="N" Length="4000" UniqueInd="N" FKey="" DataType=""><Alias>Result Comments</Alias></Field>
+    <Field Level="S" FieldName="DEPTH_HEIGHT_MSR" ReqInd="N" Length="12" UniqueInd="N" FKey="" DataType=""><Alias>Result Depth</Alias></Field>
+    <Field Level="S" FieldName="DEPTH_HEIGHT_MSR_UNIT" ReqInd="N" Length="12" UniqueInd="N" FKey="MeasureUnit" DataType=""><Alias>Result Depth Unit</Alias></Field>
+    <Field Level="S" FieldName="DEPTHALTITUDEREFPOINT" ReqInd="N" Length="125" UniqueInd="N" FKey="" DataType=""><Alias>Result Depth Ref Point</Alias></Field>
+    <Field Level="S" FieldName="BIO_INTENT_NAME" ReqInd="N" Length="35" UniqueInd="N" FKey="" DataType=""><Alias>Bio Intent Name</Alias></Field>
+    <Field Level="S" FieldName="BIO_INDIVIDUAL_ID" ReqInd="N" Length="4" UniqueInd="N" FKey="" DataType=""><Alias>Bio Individual ID</Alias></Field>
+    <Field Level="S" FieldName="BIO_SUBJECT_TAXONOMY" ReqInd="N" Length="120" UniqueInd="N" FKey="" DataType=""><Alias>Taxonomic Name</Alias></Field>
+    <Field Level="S" FieldName="BIO_UNIDENTIFIED_SPECIES_ID" ReqInd="N" Length="120" UniqueInd="N" FKey="" DataType=""><Alias>Unidentified Species</Alias></Field>
+    <Field Level="S" FieldName="BIO_SAMPLE_TISSUE_ANATOMY" ReqInd="N" Length="30" UniqueInd="N" FKey="" DataType=""><Alias>Tissue Anatomy</Alias></Field>
+    <Field Level="S" FieldName="GRP_SUMM_COUNT_WEIGHT_MSR" ReqInd="N" Length="12" UniqueInd="N" FKey="" DataType=""><Alias>Group Summary Total</Alias></Field>
+    <Field Level="S" FieldName="GRP_SUMM_COUNT_WEIGHT_MSR_UNIT" ReqInd="N" Length="12" UniqueInd="N" FKey="MeasureUnit" DataType=""><Alias>Group Summary Total Unit</Alias></Field>
+    <Field Level="S" FieldName="TAX_DTL_CELL_FORM" ReqInd="N" Length="11" UniqueInd="N" FKey="" DataType=""><Alias>Cell Form</Alias></Field>
+    <Field Level="S" FieldName="TAX_DTL_CELL_SHAPE" ReqInd="N" Length="18" UniqueInd="N" FKey="" DataType=""><Alias>Cell Shape</Alias></Field>
+    <Field Level="S" FieldName="TAX_DTL_HABIT" ReqInd="N" Length="15" UniqueInd="N" FKey="" DataType=""><Alias>Habit Name</Alias></Field>
+    <Field Level="S" FieldName="TAX_DTL_VOLTINISM" ReqInd="N" Length="25" UniqueInd="N" FKey="" DataType=""><Alias>Voltinism Name</Alias></Field>
+    <Field Level="S" FieldName="TAX_DTL_POLL_TOLERANCE" ReqInd="N" Length="4" UniqueInd="N" FKey="" DataType=""><Alias>Pollution Tolerance</Alias></Field>
+    <Field Level="S" FieldName="TAX_DTL_POLL_TOLERANCE_SCALE" ReqInd="N" Length="50" UniqueInd="N" FKey="" DataType=""><Alias>Pollution Tolerance Scale</Alias></Field>
+    <Field Level="S" FieldName="TAX_DTL_TROPHIC_LEVEL" ReqInd="N" Length="4" UniqueInd="N" FKey="" DataType=""><Alias>Trophic Level</Alias></Field>
+    <Field Level="S" FieldName="TAX_DTL_FUNC_FEEDING_GROUP1" ReqInd="N" Length="6" UniqueInd="N" FKey="" DataType=""><Alias>Functional Feeding Group</Alias></Field>
+    <Field Level="S" FieldName="TAX_DTL_FUNC_FEEDING_GROUP2" ReqInd="N" Length="6" UniqueInd="N" FKey="" DataType=""><Alias>Functional Feeding Group 2</Alias></Field>
+    <Field Level="S" FieldName="TAX_DTL_FUNC_FEEDING_GROUP3" ReqInd="N" Length="6" UniqueInd="N" FKey="" DataType=""><Alias>Functional Feeding Group 3</Alias></Field>
+    <Field Level="S" FieldName="FREQ_CLASS_CODE" ReqInd="N" Length="50" UniqueInd="N" FKey="" DataType=""><Alias>Frequency Class</Alias></Field>
+    <Field Level="S" FieldName="FREQ_CLASS_UNIT" ReqInd="N" Length="12" UniqueInd="N" FKey="" DataType=""><Alias>Frequency Class Unit</Alias></Field>
+    <Field Level="S" FieldName="FREQ_CLASS_UPPER" ReqInd="N" Length="8" UniqueInd="N" FKey="" DataType=""><Alias>Frequency Class Upper</Alias></Field>
+    <Field Level="S" FieldName="FREQ_CLASS_LOWER" ReqInd="N" Length="8" UniqueInd="N" FKey="" DataType=""><Alias>Frequency Class Lower</Alias></Field>    
+    <Field Level="S" FieldName="ANALYTIC_METHOD_ID" ReqInd="N" Length="20" UniqueInd="N" FKey="" DataType=""><Alias>Analytical Method ID</Alias></Field>
+    <Field Level="S" FieldName="ANALYTIC_METHOD_CTX" ReqInd="N" Length="120" UniqueInd="N" FKey="" DataType=""><Alias>Analytical Method Context</Alias></Field>
+    <Field Level="S" FieldName="LAB_NAME" ReqInd="N" Length="60" UniqueInd="N" FKey="" DataType=""><Alias>Lab Name</Alias><Alias>LabName</Alias><Alias>Lab</Alias></Field>
+    <Field Level="S" FieldName="LAB_ANALYSIS_START_DT" ReqInd="N" Length="" UniqueInd="N" FKey="" DataType="datetime" AddField="LAB_ANALYSIS_START_TIME"><Alias>Analysis Start Date</Alias></Field>
+    <Field Level="S" FieldName="LAB_ANALYSIS_START_TIME" ReqInd="N" Length="" UniqueInd="N" FKey="" DataType="datetime"><Alias>Analysis Start Time</Alias></Field>
+    <Field Level="S" FieldName="LAB_ANALYSIS_END_DT" ReqInd="N" Length="" UniqueInd="N" FKey="" DataType="datetime"><Alias>Analysis End Date</Alias></Field>
+    <Field Level="S" FieldName="RESULT_LAB_COMMENT_CODE" ReqInd="N" Length="3" UniqueInd="N" FKey="" DataType=""><Alias>Lab Comment Code</Alias></Field>
+    <Field Level="S" FieldName="METHOD_DETECTION_LEVEL" ReqInd="N" Length="12" UniqueInd="N" FKey="" DataType=""><Alias>Method Detection Level</Alias></Field>
+    <Field Level="S" FieldName="LAB_REPORTING_LEVEL" ReqInd="N" Length="12" UniqueInd="N" FKey="" DataType=""><Alias>Laboratory Reporting Level</Alias></Field>
+    <Field Level="S" FieldName="PQL" ReqInd="N" Length="12" UniqueInd="N" FKey="" DataType=""><Alias>Practical Quantitation Limit</Alias></Field>
+    <Field Level="S" FieldName="LOWER_QUANT_LIMIT" ReqInd="N" Length="12" UniqueInd="N" FKey="" DataType=""><Alias>Lower Quantitation Limit</Alias></Field>
+    <Field Level="S" FieldName="UPPER_QUANT_LIMIT" ReqInd="N" Length="12" UniqueInd="N" FKey="" DataType=""><Alias>Upper Quantitation Limit</Alias></Field>
+    <Field Level="S" FieldName="DETECTION_LIMIT_UNIT" ReqInd="N" Length="12" UniqueInd="N" FKey="MeasureUnit" DataType=""><Alias>Detection Threshold Limit Unit</Alias><Alias>UNITS_DL</Alias><Alias>DETECTION LIMIT UNIT</Alias></Field>
+    <Field Level="S" FieldName="LAB_SAMP_PREP_ID" ReqInd="N" Length="20" UniqueInd="N" FKey="" DataType=""><Alias>Lab Sample Prep ID</Alias></Field>
+    <Field Level="S" FieldName="LAB_SAMP_PREP_CTX" ReqInd="N" Length="120" UniqueInd="N" FKey="" DataType=""><Alias>Lab Sample Prep Context</Alias></Field>
+    <Field Level="S" FieldName="LAB_SAMP_PREP_START_DT" ReqInd="N" Length="" UniqueInd="N" FKey="" DataType="datetime" AddField="LAB_SAMP_PREP_START_TIME"><Alias>Preparation Start Date</Alias></Field>
+    <Field Level="S" FieldName="LAB_SAMP_PREP_START_TIME" ReqInd="N" Length="" UniqueInd="N" FKey="" DataType="datetime"><Alias>Preparation Start Time</Alias></Field>
+    <Field Level="S" FieldName="LAB_SAMP_PREP_END_DT" ReqInd="N" Length="" UniqueInd="N" FKey="" DataType="datetime"><Alias>Preparation End Date</Alias></Field>
+    <Field Level="S" FieldName="DILUTION_FACTOR" ReqInd="N" Length="10" UniqueInd="N" FKey="" DataType=""><Alias>Dilution Factor</Alias><Alias>Dilution</Alias></Field>
+
+</Fields>
+</FieldConfig>

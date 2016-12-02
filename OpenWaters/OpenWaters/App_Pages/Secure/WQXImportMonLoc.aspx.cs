@@ -78,7 +78,11 @@ namespace OpenEnvironment
 
         protected void btnCancel_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/App_Pages/Secure/WQXImport.aspx");
+            //delete first
+            int SuccID = db_WQX.DeleteT_WQX_IMPORT_TEMP_MONLOC(User.Identity.Name);
+
+            //then redirect
+            Response.Redirect("~/App_Pages/Secure/WQXImportNew.aspx");
         }
 
         protected Boolean VerifyCheck(object r)

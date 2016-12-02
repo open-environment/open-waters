@@ -2274,3 +2274,143 @@ insert into T_ATTAINS_REF_WATER_TYPE (WATER_TYPE_CODE, CREATE_DT, CREATE_USERID)
 insert into T_ATTAINS_REF_WATER_TYPE (WATER_TYPE_CODE, CREATE_DT, CREATE_USERID) values ('WETLANDS, TIDAL',GetDate(),'system');
 
 GO
+
+
+
+CREATE PROCEDURE [dbo].[GenATTAINSXML]
+  @ReportIDX int
+AS
+BEGIN
+	/*
+	DESCRIPTION: RETURNS ATTAINS XML FILE FOR A GIVEN REPORT ID
+
+	CHANGE LOG: 10/23/2016 DOUG TIMMS, OPEN-ENVIRONMENT.ORG
+	*/
+	SET NOCOUNT ON;
+
+	DECLARE @strXML varchar(max);       --output XML
+
+	set @strXML = 
+	(select rtrim(O.ORG_ID) as "OrganizationIdentifier",
+	rtrim(O.ORG_FORMAL_NAME) as "OrganizationName",
+	'Tribe' as "OrganizationType",
+	'Assessment' as "OrganizationContact/ContactType",
+	'www.open-waters.com' as "OrganizationContact/WebURLText",
+	rtrim(O.MAILING_ADDRESS) as "OrganizationContact/MailingAddress/MailingAddressText",
+	rtrim(O.MAILING_ADD_CITY) as "OrganizationContact/MailingAddress/MailingAddressCityName",
+	rtrim(O.MAILING_ADD_STATE) as "OrganizationContact/MailingAddress/MailingAddressStateUSPSCode",
+	rtrim(O.MAILING_ADD_ZIP) as "OrganizationContact/MailingAddress/MailingAddressZIPCode",
+		--ASSESSMENT UNITS
+		(select rtrim(AU.ASSESS_UNIT_ID) as "AssessmentUnitIdentifier",
+		rtrim(AU.ASSESS_UNIT_NAME) as "AssessmentUnitName",		 
+		rtrim(AU.LOCATION_DESC) as "LocationDescriptionText",		 
+		rtrim(AU.AGENCY_CODE) as "AgencyCode",		 
+		rtrim(AU.STATE_CODE) as "StateCode",		 
+		rtrim(AU.ACT_IND) as "StatusIndicator",		 
+		rtrim(AU.WATER_TYPE_CODE) as "WaterType/WaterTypeCode",		 
+		rtrim(AU.WATER_SIZE) as "WaterType/WaterSizeNumber",		 
+		rtrim(AU.WATER_UNIT_CODE) as "WaterType/UnitsCode",
+
+			--ASSESSMENT UNITS MONITORING LOCATIONS
+			(select case when nullif(O.ORG_FORMAL_NAME,'') is not null then rtrim(O.ORG_FORMAL_NAME) end as "MonitoringOrganizationIdentifier",
+			case when nullif(M.MONLOC_ID,'') is not null then rtrim(M.MONLOC_ID) end as "MonitoringLocationIdentifier"
+			from T_ATTAINS_ASSESS_UNITS_MLOC AUM, T_WQX_MONLOC M where AU.ATTAINS_ASSESS_UNIT_IDX = AUM.ATTAINS_ASSESS_UNIT_IDX and AUM.MONLOC_IDX = M.MONLOC_IDX
+			for xml path('MonitoringStation'), root('AssociatedMonitoringStation'), type),
+
+		case when nullif(AU.USE_CLASS_CODE,'') is not null then rtrim(O.ORG_ID) end as "UseClass/UseClassContext" ,
+		case when nullif(AU.USE_CLASS_CODE,'') is not null then rtrim(AU.USE_CLASS_CODE) end as "UseClass/UseClassCode",
+		case when nullif(AU.USE_CLASS_CODE,'') is not null then rtrim(AU.USE_CLASS_NAME) end as "UseClass/UseClassName"
+		from T_ATTAINS_ASSESS_UNITS AU where AU.ATTAINS_REPORT_IDX = R.ATTAINS_REPORT_IDX
+		for xml path('AssessmentUnit'),root('DefinedAssessmentUnits'),type), 	
+
+		--ASSESSMENTS
+		(select rtrim(A.REPORTING_CYCLE) as "ReportingCycleText",
+		rtrim(A.REPORT_STATUS) as "ReportStatusCode",
+
+			--ASSESSED WATER
+			(select 
+			rtrim(AU.ASSESS_UNIT_ID) as "AssessmentUnitIdentifier",
+			rtrim(A.AGENCY_CODE) as "AgencyCode",
+			rtrim(A.CYCLE_LAST_ASSESSED) as "CycleLastAssessedText",
+			rtrim(A.CYCLE_LAST_MONITORED) as "YearLastMonitoredText",
+
+				--USE ATTAINMENTS
+				(select rtrim(ASSU.USE_NAME) as "UseName",
+				rtrim(ASSU.USE_ATTAINMENT_CODE) as "UseAttainmentCode",
+				rtrim(ASSU.TREND_CODE) as "TrendCode",
+				rtrim(A.AGENCY_CODE) as "AgencyCode",
+				rtrim(ASSU.IR_CAT_CODE) as "StateIntergratedReportingCategory/StateIRCategoryCode",
+				rtrim(ASSU.IR_CAT_DESC) as "StateIntergratedReportingCategory/StateCategoryDescriptionText",
+			
+					--ASSESS METADATA
+					(select
+					rtrim(ASSU.ASSESS_TYPE) as "AssessmentTypes/AssessmentTypeCode",
+					rtrim(ASSU.ASSESS_CONFIDENCE) as "AssessmentTypes/AssessmentConfidenceCode",
+					LEFT(CONVERT(VARCHAR, ASSU.MON_DATE_START, 120), 10) as "MonitoringActivity/MonitoringStartDate",
+					LEFT(CONVERT(VARCHAR, ASSU.MON_DATE_END, 120), 10) as "MonitoringActivity/MonitoringEndDate",
+
+						--ASSESSMENT ACTIVITY				
+						(select
+						LEFT(CONVERT(VARCHAR, ASSU.ASSESS_DATE, 120), 10) as "AssessmentDate",
+						rtrim(ASSU.ASSESSOR_NAME) as "AssessorName",
+
+							--PARAMS ASSESSED
+							(select 
+							rtrim(PAR.PARAM_NAME) as "ParameterName",
+							rtrim(PAR.PARAM_ATTAINMENT_CODE) as "ParameterAttainmentCode",
+							rtrim(PAR.TREND_CODE) as "TrendCode",
+							rtrim(PAR.PARAM_COMMENT) as "ParameterCommentText"
+							from T_ATTAINS_ASSESS_USE_PAR PAR where PAR.ATTAINS_ASSESS_USE_IDX = ASSU.ATTAINS_ASSESS_USE_IDX
+							for xml path('ParametersDetails'), root('ParametersAssessed'), type)
+
+						for xml path('AssessmentActivity'), type)  
+
+					for xml path('AssessmentMetadata'), type)  
+				
+				from T_ATTAINS_ASSESS_USE ASSU where ASSU.ATTAINS_ASSESS_IDX = A.ATTAINS_ASSESS_IDX
+				for xml path('UseAttainments'), root('Uses'), type), 	
+
+				--CAUSES
+				(select rtrim(C.CAUSE_NAME) as "CauseName",
+				rtrim(C.POLLUTANT_IND) as "PollutantIndicator",
+				rtrim(C.AGENCY_CODE) as "AgencyCode",
+				rtrim(C.CYCLE_FIRST_LISTED) as "ListingInformation/CycleFirstListedText",
+				rtrim(C.CYCLE_SCHED_TMDL) as "ListingInformation/CycleScheduledForTMDLText",
+	--			rtrim(C.TMDL_PRIORITY_NAME) as "ListingInformation/TMDLPriorityName",
+	--			rtrim(C.CONSENT_DECREE_CYCLE) as "ListingInformation/ConsentDecreeCycleText",
+	--			rtrim(C.TMDL_CAUSE_REPORT_ID) as "ListingInformation/TMDLCauseReportIdentifier",
+				rtrim(C.CAUSE_COMMENT) as "CauseCommentText"
+				from T_ATTAINS_ASSESS_CAUSE C where C.ATTAINS_ASSESS_IDX = A.ATTAINS_ASSESS_IDX
+				for xml path('CauseDetails'), root('Causes'), type) 	
+
+
+			for xml path('AssessedWater'), root('CycleAssessments'), type) 	
+
+		from T_ATTAINS_ASSESS_UNITS AU, T_ATTAINS_ASSESS A where AU.ATTAINS_REPORT_IDX = R.ATTAINS_REPORT_IDX and A.ATTAINS_ASSESS_UNIT_IDX = AU.ATTAINS_ASSESS_UNIT_IDX
+		for xml path('Assessments'),type) 	
+
+	from T_WQX_ORGANIZATION O, T_ATTAINS_REPORT R
+	where O.ORG_ID = R.ORG_ID
+	and R.ATTAINS_REPORT_IDX = @ReportIDX
+	for xml path('Organization'), root('ATTAINS'));
+
+	select '<?xml version="1.0" encoding="UTF-8"?>
+<Document
+        id="D1' + convert(varchar, getdate(), 112) + '"
+        xmlns="http://www.exchangenetwork.net/schema/header/2" 
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+		xsi:schemaLocation="http://www.exchangenetwork.net/schema/header/2 http://www.exchangenetwork.net/schema/header/2/header_v2.0.xsd"> 
+	<Header>
+		<AuthorName>Doug Timms</AuthorName>
+		<OrganizationName>MCN</OrganizationName>
+		<DocumentTitle>ATTAINS</DocumentTitle>
+		<CreationDateTime>' + LEFT(CONVERT(varchar, getdate(), 120), 10) + 'T' + RIGHT(convert(varchar, getdate(), 120), 8) + '</CreationDateTime>
+		<DataFlowName>ATTAINS</DataFlowName>
+		<SenderContact>Doug Timms</SenderContact>
+		<SenderAddress></SenderAddress>
+	</Header>
+	<Payload operation="Update-Insert">' + @strXML + '	</Payload>
+</Document>';
+
+END
+

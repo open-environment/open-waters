@@ -183,12 +183,6 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
         public string ROLE_CD { get; set; }
     }
 
-    public class TranslateTable
-    {
-        public string valFrom { get; set; }
-        public string valTo { get; set; }
-    }
-
     public class db_WQX
     {
 
@@ -2464,6 +2458,164 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             }
         }
 
+        public static int InsertWQX_IMPORT_TEMP_MONLOC_New(string uSER_ID, string oRG_ID, Dictionary<string, string> colVals)
+        {
+            using (OpenEnvironmentEntities ctx = new OpenEnvironmentEntities())
+            {
+                try
+                {
+                    //get import config rules
+                    List<ConfigInfoType> _allRules = Utils.GetAllColumnInfo("M");
+
+                    T_WQX_IMPORT_TEMP_MONLOC a = new T_WQX_IMPORT_TEMP_MONLOC();
+
+                    a.IMPORT_STATUS_CD = "P";
+                    a.IMPORT_STATUS_DESC = "";
+
+                    if (!string.IsNullOrEmpty(uSER_ID)) a.USER_ID = uSER_ID;
+                    if (!string.IsNullOrEmpty(oRG_ID)) a.ORG_ID = oRG_ID;
+
+                    //********************** custom validation ********************************************
+                    string _t = null;
+
+                    _t = Utils.GetValueOrDefault(colVals, "MONLOC_ID");
+                    if (!string.IsNullOrEmpty(_t))
+                    {
+                        T_WQX_MONLOC mtemp = db_WQX.GetWQX_MONLOC_ByIDString(oRG_ID, _t);
+                        if (mtemp != null) { a.IMPORT_STATUS_CD = "F"; a.IMPORT_STATUS_DESC += "Monitoring Location ID already exists. "; }
+                    }
+
+                    _t = Utils.GetValueOrDefault(colVals, "TRIBAL_LAND_IND");
+                    if (!string.IsNullOrEmpty(_t))
+                    {
+                        if (_t.ToUpper() == "TRUE") colVals["TRIBAL_LAND_IND"] = "Y";
+                        if (_t.ToUpper() == "FALSE") colVals["TRIBAL_LAND_IND "] = "N";
+                    }
+
+                    _t = Utils.GetValueOrDefault(colVals, "LATITUDE_MSR");
+                    if (!string.IsNullOrEmpty(_t))
+                    {
+                        decimal ii = 0;
+                        if (Decimal.TryParse(_t, out ii) == false) { a.IMPORT_STATUS_CD = "F"; a.IMPORT_STATUS_DESC += "Latitude is not decimal format. "; }
+                    }
+
+                    _t = Utils.GetValueOrDefault(colVals, "LONGITUDE_MSR");
+                    if (!string.IsNullOrEmpty(_t))
+                    {
+                        decimal ii = 0;
+                        if (Decimal.TryParse(_t, out ii) == false) { a.IMPORT_STATUS_CD = "F"; a.IMPORT_STATUS_DESC += "Longitude is not decimal format. "; }
+                    }
+
+                    //if there is a match of county value to reference data text (in case user is importing county text instead of code)
+                    _t = Utils.GetValueOrDefault(colVals, "COUNTY_CODE");
+                    if (!string.IsNullOrEmpty(_t))
+                    {
+                        T_WQX_REF_COUNTY c = db_Ref.GetT_WQX_REF_COUNTY_ByCountyNameAndState(Utils.GetValueOrDefault(colVals, "STATE_CODE"), _t);
+                        if (c != null)
+                            a.COUNTY_CODE = c.COUNTY_CODE;
+                    }
+                    //********************** end custom validation ********************************************
+
+
+                    WQX_IMPORT_TEMP_MONLOC_GenVal(ref a, _allRules, colVals, "MONLOC_ID");
+                    WQX_IMPORT_TEMP_MONLOC_GenVal(ref a, _allRules, colVals, "MONLOC_NAME");
+                    WQX_IMPORT_TEMP_MONLOC_GenVal(ref a, _allRules, colVals, "MONLOC_TYPE");
+                    WQX_IMPORT_TEMP_MONLOC_GenVal(ref a, _allRules, colVals, "MONLOC_DESC");
+                    WQX_IMPORT_TEMP_MONLOC_GenVal(ref a, _allRules, colVals, "HUC_EIGHT");
+                    WQX_IMPORT_TEMP_MONLOC_GenVal(ref a, _allRules, colVals, "HUC_TWELVE");
+                    WQX_IMPORT_TEMP_MONLOC_GenVal(ref a, _allRules, colVals, "TRIBAL_LAND_IND");
+                    WQX_IMPORT_TEMP_MONLOC_GenVal(ref a, _allRules, colVals, "TRIBAL_LAND_NAME");
+                    WQX_IMPORT_TEMP_MONLOC_GenVal(ref a, _allRules, colVals, "LATITUDE_MSR");
+                    WQX_IMPORT_TEMP_MONLOC_GenVal(ref a, _allRules, colVals, "LONGITUDE_MSR");
+                    WQX_IMPORT_TEMP_MONLOC_GenVal(ref a, _allRules, colVals, "SOURCE_MAP_SCALE");
+                    WQX_IMPORT_TEMP_MONLOC_GenVal(ref a, _allRules, colVals, "HORIZ_COLL_METHOD");
+                    WQX_IMPORT_TEMP_MONLOC_GenVal(ref a, _allRules, colVals, "HORIZ_REF_DATUM");
+                    WQX_IMPORT_TEMP_MONLOC_GenVal(ref a, _allRules, colVals, "VERT_MEASURE");
+                    WQX_IMPORT_TEMP_MONLOC_GenVal(ref a, _allRules, colVals, "VERT_MEASURE_UNIT");
+                    WQX_IMPORT_TEMP_MONLOC_GenVal(ref a, _allRules, colVals, "VERT_COLL_METHOD");
+                    WQX_IMPORT_TEMP_MONLOC_GenVal(ref a, _allRules, colVals, "VERT_REF_DATUM");
+                    WQX_IMPORT_TEMP_MONLOC_GenVal(ref a, _allRules, colVals, "COUNTRY_CODE");
+                    WQX_IMPORT_TEMP_MONLOC_GenVal(ref a, _allRules, colVals, "STATE_CODE");
+                    WQX_IMPORT_TEMP_MONLOC_GenVal(ref a, _allRules, colVals, "COUNTY_CODE");
+                    WQX_IMPORT_TEMP_MONLOC_GenVal(ref a, _allRules, colVals, "WELL_TYPE");
+                    WQX_IMPORT_TEMP_MONLOC_GenVal(ref a, _allRules, colVals, "AQUIFER_NAME");
+                    WQX_IMPORT_TEMP_MONLOC_GenVal(ref a, _allRules, colVals, "FORMATION_TYPE");
+                    WQX_IMPORT_TEMP_MONLOC_GenVal(ref a, _allRules, colVals, "WELLHOLE_DEPTH_MSR");
+                    WQX_IMPORT_TEMP_MONLOC_GenVal(ref a, _allRules, colVals, "WELLHOLE_DEPTH_MSR_UNIT");
+
+                    ctx.AddToT_WQX_IMPORT_TEMP_MONLOC(a);
+                    ctx.SaveChanges();
+
+                    return a.TEMP_MONLOC_IDX;
+                }
+                catch (Exception ex)
+                {
+                    return 0;
+                }
+            }
+        }
+
+        public static void WQX_IMPORT_TEMP_MONLOC_GenVal(ref T_WQX_IMPORT_TEMP_MONLOC a, List<ConfigInfoType> t, Dictionary<string, string> colVals, string f)
+        {
+            string _value = Utils.GetValueOrDefault(colVals, f); //supplied value for this field
+            var _rules = t.Find(item => item._name == f);   //import rules for this field
+
+            if (!string.IsNullOrEmpty(_value)) //if value is supplied
+            {
+                _value = _value.Trim();
+
+                //strings: field length validation and substring 
+                if (_rules._datatype == "" && _rules._length != null)
+                {
+                    if (_value.Length > _rules._length)
+                    {
+                        a.IMPORT_STATUS_CD = "F";
+                        a.IMPORT_STATUS_DESC = (a.IMPORT_STATUS_DESC + f + " length (" + _rules._length + ") exceeded. ").SubStringPlus(0, 100);
+
+                        _value = _value.SubStringPlus(0, (int)_rules._length);
+                    }
+                }
+
+                //integers: check type
+                if (_rules._datatype == "int")
+                {
+                    int n;
+                    if (int.TryParse(_value, out n) == false)
+                    {
+                        a.IMPORT_STATUS_CD = "F";
+                        a.IMPORT_STATUS_DESC = (a.IMPORT_STATUS_DESC + f + " not numeric. ").SubStringPlus(0, 100);
+                    }
+                }
+
+
+                //ref data lookup
+                if (_rules._fkey.Length > 0)
+                {
+                    if (db_Ref.GetT_WQX_REF_DATA_ByKey(_rules._fkey, _value) == false)
+                    {
+                        a.IMPORT_STATUS_CD = "F";
+                        a.IMPORT_STATUS_DESC = (a.IMPORT_STATUS_DESC + f + " not valid. ").SubStringPlus(0, 100);
+                    }
+                }
+            }
+            else
+            {
+                //required check
+                if (_rules._req == "Y")
+                {
+                    _value = "-";
+                    a.IMPORT_STATUS_CD = "F";
+                    a.IMPORT_STATUS_DESC = (a.IMPORT_STATUS_DESC + "Required field " + f + " missing. ").SubStringPlus(0, 100);
+                }
+            }
+
+            //finally set the value before returning
+            if (_rules._datatype == "")
+                typeof(T_WQX_IMPORT_TEMP_MONLOC).GetProperty(f).SetValue(a, _value);
+            else if (_rules._datatype == "int")
+                typeof(T_WQX_IMPORT_TEMP_MONLOC).GetProperty(f).SetValue(a, _value.ConvertOrDefault<int?>());
+        }
+
         public static List<T_WQX_IMPORT_TEMP_MONLOC> GetWQX_IMPORT_TEMP_MONLOC(string UserID)
         {
             using (OpenEnvironmentEntities ctx = new OpenEnvironmentEntities())
@@ -2474,6 +2626,23 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
                             where a.USER_ID == UserID
                             orderby a.TEMP_MONLOC_IDX
                             select a).ToList();
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+        }
+
+        public static int GetWQX_IMPORT_TEMP_MONLOC_CountByUserID(string UserID)
+        {
+            using (OpenEnvironmentEntities ctx = new OpenEnvironmentEntities())
+            {
+                try
+                {
+                    return (from a in ctx.T_WQX_IMPORT_TEMP_MONLOC
+                            where a.USER_ID == UserID
+                            select a).Count();
                 }
                 catch (Exception ex)
                 {
@@ -2516,6 +2685,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             }
 
         }
+
 
 
         // *************************** IMPORT: PROJECT    ******************************
@@ -3104,6 +3274,294 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             }
 
         }
+
+        public static int InsertUpdateWQX_IMPORT_TEMP_SAMPLE_New(string uSER_ID, string oRG_ID, int? pROJECT_IDX, string pROJECT_ID, Dictionary<string, string> colVals, bool BioIndicator)
+        {
+            try
+            {
+                using (OpenEnvironmentEntities ctx = new OpenEnvironmentEntities())
+                {
+                    bool insInd = false;
+
+                    //******************* GET STARTING RECORD *************************************************
+                    string _a = Utils.GetValueOrDefault(colVals, "ACTIVITY_ID") ?? "";
+                    T_WQX_IMPORT_TEMP_SAMPLE a = (from c in ctx.T_WQX_IMPORT_TEMP_SAMPLE
+                            where c.ACTIVITY_ID == _a
+                            && c.ORG_ID == oRG_ID
+                            select c).FirstOrDefault();
+
+                    //if can't find a match based on supplied IDX or ID, then create a new record
+                    if (a == null)
+                    {
+                        insInd = true;
+                        a = new T_WQX_IMPORT_TEMP_SAMPLE();
+                    }
+                    //********************** END GET STARTING RECORD ************************************************
+
+
+                    a.IMPORT_STATUS_CD = "P";
+                    a.IMPORT_STATUS_DESC = "";
+
+
+                    if (!string.IsNullOrEmpty(uSER_ID)) a.USER_ID = uSER_ID; else return 0;
+                    if (!string.IsNullOrEmpty(oRG_ID)) a.ORG_ID = oRG_ID; else return 0;
+                    if (pROJECT_IDX != null) a.PROJECT_IDX = pROJECT_IDX; else return 0;
+                    if (!string.IsNullOrEmpty(pROJECT_ID)) a.PROJECT_ID = pROJECT_ID; else return 0;
+
+                    //********************** CUSTOM VALIDATION ********************************************
+                    string _t = null;   //placeholder to store field's value
+
+                    //SET MONLOC_IDX based on supplied MONLOC_ID
+                    _t = Utils.GetValueOrDefault(colVals, "MONLOC_ID");
+                    if (!string.IsNullOrEmpty(_t))
+                    {
+                        T_WQX_MONLOC mm = db_WQX.GetWQX_MONLOC_ByIDString(oRG_ID, _t);
+                        if (mm == null) { a.IMPORT_STATUS_CD = "F"; a.IMPORT_STATUS_DESC += "Invalid Monitoring Location ID."; }
+                        else { a.MONLOC_IDX = mm.MONLOC_IDX; }
+                    }
+
+                    //SET ACTIVITY TIMEZONE IF NOT SUPPLIED
+                    _t = Utils.GetValueOrDefault(colVals, "ACT_TIME_ZONE");
+                    if (string.IsNullOrEmpty(_t))
+                        a.ACT_TIME_ZONE = Utils.GetWQXTimeZoneByDate(a.ACT_START_DT.ConvertOrDefault<DateTime>());
+                    //********************** END CUSTOM VALIDATION ********************************************
+
+
+                    //get import config rules
+                    List<ConfigInfoType> _allRules = Utils.GetAllColumnInfo("S");
+
+                    WQX_IMPORT_TEMP_SAMPLE_GenVal(ref a, _allRules, colVals, "MONLOC_ID");
+                    WQX_IMPORT_TEMP_SAMPLE_GenVal(ref a, _allRules, colVals, "ACTIVITY_ID");
+                    WQX_IMPORT_TEMP_SAMPLE_GenVal(ref a, _allRules, colVals, "ACT_TYPE");
+                    WQX_IMPORT_TEMP_SAMPLE_GenVal(ref a, _allRules, colVals, "ACT_MEDIA");
+                    WQX_IMPORT_TEMP_SAMPLE_GenVal(ref a, _allRules, colVals, "ACT_SUBMEDIA");
+                    WQX_IMPORT_TEMP_SAMPLE_GenVal(ref a, _allRules, colVals, "ACT_START_DT");
+                    WQX_IMPORT_TEMP_SAMPLE_GenVal(ref a, _allRules, colVals, "ACT_END_DT");
+                    WQX_IMPORT_TEMP_SAMPLE_GenVal(ref a, _allRules, colVals, "ACT_TIME_ZONE");
+                    WQX_IMPORT_TEMP_SAMPLE_GenVal(ref a, _allRules, colVals, "RELATIVE_DEPTH_NAME");
+                    WQX_IMPORT_TEMP_SAMPLE_GenVal(ref a, _allRules, colVals, "ACT_DEPTHHEIGHT_MSR");
+                    WQX_IMPORT_TEMP_SAMPLE_GenVal(ref a, _allRules, colVals, "ACT_DEPTHHEIGHT_MSR_UNIT");
+                    WQX_IMPORT_TEMP_SAMPLE_GenVal(ref a, _allRules, colVals, "TOP_DEPTHHEIGHT_MSR");
+                    WQX_IMPORT_TEMP_SAMPLE_GenVal(ref a, _allRules, colVals, "TOP_DEPTHHEIGHT_MSR_UNIT");
+                    WQX_IMPORT_TEMP_SAMPLE_GenVal(ref a, _allRules, colVals, "BOT_DEPTHHEIGHT_MSR");
+                    WQX_IMPORT_TEMP_SAMPLE_GenVal(ref a, _allRules, colVals, "BOT_DEPTHHEIGHT_MSR_UNIT");
+                    WQX_IMPORT_TEMP_SAMPLE_GenVal(ref a, _allRules, colVals, "DEPTH_REF_POINT");
+                    WQX_IMPORT_TEMP_SAMPLE_GenVal(ref a, _allRules, colVals, "ACT_COMMENT");
+                    WQX_IMPORT_TEMP_SAMPLE_GenVal(ref a, _allRules, colVals, "SAMP_COLL_EQUIP");
+                    WQX_IMPORT_TEMP_SAMPLE_GenVal(ref a, _allRules, colVals, "SAMP_COLL_EQUIP_COMMENT");
+                    WQX_IMPORT_TEMP_SAMPLE_GenVal(ref a, _allRules, colVals, "SAMP_PREP_CONT_TYPE");
+                    WQX_IMPORT_TEMP_SAMPLE_GenVal(ref a, _allRules, colVals, "SAMP_PREP_CONT_COLOR");
+                    WQX_IMPORT_TEMP_SAMPLE_GenVal(ref a, _allRules, colVals, "SAMP_PREP_CHEM_PRESERV");
+                    WQX_IMPORT_TEMP_SAMPLE_GenVal(ref a, _allRules, colVals, "SAMP_PREP_THERM_PRESERV");
+                    WQX_IMPORT_TEMP_SAMPLE_GenVal(ref a, _allRules, colVals, "SAMP_PREP_STORAGE_DESC");
+
+                    //BIOLOGICAL MONITORING                     
+                    if (BioIndicator == true)
+                    {
+                        WQX_IMPORT_TEMP_SAMPLE_GenVal(ref a, _allRules, colVals, "BIO_ASSEMBLAGE_SAMPLED");
+                        WQX_IMPORT_TEMP_SAMPLE_GenVal(ref a, _allRules, colVals, "BIO_DURATION_MSR");
+                        WQX_IMPORT_TEMP_SAMPLE_GenVal(ref a, _allRules, colVals, "BIO_DURATION_MSR_UNIT");
+                        WQX_IMPORT_TEMP_SAMPLE_GenVal(ref a, _allRules, colVals, "BIO_SAMP_COMPONENT");
+                        WQX_IMPORT_TEMP_SAMPLE_GenVal(ref a, _allRules, colVals, "BIO_SAMP_COMPONENT_SEQ");
+                        WQX_IMPORT_TEMP_SAMPLE_GenVal(ref a, _allRules, colVals, "BIO_REACH_LEN_MSR");
+                        WQX_IMPORT_TEMP_SAMPLE_GenVal(ref a, _allRules, colVals, "BIO_REACH_LEN_MSR_UNIT");
+                        WQX_IMPORT_TEMP_SAMPLE_GenVal(ref a, _allRules, colVals, "BIO_REACH_WID_MSR");
+                        WQX_IMPORT_TEMP_SAMPLE_GenVal(ref a, _allRules, colVals, "BIO_REACH_WID_MSR_UNIT");
+                        WQX_IMPORT_TEMP_SAMPLE_GenVal(ref a, _allRules, colVals, "BIO_PASS_COUNT");
+                        WQX_IMPORT_TEMP_SAMPLE_GenVal(ref a, _allRules, colVals, "BIO_NET_TYPE");
+                        WQX_IMPORT_TEMP_SAMPLE_GenVal(ref a, _allRules, colVals, "BIO_NET_AREA_MSR");
+                        WQX_IMPORT_TEMP_SAMPLE_GenVal(ref a, _allRules, colVals, "BIO_NET_AREA_MSR_UNIT");
+                        WQX_IMPORT_TEMP_SAMPLE_GenVal(ref a, _allRules, colVals, "BIO_NET_MESHSIZE_MSR");
+                        WQX_IMPORT_TEMP_SAMPLE_GenVal(ref a, _allRules, colVals, "BIO_MESHSIZE_MSR_UNIT");
+                        WQX_IMPORT_TEMP_SAMPLE_GenVal(ref a, _allRules, colVals, "BIO_BOAT_SPEED_MSR");
+                        WQX_IMPORT_TEMP_SAMPLE_GenVal(ref a, _allRules, colVals, "BIO_BOAT_SPEED_MSR_UNIT");
+                        WQX_IMPORT_TEMP_SAMPLE_GenVal(ref a, _allRules, colVals, "BIO_CURR_SPEED_MSR");
+                        WQX_IMPORT_TEMP_SAMPLE_GenVal(ref a, _allRules, colVals, "BIO_CURR_SPEED_MSR_UNIT");
+                        WQX_IMPORT_TEMP_SAMPLE_GenVal(ref a, _allRules, colVals, "BIO_TOXICITY_TEST_TYPE");
+                    }
+
+
+                    //********************** CUSTOM POST VALIDATION ********************************************
+
+                    //special sampling collection method handling
+                    string _idx = Utils.GetValueOrDefault(colVals, "SAMP_COLL_METHOD_IDX");
+                    if (!string.IsNullOrEmpty(_idx))
+                    {
+                        a.SAMP_COLL_METHOD_IDX = _idx.ConvertOrDefault<int>();
+
+                        //if IDX is populated but ID/Name/Ctx aren't then grab them
+                        T_WQX_REF_SAMP_COL_METHOD scm = db_Ref.GetT_WQX_REF_SAMP_COL_METHOD_ByIDX(a.SAMP_COLL_METHOD_IDX);
+                        if (scm != null)
+                        {
+                            a.SAMP_COLL_METHOD_ID = scm.SAMP_COLL_METHOD_ID;
+                            a.SAMP_COLL_METHOD_NAME = scm.SAMP_COLL_METHOD_NAME;
+                            a.SAMP_COLL_METHOD_CTX = scm.SAMP_COLL_METHOD_CTX;
+                        }
+                    }
+                    else
+                    {
+                        string _id = Utils.GetValueOrDefault(colVals, "SAMP_COLL_METHOD_ID");
+                        string _ctx = Utils.GetValueOrDefault(colVals, "SAMP_COLL_METHOD_CTX");
+                        //set context to org id if none is provided 
+                        if (!string.IsNullOrEmpty(_id) && string.IsNullOrEmpty(_ctx))
+                            _ctx = oRG_ID;
+
+                        if (!string.IsNullOrEmpty(_id) && !string.IsNullOrEmpty(_ctx))
+                        {
+                            //lookup matching collection method IDX
+                            T_WQX_REF_SAMP_COL_METHOD scm = db_Ref.GetT_WQX_REF_SAMP_COL_METHOD_ByIDandContext(_id.Trim(), _ctx.Trim());
+                            if (scm != null)
+                                a.SAMP_COLL_METHOD_IDX = scm.SAMP_COLL_METHOD_IDX;
+                            else  //no matching sample collection method lookup found
+                            {
+                                a.IMPORT_STATUS_CD = "F"; a.IMPORT_STATUS_DESC += "No matching Sample Collection Method found - please add it at the Reference Data screen first. ";
+                            }
+
+                            a.SAMP_COLL_METHOD_ID = _id.Trim().SubStringPlus(0, 20);
+                            a.SAMP_COLL_METHOD_CTX = _ctx.Trim().SubStringPlus(0, 120);
+                        }
+                    }
+
+
+
+                    //special validation requiring sampling collection method if activity type contains "Sample"
+                    if (a.SAMP_COLL_METHOD_IDX == null && a.ACT_TYPE.ToUpper().Contains("SAMPLE"))
+                    { a.IMPORT_STATUS_CD = "F"; a.IMPORT_STATUS_DESC += "Sample Collection Method is required when Activity Type contains the term -Sample-. "; }
+
+                    //special validation requiring sampling collection equipment if activity type contains "Sample"
+                    if (string.IsNullOrEmpty(a.SAMP_COLL_EQUIP) && a.ACT_TYPE.ToUpper().Contains("SAMPLE"))
+                        { a.IMPORT_STATUS_CD = "F"; a.IMPORT_STATUS_DESC += "Sample Collection Equipment is required when Activity Type contains the term -Sample-. "; }
+
+
+
+                    //special sampling prep method handling
+                    _idx = Utils.GetValueOrDefault(colVals, "SAMP_PREP_IDX");
+                    if (!string.IsNullOrEmpty(_idx))
+                        a.SAMP_PREP_IDX = _idx.ConvertOrDefault<int>();
+                    else
+                    {
+                        string _id = Utils.GetValueOrDefault(colVals, "SAMP_PREP_ID");
+                        string _ctx = Utils.GetValueOrDefault(colVals, "SAMP_PREP_CTX");
+                        //set context to org id if none is provided 
+                        if (!string.IsNullOrEmpty(_id) && string.IsNullOrEmpty(_ctx))
+                            _ctx = oRG_ID;
+
+                        if (!string.IsNullOrEmpty(_id) && !string.IsNullOrEmpty(_ctx))
+                        {
+                            a.SAMP_PREP_ID = _id.Trim().SubStringPlus(0, 20);
+                            a.SAMP_PREP_CTX = _ctx.Trim().SubStringPlus(0, 120);
+
+                            //see if matching prep method exists
+                            T_WQX_REF_SAMP_PREP sp = db_Ref.GetT_WQX_REF_SAMP_PREP_ByIDandContext(_id.Trim(), _ctx.Trim());
+                            if (sp != null)
+                                a.SAMP_PREP_IDX = sp.SAMP_PREP_IDX;
+                            else  //no matching sample prep method lookup found
+                            {
+                                a.IMPORT_STATUS_CD = "F"; a.IMPORT_STATUS_DESC += "No matching Sample Prep Method found - please add it at the Reference Data screen first. ";
+                            }
+                        }
+                    }
+
+
+
+                    a.IMPORT_STATUS_DESC = a.IMPORT_STATUS_DESC.SubStringPlus(0, 200);
+
+                    if (insInd) //insert case
+                        ctx.AddToT_WQX_IMPORT_TEMP_SAMPLE(a);
+
+                    ctx.SaveChanges();
+
+                    return a.TEMP_SAMPLE_IDX;
+                }
+            }
+            catch (Exception ex)
+            {
+                return 0;
+            }
+        }
+
+        public static void WQX_IMPORT_TEMP_SAMPLE_GenVal(ref T_WQX_IMPORT_TEMP_SAMPLE a, List<ConfigInfoType> t, Dictionary<string, string> colVals, string f)
+        {
+            var _rules = t.Find(item => item._name == f);   //import validation rules for this field
+            string _value = Utils.GetValueOrDefault(colVals, f); //supplied value for this field
+
+            if (!string.IsNullOrEmpty(_value)) //if value is supplied
+            {
+                _value = _value.Trim();
+
+                //if this field has another field which gets added to it (used for Date + Time fields)
+                if (!string.IsNullOrEmpty(_rules._addfield)) 
+                    _value = _value + " " + Utils.GetValueOrDefault(colVals, _rules._addfield);
+
+                //strings: field length validation and substring 
+                if (_rules._datatype == "" && _rules._length != null)
+                {
+                    if (_value.Length > _rules._length)
+                    {
+                        a.IMPORT_STATUS_CD = "F";
+                        a.IMPORT_STATUS_DESC = (a.IMPORT_STATUS_DESC + f + " length (" + _rules._length + ") exceeded. ");
+
+                        _value = _value.SubStringPlus(0, (int)_rules._length);
+                    }
+                }
+
+                //integers: check type
+                if (_rules._datatype == "int")
+                {
+                    int n;
+                    if (int.TryParse(_value, out n) == false)
+                    {
+                        a.IMPORT_STATUS_CD = "F";
+                        a.IMPORT_STATUS_DESC = (a.IMPORT_STATUS_DESC + f + " not numeric. ");
+                    }
+                }
+
+                //datetime: check type
+                if (_rules._datatype == "datetime")
+                {
+                    if (_value.ConvertOrDefault<DateTime>().Year < 1900)
+                    {
+                        a.IMPORT_STATUS_CD = "F";
+                        a.IMPORT_STATUS_DESC = (a.IMPORT_STATUS_DESC + f + " not properly formatted. ");
+                    }
+                }
+
+
+                //ref data lookup
+                if (_rules._fkey.Length > 0)
+                {
+                    if (db_Ref.GetT_WQX_REF_DATA_ByKey(_rules._fkey, _value) == false)
+                    {
+                        a.IMPORT_STATUS_CD = "F";
+                        a.IMPORT_STATUS_DESC = (a.IMPORT_STATUS_DESC + f + " not valid. ");
+                    }
+                }
+            }
+            else
+            {
+                //required check
+                if (_rules._req == "Y")
+                {
+                    if (_rules._datatype == "")
+                        _value = "-";
+                    else if (_rules._datatype == "datetime")
+                        _value = new DateTime(1900, 1, 1).ToString();
+                    a.IMPORT_STATUS_CD = "F";
+                    a.IMPORT_STATUS_DESC = (a.IMPORT_STATUS_DESC + "Required field " + f + " missing. ");
+                }
+            }
+
+            //finally set the value before returning
+            if (_rules._datatype == "")
+                typeof(T_WQX_IMPORT_TEMP_SAMPLE).GetProperty(f).SetValue(a, _value);
+            else if (_rules._datatype == "int")
+                typeof(T_WQX_IMPORT_TEMP_SAMPLE).GetProperty(f).SetValue(a, _value.ConvertOrDefault<int?>());
+            else if (_rules._datatype == "datetime" && _rules._req == "Y")
+                typeof(T_WQX_IMPORT_TEMP_SAMPLE).GetProperty(f).SetValue(a, _value.ConvertOrDefault<DateTime>());
+            else if (_rules._datatype == "datetime" && _rules._req == "N")
+                typeof(T_WQX_IMPORT_TEMP_SAMPLE).GetProperty(f).SetValue(a, _value.ConvertOrDefault<DateTime?>());
+        }
+
 
         public static int InsertOrUpdateWQX_IMPORT_TEMP_SAMPLE_Status(int tEMP_SAMPLE_IDX, string sTATUS_CD, string sTATUS_DESC)
         {
