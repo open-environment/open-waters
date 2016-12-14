@@ -39,6 +39,8 @@ Open Waters is web-based water quality data management software that helps peopl
 
 
 ## Change Log
+* **12/XX/2016 - Version 1.9.8:**
+    * Coming December 2016
 * **7/9/2016 - Version 1.9.5:**
     * Streamline WQX submission service for better reliability (less starting/stopping of windows service, and only perform CDX authentication test for organizations with pending data)
 * **6/2/2016 - Version 1.9.3:**
@@ -126,20 +128,14 @@ Open Waters is web-based water quality data management software that helps peopl
     * Fix units in dropdown not in alphabetical order
 * **12/14/2014 - Version 1.5:**
     * New feature: batch import for monitoring locations and samples 
-    * Configure batch import templates 
     * Example Excel templates for monitoring location, sample, and bio metrics added 
     * Added analytical methods to EPA data import 
     * Many bug fixes and usability improvements 
-    * Improved security 
 * **11/27/2014 - Version 1.4**
     * Supports organization-specific Exchange Network submission credentials
-    * XML submission performance improvements
 * **1/9/2014 - Version 1.3**
     * Better support for using multiple organizations such as Organization-specific application security, Organization-specific reference data
     * Added ability to define a subset of commonly-used characteristics (to speed up activity data entry) 
     * Added option to delete or inactivate monitoring locations   
 * **8/20/2013 - Version 1.2**
     * New Mapping Page: view a map that displays your monitoring locations and most recent monitoring results. Includes both a private map (only available to your staff) and public map
-    * Updated Styling: updated user interface 
-* **4/2/2013 - Version 1.1** 
-    * fixes several bugs
