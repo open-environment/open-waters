@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Web;
-using System.Web.UI;
 using System.Web.UI.WebControls;
 using OpenEnvironment.App_Logic.DataAccessLayer;
 using OpenEnvironment.App_Logic.BusinessLogicLayer;
@@ -13,18 +10,15 @@ namespace OpenEnvironment
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["OrgID"] == null)
+                db_Accounts.SetOrgSessionID(User.Identity.Name, HttpContext.Current.Request.Url.LocalPath);
+
             if (!IsPostBack)
             {
                 //display left menu as selected
                 ContentPlaceHolder cp = this.Master.Master.FindControl("MainContent") as ContentPlaceHolder;
                 HyperLink hl = (HyperLink)cp.FindControl("lnkImport");
                 if (hl != null) hl.CssClass = "leftMnuBody sel";
-
-                if (Session["OrgID"] == null)
-                {
-                    lblMsg.Text = "Please select or create an organization first.";
-                    return;
-                }
 
                 //populate drop-downs
                 Utils.BindList(ddlColChar, dsChar, "CHAR_NAME", "CHAR_NAME");
@@ -34,7 +28,6 @@ namespace OpenEnvironment
 
                 DisplayTemplate();
             }
-
         }
 
         private void DisplayTemplate()
@@ -46,7 +39,8 @@ namespace OpenEnvironment
 
         protected void btnCancel_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/App_Pages/Secure/WQXImport.aspx");
+            Response.Redirect("~/App_Pages/Secure/WQXImport.aspx", false);
+            Context.ApplicationInstance.CompleteRequest();
         }
 
         protected void grdImport_RowCommand(object sender, GridViewCommandEventArgs e)

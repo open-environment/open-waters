@@ -14,11 +14,7 @@ namespace OpenEnvironment.App_Pages.Secure
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["OrgID"] == null)
-            {
-                lblMsg.Text = "Please select or join an organization first.";
-                btnSave.Visible = false;
-                return;
-            }
+                db_Accounts.SetOrgSessionID(User.Identity.Name, HttpContext.Current.Request.Url.LocalPath);
 
             if (Session["AssessRptIDX"] == null)
                 Response.Redirect("~/App_Pages/Secure/Assess.aspx");

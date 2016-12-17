@@ -7,10 +7,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace OpenEnvironment.App_Pages.Secure {
+namespace OpenEnvironment {
     
     
-    public partial class WQXImportTranslate {
+    public partial class WQXOrgData {
         
         /// <summary>
         /// ScriptManager1 control.
@@ -22,6 +22,42 @@ namespace OpenEnvironment.App_Pages.Secure {
         protected global::System.Web.UI.ScriptManager ScriptManager1;
         
         /// <summary>
+        /// dsChar control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ObjectDataSource dsChar;
+        
+        /// <summary>
+        /// dsTimeZone control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ObjectDataSource dsTimeZone;
+        
+        /// <summary>
+        /// dsTaxa control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ObjectDataSource dsTaxa;
+        
+        /// <summary>
+        /// dsAnalMethod control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ObjectDataSource dsAnalMethod;
+        
+        /// <summary>
         /// lblMsg control.
         /// </summary>
         /// <remarks>
@@ -31,22 +67,49 @@ namespace OpenEnvironment.App_Pages.Secure {
         protected global::System.Web.UI.WebControls.Label lblMsg;
         
         /// <summary>
-        /// grdImport control.
+        /// pnlTabs control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView grdImport;
+        protected global::System.Web.UI.WebControls.Panel pnlTabs;
         
         /// <summary>
-        /// btnExit control.
+        /// ddlTimeZone control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnExit;
+        protected global::System.Web.UI.WebControls.DropDownList ddlTimeZone;
+        
+        /// <summary>
+        /// btnSave control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnSave;
+        
+        /// <summary>
+        /// btnCancel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnCancel;
+        
+        /// <summary>
+        /// grdTranslate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView grdTranslate;
         
         /// <summary>
         /// btnAdd control.
@@ -121,12 +184,12 @@ namespace OpenEnvironment.App_Pages.Secure {
         protected global::System.Web.UI.WebControls.Button btnAddTranslate;
         
         /// <summary>
-        /// btnCloseHC control.
+        /// btnCloseModal1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnCloseHC;
+        protected global::System.Web.UI.WebControls.Button btnCloseModal1;
     }
 }

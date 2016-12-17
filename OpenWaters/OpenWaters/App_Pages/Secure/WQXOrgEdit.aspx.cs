@@ -15,7 +15,6 @@ namespace OpenEnvironment
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            //return to mon loc listing if none in session
             if (Session["OrgID"] == null)
                 Response.Redirect("~/App_Pages/Secure/WQXOrg.aspx");
 
@@ -97,7 +96,8 @@ namespace OpenEnvironment
 
         protected void btnCancel_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/App_Pages/Secure/WQXOrg.aspx");
+            Response.Redirect("~/App_Pages/Secure/WQXOrg.aspx", false);
+            Context.ApplicationInstance.CompleteRequest();
         }
 
         protected void btnSave_Click(object sender, EventArgs e)
@@ -105,7 +105,10 @@ namespace OpenEnvironment
             int SuccID = SavePage();
 
             if (SuccID > 0)
-                Response.Redirect("~/App_Pages/Secure/WQXOrg.aspx");
+            {
+                Response.Redirect("~/App_Pages/Secure/WQXOrg.aspx", false);
+                Context.ApplicationInstance.CompleteRequest();
+            }
             else
                 lblMsg.Text = "Error updating record.";
 
@@ -113,7 +116,8 @@ namespace OpenEnvironment
 
         protected void btnSettings_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/App_Pages/Secure/WQXOrgSettings.aspx");
+            Response.Redirect("~/App_Pages/Secure/WQXOrgSettings.aspx", false);
+            Context.ApplicationInstance.CompleteRequest();
         }
 
         private int SavePage()
@@ -264,11 +268,7 @@ namespace OpenEnvironment
         protected void btnTestNAASGlobal_Click(object sender, EventArgs e)
         {
             int SuccID = SavePage();
-
             ConnectTest("GLOBAL");
-
         }
-
-
     }
 }

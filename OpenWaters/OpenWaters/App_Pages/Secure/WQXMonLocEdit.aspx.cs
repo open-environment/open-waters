@@ -16,16 +16,8 @@ namespace OpenEnvironment
         protected void Page_Load(object sender, EventArgs e)
         {
             //return to mon loc listing if none in session
-            if (Session["MonLocIDX"] == null)
+            if (Session["MonLocIDX"] == null || Session["OrgID"] == null)
                 Response.Redirect("~/App_Pages/Secure/WQXMonLoc.aspx");
-
-            if (Session["OrgID"] == null)
-            {
-                lblMsg.Text = "Please select or create an organization first.";
-                btnSave.Visible = false;
-                return;
-            }
-
 
             //read session variables
             MonLocIDX = Int32.Parse(Session["MonLocIDX"].ToString());
@@ -36,7 +28,6 @@ namespace OpenEnvironment
                 ContentPlaceHolder cp = this.Master.Master.FindControl("MainContent") as ContentPlaceHolder;
                 HyperLink hl = (HyperLink)cp.FindControl("lnkMonLocList");
                 if (hl != null) hl.CssClass = "leftMnuBody sel";
-
                 
                 //populate drop-downs                
                 Utils.BindList(ddlMonLocType, dsRefData, "VALUE", "TEXT");
@@ -117,7 +108,10 @@ namespace OpenEnvironment
                 ddlWellType.SelectedValue, null, null, null, null, "U", null, chkActInd.Checked, chkWQXInd.Checked, User.Identity.Name);
 
             if (SuccID > 0)
-                Response.Redirect("~/App_Pages/Secure/WQXMonLoc.aspx");
+            {
+                Response.Redirect("~/App_Pages/Secure/WQXMonLoc.aspx", false);
+                Context.ApplicationInstance.CompleteRequest();
+            }
             else
                 lblMsg.Text = "Error updating record.";
 
@@ -125,7 +119,8 @@ namespace OpenEnvironment
 
         protected void btnCancel_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/App_Pages/Secure/WQXMonLoc.aspx");
+            Response.Redirect("~/App_Pages/Secure/WQXMonLoc.aspx", false);
+            Context.ApplicationInstance.CompleteRequest();
         }
     }
 }

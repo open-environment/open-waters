@@ -4852,7 +4852,7 @@ FROM [dbo].[V_WQX_TRANSACTION_LOG] AS [V_WQX_TRANSACTION_LOG]</DefiningQuery>
     </Options>
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
-      <Diagram Name="db_model" ZoomLevel="53">
+      <Diagram Name="db_model" ZoomLevel="102">
         <EntityTypeShape EntityType="OpenEnvironmentModel.T_OE_APP_SETTINGS" Width="1.5" PointX="0.75" PointY="0.75" Height="2.3648893229166674" />
         <EntityTypeShape EntityType="OpenEnvironmentModel.T_OE_APP_TASKS" Width="1.5" PointX="0.75" PointY="4.75" Height="2.3648893229166674" />
         <EntityTypeShape EntityType="OpenEnvironmentModel.T_OE_ROLES" Width="1.5" PointX="3.75" PointY="3.125" Height="2.5571907552083388" />

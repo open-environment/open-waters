@@ -14,15 +14,8 @@ namespace OpenEnvironment
         protected void Page_Load(object sender, EventArgs e)
         {
             //return to mon loc listing if none in session
-            if (Session["ProjectIDX"] == null)
+            if (Session["ProjectIDX"] == null || Session["OrgID"] == null)
                 Response.Redirect("~/App_Pages/Secure/WQXProject.aspx");
-
-            if (Session["OrgID"] == null)
-            {
-                lblMsg.Text = "Please select or create an organization first.";
-                btnSave.Visible = false;
-                return;
-            }
 
             if (!IsPostBack)
             {

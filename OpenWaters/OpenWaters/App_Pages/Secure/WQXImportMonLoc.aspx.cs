@@ -14,7 +14,7 @@ namespace OpenEnvironment
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["OrgID"] == null)
-                Response.Redirect("~");
+                db_Accounts.SetOrgSessionID(User.Identity.Name, HttpContext.Current.Request.Url.LocalPath);
 
             if ((Request.QueryString["e"] ?? "") == "1")
                 chkWQXImport.Visible = false;
@@ -82,7 +82,8 @@ namespace OpenEnvironment
             int SuccID = db_WQX.DeleteT_WQX_IMPORT_TEMP_MONLOC(User.Identity.Name);
 
             //then redirect
-            Response.Redirect("~/App_Pages/Secure/WQXImport.aspx");
+            Response.Redirect("~/App_Pages/Secure/WQXImport.aspx", false);
+            Context.ApplicationInstance.CompleteRequest();
         }
 
         protected Boolean VerifyCheck(object r)
@@ -110,7 +111,8 @@ namespace OpenEnvironment
 
         protected void btnMonLoc_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/App_Pages/Secure/WQXMonLoc.aspx");
+            Response.Redirect("~/App_Pages/Secure/WQXMonLoc.aspx", false);
+            Context.ApplicationInstance.CompleteRequest();
         }
     }
 }

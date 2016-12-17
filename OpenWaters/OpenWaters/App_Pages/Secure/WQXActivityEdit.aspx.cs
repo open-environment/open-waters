@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -11,7 +10,7 @@ namespace OpenEnvironment
 {
     public partial class WQXActivityEdit : System.Web.UI.Page
     {
-        protected override void Render(System.Web.UI.HtmlTextWriter writer)
+        protected override void Render(HtmlTextWriter writer)
         {
             foreach (GridViewRow row in grdResults.Rows)
             {

@@ -18,19 +18,15 @@ namespace OpenEnvironment
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["OrgID"] == null)
+                db_Accounts.SetOrgSessionID(User.Identity.Name, HttpContext.Current.Request.Url.LocalPath);
+
             if (!IsPostBack)
             {
                 //display left menu as selected
                 ContentPlaceHolder cp = this.Master.Master.FindControl("MainContent") as ContentPlaceHolder;
                 HyperLink hl = (HyperLink)cp.FindControl("lnkProjectList");
                 if (hl != null) hl.CssClass = "leftMnuBody sel";
-            }
-
-            if (Session["OrgID"] == null)
-            {
-                lblMsg.Text = "Please select or join an organization first.";
-                btnAdd.Visible = false;
-                return;
             }
 
             if (!IsPostBack)

@@ -1,19 +1,7 @@
 <%@ Page Language="C#" MasterPageFile="~/MasterWQX.master" AutoEventWireup="true" CodeBehind="AssessEdit.aspx.cs" Inherits="OpenEnvironment.App_Pages.Secure.AssessEdit" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="BodyContent" runat="server">
     <script src="../../Scripts/jquery-1.10.2.min.js" type="text/javascript"></script>
-    <script type="text/javascript">
-        //handles css for tab clicking
-        $(document).ready(function () {
-            $(".tabs-menu a").click(function (event) {
-                event.preventDefault();
-                $(this).parent().addClass("current");
-                $(this).parent().siblings().removeClass("current");
-                var tab = $(this).attr("href");
-                $(".tab-content").not(tab).css("display", "none");
-                $(tab).fadeIn();
-            });
-        });
-    </script>
+    <script src="../../Scripts/openenvi.tabs.js" type="text/javascript"></script>
     <script type="text/javascript">
         function GetConfirmation() {
             var reply = confirm("WARNING: This will delete the assessment report - are you sure you want to continue?");

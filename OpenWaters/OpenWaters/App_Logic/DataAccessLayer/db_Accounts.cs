@@ -198,6 +198,32 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             }
         }
 
+        public static void SetOrgSessionID(string UserID, string url)
+        {
+            T_OE_USERS u = GetT_OE_USERSByID(UserID);
+            if (u != null)
+            {
+                if (u.DEFAULT_ORG_ID == null)
+                {
+                    List<T_WQX_ORGANIZATION> os = db_WQX.GetWQX_USER_ORGS_ByUserIDX(u.USER_IDX, false);
+                    //if user only belongs to 1 org, update the default org id
+                    if (os.Count == 1)
+                    {
+                        UpdateT_OE_USERSDefaultOrg(u.USER_IDX, os[0].ORG_ID);
+                        HttpContext.Current.Session["OrgID"] = os[0].ORG_ID;
+                    }
+                    else if (os.Count > 1)
+                        HttpContext.Current.Response.Redirect("~/App_Pages/Secure/SetOrg.aspx?ReturnUrl=" + url);
+                    else if (os.Count == 0)
+                        HttpContext.Current.Response.Redirect("~/App_Pages/Secure/WQXOrgNew.aspx");
+
+                }
+                else
+                    HttpContext.Current.Session["OrgID"] = u.DEFAULT_ORG_ID;
+
+            }
+        }
+
         //*****************ROLES **********************************
         public static int CreateT_OE_ROLES(global::System.String rOLE_NAME, global::System.String rOLE_DESC, global::System.String cREATE_USER = "system")
         {

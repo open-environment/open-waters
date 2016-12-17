@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -43,6 +42,7 @@ namespace OpenEnvironment
                     if (os.Count == 1)
                     {
                         db_Accounts.UpdateT_OE_USERSDefaultOrg(u.USER_IDX, os[0].ORG_ID);
+                        Session["OrgID"] = os[0].ORG_ID; //added 1/6/2014
                     }
                 }
 
@@ -82,7 +82,6 @@ namespace OpenEnvironment
                     Session["SAMP_COLL_EQUIP"] = false;
                     Session["SAMP_PREP"] = false;
                     Session["SAMP_DEPTH"] = false;
-
                 }
             }
             else
@@ -93,8 +92,6 @@ namespace OpenEnvironment
         {
             //There was a problem logging in the user 
         }
-
-
 
     }
 }

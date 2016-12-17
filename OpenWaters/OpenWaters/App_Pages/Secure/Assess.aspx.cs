@@ -12,23 +12,16 @@ namespace OpenEnvironment.App_Pages.Secure
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["OrgID"] == null)
+                db_Accounts.SetOrgSessionID(User.Identity.Name, HttpContext.Current.Request.Url.LocalPath);
+
             if (!IsPostBack)
             {
                 //display left menu as selected
                 ContentPlaceHolder cp = this.Master.Master.FindControl("MainContent") as ContentPlaceHolder;
                 HyperLink hl = (HyperLink)cp.FindControl("lnkAssess");
                 if (hl != null) hl.CssClass = "leftMnuBody sel";
-            }
 
-            if (Session["OrgID"] == null)
-            {
-                lblMsg.Text = "Please select or join an organization first.";
-                btnAdd.Visible = false;
-                return;
-            }
-
-            if (!IsPostBack)
-            {
                 grdAssessmentReports.DataSource = db_Attains.GetT_ATTAINS_REPORT_byORG_ID(Session["OrgID"].ToString());
                 grdAssessmentReports.DataBind();
             }
@@ -38,18 +31,14 @@ namespace OpenEnvironment.App_Pages.Secure
         {
             if (e.CommandName == "Edits")
             {
-                Session.Add("AssessRptIDX", e.CommandArgument.ToString());
-                Response.Redirect("~/App_Pages/Secure/AssessEdit.aspx");
+                AssessEdit(e.CommandArgument.ToString());
             }
-
         }
 
         public static string GetImage(string value)
         {
             if (value == "U")
                 return "~/App_Images/progress.gif";
-            else if (value == "N")
-                return "~/App_Images/ico_alert.png";
             else if (value == "Y")
                 return "~/App_Images/ico_pass.png";
             else
@@ -58,8 +47,14 @@ namespace OpenEnvironment.App_Pages.Secure
 
         protected void btnAdd_Click(object sender, EventArgs e)
         {
+            AssessEdit("-1");
+        }
+
+        private void AssessEdit(string RptIDX)
+        {
             Session.Add("AssessRptIDX", -1);
-            Response.Redirect("~/App_Pages/Secure/AssessEdit.aspx");
+            Response.Redirect("~/App_Pages/Secure/AssessEdit.aspx", false);
+            Context.ApplicationInstance.CompleteRequest();
         }
     }
 }

@@ -14,7 +14,7 @@ namespace OpenEnvironment.App_Pages.Secure
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["OrgID"] == null)
-                Response.Redirect("~/App_Pages/Secure/AssessEdit.aspx");
+                db_Accounts.SetOrgSessionID(User.Identity.Name, HttpContext.Current.Request.Url.LocalPath);
 
             if (!IsPostBack)
             {

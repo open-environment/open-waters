@@ -14,7 +14,7 @@ namespace OpenEnvironment
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["OrgID"] == null)
-                Response.Redirect("~");
+                db_Accounts.SetOrgSessionID(User.Identity.Name, HttpContext.Current.Request.Url.LocalPath);
 
             if ((Request.QueryString["e"] ?? "") == "1")
                 chkWQXImport.Visible = false;

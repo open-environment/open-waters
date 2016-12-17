@@ -10,7 +10,7 @@
         }
     </script>
     <h1>
-        Bulk Import Data
+        Bulk Import Data (Classic)
     </h1>
 
     <div id="openModal" class="modalDialog" style="display:none">

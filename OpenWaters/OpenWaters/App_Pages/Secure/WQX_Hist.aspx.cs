@@ -70,7 +70,6 @@ namespace OpenEnvironment
 
                             XPathDocument myXPathDoc = new XPathDocument(Server.MapPath("~/tmp/ProcessingReport.xml"));
                             XslCompiledTransform myXslTrans = new XslCompiledTransform();
-                            //myXslTrans.Load("http://www.epa.gov/storet/download/validation.xsl");
                             myXslTrans.Load(Server.MapPath("~/App_Docs/validation.xsl"));
                             using (XmlTextWriter myWriter = new XmlTextWriter(Server.MapPath("~/tmp/result.html"), null))
                             {

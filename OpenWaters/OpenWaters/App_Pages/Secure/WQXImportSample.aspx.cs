@@ -14,7 +14,7 @@ namespace OpenEnvironment
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["OrgID"] == null)
-                Response.Redirect("~");
+                db_Accounts.SetOrgSessionID(User.Identity.Name, HttpContext.Current.Request.Url.LocalPath);
 
             if (!IsPostBack)
             {
@@ -40,8 +40,6 @@ namespace OpenEnvironment
 
         protected void btnImport_Click(object sender, EventArgs e)
         {
-            string OrgID = "";
-
             db_WQX.SP_ImportActivityFromTemp(User.Identity.Name, chkWQXImport.Checked == true ? "Y" : "N", (ddlActivityReplaceType != null ? ddlActivityReplaceType.SelectedValue : "R"));
 
             pnlFilter.Visible = false;
@@ -53,7 +51,6 @@ namespace OpenEnvironment
             db_Ref.UpdateWQX_IMPORT_LOG_MarkPendingSampImportAsComplete(Session["OrgID"].ToString());
 
             lblMsg.Text = "All selected data has been imported.";
-
         }
 
         protected void btnCancel_Click(object sender, EventArgs e)
@@ -91,7 +88,8 @@ namespace OpenEnvironment
 
         protected void btnSample_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/App_Pages/Secure/WQXActivity.aspx");
+            Response.Redirect("~/App_Pages/Secure/WQXActivity.aspx", false);
+            Context.ApplicationInstance.CompleteRequest();
         }
 
         protected void grdImport_PageIndexChanging(object sender, GridViewPageEventArgs e)
@@ -99,7 +97,6 @@ namespace OpenEnvironment
             grdImport.PageIndex = e.NewPageIndex;
             PopulateGrid();
         }
-
 
     }
 }

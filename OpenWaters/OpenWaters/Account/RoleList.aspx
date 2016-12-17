@@ -9,7 +9,7 @@
         Manage Roles
     </h2>
 	<div class="divHelp">	
-		This page lists all application securty roles. Security Roles define a set of security privileges within the system.
+		This page lists all application security roles. Security Roles define a set of security privileges within the system.
 	</div>
     <asp:GridView ID="grdRoles" runat="server" CssClass="grd" PagerStyle-CssClass="pgr"  AlternatingRowStyle-CssClass="alt"  
         AllowSorting="True" DataSourceID="dsRoles" AutoGenerateColumns="False" onrowcommand="grdRoles_RowCommand" >

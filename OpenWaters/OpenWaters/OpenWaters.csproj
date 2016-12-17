@@ -103,12 +103,15 @@
     <Content Include="App_Data\DatabasePatch_v1.5.sql" />
     <Content Include="App_Data\DatabasePatch_v1.6.2.sql" />
     <Content Include="App_Data\DatabasePatch_v1.6.sql" />
+    <Content Include="App_Pages\Secure\WQXOrgData.aspx" />
+    <Content Include="App_Pages\Secure\SetOrg.aspx" />
     <None Include="App_Data\SeminoleData.sql" />
     <Content Include="App_Data\DatabasePatch_v1.8.sql" />
     <Content Include="App_Data\DatabasePatch_v1.7.sql" />
     <Content Include="App_Data\DatabasePatch_v1.9.sql" />
     <Content Include="App_Docs\ImportColumnsConfig.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
     </Content>
     <Content Include="App_Docs\validation.xsl" />
     <Content Include="App_Images\loading.gif" />
@@ -129,7 +132,6 @@
     <Content Include="App_Pages\Secure\Assess_Priority.aspx" />
     <Content Include="App_Pages\Secure\Assess_Unit.aspx" />
     <Content Include="App_Pages\Secure\WQXImport.aspx" />
-    <Content Include="App_Pages\Secure\WQXImportDefaults.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="PubMap.aspx" />
     <Content Include="App_Pages\Secure\Charting.aspx" />
@@ -175,11 +177,14 @@
     <Content Include="App_Pages\Secure\RefData.aspx" />
     <Content Include="App_Pages\Secure\WQXActivityEdit.aspx" />
     <Content Include="App_Pages\Secure\WQXImportOld.aspx" />
+    <Content Include="Scripts\Chart.js" />
+    <Content Include="Scripts\Chart.min.js" />
     <Content Include="Scripts\chosen-sprite.png" />
     <Content Include="Scripts\chosen.css" />
     <Content Include="Scripts\chosen.jquery.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <Content Include="Scripts\list.min.js" />
+    <Content Include="Scripts\openenvi.tabs.js" />
     <Content Include="Styles\Site.css" />
     <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
@@ -301,13 +306,6 @@
     </Compile>
     <Compile Include="App_Pages\Secure\WQXImport.aspx.designer.cs">
       <DependentUpon>WQXImport.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="App_Pages\Secure\WQXImportDefaults.aspx.cs">
-      <DependentUpon>WQXImportDefaults.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="App_Pages\Secure\WQXImportDefaults.aspx.designer.cs">
-      <DependentUpon>WQXImportDefaults.aspx</DependentUpon>
     </Compile>
     <Compile Include="PubMap.aspx.cs">
       <DependentUpon>PubMap.aspx</DependentUpon>
@@ -635,6 +633,20 @@
     <Compile Include="App_Pages\Secure\Help.aspx.designer.cs">
       <DependentUpon>Help.aspx</DependentUpon>
     </Compile>
+    <Compile Include="App_Pages\Secure\WQXOrgData.aspx.cs">
+      <DependentUpon>WQXOrgData.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Pages\Secure\WQXOrgData.aspx.designer.cs">
+      <DependentUpon>WQXOrgData.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Pages\Secure\SetOrg.aspx.cs">
+      <DependentUpon>SetOrg.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Pages\Secure\SetOrg.aspx.designer.cs">
+      <DependentUpon>SetOrg.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Site.Master" />
@@ -724,7 +736,7 @@
     </WebReferenceUrl>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Logs\" />
+    <Folder Include="App_Pages\Secure\Logs\" />
     <Folder Include="tmp\" />
   </ItemGroup>
   <PropertyGroup>

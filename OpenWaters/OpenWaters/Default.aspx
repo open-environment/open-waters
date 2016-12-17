@@ -10,9 +10,8 @@
             </div>
         </div>
         <div style="padding: 10px 10px;">
-                    <asp:Label ID="lblTestWarn" runat="server" CssClass="fldErrLg" Text="" Visible="false" Style="margin-top:20px"></asp:Label>
-
-                <asp:Login ID="LoginUser" runat="server" EnableViewState="false" RenderOuterTable="true" OnLoggedIn="LoginUser_LoggedIn" OnLoginError="LoginUser_LoginError">
+            <asp:Label ID="lblTestWarn" runat="server" CssClass="fldErrLg" Text="" Visible="false" Style="margin-top:20px"></asp:Label>
+            <asp:Login ID="LoginUser" runat="server" EnableViewState="false" RenderOuterTable="true" OnLoggedIn="LoginUser_LoggedIn" OnLoginError="LoginUser_LoginError">
                 <LayoutTemplate>
                     <span class="failureNotification">
                         <asp:Literal ID="FailureText" runat="server"></asp:Literal>
@@ -36,7 +35,6 @@
                     &nbsp;&nbsp;<asp:HyperLink ID="lblPwd" runat="server" NavigateUrl="~/Account/ResetPassword.aspx" Text="(Forgot password)"></asp:HyperLink>
                 </LayoutTemplate>
             </asp:Login>
-
         </div>
     </div>
 </asp:Content>

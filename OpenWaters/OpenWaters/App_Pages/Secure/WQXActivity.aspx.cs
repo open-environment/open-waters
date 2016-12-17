@@ -46,15 +46,11 @@ namespace OpenEnvironment
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["OrgID"] == null)
+                db_Accounts.SetOrgSessionID(User.Identity.Name, HttpContext.Current.Request.Url.LocalPath);
+
             if (!IsPostBack)
             {
-                if (Session["OrgID"] == null)
-                {
-                    lblMsg.Text = "Please select or create an organization first.";
-                    btnAdd.Visible = false;
-                    return;
-                }
-
                 grdActivity.Columns[8].Visible = (Session["SAMP_ACT_END_DT"].ConvertOrDefault<Boolean>());
                 grdActivity.Columns[9].Visible = (Session["SAMP_COLL_METHOD"].ConvertOrDefault<Boolean>());
                 grdActivity.Columns[10].Visible = (Session["SAMP_COLL_EQUIP"].ConvertOrDefault<Boolean>());
@@ -74,7 +70,6 @@ namespace OpenEnvironment
                 //ONLY ALLOW EDIT FOR AUTHORIZED USERS OF ORG
                 bool CanEditOrg = db_WQX.CanUserEditOrg(Session["UserIDX"].ConvertOrDefault<int>(), Session["OrgID"].ToString());
                 btnAdd.Visible = CanEditOrg;
-
             }
 
         }

@@ -74,7 +74,7 @@
                             <br />
                         </div>
                     </div>
-
+                    <asp:Button ID="btn1" runat="server" Text="del" OnClick="btn1_Click" />
                     <asp:Panel ID="pnlAdminTasks" runat="server" CssClass="brdr-green" style="min-width:350px" Visible="false">
                         <div class="ie9roundedgradient"><div class="rndPnlTop-green">Admin Tasks</div></div>
                         <div class="indent">

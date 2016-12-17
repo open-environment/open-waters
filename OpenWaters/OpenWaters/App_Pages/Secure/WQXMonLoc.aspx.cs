@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using OpenEnvironment.App_Logic.DataAccessLayer;
@@ -15,23 +16,16 @@ namespace OpenEnvironment
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["OrgID"] == null)
+                db_Accounts.SetOrgSessionID(User.Identity.Name, HttpContext.Current.Request.Url.LocalPath);
+
             if (!IsPostBack)
             {
                 //display left menu as selected
                 ContentPlaceHolder cp = this.Master.Master.FindControl("MainContent") as ContentPlaceHolder;
                 HyperLink hl = (HyperLink)cp.FindControl("lnkMonLocList");
                 if (hl != null) hl.CssClass = "leftMnuBody sel";
-            }
 
-            if (Session["OrgID"] == null)
-            {
-                lblMsg.Text = "Please select or join an organization first.";
-                btnAdd.Visible = false;
-                return;
-            }
-
-            if (!IsPostBack)
-            {
                 grdMonLoc.Columns[5].Visible = (Session["MLOC_HUC_EIGHT"].ConvertOrDefault<Boolean>());
                 grdMonLoc.Columns[6].Visible = (Session["MLOC_HUC_TWELVE"].ConvertOrDefault<Boolean>());
                 grdMonLoc.Columns[7].Visible = (Session["MLOC_TRIBAL_LAND"].ConvertOrDefault<Boolean>());
@@ -166,21 +160,13 @@ namespace OpenEnvironment
                     return "~/App_Images/ico_alert.png";
             }
             else
-            {
                 return "~/App_Images/0.png";
-            }
         }
 
         protected void Timer1_Tick(object sender, EventArgs e)
         {
             //disable if no pending WQX records
-            try
-            {
-                Timer1.Enabled = db_WQX.GetT_WQX_MONLOC_PendingInd(Session["OrgID"].ToString());
-            }
-            catch
-            {
-            }
+            Timer1.Enabled = db_WQX.GetT_WQX_MONLOC_PendingInd((Session["OrgID"] ?? "").ToString());
         }
 
         protected void btnAdd_Click(object sender, EventArgs e)

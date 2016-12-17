@@ -19,10 +19,6 @@
             <asp:SessionParameter DefaultValue="" Name="OrgID" SessionField="OrgID" Type="String" />
         </SelectParameters>
     </asp:ObjectDataSource>
-    <div style="float:right"> 
-        <asp:Button ID="btnClassic" runat="server" Text="Return to Classic Import" CssClass="btn" style="" OnClick="btnClassic_Click" />
-    </div>
-
     <h1>
         Bulk Import Data
     </h1>

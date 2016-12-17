@@ -31,15 +31,6 @@ namespace OpenEnvironment.App_Pages.Secure {
         protected global::System.Web.UI.WebControls.ObjectDataSource dsTemplate;
         
         /// <summary>
-        /// btnClassic control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnClassic;
-        
-        /// <summary>
         /// lblMsg control.
         /// </summary>
         /// <remarks>

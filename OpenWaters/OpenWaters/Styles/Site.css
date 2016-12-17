@@ -17,6 +17,7 @@ a:active { color: #006600; text-decoration: none;}
 .fldErrLg { color:#003d7e; font:12pt Tahoma; vertical-align:middle; margin:1px 0; padding:2px; background:#fdd repeat-x top; border:1px solid #f00; }
 .fldErr { color:#003d7e; font:10pt Tahoma; vertical-align:middle; margin:1px 0; padding:2px; background:#fdd repeat-x top; border:1px solid #f00; }
 .fldPass { color:#045c00; font:10pt Tahoma; vertical-align:middle; margin:1px 0; padding:2px; background:#baeeb8 repeat-x top; border:1px solid #045c00; }
+.divHelp { border: 1px dashed #045c00; color:#045c00; margin: 8px 0px 8px 0px; padding: 8px 8px; font: 10pt Tahoma; background: #baeeb8; border-radius: 3px;}
 .bold { font-weight: bold; }
 .indent { clear:both; padding:2px 12px;}
 .right { float: right; }
@@ -86,9 +87,6 @@ legend  { font-size: 1.1em; font-weight: 600; padding: 2px 4px 8px 4px; }
     .grd .pgr a:hover { color: #000; text-decoration: none; }
 .grdCtrl {color: #696969; font-size: 0.9em; }  
 
-/*  STYLED DIVS
-----------------------------------------------------------*/
-.divHelp { border: 1px dotted #999999; margin: 8px 0px 8px 0px; padding: 8px 8px; font: 8pt Tahoma; font-style:italic; background: #CCCCCC; border-radius: 5px;}
 
 /* ROUNDED PANEL
 ----------------------------------------------------------*/

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Web;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.UI.WebControls;
@@ -143,6 +144,10 @@ namespace OpenEnvironment
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["OrgID"] == null)
+                db_Accounts.SetOrgSessionID(User.Identity.Name, HttpContext.Current.Request.Url.LocalPath);
+
+
             //display left menu as selected
             if (!IsPostBack)
             {
@@ -150,18 +155,6 @@ namespace OpenEnvironment
                 HyperLink hl = (HyperLink)cp.FindControl("lnkImport");
                 if (hl != null) hl.CssClass = "leftMnuBody sel";
 
-            }
-
-            if (Session["OrgID"] == null)
-            {
-                lblMsg.Text = "Please select or create an organization first.";
-                btnParse.Visible = false;
-                return;
-            }
-
-
-            if (!IsPostBack)
-            {
                 //redirect to sample page if any are in progress
                 if (db_WQX.GetWQX_IMPORT_TEMP_SAMPLE_CountByUserID(User.Identity.Name) > 0)
                     Response.Redirect("~/App_Pages/Secure/WQXImportSample.aspx");

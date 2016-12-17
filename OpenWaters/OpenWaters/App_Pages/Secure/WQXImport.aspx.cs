@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Web;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.UI.WebControls;
@@ -11,13 +12,11 @@ namespace OpenEnvironment.App_Pages.Secure
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            //display left menu as selected
+            if (Session["OrgID"] == null)
+                db_Accounts.SetOrgSessionID(User.Identity.Name, HttpContext.Current.Request.Url.LocalPath);
+
             if (!IsPostBack)
             {
-                ContentPlaceHolder cp = this.Master.Master.FindControl("MainContent") as ContentPlaceHolder;
-                HyperLink hl = (HyperLink)cp.FindControl("lnkImport");
-                if (hl != null) hl.CssClass = "leftMnuBody sel";
-
                 //redirect to sample page if any are in progress
                 if (db_WQX.GetWQX_IMPORT_TEMP_SAMPLE_CountByUserID(User.Identity.Name) > 0)
                     Response.Redirect("~/App_Pages/Secure/WQXImportSample.aspx");
@@ -25,6 +24,11 @@ namespace OpenEnvironment.App_Pages.Secure
                 //redirect to sample page if any are in progress
                 if (db_WQX.GetWQX_IMPORT_TEMP_MONLOC_CountByUserID(User.Identity.Name) > 0)
                     Response.Redirect("~/App_Pages/Secure/WQXImportMonLoc.aspx");
+
+                //display left menu as selected
+                ContentPlaceHolder cp = this.Master.Master.FindControl("MainContent") as ContentPlaceHolder;
+                HyperLink hl = (HyperLink)cp.FindControl("lnkImport");
+                if (hl != null) hl.CssClass = "leftMnuBody sel";
 
                 Utils.BindList(ddlTemplate, dsTemplate, "TEMPLATE_ID", "TEMPLATE_NAME");
             }
@@ -54,17 +58,14 @@ namespace OpenEnvironment.App_Pages.Secure
 
         protected void btnDefaults_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/App_Pages/Secure/WQXImportDefaults.aspx");
+            Response.Redirect("~/App_Pages/Secure/WQXOrgData.aspx", false);
+            Context.ApplicationInstance.CompleteRequest();
         }
 
         protected void btnNewTemplate_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/App_Pages/Secure/WQXImportConfigNew.aspx");
-        }
-
-        protected void btnClassic_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("~/App_Pages/Secure/WQXImport.aspx");
+            Response.Redirect("~/App_Pages/Secure/WQXImportConfig.aspx", false);
+            Context.ApplicationInstance.CompleteRequest();
         }
 
         //generic parse of monitoring locations, regular activities/results, cross-tab and metric indices
@@ -137,11 +138,17 @@ namespace OpenEnvironment.App_Pages.Secure
                         {
                             int? ProjectID = ddlProject.SelectedValue.ConvertOrDefault<int?>();
                             string ProjectName = ddlProject.SelectedItem == null ? "" : ddlProject.SelectedItem.Text;
-                            db_WQX.InsertUpdateWQX_IMPORT_TEMP_SAMPLE_New(User.Identity.Name, OrgID, ProjectID, ProjectName, fieldValuesDict, true);
+                            int _s = db_WQX.InsertUpdateWQX_IMPORT_TEMP_SAMPLE_New(User.Identity.Name, OrgID, ProjectID, ProjectName, fieldValuesDict);
+                            if (_s > 0)
+                            {
+                                int _r = db_WQX.InsertWQX_IMPORT_TEMP_RESULT_New(_s, fieldValuesDict, OrgID);
+
+                                if (_r == 0)
+                                    db_WQX.InsertOrUpdateWQX_IMPORT_TEMP_SAMPLE_Status(_s, "F", "Unable to validate result [" + Utils.GetValueOrDefault(fieldValuesDict, "CHAR_NAME") + "]. Contact admin.");
+                            }
                         }
                     }
                 }
-
             } //end each row
 
             if (!headInd)

@@ -83,11 +83,13 @@
         </ContentTemplate>
     </asp:UpdatePanel>
     <div class="btnRibbon">
-        <asp:Button ID="btnAdd" runat="server" CssClass="btn" Text="Add New" onclick="btnAdd_Click" />
+        <asp:Button ID="btnAdd" runat="server" CssClass="btn" Text="Add New" onclick="btnAdd_Click" Enabled="False" />
         <asp:ImageButton ID="btnExcel" runat="server" Height="24px" style="float:right;" ImageUrl="~/App_Images/ico_xls.png" onclick="btnExcel_Click" />
         <asp:ImageButton ID="btnConfig" runat="server" Height="24px"  style="float:right; padding-right:5px; padding-left:5px" ImageUrl="~/App_Images/ico_config.png" />
     </div>
     <br />
+
+
     <!-- ******************** MODAL PANEL -->
     <asp:Panel ID="pnlModal" Width="500px" runat="server" CssClass="modalWindow" Style="display: none;">
         <div style="padding: 6px; background-color: #FFF; border: 1px solid #98B9DB;">
