@@ -1421,7 +1421,7 @@ GO
 CREATE PROCEDURE WQXAnalysis
 @TypeText varchar(10),
 @OrgID varchar(20),
-@MonLocID varchar(20),
+@MonLocIDX int,
 @CharName varchar(200),
 @StartDt datetime,
 @EndDt datetime,
@@ -1432,25 +1432,25 @@ BEGIN
 	DESCRIPTION: RETURNS DATA FOR CHARTING
 	CHANGE LOG: 6/29/2012 DOUG TIMMS, OPEN-ENVIRONMENT.ORG
 	4/23/2015 properly add Org filter
+	12/19/2016 add monloc chart
 	*/
 	SET NOCOUNT ON;
 
+	--TIME SERIES, could contain multiple monitoring locations
 	if @TypeText='SERIES' 
 		BEGIN
-			select case when min(M.MONLOC_NAME)<>MAX(M.MONLOC_NAME) then 'Multiple' else min(M.MONLOC_NAME) end as MONLOC_NAME, 
+			select case when min(M.MONLOC_IDX)<>MAX(M.MONLOC_IDX) then 0 else min(M.MONLOC_IDX) end as MONLOC_IDX, 
+				case when min(M.MONLOC_ID)<>MAX(M.MONLOC_ID) then 'Multiple' else min(M.MONLOC_ID) end as MONLOC_ID, 
 				MIN(R.CHAR_NAME) as CHAR_NAME,
-				dateadd(dd, datediff(dd, 0, a.ACT_START_DT)+0, 0) as START_DT, 
+				dateadd(dd, datediff(dd, 0, a.ACT_START_DT)+0, 0) as ACT_START_DT, 
 				avg(
-
-case when ISNUMERIC(RESULT_MSR)=1 then cast(RESULT_MSR as DECIMAL(10,4))
-when ISNUMERIC( DETECTION_LIMIT)=1 then cast(DETECTION_LIMIT as DECIMAL(10,4))
-when ISNUMERIC(LAB_REPORTING_LEVEL)=1 then cast(LAB_REPORTING_LEVEL as DECIMAL(10,4))
-when ISNUMERIC(PQL)=1 then cast (PQL as DECIMAL(10,4))
-when ISNUMERIC(LOWER_QUANT_LIMIT)=1 then cast (LOWER_QUANT_LIMIT as DECIMAL(10,4))
-when ISNUMERIC(UPPER_QUANT_LIMIT)=1 then cast (UPPER_QUANT_LIMIT as DECIMAL(10,4))
-else CAST(0 as DECIMAL(10,4)) end 
-
-
+					case when ISNUMERIC(RESULT_MSR)=1 then cast(RESULT_MSR as DECIMAL(12,4))
+					when ISNUMERIC( DETECTION_LIMIT)=1 then cast(DETECTION_LIMIT as DECIMAL(12,4))
+					when ISNUMERIC(LAB_REPORTING_LEVEL)=1 then cast(LAB_REPORTING_LEVEL as DECIMAL(12,4))
+					when ISNUMERIC(PQL)=1 then cast (PQL as DECIMAL(12,4))
+					when ISNUMERIC(LOWER_QUANT_LIMIT)=1 then cast (LOWER_QUANT_LIMIT as DECIMAL(12,4))
+					when ISNUMERIC(UPPER_QUANT_LIMIT)=1 then cast (UPPER_QUANT_LIMIT as DECIMAL(12,4))
+					else CAST(0 as DECIMAL(12,4)) end 
 				) as RESULT_MSR, 
 				min(R.RESULT_MSR_UNIT) as RESULT_MSR_UNIT,
 				min(R.DETECTION_LIMIT) as DETECTION_LIMIT
@@ -1458,15 +1458,46 @@ else CAST(0 as DECIMAL(10,4)) end
 			where A.ACTIVITY_IDX = R.ACTIVITY_IDX
 			and M.MONLOC_IDX = A.MONLOC_IDX
 			and R.CHAR_NAME = @CharName
-			and (A.ORG_ID = @OrgID or @OrgID is null)
+			and A.ACT_TYPE in ('Field Msr/Obs', 'Sample-Routine','Sample-Integrated Cross-Sectional Profile')
+			and (A.ORG_ID = @OrgID)
 			and (A.ACT_START_DT >= @StartDt or @StartDt is null)
 			and (A.ACT_START_DT <= @EndDt or @EndDt is null)
-			and (A.MONLOC_IDX = @MonLocID or @MonLocID = 0)
+			and (A.MONLOC_IDX = @MonLocIDX or @MonLocIDX = 0)
 			and (@DataIncludeInd = 'A' or A.WQX_IND = 1)
 			group by dateadd(dd, datediff(dd, 0, a.ACT_START_DT)+0, 0) 
 			order by dateadd(dd, datediff(dd, 0, a.ACT_START_DT)+0, 0)
 		END
-	
+	--AVERAGE VALUE AT EACH MONITORING LOCATION over a time period
+	else if @TypeText='MLOC'
+		BEGIN
+			select Z.MONLOC_IDX, Z.MONLOC_ID, Z.CHAR_NAME, null as ACT_START_DT, avg(Z.RESULT_CONV) as RESULT_MSR, min(Z.RESULT_MSR_UNIT) as RESULT_MSR_UNIT, min(Z.DETECTION_LIMIT) as DETECTION_LIMIT
+			from
+			(select A.MONLOC_IDX, min(M.MONLOC_ID) as MONLOC_ID, dateadd(dd, datediff(dd, 0, a.ACT_START_DT)+0, 0) as ACT_START_DT,
+			R.CHAR_NAME,
+			avg(
+			case when ISNUMERIC(RESULT_MSR)=1 then cast(RESULT_MSR as DECIMAL(10,4))
+			when ISNUMERIC( DETECTION_LIMIT)=1 then cast(DETECTION_LIMIT as DECIMAL(10,4))
+			when ISNUMERIC(LAB_REPORTING_LEVEL)=1 then cast(LAB_REPORTING_LEVEL as DECIMAL(10,4))
+			when ISNUMERIC(PQL)=1 then cast (PQL as DECIMAL(10,4))
+			when ISNUMERIC(LOWER_QUANT_LIMIT)=1 then cast (LOWER_QUANT_LIMIT as DECIMAL(10,4))
+			when ISNUMERIC(UPPER_QUANT_LIMIT)=1 then cast (UPPER_QUANT_LIMIT as DECIMAL(10,4))
+			else CAST(0 as DECIMAL(10,4)) end ) as RESULT_CONV, 
+			avg(try_convert(decimal(16,4), R.RESULT_MSR)) as RESULT_RAW, 
+			MAX(R.RESULT_MSR_UNIT) as RESULT_MSR_UNIT, 
+			min(R.DETECTION_LIMIT) as DETECTION_LIMIT
+			from T_WQX_ACTIVITY A, T_WQX_RESULT R, T_WQX_MONLOC M
+			where A.ACTIVITY_IDX = R.ACTIVITY_IDX
+			and A.MONLOC_IDX = M.MONLOC_IDX
+			and A.ORG_ID = @OrgID
+			and R.CHAR_NAME = @charName
+			and (A.ACT_START_DT >= @StartDt or @StartDt is null)
+			and (A.ACT_START_DT <= @EndDt or @EndDt is null)
+			and A.ACT_TYPE in ('Field Msr/Obs', 'Sample-Routine','Sample-Integrated Cross-Sectional Profile')
+			group by A.MONLOC_IDX, R.CHAR_NAME, dateadd(dd, datediff(dd, 0, a.ACT_START_DT)+0, 0)
+			) Z
+			group by Z.MONLOC_IDX, Z.MONLOC_ID, Z.CHAR_NAME
+			;
+		END
 END
 
 

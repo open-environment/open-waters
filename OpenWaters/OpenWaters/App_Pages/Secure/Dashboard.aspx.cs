@@ -277,9 +277,5 @@ namespace OpenEnvironment
 
         }
 
-        protected void btn1_Click(object sender, EventArgs e)
-        {
-            Session.Remove("OrgID");
-        }
     }
 }

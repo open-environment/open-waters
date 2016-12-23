@@ -1323,7 +1323,6 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
         }
 
 
-
         // *************************** ORGANIZATION*****************************
         // *********************************************************************
         public static List<T_WQX_ORGANIZATION> GetWQX_ORGANIZATION()
@@ -4533,7 +4532,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 try
                 {
-                    return ctx.WQXAnalysis(TypeText, OrgID, MonLocIDX.ToString(), charName, startDt, endDt, DataIncludeInd).ToList();
+                    return ctx.WQXAnalysis(TypeText, OrgID, MonLocIDX, charName, startDt, endDt, DataIncludeInd).ToList();
                 }
                 catch (Exception ex)
                 {

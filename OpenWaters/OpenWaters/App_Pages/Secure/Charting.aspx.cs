@@ -1,15 +1,80 @@
 ﻿using System;
+using System.Web;
+using System.Collections.Generic;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Web.Services;
 using OpenEnvironment.App_Logic.BusinessLogicLayer;
-
+using OpenEnvironment.App_Logic.DataAccessLayer;
+using System.Web.Script.Services;
+using System.Linq;
+using System.Data;
 
 namespace OpenEnvironment
 {
+    public class selMonLoc
+    {
+        public int? monLocIDX { get; set; }
+        public int seq { get; set; }
+    }
+
+    public class chartData
+    {
+        public string monLocID { get; set; }
+        public string resultVal { get; set; }
+    }
+
     public partial class Charting : System.Web.UI.Page
     {
+        [WebMethod(EnableSession = true)]
+        public static List<object> getChartData(string chartType, string charName, string begDt, string endDt, string monLoc, string decimals)
+        {
+            //TO DO: handle session expire
+            if (System.Web.HttpContext.Current.Session["OrgID"] == null)
+                return null;
+
+            //handle monLocArray
+            List<selMonLoc> _monLocList = new List<selMonLoc>();
+            List<string> monLocList = monLoc.Split(',').ToList();
+            int i = 1;
+            foreach (string m in monLocList)
+            {
+                _monLocList.Add(new selMonLoc { monLocIDX = m.ConvertOrDefault<int?>(), seq = i });
+                i++;
+            }
+
+            List<WQXAnalysis_Result> _ds = db_WQX.SP_WQXAnalysis(chartType, System.Web.HttpContext.Current.Session["OrgID"].ToString(), 0, charName, begDt.ConvertOrDefault<DateTime?>(), endDt.ConvertOrDefault<DateTime?>(), null);
+
+            List<WQXAnalysis_Result> _ds2 = (from a in _ds
+                                             join b in _monLocList on a.MONLOC_IDX equals b.monLocIDX
+                                             orderby b.seq
+                                             select a).ToList();
+
+
+            List<object> iData = new List<object>();
+
+            //populate labels
+            List<string> labels = new List<string>();
+            foreach (WQXAnalysis_Result _d in _ds2)
+                labels.Add(_d.MONLOC_ID);
+            iData.Add(labels);
+
+            //populate points
+            List<decimal> lst_dataItem_1 = new List<decimal>();
+            foreach (WQXAnalysis_Result _d in _ds2)
+                lst_dataItem_1.Add(decimals == "" ? _d.RESULT_MSR.ConvertOrDefault<decimal>() : Math.Round(_d.RESULT_MSR.ConvertOrDefault<decimal>(),2));
+            iData.Add(lst_dataItem_1);
+
+            iData.Add(_ds2);
+
+            return iData;
+        }
+
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["OrgID"] == null)
+                db_Accounts.SetOrgSessionID(User.Identity.Name, HttpContext.Current.Request.Url.LocalPath);
+
             if (!IsPostBack)
             {
                 //display left menu as selected
@@ -20,65 +85,31 @@ namespace OpenEnvironment
                 //populate drop-downs                
                 Utils.BindList(ddlMonLoc, dsMonLoc, "MONLOC_IDX", "MONLOC_NAME");
                 Utils.BindList(ddlCharacteristic, dsChar, "CHAR_NAME", "CHAR_NAME");
-                //Utils.BindList(ddlCharacteristic2, dsChar, "CHAR_NAME", "CHAR_NAME");
+
+                //populate listbox
+                lbMonLoc.DataSource = db_WQX.GetWQX_MONLOC(true, Session["OrgID"].ToString(), false);
+                lbMonLoc.DataValueField = "MONLOC_IDX";
+                lbMonLoc.DataTextField = "MONLOC_ID";
+                lbMonLoc.DataBind();
             }
         }
 
-        protected void btnChart_Click(object sender, EventArgs e)
+        protected void ddlChartType_SelectedIndexChanged(object sender, EventArgs e)
         {
-            DisplayChart();
+            pnlMonLoc.Visible = ddlChartType.SelectedValue == "MLOC";
+            ddlMonLoc.Visible = ddlChartType.SelectedValue == "SERIES";
         }
 
-        protected void DisplayChart()
+        protected void btnAdd_Click(object sender, EventArgs e)
         {
-            //SET CHART AS LINE OR POINT
-            if (ddlLineType.SelectedValue == "POINT")
-                Chart1.Series[0].ChartType = System.Web.UI.DataVisualization.Charting.SeriesChartType.Point;
-            else if (ddlLineType.SelectedValue == "LINE")
-                Chart1.Series[0].ChartType = System.Web.UI.DataVisualization.Charting.SeriesChartType.Line;
-            else
-                Chart1.Series[0].ChartType = System.Web.UI.DataVisualization.Charting.SeriesChartType.Spline;
-
-            if (ddlChartType.SelectedValue == "SERIES")
-            {
-                Chart1.ChartAreas[0].AxisY.ScaleBreakStyle.StartFromZero = System.Web.UI.DataVisualization.Charting.StartFromZero.No;
-                Chart1.DataSource = dsChartTS;
-                Chart1.DataBind();
-                Chart1.ChartAreas[0].AxisY.ScaleBreakStyle.StartFromZero = System.Web.UI.DataVisualization.Charting.StartFromZero.No;
-
-                //second characteristic
-                //System.Web.UI.DataVisualization.Charting.Series s1 = new System.Web.UI.DataVisualization.Charting.Series();
-                //s1.Name = "Series2";
-                //s1.ChartType = Chart1.Series[0].ChartType;
-                //s1.XValueMember = Chart1.Series[0].XValueMember;
-                //s1.XValueType = Chart1.Series[0].XValueType;
-                //s1.MarkerSize = 3;
-                //s1.MarkerStyle = System.Web.UI.DataVisualization.Charting.MarkerStyle.Circle;
-                //s1.YValueMembers = "RESULT_MSR";
-                //Chart1.Series.Add(s1);
-
-                grdResults.DataSource = dsChartTS;
-                grdResults.DataBind();
-            }
-
-            if (grdResults.Rows.Count > 0)
-            {
-                pnlResults.Visible = true;
-                Chart1.ChartAreas[0].AxisY.Title = "Result";
-            }
-
+            if (lbMonLoc.SelectedIndex != -1)
+                lbMonLocSel.Items.Add(new ListItem(lbMonLoc.SelectedItem.Text, lbMonLoc.SelectedItem.Value));
         }
 
-        protected void btnExcel_Click(object sender, ImageClickEventArgs e)
+        protected void btnRemove_Click(object sender, EventArgs e)
         {
-            Utils.RenderGridToExcelFormat("ChartingDataExport.xls", grdResults);
+            if (lbMonLocSel.SelectedIndex != -1)
+                lbMonLocSel.Items.RemoveAt(lbMonLocSel.SelectedIndex);
         }
-
-        protected void ddlLineType_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            DisplayChart();
-        }
-
-
     }
 }

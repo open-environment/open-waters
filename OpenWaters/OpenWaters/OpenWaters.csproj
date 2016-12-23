@@ -182,6 +182,8 @@
     <Content Include="Scripts\chosen-sprite.png" />
     <Content Include="Scripts\chosen.css" />
     <Content Include="Scripts\chosen.jquery.js" />
+    <Content Include="Scripts\datatables.min.css" />
+    <Content Include="Scripts\datatables.min.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <Content Include="Scripts\list.min.js" />
     <Content Include="Scripts\openenvi.tabs.js" />
@@ -509,7 +511,6 @@
     </Compile>
     <Compile Include="App_Pages\Secure\Charting.aspx.cs">
       <DependentUpon>Charting.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="App_Pages\Secure\Charting.aspx.designer.cs">
       <DependentUpon>Charting.aspx</DependentUpon>
@@ -737,6 +738,10 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Pages\Secure\Logs\" />
+    <Folder Include="Scripts\Buttons-1.2.4\" />
+    <Folder Include="Scripts\DataTables-1.10.13\" />
+    <Folder Include="Scripts\JSZip-2.5.0\" />
+    <Folder Include="Scripts\pdfmake-0.1.18\" />
     <Folder Include="tmp\" />
   </ItemGroup>
   <PropertyGroup>

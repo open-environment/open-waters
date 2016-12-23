@@ -1397,91 +1397,6 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        /// <param name="typeText">No Metadata Documentation available.</param>
-        /// <param name="orgID">No Metadata Documentation available.</param>
-        /// <param name="monLocID">No Metadata Documentation available.</param>
-        /// <param name="charName">No Metadata Documentation available.</param>
-        /// <param name="startDt">No Metadata Documentation available.</param>
-        /// <param name="endDt">No Metadata Documentation available.</param>
-        /// <param name="dataIncludeInd">No Metadata Documentation available.</param>
-        public ObjectResult<WQXAnalysis_Result> WQXAnalysis(global::System.String typeText, global::System.String orgID, global::System.String monLocID, global::System.String charName, Nullable<global::System.DateTime> startDt, Nullable<global::System.DateTime> endDt, global::System.String dataIncludeInd)
-        {
-            ObjectParameter typeTextParameter;
-            if (typeText != null)
-            {
-                typeTextParameter = new ObjectParameter("TypeText", typeText);
-            }
-            else
-            {
-                typeTextParameter = new ObjectParameter("TypeText", typeof(global::System.String));
-            }
-    
-            ObjectParameter orgIDParameter;
-            if (orgID != null)
-            {
-                orgIDParameter = new ObjectParameter("OrgID", orgID);
-            }
-            else
-            {
-                orgIDParameter = new ObjectParameter("OrgID", typeof(global::System.String));
-            }
-    
-            ObjectParameter monLocIDParameter;
-            if (monLocID != null)
-            {
-                monLocIDParameter = new ObjectParameter("MonLocID", monLocID);
-            }
-            else
-            {
-                monLocIDParameter = new ObjectParameter("MonLocID", typeof(global::System.String));
-            }
-    
-            ObjectParameter charNameParameter;
-            if (charName != null)
-            {
-                charNameParameter = new ObjectParameter("CharName", charName);
-            }
-            else
-            {
-                charNameParameter = new ObjectParameter("CharName", typeof(global::System.String));
-            }
-    
-            ObjectParameter startDtParameter;
-            if (startDt.HasValue)
-            {
-                startDtParameter = new ObjectParameter("StartDt", startDt);
-            }
-            else
-            {
-                startDtParameter = new ObjectParameter("StartDt", typeof(global::System.DateTime));
-            }
-    
-            ObjectParameter endDtParameter;
-            if (endDt.HasValue)
-            {
-                endDtParameter = new ObjectParameter("EndDt", endDt);
-            }
-            else
-            {
-                endDtParameter = new ObjectParameter("EndDt", typeof(global::System.DateTime));
-            }
-    
-            ObjectParameter dataIncludeIndParameter;
-            if (dataIncludeInd != null)
-            {
-                dataIncludeIndParameter = new ObjectParameter("DataIncludeInd", dataIncludeInd);
-            }
-            else
-            {
-                dataIncludeIndParameter = new ObjectParameter("DataIncludeInd", typeof(global::System.String));
-            }
-    
-            return base.ExecuteFunction<WQXAnalysis_Result>("WQXAnalysis", typeTextParameter, orgIDParameter, monLocIDParameter, charNameParameter, startDtParameter, endDtParameter, dataIncludeIndParameter);
-        }
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
         /// <param name="userID">No Metadata Documentation available.</param>
         /// <param name="wQXInd">No Metadata Documentation available.</param>
         /// <param name="activityReplaceInd">No Metadata Documentation available.</param>
@@ -1537,6 +1452,91 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             }
     
             return base.ExecuteFunction<global::System.String>("GenATTAINSXML", reportIDXParameter);
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        /// <param name="typeText">No Metadata Documentation available.</param>
+        /// <param name="orgID">No Metadata Documentation available.</param>
+        /// <param name="monLocIDX">No Metadata Documentation available.</param>
+        /// <param name="charName">No Metadata Documentation available.</param>
+        /// <param name="startDt">No Metadata Documentation available.</param>
+        /// <param name="endDt">No Metadata Documentation available.</param>
+        /// <param name="dataIncludeInd">No Metadata Documentation available.</param>
+        public ObjectResult<WQXAnalysis_Result> WQXAnalysis(global::System.String typeText, global::System.String orgID, Nullable<global::System.Int32> monLocIDX, global::System.String charName, Nullable<global::System.DateTime> startDt, Nullable<global::System.DateTime> endDt, global::System.String dataIncludeInd)
+        {
+            ObjectParameter typeTextParameter;
+            if (typeText != null)
+            {
+                typeTextParameter = new ObjectParameter("TypeText", typeText);
+            }
+            else
+            {
+                typeTextParameter = new ObjectParameter("TypeText", typeof(global::System.String));
+            }
+    
+            ObjectParameter orgIDParameter;
+            if (orgID != null)
+            {
+                orgIDParameter = new ObjectParameter("OrgID", orgID);
+            }
+            else
+            {
+                orgIDParameter = new ObjectParameter("OrgID", typeof(global::System.String));
+            }
+    
+            ObjectParameter monLocIDXParameter;
+            if (monLocIDX.HasValue)
+            {
+                monLocIDXParameter = new ObjectParameter("MonLocIDX", monLocIDX);
+            }
+            else
+            {
+                monLocIDXParameter = new ObjectParameter("MonLocIDX", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter charNameParameter;
+            if (charName != null)
+            {
+                charNameParameter = new ObjectParameter("CharName", charName);
+            }
+            else
+            {
+                charNameParameter = new ObjectParameter("CharName", typeof(global::System.String));
+            }
+    
+            ObjectParameter startDtParameter;
+            if (startDt.HasValue)
+            {
+                startDtParameter = new ObjectParameter("StartDt", startDt);
+            }
+            else
+            {
+                startDtParameter = new ObjectParameter("StartDt", typeof(global::System.DateTime));
+            }
+    
+            ObjectParameter endDtParameter;
+            if (endDt.HasValue)
+            {
+                endDtParameter = new ObjectParameter("EndDt", endDt);
+            }
+            else
+            {
+                endDtParameter = new ObjectParameter("EndDt", typeof(global::System.DateTime));
+            }
+    
+            ObjectParameter dataIncludeIndParameter;
+            if (dataIncludeInd != null)
+            {
+                dataIncludeIndParameter = new ObjectParameter("DataIncludeInd", dataIncludeInd);
+            }
+            else
+            {
+                dataIncludeIndParameter = new ObjectParameter("DataIncludeInd", typeof(global::System.String));
+            }
+    
+            return base.ExecuteFunction<WQXAnalysis_Result>("WQXAnalysis", typeTextParameter, orgIDParameter, monLocIDXParameter, charNameParameter, startDtParameter, endDtParameter, dataIncludeIndParameter);
         }
 
         #endregion
@@ -24679,24 +24679,48 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public global::System.String MONLOC_NAME
+        public Nullable<global::System.Int32> MONLOC_IDX
         {
             get
             {
-                return _MONLOC_NAME;
+                return _MONLOC_IDX;
             }
             set
             {
-                OnMONLOC_NAMEChanging(value);
-                ReportPropertyChanging("MONLOC_NAME");
-                _MONLOC_NAME = StructuralObject.SetValidValue(value, true, "MONLOC_NAME");
-                ReportPropertyChanged("MONLOC_NAME");
-                OnMONLOC_NAMEChanged();
+                OnMONLOC_IDXChanging(value);
+                ReportPropertyChanging("MONLOC_IDX");
+                _MONLOC_IDX = StructuralObject.SetValidValue(value, "MONLOC_IDX");
+                ReportPropertyChanged("MONLOC_IDX");
+                OnMONLOC_IDXChanged();
             }
         }
-        private global::System.String _MONLOC_NAME;
-        partial void OnMONLOC_NAMEChanging(global::System.String value);
-        partial void OnMONLOC_NAMEChanged();
+        private Nullable<global::System.Int32> _MONLOC_IDX;
+        partial void OnMONLOC_IDXChanging(Nullable<global::System.Int32> value);
+        partial void OnMONLOC_IDXChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String MONLOC_ID
+        {
+            get
+            {
+                return _MONLOC_ID;
+            }
+            set
+            {
+                OnMONLOC_IDChanging(value);
+                ReportPropertyChanging("MONLOC_ID");
+                _MONLOC_ID = StructuralObject.SetValidValue(value, true, "MONLOC_ID");
+                ReportPropertyChanged("MONLOC_ID");
+                OnMONLOC_IDChanged();
+            }
+        }
+        private global::System.String _MONLOC_ID;
+        partial void OnMONLOC_IDChanging(global::System.String value);
+        partial void OnMONLOC_IDChanged();
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -24727,24 +24751,24 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public Nullable<global::System.DateTime> START_DT
+        public Nullable<global::System.DateTime> ACT_START_DT
         {
             get
             {
-                return _START_DT;
+                return _ACT_START_DT;
             }
             set
             {
-                OnSTART_DTChanging(value);
-                ReportPropertyChanging("START_DT");
-                _START_DT = StructuralObject.SetValidValue(value, "START_DT");
-                ReportPropertyChanged("START_DT");
-                OnSTART_DTChanged();
+                OnACT_START_DTChanging(value);
+                ReportPropertyChanging("ACT_START_DT");
+                _ACT_START_DT = StructuralObject.SetValidValue(value, "ACT_START_DT");
+                ReportPropertyChanged("ACT_START_DT");
+                OnACT_START_DTChanged();
             }
         }
-        private Nullable<global::System.DateTime> _START_DT;
-        partial void OnSTART_DTChanging(Nullable<global::System.DateTime> value);
-        partial void OnSTART_DTChanged();
+        private Nullable<global::System.DateTime> _ACT_START_DT;
+        partial void OnACT_START_DTChanging(Nullable<global::System.DateTime> value);
+        partial void OnACT_START_DTChanged();
     
         /// <summary>
         /// No Metadata Documentation available.

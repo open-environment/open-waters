@@ -589,7 +589,7 @@
           <Property Name="SAMP_PREP_THERM_PRESERV" Type="varchar" MaxLength="25" />
           <Property Name="SAMP_PREP_STORAGE_DESC" Type="varchar" MaxLength="250" />
           <Property Name="IMPORT_STATUS_CD" Type="varchar" MaxLength="1" />
-          <Property Name="IMPORT_STATUS_DESC" Type="varchar" MaxLength="100" />
+          <Property Name="IMPORT_STATUS_DESC" Type="varchar" MaxLength="200" />
         </EntityType>
         <EntityType Name="T_WQX_IMPORT_TEMPLATE">
           <Key>
@@ -1594,7 +1594,7 @@ warning 6002: The table/view 'OpenEnvironment.dbo.V_WQX_TRANSACTION_LOG' does no
         <Function Name="WQXAnalysis" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="TypeText" Type="varchar" Mode="In" />
           <Parameter Name="OrgID" Type="varchar" Mode="In" />
-          <Parameter Name="MonLocID" Type="varchar" Mode="In" />
+          <Parameter Name="MonLocIDX" Type="int" Mode="In" />
           <Parameter Name="CharName" Type="varchar" Mode="In" />
           <Parameter Name="StartDt" Type="datetime" Mode="In" />
           <Parameter Name="EndDt" Type="datetime" Mode="In" />
@@ -2017,15 +2017,6 @@ FROM [dbo].[V_WQX_TRANSACTION_LOG] AS [V_WQX_TRANSACTION_LOG]</DefiningQuery>
             <End Role="T_WQX_IMPORT_TEMP_RESULT" EntitySet="T_WQX_IMPORT_TEMP_RESULT" />
           </AssociationSet>
           <EntitySet Name="V_WQX_PENDING_RECORDS" EntityType="OpenEnvironmentModel.V_WQX_PENDING_RECORDS" />
-          <FunctionImport Name="WQXAnalysis" ReturnType="Collection(OpenEnvironmentModel.WQXAnalysis_Result)">
-            <Parameter Name="TypeText" Mode="In" Type="String" />
-            <Parameter Name="OrgID" Mode="In" Type="String" />
-            <Parameter Name="MonLocID" Mode="In" Type="String" />
-            <Parameter Name="CharName" Mode="In" Type="String" />
-            <Parameter Name="StartDt" Mode="In" Type="DateTime" />
-            <Parameter Name="EndDt" Mode="In" Type="DateTime" />
-            <Parameter Name="DataIncludeInd" Mode="In" Type="String" />
-          </FunctionImport>
           <EntitySet Name="T_WQX_IMPORT_COL_ALIAS" EntityType="OpenEnvironmentModel.T_WQX_IMPORT_COL_ALIAS" />
           <FunctionImport Name="ImportActivityFromTemp">
             <Parameter Name="UserID" Mode="In" Type="String" />
@@ -2087,7 +2078,16 @@ FROM [dbo].[V_WQX_TRANSACTION_LOG] AS [V_WQX_TRANSACTION_LOG]</DefiningQuery>
             <End Role="T_ATTAINS_REPORT_LOG" EntitySet="T_ATTAINS_REPORT_LOG" />
           </AssociationSet>
           <FunctionImport Name="GenATTAINSXML" ReturnType="Collection(String)">
-            <Parameter Name="ReportIDX" Mode="In" Type="Int32" />
+          <Parameter Name="ReportIDX" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="WQXAnalysis" ReturnType="Collection(OpenEnvironmentModel.WQXAnalysis_Result)">
+            <Parameter Name="TypeText" Mode="In" Type="String" />
+            <Parameter Name="OrgID" Mode="In" Type="String" />
+            <Parameter Name="MonLocIDX" Mode="In" Type="Int32" />
+            <Parameter Name="CharName" Mode="In" Type="String" />
+            <Parameter Name="StartDt" Mode="In" Type="DateTime" />
+            <Parameter Name="EndDt" Mode="In" Type="DateTime" />
+            <Parameter Name="DataIncludeInd" Mode="In" Type="String" />
           </FunctionImport>
           </EntityContainer>
         <EntityType Name="T_OE_APP_SETTINGS">
@@ -2564,7 +2564,7 @@ FROM [dbo].[V_WQX_TRANSACTION_LOG] AS [V_WQX_TRANSACTION_LOG]</DefiningQuery>
           <Property Name="ACT_TIME_ZONE" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
           <Property Name="ACT_COMMENT" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
           <Property Name="IMPORT_STATUS_CD" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
-          <Property Name="IMPORT_STATUS_DESC" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="IMPORT_STATUS_DESC" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="RELATIVE_DEPTH_NAME" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
           <Property Name="ACT_DEPTHHEIGHT_MSR" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
           <Property Name="ACT_DEPTHHEIGHT_MSR_UNIT" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
@@ -3372,14 +3372,6 @@ FROM [dbo].[V_WQX_TRANSACTION_LOG] AS [V_WQX_TRANSACTION_LOG]</DefiningQuery>
           <Property Name="UPDATE_USERID" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
           <Property Name="UPDATE_DT" Type="DateTime" Precision="3" />
         </EntityType>
-        <ComplexType Name="WQXAnalysis_Result">
-          <Property Type="String" Name="MONLOC_NAME" Nullable="true" MaxLength="255" />
-          <Property Type="String" Name="CHAR_NAME" Nullable="true" MaxLength="120" />
-          <Property Type="DateTime" Name="START_DT" Nullable="true" Precision="23" />
-          <Property Type="Decimal" Name="RESULT_MSR" Nullable="true" Precision="38" Scale="6" />
-          <Property Type="String" Name="RESULT_MSR_UNIT" Nullable="true" MaxLength="12" />
-          <Property Type="String" Name="DETECTION_LIMIT" Nullable="true" MaxLength="12" />
-        </ComplexType>
         <EntityType Name="T_WQX_IMPORT_COL_ALIAS">
           <Key>
             <PropertyRef Name="IMPORT_COL_ALIAS_IDX" />
@@ -3723,6 +3715,15 @@ FROM [dbo].[V_WQX_TRANSACTION_LOG] AS [V_WQX_TRANSACTION_LOG]</DefiningQuery>
         </Association>
         <ComplexType Name="GenATTAINSXML1_Result">
           <Property Type="String" Name="Column1" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="WQXAnalysis_Result">
+          <Property Type="Int32" Name="MONLOC_IDX" Nullable="true" />
+          <Property Type="String" Name="MONLOC_ID" Nullable="true" MaxLength="35" />
+          <Property Type="String" Name="CHAR_NAME" Nullable="true" MaxLength="120" />
+          <Property Type="DateTime" Name="ACT_START_DT" Nullable="true" Precision="23" />
+          <Property Type="Decimal" Name="RESULT_MSR" Nullable="true" Precision="38" Scale="6" />
+          <Property Type="String" Name="RESULT_MSR_UNIT" Nullable="true" MaxLength="12" />
+          <Property Type="String" Name="DETECTION_LIMIT" Nullable="true" MaxLength="12" />
         </ComplexType>
         </Schema>
     </edmx:ConceptualModels>
@@ -4637,18 +4638,6 @@ FROM [dbo].[V_WQX_TRANSACTION_LOG] AS [V_WQX_TRANSACTION_LOG]</DefiningQuery>
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="WQXAnalysis" FunctionName="OpenEnvironmentModel.Store.WQXAnalysis">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="OpenEnvironmentModel.WQXAnalysis_Result">
-                <ScalarProperty Name="MONLOC_NAME" ColumnName="MONLOC_NAME" />
-                <ScalarProperty Name="CHAR_NAME" ColumnName="CHAR_NAME" />
-                <ScalarProperty Name="START_DT" ColumnName="START_DT" />
-                <ScalarProperty Name="RESULT_MSR" ColumnName="RESULT_MSR" />
-                <ScalarProperty Name="RESULT_MSR_UNIT" ColumnName="RESULT_MSR_UNIT" />
-                <ScalarProperty Name="DETECTION_LIMIT" ColumnName="DETECTION_LIMIT" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
           <EntitySetMapping Name="T_WQX_IMPORT_COL_ALIAS">
             <EntityTypeMapping TypeName="OpenEnvironmentModel.T_WQX_IMPORT_COL_ALIAS">
               <MappingFragment StoreEntitySet="T_WQX_IMPORT_COL_ALIAS">
@@ -4831,6 +4820,19 @@ FROM [dbo].[V_WQX_TRANSACTION_LOG] AS [V_WQX_TRANSACTION_LOG]</DefiningQuery>
             </EntityTypeMapping>
           </EntitySetMapping>
           <FunctionImportMapping FunctionImportName="GenATTAINSXML" FunctionName="OpenEnvironmentModel.Store.GenATTAINSXML" />
+          <FunctionImportMapping FunctionImportName="WQXAnalysis" FunctionName="OpenEnvironmentModel.Store.WQXAnalysis">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="OpenEnvironmentModel.WQXAnalysis_Result">
+                <ScalarProperty Name="MONLOC_IDX" ColumnName="MONLOC_IDX" />
+                <ScalarProperty Name="MONLOC_ID" ColumnName="MONLOC_ID" />
+                <ScalarProperty Name="CHAR_NAME" ColumnName="CHAR_NAME" />
+                <ScalarProperty Name="ACT_START_DT" ColumnName="ACT_START_DT" />
+                <ScalarProperty Name="RESULT_MSR" ColumnName="RESULT_MSR" />
+                <ScalarProperty Name="RESULT_MSR_UNIT" ColumnName="RESULT_MSR_UNIT" />
+                <ScalarProperty Name="DETECTION_LIMIT" ColumnName="DETECTION_LIMIT" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
