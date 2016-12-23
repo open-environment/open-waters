@@ -35,7 +35,7 @@ Open Waters is web-based water quality data management software that helps peopl
   * Microsoft WSE 2.0 & 3.0
   * web server can communicate with Internet and Database (no firewall prohibiting access to EPA’s WQX server)
 * **Database Server**
-  * SQL Server 2008 or later (Express edition is OK)
+  * SQL Server 2012 or later (Express edition is OK)
 
 
 ## Change Log
