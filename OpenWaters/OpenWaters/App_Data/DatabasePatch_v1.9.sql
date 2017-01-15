@@ -50,7 +50,7 @@ ENHANCEMENTS:
 
 1.9.8 Changes
 -------------
-  1. Add import of activity metrics / indices
+  1. Add import of activity metrics
   2. Charting: new chart type (Monitoring Location Averages)
   3. Charting: add second characteristic option for time series chart
   4. Monitoring Location data import: add ability to cancel import
