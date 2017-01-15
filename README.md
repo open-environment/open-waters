@@ -41,13 +41,13 @@ Open Waters is web-based water quality data management software that helps peopl
 ## Change Log
 * **1/13/2017 - Version 1.9.8:**
     * Major streamlining to data import module and data import configuration
-    * Add import of activity metrics
     * Charting: new chart type (Monitoring Location Averages)
     * Charting: add second characteristic option for time series chart
-    * Monitoring Location data import: add ability to cancel import
-    * Increase length of import error message
     * Expanded Import Translation feature to all Activity/Result columns 
     * Crosstab import: add ability to import activity depth  
+    * Add import of activity metrics
+    * Monitoring Location data import: add ability to cancel import
+    * Increase length of import error message
     * Add ActivityMetricType to reference data pull from EPA
 * **11/9/2016 - Version 1.9.7:**
     * Add Assessment Report module, including submission to EPA ATTAINS
