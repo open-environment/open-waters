@@ -300,17 +300,17 @@ namespace OpenEnvironment
                         int j = 0;  //j is the header column index
 
                         //For columns that support aliases, get the array of alias names
-                        List<string> ActivityIDList = db_WQX.GetWQX_IMPORT_COL_ALIAS_byField("Activity ID");
-                        List<string> ActivityMediaList = db_WQX.GetWQX_IMPORT_COL_ALIAS_byField("Activity Media");
-                        List<string> ActivityStartDateList = db_WQX.GetWQX_IMPORT_COL_ALIAS_byField("Activity Start Date");
-                        List<string> ActivityStartTimeList = db_WQX.GetWQX_IMPORT_COL_ALIAS_byField("Activity Start Time");
-                        List<string> SampPrepList = db_WQX.GetWQX_IMPORT_COL_ALIAS_byField("Sample Prep ID");
-                        List<string> LabNameList = db_WQX.GetWQX_IMPORT_COL_ALIAS_byField("Lab Name");
-                        List<string> CharacteristicList = db_WQX.GetWQX_IMPORT_COL_ALIAS_byField("Characteristic");
-                        List<string> ResultUnitList = db_WQX.GetWQX_IMPORT_COL_ALIAS_byField("Unit");
-                        List<string> DetectionConditionList = db_WQX.GetWQX_IMPORT_COL_ALIAS_byField("Result Detection Condition");
-                        List<string> DetectionLimitUnit = db_WQX.GetWQX_IMPORT_COL_ALIAS_byField("Detection Threshold Limit Unit");
-                        List<string> DilutionList = db_WQX.GetWQX_IMPORT_COL_ALIAS_byField("Dilution Factor");
+                        List<string> ActivityIDList = null;// db_WQX.GetWQX_IMPORT_COL_ALIAS_byField("Activity ID");
+                        List<string> ActivityMediaList = null;//db_WQX.GetWQX_IMPORT_COL_ALIAS_byField("Activity Media");
+                        List<string> ActivityStartDateList = null;//db_WQX.GetWQX_IMPORT_COL_ALIAS_byField("Activity Start Date");
+                        List<string> ActivityStartTimeList = null;//db_WQX.GetWQX_IMPORT_COL_ALIAS_byField("Activity Start Time");
+                        List<string> SampPrepList = null;//db_WQX.GetWQX_IMPORT_COL_ALIAS_byField("Sample Prep ID");
+                        List<string> LabNameList = null;//db_WQX.GetWQX_IMPORT_COL_ALIAS_byField("Lab Name");
+                        List<string> CharacteristicList = null;//db_WQX.GetWQX_IMPORT_COL_ALIAS_byField("Characteristic");
+                        List<string> ResultUnitList = null;//db_WQX.GetWQX_IMPORT_COL_ALIAS_byField("Unit");
+                        List<string> DetectionConditionList = null;//db_WQX.GetWQX_IMPORT_COL_ALIAS_byField("Result Detection Condition");
+                        List<string> DetectionLimitUnit = null;//db_WQX.GetWQX_IMPORT_COL_ALIAS_byField("Detection Threshold Limit Unit");
+                        List<string> DilutionList = null;//db_WQX.GetWQX_IMPORT_COL_ALIAS_byField("Dilution Factor");
 
                         //loop through every column in the header row
                         foreach (string part in parts)

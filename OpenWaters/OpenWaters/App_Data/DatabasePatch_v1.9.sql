@@ -50,10 +50,15 @@ ENHANCEMENTS:
 
 1.9.8 Changes
 -------------
-  1. Monitoring Location data import: add ability to cancel import
-  2. Added new data import module:
-  3. Increase length of import error message
-  4. Expanded Import Translation feature to all Activity/Result columns 
+  1. Add import of activity metrics / indices
+  2. Charting: new chart type (Monitoring Location Averages)
+  3. Charting: add second characteristic option for time series chart
+  4. Monitoring Location data import: add ability to cancel import
+  5. Streamline data import module and data import configuration
+  6. Increase length of import error message
+  7. Expanded Import Translation feature to all Activity/Result columns 
+  8. Crosstab import: add ability to import activity depth
+  9. Add ActivityMetricType to reference data pull from EPA
 */
 
 
@@ -460,12 +465,60 @@ END
 
 
 --1.9.8
+drop table T_WQX_IMPORT_COL_ALIAS
+
 alter table T_WQX_IMPORT_TEMP_SAMPLE ALTER column IMPORT_STATUS_DESC varchar(200);
+alter table T_WQX_IMPORT_TEMP_RESULT ALTER column IMPORT_STATUS_DESC varchar(200);
 
 update T_WQX_IMPORT_TRANSLATE set COL_NAME = 'MONLOC_ID' where COL_NAME='Station ID';
 update T_WQX_IMPORT_TRANSLATE set COL_NAME = 'ACT_TYPE' where COL_NAME='Activity Type Code';
 update T_WQX_IMPORT_TRANSLATE set COL_NAME = 'ACT_MEDIA' where COL_NAME='Activity Media';
 update T_WQX_IMPORT_TRANSLATE set COL_NAME = 'ACT_SUBMEDIA' where COL_NAME='Activity Submedia';
+
+
+CREATE TABLE [dbo].[T_WQX_IMPORT_TEMP_BIO_INDEX](
+	[TEMP_BIO_HABITAT_INDEX_IDX] [int] NOT NULL IDENTITY(1,1),
+	[USER_ID] [varchar](25) NOT NULL,
+	[ORG_ID] [varchar](30) NOT NULL,
+	[MONLOC_IDX] [int] NULL,
+	[INDEX_ID] [varchar](35) NULL,
+	[INDEX_TYPE_ID] [varchar](35) NULL,
+	[INDEX_TYPE_ID_CONTEXT] [varchar](50) NULL,
+	[INDEX_TYPE_NAME] [varchar](50) NOT NULL,
+	[INDEX_TYPE_SCALE] [varchar](50) NULL,
+	[INDEX_SCORE] [varchar](10) NOT NULL,
+	[INDEX_QUAL_CD] [varchar](5) NULL,
+	[INDEX_COMMENT] [varchar](4000) NULL,
+	[INDEX_CALC_DATE] [datetime] NULL,
+	[IMPORT_STATUS_CD] [varchar](1) NULL,
+	[IMPORT_STATUS_DESC] [varchar](200) NULL,
+ CONSTRAINT [PK_T_IMPORT_TEMP_BIO_INDEX] PRIMARY KEY CLUSTERED ([TEMP_BIO_HABITAT_INDEX_IDX] ASC)
+) ON [PRIMARY]
+
+
+CREATE TABLE [dbo].[T_WQX_IMPORT_TEMP_ACTIVITY_METRIC](
+	[TEMP_ACTIVITY_METRIC_IDX] [int] NOT NULL IDENTITY(1,1),
+	[USER_ID] [varchar](25) NOT NULL,
+	[ORG_ID] [varchar](30) NOT NULL,
+	[ACTIVITY_IDX] [int] NULL,
+	[ACTIVITY_ID] [varchar](35) NULL,
+	[METRIC_TYPE_ID] [varchar](35) NOT NULL,
+	[METRIC_TYPE_ID_CONTEXT] [varchar](50) NOT NULL,
+	[METRIC_TYPE_NAME] [varchar](50) NULL,
+	[METRIC_SCALE] [varchar](50) NULL,
+	[METRIC_FORMULA_DESC] [varchar](50) NULL,
+	[METRIC_VALUE_MSR] [varchar](12) NULL,
+	[METRIC_VALUE_MSR_UNIT] [varchar](12) NULL,
+	[METRIC_SCORE] [varchar](10) NOT NULL,
+	[METRIC_COMMENT] [varchar](4000) NULL,
+	[TEMP_BIO_HABITAT_INDEX_IDX] [int] NULL,
+	[IMPORT_STATUS_CD] [varchar](1) NULL,
+	[IMPORT_STATUS_DESC] [varchar](200) NULL,
+ CONSTRAINT [PK_T_IMPORT_TEMP_ACTIVITY_METRIC] PRIMARY KEY CLUSTERED ([TEMP_ACTIVITY_METRIC_IDX] ASC)
+) ON [PRIMARY]
+
+
+
 
 GO
 
@@ -526,13 +579,13 @@ BEGIN
 			(select A.MONLOC_IDX, min(M.MONLOC_ID) as MONLOC_ID, dateadd(dd, datediff(dd, 0, a.ACT_START_DT)+0, 0) as ACT_START_DT,
 			R.CHAR_NAME,
 			avg(
-			case when ISNUMERIC(RESULT_MSR)=1 then cast(RESULT_MSR as DECIMAL(10,4))
-			when ISNUMERIC( DETECTION_LIMIT)=1 then cast(DETECTION_LIMIT as DECIMAL(10,4))
-			when ISNUMERIC(LAB_REPORTING_LEVEL)=1 then cast(LAB_REPORTING_LEVEL as DECIMAL(10,4))
-			when ISNUMERIC(PQL)=1 then cast (PQL as DECIMAL(10,4))
-			when ISNUMERIC(LOWER_QUANT_LIMIT)=1 then cast (LOWER_QUANT_LIMIT as DECIMAL(10,4))
-			when ISNUMERIC(UPPER_QUANT_LIMIT)=1 then cast (UPPER_QUANT_LIMIT as DECIMAL(10,4))
-			else CAST(0 as DECIMAL(10,4)) end ) as RESULT_CONV, 
+			case when ISNUMERIC(RESULT_MSR)=1 then cast(RESULT_MSR as DECIMAL(12,4))
+			when ISNUMERIC( DETECTION_LIMIT)=1 then cast(DETECTION_LIMIT as DECIMAL(12,4))
+			when ISNUMERIC(LAB_REPORTING_LEVEL)=1 then cast(LAB_REPORTING_LEVEL as DECIMAL(12,4))
+			when ISNUMERIC(PQL)=1 then cast (PQL as DECIMAL(12,4))
+			when ISNUMERIC(LOWER_QUANT_LIMIT)=1 then cast (LOWER_QUANT_LIMIT as DECIMAL(12,4))
+			when ISNUMERIC(UPPER_QUANT_LIMIT)=1 then cast (UPPER_QUANT_LIMIT as DECIMAL(12,4))
+			else CAST(0 as DECIMAL(12,4)) end ) as RESULT_CONV, 
 			avg(try_convert(decimal(16,4), R.RESULT_MSR)) as RESULT_RAW, 
 			MAX(R.RESULT_MSR_UNIT) as RESULT_MSR_UNIT, 
 			min(R.DETECTION_LIMIT) as DETECTION_LIMIT
@@ -544,6 +597,7 @@ BEGIN
 			and (A.ACT_START_DT >= @StartDt or @StartDt is null)
 			and (A.ACT_START_DT <= @EndDt or @EndDt is null)
 			and A.ACT_TYPE in ('Field Msr/Obs', 'Sample-Routine','Sample-Integrated Cross-Sectional Profile')
+			and (@DataIncludeInd = 'A' or A.WQX_IND = 1)
 			group by A.MONLOC_IDX, R.CHAR_NAME, dateadd(dd, datediff(dd, 0, a.ACT_START_DT)+0, 0)
 			) Z
 			group by Z.MONLOC_IDX, Z.MONLOC_ID, Z.CHAR_NAME

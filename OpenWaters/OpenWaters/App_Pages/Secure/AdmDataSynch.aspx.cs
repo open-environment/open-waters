@@ -162,6 +162,8 @@ namespace OpenEnvironment
                 GetAndStoreRefTable("MeasureUnit", "Code", "Description", null);
             if (ddlRefTable.SelectedValue == "ALL" || ddlRefTable.SelectedValue == "MethodSpeciation")
                 GetAndStoreRefTable("MethodSpeciation", "Name", "Name", null);
+            if (ddlRefTable.SelectedValue == "ALL" || ddlRefTable.SelectedValue == "MetricType")
+                GetAndStoreRefTable("MetricType", "Name", "Name", null);
             if (ddlRefTable.SelectedValue == "ALL" || ddlRefTable.SelectedValue == "NetType")
                 GetAndStoreRefTable("NetType", "Name", "Name", null);
             if (ddlRefTable.SelectedValue == "ALL" || ddlRefTable.SelectedValue == "ResultDetectionCondition")

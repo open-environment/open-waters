@@ -2210,29 +2210,6 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
 
 
 
-
-        // *************************** IMPORT_COL_ALIAS    ******************************
-        // *****************************************************************************
-        public static List<string> GetWQX_IMPORT_COL_ALIAS_byField(string ColName)
-        {
-            using (OpenEnvironmentEntities ctx = new OpenEnvironmentEntities())
-            {
-                try
-                {
-                    var x = (from a in ctx.T_WQX_IMPORT_COL_ALIAS
-                            where a.COL_NAME == ColName
-                            select a.ALIAS_NAME.ToUpper()).ToList();
-                    return x;
-                }
-                catch (Exception ex)
-                {
-                    throw ex;
-                }
-            }
-        }
-        
-
-
         // *************************** IMPORT: MONLOC    ******************************
         // *****************************************************************************
 
@@ -2798,13 +2775,230 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             }
         }
 
-        public static int DeleteT_WQX_IMPORT_TEMP_PROJECT(global::System.String uSER_ID)
+        public static int DeleteT_WQX_IMPORT_TEMP_PROJECT(string uSER_ID)
         {
             using (OpenEnvironmentEntities ctx = new OpenEnvironmentEntities())
             {
                 try
                 {
                     string sql = "DELETE FROM T_WQX_IMPORT_TEMP_PROJECT WHERE USER_ID = '" + uSER_ID + "'";
+                    ctx.ExecuteStoreCommand(sql);
+                    return 1;
+                }
+                catch
+                {
+                    return 0;
+                }
+            }
+        }
+
+
+        // *************************** IMPORT: BIO INDEX ******************************
+        // *****************************************************************************
+        public static int DeleteT_WQX_IMPORT_TEMP_BIO_INDEX(string uSER_ID)
+        {
+            using (OpenEnvironmentEntities ctx = new OpenEnvironmentEntities())
+            {
+                try
+                {
+                    string sql = "DELETE FROM T_WQX_IMPORT_TEMP_BIO_INDEX WHERE USER_ID = '" + uSER_ID + "'";
+                    ctx.ExecuteStoreCommand(sql);
+                    return 1;
+                }
+                catch
+                {
+                    return 0;
+                }
+            }
+
+        }
+
+
+        // *************************** IMPORT: ACTIVITY METRIC ******************************
+        // *****************************************************************************
+        public static int InsertWQX_IMPORT_TEMP_ACTIVITY_METRIC(string uSER_ID, string oRG_ID, Dictionary<string, string> colVals)
+        {
+            using (OpenEnvironmentEntities ctx = new OpenEnvironmentEntities())
+            {
+                try
+                {
+                    //get import config rules
+                    List<ConfigInfoType> _allRules = Utils.GetAllColumnInfo("I");
+
+                    T_WQX_IMPORT_TEMP_ACTIVITY_METRIC a = new T_WQX_IMPORT_TEMP_ACTIVITY_METRIC();
+
+                    a.IMPORT_STATUS_CD = "P";
+                    a.IMPORT_STATUS_DESC = "";
+
+                    if (!string.IsNullOrEmpty(uSER_ID)) a.USER_ID = uSER_ID;
+                    if (!string.IsNullOrEmpty(oRG_ID)) a.ORG_ID = oRG_ID;
+
+                    //*************** PRE CUSTOM VALIDATION **********************************************
+                    string _t = null;
+
+                    //fail if no matching activity id found
+                    _t = Utils.GetValueOrDefault(colVals, "ACTIVITY_ID");
+                    if (!string.IsNullOrEmpty(_t))
+                    {
+                        T_WQX_ACTIVITY act = db_WQX.GetWQX_ACTIVITY_ByUnique(oRG_ID, _t);
+                        if (act == null)
+                        { a.IMPORT_STATUS_CD = "F"; a.IMPORT_STATUS_DESC += "No matching activity ID found. Please import activity prior to importing activity metric. "; }
+                        else
+                            a.ACTIVITY_IDX = act.ACTIVITY_IDX;
+                    }
+
+                    //********************** end custom validation ********************************************
+
+                    WQX_IMPORT_TEMP_ACTIVITY_METRIC_GenVal(ref a, _allRules, colVals, "ACTIVITY_ID");
+                    WQX_IMPORT_TEMP_ACTIVITY_METRIC_GenVal(ref a, _allRules, colVals, "METRIC_TYPE_ID");
+                    WQX_IMPORT_TEMP_ACTIVITY_METRIC_GenVal(ref a, _allRules, colVals, "METRIC_TYPE_ID_CONTEXT");
+                    WQX_IMPORT_TEMP_ACTIVITY_METRIC_GenVal(ref a, _allRules, colVals, "METRIC_VALUE_MSR");
+                    WQX_IMPORT_TEMP_ACTIVITY_METRIC_GenVal(ref a, _allRules, colVals, "METRIC_VALUE_MSR_UNIT");
+                    WQX_IMPORT_TEMP_ACTIVITY_METRIC_GenVal(ref a, _allRules, colVals, "METRIC_SCORE");
+                    WQX_IMPORT_TEMP_ACTIVITY_METRIC_GenVal(ref a, _allRules, colVals, "METRIC_COMMENT");
+                    WQX_IMPORT_TEMP_ACTIVITY_METRIC_GenVal(ref a, _allRules, colVals, "TEMP_BIO_HABITAT_INDEX_IDX");
+
+                    //*************** POST CUSTOM VALIDATION **********************************************
+
+                    //*************** END CUSTOM VALIDATION **********************************************
+
+
+                    ctx.AddToT_WQX_IMPORT_TEMP_ACTIVITY_METRIC(a);
+                    ctx.SaveChanges();
+
+                    return a.TEMP_ACTIVITY_METRIC_IDX;
+                }
+                catch (Exception ex)
+                {
+                    return 0;
+                }
+            }
+        }
+
+        public static void WQX_IMPORT_TEMP_ACTIVITY_METRIC_GenVal(ref T_WQX_IMPORT_TEMP_ACTIVITY_METRIC a, List<ConfigInfoType> t, Dictionary<string, string> colVals, string f)
+        {
+            string _value = Utils.GetValueOrDefault(colVals, f); //supplied value for this field
+            var _rules = t.Find(item => item._name == f);   //import rules for this field
+
+            if (!string.IsNullOrEmpty(_value)) //if value is supplied
+            {
+                _value = _value.Trim();
+
+                //strings: field length validation and substring 
+                if (_rules._datatype == "" && _rules._length != null)
+                {
+                    if (_value.Length > _rules._length)
+                    {
+                        a.IMPORT_STATUS_CD = "F";
+                        a.IMPORT_STATUS_DESC = (a.IMPORT_STATUS_DESC + f + " length (" + _rules._length + ") exceeded. ").SubStringPlus(0, 200);
+
+                        _value = _value.SubStringPlus(0, (int)_rules._length);
+                    }
+                }
+
+                //integers: check type
+                if (_rules._datatype == "int")
+                {
+                    int n;
+                    if (int.TryParse(_value, out n) == false)
+                    {
+                        a.IMPORT_STATUS_CD = "F";
+                        a.IMPORT_STATUS_DESC = (a.IMPORT_STATUS_DESC + f + " not numeric. ").SubStringPlus(0, 200);
+                    }
+                }
+
+
+                //ref data lookup
+                if (_rules._fkey.Length > 0)
+                {
+                    if (db_Ref.GetT_WQX_REF_DATA_ByKey(_rules._fkey, _value) == false)
+                    {
+                        a.IMPORT_STATUS_CD = "F";
+                        a.IMPORT_STATUS_DESC = (a.IMPORT_STATUS_DESC + f + " not valid. ").SubStringPlus(0, 200);
+                    }
+                }
+            }
+            else
+            {
+                //required check
+                if (_rules._req == "Y")
+                {
+                    _value = "-";
+                    a.IMPORT_STATUS_CD = "F";
+                    a.IMPORT_STATUS_DESC = (a.IMPORT_STATUS_DESC + "Required field " + f + " missing. ").SubStringPlus(0, 200);
+                }
+            }
+
+            //finally set the value before returning
+            if (_rules._datatype == "")
+                typeof(T_WQX_IMPORT_TEMP_ACTIVITY_METRIC).GetProperty(f).SetValue(a, _value);
+            else if (_rules._datatype == "int")
+                typeof(T_WQX_IMPORT_TEMP_ACTIVITY_METRIC).GetProperty(f).SetValue(a, _value.ConvertOrDefault<int?>());
+        }
+
+        public static List<T_WQX_IMPORT_TEMP_ACTIVITY_METRIC> GetWQX_IMPORT_TEMP_ACTIVITY_METRIC(string UserID)
+        {
+            using (OpenEnvironmentEntities ctx = new OpenEnvironmentEntities())
+            {
+                try
+                {
+                    return (from a in ctx.T_WQX_IMPORT_TEMP_ACTIVITY_METRIC
+                            where a.USER_ID == UserID
+                            orderby a.TEMP_ACTIVITY_METRIC_IDX
+                            select a).ToList();
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+        }
+
+        public static T_WQX_IMPORT_TEMP_ACTIVITY_METRIC GetWQX_IMPORT_TEMP_ACTIVITY_METRIC_byID(int _ID)
+        {
+            using (OpenEnvironmentEntities ctx = new OpenEnvironmentEntities())
+            {
+                try
+                {
+                    return (from a in ctx.T_WQX_IMPORT_TEMP_ACTIVITY_METRIC
+                            where a.TEMP_ACTIVITY_METRIC_IDX == _ID
+                            orderby a.TEMP_ACTIVITY_METRIC_IDX
+                            select a).FirstOrDefault();
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+        }
+
+
+        public static int GetWQX_IMPORT_TEMP_ACTIVITY_METRIC_CountByUserID(string UserID)
+        {
+            using (OpenEnvironmentEntities ctx = new OpenEnvironmentEntities())
+            {
+                try
+                {
+                    return (from a in ctx.T_WQX_IMPORT_TEMP_ACTIVITY_METRIC
+                            where a.USER_ID == UserID
+                            select a).Count();
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+        }
+
+
+
+        public static int DeleteT_WQX_IMPORT_TEMP_ACTIVITY_METRIC(string uSER_ID)
+        {
+            using (OpenEnvironmentEntities ctx = new OpenEnvironmentEntities())
+            {
+                try
+                {
+                    string sql = "DELETE FROM T_WQX_IMPORT_TEMP_ACTIVITY_METRIC WHERE USER_ID = '" + uSER_ID + "'";
                     ctx.ExecuteStoreCommand(sql);
                     return 1;
                 }
@@ -3524,7 +3718,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
 
         }
 
-        public static int DeleteT_WQX_IMPORT_TEMP_SAMPLE(global::System.String uSER_ID)
+        public static int DeleteT_WQX_IMPORT_TEMP_SAMPLE(string uSER_ID)
         {
             using (OpenEnvironmentEntities ctx = new OpenEnvironmentEntities())
             {
@@ -3609,7 +3803,6 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
                 }
             }
         }
-
 
 
         // *************************** IMPORT: RESULT ******************************
@@ -4130,7 +4323,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
                     // ******************* END PRE VALIDATION *********************************
 
 
-                    //loop through all optional fields
+                    //******************* DEFAULT VALIDATION *************************************
                     List<string> rFields = new List<string>(new string[] { "DATA_LOGGER_LINE","RESULT_DETECT_CONDITION","CHAR_NAME", "METHOD_SPECIATION_NAME",
                         "RESULT_SAMP_FRACTION", "RESULT_MSR","RESULT_MSR_UNIT","RESULT_MSR_QUAL","RESULT_STATUS","STATISTIC_BASE_CODE","RESULT_VALUE_TYPE","WEIGHT_BASIS",
                         "TIME_BASIS","TEMP_BASIS","PARTICLESIZE_BASIS","PRECISION_VALUE","BIAS_VALUE","CONFIDENCE_INTERVAL_VALUE","UPPER_CONFIDENCE_LIMIT","LOWER_CONFIDENCE_LIMIT",
@@ -4145,12 +4338,40 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
                     foreach (KeyValuePair<string, string> entry in colVals)
                         if (rFields.Contains(entry.Key))
                             WQX_IMPORT_TEMP_RESULT_GenVal(ref a, _allRules, colVals, entry.Key);
+                    //******************* END DEFAULT VALIDATION *************************************
 
+
+                    //******************* POST CUSTOM VALIDATION *************************************
                     if (!string.IsNullOrEmpty(a.CHAR_NAME))
                         if (db_Ref.GetT_WQX_REF_CHARACTERISTIC_ExistCheck(a.CHAR_NAME) == false) { a.IMPORT_STATUS_CD = "F"; a.IMPORT_STATUS_DESC += "Characteristic Name not valid. "; }
 
-                    if (string.IsNullOrEmpty(a.RESULT_SAMP_FRACTION))
-                        if (db_Ref.GetT_WQX_REF_CHARACTERISTIC_SampFracReqCheck(a.CHAR_NAME) == true) { a.IMPORT_STATUS_CD = "F"; a.IMPORT_STATUS_DESC += "Sample Fraction must be reported."; }
+                    //Sample Fraction handling
+                    if (string.IsNullOrEmpty(a.RESULT_SAMP_FRACTION) && !string.IsNullOrEmpty(a.CHAR_NAME))
+                    {
+                        T_WQX_REF_CHAR_ORG rco = db_Ref.GetT_WQX_REF_CHAR_ORGByName(orgID, a.CHAR_NAME);
+                        if (rco != null)
+                            a.RESULT_SAMP_FRACTION = (string.IsNullOrEmpty(rco.DEFAULT_SAMP_FRACTION) ? null : rco.DEFAULT_SAMP_FRACTION);
+                    }
+                    if (db_Ref.GetT_WQX_REF_CHARACTERISTIC_SampFracReqCheck(a.CHAR_NAME) == true && string.IsNullOrEmpty(a.RESULT_SAMP_FRACTION)) { a.IMPORT_STATUS_CD = "F"; a.IMPORT_STATUS_DESC += "Sample Fraction must be reported."; }
+
+
+                    //Result Status handling
+                    if (string.IsNullOrEmpty(a.RESULT_STATUS) && !string.IsNullOrEmpty(a.CHAR_NAME))
+                    {
+                        T_WQX_REF_CHAR_ORG rco = db_Ref.GetT_WQX_REF_CHAR_ORGByName(orgID, a.CHAR_NAME);
+                        if (rco != null)
+                            a.RESULT_STATUS = (string.IsNullOrEmpty(rco.DEFAULT_RESULT_STATUS) ? null : rco.DEFAULT_RESULT_STATUS);
+                    }
+
+
+                    //Result Value Type handling
+                    if (string.IsNullOrEmpty(a.RESULT_VALUE_TYPE) && !string.IsNullOrEmpty(a.CHAR_NAME))
+                    {
+                        T_WQX_REF_CHAR_ORG rco = db_Ref.GetT_WQX_REF_CHAR_ORGByName(orgID, a.CHAR_NAME);
+                        if (rco != null)
+                            a.RESULT_VALUE_TYPE = (string.IsNullOrEmpty(rco.DEFAULT_RESULT_VALUE_TYPE) ? null : rco.DEFAULT_RESULT_VALUE_TYPE);
+                    }
+
 
                     if (!string.IsNullOrEmpty(a.RESULT_MSR))
                         a.RESULT_MSR = a.RESULT_MSR.Replace(",", "");
@@ -4158,20 +4379,55 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
                         if (string.IsNullOrEmpty(a.RESULT_DETECT_CONDITION))
                             { a.IMPORT_STATUS_CD = "F"; a.IMPORT_STATUS_DESC += "Either Result Measure or Result Detection Condition must be reported."; }
 
-                    //if result is PBQL, but no value has been reported for MDL, LRL, PQL, or Lower Quant Limit, then grab from Org Char default
+                    //if result is reported, but no unit is reported, grab unit from REF_CHAR_ORG default
+                    if (!string.IsNullOrEmpty(a.RESULT_MSR) && string.IsNullOrEmpty(a.RESULT_MSR_UNIT))
+                    {
+                        T_WQX_REF_CHAR_ORG rco = db_Ref.GetT_WQX_REF_CHAR_ORGByName(orgID, a.CHAR_NAME);
+                        if (rco != null)
+                            a.RESULT_MSR_UNIT = rco.DEFAULT_UNIT;
+                    }
+
+                    //if result is ND, but no value has been reported for MDL, LRL, PQL, or Lower Quant Limit, then grab from Org Char default
+                    if (a.RESULT_DETECT_CONDITION == "Not Detected" && string.IsNullOrEmpty(a.METHOD_DETECTION_LEVEL) && string.IsNullOrEmpty(a.LAB_REPORTING_LEVEL) && string.IsNullOrEmpty(a.PQL) && string.IsNullOrEmpty(a.UPPER_QUANT_LIMIT))
+                    {
+                        T_WQX_REF_CHAR_ORG rco = db_Ref.GetT_WQX_REF_CHAR_ORGByName(orgID, a.CHAR_NAME);
+                        if (rco != null)
+                            a.DETECTION_LIMIT_UNIT = (string.IsNullOrEmpty(rco.DEFAULT_DETECT_LIMIT) ? null : rco.DEFAULT_DETECT_LIMIT);
+
+                        //if still null, then error
+                        if (a.DETECTION_LIMIT_UNIT == null)
+                        { a.IMPORT_STATUS_CD = "F"; a.IMPORT_STATUS_DESC += "No Upper Quantification limit or default value reported. "; }
+                    }
+
+
+                    //if result is PBQL, but no value has been reported for MDL, LRL, PQL, or Lower Quant Limit, then grab from REF_CHAR_ORG default
                     if (a.RESULT_DETECT_CONDITION == "Present Below Quantification Limit" && string.IsNullOrEmpty(a.METHOD_DETECTION_LEVEL) && string.IsNullOrEmpty(a.LAB_REPORTING_LEVEL) && string.IsNullOrEmpty(a.PQL) && string.IsNullOrEmpty(a.LOWER_QUANT_LIMIT))
                     {
                         T_WQX_REF_CHAR_ORG rco = db_Ref.GetT_WQX_REF_CHAR_ORGByName(orgID, a.CHAR_NAME);
                         if (rco != null)
-                            a.LOWER_QUANT_LIMIT = rco.DEFAULT_LOWER_QUANT_LIMIT;
+                            a.LOWER_QUANT_LIMIT = (string.IsNullOrEmpty(rco.DEFAULT_LOWER_QUANT_LIMIT) ? null : rco.DEFAULT_LOWER_QUANT_LIMIT);
 
                         //if still null, then error
                         if (a.LOWER_QUANT_LIMIT == null)
-                        { a.IMPORT_STATUS_CD = "F"; a.IMPORT_STATUS_DESC += "No Lower Quantification limit reported or default value specified. "; }
+                        { a.IMPORT_STATUS_CD = "F"; a.IMPORT_STATUS_DESC += "No Lower Quantification limit or default value specified. "; }
                     }
 
+                    //if result is PAQL, but no value has been reported for MDL, LRL, PQL, or Lower Quant Limit, then grab from Org Char default
+                    if (a.RESULT_DETECT_CONDITION == "Present Above Quantification Limit" && string.IsNullOrEmpty(a.METHOD_DETECTION_LEVEL) && string.IsNullOrEmpty(a.LAB_REPORTING_LEVEL) && string.IsNullOrEmpty(a.PQL) && string.IsNullOrEmpty(a.UPPER_QUANT_LIMIT))
+                    {
+                        T_WQX_REF_CHAR_ORG rco = db_Ref.GetT_WQX_REF_CHAR_ORGByName(orgID, a.CHAR_NAME);
+                        if (rco != null)
+                            a.UPPER_QUANT_LIMIT = (string.IsNullOrEmpty(rco.DEFAULT_UPPER_QUANT_LIMIT) ? null : rco.DEFAULT_UPPER_QUANT_LIMIT); ;
+
+                        //if still null, then error
+                        if (a.UPPER_QUANT_LIMIT == null)
+                        { a.IMPORT_STATUS_CD = "F"; a.IMPORT_STATUS_DESC += "No Upper Quantification limit or default value reported. "; }
+                    }
+
+
+
                     if (string.IsNullOrEmpty(a.BIO_INTENT_NAME) != string.IsNullOrEmpty(a.BIO_SUBJECT_TAXONOMY))
-                        if (string.IsNullOrEmpty(a.BIO_SUBJECT_TAXONOMY)) { a.IMPORT_STATUS_CD = "F"; a.IMPORT_STATUS_DESC += "Taxonomy must be reported when bio intent is reported. "; }
+                    { a.IMPORT_STATUS_CD = "F"; a.IMPORT_STATUS_DESC += "Taxonomy must be reported when bio intent is reported. "; }
 
 
                     //analysis method
@@ -4223,18 +4479,6 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
                         { a.IMPORT_STATUS_CD = "F"; a.IMPORT_STATUS_DESC += "No matching Lab Name found - please add it at the Reference Data screen first. "; }
                     }
 
-
-                    //if result is PAQL, but no value has been reported for MDL, LRL, PQL, or Lower Quant Limit, then grab from Org Char default
-                    if (a.RESULT_DETECT_CONDITION == "Present Above Quantification Limit" && string.IsNullOrEmpty(a.METHOD_DETECTION_LEVEL) && string.IsNullOrEmpty(a.LAB_REPORTING_LEVEL) && string.IsNullOrEmpty(a.PQL) && string.IsNullOrEmpty(a.UPPER_QUANT_LIMIT))
-                    {
-                        T_WQX_REF_CHAR_ORG rco = db_Ref.GetT_WQX_REF_CHAR_ORGByName(orgID, a.CHAR_NAME);
-                        if (rco != null)
-                            a.UPPER_QUANT_LIMIT = rco.DEFAULT_UPPER_QUANT_LIMIT;
-
-                        //if still null, then error
-                        if (a.UPPER_QUANT_LIMIT == null)
-                        { a.IMPORT_STATUS_CD = "F"; a.IMPORT_STATUS_DESC += "No Upper Quantification limit reported. "; }
-                    }
 
                     //put in Timezone if missing
                     if (a.LAB_ANALYSIS_START_DT != null || a.LAB_ANALYSIS_END_DT != null)
@@ -4358,23 +4602,6 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
                     typeof(T_WQX_IMPORT_TEMP_RESULT).GetProperty(f).SetValue(a, _value.ConvertOrDefault<DateTime?>());
             }
             catch { }
-        }
-
-        public static List<T_WQX_IMPORT_TEMP_RESULT> GetWQX_IMPORT_TEMP_RESULT_ByTempSampIDX(int TempSampIDX)
-        {
-            using (OpenEnvironmentEntities ctx = new OpenEnvironmentEntities())
-            {
-                try
-                {
-                    return (from a in ctx.T_WQX_IMPORT_TEMP_RESULT
-                            where a.TEMP_SAMPLE_IDX == TempSampIDX
-                            select a).ToList();
-                }
-                catch (Exception ex)
-                {
-                    throw ex;
-                }
-            }
         }
 
         public static List<ImportSampleResultDisplay> GetWQX_IMPORT_TEMP_SAMP_RESULT_Disp(string UserID)

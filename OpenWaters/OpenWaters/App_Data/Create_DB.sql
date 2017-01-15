@@ -749,50 +749,6 @@ CREATE TABLE [dbo].[T_WQX_IMPORT_LOG](
  FOREIGN KEY (ORG_ID) references T_WQX_ORGANIZATION (ORG_ID) ON UPDATE CASCADE ON DELETE CASCADE
 ) ON [PRIMARY]
 
-GO
-
-CREATE TABLE [dbo].[T_WQX_IMPORT_COL_ALIAS](
-	[IMPORT_COL_ALIAS_IDX] [int] NOT NULL IDENTITY(1,1),
-	[COL_NAME] [varchar](100) NOT NULL,
-	[ALIAS_NAME] [varchar](100) NOT NULL,
-	[CREATE_DT] [datetime] NULL,
-	[CREATE_USERID] [varchar](25) NULL,
- CONSTRAINT [PK_WQX_IMPORT_COL_ALIAS] PRIMARY KEY CLUSTERED ([IMPORT_COL_ALIAS_IDX] ASC)
-) ON [PRIMARY]
-
-GO
-
-insert into T_WQX_IMPORT_COL_ALIAS ([COL_NAME], [ALIAS_NAME]) values ('Activity ID', 'ACTIVITY ID');
-insert into T_WQX_IMPORT_COL_ALIAS ([COL_NAME], [ALIAS_NAME]) values ('Activity ID', 'SAMPLE ID');
-insert into T_WQX_IMPORT_COL_ALIAS ([COL_NAME], [ALIAS_NAME]) values ('Activity ID', 'LABSAMPID');
-insert into T_WQX_IMPORT_COL_ALIAS ([COL_NAME], [ALIAS_NAME]) values ('Activity Media', 'ACTIVITY MEDIA');
-insert into T_WQX_IMPORT_COL_ALIAS ([COL_NAME], [ALIAS_NAME]) values ('Activity Media', 'MEDIA');
-insert into T_WQX_IMPORT_COL_ALIAS ([COL_NAME], [ALIAS_NAME]) values ('Activity Media', 'MATRIX');
-insert into T_WQX_IMPORT_COL_ALIAS ([COL_NAME], [ALIAS_NAME]) values ('Activity Start Date', 'ACTIVITY START DATE');
-insert into T_WQX_IMPORT_COL_ALIAS ([COL_NAME], [ALIAS_NAME]) values ('Activity Start Date', 'SAMPLE DATE');
-insert into T_WQX_IMPORT_COL_ALIAS ([COL_NAME], [ALIAS_NAME]) values ('Activity Start Date', 'SAMPDATE');
-insert into T_WQX_IMPORT_COL_ALIAS ([COL_NAME], [ALIAS_NAME]) values ('Activity Start Time', 'ACTIVITY START TIME');
-insert into T_WQX_IMPORT_COL_ALIAS ([COL_NAME], [ALIAS_NAME]) values ('Activity Start Time', 'SAMPLE TIME');
-insert into T_WQX_IMPORT_COL_ALIAS ([COL_NAME], [ALIAS_NAME]) values ('Activity Start Time', 'SAMPTIME');
-insert into T_WQX_IMPORT_COL_ALIAS ([COL_NAME], [ALIAS_NAME]) values ('Lab Name', 'LAB NAME');
-insert into T_WQX_IMPORT_COL_ALIAS ([COL_NAME], [ALIAS_NAME]) values ('Lab Name', 'LABNAME');
-insert into T_WQX_IMPORT_COL_ALIAS ([COL_NAME], [ALIAS_NAME]) values ('Lab Name', 'LAB');
-insert into T_WQX_IMPORT_COL_ALIAS ([COL_NAME], [ALIAS_NAME]) values ('Characteristic', 'CHARACTERISTIC');
-insert into T_WQX_IMPORT_COL_ALIAS ([COL_NAME], [ALIAS_NAME]) values ('Characteristic', 'ANALYTE');
-insert into T_WQX_IMPORT_COL_ALIAS ([COL_NAME], [ALIAS_NAME]) values ('Sample Prep ID', 'SAMPLE PREP ID');
-insert into T_WQX_IMPORT_COL_ALIAS ([COL_NAME], [ALIAS_NAME]) values ('Sample Prep ID', 'PREPNAME');
-insert into T_WQX_IMPORT_COL_ALIAS ([COL_NAME], [ALIAS_NAME]) values ('Sample Prep ID', 'PREPID');
-insert into T_WQX_IMPORT_COL_ALIAS ([COL_NAME], [ALIAS_NAME]) values ('Unit', 'UNIT');
-insert into T_WQX_IMPORT_COL_ALIAS ([COL_NAME], [ALIAS_NAME]) values ('Unit', 'UNITS_RESULT');
-insert into T_WQX_IMPORT_COL_ALIAS ([COL_NAME], [ALIAS_NAME]) values ('Result Detection Condition', 'RESULT DETECTION CONDITION');
-insert into T_WQX_IMPORT_COL_ALIAS ([COL_NAME], [ALIAS_NAME]) values ('Result Detection Condition', 'DETECTIONCONDITION');
-insert into T_WQX_IMPORT_COL_ALIAS ([COL_NAME], [ALIAS_NAME]) values ('Result Detection Condition', 'DETECTION CONDITION');
-insert into T_WQX_IMPORT_COL_ALIAS ([COL_NAME], [ALIAS_NAME]) values ('Dilution Factor', 'DILUTION FACTOR');
-insert into T_WQX_IMPORT_COL_ALIAS ([COL_NAME], [ALIAS_NAME]) values ('Dilution Factor', 'DILUTION');
-insert into T_WQX_IMPORT_COL_ALIAS ([COL_NAME], [ALIAS_NAME]) values ('Detection Threshold Limit Unit', 'DETECTION THRESHOLD LIMIT UNIT');
-insert into T_WQX_IMPORT_COL_ALIAS ([COL_NAME], [ALIAS_NAME]) values ('Detection Threshold Limit Unit', 'UNITS_DL');
-insert into T_WQX_IMPORT_COL_ALIAS ([COL_NAME], [ALIAS_NAME]) values ('Detection Threshold Limit Unit', 'DETECTION LIMIT UNIT');
-
 
 GO
 
@@ -967,7 +923,7 @@ CREATE TABLE [dbo].[T_WQX_IMPORT_TEMP_RESULT](
 	[LAB_SAMP_PREP_END_DT] [datetime] NULL,
 	[DILUTION_FACTOR] [varchar](10) NULL,
 	[IMPORT_STATUS_CD] [varchar](1) NULL,
-	[IMPORT_STATUS_DESC] [varchar](100) NULL,
+	[IMPORT_STATUS_DESC] [varchar](200) NULL,
  CONSTRAINT [PK_WQX_IMPORT_TEMP_RESULT] PRIMARY KEY CLUSTERED ([TEMP_RESULT_IDX] ASC),
  FOREIGN KEY ([TEMP_SAMPLE_IDX]) references [T_WQX_IMPORT_TEMP_SAMPLE] ([TEMP_SAMPLE_IDX]) ON UPDATE CASCADE ON DELETE CASCADE
 ) ON [PRIMARY]
@@ -1029,6 +985,49 @@ CREATE TABLE [dbo].[T_WQX_IMPORT_TEMP_MONLOC](
 	[IMPORT_STATUS_CD] [varchar](1) NULL,
 	[IMPORT_STATUS_DESC] [varchar](100) NULL,
  CONSTRAINT [PK_WQX_IMPORT_TEMP_MONLOC] PRIMARY KEY CLUSTERED  ([TEMP_MONLOC_IDX] ASC)
+) ON [PRIMARY]
+
+GO
+
+CREATE TABLE [dbo].[T_WQX_IMPORT_TEMP_BIO_INDEX](
+	[TEMP_BIO_HABITAT_INDEX_IDX] [int] NOT NULL IDENTITY(1,1),
+	[USER_ID] [varchar](25) NOT NULL,
+	[ORG_ID] [varchar](30) NOT NULL,
+	[MONLOC_IDX] [int] NULL,
+	[INDEX_ID] [varchar](35) NULL,
+	[INDEX_TYPE_ID] [varchar](35) NULL,
+	[INDEX_TYPE_ID_CONTEXT] [varchar](50) NULL,
+	[INDEX_TYPE_NAME] [varchar](50) NOT NULL,
+	[INDEX_TYPE_SCALE] [varchar](50) NULL,
+	[INDEX_SCORE] [varchar](10) NOT NULL,
+	[INDEX_QUAL_CD] [varchar](5) NULL,
+	[INDEX_COMMENT] [varchar](4000) NULL,
+	[INDEX_CALC_DATE] [datetime] NULL,
+	[IMPORT_STATUS_CD] [varchar](1) NULL,
+	[IMPORT_STATUS_DESC] [varchar](200) NULL,
+ CONSTRAINT [PK_T_IMPORT_TEMP_BIO_INDEX] PRIMARY KEY CLUSTERED ([TEMP_BIO_HABITAT_INDEX_IDX] ASC)
+) ON [PRIMARY]
+
+
+CREATE TABLE [dbo].[T_WQX_IMPORT_TEMP_ACTIVITY_METRIC](
+	[TEMP_ACTIVITY_METRIC_IDX] [int] NOT NULL IDENTITY(1,1),
+	[USER_ID] [varchar](25) NOT NULL,
+	[ORG_ID] [varchar](30) NOT NULL,
+	[ACTIVITY_IDX] [int] NULL,
+	[ACTIVITY_ID] [varchar](35) NULL,
+	[METRIC_TYPE_ID] [varchar](35) NOT NULL,
+	[METRIC_TYPE_ID_CONTEXT] [varchar](50) NOT NULL,
+	[METRIC_TYPE_NAME] [varchar](50) NULL,
+	[METRIC_SCALE] [varchar](50) NULL,
+	[METRIC_FORMULA_DESC] [varchar](50) NULL,
+	[METRIC_VALUE_MSR] [varchar](12) NULL,
+	[METRIC_VALUE_MSR_UNIT] [varchar](12) NULL,
+	[METRIC_SCORE] [varchar](10) NOT NULL,
+	[METRIC_COMMENT] [varchar](4000) NULL,
+	[TEMP_BIO_HABITAT_INDEX_IDX] [int] NULL,
+	[IMPORT_STATUS_CD] [varchar](1) NULL,
+	[IMPORT_STATUS_DESC] [varchar](200) NULL,
+ CONSTRAINT [PK_T_IMPORT_TEMP_ACTIVITY_METRIC] PRIMARY KEY CLUSTERED ([TEMP_ACTIVITY_METRIC_IDX] ASC)
 ) ON [PRIMARY]
 
 GO
@@ -1475,13 +1474,13 @@ BEGIN
 			(select A.MONLOC_IDX, min(M.MONLOC_ID) as MONLOC_ID, dateadd(dd, datediff(dd, 0, a.ACT_START_DT)+0, 0) as ACT_START_DT,
 			R.CHAR_NAME,
 			avg(
-			case when ISNUMERIC(RESULT_MSR)=1 then cast(RESULT_MSR as DECIMAL(10,4))
-			when ISNUMERIC( DETECTION_LIMIT)=1 then cast(DETECTION_LIMIT as DECIMAL(10,4))
-			when ISNUMERIC(LAB_REPORTING_LEVEL)=1 then cast(LAB_REPORTING_LEVEL as DECIMAL(10,4))
-			when ISNUMERIC(PQL)=1 then cast (PQL as DECIMAL(10,4))
-			when ISNUMERIC(LOWER_QUANT_LIMIT)=1 then cast (LOWER_QUANT_LIMIT as DECIMAL(10,4))
-			when ISNUMERIC(UPPER_QUANT_LIMIT)=1 then cast (UPPER_QUANT_LIMIT as DECIMAL(10,4))
-			else CAST(0 as DECIMAL(10,4)) end ) as RESULT_CONV, 
+			case when ISNUMERIC(RESULT_MSR)=1 then cast(RESULT_MSR as DECIMAL(12,4))
+			when ISNUMERIC( DETECTION_LIMIT)=1 then cast(DETECTION_LIMIT as DECIMAL(12,4))
+			when ISNUMERIC(LAB_REPORTING_LEVEL)=1 then cast(LAB_REPORTING_LEVEL as DECIMAL(12,4))
+			when ISNUMERIC(PQL)=1 then cast (PQL as DECIMAL(12,4))
+			when ISNUMERIC(LOWER_QUANT_LIMIT)=1 then cast (LOWER_QUANT_LIMIT as DECIMAL(12,4))
+			when ISNUMERIC(UPPER_QUANT_LIMIT)=1 then cast (UPPER_QUANT_LIMIT as DECIMAL(12,4))
+			else CAST(0 as DECIMAL(12,4)) end ) as RESULT_CONV, 
 			avg(try_convert(decimal(16,4), R.RESULT_MSR)) as RESULT_RAW, 
 			MAX(R.RESULT_MSR_UNIT) as RESULT_MSR_UNIT, 
 			min(R.DETECTION_LIMIT) as DETECTION_LIMIT
@@ -1493,6 +1492,7 @@ BEGIN
 			and (A.ACT_START_DT >= @StartDt or @StartDt is null)
 			and (A.ACT_START_DT <= @EndDt or @EndDt is null)
 			and A.ACT_TYPE in ('Field Msr/Obs', 'Sample-Routine','Sample-Integrated Cross-Sectional Profile')
+			and (@DataIncludeInd = 'A' or A.WQX_IND = 1)
 			group by A.MONLOC_IDX, R.CHAR_NAME, dateadd(dd, datediff(dd, 0, a.ACT_START_DT)+0, 0)
 			) Z
 			group by Z.MONLOC_IDX, Z.MONLOC_ID, Z.CHAR_NAME
@@ -1804,11 +1804,11 @@ BEGIN
 	set @strWQX = '<?xml version="1.0" encoding="UTF-8"?>
 	<Document Id="UI_' + convert(varchar, getdate(), 112) + '" xmlns="http://www.exchangenetwork.net/schema/v1.0/ExchangeNetworkDocument.xsd">
 		<Header>
-			<Author>Doug Timms</Author>
-			<Organization>EPA</Organization>
+			<Author>Open Waters Software</Author>
+			<Organization>Open Waters Software</Organization>
 			<Title>WQX</Title>
 			<CreationTime>' + LEFT(CONVERT(varchar, getdate(), 120), 10) + 'T' + RIGHT(convert(varchar, getdate(), 120), 8) + '</CreationTime>
-			<ContactInfo>doug.timms@open-environment.org</ContactInfo>
+			<ContactInfo>open-waters@open-environment.org</ContactInfo>
 		</Header>
 		<Payload Operation="Update-Insert">
 	<WQX xmlns="http://www.exchangenetwork.net/schema/wqx/2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.exchangenetwork.net/schema/wqx/2 
@@ -1891,10 +1891,10 @@ BEGIN
 	<Document Id="UI_' + convert(varchar, getdate(), 112) + '" xmlns="http://www.exchangenetwork.net/schema/v1.0/ExchangeNetworkDocument.xsd">
 		<Header>
 			<Author>Open Waters Software</Author>
-			<Organization>open-environment.org</Organization>
+			<Organization>Open Waters Software</Organization>
 			<Title>WQX</Title>
 			<CreationTime>' + LEFT(CONVERT(varchar, getdate(), 120), 10) + 'T' + RIGHT(convert(varchar, getdate(), 120), 8) + '</CreationTime>
-			<ContactInfo>doug.timms@open-environment.org</ContactInfo>
+			<ContactInfo>open-waters@open-environment.org</ContactInfo>
 		</Header>
 		<Payload Operation="Delete">
 	<WQXDelete xmlns="http://www.exchangenetwork.net/schema/wqx/2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.exchangenetwork.net/schema/wqx/2 

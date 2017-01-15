@@ -69,6 +69,8 @@
                         <asp:Button ID="btnNewTemplate" runat="server" CssClass="btn" Text="Edit Custom Import Templates" OnClick="btnNewTemplate_Click" />
                     </asp:Panel>
                 </div>
+            </asp:Panel>
+            <asp:Panel ID="pnlProject" runat="server" Visible="false" > 
                 <div class="row">
                     <span class="fldLbl" style="width:180px">Import to Project:</span>
                     <asp:DropDownList CssClass="fldTxt" ID="ddlProject" runat="server" DataSourceID="dsProject" DataTextField="PROJECT_ID"  DataValueField="PROJECT_IDX">
@@ -82,6 +84,7 @@
                     </asp:ObjectDataSource>
                 </div>
             </asp:Panel>
+
         </div>
     </asp:Panel>
     <div class="clear"></div>
@@ -93,6 +96,10 @@
                 <asp:Label runat="server" ID="lblPasteInst" CssClass="bold" ForeColor="#006600"></asp:Label>
                 <asp:TextBox ID="txtPaste" TextMode="MultiLine" Width="98%" Height="98%" Rows="10" runat="server"></asp:TextBox>
             </div>
+            <asp:Panel ID="pnlText2" runat="server" Visible="false">
+                <asp:Label runat="server" ID="Label1" CssClass="bold" ForeColor="#006600">Paste Indices Here:</asp:Label>
+                <asp:TextBox ID="txtPaste2" TextMode="MultiLine" Width="98%" Height="98%" Rows="10" runat="server" Text="Indices import not available at this time."></asp:TextBox>
+            </asp:Panel>
             <div class="row">
                 <asp:Button ID="btnParse" runat="server" CssClass="btn" Text="Continue" onclick="btnParse_Click" OnClientClick="DisplayLoadingDiv()" />
             </div>

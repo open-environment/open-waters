@@ -245,7 +245,7 @@ namespace OpenEnvironment
 
         protected void btnWiz5_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/App_Pages/Secure/WQXOrgSettings.aspx");
+            Response.Redirect("~/App_Pages/Secure/WQXOrgData.aspx");
         }
 
         protected void btnWiz6_Click(object sender, EventArgs e)

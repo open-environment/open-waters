@@ -34,6 +34,7 @@
             <asp:ListItem Value="HorizontalCoordinateReferenceSystemDatum" Text="HorizontalCoordinateReferenceSystemDatum"></asp:ListItem>
             <asp:ListItem Value="MeasureUnit" Text="MeasureUnit"></asp:ListItem>
             <asp:ListItem Value="MethodSpeciation" Text="MethodSpeciation"></asp:ListItem>
+            <asp:ListItem Value="MetricType" Text="MetricType"></asp:ListItem>
             <asp:ListItem Value="MonitoringLocationType" Text="MonitoringLocationType"></asp:ListItem>
             <asp:ListItem Value="NetType" Text="NetType"></asp:ListItem>
             <asp:ListItem Value="ResultDetectionCondition" Text="ResultDetectionCondition"></asp:ListItem>

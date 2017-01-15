@@ -103,6 +103,7 @@
     <Content Include="App_Data\DatabasePatch_v1.5.sql" />
     <Content Include="App_Data\DatabasePatch_v1.6.2.sql" />
     <Content Include="App_Data\DatabasePatch_v1.6.sql" />
+    <Content Include="App_Pages\Secure\WQXImportMetric.aspx" />
     <Content Include="App_Pages\Secure\WQXOrgData.aspx" />
     <Content Include="App_Pages\Secure\SetOrg.aspx" />
     <None Include="App_Data\SeminoleData.sql" />
@@ -150,7 +151,6 @@
     <Content Include="App_Pages\Public\Terms.aspx" />
     <Content Include="App_Pages\Secure\WQXOrgNew.aspx" />
     <Content Include="App_Pages\Secure\AdmDataSynch.aspx" />
-    <Content Include="App_Pages\Secure\WQXOrgSettings.aspx" />
     <Content Include="App_Pages\Secure\Help.aspx" />
     <None Include="App_Data\CreekData.sql" />
     <Content Include="App_Images\0.png" />
@@ -177,19 +177,86 @@
     <Content Include="App_Pages\Secure\RefData.aspx" />
     <Content Include="App_Pages\Secure\WQXActivityEdit.aspx" />
     <Content Include="App_Pages\Secure\WQXImportOld.aspx" />
+    <Content Include="Scripts\datatables\Buttons-1.2.4\css\buttons.bootstrap.css" />
+    <Content Include="Scripts\datatables\Buttons-1.2.4\css\buttons.bootstrap.min.css" />
+    <Content Include="Scripts\datatables\Buttons-1.2.4\css\buttons.dataTables.css" />
+    <Content Include="Scripts\datatables\Buttons-1.2.4\css\buttons.dataTables.min.css" />
+    <Content Include="Scripts\datatables\Buttons-1.2.4\css\buttons.foundation.css" />
+    <Content Include="Scripts\datatables\Buttons-1.2.4\css\buttons.foundation.min.css" />
+    <Content Include="Scripts\datatables\Buttons-1.2.4\css\buttons.jqueryui.css" />
+    <Content Include="Scripts\datatables\Buttons-1.2.4\css\buttons.jqueryui.min.css" />
+    <Content Include="Scripts\datatables\Buttons-1.2.4\css\buttons.semanticui.css" />
+    <Content Include="Scripts\datatables\Buttons-1.2.4\css\buttons.semanticui.min.css" />
+    <Content Include="Scripts\datatables\Buttons-1.2.4\js\buttons.bootstrap.js" />
+    <Content Include="Scripts\datatables\Buttons-1.2.4\js\buttons.bootstrap.min.js" />
+    <Content Include="Scripts\datatables\Buttons-1.2.4\js\buttons.colVis.js" />
+    <Content Include="Scripts\datatables\Buttons-1.2.4\js\buttons.colVis.min.js" />
+    <Content Include="Scripts\datatables\Buttons-1.2.4\js\buttons.flash.js" />
+    <Content Include="Scripts\datatables\Buttons-1.2.4\js\buttons.flash.min.js" />
+    <Content Include="Scripts\datatables\Buttons-1.2.4\js\buttons.foundation.js" />
+    <Content Include="Scripts\datatables\Buttons-1.2.4\js\buttons.foundation.min.js" />
+    <Content Include="Scripts\datatables\Buttons-1.2.4\js\buttons.html5.js" />
+    <Content Include="Scripts\datatables\Buttons-1.2.4\js\buttons.html5.min.js" />
+    <Content Include="Scripts\datatables\Buttons-1.2.4\js\buttons.jqueryui.js" />
+    <Content Include="Scripts\datatables\Buttons-1.2.4\js\buttons.jqueryui.min.js" />
+    <Content Include="Scripts\datatables\Buttons-1.2.4\js\buttons.print.js" />
+    <Content Include="Scripts\datatables\Buttons-1.2.4\js\buttons.print.min.js" />
+    <Content Include="Scripts\datatables\Buttons-1.2.4\js\buttons.semanticui.js" />
+    <Content Include="Scripts\datatables\Buttons-1.2.4\js\buttons.semanticui.min.js" />
+    <Content Include="Scripts\datatables\Buttons-1.2.4\js\dataTables.buttons.js" />
+    <Content Include="Scripts\datatables\Buttons-1.2.4\js\dataTables.buttons.min.js" />
+    <Content Include="Scripts\datatables\Buttons-1.2.4\swf\flashExport.swf" />
     <Content Include="Scripts\Chart.js" />
     <Content Include="Scripts\Chart.min.js" />
     <Content Include="Scripts\chosen-sprite.png" />
     <Content Include="Scripts\chosen.css" />
     <Content Include="Scripts\chosen.jquery.js" />
-    <Content Include="Scripts\datatables.min.css" />
-    <Content Include="Scripts\datatables.min.js" />
+    <Content Include="Scripts\datatables\DataTables-1.10.13\css\dataTables.bootstrap.css" />
+    <Content Include="Scripts\datatables\DataTables-1.10.13\css\dataTables.bootstrap.min.css" />
+    <Content Include="Scripts\datatables\DataTables-1.10.13\css\dataTables.foundation.css" />
+    <Content Include="Scripts\datatables\DataTables-1.10.13\css\dataTables.foundation.min.css" />
+    <Content Include="Scripts\datatables\DataTables-1.10.13\css\dataTables.jqueryui.css" />
+    <Content Include="Scripts\datatables\DataTables-1.10.13\css\dataTables.jqueryui.min.css" />
+    <Content Include="Scripts\datatables\DataTables-1.10.13\css\dataTables.semanticui.css" />
+    <Content Include="Scripts\datatables\DataTables-1.10.13\css\dataTables.semanticui.min.css" />
+    <Content Include="Scripts\datatables\DataTables-1.10.13\css\jquery.dataTables.css" />
+    <Content Include="Scripts\datatables\DataTables-1.10.13\css\jquery.dataTables.min.css" />
+    <Content Include="Scripts\datatables\DataTables-1.10.13\css\jquery.dataTables_themeroller.css" />
+    <Content Include="Scripts\datatables\DataTables-1.10.13\images\sort_asc.png" />
+    <Content Include="Scripts\datatables\DataTables-1.10.13\images\sort_asc_disabled.png" />
+    <Content Include="Scripts\datatables\DataTables-1.10.13\images\sort_both.png" />
+    <Content Include="Scripts\datatables\DataTables-1.10.13\images\sort_desc.png" />
+    <Content Include="Scripts\datatables\DataTables-1.10.13\images\sort_desc_disabled.png" />
+    <Content Include="Scripts\datatables\DataTables-1.10.13\js\dataTables.bootstrap.js" />
+    <Content Include="Scripts\datatables\DataTables-1.10.13\js\dataTables.bootstrap.min.js" />
+    <Content Include="Scripts\datatables\DataTables-1.10.13\js\dataTables.foundation.js" />
+    <Content Include="Scripts\datatables\DataTables-1.10.13\js\dataTables.foundation.min.js" />
+    <Content Include="Scripts\datatables\DataTables-1.10.13\js\dataTables.jqueryui.js" />
+    <Content Include="Scripts\datatables\DataTables-1.10.13\js\dataTables.jqueryui.min.js" />
+    <Content Include="Scripts\datatables\DataTables-1.10.13\js\dataTables.semanticui.js" />
+    <Content Include="Scripts\datatables\DataTables-1.10.13\js\dataTables.semanticui.min.js" />
+    <Content Include="Scripts\datatables\DataTables-1.10.13\js\jquery.dataTables.js" />
+    <Content Include="Scripts\datatables\DataTables-1.10.13\js\jquery.dataTables.min.js" />
+    <Content Include="Scripts\datatables\datatables.min.css" />
+    <Content Include="Scripts\datatables\datatables.min.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <Content Include="Scripts\datatables\JSZip-2.5.0\jszip.js" />
+    <Content Include="Scripts\datatables\JSZip-2.5.0\jszip.min.js" />
     <Content Include="Scripts\list.min.js" />
+    <Content Include="Scripts\moment-with-locales.js" />
+    <Content Include="Scripts\moment-with-locales.min.js" />
+    <Content Include="Scripts\moment.js" />
+    <Content Include="Scripts\moment.min.js" />
     <Content Include="Scripts\openenvi.tabs.js" />
+    <Content Include="Scripts\datatables\pdfmake-0.1.18\build\pdfmake.js" />
+    <Content Include="Scripts\datatables\pdfmake-0.1.18\build\pdfmake.min.js" />
+    <Content Include="Scripts\datatables\pdfmake-0.1.18\build\vfs_fonts.js" />
     <Content Include="Styles\Site.css" />
     <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
+    <Content Include="tmp\Placeholder.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -308,6 +375,13 @@
     </Compile>
     <Compile Include="App_Pages\Secure\WQXImport.aspx.designer.cs">
       <DependentUpon>WQXImport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Pages\Secure\WQXImportMetric.aspx.cs">
+      <DependentUpon>WQXImportMetric.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Pages\Secure\WQXImportMetric.aspx.designer.cs">
+      <DependentUpon>WQXImportMetric.aspx</DependentUpon>
     </Compile>
     <Compile Include="PubMap.aspx.cs">
       <DependentUpon>PubMap.aspx</DependentUpon>
@@ -620,13 +694,6 @@
     <Compile Include="App_Pages\Secure\AdmDataSynch.aspx.designer.cs">
       <DependentUpon>AdmDataSynch.aspx</DependentUpon>
     </Compile>
-    <Compile Include="App_Pages\Secure\WQXOrgSettings.aspx.cs">
-      <DependentUpon>WQXOrgSettings.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="App_Pages\Secure\WQXOrgSettings.aspx.designer.cs">
-      <DependentUpon>WQXOrgSettings.aspx</DependentUpon>
-    </Compile>
     <Compile Include="App_Pages\Secure\Help.aspx.cs">
       <DependentUpon>Help.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -679,6 +746,9 @@
     <Content Include="SiteAuth.Master" />
     <Content Include="Tests\MonLoc_Example.xlsx" />
     <Content Include="Tests\Samp_Example.xlsx" />
+    <Content Include="Scripts\datatables\Buttons-1.2.4\css\common.scss" />
+    <Content Include="Scripts\datatables\Buttons-1.2.4\css\mixins.scss" />
+    <Content Include="Tests\SampMetricIndex_Example.xlsx" />
     <None Include="Web References\gov.epa.cdx\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
@@ -738,11 +808,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Pages\Secure\Logs\" />
-    <Folder Include="Scripts\Buttons-1.2.4\" />
-    <Folder Include="Scripts\DataTables-1.10.13\" />
-    <Folder Include="Scripts\JSZip-2.5.0\" />
-    <Folder Include="Scripts\pdfmake-0.1.18\" />
-    <Folder Include="tmp\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

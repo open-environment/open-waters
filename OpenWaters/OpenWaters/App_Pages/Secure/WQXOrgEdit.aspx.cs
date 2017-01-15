@@ -116,7 +116,7 @@ namespace OpenEnvironment
 
         protected void btnSettings_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/App_Pages/Secure/WQXOrgSettings.aspx", false);
+            Response.Redirect("~/App_Pages/Secure/WQXOrgData.aspx", false);
             Context.ApplicationInstance.CompleteRequest();
         }
 

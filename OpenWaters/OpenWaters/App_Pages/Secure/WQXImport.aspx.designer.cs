@@ -130,6 +130,15 @@ namespace OpenEnvironment.App_Pages.Secure {
         protected global::System.Web.UI.WebControls.Button btnNewTemplate;
         
         /// <summary>
+        /// pnlProject control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnlProject;
+        
+        /// <summary>
         /// ddlProject control.
         /// </summary>
         /// <remarks>
@@ -173,6 +182,33 @@ namespace OpenEnvironment.App_Pages.Secure {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtPaste;
+        
+        /// <summary>
+        /// pnlText2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnlText2;
+        
+        /// <summary>
+        /// Label1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label1;
+        
+        /// <summary>
+        /// txtPaste2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtPaste2;
         
         /// <summary>
         /// btnParse control.

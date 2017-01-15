@@ -73,7 +73,6 @@ namespace OpenEnvironment
                 return;
             }
 
-
             if (ddlRef.SelectedValue == "AnalyticalMethod")
                 db_Ref.InsertOrUpdateT_WQX_REF_ANAL_METHOD(null, txtID.Text, Session["OrgID"].ToString(), txtName.Text, txtDesc.Text, true);
 

@@ -45,6 +45,7 @@
                 <asp:ListItem Text="Activity Relative Depth" Value="ActivityRelativeDepth"></asp:ListItem>
                 <asp:ListItem Text="Assemblage" Value="Assemblage"></asp:ListItem>
                 <asp:ListItem Text="Biological Intent" Value="BiologicalIntent"></asp:ListItem>
+                <asp:ListItem Text="Metric Type" Value="MetricType"></asp:ListItem>
                 <asp:ListItem Text="Net Type" Value="NetType"></asp:ListItem>
                 <asp:ListItem Text="Sample Collection Equipment" Value="SampleCollectionEquipment"></asp:ListItem>
                 <asp:ListItem Text="Sample Collection Method" Value="SampleCollectionMethod"></asp:ListItem>
@@ -123,8 +124,7 @@
                 <asp:TemplateField HeaderText="Edit">
                     <ItemStyle HorizontalAlign="Center" Width="60px" />
                     <ItemTemplate>
-                        <asp:ImageButton ID="EditButton" runat="server" CausesValidation="False" CommandName="Edit"
-                            CommandArgument='<%# Eval("CHAR_NAME") %>' ImageUrl="~/App_Images/ico_edit.png" ToolTip="Edit" />
+                        <asp:ImageButton ID="EditButton" runat="server" CausesValidation="False" CommandName="Edit" CommandArgument='<%# Eval("CHAR_NAME") %>' ImageUrl="~/App_Images/ico_edit.png" ToolTip="Edit" />
                         <asp:ImageButton ID="DelButton" runat="server" CausesValidation="False" CommandName="Deletes"
                             CommandArgument='<%# Eval("CHAR_NAME") %>' ImageUrl="~/App_Images/ico_del.png" ToolTip="Delete" />
                     </ItemTemplate>
@@ -134,9 +134,7 @@
                     </EditItemTemplate>
                 </asp:TemplateField>
                 <asp:BoundField DataField="CHAR_NAME" HeaderText="Characteristic" SortExpression="CHAR_NAME" ControlStyle-Width="98%" ReadOnly="true" />
-                <asp:BoundField DataField="DEFAULT_DETECT_LIMIT" HeaderText="Detection Limit" SortExpression="DEFAULT_DETECT_LIMIT" ControlStyle-Width="98%" />
-                <asp:BoundField DataField="DEFAULT_UNIT" HeaderText="Default Unit" SortExpression="DEFAULT_UNIT" />
-                <asp:BoundField DataField="ACT_IND" HeaderText="Active" SortExpression="ACT_IND" ReadOnly="true" />
+                <asp:BoundField DataField="SAMP_FRAC_REQ" HeaderText="Samp Fraction Required" SortExpression="SAMP_FRAC_REQ" ReadOnly="true" />
                 <asp:BoundField DataField="UPDATE_DT" HeaderText="Last Updated" SortExpression="UPDATE_DT" ReadOnly="true" />
             </Columns>
         </asp:GridView>

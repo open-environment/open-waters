@@ -595,6 +595,11 @@ namespace OpenEnvironment.App_Logic.BusinessLogicLayer
             return colMapping;
         }
 
+        public static Dictionary<string, int> GetColumnMapping_CT(int TemplateID)
+        {
+            return null;
+        }
+
 
         //******************* DATA IMPORT HELPERS ********************************************
         public static List<ConfigInfoType> GetAllColumnInfo(string ImportType)

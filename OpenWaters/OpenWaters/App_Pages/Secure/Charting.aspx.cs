@@ -27,7 +27,7 @@ namespace OpenEnvironment
     public partial class Charting : System.Web.UI.Page
     {
         [WebMethod(EnableSession = true)]
-        public static List<object> getChartData(string chartType, string charName, string begDt, string endDt, string monLoc, string decimals)
+        public static List<object> getChartData(string chartType, string charName, string charName2, string begDt, string endDt, string monLoc, string decimals, string wqxInd)
         {
             //TO DO: handle session expire
             if (System.Web.HttpContext.Current.Session["OrgID"] == null)
@@ -43,29 +43,46 @@ namespace OpenEnvironment
                 i++;
             }
 
-            List<WQXAnalysis_Result> _ds = db_WQX.SP_WQXAnalysis(chartType, System.Web.HttpContext.Current.Session["OrgID"].ToString(), 0, charName, begDt.ConvertOrDefault<DateTime?>(), endDt.ConvertOrDefault<DateTime?>(), null);
+            //get results from stored procedure
+            List<WQXAnalysis_Result> _ds = db_WQX.SP_WQXAnalysis(chartType, System.Web.HttpContext.Current.Session["OrgID"].ToString(), (chartType == "MLOC" ? 0 : monLoc.ConvertOrDefault<int>()), charName, begDt.ConvertOrDefault<DateTime?>(), endDt.ConvertOrDefault<DateTime?>(), wqxInd);
 
-            List<WQXAnalysis_Result> _ds2 = (from a in _ds
-                                             join b in _monLocList on a.MONLOC_IDX equals b.monLocIDX
-                                             orderby b.seq
-                                             select a).ToList();
-
-
+            //populate to object that gets returned
             List<object> iData = new List<object>();
+            List<string> labels = new List<string>();
+            List<decimal> lst_dataItem_1 = new List<decimal>();
+            List<decimal> lst_dataItem_2 = new List<decimal>();
+
+            //populate data for bar chart
+            List<WQXAnalysis_Result> _ds2 = null;
+            if (chartType == "MLOC")
+            {
+                _ds2 = (from a in _ds
+                        join b in _monLocList on a.MONLOC_IDX equals b.monLocIDX
+                        orderby b.seq
+                        select a).ToList();
+            }
+            else if (chartType == "SERIES")
+                _ds2 = _ds;
 
             //populate labels
-            List<string> labels = new List<string>();
             foreach (WQXAnalysis_Result _d in _ds2)
-                labels.Add(_d.MONLOC_ID);
+                labels.Add( chartType == "SERIES" ? _d.ACT_START_DT.ToString() : _d.MONLOC_ID);
             iData.Add(labels);
 
             //populate points
-            List<decimal> lst_dataItem_1 = new List<decimal>();
             foreach (WQXAnalysis_Result _d in _ds2)
-                lst_dataItem_1.Add(decimals == "" ? _d.RESULT_MSR.ConvertOrDefault<decimal>() : Math.Round(_d.RESULT_MSR.ConvertOrDefault<decimal>(),2));
+                lst_dataItem_1.Add(decimals == "" ? _d.RESULT_MSR.ConvertOrDefault<decimal>() : Math.Round(_d.RESULT_MSR.ConvertOrDefault<decimal>(), 2));
             iData.Add(lst_dataItem_1);
 
+            //populate datatable
             iData.Add(_ds2);
+
+            //populate 2nd char
+            List<WQXAnalysis_Result> _ds_second = null;
+            if (charName2 != "")
+                _ds_second = db_WQX.SP_WQXAnalysis(chartType, System.Web.HttpContext.Current.Session["OrgID"].ToString(), (chartType == "MLOC" ? 0 : monLoc.ConvertOrDefault<int>()), charName2, begDt.ConvertOrDefault<DateTime?>(), endDt.ConvertOrDefault<DateTime?>(), wqxInd);
+            iData.Add(_ds_second);
+
 
             return iData;
         }
@@ -83,8 +100,9 @@ namespace OpenEnvironment
                 if (hl != null) hl.CssClass = "leftMnuBody sel";
 
                 //populate drop-downs                
-                Utils.BindList(ddlMonLoc, dsMonLoc, "MONLOC_IDX", "MONLOC_NAME");
+                Utils.BindList(ddlMonLoc, dsMonLoc, "MONLOC_IDX", "MONLOC_ID");
                 Utils.BindList(ddlCharacteristic, dsChar, "CHAR_NAME", "CHAR_NAME");
+                Utils.BindList(ddlCharacteristic2, dsChar, "CHAR_NAME", "CHAR_NAME");
 
                 //populate listbox
                 lbMonLoc.DataSource = db_WQX.GetWQX_MONLOC(true, Session["OrgID"].ToString(), false);

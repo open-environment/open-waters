@@ -85,7 +85,7 @@
 
     <!-- RESULT -->
     <Field Level="S" FieldName="DATA_LOGGER_LINE" ReqInd="N" Length="15" UniqueInd="N" FKey="" DataType=""><Alias>Data Logger Line</Alias></Field>
-    <Field Level="S" FieldName="RESULT_DETECT_CONDITION" ReqInd="N" Length="35" UniqueInd="N" FKey="" DataType=""><Alias>Result Detection Condition</Alias><Alias>DETECTIONCONDITION</Alias><Alias>DETECTION CONDITION</Alias></Field>
+    <Field Level="S" FieldName="RESULT_DETECT_CONDITION" ReqInd="N" Length="35" UniqueInd="N" FKey="ResultDetectionCondition" DataType=""><Alias>Result Detection Condition</Alias><Alias>DETECTIONCONDITION</Alias><Alias>DETECTION CONDITION</Alias></Field>
     <Field Level="S" FieldName="CHAR_NAME" ReqInd="N" Length="120" UniqueInd="N" FKey="" DataType=""><Alias>Characteristic</Alias><Alias>ANALYTE</Alias></Field>
     <Field Level="S" FieldName="METHOD_SPECIATION_NAME" ReqInd="N" Length="20" UniqueInd="N" FKey="MethodSpeciation" DataType=""><Alias>Method Speciation</Alias></Field>
     <Field Level="S" FieldName="RESULT_SAMP_FRACTION" ReqInd="N" Length="25" UniqueInd="N" FKey="ResultSampleFraction" DataType=""><Alias>Sample Fraction</Alias></Field>
@@ -125,8 +125,8 @@
     <Field Level="S" FieldName="TAX_DTL_FUNC_FEEDING_GROUP1" ReqInd="N" Length="6" UniqueInd="N" FKey="" DataType=""><Alias>Functional Feeding Group</Alias></Field>
     <Field Level="S" FieldName="TAX_DTL_FUNC_FEEDING_GROUP2" ReqInd="N" Length="6" UniqueInd="N" FKey="" DataType=""><Alias>Functional Feeding Group 2</Alias></Field>
     <Field Level="S" FieldName="TAX_DTL_FUNC_FEEDING_GROUP3" ReqInd="N" Length="6" UniqueInd="N" FKey="" DataType=""><Alias>Functional Feeding Group 3</Alias></Field>
-    <Field Level="S" FieldName="FREQ_CLASS_CODE" ReqInd="N" Length="50" UniqueInd="N" FKey="" DataType=""><Alias>Frequency Class</Alias></Field>
-    <Field Level="S" FieldName="FREQ_CLASS_UNIT" ReqInd="N" Length="12" UniqueInd="N" FKey="" DataType=""><Alias>Frequency Class Unit</Alias></Field>
+    <Field Level="S" FieldName="FREQ_CLASS_CODE" ReqInd="N" Length="50" UniqueInd="N" FKey="FrequencyClassDescriptor" DataType=""><Alias>Frequency Class</Alias></Field>
+    <Field Level="S" FieldName="FREQ_CLASS_UNIT" ReqInd="N" Length="12" UniqueInd="N" FKey="MeasureUnit" DataType=""><Alias>Frequency Class Unit</Alias></Field>
     <Field Level="S" FieldName="FREQ_CLASS_UPPER" ReqInd="N" Length="8" UniqueInd="N" FKey="" DataType=""><Alias>Frequency Class Upper</Alias></Field>
     <Field Level="S" FieldName="FREQ_CLASS_LOWER" ReqInd="N" Length="8" UniqueInd="N" FKey="" DataType=""><Alias>Frequency Class Lower</Alias></Field>    
     <Field Level="S" FieldName="ANALYTIC_METHOD_IDX" ReqInd="N" Length="" UniqueInd="N" FKey="" DataType="int"><Alias>Analytical Method IDX</Alias></Field>
@@ -136,7 +136,7 @@
     <Field Level="S" FieldName="LAB_ANALYSIS_START_DT" ReqInd="N" Length="" UniqueInd="N" FKey="" DataType="datetime" AddField="LAB_ANALYSIS_START_TIME"><Alias>Analysis Start Date</Alias></Field>
     <Field Level="S" FieldName="LAB_ANALYSIS_START_TIME" ReqInd="N" Length="" UniqueInd="N" FKey="" DataType="datetime"><Alias>Analysis Start Time</Alias></Field>
     <Field Level="S" FieldName="LAB_ANALYSIS_END_DT" ReqInd="N" Length="" UniqueInd="N" FKey="" DataType="datetime"><Alias>Analysis End Date</Alias></Field>
-    <Field Level="S" FieldName="RESULT_LAB_COMMENT_CODE" ReqInd="N" Length="3" UniqueInd="N" FKey="" DataType=""><Alias>Lab Comment Code</Alias></Field>
+    <Field Level="S" FieldName="RESULT_LAB_COMMENT_CODE" ReqInd="N" Length="3" UniqueInd="N" FKey="ResultLaboratoryComment" DataType=""><Alias>Lab Comment Code</Alias></Field>
     <Field Level="S" FieldName="METHOD_DETECTION_LEVEL" ReqInd="N" Length="12" UniqueInd="N" FKey="" DataType=""><Alias>Method Detection Level</Alias></Field>
     <Field Level="S" FieldName="LAB_REPORTING_LEVEL" ReqInd="N" Length="12" UniqueInd="N" FKey="" DataType=""><Alias>Laboratory Reporting Level</Alias></Field>
     <Field Level="S" FieldName="PQL" ReqInd="N" Length="12" UniqueInd="N" FKey="" DataType=""><Alias>Practical Quantitation Limit</Alias></Field>
@@ -150,6 +150,18 @@
     <Field Level="S" FieldName="LAB_SAMP_PREP_START_TIME" ReqInd="N" Length="" UniqueInd="N" FKey="" DataType="datetime"><Alias>Preparation Start Time</Alias></Field>
     <Field Level="S" FieldName="LAB_SAMP_PREP_END_DT" ReqInd="N" Length="" UniqueInd="N" FKey="" DataType="datetime"><Alias>Preparation End Date</Alias></Field>
     <Field Level="S" FieldName="DILUTION_FACTOR" ReqInd="N" Length="10" UniqueInd="N" FKey="" DataType=""><Alias>Dilution Factor</Alias><Alias>Dilution</Alias></Field>
+
+
+    <!-- ACTIVITY METRICS -->
+    <Field Level="I" FieldName="MONLOC_ID" ReqInd="Y" Length="35" UniqueInd="Y" FKey="" DataType=""><Alias>Station ID</Alias><Alias>MonLoc ID</Alias></Field>
+    <Field Level="I" FieldName="ACTIVITY_ID" ReqInd="Y" Length="35" UniqueInd="Y" FKey="" DataType=""><Alias>Activity ID</Alias><Alias>Sample ID</Alias><Alias>LabSampID</Alias></Field>
+    <Field Level="I" FieldName="METRIC_TYPE_ID" ReqInd="N" Length="35" UniqueInd="N" FKey="" DataType=""><Alias>Metric Type ID</Alias></Field>
+    <Field Level="I" FieldName="METRIC_TYPE_ID_CONTEXT" ReqInd="N" Length="50" UniqueInd="N" FKey="" DataType=""><Alias>Metric Type Context</Alias></Field>
+    <Field Level="I" FieldName="METRIC_SCORE" ReqInd="N" Length="10" UniqueInd="N" FKey="" DataType=""><Alias>Activity Metric Score</Alias></Field>
+    <Field Level="I" FieldName="METRIC_VALUE_MSR" ReqInd="N" Length="12" UniqueInd="N" FKey="" DataType=""><Alias>Activity Metric Value</Alias></Field>
+    <Field Level="I" FieldName="METRIC_VALUE_MSR_UNIT" ReqInd="N" Length="12" UniqueInd="N" FKey="MeasureUnit" DataType=""><Alias>Activity Metric Value Unit</Alias></Field>
+    <Field Level="I" FieldName="TEMP_BIO_HABITAT_INDEX_IDX" ReqInd="N" Length="" UniqueInd="N" FKey="" DataType="int"><Alias>Index ID</Alias></Field>
+    <Field Level="I" FieldName="METRIC_COMMENT" ReqInd="N" Length="1000" UniqueInd="N" FKey="" DataType=""><Alias>Activity Metric Comment</Alias></Field>
 
 </Fields>
 </FieldConfig>

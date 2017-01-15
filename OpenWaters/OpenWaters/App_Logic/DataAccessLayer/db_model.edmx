@@ -367,16 +367,6 @@
           <Property Name="UPDATE_DT" Type="datetime" />
           <Property Name="UPDATE_USERID" Type="varchar" MaxLength="25" />
         </EntityType>
-        <EntityType Name="T_WQX_IMPORT_COL_ALIAS">
-          <Key>
-            <PropertyRef Name="IMPORT_COL_ALIAS_IDX" />
-          </Key>
-          <Property Name="IMPORT_COL_ALIAS_IDX" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="COL_NAME" Type="varchar" MaxLength="100" Nullable="false" />
-          <Property Name="ALIAS_NAME" Type="varchar" MaxLength="100" Nullable="false" />
-          <Property Name="CREATE_DT" Type="datetime" />
-          <Property Name="CREATE_USERID" Type="varchar" MaxLength="25" />
-        </EntityType>
         <EntityType Name="T_WQX_IMPORT_LOG">
           <Key>
             <PropertyRef Name="IMPORT_ID" />
@@ -392,6 +382,48 @@
           <Property Name="CREATE_USERID" Type="varchar" MaxLength="25" />
           <Property Name="IMPORT_PROGRESS" Type="varchar" MaxLength="10" />
           <Property Name="IMPORT_PROGRESS_MSG" Type="varchar" MaxLength="1000" />
+        </EntityType>
+        <EntityType Name="T_WQX_IMPORT_TEMP_ACTIVITY_METRIC">
+          <Key>
+            <PropertyRef Name="TEMP_ACTIVITY_METRIC_IDX" />
+          </Key>
+          <Property Name="TEMP_ACTIVITY_METRIC_IDX" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="USER_ID" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="ORG_ID" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="ACTIVITY_IDX" Type="int" />
+          <Property Name="ACTIVITY_ID" Type="varchar" MaxLength="35" />
+          <Property Name="METRIC_TYPE_ID" Type="varchar" MaxLength="35" Nullable="false" />
+          <Property Name="METRIC_TYPE_ID_CONTEXT" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="METRIC_TYPE_NAME" Type="varchar" MaxLength="50" />
+          <Property Name="METRIC_SCALE" Type="varchar" MaxLength="50" />
+          <Property Name="METRIC_FORMULA_DESC" Type="varchar" MaxLength="50" />
+          <Property Name="METRIC_VALUE_MSR" Type="varchar" MaxLength="12" />
+          <Property Name="METRIC_VALUE_MSR_UNIT" Type="varchar" MaxLength="12" />
+          <Property Name="METRIC_SCORE" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="METRIC_COMMENT" Type="varchar" MaxLength="4000" />
+          <Property Name="TEMP_BIO_HABITAT_INDEX_IDX" Type="int" />
+          <Property Name="IMPORT_STATUS_CD" Type="varchar" MaxLength="1" />
+          <Property Name="IMPORT_STATUS_DESC" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="T_WQX_IMPORT_TEMP_BIO_INDEX">
+          <Key>
+            <PropertyRef Name="TEMP_BIO_HABITAT_INDEX_IDX" />
+          </Key>
+          <Property Name="TEMP_BIO_HABITAT_INDEX_IDX" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="USER_ID" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="ORG_ID" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="MONLOC_IDX" Type="int" />
+          <Property Name="INDEX_ID" Type="varchar" MaxLength="35" />
+          <Property Name="INDEX_TYPE_ID" Type="varchar" MaxLength="35" />
+          <Property Name="INDEX_TYPE_ID_CONTEXT" Type="varchar" MaxLength="50" />
+          <Property Name="INDEX_TYPE_NAME" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="INDEX_TYPE_SCALE" Type="varchar" MaxLength="50" />
+          <Property Name="INDEX_SCORE" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="INDEX_QUAL_CD" Type="varchar" MaxLength="5" />
+          <Property Name="INDEX_COMMENT" Type="varchar" MaxLength="4000" />
+          <Property Name="INDEX_CALC_DATE" Type="datetime" />
+          <Property Name="IMPORT_STATUS_CD" Type="varchar" MaxLength="1" />
+          <Property Name="IMPORT_STATUS_DESC" Type="varchar" MaxLength="200" />
         </EntityType>
         <EntityType Name="T_WQX_IMPORT_TEMP_MONLOC">
           <Key>
@@ -519,7 +551,7 @@
           <Property Name="LAB_SAMP_PREP_END_DT" Type="datetime" />
           <Property Name="DILUTION_FACTOR" Type="varchar" MaxLength="10" />
           <Property Name="IMPORT_STATUS_CD" Type="varchar" MaxLength="1" />
-          <Property Name="IMPORT_STATUS_DESC" Type="varchar" MaxLength="100" />
+          <Property Name="IMPORT_STATUS_DESC" Type="varchar" MaxLength="200" />
           <Property Name="FREQ_CLASS_CODE" Type="varchar" MaxLength="50" />
           <Property Name="FREQ_CLASS_UNIT" Type="varchar" MaxLength="12" />
           <Property Name="FREQ_CLASS_UPPER" Type="varchar" MaxLength="8" />
@@ -1620,8 +1652,9 @@ warning 6002: The table/view 'OpenEnvironment.dbo.V_WQX_TRANSACTION_LOG' does no
           <EntitySet Name="T_WQX_ACTIVITY" EntityType="Self.T_WQX_ACTIVITY" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="T_WQX_ACTIVITY_METRIC" EntityType="Self.T_WQX_ACTIVITY_METRIC" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="T_WQX_BIO_HABITAT_INDEX" EntityType="Self.T_WQX_BIO_HABITAT_INDEX" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="T_WQX_IMPORT_COL_ALIAS" EntityType="Self.T_WQX_IMPORT_COL_ALIAS" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="T_WQX_IMPORT_LOG" EntityType="Self.T_WQX_IMPORT_LOG" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_WQX_IMPORT_TEMP_ACTIVITY_METRIC" EntityType="Self.T_WQX_IMPORT_TEMP_ACTIVITY_METRIC" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_WQX_IMPORT_TEMP_BIO_INDEX" EntityType="Self.T_WQX_IMPORT_TEMP_BIO_INDEX" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="T_WQX_IMPORT_TEMP_MONLOC" EntityType="Self.T_WQX_IMPORT_TEMP_MONLOC" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="T_WQX_IMPORT_TEMP_PROJECT" EntityType="Self.T_WQX_IMPORT_TEMP_PROJECT" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="T_WQX_IMPORT_TEMP_RESULT" EntityType="Self.T_WQX_IMPORT_TEMP_RESULT" Schema="dbo" store:Type="Tables" />
@@ -2017,7 +2050,6 @@ FROM [dbo].[V_WQX_TRANSACTION_LOG] AS [V_WQX_TRANSACTION_LOG]</DefiningQuery>
             <End Role="T_WQX_IMPORT_TEMP_RESULT" EntitySet="T_WQX_IMPORT_TEMP_RESULT" />
           </AssociationSet>
           <EntitySet Name="V_WQX_PENDING_RECORDS" EntityType="OpenEnvironmentModel.V_WQX_PENDING_RECORDS" />
-          <EntitySet Name="T_WQX_IMPORT_COL_ALIAS" EntityType="OpenEnvironmentModel.T_WQX_IMPORT_COL_ALIAS" />
           <FunctionImport Name="ImportActivityFromTemp">
             <Parameter Name="UserID" Mode="In" Type="String" />
             <Parameter Name="WQXInd" Mode="In" Type="String" />
@@ -2089,6 +2121,8 @@ FROM [dbo].[V_WQX_TRANSACTION_LOG] AS [V_WQX_TRANSACTION_LOG]</DefiningQuery>
             <Parameter Name="EndDt" Mode="In" Type="DateTime" />
             <Parameter Name="DataIncludeInd" Mode="In" Type="String" />
           </FunctionImport>
+          <EntitySet Name="T_WQX_IMPORT_TEMP_ACTIVITY_METRIC" EntityType="OpenEnvironmentModel.T_WQX_IMPORT_TEMP_ACTIVITY_METRIC" />
+          <EntitySet Name="T_WQX_IMPORT_TEMP_BIO_INDEX" EntityType="OpenEnvironmentModel.T_WQX_IMPORT_TEMP_BIO_INDEX" />
           </EntityContainer>
         <EntityType Name="T_OE_APP_SETTINGS">
           <Key>
@@ -3337,7 +3371,7 @@ FROM [dbo].[V_WQX_TRANSACTION_LOG] AS [V_WQX_TRANSACTION_LOG]</DefiningQuery>
           <Property Name="LAB_SAMP_PREP_END_DT" Type="DateTime" Precision="3" />
           <Property Name="DILUTION_FACTOR" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="IMPORT_STATUS_CD" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
-          <Property Name="IMPORT_STATUS_DESC" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="IMPORT_STATUS_DESC" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="FREQ_CLASS_CODE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="FREQ_CLASS_UNIT" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
           <Property Name="FREQ_CLASS_UPPER" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
@@ -3371,16 +3405,6 @@ FROM [dbo].[V_WQX_TRANSACTION_LOG] AS [V_WQX_TRANSACTION_LOG]</DefiningQuery>
           <Property Name="ORG_ID" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="UPDATE_USERID" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
           <Property Name="UPDATE_DT" Type="DateTime" Precision="3" />
-        </EntityType>
-        <EntityType Name="T_WQX_IMPORT_COL_ALIAS">
-          <Key>
-            <PropertyRef Name="IMPORT_COL_ALIAS_IDX" />
-          </Key>
-          <Property Name="IMPORT_COL_ALIAS_IDX" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="COL_NAME" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="ALIAS_NAME" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="CREATE_DT" Type="DateTime" Precision="3" />
-          <Property Name="CREATE_USERID" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="T_WQX_IMPORT_TRANSLATE">
           <Key>
@@ -3725,6 +3749,48 @@ FROM [dbo].[V_WQX_TRANSACTION_LOG] AS [V_WQX_TRANSACTION_LOG]</DefiningQuery>
           <Property Type="String" Name="RESULT_MSR_UNIT" Nullable="true" MaxLength="12" />
           <Property Type="String" Name="DETECTION_LIMIT" Nullable="true" MaxLength="12" />
         </ComplexType>
+        <EntityType Name="T_WQX_IMPORT_TEMP_ACTIVITY_METRIC">
+          <Key>
+            <PropertyRef Name="TEMP_ACTIVITY_METRIC_IDX" />
+          </Key>
+          <Property Name="TEMP_ACTIVITY_METRIC_IDX" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="USER_ID" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="ORG_ID" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="ACTIVITY_IDX" Type="Int32" />
+          <Property Name="METRIC_TYPE_ID" Type="String" Nullable="false" MaxLength="35" FixedLength="false" Unicode="false" />
+          <Property Name="METRIC_TYPE_ID_CONTEXT" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="METRIC_TYPE_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="METRIC_SCALE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="METRIC_FORMULA_DESC" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="METRIC_VALUE_MSR" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="METRIC_VALUE_MSR_UNIT" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="METRIC_SCORE" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="METRIC_COMMENT" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+          <Property Name="TEMP_BIO_HABITAT_INDEX_IDX" Type="Int32" />
+          <Property Name="IMPORT_STATUS_CD" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="IMPORT_STATUS_DESC" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ACTIVITY_ID" Type="String" MaxLength="35" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="T_WQX_IMPORT_TEMP_BIO_INDEX">
+          <Key>
+            <PropertyRef Name="TEMP_BIO_HABITAT_INDEX_IDX" />
+          </Key>
+          <Property Name="TEMP_BIO_HABITAT_INDEX_IDX" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="USER_ID" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="ORG_ID" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="MONLOC_IDX" Type="Int32" />
+          <Property Name="INDEX_ID" Type="String" MaxLength="35" FixedLength="false" Unicode="false" />
+          <Property Name="INDEX_TYPE_ID" Type="String" MaxLength="35" FixedLength="false" Unicode="false" />
+          <Property Name="INDEX_TYPE_ID_CONTEXT" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="INDEX_TYPE_NAME" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="INDEX_TYPE_SCALE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="INDEX_SCORE" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="INDEX_QUAL_CD" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="INDEX_COMMENT" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+          <Property Name="INDEX_CALC_DATE" Type="DateTime" Precision="3" />
+          <Property Name="IMPORT_STATUS_CD" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="IMPORT_STATUS_DESC" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -4638,17 +4704,6 @@ FROM [dbo].[V_WQX_TRANSACTION_LOG] AS [V_WQX_TRANSACTION_LOG]</DefiningQuery>
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="T_WQX_IMPORT_COL_ALIAS">
-            <EntityTypeMapping TypeName="OpenEnvironmentModel.T_WQX_IMPORT_COL_ALIAS">
-              <MappingFragment StoreEntitySet="T_WQX_IMPORT_COL_ALIAS">
-                <ScalarProperty Name="CREATE_USERID" ColumnName="CREATE_USERID" />
-                <ScalarProperty Name="CREATE_DT" ColumnName="CREATE_DT" />
-                <ScalarProperty Name="ALIAS_NAME" ColumnName="ALIAS_NAME" />
-                <ScalarProperty Name="COL_NAME" ColumnName="COL_NAME" />
-                <ScalarProperty Name="IMPORT_COL_ALIAS_IDX" ColumnName="IMPORT_COL_ALIAS_IDX" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <FunctionImportMapping FunctionImportName="ImportActivityFromTemp" FunctionName="OpenEnvironmentModel.Store.ImportActivityFromTemp" />
           <EntitySetMapping Name="T_WQX_IMPORT_TRANSLATE">
             <EntityTypeMapping TypeName="OpenEnvironmentModel.T_WQX_IMPORT_TRANSLATE">
@@ -4833,6 +4888,50 @@ FROM [dbo].[V_WQX_TRANSACTION_LOG] AS [V_WQX_TRANSACTION_LOG]</DefiningQuery>
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <EntitySetMapping Name="T_WQX_IMPORT_TEMP_ACTIVITY_METRIC">
+            <EntityTypeMapping TypeName="OpenEnvironmentModel.T_WQX_IMPORT_TEMP_ACTIVITY_METRIC">
+              <MappingFragment StoreEntitySet="T_WQX_IMPORT_TEMP_ACTIVITY_METRIC">
+                <ScalarProperty Name="ACTIVITY_ID" ColumnName="ACTIVITY_ID" />
+                <ScalarProperty Name="IMPORT_STATUS_DESC" ColumnName="IMPORT_STATUS_DESC" />
+                <ScalarProperty Name="IMPORT_STATUS_CD" ColumnName="IMPORT_STATUS_CD" />
+                <ScalarProperty Name="TEMP_BIO_HABITAT_INDEX_IDX" ColumnName="TEMP_BIO_HABITAT_INDEX_IDX" />
+                <ScalarProperty Name="METRIC_COMMENT" ColumnName="METRIC_COMMENT" />
+                <ScalarProperty Name="METRIC_SCORE" ColumnName="METRIC_SCORE" />
+                <ScalarProperty Name="METRIC_VALUE_MSR_UNIT" ColumnName="METRIC_VALUE_MSR_UNIT" />
+                <ScalarProperty Name="METRIC_VALUE_MSR" ColumnName="METRIC_VALUE_MSR" />
+                <ScalarProperty Name="METRIC_FORMULA_DESC" ColumnName="METRIC_FORMULA_DESC" />
+                <ScalarProperty Name="METRIC_SCALE" ColumnName="METRIC_SCALE" />
+                <ScalarProperty Name="METRIC_TYPE_NAME" ColumnName="METRIC_TYPE_NAME" />
+                <ScalarProperty Name="METRIC_TYPE_ID_CONTEXT" ColumnName="METRIC_TYPE_ID_CONTEXT" />
+                <ScalarProperty Name="METRIC_TYPE_ID" ColumnName="METRIC_TYPE_ID" />
+                <ScalarProperty Name="ACTIVITY_IDX" ColumnName="ACTIVITY_IDX" />
+                <ScalarProperty Name="ORG_ID" ColumnName="ORG_ID" />
+                <ScalarProperty Name="USER_ID" ColumnName="USER_ID" />
+                <ScalarProperty Name="TEMP_ACTIVITY_METRIC_IDX" ColumnName="TEMP_ACTIVITY_METRIC_IDX" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_WQX_IMPORT_TEMP_BIO_INDEX">
+            <EntityTypeMapping TypeName="OpenEnvironmentModel.T_WQX_IMPORT_TEMP_BIO_INDEX">
+              <MappingFragment StoreEntitySet="T_WQX_IMPORT_TEMP_BIO_INDEX">
+                <ScalarProperty Name="IMPORT_STATUS_DESC" ColumnName="IMPORT_STATUS_DESC" />
+                <ScalarProperty Name="IMPORT_STATUS_CD" ColumnName="IMPORT_STATUS_CD" />
+                <ScalarProperty Name="INDEX_CALC_DATE" ColumnName="INDEX_CALC_DATE" />
+                <ScalarProperty Name="INDEX_COMMENT" ColumnName="INDEX_COMMENT" />
+                <ScalarProperty Name="INDEX_QUAL_CD" ColumnName="INDEX_QUAL_CD" />
+                <ScalarProperty Name="INDEX_SCORE" ColumnName="INDEX_SCORE" />
+                <ScalarProperty Name="INDEX_TYPE_SCALE" ColumnName="INDEX_TYPE_SCALE" />
+                <ScalarProperty Name="INDEX_TYPE_NAME" ColumnName="INDEX_TYPE_NAME" />
+                <ScalarProperty Name="INDEX_TYPE_ID_CONTEXT" ColumnName="INDEX_TYPE_ID_CONTEXT" />
+                <ScalarProperty Name="INDEX_TYPE_ID" ColumnName="INDEX_TYPE_ID" />
+                <ScalarProperty Name="INDEX_ID" ColumnName="INDEX_ID" />
+                <ScalarProperty Name="MONLOC_IDX" ColumnName="MONLOC_IDX" />
+                <ScalarProperty Name="ORG_ID" ColumnName="ORG_ID" />
+                <ScalarProperty Name="USER_ID" ColumnName="USER_ID" />
+                <ScalarProperty Name="TEMP_BIO_HABITAT_INDEX_IDX" ColumnName="TEMP_BIO_HABITAT_INDEX_IDX" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -4940,7 +5039,6 @@ FROM [dbo].[V_WQX_TRANSACTION_LOG] AS [V_WQX_TRANSACTION_LOG]</DefiningQuery>
         <EntityTypeShape EntityType="OpenEnvironmentModel.T_WQX_IMPORT_TEMP_RESULT" Width="1.5" PointX="11" PointY="1.25" />
         <AssociationConnector Association="OpenEnvironmentModel.FK__T_WQX_IMP__TEMP___3C34F16F" />
         <EntityTypeShape EntityType="OpenEnvironmentModel.V_WQX_PENDING_RECORDS" Width="1.5" PointX="16.375" PointY="16.75" />
-        <EntityTypeShape EntityType="OpenEnvironmentModel.T_WQX_IMPORT_COL_ALIAS" Width="1.5" PointX="8.375" PointY="17.75" />
         <EntityTypeShape EntityType="OpenEnvironmentModel.T_WQX_IMPORT_TRANSLATE" Width="1.5" PointX="3" PointY="34.25" />
         <AssociationConnector Association="OpenEnvironmentModel.FK__T_WQX_IMP__ORG_I__44952D46" />
         <EntityTypeShape EntityType="OpenEnvironmentModel.T_ATTAINS_REPORT" Width="1.5" PointX="3" PointY="58.125" />
@@ -4962,6 +5060,8 @@ FROM [dbo].[V_WQX_TRANSACTION_LOG] AS [V_WQX_TRANSACTION_LOG]</DefiningQuery>
         <AssociationConnector Association="OpenEnvironmentModel.FK__T_ATTAINS__ATTAI__5D2BD0E6" />
         <AssociationConnector Association="OpenEnvironmentModel.FK__T_ATTAINS__ATTAI__5A4F643B" />
         <AssociationConnector Association="OpenEnvironmentModel.FK__T_ATTAINS__ATTAI__473C8FC7" />
+        <EntityTypeShape EntityType="OpenEnvironmentModel.T_WQX_IMPORT_TEMP_ACTIVITY_METRIC" Width="1.5" PointX="12.375" PointY="17.75" />
+        <EntityTypeShape EntityType="OpenEnvironmentModel.T_WQX_IMPORT_TEMP_BIO_INDEX" Width="1.5" PointX="18.375" PointY="0.75" />
         </Diagram>
     </Diagrams>
   </Designer>

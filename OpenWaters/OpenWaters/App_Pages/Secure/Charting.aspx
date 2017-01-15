@@ -1,21 +1,46 @@
 ﻿<%@ Page Title="Open Waters - Graphs" Language="C#" MasterPageFile="~/MasterWQX.master" AutoEventWireup="true" CodeBehind="Charting.aspx.cs" Inherits="OpenEnvironment.Charting" %>
-<%@ Register assembly="System.Web.DataVisualization, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" namespace="System.Web.UI.DataVisualization.Charting" tagprefix="asp" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="BodyContent" runat="server">
     <script src="../../Scripts/jquery-1.10.2.min.js" type="text/javascript"></script>
-<%--<script src="http://cdnjs.cloudflare.com/ajax/libs/moment.js/2.13.0/moment.min.js"></script>--%>
+    <script src="../../Scripts/moment.min.js" type="text/javascript"></script>
     <script src="../../Scripts/Chart.js" type="text/javascript"></script>
-    <link rel="stylesheet" type="text/css" href="../../Scripts/datatables.min.css">
-    <script src="../../Scripts/datatables.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="../../Scripts/datatables/datatables.min.css">
+    <script src="../../Scripts/datatables/datatables.min.js" type="text/javascript"></script>
     <script type="text/javascript">
         $(document).ready(function () {
+            var ctx = document.getElementById("myChart");
             var myChart;
+            var chartData = {
+                datasets: [{
+                    lineTension: 0,
+                    backgroundColor: "rgba(255, 99, 132, 0.2)",
+                    borderColor: "rgba(255, 99, 132, 1)",
+                    borderWidth: 1,
+                    showLine: ($('#ddlChartStyle').val() != 'point') //false
+                }]
+            };
+
+            var config = {
+                data: chartData,
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    tooltips: {
+                        enabled: false
+                    },
+                    scales: {
+                        xAxes: [{ }],
+                        yAxes: [{
+                            ticks: { }
+                        }]
+                    }
+                }
+            };
 
             //initialize datatable
             $('#tblData').DataTable({
+                pageLength: 50,
                 dom: 'Bfrtip',
-                buttons: [
-                      'copy', 'excel', 'pdf'
-                ]
+                buttons: ['copy', 'excel', 'pdf']
             });
 
             $("#btnCreateChart").on('click', function () {
@@ -30,16 +55,22 @@
                 //get chart parameters
                 var _chartType = $("#ctl00_ctl00_MainContent_BodyContent_ddlChartType").val();
                 var _charName = $("#ctl00_ctl00_MainContent_BodyContent_ddlCharacteristic").val();
+                var _charName2 = $("#ctl00_ctl00_MainContent_BodyContent_ddlCharacteristic2").val();
                 var _begDt = $("#ctl00_ctl00_MainContent_BodyContent_txtStartDt").val();
                 var _endDt = $("#ctl00_ctl00_MainContent_BodyContent_txtEndDt").val();
                 var _decimal = $("#ctl00_ctl00_MainContent_BodyContent_txtDecimals").val();
+                var _wqxInd = $("#ctl00_ctl00_MainContent_BodyContent_ddlDataInclude").val();
                 var _monLoc = [];
-                $("#ctl00_ctl00_MainContent_BodyContent_lbMonLocSel option").each(function () {
-                    _monLoc.push($(this).val().toString());
-                });
+                if (_chartType == "MLOC") {
+                    $("#ctl00_ctl00_MainContent_BodyContent_lbMonLocSel option").each(function () {
+                        _monLoc.push($(this).val().toString());
+                    });
+                }
+                else 
+                    _monLoc.push($("#ctl00_ctl00_MainContent_BodyContent_ddlMonLoc").val());
 
                 //validation
-                if (_charName == "" && _chartType == "MLOC")
+                if (_charName == "")
                 {
                     $("#ctl00_ctl00_MainContent_BodyContent_lblMsg").text("Characteristic is required.");
                     return;
@@ -49,7 +80,7 @@
                     type: "POST",
                     url: "Charting.aspx/getChartData",
                     contentType: "application/json; charset=utf-8",
-                    data: "{'chartType' : '" + _chartType + "', 'charName' : '" + _charName + "', 'begDt': '" + _begDt + "', 'endDt': '" + _endDt + "', 'monLoc': '" + _monLoc + "', 'decimals': '" + _decimal + "'}",
+                    data: "{'chartType' : '" + _chartType + "', 'charName' : '" + _charName + "', 'charName2' : '" + _charName2 + "', 'begDt': '" + _begDt + "', 'endDt': '" + _endDt + "', 'monLoc': '" + _monLoc + "', 'decimals': '" + _decimal + "', 'wqxInd':'" + _wqxInd + "'}",
                     dataType: "json",
                     success: OnSuccess_,
                     error: OnErrorCall_
@@ -64,121 +95,101 @@
                     var aDatasets1 = aData[1];
                     var aRawData = aData[2];
 
-                    //(re)populate table
+                    //populate datatable
                     var table = $('#tblData').DataTable();
                     table.clear().draw();
                     $.each(aRawData, function (i, item) {
-                        table.row.add( [item.MONLOC_ID, item.CHAR_NAME, item.ACT_START_DT, item.RESULT_MSR, item.DETECTION_LIMIT, item.RESULT_MSR_UNIT] ).draw();
+                        table.row.add([item.MONLOC_ID, item.CHAR_NAME, moment(item.ACT_START_DT).format('YYYY-MM-DD hh:mmA'), (_decimal.length > 0 ? item.RESULT_MSR.toFixed(_decimal) : item.RESULT_MSR), item.DETECTION_LIMIT, item.RESULT_MSR_UNIT]).draw();
                     });
 
-                    var ctx = document.getElementById("myChart");
+                    //set chart data section
+                    config.type = (_chartType === "MLOC" ? "bar" : "line");
+                    config.options.scales.xAxes[0].type = (_chartType === 'MLOC' ? 'category' : 'time');
+                    config.options.scales.yAxes[0].ticks.beginAtZero = $('#chkZero').is(":checked");
+                    chartData.datasets[0].label = _charName + (_chartType === "MLOC" ? '' : ' (' + aData[2][0].RESULT_MSR_UNIT + ')');
+                    chartData.datasets[0].showLine = ($('#ddlChartStyle').val() != 'point');
 
-                    var config = {
-                        type: 'line',
-                        data: {
-                            labels: ['1/1/2012', '2/2/2012', '4/4/2012'],
-                            datasets: [{
-                                label: 'test',
-                                data: [1, 3, 4],
-                            }]
-                        },
-                        options: {
-                            scales: {
-                                xAxes: [{
-                                    type: 'time'
-                                }]
+                    if (_chartType == "MLOC") {
+                        $("#ddlChartStyle").val('bar');
+                        chartData.labels = aLabels;
+                        chartData.datasets[0].data = aDatasets1;
+                    }
+                    else {
+                        chartData.datasets[0].data = [];
+                        $.each(aRawData, function (i, item) {
+                            chartData.datasets[0].data.push({ x: item.ACT_START_DT, y: (_decimal.length > 0 ? item.RESULT_MSR.toFixed(_decimal) : item.RESULT_MSR)  });
+                        });
+
+                        //only used when adding 2nd characteristic
+                        if (_charName2.length > 0) {
+                            var myNewDataset = {
+                                label: aData[3][0].CHAR_NAME + (_chartType === "MLOC" ? '' : ' (' + aData[3][0].RESULT_MSR_UNIT + ')'),  // "My Second dataset",
+                                lineTension: 0,
+                                borderWidth: 1,
+                                fillColor: "rgba(187,205,151,0.2)",
+                                strokeColor: "rgba(187,205,151,1)",
+                                highlightFill: "rgba(187,205,151,0.2)",
+                                highlightStroke: "rgba(187,205,151,1)"
+                            }
+
+                            if (!chartData.datasets[1]) {
+                                chartData.datasets.push(myNewDataset);
+                            }
+
+                            chartData.datasets[1].data = [];
+                            $.each(aData[3], function (i, item) {
+                                chartData.datasets[1].data.push({ x: item.ACT_START_DT, y: (_decimal.length > 0 ? item.RESULT_MSR.toFixed(_decimal) : item.RESULT_MSR) });
+                            });
+                        }
+                        else {
+                            if (chartData.datasets[1]) {
+                                chartData.datasets.splice(1,1);
                             }
                         }
-                    };
+                    }
 
+                    config.data = chartData;
+
+                    //draw chart
                     myChart = new Chart(ctx, config);
-
-//                    myChart = new Chart(ctx, {
-//                        type: (_chartType === "MLOC" ? "bar" : "line"),
-//                        type: 'line',
-//                        data: {
-//                            labels: (_chartType === 'MLOC' ? aLabels : null), // ['d', 'e', 'f'], //aLabels
-//                            labels: ['1/1/2012', '2/2/2012', '4/4/2012'],
-//                            datasets: [{
-//                                label: 'dd',
-//                                label: _charName,
-//                                data: (_chartType === 'MLOC' ? aDatasets1 : [{ x: -10, y: 0 }, { x: 0, y: 10 }, { x: 10, y: 5 }]),//aDatasets1,
-//                                data: [1, 3, 4]//,
-//                                data: [{ x: '1', y: 0 }, { x: '2', y: 10 }, { x: '3', y: 5 }],//aDatasets1,
-                                //backgroundColor: [
-                                //    'rgba(255, 99, 132, 0.5)',
-                                //    'rgba(54, 162, 235, 0.5)',
-                                //    'rgba(255, 206, 86, 0.5)',
-                                //    'rgba(75, 192, 192, 0.5)',
-                                //    'rgba(153, 102, 255, 0.5)',
-                                //    'rgba(255, 159, 64, 0.5)',
-                                //    'rgba(255, 99, 132, 0.5)',
-                                //    'rgba(54, 162, 235, 0.5)'
-                                //],
-                                //borderColor: [
-                                //    'rgba(255,99,132,1)',
-                                //    'rgba(54, 162, 235, 1)',
-                                //    'rgba(255, 206, 86, 1)',
-                                //    'rgba(75, 192, 192, 1)',
-                                //    'rgba(153, 102, 255, 1)',
-                                //    'rgba(255, 159, 64, 1)',
-                                //    'rgba(255,99,132,1)',
-                                //    'rgba(54, 162, 235, 1)'
-                                //],
-                                //borderWidth: 1
-//                            }]
-//                        },
-//                        options: {
-//                            responsive: true,
-//                            maintainAspectRatio: false,
-//                            tooltips: {
-//                                enabled: false
-//                            },
-//                            scales: {
-//                                xAxes: [{
-//                                    type: 'time'
-//                                    type: (_chartType === 'MLOC' ? 'category' : 'time')//,
-//                                    position: 'bottom'
-//                                }]//,
-//                                yAxes: [{
-//                                    ticks: {
-//                                        beginAtZero: false
-//                                    }
- //                               }]
-//                            }//,
-                            //animation: {
-                            //    onComplete: function () {
-                            //        var ctx = this.chart.ctx;
-                            //        ctx.textAlign = "center";
-                            //        ctx.textBaseline = "bottom";
-                            //        var chart = this;
-                            //        var datasets = this.config.data.datasets;
-
-                            //        datasets.forEach(function (dataset, i) {
-                            //                    ctx.fillStyle = "Black";
-                            //                    chart.getDatasetMeta(i).data.forEach(function (p, j) {
-                            //                        ctx.fillText(datasets[i].data[j], p._model.x, p._model.y + 20);
-                            //                    });
-                            //        })
-                            //    }
-                            //}
-//                        }
-//                    });
-                    console.log('4');
-
                 }
                 function OnErrorCall_(repo) {
                     $("#ctl00_ctl00_MainContent_BodyContent_lblMsg").text("Unable to display chart.");
                 }
             });
 
+
+            //click filter panel header ********************************
             $('#fltTitle').click(function () {
                 $(this).next().slideToggle('fast');
             });
 
+
+            //click zero axis checkbox ********************************
             $('#chkZero').change(function () {
                 myChart.options.scales.yAxes[0].ticks.beginAtZero = $(this).is(":checked");
                 myChart.update();
+            });
+
+
+            //change char name dropdown ********************************
+            $('#ctl00_ctl00_MainContent_BodyContent_ddlCharacteristic').on('change', function () {
+                if ($(this).val().length > 0)
+                    $('#pnlChar2').show();
+                else
+                    $('#pnlChar2').hide();
+            });
+
+
+            //change chart style dropdown ********************************
+            $('#ddlChartStyle').on('change', function () {
+                //destroy chart to avoid caching issues
+                if (myChart != null)
+                    myChart.destroy();
+
+                chartData.datasets[0].showLine = ($('#ddlChartStyle').val() != 'point');
+                config.type = (this.value == 'point' ? 'line' : this.value);
+                myChart = new Chart(ctx, config);
             });
 
         });
@@ -222,6 +233,12 @@
                     </asp:DropDownList>
                 </div>
             </div>
+            <div id="pnlChar2" class="row" style="display:none;">
+                <div style="width:520px; float:left"> 
+                    <span class="fldLbl" >Second Characteristic:</span>
+                    <asp:DropDownList CssClass="fldTxt" ID="ddlCharacteristic2" runat="server" style="max-width:330px;" ></asp:DropDownList>
+                </div>
+            </div>
             <div class="row">
                 <div style="width:520px; float:left"> 
                     <span class="fldLbl" >Monitoring Location:</span>
@@ -248,7 +265,7 @@
                 </div>
                 <div style="float:left"> 
                     <span class="fldLbl" >Number of Decimals:</span>
-                    <asp:TextBox ID="txtDecimals" runat="server" CssClass="fldTxt"></asp:TextBox>
+                    <asp:TextBox ID="txtDecimals" runat="server" CssClass="fldTxt" MaxLength="1" style="width:30px"></asp:TextBox>
                 </div>
 
             </div>
@@ -260,7 +277,7 @@
                     </ajaxToolkit:MaskedEditExtender>
                     <ajaxToolkit:CalendarExtender ID="txtStartDt_CalendarExtender" runat="server" Enabled="True" TargetControlID="txtStartDt">
                     </ajaxToolkit:CalendarExtender>
-                    <span class="fldLbl" style="width:20px; margin:0 4px 0 4px;">to</span>
+                    <span class="fldLbl" style="width:20px; margin:0 0 0 6px;">to</span>
                     <asp:TextBox ID="txtEndDt" runat="server" Width="80px" CssClass="fldTxt" ></asp:TextBox>
                     <ajaxToolkit:MaskedEditExtender ID="txtEndDt_MaskedEditExtender" runat="server" Enabled="True" TargetControlID="txtEndDt" MaskType="Date" UserDateFormat="MonthDayYear" Mask="99/99/9999">
                     </ajaxToolkit:MaskedEditExtender>
@@ -288,16 +305,17 @@
                         <div class="fltTitle">Chart Display Options</div>
                         <div class="fltMain">
                             <div class="row">
-                                 <input type="checkbox" id="chkZero" name="chkZero" value="zero"> Include zero in y-axis<br>
-<%--                                <span class="fldLbl" style="width:100px" >Line Type:</span>
-                                <asp:DropDownList CssClass="fldTxt" ID="ddlLineType" runat="server" AutoPostBack="True"  >
-                                    <asp:ListItem Text="Curved Line" Value="SLINE"></asp:ListItem>
-                                    <asp:ListItem Text="Line" Value="LINE"></asp:ListItem>
-                                    <asp:ListItem Text="Points" Value="POINT"></asp:ListItem>
-                                </asp:DropDownList>--%>
+                                <input type="checkbox" id="chkZero" name="chkZero" value="zero"> Include zero in y-axis<br>
+<%--                                <input type="checkbox" id="chkLabels" name="chkLabels" value="false" checked="checked"> Show Labels<br>--%>
+                                <br />
+                                <select id="ddlChartStyle" class="fldTxt">
+                                    <option value="line" selected="selected">Line Chart</option>
+                                    <option value="point">Scatter Chart</option>
+                                    <option value="bar">Bar Chart</option>
+                                </select>
                             </div>
+                            <br />
                         </div>
-                        <br />
                     </asp:Panel>
                 </td>
             </tr>

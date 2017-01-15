@@ -37,6 +37,14 @@
                 {
                     $(".charRelated").hide();
                 }
+
+                if ($("#ctl00_ctl00_MainContent_BodyContent_ddlFieldMap").val() == "ACT_DEPTHHEIGHT_MSR") {
+                    $(".depthRelated").show();
+                }
+                else {
+                    $(".depthRelated").hide();
+                }
+
             });
 
         });
@@ -187,25 +195,26 @@
             <div class="row" >
                 <span class="fldLbl">Field:</span>
                 <asp:DropDownList ID="ddlFieldMap" runat="server" >
-                    <asp:ListItem Value="ACT_COMMENTS" Text="ACT_COMMENTS"></asp:ListItem>
-                    <asp:ListItem Value="ACT_MEDIA" Text="ACT_MEDIA"></asp:ListItem>
-                    <asp:ListItem Value="ACT_START_DATE" Text="ACT_START_DATE"></asp:ListItem>
-                    <asp:ListItem Value="ACT_START_TIME" Text="ACT_START_TIME"></asp:ListItem>
-                    <asp:ListItem Value="ACT_SUBMEDIA" Text="ACT_SUBMEDIA"></asp:ListItem>
-                    <asp:ListItem Value="ACT_TYPE" Text="ACT_TYPE"></asp:ListItem>
-                    <asp:ListItem Value="ACTIVITY_ID" Text="ACTIVITY_ID"></asp:ListItem>
+                    <asp:ListItem Value="ACT_COMMENTS" Text="Activity Comments"></asp:ListItem>
+                    <asp:ListItem Value="ACTIVITY_ID" Text="Activity ID"></asp:ListItem>
+                    <asp:ListItem Value="ACT_DEPTHHEIGHT_MSR" Text="Activity Depth"></asp:ListItem>
+                    <asp:ListItem Value="ACT_MEDIA" Text="Activity Media"></asp:ListItem>
+                    <asp:ListItem Value="ACT_START_DATE" Text="Activity Start Date"></asp:ListItem>
+                    <asp:ListItem Value="ACT_START_TIME" Text="Activity Start Time"></asp:ListItem>
+                    <asp:ListItem Value="ACT_SUBMEDIA" Text="Activity Submedia"></asp:ListItem>
+                    <asp:ListItem Value="ACT_TYPE" Text="Activity Type"></asp:ListItem>
                     <asp:ListItem Value="CHAR" Text="Characteristic"></asp:ListItem>
-                    <asp:ListItem Value="MONLOC_ID" Text="MONLOC_ID"></asp:ListItem>
-                    <asp:ListItem Value="RESULT_VALUE_TYPE" Text="RESULT_VALUE_TYPE"></asp:ListItem>
-                    <asp:ListItem Value="RESULT_STATUS" Text="RESULT_STATUS"></asp:ListItem>
+                    <asp:ListItem Value="MONLOC_ID" Text="Monitoring Location ID"></asp:ListItem>
+                    <asp:ListItem Value="RESULT_VALUE_TYPE" Text="Result Value Type"></asp:ListItem>
+                    <asp:ListItem Value="RESULT_STATUS" Text="Result Status"></asp:ListItem>
                 </asp:DropDownList>
             </div>
             <div class="row charRelated">
                 <span class="fldLbl">Characteristic Name:</span>
                 <asp:DropDownList ID="ddlColChar" runat="server" CssClass="fldTxt" style="width:300px"></asp:DropDownList>
             </div>
-            <div class="row charRelated">
-                <span class="fldLbl">Characteristic Unit Code:</span>
+            <div class="row charRelated depthRelated">
+                <span class="fldLbl">Unit Code:</span>
                 <asp:DropDownList ID="ddlColCharUnit" runat="server" CssClass="fldTxt" style="width:300px"></asp:DropDownList>
             </div>
             <div class="row charRelated">
