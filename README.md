@@ -6,7 +6,7 @@
 Open Waters is web-based water quality data management software that helps people track monitoring locations, projects, samples, and results. Open Waters is intended for Tribal and State water quality data managers who collect and manage water quality data, and have the need to submit this data to EPA's WQX program. Open Waters is unique in that people can manage their data locally, but submission to EPA is completely automated and handled behind-the-scenes, thus eliminating the burden of separate data submission to EPA. This makes it ideal for agencies who would rather focus their time and energy on data collection and analysis. Plus, Open Waters is completely free and open source. Open Waters has been in use since 2012 and is actively used by several agencies.
 
 ## File Downloads
-* [**Full Installation Package - Version 1.9.3**](http://www.open-environment.org/downloads/OpenWatersFullInstall_v1.9.3.zip)
+* [**Full Installation Package - Version 1.9.8**](http://www.open-environment.org/downloads/OpenWatersFullInstall_v1.9.8.zip)
 * [**Patch Installation Package - Version 1.9**](http://www.open-environment.org/downloads/OpenWatersPatchOnly_v1.9.zip) (only use if upgrading from version v1.8 to v1.9x)
 * [**User's Guide / Installation Guide**](https://github.com/open-environment/open-waters/raw/master/OpenWaters/OpenWaters/App_Docs/UsersGuide.docx)
 
@@ -41,13 +41,13 @@ Open Waters is web-based water quality data management software that helps peopl
 ## Change Log
 * **1/13/2017 - Version 1.9.8:**
     * Major streamlining to data import module and data import configuration
-    * Add import of activity metrics
     * Charting: new chart type (Monitoring Location Averages)
     * Charting: add second characteristic option for time series chart
-    * Monitoring Location data import: add ability to cancel import
-    * Increase length of import error message
     * Expanded Import Translation feature to all Activity/Result columns 
     * Crosstab import: add ability to import activity depth  
+    * Add import of activity metrics
+    * Monitoring Location data import: add ability to cancel import
+    * Increase length of import error message
     * Add ActivityMetricType to reference data pull from EPA
 * **11/9/2016 - Version 1.9.7:**
     * Add Assessment Report module, including submission to EPA ATTAINS
