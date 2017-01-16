@@ -99,14 +99,18 @@
                     var table = $('#tblData').DataTable();
                     table.clear().draw();
                     $.each(aRawData, function (i, item) {
-                        table.row.add([item.MONLOC_ID, item.CHAR_NAME, moment(item.ACT_START_DT).format('YYYY-MM-DD hh:mmA'), (_decimal.length > 0 ? item.RESULT_MSR.toFixed(_decimal) : item.RESULT_MSR), item.DETECTION_LIMIT, item.RESULT_MSR_UNIT]).draw();
+                        table.row.add([item.MONLOC_ID, item.CHAR_NAME, moment(item.ACT_START_DT).format('YYYY-MM-DD'), (_decimal.length > 0 ? String(item.RESULT_MSR.toFixed(_decimal)) : String(item.RESULT_MSR)), item.DETECTION_LIMIT, item.RESULT_MSR_UNIT]).draw();
                     });
 
                     //set chart data section
                     config.type = (_chartType === "MLOC" ? "bar" : "line");
                     config.options.scales.xAxes[0].type = (_chartType === 'MLOC' ? 'category' : 'time');
                     config.options.scales.yAxes[0].ticks.beginAtZero = $('#chkZero').is(":checked");
-                    chartData.datasets[0].label = _charName + (_chartType === "MLOC" ? '' : ' (' + aData[2][0].RESULT_MSR_UNIT + ')');
+                    var unitTxt = '';
+                    if (aData[2][0])
+                        unitTxt = aData[2][0].RESULT_MSR_UNIT;
+
+                    chartData.datasets[0].label = _charName + (_chartType === "MLOC" ? '' : ' (' + unitTxt + ')');
                     chartData.datasets[0].showLine = ($('#ddlChartStyle').val() != 'point');
 
                     if (_chartType == "MLOC") {

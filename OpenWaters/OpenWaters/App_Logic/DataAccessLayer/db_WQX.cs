@@ -1308,12 +1308,16 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 try
                 {
-                    return (from r in ctx.T_WQX_RESULT
+                    var xxx = (from r in ctx.T_WQX_RESULT
                             join a in ctx.T_WQX_ACTIVITY on r.ACTIVITY_IDX equals a.ACTIVITY_IDX
                             where a.ORG_ID == OrgID
+                            && System.Data.Objects.SqlClient.SqlFunctions.IsNumeric(r.RESULT_MSR) == 1
                             select new CharDisplay{
                             CHAR_NAME = r.CHAR_NAME
-                            }).Distinct().ToList();
+                            }).Distinct().OrderBy(x => x.CHAR_NAME).ToList();
+
+
+                    return xxx;
                 }
                 catch (Exception ex)
                 {
