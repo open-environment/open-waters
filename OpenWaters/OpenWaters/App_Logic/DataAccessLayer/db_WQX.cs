@@ -3547,6 +3547,10 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
                     }
                     else
                     {
+                        //set context to org id if none is provided 
+                        if (!string.IsNullOrEmpty(a.SAMP_COLL_METHOD_ID) && string.IsNullOrEmpty(a.SAMP_COLL_METHOD_CTX))
+                            a.SAMP_COLL_METHOD_CTX = oRG_ID;
+
                         if (!string.IsNullOrEmpty(a.SAMP_COLL_METHOD_ID))
                         {
                             T_WQX_REF_SAMP_COL_METHOD scm = db_Ref.GetT_WQX_REF_SAMP_COL_METHOD_ByIDandContext(a.SAMP_COLL_METHOD_ID, a.SAMP_COLL_METHOD_CTX);
