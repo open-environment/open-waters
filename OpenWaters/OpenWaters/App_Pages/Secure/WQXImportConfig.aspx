@@ -30,21 +30,16 @@
 
             //change of modal's mapped column dropdown
             $("#ctl00_ctl00_MainContent_BodyContent_ddlFieldMap").change(function (event) {
+                $(".charRelated").hide();
+                $(".depthRelated").hide();
+
                 if ($("#ctl00_ctl00_MainContent_BodyContent_ddlFieldMap").val() == "CHAR") {
                     $(".charRelated").show();
-                }
-                else
-                {
-                    $(".charRelated").hide();
                 }
 
                 if ($("#ctl00_ctl00_MainContent_BodyContent_ddlFieldMap").val() == "ACT_DEPTHHEIGHT_MSR") {
                     $(".depthRelated").show();
                 }
-                else {
-                    $(".depthRelated").hide();
-                }
-
             });
 
         });
