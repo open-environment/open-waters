@@ -19,7 +19,7 @@ namespace OpenEnvironment.App_Pages.Secure
             {
                 //redirect to sample page if any are in progress
                 if (db_WQX.GetWQX_IMPORT_TEMP_SAMPLE_CountByUserID(User.Identity.Name) > 0)
-                    Response.Redirect("~/App_Pages/Secure/WQXImportSample.aspx"); 
+                    Response.Redirect("~/App_Pages/Secure/WQXImportSample.aspx");
 
                 //redirect to monloc page if any are in progress
                 if (db_WQX.GetWQX_IMPORT_TEMP_MONLOC_CountByUserID(User.Identity.Name) > 0)
