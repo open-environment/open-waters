@@ -1,14 +1,5 @@
 ﻿/*
 Only run this script if upgrading from v1.7x to v1.8x
-
-Version 1.8x Change Log
---------------------
-ENHANCEMENTS: 
-1. Added import translations: now before importing data you can define a mapping of your data to EPA acceptable data. This is helpful in cases where you receive 
-data from labs using codes different from EPA and don't want to have to update the import spreadsheet every time.
-2. Additional code cleanup
-BUG FIX: 
-3. Fix bug when importing samples and other organization has pending samples.
 */
 
 CREATE TABLE [dbo].[T_WQX_IMPORT_TRANSLATE](

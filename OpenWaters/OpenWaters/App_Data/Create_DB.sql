@@ -78,7 +78,6 @@ INSERT INTO T_OE_APP_SETTINGS ([SETTING_NAME],[SETTING_VALUE],[SETTING_DESC],[MO
 INSERT INTO T_OE_APP_SETTINGS ([SETTING_NAME],[SETTING_VALUE],[SETTING_DESC],[MODIFY_USERID],[MODIFY_DT]) VALUES ('Email Secure Pwd','','If the SMTP server requires authentication, this is the SMTP server password.','SYSTEM',GetDate());
 
 INSERT INTO T_OE_APP_SETTINGS ([SETTING_NAME],[SETTING_VALUE],[SETTING_DESC],[MODIFY_USERID],[MODIFY_DT]) VALUES ('Log Level','ERROR','Set application log level to DEBUG to perform additional system logging.','SYSTEM',GetDate());
-INSERT INTO T_OE_APP_SETTINGS ([SETTING_NAME],[SETTING_VALUE],[SETTING_DESC],[MODIFY_USERID],[MODIFY_DT]) VALUES ('Default State','OK','Default state to be used if none is supplied at the Organization level.','SYSTEM',GetDate());
 INSERT INTO T_OE_APP_SETTINGS ([SETTING_NAME],[SETTING_VALUE],[SETTING_DESC],[MODIFY_USERID],[MODIFY_DT]) VALUES ('Default Timezone','','Default timezone applied to samples if no default time zone is specified at the Organization level.','SYSTEM',GetDate());
 INSERT INTO T_OE_APP_SETTINGS ([SETTING_NAME],[SETTING_VALUE],[SETTING_DESC],[MODIFY_USERID],[MODIFY_DT]) VALUES ('Allow Self Reg','Y','Set to Y to allow people to create their own user accounts.','SYSTEM',GetDate());
 INSERT INTO T_OE_APP_SETTINGS ([SETTING_NAME],[SETTING_VALUE],[SETTING_DESC],[MODIFY_USERID],[MODIFY_DT]) VALUES ('Beta Program','Y','Set to Y to institute a beta program that would require users to obtain a beta code in order to Open Waters.','SYSTEM',GetDate());
@@ -775,6 +774,7 @@ CREATE TABLE [dbo].[T_WQX_IMPORT_TEMPLATE_DTL](
 	[CHAR_DEFAULT_UNIT] [varchar](12) NULL,
 	[CREATE_DT] [datetime] NULL,
 	[CREATE_USERID] [varchar](25) NULL,
+	[CHAR_DEFAULT_SAMP_FRACTION] [varchar](25) NULL,
  CONSTRAINT [PK_WQX_IMPORT_TEMPLATE_DTL] PRIMARY KEY CLUSTERED ([TEMPLATE_DTL_ID] ASC),
  FOREIGN KEY ([TEMPLATE_ID]) references [T_WQX_IMPORT_TEMPLATE] ([TEMPLATE_ID]) ON UPDATE CASCADE ON DELETE CASCADE
 ) ON [PRIMARY]

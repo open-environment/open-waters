@@ -341,23 +341,6 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             }
         }
 
-        public static Int32? GetWQX_MONLOC_ByImportID(string ImportID)
-        {
-            using (OpenEnvironmentEntities ctx = new OpenEnvironmentEntities())
-            {
-                try
-                {
-                    return (from a in ctx.T_WQX_MONLOC
-                            where a.IMPORT_MONLOC_ID == ImportID
-                            select a).FirstOrDefault().MONLOC_IDX;
-                }
-                catch (Exception ex)
-                {
-                    throw ex;
-                }
-            }
-        }
-
         public static T_WQX_MONLOC GetWQX_MONLOC_ByIDString(string orgID, string MonLocID)
         {
             using (OpenEnvironmentEntities ctx = new OpenEnvironmentEntities())
@@ -2993,7 +2976,6 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
                 }
             }
         }
-
 
 
         public static int DeleteT_WQX_IMPORT_TEMP_ACTIVITY_METRIC(string uSER_ID)

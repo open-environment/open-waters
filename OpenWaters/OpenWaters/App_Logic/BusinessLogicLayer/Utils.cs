@@ -8,8 +8,8 @@ using System.Web;
 using System.IO;
 using System.Web.UI;
 using System.Xml.Linq;
-using System.Xml;
 using System.Linq;
+using System.Data;
 
 namespace OpenEnvironment.App_Logic.BusinessLogicLayer
 {
@@ -158,7 +158,7 @@ namespace OpenEnvironment.App_Logic.BusinessLogicLayer
         ///  Binds a dropdownlist to a datasource and adds a blank item at the beginning.
         /// </summary>
         public static void BindList(DropDownList list, ObjectDataSource datasource, string valueName, string textName)
-            {
+        {
             list.Items.Clear();
             list.Items.Insert(0, "");
             list.AppendDataBoundItems = true;
@@ -238,37 +238,6 @@ namespace OpenEnvironment.App_Logic.BusinessLogicLayer
         }
 
         /// <summary>
-        /// Remove HTML tags from string using char array.
-        /// </summary>
-        public static string StripTagsCharArray(string source)
-        {
-            char[] array = new char[source.Length];
-            int arrayIndex = 0;
-            bool inside = false;
-
-            for (int i = 0; i < source.Length; i++)
-            {
-                char let = source[i];
-                if (let == '<')
-                {
-                    inside = true;
-                    continue;
-                }
-                if (let == '>')
-                {
-                    inside = false;
-                    continue;
-                }
-                if (!inside)
-                {
-                    array[arrayIndex] = let;
-                    arrayIndex++;
-                }
-            }
-            return new string(array, 0, arrayIndex);
-        }
-
-        /// <summary>
         /// Converts string to byte array
         /// </summary>
         public static byte[] StrToByteArray(string str)
@@ -280,41 +249,6 @@ namespace OpenEnvironment.App_Logic.BusinessLogicLayer
             }
             else
                 return null;
-        }
-
-        /// <summary>
-        /// Converts byte array to string
-        /// </summary>
-        public static string ByteArrayToString(byte[] input)
-        {
-            UTF8Encoding enc = new UTF8Encoding();
-            string str = enc.GetString(input);
-            return str;
-        }
-
-        /// <summary>
-        /// Converts a stream into a byte array.
-        /// </summary>
-        /// <param name="str"></param>
-        /// <returns></returns>
-        public static byte[] StreamToByteArray(Stream str)
-        {
-            using (var memoryStream = new MemoryStream())
-            {
-                str.CopyTo(memoryStream);
-                return memoryStream.ToArray();
-            }
-        }
-
-        /// <summary>
-        /// This method is to handle if element is missing
-        /// </summary>
-        public static string ElementValueNull(this XElement element)
-        {
-            if (element != null)
-                return element.Value;
-
-            return "";
         }
 
         /// <summary>
@@ -336,13 +270,6 @@ namespace OpenEnvironment.App_Logic.BusinessLogicLayer
 
             if (email != null) return System.Text.RegularExpressions.Regex.IsMatch(email, MatchEmailPattern);
             else return false;
-        }
-
-        public static void LogoutUser()
-        {
-            System.Web.Security.FormsAuthentication.SignOut();
-            System.Web.Security.Roles.DeleteCookie();
-            System.Web.Security.FormsAuthentication.RedirectToLoginPage();
         }
 
         /// <summary>
@@ -595,10 +522,6 @@ namespace OpenEnvironment.App_Logic.BusinessLogicLayer
             return colMapping;
         }
 
-        public static Dictionary<string, int> GetColumnMapping_CT(int TemplateID)
-        {
-            return null;
-        }
 
 
         //******************* DATA IMPORT HELPERS ********************************************

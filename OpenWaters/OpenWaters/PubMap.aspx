@@ -3,12 +3,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>Water Quality Map</title>
-    <script type="text/javascript" src="Scripts/jquery-1.10.2.min.js" ></script>
     <link type="text/css" href="Styles/Site.css" rel="stylesheet" />
-    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+    <script type="text/javascript" src="Scripts/jquery-1.10.2.min.js" ></script>
+    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCEohIbvKCfnAfGgT0omUpaifCQdBLLAz0"></script>
     <script type="text/javascript">
         var map;
         var gmarkers = [];
+        var bounds = new google.maps.LatLngBounds();
         var splits = [];
 
         window.onload = function InitializeMap() {
@@ -16,46 +17,25 @@
             //**************OPTIONS********************
             var options =
             {
-                zoom: 9,
+                zoom: 5,
                 center: new google.maps.LatLng(35.515, -95.962),
-                mapTypeId: google.maps.MapTypeId.ROADMAP,
+                mapTypeId: google.maps.MapTypeId.TERRAIN,
                 mapTypeControl: true,
                 mapTypeControlOptions:
                 {
                     style: google.maps.MapTypeControlStyle.DROPDOWN_MENU,
-                    poistion: google.maps.ControlPosition.TOP_RIGHT,
-                    mapTypeIds: [google.maps.MapTypeId.ROADMAP,
-                      google.maps.MapTypeId.TERRAIN,
-                      google.maps.MapTypeId.HYBRID,
-                      google.maps.MapTypeId.SATELLITE]
-                },
-                navigationControl: true,
-                navigationControlOptions:
-                {
-                    style: google.maps.NavigationControlStyle.ZOOM_PAN
-                },
-                scaleControl: true,
-                disableDoubleClickZoom: false,
-                draggable: true,
-                streetViewControl: true,
-                draggableCursor: 'move'
+                    position: google.maps.ControlPosition.TOP_RIGHT
+                }
             };
 
 
-
-            //**************MAP********************
+            //**************INITIALIZE MAP and INFO WINDOW********************
             map = new google.maps.Map(document.getElementById("map"), options);
-
-
-            //*********INITIALIZE INFO WINDOW******
-            infowindow = new google.maps.InfoWindow({
-                content: '...'
-            });
+            infowindow = new google.maps.InfoWindow({  content: '...'  });
 
 
             //**************GRAB MARKER DATA FROM DATABASE AND PLOT***************
             PageMethods.GetSites(OnGetSitesComplete);
-
         }
 
         function OnGetSitesComplete(result, userContext, methodName) {
@@ -64,23 +44,21 @@
                 splits = result[i].split("|");
                 createMarker(splits[0], splits[1], splits[2], splits[3], splits[6]);
             }
+
+            map.fitBounds(bounds);
         }
 
 
         function createMarker(lat, lng, infoTitle, infoBody, infoOrg) {
 
             var myLatLng = new google.maps.LatLng(lat, lng);
-            var marker;
-
-            marker = new google.maps.Marker({
+            var marker = new google.maps.Marker({
                 position: myLatLng,
-                map: map,
-                optimized: true,
-                name: lat,
-                //icon: greenimage,
-                zIndex: 2
+                map: map
             });
 
+            //update bounds
+            bounds.extend(myLatLng);
 
             //**********ADD INFO WINDOW TO MARKER*****************************
             if (marker != null) {
@@ -91,25 +69,17 @@
 
                 gmarkers.push(marker);
             }
-
         }
-
-
     </script>
-    <style type="text/css"> 
-        #over_map { position: absolute; background-color: #666666; padding:5px; top: 10px; left: 100px; font-weight:bold; color:White; z-index: 99; border-color:#333333; border-width:1px; border-style:solid; border-radius: 5px 5px / 5px 5px; font-size: 14pt; box-shadow: 3px 3px 3px #888888;  opacity: 0.6; filter: alpha(opacity=60); }
-        #form1 { height: 100%;}
-    </style>
-
 </head>
 <body>
-    <form id="form1" runat="server">
+    <form id="form1" runat="server" class="fullheight">
         <ajaxToolkit:ToolkitScriptManager ID="scriptManager" runat="server" AsyncPostBackTimeout="99999999" EnablePageMethods="true" />
 
         <table style="width:100%; height:100%; padding:0; margin:0;">
             <tr style="height:100%;" >
                 <td>
-                    <div id="over_map"><asp:Label ID="lblOrgName" runat="server"></asp:Label> Water Quality Map</div>
+                    <div id="over_map_full"><asp:Label ID="lblOrgName" runat="server"></asp:Label> Water Quality Map</div>
                     <div id ="map" class="mapSmall" style="height:100%" />
                 </td>
             </tr>    
@@ -148,9 +118,6 @@
                 </td>
             </tr>
         </table>
-
-
-
     </form>
 </body>
 </html>

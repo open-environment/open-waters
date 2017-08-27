@@ -1,10 +1,11 @@
 ﻿<%@ Page Title="Open Waters - Map" Language="C#" MasterPageFile="~/MasterWQX.master" AutoEventWireup="true" CodeBehind="Maps.aspx.cs" Inherits="OpenEnvironment.Map2" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="BodyContent" runat="server" >
     <script type="text/javascript" src="../../Scripts/jquery-1.10.2.min.js" ></script>
-    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCEohIbvKCfnAfGgT0omUpaifCQdBLLAz0"></script>
     <script type="text/javascript">
         var map;
         var gmarkers = [];
+        var bounds = new google.maps.LatLngBounds();
         var splits = [];
 
         window.onload = function InitializeMap() {
@@ -12,46 +13,26 @@
             //**************OPTIONS********************
             var options =
             {
-                zoom: 9,
+                zoom: 5,
                 center: new google.maps.LatLng(35.515, -95.962),
-                mapTypeId: google.maps.MapTypeId.ROADMAP,
+                mapTypeId: google.maps.MapTypeId.TERRAIN,
                 mapTypeControl: true,
+                fullscreenControl: true,
                 mapTypeControlOptions:
                 {
                     style: google.maps.MapTypeControlStyle.DROPDOWN_MENU,
-                    poistion: google.maps.ControlPosition.TOP_RIGHT,
-                    mapTypeIds: [google.maps.MapTypeId.ROADMAP,
-                      google.maps.MapTypeId.TERRAIN,
-                      google.maps.MapTypeId.HYBRID,
-                      google.maps.MapTypeId.SATELLITE]
-                },
-                navigationControl: true,
-                navigationControlOptions:
-                {
-                    style: google.maps.NavigationControlStyle.ZOOM_PAN
-                },
-                scaleControl: true,
-                disableDoubleClickZoom: false,
-                draggable: true,
-                streetViewControl: true,
-                draggableCursor: 'move'
+                    position: google.maps.ControlPosition.TOP_RIGHT
+                }
             };
 
 
-
-            //**************MAP********************
+            //**************INITIALIZE MAP and INFO WINDOW********************
             map = new google.maps.Map(document.getElementById("map"), options);
-
-
-            //*********INITIALIZE INFO WINDOW******
-            infowindow = new google.maps.InfoWindow({
-                content: '...'
-            });
+            infowindow = new google.maps.InfoWindow({ content: '...' });
 
 
             //**************GRAB MARKER DATA FROM DATABASE AND PLOT***************
             PageMethods.GetSites(OnGetSitesComplete);
-
         }
 
         function OnGetSitesComplete(result, userContext, methodName) {
@@ -60,24 +41,21 @@
                 splits = result[i].split("|");
                 createMarker(splits[0], splits[1], splits[2], splits[3]);
             }
-        }
 
+            map.fitBounds(bounds);
+        }
 
 
         function createMarker(lat, lng, infoTitle, infoBody) {
 
             var myLatLng = new google.maps.LatLng(lat, lng);
-            var marker;
-
-            marker = new google.maps.Marker({
+            var marker = new google.maps.Marker({
                 position: myLatLng,                
-                map: map,
-                optimized: true,
-                name: lat,
-                //icon: greenimage,
-                zIndex: 2
+                map: map
             });
 
+            //update bounds
+            bounds.extend(myLatLng);
 
             //**********ADD INFO WINDOW TO MARKER*****************************
             if (marker != null) {
@@ -88,48 +66,14 @@
 
                 gmarkers.push(marker);
             }
-
         }
-
-
     </script>
-    <script  type="text/javascript">
-        jQuery(document).ready(function () {
-
-            jQuery('#hideshow').live('click', function (event) {
-                if (jQuery('#hideshow').val() == "Full Screen") {
-                    jQuery('#hideshow').val('Exit Full Screen');
-                    jQuery('#map').removeClass('mapSmall');
-                    jQuery('#map').addClass('mapBig');
-                    jQuery('#over_map_right').css({ top: '10px' });
-                    jQuery('#over_map').css({ top: '10px' });
-                    jQuery('#over_map').css({ left: '80px' });
-                }
-                else {
-                    jQuery('#hideshow').val('Full Screen');
-                    jQuery('#map').removeClass('mapBig');
-                    jQuery('#map').addClass('mapSmall');
-                    jQuery('#over_map_right ').css({ top: '130px' });
-                    jQuery('#over_map').css({ top: '130px' });
-                    jQuery('#over_map').css({ left: '280px' });
-                }
-
-                google.maps.event.trigger(map, 'resize');
-            });
-        });    </script>
-    <style type="text/css"> 
-        #over_map { position: absolute; background-color: #666666; padding:5px; top: 130px; left: 280px; font-weight:bold; color:White; z-index: 99; border-color:#333333; border-width:1px; border-style:solid; border-radius: 5px 5px / 5px 5px; font-size: 11pt; box-shadow: 3px 3px 3px #888888;  opacity: 0.6; filter: alpha(opacity=60); }
-        #over_map_right { position: absolute; background-color: transparent; top: 130px; right: 120px; z-index: 99; }
-    </style>
     <ajaxToolkit:ToolkitScriptManager ID="scriptManager" runat="server" AsyncPostBackTimeout="99999999" EnablePageMethods="true" />
 
     <table style="width:100%; height:100%; padding:0; margin:0;">
         <tr>
             <td>
                 <div id="over_map">Water Quality Map</div>
-                <div id="over_map_right">
-                    <input type='button' id='hideshow' value='Full Screen' class="btn" />
-                </div>
                 <div id ="map" class="mapSmall" />
             </td>
         </tr>    

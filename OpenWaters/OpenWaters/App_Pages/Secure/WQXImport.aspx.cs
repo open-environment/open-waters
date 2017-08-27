@@ -92,7 +92,7 @@ namespace OpenEnvironment.App_Pages.Secure
 
             //delete previous temp data stored for the user
             if (!DeleteTempImportData(ddlImportType.SelectedValue, User.Identity.Name)) { lblMsg.Text = "Unable to proceed with import."; return; }
-
+             
             //define org and project
             string OrgID = Session["OrgID"].ToString();
             int? ProjectID = ddlProject.SelectedValue.ConvertOrDefault<int?>();

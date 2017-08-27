@@ -1,0 +1,79 @@
+﻿Version 1.8x Change Log
+--------------------
+ENHANCEMENTS: 
+1. Added import translations: now before importing data you can define a mapping of your data to EPA acceptable data. This is helpful in cases where you receive 
+data from labs using codes different from EPA and don't want to have to update the import spreadsheet every time.
+2. Additional code cleanup
+BUG FIX: 
+3. Fix bug when importing samples and other organization has pending samples.
+
+
+Version 1.9x Change Log
+--------------------
+ENHANCEMENTS: 
+  1. Automatically remove commas (e.g. thousand separators) when importing result values
+  2. When importing using cross tab, only validate a result if a result value is reported
+  3. When importing using cross tab, warn if activity ID already exists
+  4. Organizations can now specify a default lower and upper quantitation limit for each characteristic, which is then automatically applied when PABL or PBQL is reported
+  5. Organizations can now specify a default analytical method for each characteristic, which is then automatically applied if none is explicitly included in an import file
+  6. When importing using traditional sample template, column headers no longer must be case sensitive.
+  7. When importing using traditional sample template, sample preparation date and time can now be stored in separate columns (or combined in a single column)
+  8. When importing using traditional sample template, analysis start date and time can now be stored in separate columns (or combined in a single column)
+
+1.9.1 Changes
+--------------
+  1. When importing using cross tab, added ability to specify default Sample Collection Equipment and Collection Method when defining the template
+  2. New validation check when importing samples: if activity type includes "Sample", then Sample Collection Method and Equipments are required
+  3. Improved import template configuration screen: now when specifying hard coded fields, you can select reference data from drop-down instead of typing in.
+
+1.9.2 Changes
+--------------
+  1. Updated Terms and Conditions
+  2. Added Description field to Admin --> Global Settings page 
+  3. Three new global settings: Hosting Organization Name, Registration Message, and Notify Register 
+  4. Added an option to display custom message on registration page
+  5. Added an option to have the site administrator get automatically emailed any time a new user registers an account
+  6. Moved 3rd party javascript dependency (list.js) to local resource
+  7. Added a message informing new users to contact STORET helpdesk if WQX organization ID cannot be found in list
+
+1.9.3 Changes
+--------------
+  1. Fix error in data validation when PAQL or PBQL reported along with PQL.
+
+
+1.9.6 Changes
+--------------
+  1. Add Import Translation screen to allow people to manage translations
+
+
+1.9.7 Changes
+-------------
+  1. Add Assessment Report module, including submission to EPA ATTAINS
+  2. Added biological monitoring import 
+  3. Fix error when importing Lab Analysis Date or Lab Sample Prep date and leaving blank
+  4. Fix error on activity delete.
+  5. Improve speed of file download at WQX History page.
+
+
+1.9.8 Changes
+-------------
+  1. Add import of activity metrics
+  2. Charting: new chart type (Monitoring Location Averages)
+  3. Charting: add second characteristic option for time series chart
+  4. Monitoring Location data import: add ability to cancel import
+  5. Streamline data import module and data import configuration
+  6. Increase length of import error message
+  7. Expanded Import Translation feature to all Activity/Result columns 
+  8. Crosstab import: add ability to import activity depth
+  9. Add ActivityMetricType to reference data pull from EPA
+
+
+  1.9.9 Changes
+  -------------
+    1. Monitoring Location Edit Page - added the following changes: 
+			a. Add ability to select location from map
+			b. Added Aquifer field
+			c. Bug fix: Cancel button now working when validation fails
+			d. Bug fix: County drop-down now correctly filtered by State
+	2. All maps: properly center map on monitoring locations
+

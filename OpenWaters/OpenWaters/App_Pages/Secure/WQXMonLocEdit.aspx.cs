@@ -48,7 +48,6 @@ namespace OpenEnvironment
                 dsRefData.SelectParameters["tABLE"].DefaultValue = "WellType";
                 Utils.BindList(ddlWellType, dsRefData, "VALUE", "VALUE");
 
-                Utils.BindList(ddlCounty, dsCounty, "COUNTY_CODE", "COUNTY_NAME");
 
                 //******************* Populate monitoring location information on form
                 T_WQX_MONLOC m = db_WQX.GetWQX_MONLOC_ByID(MonLocIDX);
@@ -72,22 +71,26 @@ namespace OpenEnvironment
                     ddlVertUnit.SelectedValue = m.VERT_MEASURE_UNIT;
                     ddlVertMethod.SelectedValue = m.VERT_COLL_METHOD;
                     ddlVertDatum.SelectedValue = m.VERT_REF_DATUM;
-                    ddlCounty.SelectedValue = m.COUNTY_CODE;
                     ddlState.SelectedValue = m.STATE_CODE;
+
+                    //county handling
+                    dsCounty.SelectParameters["StateCode"].DefaultValue = ddlState.SelectedValue;
+                    Utils.BindList(ddlCounty, dsCounty, "COUNTY_CODE", "COUNTY_NAME");
+                    ddlCounty.SelectedValue = m.COUNTY_CODE;
+
                     ddlCountry.SelectedValue = m.COUNTRY_CODE;
                     ddlWellType.SelectedValue = m.WELL_TYPE;
+                    txtAquifer.Text = m.AQUIFER_NAME;
+
                     if (m.WQX_IND != null)
                         chkWQXInd.Checked = (bool)m.WQX_IND;
                     if (m.ACT_IND != null)
                         chkActInd.Checked = (bool)m.ACT_IND;
-
-                    btnMap.PostBackUrl = "http://maps.google.com/?q=" + m.LATITUDE_MSR + "," + m.LONGITUDE_MSR;
                 }
                 else
                 {
                     chkActInd.Checked = true;
                     chkWQXInd.Checked = true;
-                    btnMap.Visible = false;
                 }
             }
         }
@@ -105,7 +108,7 @@ namespace OpenEnvironment
                 ddlMonLocType.SelectedValue, txtMonLocDesc.Text, txtHUC8.Text, txtHUC12.Text, null, txtLandName.Text, txtLatitude.Text, txtLongitude.Text, 
                 txtSourceMapScale.Text.ConvertOrDefault<int?>(), null, null, ddlHorizMethod.SelectedValue, ddlHorizDatum.SelectedValue, txtVertMeasure.Text,
                 ddlVertUnit.SelectedValue, ddlVertMethod.SelectedValue, ddlVertDatum.SelectedValue, ddlCountry.SelectedValue, ddlState.SelectedValue, ddlCounty.SelectedValue, 
-                ddlWellType.SelectedValue, null, null, null, null, "U", null, chkActInd.Checked, chkWQXInd.Checked, User.Identity.Name);
+                ddlWellType.SelectedValue, txtAquifer.Text, null, null, null, "U", null, chkActInd.Checked, chkWQXInd.Checked, User.Identity.Name);
 
             if (SuccID > 0)
             {
@@ -121,6 +124,16 @@ namespace OpenEnvironment
         {
             Response.Redirect("~/App_Pages/Secure/WQXMonLoc.aspx", false);
             Context.ApplicationInstance.CompleteRequest();
+        }
+
+        protected void ddlState_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (ddlState.SelectedValue.Length > 0)
+            {
+                dsCounty.SelectParameters["StateCode"].DefaultValue = ddlState.SelectedValue;
+                Utils.BindList(ddlCounty, dsCounty, "COUNTY_CODE", "COUNTY_NAME");
+            }
+
         }
     }
 }

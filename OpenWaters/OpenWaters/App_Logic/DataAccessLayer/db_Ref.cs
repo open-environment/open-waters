@@ -862,18 +862,15 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             }
         }
 
-        public static List<T_WQX_REF_COUNTY> GetT_WQX_REF_COUNTY()
+        public static List<T_WQX_REF_COUNTY> GetT_WQX_REF_COUNTY(string StateCode)
         {
             using (OpenEnvironmentEntities ctx = new OpenEnvironmentEntities())
             {
                 try
                 {
-                    //get default state
-                    string State = GetT_OE_APP_SETTING("Default State");
-
                     return (from a in ctx.T_WQX_REF_COUNTY
-                            where a.STATE_CODE == State
-                            orderby a.COUNTY_NAME descending
+                            where a.STATE_CODE == StateCode
+                            orderby a.COUNTY_NAME 
                             select a).ToList();
                 }
                 catch (Exception ex)

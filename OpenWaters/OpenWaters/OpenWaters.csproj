@@ -103,6 +103,7 @@
     <Content Include="App_Data\DatabasePatch_v1.5.sql" />
     <Content Include="App_Data\DatabasePatch_v1.6.2.sql" />
     <Content Include="App_Data\DatabasePatch_v1.6.sql" />
+    <Content Include="App_Docs\change_log.txt" />
     <Content Include="App_Pages\Secure\WQXImportMetric.aspx" />
     <Content Include="App_Pages\Secure\WQXOrgData.aspx" />
     <Content Include="App_Pages\Secure\SetOrg.aspx" />

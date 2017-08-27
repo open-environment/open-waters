@@ -5,6 +5,7 @@ body { background: #b6b7bc; font-size: .80em; font-family:Tahoma; color: #696969
 img { border-width:0; vertical-align:middle; text-align: center;}
 img[alt='Skip Navigation Links'] { display: none;}   /* needed for Chrome compatibility  */
 input[disabled="disabled"] { color: #666; }   /* needed for Chrome compatibility  */
+select[disabled] {  background-color: #CCC; }
 input[type=text]::-ms-clear { display: none; } /* IE10 to remove little'x' from the textbox */
 input, select {box-sizing: border-box;}
 p { margin-bottom: 6px; line-height: 1.6em; }
@@ -22,6 +23,7 @@ a:active { color: #006600; text-decoration: none;}
 .indent { clear:both; padding:2px 12px;}
 .right { float: right; }
 .left { float: left; }
+.fullheight { height: 100%; }
 
 /* MAPPING
 ----------------------------------------------------------*/
@@ -29,7 +31,8 @@ a:active { color: #006600; text-decoration: none;}
 .mapBig { margin: 0; padding: 0; height: 100%; width: 100%; top : 0; left : 0; position : absolute !important;}
 .mapInfoTitle { background-color:#cccccc; padding:2px; font-weight:bold !important; border-bottom: 1px solid #666666; color: #333333; }
 .mapInfoMain { padding:3px; background-color:#f2f2f2; }
-
+#over_map { position: absolute; background-color: #666666; padding:5px; top: 130px; left: 200px; font-weight:bold; color:White; z-index: 99; border-color:#333333; border-width:1px; border-style:solid; border-radius: 5px 5px / 5px 5px; font-size: 11pt; box-shadow: 3px 3px 3px #888888;  opacity: 0.6; filter: alpha(opacity=60); }
+#over_map_full { position: absolute; background-color: #666666; padding:5px; top: 10px; left: 100px; font-weight:bold; color:White; z-index: 99; border-color:#333333; border-width:1px; border-style:solid; border-radius: 5px 5px / 5px 5px; font-size: 14pt; box-shadow: 3px 3px 3px #888888;  opacity: 0.6; filter: alpha(opacity=60); }
 
 /* HEADINGS   
 ----------------------------------------------------------*/
@@ -70,7 +73,8 @@ legend  { font-size: 1.1em; font-weight: 600; padding: 2px 4px 8px 4px; }
 .row { clear: both; padding: 5px;}
 .fldLbl { float: left; width:150px; height: 5px;}
 .fldTxt { float: left; font-family:Tahoma; color: #404040; height: 22px; line-height:22px; }
-.fldTxt:focus {background-color: #ccff99;}
+.fldMultiTxt { float: left; font-family:Tahoma; color: #404040;  }
+.fldTxt:focus { background-color: #ccff99;}
 .smallnote {font-size: 11px; line-height: 1.5em; }
 
 /* GRIDVIEW
