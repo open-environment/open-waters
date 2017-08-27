@@ -7,8 +7,7 @@
 /OpenWatersSvc/OpenWatersSvc/obj/x86/Release
 /OpenWaters/OpenWaters/obj
 /OpenWaters/OpenWaters/Properties/PublishProfiles
-/OpenWaters/.vs/config
-/OpenWaters/.vs/OpenWaters
+/OpenWaters/.vs
 
 # User-specific files
 *.suo
