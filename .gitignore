@@ -8,6 +8,7 @@
 /OpenWaters/OpenWaters/obj
 /OpenWaters/OpenWaters/Properties/PublishProfiles
 /OpenWaters/.vs/config
+/OpenWaters/.vs/OpenWaters
 
 # User-specific files
 *.suo
