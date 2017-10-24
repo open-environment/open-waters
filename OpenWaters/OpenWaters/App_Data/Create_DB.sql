@@ -177,7 +177,6 @@ GO
 
 insert into T_OE_ROLES (ROLE_NAME, ROLE_DESC, CREATE_USERID, CREATE_DT) values ('USERS', 'Application users', 'system', GetDate());
 insert into T_OE_ROLES (ROLE_NAME, ROLE_DESC, CREATE_USERID, CREATE_DT) values ('ADMINS', 'Application Administrator', 'system', GetDate());
-insert into T_OE_ROLES (ROLE_NAME, ROLE_DESC, CREATE_USERID, CREATE_DT) values ('READONLY', 'People with this role cannot add or edit any data in the system', 'system', GetDate());
 
 insert into T_OE_USERS ([USER_ID], PWD_HASH, PWD_SALT, FNAME, LNAME, ACT_IND, INITAL_PWD_FLAG, EFFECTIVE_DT, LASTLOGIN_DT, PHONE, PHONE_EXT, CREATE_USERID, CREATE_DT, MODIFY_USERID, MODIFY_DT)
 values ('ADMIN', 'pwd','', 'Admin','Admin',1,1,GETDATE(),null, null, null, 'SYSTEM',GETDATE(),'SYSTEM',GETDATE());

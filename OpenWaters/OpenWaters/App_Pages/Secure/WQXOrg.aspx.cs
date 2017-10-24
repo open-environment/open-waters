@@ -22,7 +22,7 @@ namespace OpenEnvironment
                 if (HttpContext.Current.User.IsInRole("ADMINS"))
                     grdOrg.DataSource = dsOrg;
                 else
-                    grdOrg.DataSource = db_WQX.GetWQX_USER_ORGS_ByUserIDX(Session["UserIDX"].ConvertOrDefault<int>(), true);
+                    grdOrg.DataSource = db_WQX.GetWQX_USER_ORGS_ByUserIDX(Utils.GetUserIDX(User), true);
 
                 grdOrg.DataBind();
 

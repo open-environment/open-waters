@@ -41,7 +41,7 @@ namespace OpenEnvironment
                 //ONLY ALLOW EDIT FOR AUTHORIZED USERS OF ORG
                 btnAdd.Enabled = false;
                 grdProject.Columns[0].Visible = false;
-                T_WQX_USER_ORGS uo = db_WQX.GetWQX_USER_ORGS_ByUserIDX_OrgID(Session["UserIDX"].ConvertOrDefault<int>(), Session["OrgID"].ToString());
+                T_WQX_USER_ORGS uo = db_WQX.GetWQX_USER_ORGS_ByUserIDX_OrgID(Utils.GetUserIDX(User), Session["OrgID"].ToString());
                 if (uo != null)
                 {
                     if (uo.ROLE_CD == "A" || uo.ROLE_CD == "U")

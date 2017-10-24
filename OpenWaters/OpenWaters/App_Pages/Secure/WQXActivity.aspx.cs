@@ -68,7 +68,8 @@ namespace OpenEnvironment
                 chkFields.Items[4].Selected = (Session["SAMP_DEPTH"].ConvertOrDefault<Boolean>());
 
                 //ONLY ALLOW EDIT FOR AUTHORIZED USERS OF ORG
-                bool CanEditOrg = db_WQX.CanUserEditOrg(Session["UserIDX"].ConvertOrDefault<int>(), Session["OrgID"].ToString());
+                int UserIDX = Utils.GetUserIDX(User);
+                bool CanEditOrg = db_WQX.CanUserEditOrg(UserIDX, Session["OrgID"].ToString());
                 btnAdd.Visible = CanEditOrg;
             }
 

@@ -77,19 +77,20 @@ namespace OpenEnvironment.Account
         {
             string tmpRoleNames = "";
 
-            int UserID = Convert.ToInt32(db_Accounts.GetT_OE_USERSByID(username).USER_IDX.ToString());
-
-            foreach (T_OE_ROLES r in db_Accounts.GetT_OE_ROLESInUser(UserID))
-                tmpRoleNames += r.ROLE_NAME + ",";
-
-            if (tmpRoleNames.Length > 0)
+            T_OE_USERS _user = db_Accounts.GetT_OE_USERSByID(username);
+            if (_user != null)
             {
-                tmpRoleNames = tmpRoleNames.Substring(0, tmpRoleNames.Length - 1); // Remove trailing comma.
-                return tmpRoleNames.Split(',');
+                foreach (T_OE_ROLES r in db_Accounts.GetT_OE_ROLESInUser(_user.USER_IDX))
+                    tmpRoleNames += r.ROLE_NAME + ",";
+
+                if (tmpRoleNames.Length > 0)
+                {
+                    tmpRoleNames = tmpRoleNames.Substring(0, tmpRoleNames.Length - 1); // Remove trailing comma.
+                    return tmpRoleNames.Split(',');
+                }
             }
 
             return new string[0];
-
         }
 
 

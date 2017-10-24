@@ -23,7 +23,7 @@
         </asp:Table>
         <asp:ObjectDataSource ID="dsOrg" runat="server" SelectMethod="GetWQX_USER_ORGS_ByUserIDX" TypeName="OpenEnvironment.App_Logic.DataAccessLayer.db_WQX">
         <SelectParameters>
-            <asp:SessionParameter DefaultValue="" Name="UserIDX" SessionField="UserIDX" Type="Int32" />
+            <asp:Parameter DefaultValue="" Name="UserIDX" Type="Int32" />
             <asp:Parameter DefaultValue="true" Name="excludePendingInd" Type="Boolean" />
         </SelectParameters>
         </asp:ObjectDataSource>
@@ -56,9 +56,11 @@
                             <asp:LoginView ID="HeadLoginView" runat="server" EnableViewState="false">
                                 <LoggedInTemplate>
                                     Welcome <span class="bold"><asp:LoginName ID="HeadLoginName" runat="server" /></span>
-                                    [<asp:LoginStatus ID="HeadLoginStatus" runat="server" LogoutAction="Redirect" LogoutPageUrl="~/" LogoutText="Log Out" />]
+<%--                                    [<asp:LoginStatus ID="HeadLoginStatus" runat="server" LogoutAction="Redirect" LogoutPageUrl="~/" LogoutText="Log Out" />]--%>
                                 </LoggedInTemplate>
                             </asp:LoginView>
+                            <asp:Button ID="btnLogout" runat="server" Text="Logout" CssClass="btn" OnClick="btnLogout_Click" />
+                            <asp:Button ID="btnPortal" runat="server" Text="Back to Portal" CssClass="btn" OnClick="btnPortal_Click"  />
                         </div>
                     </td>
                 </tr>

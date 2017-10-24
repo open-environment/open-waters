@@ -436,6 +436,83 @@ namespace OpenEnvironment.App_Logic.BusinessLogicLayer
         }
 
 
+        /// <summary>
+        /// Returns the internal ID of the authenticated user. If using membership, returns membership user. If using external ID provider, returns IPrincipal USERIDX claim
+        /// </summary>
+        /// <param name="User"></param>
+        /// <returns></returns>
+        public static int GetUserIDX(System.Security.Principal.IPrincipal User)
+        {
+            try
+            {
+                if (System.Configuration.ConfigurationManager.AppSettings["UseIdentityServer"] == "true")
+                {
+                    var identity = (System.Security.Claims.ClaimsIdentity)User.Identity;
+                    IEnumerable<System.Security.Claims.Claim> claims2 = identity.Claims;
+                    var UserIDXLoc = (from p in claims2 where p.Type == "UserIDX" select p.Value).FirstOrDefault();
+                    return UserIDXLoc.ConvertOrDefault<int>();
+                }
+                else
+                    return (int)System.Web.Security.Membership.GetUser().ProviderUserKey;
+            }
+            catch
+            {
+                //if fails, we don't care why, but need to return 0 to indicate not authenticated
+                return 0;
+            }
+        }
+
+
+
+        public static void PostLoginUser(string UserID)
+        {
+            T_OE_USERS u = db_Accounts.GetT_OE_USERSByID(UserID);
+            if (u != null)
+            {
+                //if user only belongs to 1 org, update the default org id
+                if (u.DEFAULT_ORG_ID == null)
+                {
+                    List<T_WQX_ORGANIZATION> os = db_WQX.GetWQX_USER_ORGS_ByUserIDX(u.USER_IDX, false);
+                    if (os.Count == 1)
+                    {
+                        db_Accounts.UpdateT_OE_USERSDefaultOrg(u.USER_IDX, os[0].ORG_ID);
+                        HttpContext.Current.Session["OrgID"] = os[0].ORG_ID; //added 1/6/2014
+                    }
+                }
+
+                if (u.INITAL_PWD_FLAG == false)
+                {
+                    db_Accounts.UpdateT_OE_USERS(u.USER_IDX, null, null, null, null, null, null, null, null, System.DateTime.Now, null, null, "system");
+
+                    //set important session variables
+                    HttpContext.Current.Session["UserIDX"] = u.USER_IDX;
+                    HttpContext.Current.Session["OrgID"] = u.DEFAULT_ORG_ID; //added 1/6/2014
+                    HttpContext.Current.Session["MLOC_HUC_EIGHT"] = false;
+                    HttpContext.Current.Session["MLOC_HUC_TWELVE"] = false;
+                    HttpContext.Current.Session["MLOC_TRIBAL_LAND"] = false;
+                    HttpContext.Current.Session["MLOC_SOURCE_MAP_SCALE"] = false;
+                    HttpContext.Current.Session["MLOC_HORIZ_COLL_METHOD"] = true;
+                    HttpContext.Current.Session["MLOC_HORIZ_REF_DATUM"] = true;
+                    HttpContext.Current.Session["MLOC_VERT_MEASURE"] = false;
+                    HttpContext.Current.Session["MLOC_COUNTRY_CODE"] = true;
+                    HttpContext.Current.Session["MLOC_STATE_CODE"] = true;
+                    HttpContext.Current.Session["MLOC_COUNTY_CODE"] = true;
+                    HttpContext.Current.Session["MLOC_WELL_DATA"] = false;
+                    HttpContext.Current.Session["MLOC_WELL_TYPE"] = false;
+                    HttpContext.Current.Session["MLOC_AQUIFER_NAME"] = false;
+                    HttpContext.Current.Session["MLOC_FORMATION_TYPE"] = false;
+                    HttpContext.Current.Session["MLOC_WELLHOLE_DEPTH"] = false;
+                    HttpContext.Current.Session["PROJ_SAMP_DESIGN_TYPE_CD"] = false;
+                    HttpContext.Current.Session["PROJ_QAPP_APPROVAL"] = false;
+                    HttpContext.Current.Session["SAMP_ACT_END_DT"] = false;
+                    HttpContext.Current.Session["SAMP_COLL_METHOD"] = false;
+                    HttpContext.Current.Session["SAMP_COLL_EQUIP"] = false;
+                    HttpContext.Current.Session["SAMP_PREP"] = false;
+                    HttpContext.Current.Session["SAMP_DEPTH"] = false;
+                }
+            }
+        }
+
         //******************** GRID EXTENSION **************************************
         public static GridView RemoveEmptyColumns(this GridView gv, bool setTableWidth, string exclHeaderText)
         {

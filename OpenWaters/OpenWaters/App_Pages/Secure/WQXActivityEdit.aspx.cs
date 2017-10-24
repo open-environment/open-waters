@@ -25,7 +25,7 @@ namespace OpenEnvironment
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["ActivityIDX"] == null || Session["OrgID"] == null || Session["UserIDX"] == null)
+            if (Session["ActivityIDX"] == null || Session["OrgID"] == null || User == null)
                 Response.Redirect("~/App_Pages/Secure/WQXActivity.aspx");
 
             if (!IsPostBack)
@@ -50,7 +50,7 @@ namespace OpenEnvironment
                 }
 
                 //ONLY ALLOW EDIT FOR AUTHORIZED USERS OF ORG
-                btnSave.Visible = db_WQX.CanUserEditOrg(Session["UserIDX"].ConvertOrDefault<int>(), Session["OrgID"].ToString());
+                btnSave.Visible = db_WQX.CanUserEditOrg(Utils.GetUserIDX(User), Session["OrgID"].ToString());
 
                 //populate drop-downs - sample level
                 dsRefData.SelectParameters["tABLE"].DefaultValue = "ActivityType";

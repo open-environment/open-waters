@@ -53,7 +53,6 @@ namespace OpenEnvironment
 
         protected void btnConfirm_Click(object sender, EventArgs e)
         {
-            int UserIDX = Session["UserIDX"].ConvertOrDefault<int>();
             string OrgID = txtOrgIDConfirm.Text;
             var emailTo = new List<string>();
 
@@ -112,7 +111,7 @@ namespace OpenEnvironment
             }
 
             //Org is now in Open Waters, so user added to Org with pending status
-            db_WQX.InsertT_WQX_USER_ORGS(OrgID, UserIDX, "P", User.Identity.Name);
+            db_WQX.InsertT_WQX_USER_ORGS(OrgID, Utils.GetUserIDX(User), "P", User.Identity.Name);
 
             //send email with request
             string msg = "A user has requested to join an organization for which you are an administrator." + "\r\n\r\n";
