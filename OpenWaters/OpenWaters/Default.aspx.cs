@@ -15,10 +15,7 @@ namespace OpenEnvironment
         {
             //if integrated with Identity, then don't display this page - attempt redirect to Dashboard
             if (ConfigurationManager.AppSettings["UseIdentityServer"] == "true")
-            {
                 Response.Redirect("~/App_Pages/Secure/Dashboard.aspx");
-            }
-
 
 
 
