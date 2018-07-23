@@ -39,6 +39,14 @@ Open Waters is web-based water quality data management software that helps peopl
 
 
 ## Change Log
+* **10/27/2017 - Version 1.9.9:**
+    * Monitoring Location Edit Page - added the following changes: 
+        * Add ability to select location from map
+        * Added Aquifer field
+        * Bug fix: Cancel button now working when validation fails
+        * Bug fix: County drop-down now correctly filtered by State
+    * All maps: properly center map on monitoring locations
+    * (Optional) Integration with Tribal Services Portal github.com/tribal-svc-portal (allows Single-Sign On across multiple applications)
 * **1/13/2017 - Version 1.9.8:**
     * Major streamlining to data import module and data import configuration
     * Charting: new chart type (Monitoring Location Averages)
