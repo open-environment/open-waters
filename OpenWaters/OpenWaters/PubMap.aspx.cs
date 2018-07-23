@@ -30,11 +30,15 @@ namespace OpenEnvironment.App_Pages.Public
 
         //Web method used for retrieving sites to place on map
         [WebMethod(EnableSession = true)]
-        public static string[] GetSites()
+        public static string[] GetSites(string OrgID)
         {
+            db_Ref.InsertT_OE_SYS_LOG("Public Map", OrgID);
+
             List<string> myCollection = new List<string>();
 
             List<T_WQX_MONLOC> ms = db_WQX.GetWQX_MONLOC(true, null, false);
+            if (!string.IsNullOrEmpty(OrgID))
+                ms = db_WQX.GetWQX_MONLOC_ByOrgID(OrgID);
 
             if (ms != null)
             {
@@ -69,7 +73,7 @@ namespace OpenEnvironment.App_Pages.Public
                 }
             }
 
-            return myCollection.ToArray(); ;
+            return myCollection.ToArray();
         }
 
 

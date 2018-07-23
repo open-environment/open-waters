@@ -68,12 +68,12 @@ ENHANCEMENTS:
   9. Add ActivityMetricType to reference data pull from EPA
 
 
-  1.9.9 Changes
-  -------------
-    1. Monitoring Location Edit Page - added the following changes: 
-			a. Add ability to select location from map
-			b. Added Aquifer field
-			c. Bug fix: Cancel button now working when validation fails
-			d. Bug fix: County drop-down now correctly filtered by State
-	2. All maps: properly center map on monitoring locations
-
+1.9.9 Changes
+-------------
+1. Monitoring Location Edit Page - added the following changes: 
+		a. Add ability to select location from map
+		b. Added Aquifer field
+		c. Bug fix: Cancel button now working when validation fails
+		d. Bug fix: County drop-down now correctly filtered by State
+2. All maps: properly center map on monitoring locations
+3. (Optional) Integration with Tribal Services Portal github.com/tribal-svc-portal (allows Single-Sign On across multiple applications)

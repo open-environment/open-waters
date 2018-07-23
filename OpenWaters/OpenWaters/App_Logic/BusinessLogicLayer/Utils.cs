@@ -89,7 +89,7 @@ namespace OpenEnvironment.App_Logic.BusinessLogicLayer
                 if (from == null)
                     from = db_Ref.GetT_OE_APP_SETTING("Email From");
 
-
+                //************** REROUTE TO SENDGRID HELPER IF SENDGRID ENABLED ******
                 if (mailServer == "smtp.sendgrid.net")
                 {
                     SendGridHelper.SendGridEmail(from, to, cc, bcc, subj, body, smtpUser, smtpUserPwd);

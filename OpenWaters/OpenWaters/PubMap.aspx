@@ -35,7 +35,8 @@
 
 
             //**************GRAB MARKER DATA FROM DATABASE AND PLOT***************
-            PageMethods.GetSites(OnGetSitesComplete);
+            var selSite = $('#ddlOrg').val();
+            PageMethods.GetSites(selSite, OnGetSitesComplete, OnFailed);
         }
 
         function OnGetSitesComplete(result, userContext, methodName) {
@@ -48,6 +49,9 @@
             map.fitBounds(bounds);
         }
 
+        function OnFailed(error, userContext, methodName) {
+            console.log('Unable to retrieve sites');
+        }
 
         function createMarker(lat, lng, infoTitle, infoBody, infoOrg) {
 
