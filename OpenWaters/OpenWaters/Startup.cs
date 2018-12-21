@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Web;
 using Owin;
 using Microsoft.Owin.Security.Cookies;
@@ -10,7 +9,6 @@ using Microsoft.Owin.Security.OpenIdConnect;
 using System.Security.Claims;
 using OpenEnvironment.App_Logic.DataAccessLayer;
 using System.Threading.Tasks;
-using OpenEnvironment.App_Logic.BusinessLogicLayer;
 
 namespace OpenEnvironment
 {

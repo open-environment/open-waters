@@ -4,6 +4,8 @@ using OpenEnvironment.App_Logic.BusinessLogicLayer;
 using OpenEnvironment.App_Logic.DataAccessLayer;
 using System.Web.Security;
 using System.Configuration;
+using Microsoft.Owin.Security;
+using Microsoft.Owin.Security.OpenIdConnect;
 
 namespace OpenEnvironment
 {

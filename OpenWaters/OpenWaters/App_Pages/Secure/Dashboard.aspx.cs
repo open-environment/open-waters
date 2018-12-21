@@ -9,6 +9,7 @@ using OpenEnvironment.App_Logic.BusinessLogicLayer;
 using Microsoft.Owin.Security.OpenIdConnect;
 using Microsoft.Owin.Security;
 using System.Web.Security;
+using System.Configuration;
 
 namespace OpenEnvironment
 {
@@ -18,11 +19,16 @@ namespace OpenEnvironment
         {
             if (!Request.IsAuthenticated)
             {
-                HttpContext.Current.GetOwinContext().Authentication.Challenge(
-                    new AuthenticationProperties { RedirectUri = "/" },
+                if (ConfigurationManager.AppSettings["UseIdentityServer"] == "true")
+                {
+                    string _redirUri = ConfigurationManager.AppSettings["IdentityServerRedirectURI"];
+
+                    HttpContext.Current.GetOwinContext().Authentication.Challenge(
+                    new AuthenticationProperties { RedirectUri = _redirUri },
                     OpenIdConnectAuthenticationDefaults.AuthenticationType);
 
-                return;
+                    return;
+                }
             }
 
 
