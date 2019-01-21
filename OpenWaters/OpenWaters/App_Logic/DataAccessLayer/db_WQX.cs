@@ -1832,6 +1832,37 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             }
         }
 
+        /// <summary>
+        /// Sets access to all organizations to inactive for a given user 
+        /// </summary>
+        /// <param name="uSER_IDX"></param>
+        public static void DeleteT_WQX_USER_ORGS_AllByUserIDX(int uSER_IDX)
+        {
+            using (OpenEnvironmentEntities ctx = new OpenEnvironmentEntities())
+            {
+                try
+                {
+                    //first get all users 
+                    var xxx = (from itemA in ctx.T_WQX_USER_ORGS
+                               where itemA.USER_IDX == uSER_IDX
+                               select itemA);
+
+                    // now use First or a loop if you expect multiple
+                    foreach (var user_org in xxx)
+                    {
+                        DeleteT_WQX_USER_ORGS(user_org.ORG_ID, user_org.USER_IDX); 
+                    }
+
+                    ctx.SaveChanges();
+
+                }
+                catch (Exception ex)
+                {
+                    return;
+                }
+            }
+            return;
+        }
 
 
         // *************************** IMPORT_TEMPLATE    ******************************

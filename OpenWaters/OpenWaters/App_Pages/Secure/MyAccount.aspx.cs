@@ -17,7 +17,8 @@ namespace OpenEnvironment
 
             if (!IsPostBack)
             {
-                T_OE_USERS u = db_Accounts.GetT_OE_USERSByIDX(Session["UserIDX"].ConvertOrDefault<int>());
+                int UserIDX = Utils.GetUserIDX(User);
+                T_OE_USERS u = db_Accounts.GetT_OE_USERSByIDX(UserIDX);
                 if (u != null)
                 {
                     txtUserName.Text = u.USER_ID;
@@ -36,7 +37,7 @@ namespace OpenEnvironment
 
                 //populate listing of Organizations
                 lblOrgList.Items.Clear();
-                List<T_WQX_ORGANIZATION> orgs = db_WQX.GetWQX_USER_ORGS_ByUserIDX(Session["UserIDX"].ConvertOrDefault<int>(), true);
+                List<T_WQX_ORGANIZATION> orgs = db_WQX.GetWQX_USER_ORGS_ByUserIDX(UserIDX, true);
                 foreach (T_WQX_ORGANIZATION org in orgs)
                     lblOrgList.Items.Add(org.ORG_FORMAL_NAME);
             
@@ -47,7 +48,9 @@ namespace OpenEnvironment
         {
             try
             {
-                if (db_Accounts.UpdateT_OE_USERS(Session["UserIDX"].ConvertOrDefault<int>(), null, null, txtFName.Text, txtLName.Text, txtEmail.Text, true, null, null, null, txtPhone.Text, null, User.Identity.Name) > 0)
+                int UserIDX = Utils.GetUserIDX(User);
+
+                if (db_Accounts.UpdateT_OE_USERS(UserIDX, null, null, txtFName.Text, txtLName.Text, txtEmail.Text, true, null, null, null, txtPhone.Text, null, User.Identity.Name) > 0)
                     lblMsg.Text = "User updated successfully.";
                 else
                     lblMsg.Text = "Error updating user.";

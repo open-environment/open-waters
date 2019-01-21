@@ -554,3 +554,4 @@ GO
 
 --1.9.9
 delete from T_OE_APP_SETTINGS where SETTING_NAME = 'Default State';
+delete from T_OE_ROLES where ROLE_NAME = 'READONLY';  --cleanup unused role

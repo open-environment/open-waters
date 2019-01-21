@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
 using SendGrid;
 using OpenEnvironment.App_Logic.DataAccessLayer;
 using System.Net;

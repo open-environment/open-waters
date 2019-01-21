@@ -217,10 +217,9 @@ namespace OpenEnvironment
 
             try
             {
+                XDocument xdoc = null;
+
                 byte[] b = d.GetDomainValues(tableName);
-                //cleanup any previous files
-                if (File.Exists(Server.MapPath("~/tmp/Results.xml")))
-                    File.Delete(Server.MapPath("~/tmp/Results.xml"));
 
                 using (System.IO.Stream stream = new System.IO.MemoryStream(b))
                 {
@@ -228,12 +227,17 @@ namespace OpenEnvironment
                     {
                         foreach (var entry in zip)
                         {
+                            //cleanup any previous files
+                            if (File.Exists(Server.MapPath("~/tmp/" + entry.FileName)))
+                                File.Delete(Server.MapPath("~/tmp/" + entry.FileName));
+
                             entry.Extract(Server.MapPath("~/tmp"));
+
+                            xdoc = XDocument.Load(Server.MapPath("~/tmp/" + entry.FileName));
                         }
                     }
                 }
 
-                XDocument xdoc = XDocument.Load(Server.MapPath("~/tmp/Results.xml"));
 
                 // ***************** DEFAULT PARSING **************************************
                 if (CustomParseName == null)

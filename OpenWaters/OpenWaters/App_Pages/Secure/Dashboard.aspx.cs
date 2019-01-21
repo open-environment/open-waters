@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using System.Web.UI;
 using System.Web.UI.WebControls;
 using OpenEnvironment.App_Logic.DataAccessLayer;
 using OpenEnvironment.App_Logic.BusinessLogicLayer;
@@ -13,14 +12,19 @@ namespace OpenEnvironment
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
             if (!IsPostBack)
             {
-                //****************************************************************************
+                //*******************************************************************************
                 //************* Data Collection Metrics Panel ***********************************
-                //****************************************************************************
+                //*******************************************************************************
                 lblOrg.Text = db_WQX.GetWQX_ORGANIZATION().Count().ToString();
-                int UserIDX = Session["UserIDX"].ConvertOrDefault<int>();
+
+                int UserIDX = Utils.GetUserIDX(User);
+
+                //post login stuff such as setting Default OrgID in session
+                if (Session["UserIDX"].ConvertOrDefault<int>() == 0)
+                    Utils.PostLoginUser(User.Identity.Name);
+
 
                 if (!string.IsNullOrEmpty(Session["OrgID"] as string))
                 {
