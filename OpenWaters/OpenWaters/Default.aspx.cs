@@ -1,11 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 using OpenEnvironment.App_Logic.DataAccessLayer;
-using System.Configuration;
 using OpenEnvironment.App_Logic.BusinessLogicLayer;
+using System.Configuration;
+using System.Web;
+using Microsoft.Owin.Security;
+using Microsoft.Owin.Security.OpenIdConnect;
 
 namespace OpenEnvironment
 {
@@ -13,14 +12,6 @@ namespace OpenEnvironment
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            //if integrated with Identity, then don't display this page - attempt redirect to Dashboard
-            if (ConfigurationManager.AppSettings["UseIdentityServer"] == "true")
-                Response.Redirect("~/App_Pages/Secure/Dashboard.aspx");
-
-
-
-            SetFocus(this.LoginUser.FindControl("UserName"));
-
             //test database connectivity
             try
             {
@@ -31,6 +22,12 @@ namespace OpenEnvironment
                 lblTestWarn.Visible = true;
                 lblTestWarn.Text = "System is currently unavailable.";
             }
+
+            //if integrated with Identity Server, then redirect to Dashboard
+            if (ConfigurationManager.AppSettings["UseIdentityServer"] == "true")
+                Response.Redirect("~/App_Pages/Secure/Dashboard.aspx");
+
+            SetFocus(this.LoginUser.FindControl("UserName"));
         }
 
         protected void LoginUser_LoggedIn(object sender, EventArgs e)

@@ -14,6 +14,13 @@ namespace OpenEnvironment
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            //if integrated with Identity Server, then redirect (if not already authenticated
+            if (!Request.IsAuthenticated && ConfigurationManager.AppSettings["UseIdentityServer"] == "true")
+            {
+                string _redirUri = ConfigurationManager.AppSettings["IdentityServerRedirectURI"];
+                HttpContext.Current.GetOwinContext().Authentication.Challenge(new AuthenticationProperties { RedirectUri = _redirUri }, OpenIdConnectAuthenticationDefaults.AuthenticationType);
+            }
+
             if (!IsPostBack)
             {
                 //populate drop-down lists

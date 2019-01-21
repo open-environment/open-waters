@@ -1,4 +1,8 @@
-﻿using System;
+﻿using Microsoft.Owin.Security;
+using Microsoft.Owin.Security.OpenIdConnect;
+using System;
+using System.Configuration;
+using System.Web;
 
 namespace OpenEnvironment
 {
@@ -28,6 +32,19 @@ namespace OpenEnvironment
             // Code that runs when a new session is started
 
         }
+
+        protected void Application_AuthenticateRequest(Object sender, EventArgs e) {
+
+            //if (!Request.IsAuthenticated && ConfigurationManager.AppSettings["UseIdentityServer"] == "true")
+            //{
+            //    string _redirUri = ConfigurationManager.AppSettings["IdentityServerRedirectURI"];
+            //    HttpContext.Current.GetOwinContext().Authentication.Challenge(
+            //        new AuthenticationProperties { RedirectUri = _redirUri },
+            //        OpenIdConnectAuthenticationDefaults.AuthenticationType
+            //        );
+            //}
+        }
+
 
         void Session_End(object sender, EventArgs e)
         {

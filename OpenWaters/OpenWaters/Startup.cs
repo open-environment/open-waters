@@ -1,14 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Web;
+﻿using Microsoft.Owin.Security.Cookies;
+using Microsoft.Owin.Security.OpenIdConnect;
 using Owin;
-using Microsoft.Owin.Security.Cookies;
+using System.Collections.Generic;
 using System.Configuration;
 using System.IdentityModel.Tokens;
-using Microsoft.Owin.Security.OpenIdConnect;
 using System.Security.Claims;
-using OpenEnvironment.App_Logic.DataAccessLayer;
 using System.Threading.Tasks;
+using OpenEnvironment.App_Logic.DataAccessLayer;
 
 namespace OpenEnvironment
 {
@@ -104,28 +102,11 @@ namespace OpenEnvironment
                         }
                     }
 
-                    //HYBRID values
-                    //AuthenticationScheme = "oidc",    //--------
-                    //SignInScheme = "cookie",   //--------
-                    //Authority = "http://localhost:5003/",  //--------
-                    //RequireHttpsMetadata = false,    //--------
-                    //ClientId = "mvc",      //--------
-                    //ClientSecret = "superSecretPassword",   //--------
-                    //ResponseType = "code id_token",    //--------
-                    //Scope = {
-                    //    "offline_access",
-                    //    "openid",
-                    //    "profile"
-                    //},
-                    //GetClaimsFromUserInfoEndpoint = true,   //--------
-                    //SaveTokens = true
                 });
 
             }
 
         }
-
-
 
     }
 }

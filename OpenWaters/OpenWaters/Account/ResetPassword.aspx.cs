@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using Microsoft.Owin.Security;
+using Microsoft.Owin.Security.OpenIdConnect;
+using System;
+using System.Configuration;
 using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 using System.Web.Security;
-using OpenEnvironment.App_Logic.BusinessLogicLayer;
 
 namespace OpenEnvironment
 {
@@ -13,7 +11,12 @@ namespace OpenEnvironment
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            //if integrated with Identity Server, then redirect
+            if (ConfigurationManager.AppSettings["UseIdentityServer"] == "true")
+            {
+                string _redirUri = ConfigurationManager.AppSettings["IdentityServerRedirectURI"];
+                HttpContext.Current.GetOwinContext().Authentication.Challenge(new AuthenticationProperties { RedirectUri = _redirUri }, OpenIdConnectAuthenticationDefaults.AuthenticationType);
+            }
         }
 
         protected void btnCancel_Click(object sender, EventArgs e)
@@ -38,9 +41,7 @@ namespace OpenEnvironment
             }
             catch (Exception ex)
             {
-                //Logging Err = new Logging();
-                //Err.ErrorLog(Server.MapPath("~/Logs/ErrorLog"), ex.Message);
-                lblMsg.Text = "Error resetting account password. ";// +ex.Message;
+                lblMsg.Text = "Error resetting account password. ";
             }
 
         }

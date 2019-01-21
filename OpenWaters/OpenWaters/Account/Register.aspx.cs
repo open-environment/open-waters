@@ -1,10 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+using System.Configuration;
 using System.Web;
 using System.Web.Security;
-using System.Web.UI;
-using System.Web.UI.WebControls;
+using Microsoft.Owin.Security;
+using Microsoft.Owin.Security.OpenIdConnect;
 using OpenEnvironment.App_Logic.DataAccessLayer;
 
 namespace OpenEnvironment.Account
@@ -14,6 +13,13 @@ namespace OpenEnvironment.Account
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            //if integrated with Identity Server, then redirect
+            if (ConfigurationManager.AppSettings["UseIdentityServer"] == "true")
+            {
+                string _redirUri = ConfigurationManager.AppSettings["IdentityServerRedirectURI"];
+                HttpContext.Current.GetOwinContext().Authentication.Challenge(new AuthenticationProperties { RedirectUri = _redirUri }, OpenIdConnectAuthenticationDefaults.AuthenticationType);
+            }
+
             //only require Beta invite code if hosted at open waters
             if (db_Ref.GetT_OE_APP_SETTING("Beta Program") == "Y")
                 pnlBeta.Visible = true;

@@ -2,14 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using System.Web.UI;
 using System.Web.UI.WebControls;
 using OpenEnvironment.App_Logic.DataAccessLayer;
 using OpenEnvironment.App_Logic.BusinessLogicLayer;
-using Microsoft.Owin.Security.OpenIdConnect;
-using Microsoft.Owin.Security;
-using System.Web.Security;
-using System.Configuration;
 
 namespace OpenEnvironment
 {
@@ -17,21 +12,6 @@ namespace OpenEnvironment
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!Request.IsAuthenticated)
-            {
-                if (ConfigurationManager.AppSettings["UseIdentityServer"] == "true")
-                {
-                    string _redirUri = ConfigurationManager.AppSettings["IdentityServerRedirectURI"];
-
-                    HttpContext.Current.GetOwinContext().Authentication.Challenge(
-                    new AuthenticationProperties { RedirectUri = _redirUri },
-                    OpenIdConnectAuthenticationDefaults.AuthenticationType);
-
-                    return;
-                }
-            }
-
-
             if (!IsPostBack)
             {
                 //*******************************************************************************

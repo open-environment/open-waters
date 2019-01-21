@@ -175,7 +175,6 @@
     <Content Include="App_Pages\Secure\WQXImportProject.aspx" />
     <Content Include="App_Pages\Secure\AdmAdminTools.aspx" />
     <Content Include="Account\Verify.aspx" />
-    <Content Include="Account\Redirect.aspx" />
     <Content Include="App_Pages\Public\Terms.aspx" />
     <Content Include="App_Pages\Secure\WQXOrgNew.aspx" />
     <Content Include="App_Pages\Secure\AdmDataSynch.aspx" />
@@ -688,13 +687,6 @@
     </Compile>
     <Compile Include="Account\Verify.aspx.designer.cs">
       <DependentUpon>Verify.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Account\Redirect.aspx.cs">
-      <DependentUpon>Redirect.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Account\Redirect.aspx.designer.cs">
-      <DependentUpon>Redirect.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Pages\Public\Terms.aspx.cs">
       <DependentUpon>Terms.aspx</DependentUpon>

@@ -1,15 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Web.UI.WebControls;
 using System.ComponentModel;
-using OpenEnvironment.App_Logic.DataAccessLayer;
-using System.Text;
-using System.Web;
-using System.IO;
-using System.Web.UI;
-using System.Xml.Linq;
-using System.Linq;
 using System.Data;
+using System.IO;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using System.Xml.Linq;
+using OpenEnvironment.App_Logic.DataAccessLayer;
 
 namespace OpenEnvironment.App_Logic.BusinessLogicLayer
 {
@@ -347,7 +346,6 @@ namespace OpenEnvironment.App_Logic.BusinessLogicLayer
         {
             HttpContext.Current.Response.Clear();
             HttpContext.Current.Response.AddHeader("content-disposition", string.Format("attachment; filename={0}", fileName));
-//            HttpContext.Current.Response.ContentType = "application/ms-excel";
             HttpContext.Current.Response.ContentType = "application/vnd.ms-excel";
 
             using (StringWriter sw = new StringWriter())
