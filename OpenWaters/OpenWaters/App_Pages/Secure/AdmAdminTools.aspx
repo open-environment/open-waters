@@ -1,11 +1,10 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterAdmin.master" AutoEventWireup="true" CodeBehind="AdmAdminTools.aspx.cs" Inherits="OpenEnvironment.AdmAdminTools" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-
     <div class="row">
         Transaction ID: 
         <asp:TextBox ID="txtTransID" runat="server" CssClass="fldTxt"></asp:TextBox>
         <br />
-
+        <asp:Label ID="lblMsg" runat="server" CssClass="failureNotification"></asp:Label>
     </div>
     <div class="btnRibbon">
         <asp:Button ID="btnGetStatus" runat="server" Text="Get Status" CssClass="btn" OnClick="btnGetStatus_Click" />

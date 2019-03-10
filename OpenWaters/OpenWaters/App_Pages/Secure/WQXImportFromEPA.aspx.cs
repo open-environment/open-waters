@@ -140,7 +140,7 @@ namespace OpenEnvironment
         public Dictionary<string, string> ACT_SUBMEDIATrans { get; set; }
     }
 
-    public partial class WQXImportOld : System.Web.UI.Page
+    public partial class WQXImportFromEPA : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -152,12 +152,12 @@ namespace OpenEnvironment
             if (!IsPostBack)
             {
                 ContentPlaceHolder cp = this.Master.Master.FindControl("MainContent") as ContentPlaceHolder;
-                HyperLink hl = (HyperLink)cp.FindControl("lnkImport");
+                HyperLink hl = (HyperLink)cp.FindControl("linkImportEPA");
                 if (hl != null) hl.CssClass = "leftMnuBody sel";
 
                 //redirect to sample page if any are in progress
-                if (db_WQX.GetWQX_IMPORT_TEMP_SAMPLE_CountByUserID(User.Identity.Name) > 0)
-                    Response.Redirect("~/App_Pages/Secure/WQXImportSample.aspx");
+                //if (db_WQX.GetWQX_IMPORT_TEMP_SAMPLE_CountByUserID(User.Identity.Name) > 0)
+                //    Response.Redirect("~/App_Pages/Secure/WQXImportSample.aspx");
 
                 grdImport.DataSource = db_Ref.GetWQX_IMPORT_LOG(Session["OrgID"].ToString());
                 grdImport.DataBind();
@@ -180,88 +180,88 @@ namespace OpenEnvironment
             pnlLab.Visible = rbImportType.SelectedValue == "1";
         }
 
-        protected void ddlImportType_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            lblMsg.Text = "";
+        //protected void ddlImportType_SelectedIndexChanged(object sender, EventArgs e)
+        //{
+        //    lblMsg.Text = "";
 
-            pnlImportLogic.Visible = (ddlImportType.SelectedValue == "SAMP_CT");
-            pnlProject.Visible = (ddlImportType.SelectedValue == "SAMP" || ddlImportType.SelectedValue == "SAMP_CT" || ddlImportType.SelectedValue == "BIO_METRIC");
+        //    pnlImportLogic.Visible = (ddlImportType.SelectedValue == "SAMP_CT");
+        //    pnlProject.Visible = (ddlImportType.SelectedValue == "SAMP" || ddlImportType.SelectedValue == "SAMP_CT" || ddlImportType.SelectedValue == "BIO_METRIC");
 
-            hlTemplate.Visible = (ddlImportType.SelectedValue.Length > 0);
-            btnParse.Visible = (ddlImportType.SelectedValue.Length > 0);
-            btnDefaults.Visible = ddlImportType.SelectedValue == "SAMP";
-            btnTranslate.Visible = ddlImportType.SelectedValue == "SAMP";
+        //    hlTemplate.Visible = (ddlImportType.SelectedValue.Length > 0);
+        //    btnParse.Visible = (ddlImportType.SelectedValue.Length > 0);
+        //    btnDefaults.Visible = ddlImportType.SelectedValue == "SAMP";
+        //    btnTranslate.Visible = ddlImportType.SelectedValue == "SAMP";
 
-            if (ddlImportType.SelectedValue == "MLOC")
-                hlTemplate.NavigateUrl = "~/App_Docs/MonLoc_ImportTemplate.xlsx";
+        //    if (ddlImportType.SelectedValue == "MLOC")
+        //        hlTemplate.NavigateUrl = "~/App_Docs/MonLoc_ImportTemplate.xlsx";
 
-            if (ddlImportType.SelectedValue == "SAMP_CT")
-                hlTemplate.NavigateUrl = "~/App_Docs/SampCT_ImportTemplate.xlsx";
+        //    if (ddlImportType.SelectedValue == "SAMP_CT")
+        //        hlTemplate.NavigateUrl = "~/App_Docs/SampCT_ImportTemplate.xlsx";
 
-            if (ddlImportType.SelectedValue == "SAMP")
-                hlTemplate.NavigateUrl = "~/App_Docs/Samp_ImportTemplate.xlsx";
+        //    if (ddlImportType.SelectedValue == "SAMP")
+        //        hlTemplate.NavigateUrl = "~/App_Docs/Samp_ImportTemplate.xlsx";
 
-            if (ddlImportType.SelectedValue == "BIO_METRIC")
-                hlTemplate.NavigateUrl = "~/App_Docs/SampBio_ImportTemplate.xlsx";
+        //    if (ddlImportType.SelectedValue == "BIO_METRIC")
+        //        hlTemplate.NavigateUrl = "~/App_Docs/SampBio_ImportTemplate.xlsx";
 
-        }
+        //}
 
-        protected void btnNewTemplate_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("~/App_Pages/Secure/WQXImportConfig.aspx");
-        }
+        //protected void btnNewTemplate_Click(object sender, EventArgs e)
+        //{
+        //    Response.Redirect("~/App_Pages/Secure/WQXImportConfig.aspx");
+        //}
 
 
         //*************************** IMPORT LOGIC FROM SPREADSHEETS ******************************************************
-        protected void btnParse_Click(object sender, EventArgs e)
-        {
-            lblMsg.Text = "";
-            //******************** VALIDATION *********************************************
-            if (ddlImportType.SelectedValue == "")
-            {
-                lblMsg.Text = "Please select an import data structure.";
-                return;
-            }
+        //protected void btnParse_Click(object sender, EventArgs e)
+        //{
+        //    lblMsg.Text = "";
+        //    //******************** VALIDATION *********************************************
+        //    if (ddlImportType.SelectedValue == "")
+        //    {
+        //        lblMsg.Text = "Please select an import data structure.";
+        //        return;
+        //    }
 
-            if (ddlImportType.SelectedValue == "SAMP" || ddlImportType.SelectedValue == "SAMP_CT" || ddlImportType.SelectedValue == "BIO_METRIC")
-            {
-                if (ddlProject.SelectedValue == "")
-                {
-                    lblMsg.Text = "Please select a project into which this data will be imported.";
-                    return;
-                }
-            }
+        //    if (ddlImportType.SelectedValue == "SAMP" || ddlImportType.SelectedValue == "SAMP_CT" || ddlImportType.SelectedValue == "BIO_METRIC")
+        //    {
+        //        if (ddlProject.SelectedValue == "")
+        //        {
+        //            lblMsg.Text = "Please select a project into which this data will be imported.";
+        //            return;
+        //        }
+        //    }
 
-            if (txtPaste.Text.Length == 0)
-            {
-                lblMsg.Text = "You must copy and paste data from a spreadsheet into the large textbox.";
-                return;
-            }
-            //******************** END VALIDATION *****************************************
+        //    if (txtPaste.Text.Length == 0)
+        //    {
+        //        lblMsg.Text = "You must copy and paste data from a spreadsheet into the large textbox.";
+        //        return;
+        //    }
+        //    //******************** END VALIDATION *****************************************
 
-            string OrgID = Session["OrgID"].ToString();
-            int TemplateID = ddlTemplate.SelectedValue.ConvertOrDefault<int>();
-            int? ProjectID = ddlProject.SelectedValue.ConvertOrDefault<int?>();
-            string ProjectIDName = ddlProject.SelectedItem == null ? "" : ddlProject.SelectedItem.Text;
+        //    string OrgID = Session["OrgID"].ToString();
+        //    int TemplateID = ddlTemplate.SelectedValue.ConvertOrDefault<int>();
+        //    int? ProjectID = ddlProject.SelectedValue.ConvertOrDefault<int?>();
+        //    string ProjectIDName = ddlProject.SelectedItem == null ? "" : ddlProject.SelectedItem.Text;
 
-            string txt = txtPaste.Text;
-            string[] rows = txt.Split(new Char[] { '\n', '\r' }, StringSplitOptions.RemoveEmptyEntries);
-            int colCount = 50;
+        //    string txt = txtPaste.Text;
+        //    string[] rows = txt.Split(new Char[] { '\n', '\r' }, StringSplitOptions.RemoveEmptyEntries);
+        //    int colCount = 50;
 
-            //**************** IMPORTING MONITORING LOCATION or RESULTS *********************************
-            if (ddlImportType.SelectedValue == "MLOC")
-                ImportMonLoc(OrgID, rows);
+        //    //**************** IMPORTING MONITORING LOCATION or RESULTS *********************************
+        //    if (ddlImportType.SelectedValue == "MLOC")
+        //        ImportMonLoc(OrgID, rows);
 
-            if (ddlImportType.SelectedValue == "SAMP_CT")
-                ImportSampleCT(OrgID, TemplateID, ProjectID, ProjectIDName, rows);
+        //    if (ddlImportType.SelectedValue == "SAMP_CT")
+        //        ImportSampleCT(OrgID, TemplateID, ProjectID, ProjectIDName, rows);
 
-            if (ddlImportType.SelectedValue == "SAMP")
-                ImportSample(OrgID, TemplateID, ProjectID, ProjectIDName, rows);
+        //    if (ddlImportType.SelectedValue == "SAMP")
+        //        ImportSample(OrgID, TemplateID, ProjectID, ProjectIDName, rows);
 
-            if (ddlImportType.SelectedValue == "BIO_METRIC")
-                ImportBiologicalData(OrgID, ProjectID, rows, colCount);
+        //    if (ddlImportType.SelectedValue == "BIO_METRIC")
+        //        ImportBiologicalData(OrgID, ProjectID, rows, colCount);
 
-        }
+        //}
 
         private bool ImportSample(string OrgID, int TemplateID, int? ProjectID, string ProjectIDName, string[] rows)
         {
@@ -615,405 +615,405 @@ namespace OpenEnvironment
             return cols;
         }
 
-        private bool ImportSampleCT(string OrgID, int TemplateID, int? ProjectID, string ProjectIDName, string[] rows)
-        {
-            //delete any previous temporary sample import data
-            if (db_WQX.DeleteT_WQX_IMPORT_TEMP_SAMPLE(User.Identity.Name) == 0) { lblMsg.Text = "Unable to proceed with import."; return false; }
+        //private bool ImportSampleCT(string OrgID, int TemplateID, int? ProjectID, string ProjectIDName, string[] rows)
+        //{
+        //    //delete any previous temporary sample import data
+        //    if (db_WQX.DeleteT_WQX_IMPORT_TEMP_SAMPLE(User.Identity.Name) == 0) { lblMsg.Text = "Unable to proceed with import."; return false; }
 
-            //GET the column configuration for all SAMPLE and RESULT-LEVEL FIELDS (only need to do this data retrieval once per import)
-            T_WQX_IMPORT_TEMPLATE_DTL MonLocCol = db_WQX.GetWQX_IMPORT_TEMPLATE_DTL_byFieldMap(TemplateID, "MONLOC_ID");
-            T_WQX_IMPORT_TEMPLATE_DTL ActivityIDCol = db_WQX.GetWQX_IMPORT_TEMPLATE_DTL_byFieldMap(TemplateID, "ACTIVITY_ID");
-            T_WQX_IMPORT_TEMPLATE_DTL ActivityTypeCol = db_WQX.GetWQX_IMPORT_TEMPLATE_DTL_byFieldMap(TemplateID, "ACT_TYPE");
-            T_WQX_IMPORT_TEMPLATE_DTL ActivityMediaCol = db_WQX.GetWQX_IMPORT_TEMPLATE_DTL_byFieldMap(TemplateID, "ACT_MEDIA");
-            T_WQX_IMPORT_TEMPLATE_DTL ActivitySubMediaCol = db_WQX.GetWQX_IMPORT_TEMPLATE_DTL_byFieldMap(TemplateID, "ACT_SUBMEDIA");
-            T_WQX_IMPORT_TEMPLATE_DTL ActivityStartDateCol = db_WQX.GetWQX_IMPORT_TEMPLATE_DTL_byFieldMap(TemplateID, "ACT_START_DATE");
-            T_WQX_IMPORT_TEMPLATE_DTL ActivityStartTimeCol = db_WQX.GetWQX_IMPORT_TEMPLATE_DTL_byFieldMap(TemplateID, "ACT_START_TIME");
-            T_WQX_IMPORT_TEMPLATE_DTL ActivityEndDateCol = db_WQX.GetWQX_IMPORT_TEMPLATE_DTL_byFieldMap(TemplateID, "ACT_END_DATE");
-            T_WQX_IMPORT_TEMPLATE_DTL ActivityEndTimeCol = db_WQX.GetWQX_IMPORT_TEMPLATE_DTL_byFieldMap(TemplateID, "ACT_TIME_TIME");
-            T_WQX_IMPORT_TEMPLATE_DTL ActivityCommentsCol = db_WQX.GetWQX_IMPORT_TEMPLATE_DTL_byFieldMap(TemplateID, "ACT_COMMENTS");
-            T_WQX_IMPORT_TEMPLATE_DTL SampleMethodCol = db_WQX.GetWQX_IMPORT_TEMPLATE_DTL_byFieldMap(TemplateID, "SAMP_COLL_METHOD_IDX");
-            T_WQX_IMPORT_TEMPLATE_DTL SampleEquipmentCol = db_WQX.GetWQX_IMPORT_TEMPLATE_DTL_byFieldMap(TemplateID, "SAMP_COLL_EQUIP");
+        //    //GET the column configuration for all SAMPLE and RESULT-LEVEL FIELDS (only need to do this data retrieval once per import)
+        //    T_WQX_IMPORT_TEMPLATE_DTL MonLocCol = db_WQX.GetWQX_IMPORT_TEMPLATE_DTL_byFieldMap(TemplateID, "MONLOC_ID");
+        //    T_WQX_IMPORT_TEMPLATE_DTL ActivityIDCol = db_WQX.GetWQX_IMPORT_TEMPLATE_DTL_byFieldMap(TemplateID, "ACTIVITY_ID");
+        //    T_WQX_IMPORT_TEMPLATE_DTL ActivityTypeCol = db_WQX.GetWQX_IMPORT_TEMPLATE_DTL_byFieldMap(TemplateID, "ACT_TYPE");
+        //    T_WQX_IMPORT_TEMPLATE_DTL ActivityMediaCol = db_WQX.GetWQX_IMPORT_TEMPLATE_DTL_byFieldMap(TemplateID, "ACT_MEDIA");
+        //    T_WQX_IMPORT_TEMPLATE_DTL ActivitySubMediaCol = db_WQX.GetWQX_IMPORT_TEMPLATE_DTL_byFieldMap(TemplateID, "ACT_SUBMEDIA");
+        //    T_WQX_IMPORT_TEMPLATE_DTL ActivityStartDateCol = db_WQX.GetWQX_IMPORT_TEMPLATE_DTL_byFieldMap(TemplateID, "ACT_START_DATE");
+        //    T_WQX_IMPORT_TEMPLATE_DTL ActivityStartTimeCol = db_WQX.GetWQX_IMPORT_TEMPLATE_DTL_byFieldMap(TemplateID, "ACT_START_TIME");
+        //    T_WQX_IMPORT_TEMPLATE_DTL ActivityEndDateCol = db_WQX.GetWQX_IMPORT_TEMPLATE_DTL_byFieldMap(TemplateID, "ACT_END_DATE");
+        //    T_WQX_IMPORT_TEMPLATE_DTL ActivityEndTimeCol = db_WQX.GetWQX_IMPORT_TEMPLATE_DTL_byFieldMap(TemplateID, "ACT_TIME_TIME");
+        //    T_WQX_IMPORT_TEMPLATE_DTL ActivityCommentsCol = db_WQX.GetWQX_IMPORT_TEMPLATE_DTL_byFieldMap(TemplateID, "ACT_COMMENTS");
+        //    T_WQX_IMPORT_TEMPLATE_DTL SampleMethodCol = db_WQX.GetWQX_IMPORT_TEMPLATE_DTL_byFieldMap(TemplateID, "SAMP_COLL_METHOD_IDX");
+        //    T_WQX_IMPORT_TEMPLATE_DTL SampleEquipmentCol = db_WQX.GetWQX_IMPORT_TEMPLATE_DTL_byFieldMap(TemplateID, "SAMP_COLL_EQUIP");
 
-            //***********************************
-            //loop through each sample
-            //***********************************
-            foreach (string row in rows)
-            {
-                //declare variables to store values for the current row
-                string valMsg = "";
-                string MonLocIDVal = null, ActivityTypeVal=null, ActivityMediaVal=null, ActivitySubMediaVal=null, ActivityIDVal=null;
-                int? MonLocIDXVal=null;
-                DateTime? ActivityStartDateVal = null, ActivityEndDateVal = null;
+        //    //***********************************
+        //    //loop through each sample
+        //    //***********************************
+        //    foreach (string row in rows)
+        //    {
+        //        //declare variables to store values for the current row
+        //        string valMsg = "";
+        //        string MonLocIDVal = null, ActivityTypeVal=null, ActivityMediaVal=null, ActivitySubMediaVal=null, ActivityIDVal=null;
+        //        int? MonLocIDXVal=null;
+        //        DateTime? ActivityStartDateVal = null, ActivityEndDateVal = null;
 
-                char[] delimiters = new char[] { '\t' };   //tab delimiter
-                string[] parts = row.Split(delimiters, StringSplitOptions.None); //columns split into parts  //2/24/2016 change from RemoveEmptyEntries to None
-                if (parts.Length > 0)
-                {
-                    //start of field-by-field validation
+        //        char[] delimiters = new char[] { '\t' };   //tab delimiter
+        //        string[] parts = row.Split(delimiters, StringSplitOptions.None); //columns split into parts  //2/24/2016 change from RemoveEmptyEntries to None
+        //        if (parts.Length > 0)
+        //        {
+        //            //start of field-by-field validation
 
-                    //monitoring location
-                    if (MonLocCol == null) 
-                        { lblMsg.Text = "Your import logic does not define a monitoring location column - import cannot be performed"; return false; }
-                    else
-                    {
-                        MonLocIDVal = GetFieldValue(MonLocCol, parts);
-                        T_WQX_MONLOC mloc = db_WQX.GetWQX_MONLOC_ByIDString(OrgID, MonLocIDVal);
-                        if (mloc == null)
-                            valMsg = "Monitoring Location not found.;";
-                        else
-                            MonLocIDXVal = mloc.MONLOC_IDX;
-                    }
+        //            //monitoring location
+        //            if (MonLocCol == null) 
+        //                { lblMsg.Text = "Your import logic does not define a monitoring location column - import cannot be performed"; return false; }
+        //            else
+        //            {
+        //                MonLocIDVal = GetFieldValue(MonLocCol, parts);
+        //                T_WQX_MONLOC mloc = db_WQX.GetWQX_MONLOC_ByIDString(OrgID, MonLocIDVal);
+        //                if (mloc == null)
+        //                    valMsg = "Monitoring Location not found.;";
+        //                else
+        //                    MonLocIDXVal = mloc.MONLOC_IDX;
+        //            }
 
-                    ActivityTypeVal = GetFieldValue(ActivityTypeCol, parts);
-                    ActivityMediaVal = GetFieldValue(ActivityMediaCol, parts);
-                    ActivitySubMediaVal = GetFieldValue(ActivitySubMediaCol, parts);
+        //            ActivityTypeVal = GetFieldValue(ActivityTypeCol, parts);
+        //            ActivityMediaVal = GetFieldValue(ActivityMediaCol, parts);
+        //            ActivitySubMediaVal = GetFieldValue(ActivitySubMediaCol, parts);
 
-                    //activity start date 
-                    if (ActivityStartDateCol == null)
-                         { lblMsg.Text = "Your import logic does not define an activity start date column - import cannot be performed"; return false; }
-                    else
-                    {
-                        string sActivityStartDateVal = GetFieldValue(ActivityStartDateCol, parts);
-                        string sActivityStartTimeVal = GetFieldValue(ActivityStartTimeCol, parts);
-                        ActivityStartDateVal = (sActivityStartDateVal + " " + sActivityStartTimeVal ?? "").ConvertOrDefault<DateTime?>();
-                        if (ActivityStartDateVal == null) { valMsg = "Activity Start Date cannot be converted to DateTime"; }
-                    }
+        //            //activity start date 
+        //            if (ActivityStartDateCol == null)
+        //                 { lblMsg.Text = "Your import logic does not define an activity start date column - import cannot be performed"; return false; }
+        //            else
+        //            {
+        //                string sActivityStartDateVal = GetFieldValue(ActivityStartDateCol, parts);
+        //                string sActivityStartTimeVal = GetFieldValue(ActivityStartTimeCol, parts);
+        //                ActivityStartDateVal = (sActivityStartDateVal + " " + sActivityStartTimeVal ?? "").ConvertOrDefault<DateTime?>();
+        //                if (ActivityStartDateVal == null) { valMsg = "Activity Start Date cannot be converted to DateTime"; }
+        //            }
 
-                    //activity end date 
-                    if (ActivityEndDateCol == null)
-                        ActivityEndDateVal = ActivityStartDateVal;
-                    else
-                    {
-                        string sActivityEndDateVal = GetFieldValue(ActivityEndDateCol, parts);
-                        string sActivityEndTimeVal = GetFieldValue(ActivityEndTimeCol, parts);
-                        ActivityEndDateVal = (sActivityEndDateVal + " " + sActivityEndTimeVal ?? "").ConvertOrDefault<DateTime?>();
-                        if (ActivityEndDateCol.COL_NUM > 0 && ActivityStartDateVal == null) { valMsg = "Activity Start Date cannot be converted to DateTime"; }
-                    }
-
-
-                    //activity id (done after sample date and monloc)
-                    if (ActivityStartDateVal != null)
-                    {
-                        if (ActivityIDCol == null)
-                            ActivityIDVal = (MonLocIDVal ?? "").SubStringPlus(0,21) + "_" + ActivityStartDateVal.Value.ToString("yyyyMMdd_HHmm");
-                        else if (ActivityIDCol.CHAR_NAME == "#M_D_T")
-                            ActivityIDVal = (MonLocIDVal ?? "").SubStringPlus(0, 21) + "_" + ActivityStartDateVal.Value.ToString("yyyyMMdd_HHmm");
-                        else if (ActivityIDCol.CHAR_NAME == "#M_D_TS")
-                            ActivityIDVal = (MonLocIDVal ?? "").SubStringPlus(0, 19) + "_" + ActivityStartDateVal.Value.ToString("yyyyMMdd_HHmmss");
-                        else
-                            ActivityIDVal = GetFieldValue(ActivityIDCol, parts);
-                    }
-
-                    int TempImportSampID = db_WQX.InsertOrUpdateWQX_IMPORT_TEMP_SAMPLE(null, User.Identity.Name, OrgID, ProjectID, ProjectIDName, MonLocIDXVal, MonLocIDVal, null, ActivityIDVal,
-                        ActivityTypeVal, ActivityMediaVal, ActivitySubMediaVal, ActivityStartDateVal, ActivityStartDateVal, null, null, null, null, null, null, null, null, null,
-                        GetFieldValue(ActivityCommentsCol, parts),
-                        null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, GetFieldValue(SampleMethodCol, parts).ConvertOrDefault<int?>(), 
-                        null, null, null, GetFieldValue(SampleEquipmentCol, parts), null, null, null, null, null, null, null, null, null, null,
-                        (valMsg.Length > 0 ? "F" : "P"), valMsg, false, false);
+        //            //activity end date 
+        //            if (ActivityEndDateCol == null)
+        //                ActivityEndDateVal = ActivityStartDateVal;
+        //            else
+        //            {
+        //                string sActivityEndDateVal = GetFieldValue(ActivityEndDateCol, parts);
+        //                string sActivityEndTimeVal = GetFieldValue(ActivityEndTimeCol, parts);
+        //                ActivityEndDateVal = (sActivityEndDateVal + " " + sActivityEndTimeVal ?? "").ConvertOrDefault<DateTime?>();
+        //                if (ActivityEndDateCol.COL_NUM > 0 && ActivityStartDateVal == null) { valMsg = "Activity Start Date cannot be converted to DateTime"; }
+        //            }
 
 
-                    //now loop through any potential characteristics
-                    List<T_WQX_IMPORT_TEMPLATE_DTL> chars = db_WQX.GetWQX_IMPORT_TEMPLATE_DTL_CharsByTemplateID(TemplateID);
-                    foreach (T_WQX_IMPORT_TEMPLATE_DTL character in chars)
-                    {
-                        string resultVal = GetFieldValue(character, parts);
+        //            //activity id (done after sample date and monloc)
+        //            if (ActivityStartDateVal != null)
+        //            {
+        //                if (ActivityIDCol == null)
+        //                    ActivityIDVal = (MonLocIDVal ?? "").SubStringPlus(0,21) + "_" + ActivityStartDateVal.Value.ToString("yyyyMMdd_HHmm");
+        //                else if (ActivityIDCol.CHAR_NAME == "#M_D_T")
+        //                    ActivityIDVal = (MonLocIDVal ?? "").SubStringPlus(0, 21) + "_" + ActivityStartDateVal.Value.ToString("yyyyMMdd_HHmm");
+        //                else if (ActivityIDCol.CHAR_NAME == "#M_D_TS")
+        //                    ActivityIDVal = (MonLocIDVal ?? "").SubStringPlus(0, 19) + "_" + ActivityStartDateVal.Value.ToString("yyyyMMdd_HHmmss");
+        //                else
+        //                    ActivityIDVal = GetFieldValue(ActivityIDCol, parts);
+        //            }
 
-                        if (!string.IsNullOrEmpty(resultVal))
-                        {
-                            int TempImportResultID = db_WQX.InsertOrUpdateWQX_IMPORT_TEMP_RESULT(null, TempImportSampID, null, null, null, character.CHAR_NAME, null,
-                            (string.IsNullOrEmpty(character.CHAR_DEFAULT_SAMP_FRACTION) ? null : character.CHAR_DEFAULT_SAMP_FRACTION), resultVal,
-                            character.CHAR_DEFAULT_UNIT, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null,
-                            null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null,
-                            null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null,
-                            "P", "", false, OrgID, false);
-                        }
-                    }
-                }
-            }
-
-            Response.Redirect("~/App_Pages/Secure/WQXImportSample.aspx");
-
-            return true;
-        }
-
-        private bool ImportMonLoc(string OrgID, string[] rows)
-        {
-            if (db_WQX.DeleteT_WQX_IMPORT_TEMP_MONLOC(User.Identity.Name) == 0)
-            {
-                lblMsg.Text = "Unable to proceed with import.";
-                return false;
-            }
-
-            int i = 0;
-            int? MONLOC_IDCol = null, MONLOC_NAMECol = null, MONLOC_TYPECol = null, MONLOC_DESCCol = null, HUC_EIGHTCol = null, HUC_TWELVECol = null, TRIBAL_LAND_INDCol = null, TRIBAL_LAND_NAMECol = null, LATITUDE_MSRCol = null, LONGITUDE_MSRCol = null, SOURCE_MAP_SCALECol = null;
-            int? HORIZ_ACCURACYCol = null, HORIZ_ACCURACY_UNITCol = null, HORIZ_COLL_METHODCol = null, HORIZ_REF_DATUMCol = null, VERT_MEASURECol = null, VERT_MEASURE_UNITCol = null, VERT_COLL_METHODCol = null, VERT_REF_DATUMCol = null, COUNTRY_CODECol = null;
-            int? sTATE_CODECol = null, cOUNTY_CODECol = null, wELL_TYPECol = null, aQUIFER_NAMECol = null, fORMATION_TYPECol = null, wELLHOLE_DEPTH_MSRCol = null, wELLHOLE_DEPTH_MSR_UNITCol = null;
-
-            //loop through each record
-            foreach (string row in rows)
-            {
-                char[] delimiters = new char[] { '\t' };   //tab delimiter
-                string[] parts = row.Split(delimiters, StringSplitOptions.None); //columns split into parts
-                if (parts.Length > 0)
-                {
-                    //start of field-by-field validation
-
-                    //special logic to read header to determine what is in each column
-                    if (i == 0)
-                    {
-                        int j = 0;
-                        foreach (string part in parts)
-                        {
-                            if (part == "Station ID") MONLOC_IDCol = j;
-                            if (part == "Station Name") MONLOC_NAMECol = j;
-                            if (part == "Primary Type") MONLOC_TYPECol = j;
-                            if (part == "Description Text") MONLOC_DESCCol = j;
-                            if (part == "HUC Eight Digit Code") HUC_EIGHTCol = j;
-                            if (HUC_EIGHTCol == null)  //use generated column if main column is not used
-                                if (part == "Generated Hydrologic Unit Code") HUC_EIGHTCol = j;
-
-                            if (part == "HUC Twelve Digit Code") HUC_TWELVECol = j;
-                            if (HUC_TWELVECol == null) //use generated column if main column is not used
-                                if (part == "Generated HUC Twelve Digit Code") HUC_TWELVECol = j;
-
-                            if (part == "Tribal Land Indicator") TRIBAL_LAND_INDCol = j;
-                            if (part == "Tribal Land Name") TRIBAL_LAND_NAMECol = j;
-                            if (part == "Latitude") LATITUDE_MSRCol = j;
-                            if (part == "Longitude") LONGITUDE_MSRCol = j;
-                            if (part == "Map Scale") SOURCE_MAP_SCALECol = j;
-                            if (part == "Geopositioning Method") HORIZ_COLL_METHODCol = j;
-                            if (part == "Horizontal Datum") HORIZ_REF_DATUMCol = j;
-                            if (part == "Elevation") VERT_MEASURECol = j;
-                            if (part == "Elevation Unit") VERT_MEASURE_UNITCol = j;
-                            if (part == "Elevation Method") VERT_COLL_METHODCol = j;
-                            if (part == "Elevation Datum") VERT_REF_DATUMCol = j;
-
-                            if (part == "Country Code") COUNTRY_CODECol = j;
-                            if (COUNTRY_CODECol == null)
-                                if (part == "Country Name") COUNTRY_CODECol = j;
-
-                            if (part == "State Code") sTATE_CODECol = j;
-                            if (sTATE_CODECol == null)
-                                if (part == "State") sTATE_CODECol = j;
-
-                            if (part == "County Code") cOUNTY_CODECol = j;
-                            if (cOUNTY_CODECol == null)
-                                if (part == "County") cOUNTY_CODECol = j;
-
-                            if (part == "Well Type") wELL_TYPECol = j;
-                            if (part == "Aquifer Name") aQUIFER_NAMECol = j;
-                            if (part == "Formation Type") fORMATION_TYPECol = j;
-                            if (part == "Well Hole Depth Measure") wELLHOLE_DEPTH_MSRCol = j;
-                            if (part == "Well Hole Depth Measure Unit") wELLHOLE_DEPTH_MSR_UNITCol = j;
-
-                            j = j + 1;
-                        }
-                    }
-                    else
-                    {
-                        if (MONLOC_IDCol == null) { lblMsg.Text = "No column with header of 'Station ID' found. Make sure you include the column header row when pasting data."; return false; }
-                        if (MONLOC_NAMECol == null) { lblMsg.Text = "No column with header of 'Station Name' found. Make sure you include the column header row when pasting data."; return false; }
-                        db_WQX.InsertOrUpdateWQX_IMPORT_TEMP_MONLOC(null, User.Identity.Name, null, OrgID,
-                            (MONLOC_IDCol != null ? parts[MONLOC_IDCol.ConvertOrDefault<int>()] : null),
-                            (MONLOC_NAMECol != null ? parts[MONLOC_NAMECol.ConvertOrDefault<int>()] : null),
-                            (MONLOC_TYPECol != null ? parts[MONLOC_TYPECol.ConvertOrDefault<int>()] : null),
-                            (MONLOC_DESCCol != null ? parts[MONLOC_DESCCol.ConvertOrDefault<int>()] : null),
-                            (HUC_EIGHTCol != null ? parts[HUC_EIGHTCol.ConvertOrDefault<int>()] : null),
-                            (HUC_TWELVECol != null ? parts[HUC_TWELVECol.ConvertOrDefault<int>()] : null),
-                            (TRIBAL_LAND_INDCol != null ? parts[TRIBAL_LAND_INDCol.ConvertOrDefault<int>()] : null),
-                            (TRIBAL_LAND_NAMECol != null ? parts[TRIBAL_LAND_NAMECol.ConvertOrDefault<int>()] : null),
-                            (LATITUDE_MSRCol != null ? parts[LATITUDE_MSRCol.ConvertOrDefault<int>()] : null),
-                            (LONGITUDE_MSRCol != null ? parts[LONGITUDE_MSRCol.ConvertOrDefault<int>()] : null),
-                            (SOURCE_MAP_SCALECol != null ? parts[SOURCE_MAP_SCALECol.ConvertOrDefault<int>()].ConvertOrDefault<int?>() : null),
-                            (HORIZ_ACCURACYCol != null ? parts[HORIZ_ACCURACYCol.ConvertOrDefault<int>()] : null),
-                            (HORIZ_ACCURACY_UNITCol != null ? parts[HORIZ_ACCURACY_UNITCol.ConvertOrDefault<int>()] : null),
-                            (HORIZ_COLL_METHODCol != null ? parts[HORIZ_COLL_METHODCol.ConvertOrDefault<int>()] : null),
-                            (HORIZ_REF_DATUMCol != null ? parts[HORIZ_REF_DATUMCol.ConvertOrDefault<int>()] : null),
-                            (VERT_MEASURECol != null ? parts[VERT_MEASURECol.ConvertOrDefault<int>()] : null),
-                            (VERT_MEASURE_UNITCol != null ? parts[VERT_MEASURE_UNITCol.ConvertOrDefault<int>()] : null),
-                            (VERT_COLL_METHODCol != null ? parts[VERT_COLL_METHODCol.ConvertOrDefault<int>()] : null),
-                            (VERT_REF_DATUMCol != null ? parts[VERT_REF_DATUMCol.ConvertOrDefault<int>()] : null),
-                            (COUNTRY_CODECol != null ? parts[COUNTRY_CODECol.ConvertOrDefault<int>()] : null),
-                            (sTATE_CODECol != null ? parts[sTATE_CODECol.ConvertOrDefault<int>()] : null),
-                            (cOUNTY_CODECol != null ? parts[cOUNTY_CODECol.ConvertOrDefault<int>()] : null),
-                            (wELL_TYPECol != null ? parts[wELL_TYPECol.ConvertOrDefault<int>()] : null),
-                            (aQUIFER_NAMECol != null ? parts[aQUIFER_NAMECol.ConvertOrDefault<int>()] : null),
-                            (fORMATION_TYPECol != null ? parts[fORMATION_TYPECol.ConvertOrDefault<int>()] : null),
-                            (wELLHOLE_DEPTH_MSRCol != null ? parts[wELLHOLE_DEPTH_MSRCol.ConvertOrDefault<int>()] : null),
-                            (wELLHOLE_DEPTH_MSR_UNITCol != null ? parts[wELLHOLE_DEPTH_MSR_UNITCol.ConvertOrDefault<int>()] : null), "P", "");
-                    }
-
-                }
-
-                i = i + 1;
-            }
-
-            if (i > 1)  //can only continue if 2 rows (1 plus 1 header) are imported
-                Response.Redirect("~/App_Pages/Secure/WQXImportMonLoc.aspx");
-            else
-            {
-                lblMsg.Text = "No valid data found. You must include column headers.";
-                return false;
-            }
-
-            return true;
-        }
-
-        private void ImportBiologicalData(string OrgID, int? ProjectID, string[] rows, int colCount)
-        {
-            string[] sites = new string[colCount];
-            string[] dates = new string[colCount];
-            string[] sampleIDs = new string[colCount];
-            string[] HBIs = new string[colCount];
-            string[] CorrectedAbundances = new string[colCount];
-            string[] EPTAbundances = new string[colCount];
-            string[] LongLivedTaxaRichness = new string[colCount];
-            string[] ClingerRichness = new string[colCount];
-            string[] PctClingers = new string[colCount];
-            string[] IntolerantTaxaRichness = new string[colCount];
-            string[] PctTolerantIndividuals = new string[colCount];
-            string[] PctTolerantTaxa = new string[colCount];
-            string[] ColeopteraRichness = new string[colCount];
+        //            int TempImportSampID = db_WQX.InsertOrUpdateWQX_IMPORT_TEMP_SAMPLE(null, User.Identity.Name, OrgID, ProjectID, ProjectIDName, MonLocIDXVal, MonLocIDVal, null, ActivityIDVal,
+        //                ActivityTypeVal, ActivityMediaVal, ActivitySubMediaVal, ActivityStartDateVal, ActivityStartDateVal, null, null, null, null, null, null, null, null, null,
+        //                GetFieldValue(ActivityCommentsCol, parts),
+        //                null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, GetFieldValue(SampleMethodCol, parts).ConvertOrDefault<int?>(), 
+        //                null, null, null, GetFieldValue(SampleEquipmentCol, parts), null, null, null, null, null, null, null, null, null, null,
+        //                (valMsg.Length > 0 ? "F" : "P"), valMsg, false, false);
 
 
-            try
-            {
-                foreach (string row in rows)
-                {
-                    char[] delimiters = new char[] { '\t' };
-                    string[] parts = row.Split(delimiters, StringSplitOptions.RemoveEmptyEntries);
-                    if (parts.Length > 0)
-                    {
-                        //sample level stuff
-                        if (parts[0] == "Site")
-                        {
-                            for (int i = 1; i < parts.Length; i++)
-                                sites[i] = parts[i];
-                        }
+        //            //now loop through any potential characteristics
+        //            List<T_WQX_IMPORT_TEMPLATE_DTL> chars = db_WQX.GetWQX_IMPORT_TEMPLATE_DTL_CharsByTemplateID(TemplateID);
+        //            foreach (T_WQX_IMPORT_TEMPLATE_DTL character in chars)
+        //            {
+        //                string resultVal = GetFieldValue(character, parts);
 
-                        if (parts[0] == "Collection Date")
-                        {
-                            for (int i = 1; i < parts.Length; i++)
-                                dates[i] = parts[i];
-                        }
+        //                if (!string.IsNullOrEmpty(resultVal))
+        //                {
+        //                    int TempImportResultID = db_WQX.InsertOrUpdateWQX_IMPORT_TEMP_RESULT(null, TempImportSampID, null, null, null, character.CHAR_NAME, null,
+        //                    (string.IsNullOrEmpty(character.CHAR_DEFAULT_SAMP_FRACTION) ? null : character.CHAR_DEFAULT_SAMP_FRACTION), resultVal,
+        //                    character.CHAR_DEFAULT_UNIT, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null,
+        //                    null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null,
+        //                    null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null,
+        //                    "P", "", false, OrgID, false);
+        //                }
+        //            }
+        //        }
+        //    }
 
-                        if (parts[0] == "Sample ID")
-                        {
-                            for (int i = 1; i < parts.Length; i++)
-                                sampleIDs[i] = parts[i];
-                        }
+        //    Response.Redirect("~/App_Pages/Secure/WQXImportSample.aspx");
 
-                        //Metric stuff
-                        if (parts[0] == "Corrected Abundance")
-                        {
-                            for (int i = 1; i < parts.Length; i++)
-                                CorrectedAbundances[i] = parts[i];
-                        }
+        //    return true;
+        //}
 
-                        if (parts[0] == "EPT Abundance")
-                        {
-                            for (int i = 1; i < parts.Length; i++)
-                                EPTAbundances[i] = parts[i];
-                        }
+        //private bool ImportMonLoc(string OrgID, string[] rows)
+        //{
+        //    if (db_WQX.DeleteT_WQX_IMPORT_TEMP_MONLOC(User.Identity.Name) == 0)
+        //    {
+        //        lblMsg.Text = "Unable to proceed with import.";
+        //        return false;
+        //    }
 
-                        if (parts[0] == "Long-Lived Taxa Richness")
-                        {
-                            for (int i = 1; i < parts.Length; i++)
-                                LongLivedTaxaRichness[i] = parts[i];
-                        }
+        //    int i = 0;
+        //    int? MONLOC_IDCol = null, MONLOC_NAMECol = null, MONLOC_TYPECol = null, MONLOC_DESCCol = null, HUC_EIGHTCol = null, HUC_TWELVECol = null, TRIBAL_LAND_INDCol = null, TRIBAL_LAND_NAMECol = null, LATITUDE_MSRCol = null, LONGITUDE_MSRCol = null, SOURCE_MAP_SCALECol = null;
+        //    int? HORIZ_ACCURACYCol = null, HORIZ_ACCURACY_UNITCol = null, HORIZ_COLL_METHODCol = null, HORIZ_REF_DATUMCol = null, VERT_MEASURECol = null, VERT_MEASURE_UNITCol = null, VERT_COLL_METHODCol = null, VERT_REF_DATUMCol = null, COUNTRY_CODECol = null;
+        //    int? sTATE_CODECol = null, cOUNTY_CODECol = null, wELL_TYPECol = null, aQUIFER_NAMECol = null, fORMATION_TYPECol = null, wELLHOLE_DEPTH_MSRCol = null, wELLHOLE_DEPTH_MSR_UNITCol = null;
 
-                        if (parts[0] == "Clinger Richness")
-                        {
-                            for (int i = 1; i < parts.Length; i++)
-                                ClingerRichness[i] = parts[i];
-                        }
+        //    //loop through each record
+        //    foreach (string row in rows)
+        //    {
+        //        char[] delimiters = new char[] { '\t' };   //tab delimiter
+        //        string[] parts = row.Split(delimiters, StringSplitOptions.None); //columns split into parts
+        //        if (parts.Length > 0)
+        //        {
+        //            //start of field-by-field validation
 
-                        if (parts[0] == "% Clingers")
-                        {
-                            for (int i = 1; i < parts.Length; i++)
-                                PctClingers[i] = parts[i];
-                        }
+        //            //special logic to read header to determine what is in each column
+        //            if (i == 0)
+        //            {
+        //                int j = 0;
+        //                foreach (string part in parts)
+        //                {
+        //                    if (part == "Station ID") MONLOC_IDCol = j;
+        //                    if (part == "Station Name") MONLOC_NAMECol = j;
+        //                    if (part == "Primary Type") MONLOC_TYPECol = j;
+        //                    if (part == "Description Text") MONLOC_DESCCol = j;
+        //                    if (part == "HUC Eight Digit Code") HUC_EIGHTCol = j;
+        //                    if (HUC_EIGHTCol == null)  //use generated column if main column is not used
+        //                        if (part == "Generated Hydrologic Unit Code") HUC_EIGHTCol = j;
 
-                        if (parts[0] == "Intolerant Taxa Richness")
-                        {
-                            for (int i = 1; i < parts.Length; i++)
-                                IntolerantTaxaRichness[i] = parts[i];
-                        }
+        //                    if (part == "HUC Twelve Digit Code") HUC_TWELVECol = j;
+        //                    if (HUC_TWELVECol == null) //use generated column if main column is not used
+        //                        if (part == "Generated HUC Twelve Digit Code") HUC_TWELVECol = j;
 
-                        if (parts[0] == "% Tolerant Individuals")
-                        {
-                            for (int i = 1; i < parts.Length; i++)
-                                PctTolerantIndividuals[i] = parts[i];
-                        }
+        //                    if (part == "Tribal Land Indicator") TRIBAL_LAND_INDCol = j;
+        //                    if (part == "Tribal Land Name") TRIBAL_LAND_NAMECol = j;
+        //                    if (part == "Latitude") LATITUDE_MSRCol = j;
+        //                    if (part == "Longitude") LONGITUDE_MSRCol = j;
+        //                    if (part == "Map Scale") SOURCE_MAP_SCALECol = j;
+        //                    if (part == "Geopositioning Method") HORIZ_COLL_METHODCol = j;
+        //                    if (part == "Horizontal Datum") HORIZ_REF_DATUMCol = j;
+        //                    if (part == "Elevation") VERT_MEASURECol = j;
+        //                    if (part == "Elevation Unit") VERT_MEASURE_UNITCol = j;
+        //                    if (part == "Elevation Method") VERT_COLL_METHODCol = j;
+        //                    if (part == "Elevation Datum") VERT_REF_DATUMCol = j;
 
-                        if (parts[0] == "% Tolerant Taxa")
-                        {
-                            for (int i = 1; i < parts.Length; i++)
-                                PctTolerantTaxa[i] = parts[i];
-                        }
+        //                    if (part == "Country Code") COUNTRY_CODECol = j;
+        //                    if (COUNTRY_CODECol == null)
+        //                        if (part == "Country Name") COUNTRY_CODECol = j;
 
-                        if (parts[0] == "Coleoptera Richness")
-                        {
-                            for (int i = 1; i < parts.Length; i++)
-                                ColeopteraRichness[i] = parts[i];
-                        }
+        //                    if (part == "State Code") sTATE_CODECol = j;
+        //                    if (sTATE_CODECol == null)
+        //                        if (part == "State") sTATE_CODECol = j;
+
+        //                    if (part == "County Code") cOUNTY_CODECol = j;
+        //                    if (cOUNTY_CODECol == null)
+        //                        if (part == "County") cOUNTY_CODECol = j;
+
+        //                    if (part == "Well Type") wELL_TYPECol = j;
+        //                    if (part == "Aquifer Name") aQUIFER_NAMECol = j;
+        //                    if (part == "Formation Type") fORMATION_TYPECol = j;
+        //                    if (part == "Well Hole Depth Measure") wELLHOLE_DEPTH_MSRCol = j;
+        //                    if (part == "Well Hole Depth Measure Unit") wELLHOLE_DEPTH_MSR_UNITCol = j;
+
+        //                    j = j + 1;
+        //                }
+        //            }
+        //            else
+        //            {
+        //                if (MONLOC_IDCol == null) { lblMsg.Text = "No column with header of 'Station ID' found. Make sure you include the column header row when pasting data."; return false; }
+        //                if (MONLOC_NAMECol == null) { lblMsg.Text = "No column with header of 'Station Name' found. Make sure you include the column header row when pasting data."; return false; }
+        //                db_WQX.InsertOrUpdateWQX_IMPORT_TEMP_MONLOC(null, User.Identity.Name, null, OrgID,
+        //                    (MONLOC_IDCol != null ? parts[MONLOC_IDCol.ConvertOrDefault<int>()] : null),
+        //                    (MONLOC_NAMECol != null ? parts[MONLOC_NAMECol.ConvertOrDefault<int>()] : null),
+        //                    (MONLOC_TYPECol != null ? parts[MONLOC_TYPECol.ConvertOrDefault<int>()] : null),
+        //                    (MONLOC_DESCCol != null ? parts[MONLOC_DESCCol.ConvertOrDefault<int>()] : null),
+        //                    (HUC_EIGHTCol != null ? parts[HUC_EIGHTCol.ConvertOrDefault<int>()] : null),
+        //                    (HUC_TWELVECol != null ? parts[HUC_TWELVECol.ConvertOrDefault<int>()] : null),
+        //                    (TRIBAL_LAND_INDCol != null ? parts[TRIBAL_LAND_INDCol.ConvertOrDefault<int>()] : null),
+        //                    (TRIBAL_LAND_NAMECol != null ? parts[TRIBAL_LAND_NAMECol.ConvertOrDefault<int>()] : null),
+        //                    (LATITUDE_MSRCol != null ? parts[LATITUDE_MSRCol.ConvertOrDefault<int>()] : null),
+        //                    (LONGITUDE_MSRCol != null ? parts[LONGITUDE_MSRCol.ConvertOrDefault<int>()] : null),
+        //                    (SOURCE_MAP_SCALECol != null ? parts[SOURCE_MAP_SCALECol.ConvertOrDefault<int>()].ConvertOrDefault<int?>() : null),
+        //                    (HORIZ_ACCURACYCol != null ? parts[HORIZ_ACCURACYCol.ConvertOrDefault<int>()] : null),
+        //                    (HORIZ_ACCURACY_UNITCol != null ? parts[HORIZ_ACCURACY_UNITCol.ConvertOrDefault<int>()] : null),
+        //                    (HORIZ_COLL_METHODCol != null ? parts[HORIZ_COLL_METHODCol.ConvertOrDefault<int>()] : null),
+        //                    (HORIZ_REF_DATUMCol != null ? parts[HORIZ_REF_DATUMCol.ConvertOrDefault<int>()] : null),
+        //                    (VERT_MEASURECol != null ? parts[VERT_MEASURECol.ConvertOrDefault<int>()] : null),
+        //                    (VERT_MEASURE_UNITCol != null ? parts[VERT_MEASURE_UNITCol.ConvertOrDefault<int>()] : null),
+        //                    (VERT_COLL_METHODCol != null ? parts[VERT_COLL_METHODCol.ConvertOrDefault<int>()] : null),
+        //                    (VERT_REF_DATUMCol != null ? parts[VERT_REF_DATUMCol.ConvertOrDefault<int>()] : null),
+        //                    (COUNTRY_CODECol != null ? parts[COUNTRY_CODECol.ConvertOrDefault<int>()] : null),
+        //                    (sTATE_CODECol != null ? parts[sTATE_CODECol.ConvertOrDefault<int>()] : null),
+        //                    (cOUNTY_CODECol != null ? parts[cOUNTY_CODECol.ConvertOrDefault<int>()] : null),
+        //                    (wELL_TYPECol != null ? parts[wELL_TYPECol.ConvertOrDefault<int>()] : null),
+        //                    (aQUIFER_NAMECol != null ? parts[aQUIFER_NAMECol.ConvertOrDefault<int>()] : null),
+        //                    (fORMATION_TYPECol != null ? parts[fORMATION_TYPECol.ConvertOrDefault<int>()] : null),
+        //                    (wELLHOLE_DEPTH_MSRCol != null ? parts[wELLHOLE_DEPTH_MSRCol.ConvertOrDefault<int>()] : null),
+        //                    (wELLHOLE_DEPTH_MSR_UNITCol != null ? parts[wELLHOLE_DEPTH_MSR_UNITCol.ConvertOrDefault<int>()] : null), "P", "");
+        //            }
+
+        //        }
+
+        //        i = i + 1;
+        //    }
+
+        //    if (i > 1)  //can only continue if 2 rows (1 plus 1 header) are imported
+        //        Response.Redirect("~/App_Pages/Secure/WQXImportMonLoc.aspx");
+        //    else
+        //    {
+        //        lblMsg.Text = "No valid data found. You must include column headers.";
+        //        return false;
+        //    }
+
+        //    return true;
+        //}
+
+        //private void ImportBiologicalData(string OrgID, int? ProjectID, string[] rows, int colCount)
+        //{
+        //    string[] sites = new string[colCount];
+        //    string[] dates = new string[colCount];
+        //    string[] sampleIDs = new string[colCount];
+        //    string[] HBIs = new string[colCount];
+        //    string[] CorrectedAbundances = new string[colCount];
+        //    string[] EPTAbundances = new string[colCount];
+        //    string[] LongLivedTaxaRichness = new string[colCount];
+        //    string[] ClingerRichness = new string[colCount];
+        //    string[] PctClingers = new string[colCount];
+        //    string[] IntolerantTaxaRichness = new string[colCount];
+        //    string[] PctTolerantIndividuals = new string[colCount];
+        //    string[] PctTolerantTaxa = new string[colCount];
+        //    string[] ColeopteraRichness = new string[colCount];
 
 
-                        //Index level stuff
-                        if (parts[0] == "Hilsenhoff Biotic Index")
-                        {
-                            for (int i = 1; i < parts.Length; i++)
-                                HBIs[i] = parts[i];
-                        }
-                    }
-                }
+        //    try
+        //    {
+        //        foreach (string row in rows)
+        //        {
+        //            char[] delimiters = new char[] { '\t' };
+        //            string[] parts = row.Split(delimiters, StringSplitOptions.RemoveEmptyEntries);
+        //            if (parts.Length > 0)
+        //            {
+        //                //sample level stuff
+        //                if (parts[0] == "Site")
+        //                {
+        //                    for (int i = 1; i < parts.Length; i++)
+        //                        sites[i] = parts[i];
+        //                }
 
-                for (int i = 1; i < colCount; i++)
-                {
-                    if (sites[i] != null)
-                    {
-                        int? MonLocIDX = null;
-                        int? ActID = null;
+        //                if (parts[0] == "Collection Date")
+        //                {
+        //                    for (int i = 1; i < parts.Length; i++)
+        //                        dates[i] = parts[i];
+        //                }
 
-                        T_WQX_MONLOC mm = db_WQX.GetWQX_MONLOC_ByIDString(OrgID, sites[i]);
-                        if (mm != null)
-                            MonLocIDX = mm.MONLOC_IDX;
+        //                if (parts[0] == "Sample ID")
+        //                {
+        //                    for (int i = 1; i < parts.Length; i++)
+        //                        sampleIDs[i] = parts[i];
+        //                }
 
-                        T_WQX_ACTIVITY a = db_WQX.GetWQX_ACTIVITY_ByUnique(OrgID, sampleIDs[i]);
-                        if (a != null)
-                            ActID = a.ACTIVITY_IDX;
+        //                //Metric stuff
+        //                if (parts[0] == "Corrected Abundance")
+        //                {
+        //                    for (int i = 1; i < parts.Length; i++)
+        //                        CorrectedAbundances[i] = parts[i];
+        //                }
 
-                        ActID = db_WQX.InsertOrUpdateWQX_ACTIVITY(ActID, OrgID, ProjectID, MonLocIDX, sampleIDs[i], "Field Msr/Obs-Habitat Assessment", "Water", "", dates[i].ConvertOrDefault<DateTime>(),
-                            null, "", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 
-                            null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 
-                            "U", true, true, User.Identity.Name, "H");
+        //                if (parts[0] == "EPT Abundance")
+        //                {
+        //                    for (int i = 1; i < parts.Length; i++)
+        //                        EPTAbundances[i] = parts[i];
+        //                }
 
-                        //CREATE INDICES
-                        db_WQX.InsertOrUpdateWQX_BIO_HABITAT_INDEX(null, OrgID, MonLocIDX, sampleIDs[i] + "_HBI", "Hilsenhoff Biotic Index", "LOCAL", "Hilsenhoff Biotic Index", null, null, null, null, null, null, null, HBIs[i], null, null, dates[i].ConvertOrDefault<DateTime?>(), true, "U", null, true, User.Identity.Name);
+        //                if (parts[0] == "Long-Lived Taxa Richness")
+        //                {
+        //                    for (int i = 1; i < parts.Length; i++)
+        //                        LongLivedTaxaRichness[i] = parts[i];
+        //                }
 
-                        //CREATE METRICS
-                        db_WQX.InsertOrUpdateWQX_ACTIVITY_METRIC(null, (int)ActID, "Corrected Abundance", "LOCAL", "Corrected Abundance", null, null, null, null, null, null, null, null, CorrectedAbundances[i], null, CorrectedAbundances[i], null, true, "U", null, true, User.Identity.Name);
-                        db_WQX.InsertOrUpdateWQX_ACTIVITY_METRIC(null, (int)ActID, "EPT Abundance", "LOCAL", "EPT Abundance", null, null, null, null, null, null, null, null, EPTAbundances[i], null, EPTAbundances[i], null, true, "U", null, true, User.Identity.Name);
-                        db_WQX.InsertOrUpdateWQX_ACTIVITY_METRIC(null, (int)ActID, "Long-Lived Taxa Richness", "LOCAL", "Long-Lived Taxa Richness", null, null, null, null, null, null, null, null, LongLivedTaxaRichness[i], null, LongLivedTaxaRichness[i], null, true, "U", null, true, User.Identity.Name);
-                        db_WQX.InsertOrUpdateWQX_ACTIVITY_METRIC(null, (int)ActID, "Clinger Richness", "LOCAL", "Clinger Richness", null, null, null, null, null, null, null, null, ClingerRichness[i], null, ClingerRichness[i], null, true, "U", null, true, User.Identity.Name);
-                        db_WQX.InsertOrUpdateWQX_ACTIVITY_METRIC(null, (int)ActID, "% Clingers", "LOCAL", "% Clingers", null, null, null, null, null, null, null, null, PctClingers[i], null, PctClingers[i], null, true, "U", null, true, User.Identity.Name);
-                        db_WQX.InsertOrUpdateWQX_ACTIVITY_METRIC(null, (int)ActID, "Intolerant Taxa Richness", "LOCAL", "Intolerant Taxa Richness", null, null, null, null, null, null, null, null, IntolerantTaxaRichness[i], null, IntolerantTaxaRichness[i], null, true, "U", null, true, User.Identity.Name);
-                        db_WQX.InsertOrUpdateWQX_ACTIVITY_METRIC(null, (int)ActID, "% Tolerant Individuals", "LOCAL", "% Tolerant Individuals", null, null, null, null, null, null, null, null, PctTolerantIndividuals[i], null, PctTolerantIndividuals[i], null, true, "U", null, true, User.Identity.Name);
-                        db_WQX.InsertOrUpdateWQX_ACTIVITY_METRIC(null, (int)ActID, "% Tolerant Taxa", "LOCAL", "% Tolerant Taxa", null, null, null, null, null, null, null, null, PctTolerantTaxa[i], null, PctTolerantTaxa[i], null, true, "U", null, true, User.Identity.Name);
-                        db_WQX.InsertOrUpdateWQX_ACTIVITY_METRIC(null, (int)ActID, "Coleoptera Richness", "LOCAL", "Coleoptera Richness", null, null, null, null, null, null, null, null, ColeopteraRichness[i], null, ColeopteraRichness[i], null, true, "U", null, true, User.Identity.Name);
+        //                if (parts[0] == "Clinger Richness")
+        //                {
+        //                    for (int i = 1; i < parts.Length; i++)
+        //                        ClingerRichness[i] = parts[i];
+        //                }
 
-                    }
-                }
+        //                if (parts[0] == "% Clingers")
+        //                {
+        //                    for (int i = 1; i < parts.Length; i++)
+        //                        PctClingers[i] = parts[i];
+        //                }
 
-                //add to import log
-                db_Ref.InsertUpdateWQX_IMPORT_LOG(null, OrgID, ddlImportType.SelectedValue, ddlImportType.SelectedValue, 0, "Success", "100", null, null, User.Identity.Name);
-            }
-            catch (Exception ex)
-            {
-                //add to import log
-                db_Ref.InsertUpdateWQX_IMPORT_LOG(null, OrgID, ddlImportType.SelectedValue, ddlImportType.SelectedValue, 0, "Fail", "0", ex.Message.SubStringPlus(0,1000), null, User.Identity.Name);
-            }
-        }
+        //                if (parts[0] == "Intolerant Taxa Richness")
+        //                {
+        //                    for (int i = 1; i < parts.Length; i++)
+        //                        IntolerantTaxaRichness[i] = parts[i];
+        //                }
+
+        //                if (parts[0] == "% Tolerant Individuals")
+        //                {
+        //                    for (int i = 1; i < parts.Length; i++)
+        //                        PctTolerantIndividuals[i] = parts[i];
+        //                }
+
+        //                if (parts[0] == "% Tolerant Taxa")
+        //                {
+        //                    for (int i = 1; i < parts.Length; i++)
+        //                        PctTolerantTaxa[i] = parts[i];
+        //                }
+
+        //                if (parts[0] == "Coleoptera Richness")
+        //                {
+        //                    for (int i = 1; i < parts.Length; i++)
+        //                        ColeopteraRichness[i] = parts[i];
+        //                }
+
+
+        //                //Index level stuff
+        //                if (parts[0] == "Hilsenhoff Biotic Index")
+        //                {
+        //                    for (int i = 1; i < parts.Length; i++)
+        //                        HBIs[i] = parts[i];
+        //                }
+        //            }
+        //        }
+
+        //        for (int i = 1; i < colCount; i++)
+        //        {
+        //            if (sites[i] != null)
+        //            {
+        //                int? MonLocIDX = null;
+        //                int? ActID = null;
+
+        //                T_WQX_MONLOC mm = db_WQX.GetWQX_MONLOC_ByIDString(OrgID, sites[i]);
+        //                if (mm != null)
+        //                    MonLocIDX = mm.MONLOC_IDX;
+
+        //                T_WQX_ACTIVITY a = db_WQX.GetWQX_ACTIVITY_ByUnique(OrgID, sampleIDs[i]);
+        //                if (a != null)
+        //                    ActID = a.ACTIVITY_IDX;
+
+        //                ActID = db_WQX.InsertOrUpdateWQX_ACTIVITY(ActID, OrgID, ProjectID, MonLocIDX, sampleIDs[i], "Field Msr/Obs-Habitat Assessment", "Water", "", dates[i].ConvertOrDefault<DateTime>(),
+        //                    null, "", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 
+        //                    null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 
+        //                    "U", true, true, User.Identity.Name, "H");
+
+        //                //CREATE INDICES
+        //                db_WQX.InsertOrUpdateWQX_BIO_HABITAT_INDEX(null, OrgID, MonLocIDX, sampleIDs[i] + "_HBI", "Hilsenhoff Biotic Index", "LOCAL", "Hilsenhoff Biotic Index", null, null, null, null, null, null, null, HBIs[i], null, null, dates[i].ConvertOrDefault<DateTime?>(), true, "U", null, true, User.Identity.Name);
+
+        //                //CREATE METRICS
+        //                db_WQX.InsertOrUpdateWQX_ACTIVITY_METRIC(null, (int)ActID, "Corrected Abundance", "LOCAL", "Corrected Abundance", null, null, null, null, null, null, null, null, CorrectedAbundances[i], null, CorrectedAbundances[i], null, true, "U", null, true, User.Identity.Name);
+        //                db_WQX.InsertOrUpdateWQX_ACTIVITY_METRIC(null, (int)ActID, "EPT Abundance", "LOCAL", "EPT Abundance", null, null, null, null, null, null, null, null, EPTAbundances[i], null, EPTAbundances[i], null, true, "U", null, true, User.Identity.Name);
+        //                db_WQX.InsertOrUpdateWQX_ACTIVITY_METRIC(null, (int)ActID, "Long-Lived Taxa Richness", "LOCAL", "Long-Lived Taxa Richness", null, null, null, null, null, null, null, null, LongLivedTaxaRichness[i], null, LongLivedTaxaRichness[i], null, true, "U", null, true, User.Identity.Name);
+        //                db_WQX.InsertOrUpdateWQX_ACTIVITY_METRIC(null, (int)ActID, "Clinger Richness", "LOCAL", "Clinger Richness", null, null, null, null, null, null, null, null, ClingerRichness[i], null, ClingerRichness[i], null, true, "U", null, true, User.Identity.Name);
+        //                db_WQX.InsertOrUpdateWQX_ACTIVITY_METRIC(null, (int)ActID, "% Clingers", "LOCAL", "% Clingers", null, null, null, null, null, null, null, null, PctClingers[i], null, PctClingers[i], null, true, "U", null, true, User.Identity.Name);
+        //                db_WQX.InsertOrUpdateWQX_ACTIVITY_METRIC(null, (int)ActID, "Intolerant Taxa Richness", "LOCAL", "Intolerant Taxa Richness", null, null, null, null, null, null, null, null, IntolerantTaxaRichness[i], null, IntolerantTaxaRichness[i], null, true, "U", null, true, User.Identity.Name);
+        //                db_WQX.InsertOrUpdateWQX_ACTIVITY_METRIC(null, (int)ActID, "% Tolerant Individuals", "LOCAL", "% Tolerant Individuals", null, null, null, null, null, null, null, null, PctTolerantIndividuals[i], null, PctTolerantIndividuals[i], null, true, "U", null, true, User.Identity.Name);
+        //                db_WQX.InsertOrUpdateWQX_ACTIVITY_METRIC(null, (int)ActID, "% Tolerant Taxa", "LOCAL", "% Tolerant Taxa", null, null, null, null, null, null, null, null, PctTolerantTaxa[i], null, PctTolerantTaxa[i], null, true, "U", null, true, User.Identity.Name);
+        //                db_WQX.InsertOrUpdateWQX_ACTIVITY_METRIC(null, (int)ActID, "Coleoptera Richness", "LOCAL", "Coleoptera Richness", null, null, null, null, null, null, null, null, ColeopteraRichness[i], null, ColeopteraRichness[i], null, true, "U", null, true, User.Identity.Name);
+
+        //            }
+        //        }
+
+        //        //add to import log
+        //        db_Ref.InsertUpdateWQX_IMPORT_LOG(null, OrgID, ddlImportType.SelectedValue, ddlImportType.SelectedValue, 0, "Success", "100", null, null, User.Identity.Name);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        //add to import log
+        //        db_Ref.InsertUpdateWQX_IMPORT_LOG(null, OrgID, ddlImportType.SelectedValue, ddlImportType.SelectedValue, 0, "Fail", "0", ex.Message.SubStringPlus(0,1000), null, User.Identity.Name);
+        //    }
+        //}
 
         private static string GetFieldValue(T_WQX_IMPORT_TEMPLATE_DTL FieldType, string[] parts)
         {
@@ -1095,14 +1095,18 @@ namespace OpenEnvironment
                 {
                     List<net.epacdxnode.test.ParameterType> pars = new List<net.epacdxnode.test.ParameterType>();
 
-                    net.epacdxnode.test.ParameterType p = new net.epacdxnode.test.ParameterType();
-                    p.parameterName = "organizationIdentifier";
-                    p.Value = OrgID;//txtOrgTest.Text
+                    net.epacdxnode.test.ParameterType p = new net.epacdxnode.test.ParameterType
+                    {
+                        parameterName = "organizationIdentifier",
+                        Value = OrgID
+                    };
                     pars.Add(p);
 
-                    net.epacdxnode.test.ParameterType p2 = new net.epacdxnode.test.ParameterType();
-                    p2.parameterName = "monitoringLocationIdentifier";
-                    p2.Value = "";
+                    net.epacdxnode.test.ParameterType p2 = new net.epacdxnode.test.ParameterType
+                    {
+                        parameterName = "monitoringLocationIdentifier",
+                        Value = ""
+                    };
                     pars.Add(p2);
 
                     net.epacdxnode.test.ResultSetType queryResp = WQXSubmit.QueryHelper(cred.NodeURL, token, "WQX", "WQX.GetMonitoringLocationByParameters_v2.1", null, null, pars);

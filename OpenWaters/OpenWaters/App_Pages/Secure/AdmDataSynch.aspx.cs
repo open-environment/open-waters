@@ -104,6 +104,8 @@ namespace OpenEnvironment
                 return;
             }
 
+            lblMsg.Text = "";
+
             //******* PROJECT LEVEL *********************
             if (ddlRefTable.SelectedValue == "ALL" || ddlRefTable.SelectedValue == "SamplingDesignType")
                 GetAndStoreRefTable("SamplingDesignType", "Code", "Code", null);
@@ -207,16 +209,17 @@ namespace OpenEnvironment
 
             DisplayDates();
 
-            lblMsg.Text = "Data Retrieval Complete.";
+            if (lblMsg.Text == "")
+                lblMsg.Text = "Data Retrieval Complete.";
         }
 
         protected int GetAndStoreRefTable(string tableName, string ValueString, string TextString, string CustomParseName)
         {
-            //get file
-            DomainValuesService d = new DomainValuesService();
-
             try
             {
+                //get file
+                DomainValuesService d = new DomainValuesService();
+
                 XDocument xdoc = null;
 
                 byte[] b = d.GetDomainValues(tableName);
@@ -312,7 +315,7 @@ namespace OpenEnvironment
             }
             catch (Exception e)
             {
-                lblMsg.Text = e.Message;
+                lblMsg.Text = "Error" + e.Message;
                 return 0;
             }
         }

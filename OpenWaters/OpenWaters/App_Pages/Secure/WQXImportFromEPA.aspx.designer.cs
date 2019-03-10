@@ -10,7 +10,7 @@
 namespace OpenEnvironment {
     
     
-    public partial class WQXImportOld {
+    public partial class WQXImportFromEPA {
         
         /// <summary>
         /// lblMsg control.

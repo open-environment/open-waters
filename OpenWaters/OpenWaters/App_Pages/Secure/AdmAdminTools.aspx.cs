@@ -1,11 +1,8 @@
-﻿using OpenEnvironment.net.epacdxnode.test;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 using OpenEnvironment.App_Logic.BusinessLogicLayer;
+using OpenEnvironment.net.epacdxnode.test;
 
 namespace OpenEnvironment
 {
@@ -47,7 +44,6 @@ namespace OpenEnvironment
         protected void btnGetStatus_Click(object sender, EventArgs e)
         {
             string OrgID = Session["OrgID"].ToString();
-            int iCount = 0;
 
             //get credentials
             CDXCredentials cred = WQXSubmit.GetCDXSubmitCredentials2(OrgID);
@@ -89,12 +85,10 @@ namespace OpenEnvironment
                     pars.Add(p);
 
                     net.epacdxnode.test.ResultSetType queryResp = WQXSubmit.QueryHelper(cred.NodeURL, token, "WQX", "WQX.GetTransactionHistoryByParameters_v2.1", null, null, pars);
-
-
                 }
                 else
                 {
-                    //lblMsg.Text = "Unable to authenticate to EPA-WQX server.";
+                    lblMsg.Text = "Unable to authenticate to EPA-WQX server.";
                 }
             }
             catch

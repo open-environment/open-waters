@@ -336,15 +336,5 @@ namespace OpenEnvironment.App_Pages.Secure
             }
         }
 
-
-        //private static Dictionary<string, Tuple<string, string>> GetCharacteristicsPool()
-        //{
-        //    Dictionary<string, Tuple<string, string>> charPool = new Dictionary<string, Tuple<string, string>>();
-        //    charPool.Add("Benzene", new Tuple<string, string>("Benzene", "C"));
-        //    charPool.Add("pH", new Tuple<string, string>("pH", "C"));
-        //    return charPool;
-        //}
-
-
     }
 }

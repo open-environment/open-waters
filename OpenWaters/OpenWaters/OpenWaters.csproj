@@ -203,7 +203,7 @@
     <Content Include="App_Images\progress.gif" />
     <Content Include="App_Pages\Secure\RefData.aspx" />
     <Content Include="App_Pages\Secure\WQXActivityEdit.aspx" />
-    <Content Include="App_Pages\Secure\WQXImportOld.aspx" />
+    <Content Include="App_Pages\Secure\WQXImportFromEPA.aspx" />
     <Content Include="Scripts\Chart.js" />
     <Content Include="Scripts\Chart.min.js" />
     <Content Include="Scripts\datatables\Buttons-1.2.4\css\buttons.bootstrap.css" />
@@ -585,11 +585,11 @@
     <Compile Include="App_Pages\Secure\WQXActivityEdit.aspx.designer.cs">
       <DependentUpon>WQXActivityEdit.aspx</DependentUpon>
     </Compile>
-    <Compile Include="App_Pages\Secure\WQXImportOld.aspx.cs">
-      <DependentUpon>WQXImportOld.aspx</DependentUpon>
+    <Compile Include="App_Pages\Secure\WQXImportFromEPA.aspx.cs">
+      <DependentUpon>WQXImportFromEPA.aspx</DependentUpon>
     </Compile>
-    <Compile Include="App_Pages\Secure\WQXImportOld.aspx.designer.cs">
-      <DependentUpon>WQXImportOld.aspx</DependentUpon>
+    <Compile Include="App_Pages\Secure\WQXImportFromEPA.aspx.designer.cs">
+      <DependentUpon>WQXImportFromEPA.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Pages\Secure\WQX_Mgmt.aspx.cs">
       <DependentUpon>WQX_Mgmt.aspx</DependentUpon>

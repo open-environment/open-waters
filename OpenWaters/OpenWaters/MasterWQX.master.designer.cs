@@ -58,6 +58,15 @@ namespace OpenEnvironment {
         protected global::System.Web.UI.WebControls.HyperLink lnkImport;
         
         /// <summary>
+        /// linkImportEPA control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink linkImportEPA;
+        
+        /// <summary>
         /// lnkWQXHistory control.
         /// </summary>
         /// <remarks>

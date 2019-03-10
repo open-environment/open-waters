@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Open Waters - Import" Language="C#" MasterPageFile="~/MasterWQX.master" AutoEventWireup="true"  CodeBehind="WQXImportOld.aspx.cs" Inherits="OpenEnvironment.WQXImportOld" %>
+﻿<%@ Page Title="Open Waters - Import" Language="C#" MasterPageFile="~/MasterWQX.master" AutoEventWireup="true"  CodeBehind="WQXImportFromEPA.aspx.cs" Inherits="OpenEnvironment.WQXImportFromEPA" %>
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="BodyContent" runat="server">
@@ -10,7 +10,7 @@
         }
     </script>
     <h1>
-        Bulk Import Data (Classic)
+        Retrieve Data from EPA
     </h1>
 
     <div id="openModal" class="modalDialog" style="display:none">
@@ -30,13 +30,13 @@
         <div class="fltMain">
                 <div class="row"> 
                     <asp:RadioButtonList ID="rbImportType" runat="server" AutoPostBack="true" OnSelectedIndexChanged="rbImportType_SelectedIndexChanged">
-                        <asp:ListItem Value="1">Import data from spreadsheet</asp:ListItem>
-                        <asp:ListItem Value="2">Import data directly from EPA-WQX</asp:ListItem>
+                        <asp:ListItem Value="1" Enabled="false">Import data from spreadsheet</asp:ListItem>
+                        <asp:ListItem Value="2" Selected="True">Import data directly from EPA-WQX</asp:ListItem>
                     </asp:RadioButtonList>
                 </div>                
         </div>
 
-        <asp:Panel ID="pnlWQX" runat="server" Visible="false" >
+        <asp:Panel ID="pnlWQX" runat="server" >
             <div class="fltTitle">Step 2: Select Type of Data to Import from EPA-WQX:</div>
             <div class="fltMain">
                 <div class="row">
@@ -57,7 +57,7 @@
             <div class="fltMain">
                 <div class="row"> 
                     <span class="fldLbl">Import Data Structure:</span>
-                    <asp:DropDownList CssClass="fldTxt" ID="ddlImportType" runat="server" OnSelectedIndexChanged="ddlImportType_SelectedIndexChanged" AutoPostBack="True">
+                    <asp:DropDownList CssClass="fldTxt" ID="ddlImportType" runat="server" >
                         <asp:ListItem Text="" Value=""></asp:ListItem>
                         <asp:ListItem Text="Monitoring Locations" Value="MLOC"></asp:ListItem>
                         <asp:ListItem Text="Sample Results - 1 row per result" Value="SAMP"></asp:ListItem>
@@ -76,7 +76,7 @@
                                 <asp:SessionParameter DefaultValue="" Name="OrgID" SessionField="OrgID" Type="String" />
                             </SelectParameters>
                         </asp:ObjectDataSource>
-                    <asp:Button ID="btnNewTemplate" runat="server" CssClass="btn" Text="Define New / Edit Import Logic" OnClick="btnNewTemplate_Click" />
+                    <asp:Button ID="btnNewTemplate" runat="server" CssClass="btn" Text="Define New / Edit Import Logic"  />
                 </asp:Panel>
                 <asp:Panel ID="pnlProject" runat="server" CssClass="row" Visible="false" > 
                     <span class="fldLbl">Import to Project:</span>
@@ -98,7 +98,7 @@
                 </div>
             </div>
             <br />
-            <asp:Button ID="btnParse" runat="server" CssClass="btn" Text="Continue"  onclick="btnParse_Click" Visible="false" OnClientClick="DisplayLoadingDiv()" />
+            <asp:Button ID="btnParse" runat="server" CssClass="btn" Text="Continue"   Visible="false" OnClientClick="DisplayLoadingDiv()" />
         </asp:Panel>
     </asp:Panel>
 
