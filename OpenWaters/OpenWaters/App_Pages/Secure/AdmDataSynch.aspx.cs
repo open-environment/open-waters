@@ -78,7 +78,7 @@ namespace OpenEnvironment
                 }
                 else
                 {
-                    lblMsg.Text = "Import failed.";
+                    lblMsg.Text = "Import failed to remove orgs.";
                     return false;
                 }
             }

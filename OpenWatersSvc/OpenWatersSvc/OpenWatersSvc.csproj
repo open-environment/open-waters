@@ -15,7 +15,7 @@
     </TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
     <IsWebBootstrapper>false</IsWebBootstrapper>
-    <PublishUrl>C:\OpenWatersSvcPub\</PublishUrl>
+    <PublishUrl>C:\Deploys\OpenWatersSvcPub\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
@@ -25,7 +25,7 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>4</ApplicationRevision>
+    <ApplicationRevision>5</ApplicationRevision>
     <ApplicationVersion>1.9.4.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -68,7 +68,7 @@
     <StartupObject>OpenWatersSvc.OpenWatersSvc</StartupObject>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="OpenEnvironment, Version=1.9.4.35287, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="OpenEnvironment, Version=1.9.4.1903, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>.\OpenEnvironment.dll</HintPath>
     </Reference>

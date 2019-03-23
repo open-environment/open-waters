@@ -14,7 +14,7 @@ namespace OpenEnvironment
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            //if integrated with Identity Server, then redirect (if not already authenticated
+            //if integrated with Identity Server, then redirect (if not already authenticated)
             if (!Request.IsAuthenticated && ConfigurationManager.AppSettings["UseIdentityServer"] == "true")
             {
                 string _redirUri = ConfigurationManager.AppSettings["IdentityServerRedirectURI"];
@@ -33,10 +33,10 @@ namespace OpenEnvironment
                 if (!HttpContext.Current.User.IsInRole("ADMINS"))
                     NavigationMenu.Items.RemoveAt(3);
 
+                btnLogout.Visible = true;
                 //Hide new logout button if IdentityServer is not used
                 if (ConfigurationManager.AppSettings["UseIdentityServer"] == "false")
                 {
-                    btnLogout.Visible = false;
                     btnPortal.Visible = false;
                 }
 
@@ -77,7 +77,11 @@ namespace OpenEnvironment
             Response.Cache.SetCacheability(HttpCacheability.NoCache);
             Response.Cache.SetNoStore();
 
-            Response.Redirect(Request.RawUrl);  
+            if (ConfigurationManager.AppSettings["UseIdentityServer"] == "false")
+                Response.Redirect("~/Default.aspx");
+            else
+                Response.Redirect(Request.RawUrl);
+
         }
 
         protected void btnPortal_Click(object sender, EventArgs e)

@@ -1257,8 +1257,8 @@ namespace OpenEnvironment
             //temporary until async is put in place****************************************
             WQXSubmit.ImportActivity(OrgID, importID, User.Identity.Name);
             Response.Redirect("~/App_Pages/Secure/WQXImportSample.aspx");
-
             //*****************************************************************************
+
             lblMsg.Text = "Import has been scheduled and may take a while to process - please return to this page later to see the import progress. ";
             return true;
         }
