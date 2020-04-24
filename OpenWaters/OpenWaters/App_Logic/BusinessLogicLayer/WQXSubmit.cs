@@ -187,6 +187,7 @@ namespace OpenEnvironment.App_Logic.BusinessLogicLayer
         /// <returns>Security token if valid or empty string if failed</returns>
         internal static string AuthHelper(string userID, string credential, string authMethod, string domain, string NodeURL)
         {
+            System.Net.ServicePointManager.SecurityProtocol = System.Net.SecurityProtocolType.Tls12;
             NetworkNode2 nn = new NetworkNode2();
             nn.Url = NodeURL;
             Authenticate auth1 = new Authenticate();
@@ -204,12 +205,20 @@ namespace OpenEnvironment.App_Logic.BusinessLogicLayer
                 db_Ref.InsertT_OE_SYS_LOG("ERROR", sExept.Message.SubStringPlus(0, 1999));   //logging an authentication failure
                 return "";
             }
+            catch (Exception ex)
+            {
+                db_Ref.InsertT_OE_SYS_LOG("ERROR", ex.Message.SubStringPlus(0, 1999));   //logging an authentication failure
+                return "";
+            }
+
         }
 
         internal static StatusResponseType SubmitHelper(string NodeURL, string secToken, string dataFlow, string flowOperation, byte[] doc, string docName, DocumentFormatType docFormat, string docID)
         {
             try
             {
+                System.Net.ServicePointManager.SecurityProtocol = System.Net.SecurityProtocolType.Tls12;
+
                 AttachmentType att1 = new AttachmentType();
                 att1.Value = doc;
                 NodeDocumentType doc1 = new NodeDocumentType();
@@ -241,6 +250,7 @@ namespace OpenEnvironment.App_Logic.BusinessLogicLayer
         {
             try
             {
+                System.Net.ServicePointManager.SecurityProtocol = System.Net.SecurityProtocolType.Tls12;
                 NetworkNode2 nn = new NetworkNode2();
                 nn.Url = NodeURL;
                 GetStatus gs1 = new GetStatus();
@@ -258,6 +268,7 @@ namespace OpenEnvironment.App_Logic.BusinessLogicLayer
         {
             try
             {
+                System.Net.ServicePointManager.SecurityProtocol = System.Net.SecurityProtocolType.Tls12;
                 NetworkNode2 nn = new NetworkNode2();
                 nn.Url = NodeURL;
                 Download dl1 = new Download();

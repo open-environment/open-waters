@@ -13,13 +13,13 @@ namespace OpenEnvironment {
     public partial class Map2 {
         
         /// <summary>
-        /// scriptManager control.
+        /// ToolkitScriptManager1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::AjaxControlToolkit.ToolkitScriptManager scriptManager;
+        protected global::System.Web.UI.ScriptManager ToolkitScriptManager1;
         
         /// <summary>
         /// grdMonLoc control.

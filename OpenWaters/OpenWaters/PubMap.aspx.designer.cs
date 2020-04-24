@@ -22,13 +22,13 @@ namespace OpenEnvironment.App_Pages.Public {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// scriptManager control.
+        /// ToolkitScriptManager1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::AjaxControlToolkit.ToolkitScriptManager scriptManager;
+        protected global::System.Web.UI.ScriptManager ToolkitScriptManager1;
         
         /// <summary>
         /// lblOrgName control.

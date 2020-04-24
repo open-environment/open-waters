@@ -68,8 +68,7 @@
             }
         }
     </script>
-    <ajaxToolkit:ToolkitScriptManager ID="scriptManager" runat="server" AsyncPostBackTimeout="99999999" EnablePageMethods="true" />
-
+    <asp:ScriptManager ID="ToolkitScriptManager1" runat="server" AsyncPostBackTimeout="99999999"></asp:ScriptManager>
     <table style="width:100%; height:100%; padding:0; margin:0;">
         <tr>
             <td>
