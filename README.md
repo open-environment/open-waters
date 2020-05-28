@@ -40,6 +40,9 @@ Open Waters is web-based water quality data management software that helps peopl
 ## Change Log
 * **5/27/2020 - Version 1.9.9(b):**
     * Pulling reference data from EPA - user can now set EPA reference data API URL in Global Settings 
+    * Update .NET Framework from 4.5 to 4.6.1
+    * Added TLS 1.2 support
+    * Improved integration with Tribal Services Portal
 * **10/27/2017 - Version 1.9.9:**
     * Monitoring Location Edit Page - added the following changes: 
         * Add ability to select location from map
