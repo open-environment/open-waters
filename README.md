@@ -30,15 +30,20 @@ Open Waters is web-based water quality data management software that helps peopl
 
 ## Prerequisites
 * **Web Server**
-  * Windows Server 2003 or later (IIS 6 or later)
-  * .NET Framework 4.5
-  * Microsoft WSE 2.0 & 3.0
+  * Windows Server 2008 or later (IIS 7.5 or later)
+  * .NET Framework 4.6.1
   * web server can communicate with Internet and Database (no firewall prohibiting access to EPA’s WQX server)
 * **Database Server**
   * SQL Server 2012 or later (Express edition is OK)
 
 
 ## Change Log
+* **5/27/2020 - Version 1.9.9(b):**
+    * Pulling reference data from EPA - user can now set EPA reference data API URL in Global Settings 
+    * Pulling reference data from EPA - updated to WQX v3 XML schema
+    * Update .NET Framework from 4.5 to 4.6.1
+    * Added TLS 1.2 support
+    * Improved integration with Tribal Services Portal
 * **10/27/2017 - Version 1.9.9:**
     * Monitoring Location Edit Page - added the following changes: 
         * Add ability to select location from map
