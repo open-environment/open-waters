@@ -77,7 +77,7 @@ namespace OpenEnvironment
                 else
                 {
                     pnlNewOrgConfirm.Visible = false;
-                    lblMsg.Text = "This request cannot be completed.";
+                    lblMsg.Text = "This request cannot be completed - Org not found";
                     return;
                 }
 
@@ -114,7 +114,7 @@ namespace OpenEnvironment
             db_WQX.InsertT_WQX_USER_ORGS(OrgID, Utils.GetUserIDX(User), "P", User.Identity.Name);
 
             //send email with request
-            string msg = "A user has requested to join an organization for which you are an administrator." + "\r\n\r\n";
+            string msg = "A user has requested to join an organization for which you are an administrator (or you are a global admin)." + "\r\n\r\n";
             msg += "The following user account (" + User.Identity.Name + ") has requested to join your organization (" + OrgID + "). Please log into Open Waters and either accept or reject this request." + "\r\n\r\n";
             bool eMailSucc = Utils.SendEmail(null, emailTo, null, null, "Open Waters: User Requesting to Join Organization", msg, null);
 

@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using SendGrid;
+using SendGrid.Helpers.Mail;
 using OpenEnvironment.App_Logic.DataAccessLayer;
 using System.Net;
 using System.Net.Mail;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace OpenEnvironment.App_Logic.BusinessLogicLayer
 {
@@ -11,45 +14,52 @@ namespace OpenEnvironment.App_Logic.BusinessLogicLayer
     {
 
         /// <summary>
-        ///  Sends out an email from the application. Returns true if successful.
+        /// Sends out an email using SendGrid. 
+        /// Note: Updated to work with SendGrid version 9.8
         /// </summary>
-        public static bool SendGridEmail(string from, List<string> to, List<string> cc, List<string> bcc, string subj, string body, string smtpUser, string smtpUserPwd)
+        /// <returns>true if successful</returns>
+        public static async Task<bool> SendEmailUsingSendGrid(string from, List<string> to, List<string> cc, List<string> bcc, string subj, string body, string apiKey)
         {
             try
             {
-                //******************** CONSTRUCT EMAIL ********************************************
-                // Create the email object first, then add the properties.
-                var myMessage = new SendGridMessage();
+                var client = new SendGridClient(apiKey);
 
-                // Add message properties.
-                myMessage.From = new MailAddress(from);
-                myMessage.AddTo(to);
-                if (cc != null)
+                //******************** CONSTRUCT EMAIL ********************************************               
+                var msg = new SendGridMessage()
                 {
-                    foreach (string cc1 in cc)
-                        myMessage.AddCc(cc1);
-                }
-                if (bcc != null)
+                    From = new EmailAddress(from),
+                    Subject = subj
+                };
+
+                msg.AddContent(MimeType.Html, body);
+
+                foreach (string to1 in to ?? Enumerable.Empty<string>())
+                    msg.AddTo(to1);
+
+                foreach (string cc1 in cc ?? Enumerable.Empty<string>())
+                    msg.AddCc(cc1);
+
+                foreach (string bcc1 in bcc ?? Enumerable.Empty<string>())
+                    msg.AddBcc(bcc1);
+
+
+                // Disable click tracking. See https://sendgrid.com/docs/User_Guide/Settings/tracking.html
+                msg.TrackingSettings = new TrackingSettings
                 {
-                    foreach (string bcc1 in bcc)
-                        myMessage.AddBcc(bcc1);
-                }
-
-                myMessage.Subject = subj;
-                //myMessage.Html = "<p>" + body + "</p>";
-                myMessage.Text = body;
-                //*********************************************************************************
+                    ClickTracking = new ClickTracking { Enable = false }
+                };
 
 
-                //********************* SEND EMAIL ************************************************
-                var credentials = new NetworkCredential(smtpUser, smtpUserPwd);
-                // Create an Web transport for sending email.
-                var transportWeb = new Web(credentials);
+                //******************** SEND EMAIL ****************************************************
+                var response = await client.SendEmailAsync(msg).ConfigureAwait(false);
 
-                // Send the email.
-                transportWeb.Deliver(myMessage);
+                //******************** RETURN RESPONSE ***********************************************
+                if (response.StatusCode == HttpStatusCode.Accepted)
+                    return true;
+                else
+                    return false;
+                //************************************************************************************
 
-                return true;
             }
             catch (Exception ex)
             {
@@ -61,7 +71,6 @@ namespace OpenEnvironment.App_Logic.BusinessLogicLayer
                     db_Ref.InsertT_OE_SYS_LOG("EMAIL ERR", "Unknown error");
 
                 return false;
-
             }
         }
 

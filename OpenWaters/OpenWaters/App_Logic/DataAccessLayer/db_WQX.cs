@@ -1446,6 +1446,10 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
                 }
                 catch (Exception ex)
                 {
+                    Exception realerror = ex;
+                    while (realerror.InnerException != null)
+                        realerror = realerror.InnerException;
+                    db_Ref.InsertT_OE_SYS_LOG("ERROR", realerror.Message ?? "");
                     return 0;
                 }
             }
@@ -2254,7 +2258,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
                     if (uSER_ID != null)
                     {
                         a.USER_ID = uSER_ID;
-                        if (uSER_ID.Length > 25) { sTATUS_CD = "F"; sTATUS_DESC += "User ID length exceeded. "; }
+                        if (uSER_ID.Length > 200) { sTATUS_CD = "F"; sTATUS_DESC += "User ID length exceeded. "; }
                     }
 
                     if (mONLOC_IDX != null) a.MONLOC_IDX = mONLOC_IDX;
@@ -2695,7 +2699,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
                     if (uSER_ID != null)
                     {
                         a.USER_ID = uSER_ID;
-                        if (uSER_ID.Length > 25) { sTATUS_CD = "F"; sTATUS_DESC += "User ID length exceeded. "; }
+                        if (uSER_ID.Length > 200) { sTATUS_CD = "F"; sTATUS_DESC += "User ID length exceeded. "; }
                     }
 
                     if (pROJECT_IDX != null) a.PROJECT_IDX = pROJECT_IDX;

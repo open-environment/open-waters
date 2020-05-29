@@ -37,6 +37,10 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
                 }
                 catch (Exception ex)
                 {
+                    Exception realerror = ex;
+                    while (realerror.InnerException != null)
+                        realerror = realerror.InnerException;
+                    db_Ref.InsertT_OE_SYS_LOG("ERROR", realerror.Message ?? "");
                     return 0;
                 }
             }

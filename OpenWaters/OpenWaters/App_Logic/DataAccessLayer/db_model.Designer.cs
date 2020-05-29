@@ -6102,7 +6102,6 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
         /// Create a new T_OE_USERS object.
         /// </summary>
         /// <param name="uSER_IDX">Initial value of the USER_IDX property.</param>
-        /// <param name="uSER_ID">Initial value of the USER_ID property.</param>
         /// <param name="pWD_HASH">Initial value of the PWD_HASH property.</param>
         /// <param name="pWD_SALT">Initial value of the PWD_SALT property.</param>
         /// <param name="fNAME">Initial value of the FNAME property.</param>
@@ -6110,11 +6109,10 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
         /// <param name="iNITAL_PWD_FLAG">Initial value of the INITAL_PWD_FLAG property.</param>
         /// <param name="eFFECTIVE_DT">Initial value of the EFFECTIVE_DT property.</param>
         /// <param name="aCT_IND">Initial value of the ACT_IND property.</param>
-        public static T_OE_USERS CreateT_OE_USERS(global::System.Int32 uSER_IDX, global::System.String uSER_ID, global::System.String pWD_HASH, global::System.String pWD_SALT, global::System.String fNAME, global::System.String lNAME, global::System.Boolean iNITAL_PWD_FLAG, global::System.DateTime eFFECTIVE_DT, global::System.Boolean aCT_IND)
+        public static T_OE_USERS CreateT_OE_USERS(global::System.Int32 uSER_IDX, global::System.String pWD_HASH, global::System.String pWD_SALT, global::System.String fNAME, global::System.String lNAME, global::System.Boolean iNITAL_PWD_FLAG, global::System.DateTime eFFECTIVE_DT, global::System.Boolean aCT_IND)
         {
             T_OE_USERS t_OE_USERS = new T_OE_USERS();
             t_OE_USERS.USER_IDX = uSER_IDX;
-            t_OE_USERS.USER_ID = uSER_ID;
             t_OE_USERS.PWD_HASH = pWD_HASH;
             t_OE_USERS.PWD_SALT = pWD_SALT;
             t_OE_USERS.FNAME = fNAME;
@@ -6159,7 +6157,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String USER_ID
         {
@@ -6171,7 +6169,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnUSER_IDChanging(value);
                 ReportPropertyChanging("USER_ID");
-                _USER_ID = StructuralObject.SetValidValue(value, false, "USER_ID");
+                _USER_ID = StructuralObject.SetValidValue(value, true, "USER_ID");
                 ReportPropertyChanged("USER_ID");
                 OnUSER_IDChanged();
             }
@@ -10112,16 +10110,14 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
         /// Create a new T_WQX_IMPORT_TEMP_ACTIVITY_METRIC object.
         /// </summary>
         /// <param name="tEMP_ACTIVITY_METRIC_IDX">Initial value of the TEMP_ACTIVITY_METRIC_IDX property.</param>
-        /// <param name="uSER_ID">Initial value of the USER_ID property.</param>
         /// <param name="oRG_ID">Initial value of the ORG_ID property.</param>
         /// <param name="mETRIC_TYPE_ID">Initial value of the METRIC_TYPE_ID property.</param>
         /// <param name="mETRIC_TYPE_ID_CONTEXT">Initial value of the METRIC_TYPE_ID_CONTEXT property.</param>
         /// <param name="mETRIC_SCORE">Initial value of the METRIC_SCORE property.</param>
-        public static T_WQX_IMPORT_TEMP_ACTIVITY_METRIC CreateT_WQX_IMPORT_TEMP_ACTIVITY_METRIC(global::System.Int32 tEMP_ACTIVITY_METRIC_IDX, global::System.String uSER_ID, global::System.String oRG_ID, global::System.String mETRIC_TYPE_ID, global::System.String mETRIC_TYPE_ID_CONTEXT, global::System.String mETRIC_SCORE)
+        public static T_WQX_IMPORT_TEMP_ACTIVITY_METRIC CreateT_WQX_IMPORT_TEMP_ACTIVITY_METRIC(global::System.Int32 tEMP_ACTIVITY_METRIC_IDX, global::System.String oRG_ID, global::System.String mETRIC_TYPE_ID, global::System.String mETRIC_TYPE_ID_CONTEXT, global::System.String mETRIC_SCORE)
         {
             T_WQX_IMPORT_TEMP_ACTIVITY_METRIC t_WQX_IMPORT_TEMP_ACTIVITY_METRIC = new T_WQX_IMPORT_TEMP_ACTIVITY_METRIC();
             t_WQX_IMPORT_TEMP_ACTIVITY_METRIC.TEMP_ACTIVITY_METRIC_IDX = tEMP_ACTIVITY_METRIC_IDX;
-            t_WQX_IMPORT_TEMP_ACTIVITY_METRIC.USER_ID = uSER_ID;
             t_WQX_IMPORT_TEMP_ACTIVITY_METRIC.ORG_ID = oRG_ID;
             t_WQX_IMPORT_TEMP_ACTIVITY_METRIC.METRIC_TYPE_ID = mETRIC_TYPE_ID;
             t_WQX_IMPORT_TEMP_ACTIVITY_METRIC.METRIC_TYPE_ID_CONTEXT = mETRIC_TYPE_ID_CONTEXT;
@@ -10163,7 +10159,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String USER_ID
         {
@@ -10175,7 +10171,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnUSER_IDChanging(value);
                 ReportPropertyChanging("USER_ID");
-                _USER_ID = StructuralObject.SetValidValue(value, false, "USER_ID");
+                _USER_ID = StructuralObject.SetValidValue(value, true, "USER_ID");
                 ReportPropertyChanged("USER_ID");
                 OnUSER_IDChanged();
             }
@@ -10562,15 +10558,13 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
         /// Create a new T_WQX_IMPORT_TEMP_BIO_INDEX object.
         /// </summary>
         /// <param name="tEMP_BIO_HABITAT_INDEX_IDX">Initial value of the TEMP_BIO_HABITAT_INDEX_IDX property.</param>
-        /// <param name="uSER_ID">Initial value of the USER_ID property.</param>
         /// <param name="oRG_ID">Initial value of the ORG_ID property.</param>
         /// <param name="iNDEX_TYPE_NAME">Initial value of the INDEX_TYPE_NAME property.</param>
         /// <param name="iNDEX_SCORE">Initial value of the INDEX_SCORE property.</param>
-        public static T_WQX_IMPORT_TEMP_BIO_INDEX CreateT_WQX_IMPORT_TEMP_BIO_INDEX(global::System.Int32 tEMP_BIO_HABITAT_INDEX_IDX, global::System.String uSER_ID, global::System.String oRG_ID, global::System.String iNDEX_TYPE_NAME, global::System.String iNDEX_SCORE)
+        public static T_WQX_IMPORT_TEMP_BIO_INDEX CreateT_WQX_IMPORT_TEMP_BIO_INDEX(global::System.Int32 tEMP_BIO_HABITAT_INDEX_IDX, global::System.String oRG_ID, global::System.String iNDEX_TYPE_NAME, global::System.String iNDEX_SCORE)
         {
             T_WQX_IMPORT_TEMP_BIO_INDEX t_WQX_IMPORT_TEMP_BIO_INDEX = new T_WQX_IMPORT_TEMP_BIO_INDEX();
             t_WQX_IMPORT_TEMP_BIO_INDEX.TEMP_BIO_HABITAT_INDEX_IDX = tEMP_BIO_HABITAT_INDEX_IDX;
-            t_WQX_IMPORT_TEMP_BIO_INDEX.USER_ID = uSER_ID;
             t_WQX_IMPORT_TEMP_BIO_INDEX.ORG_ID = oRG_ID;
             t_WQX_IMPORT_TEMP_BIO_INDEX.INDEX_TYPE_NAME = iNDEX_TYPE_NAME;
             t_WQX_IMPORT_TEMP_BIO_INDEX.INDEX_SCORE = iNDEX_SCORE;
@@ -10611,7 +10605,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String USER_ID
         {
@@ -10623,7 +10617,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnUSER_IDChanging(value);
                 ReportPropertyChanging("USER_ID");
-                _USER_ID = StructuralObject.SetValidValue(value, false, "USER_ID");
+                _USER_ID = StructuralObject.SetValidValue(value, true, "USER_ID");
                 ReportPropertyChanged("USER_ID");
                 OnUSER_IDChanged();
             }
@@ -10962,14 +10956,12 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
         /// Create a new T_WQX_IMPORT_TEMP_MONLOC object.
         /// </summary>
         /// <param name="tEMP_MONLOC_IDX">Initial value of the TEMP_MONLOC_IDX property.</param>
-        /// <param name="uSER_ID">Initial value of the USER_ID property.</param>
         /// <param name="lATITUDE_MSR">Initial value of the LATITUDE_MSR property.</param>
         /// <param name="lONGITUDE_MSR">Initial value of the LONGITUDE_MSR property.</param>
-        public static T_WQX_IMPORT_TEMP_MONLOC CreateT_WQX_IMPORT_TEMP_MONLOC(global::System.Int32 tEMP_MONLOC_IDX, global::System.String uSER_ID, global::System.String lATITUDE_MSR, global::System.String lONGITUDE_MSR)
+        public static T_WQX_IMPORT_TEMP_MONLOC CreateT_WQX_IMPORT_TEMP_MONLOC(global::System.Int32 tEMP_MONLOC_IDX, global::System.String lATITUDE_MSR, global::System.String lONGITUDE_MSR)
         {
             T_WQX_IMPORT_TEMP_MONLOC t_WQX_IMPORT_TEMP_MONLOC = new T_WQX_IMPORT_TEMP_MONLOC();
             t_WQX_IMPORT_TEMP_MONLOC.TEMP_MONLOC_IDX = tEMP_MONLOC_IDX;
-            t_WQX_IMPORT_TEMP_MONLOC.USER_ID = uSER_ID;
             t_WQX_IMPORT_TEMP_MONLOC.LATITUDE_MSR = lATITUDE_MSR;
             t_WQX_IMPORT_TEMP_MONLOC.LONGITUDE_MSR = lONGITUDE_MSR;
             return t_WQX_IMPORT_TEMP_MONLOC;
@@ -11009,7 +11001,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String USER_ID
         {
@@ -11021,7 +11013,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnUSER_IDChanging(value);
                 ReportPropertyChanging("USER_ID");
-                _USER_ID = StructuralObject.SetValidValue(value, false, "USER_ID");
+                _USER_ID = StructuralObject.SetValidValue(value, true, "USER_ID");
                 ReportPropertyChanged("USER_ID");
                 OnUSER_IDChanged();
             }
@@ -11792,14 +11784,12 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
         /// Create a new T_WQX_IMPORT_TEMP_PROJECT object.
         /// </summary>
         /// <param name="tEMP_PROJECT_IDX">Initial value of the TEMP_PROJECT_IDX property.</param>
-        /// <param name="uSER_ID">Initial value of the USER_ID property.</param>
         /// <param name="pROJECT_ID">Initial value of the PROJECT_ID property.</param>
         /// <param name="pROJECT_NAME">Initial value of the PROJECT_NAME property.</param>
-        public static T_WQX_IMPORT_TEMP_PROJECT CreateT_WQX_IMPORT_TEMP_PROJECT(global::System.Int32 tEMP_PROJECT_IDX, global::System.String uSER_ID, global::System.String pROJECT_ID, global::System.String pROJECT_NAME)
+        public static T_WQX_IMPORT_TEMP_PROJECT CreateT_WQX_IMPORT_TEMP_PROJECT(global::System.Int32 tEMP_PROJECT_IDX, global::System.String pROJECT_ID, global::System.String pROJECT_NAME)
         {
             T_WQX_IMPORT_TEMP_PROJECT t_WQX_IMPORT_TEMP_PROJECT = new T_WQX_IMPORT_TEMP_PROJECT();
             t_WQX_IMPORT_TEMP_PROJECT.TEMP_PROJECT_IDX = tEMP_PROJECT_IDX;
-            t_WQX_IMPORT_TEMP_PROJECT.USER_ID = uSER_ID;
             t_WQX_IMPORT_TEMP_PROJECT.PROJECT_ID = pROJECT_ID;
             t_WQX_IMPORT_TEMP_PROJECT.PROJECT_NAME = pROJECT_NAME;
             return t_WQX_IMPORT_TEMP_PROJECT;
@@ -11839,7 +11829,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String USER_ID
         {
@@ -11851,7 +11841,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnUSER_IDChanging(value);
                 ReportPropertyChanging("USER_ID");
-                _USER_ID = StructuralObject.SetValidValue(value, false, "USER_ID");
+                _USER_ID = StructuralObject.SetValidValue(value, true, "USER_ID");
                 ReportPropertyChanged("USER_ID");
                 OnUSER_IDChanged();
             }
@@ -13922,14 +13912,12 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
         /// Create a new T_WQX_IMPORT_TEMP_SAMPLE object.
         /// </summary>
         /// <param name="tEMP_SAMPLE_IDX">Initial value of the TEMP_SAMPLE_IDX property.</param>
-        /// <param name="uSER_ID">Initial value of the USER_ID property.</param>
         /// <param name="aCT_TYPE">Initial value of the ACT_TYPE property.</param>
         /// <param name="aCT_MEDIA">Initial value of the ACT_MEDIA property.</param>
-        public static T_WQX_IMPORT_TEMP_SAMPLE CreateT_WQX_IMPORT_TEMP_SAMPLE(global::System.Int32 tEMP_SAMPLE_IDX, global::System.String uSER_ID, global::System.String aCT_TYPE, global::System.String aCT_MEDIA)
+        public static T_WQX_IMPORT_TEMP_SAMPLE CreateT_WQX_IMPORT_TEMP_SAMPLE(global::System.Int32 tEMP_SAMPLE_IDX, global::System.String aCT_TYPE, global::System.String aCT_MEDIA)
         {
             T_WQX_IMPORT_TEMP_SAMPLE t_WQX_IMPORT_TEMP_SAMPLE = new T_WQX_IMPORT_TEMP_SAMPLE();
             t_WQX_IMPORT_TEMP_SAMPLE.TEMP_SAMPLE_IDX = tEMP_SAMPLE_IDX;
-            t_WQX_IMPORT_TEMP_SAMPLE.USER_ID = uSER_ID;
             t_WQX_IMPORT_TEMP_SAMPLE.ACT_TYPE = aCT_TYPE;
             t_WQX_IMPORT_TEMP_SAMPLE.ACT_MEDIA = aCT_MEDIA;
             return t_WQX_IMPORT_TEMP_SAMPLE;
@@ -13969,7 +13957,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String USER_ID
         {
@@ -13981,7 +13969,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
             {
                 OnUSER_IDChanging(value);
                 ReportPropertyChanging("USER_ID");
-                _USER_ID = StructuralObject.SetValidValue(value, false, "USER_ID");
+                _USER_ID = StructuralObject.SetValidValue(value, true, "USER_ID");
                 ReportPropertyChanged("USER_ID");
                 OnUSER_IDChanged();
             }

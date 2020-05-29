@@ -165,11 +165,11 @@ namespace OpenEnvironment
                 //disable the import from EPA option if results already exist
                 if (db_WQX.GetT_WQX_RESULTCount(Session["OrgID"].ToString()) > 0)
                 {
-                    rbImportType.Items[1].Enabled = false;
-                    rbImportType.Items[1].Text = "Import data directly from EPA-WQX (only available for initial synchronization)";
-                    rbImportType.Items[0].Selected = true;
-                    pnlLab.Visible = true;
-                    pnlWQX.Visible = false;
+                    //rbImportType.Items[1].Enabled = false;
+                    //rbImportType.Items[1].Text = "Import data directly from EPA-WQX (only available for initial synchronization)";
+                    //rbImportType.Items[0].Selected = true;
+                    //pnlLab.Visible = true;
+                    //pnlWQX.Visible = false;
                 }
             }
         }
@@ -1109,10 +1109,10 @@ namespace OpenEnvironment
                     };
                     pars.Add(p2);
 
-                    net.epacdxnode.test.ResultSetType queryResp = WQXSubmit.QueryHelper(cred.NodeURL, token, "WQX", "WQX.GetMonitoringLocationByParameters_v2.1", null, null, pars);
+                    net.epacdxnode.test.ResultSetType queryResp = WQXSubmit.QueryHelper(cred.NodeURL, token, "WQX", "WQX.GetMonitoringLocationByParameters_v2.2", null, null, pars);
 
                     //handle no response
-                    if (queryResp == null)
+                    if (queryResp == null || queryResp.results == null)
                     {
                         lblMsg.Text = "No monitoring locations found at EPA for this organization.";
                         return true;
@@ -1168,8 +1168,12 @@ namespace OpenEnvironment
                     return false;
                 }
             }
-            catch
+            catch (Exception ex)
             {
+                Exception realerror = ex;
+                while (realerror.InnerException != null)
+                    realerror = realerror.InnerException;
+                db_Ref.InsertT_OE_SYS_LOG("ERROR", realerror.Message ?? "");
                 return false;
             }
         }

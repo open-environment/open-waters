@@ -48,7 +48,16 @@ namespace OpenEnvironment
                 //*******************************************
                 //grab latest Organizations from WQX Portal
                 //*******************************************
-                WebRequest request = WebRequest.Create("http://www.waterqualitydata.us/Codes/Organization?mimeType=xml");
+                ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls
+                   | SecurityProtocolType.Tls11
+                   | SecurityProtocolType.Tls12
+                   | SecurityProtocolType.Ssl3;
+                WebRequest request = WebRequest.Create("https://www.waterqualitydata.us/Codes/Organization?mimeType=xml");
+
+
+
+
+
                 HttpWebResponse response = (HttpWebResponse)request.GetResponse();
                 // Get the stream containing content returned by the server.
                 Stream dataStream = response.GetResponseStream();
@@ -82,7 +91,7 @@ namespace OpenEnvironment
                     return false;
                 }
             }
-            catch
+            catch (Exception ex)
             {
                 lblMsg.Text = "Import failed.";
                 return false;
@@ -219,6 +228,7 @@ namespace OpenEnvironment
             {
                 //get file
                 DomainValuesService d = new DomainValuesService();
+                d.Url = db_Ref.GetT_OE_APP_SETTING("CDX Ref Data URL");
 
                 XDocument xdoc = null;
 
@@ -256,17 +266,29 @@ namespace OpenEnvironment
                     {
                         db_Ref.InsertOrUpdateT_WQX_REF_DATA(tableName, lv1.ID.Value, lv1.Text.Value, null);
                     }
+
+                    var lv1sALT = from lv1 in xdoc.Descendants("{http://www.exchangenetwork.net/schema/wqx/3}WQXElementRow")
+                               select new
+                               {
+                                   ID = lv1.Descendants("{http://www.exchangenetwork.net/schema/wqx/3}WQXElementRowColumn").First(ID2 => ID2.Attribute("colname").Value == ValueString).Attribute("value"),
+                                   Text = lv1.Descendants("{http://www.exchangenetwork.net/schema/wqx/3}WQXElementRowColumn").First(Text2 => Text2.Attribute("colname").Value == TextString).Attribute("value"),
+                               };
+
+                    foreach (var lv1 in lv1sALT)
+                    {
+                        db_Ref.InsertOrUpdateT_WQX_REF_DATA(tableName, lv1.ID.Value, lv1.Text.Value, null);
+                    }
                 }
 
                 // ***************** CUSTOM PARSING for CHARACTERSTIC **************************************
                 else if (CustomParseName == "Characteristic")
                 {
-                    var lv1s = from lv1 in xdoc.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}WQXElementRow")
+                    var lv1s = from lv1 in xdoc.Descendants("{http://www.exchangenetwork.net/schema/wqx/3}WQXElementRow")
                                select new
                                {
-                                   ID = lv1.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}WQXElementRowColumn").First(ID2 => ID2.Attribute("colname").Value == ValueString).Attribute("value"),
-                                   SampFracReq = lv1.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}WQXElementRowColumn").First(Text2 => Text2.Attribute("colname").Value == "SampleFractionRequired").Attribute("value"),
-                                   PickList = lv1.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}WQXElementRowColumn").First(Text2 => Text2.Attribute("colname").Value == "PickList").Attribute("value")
+                                   ID = lv1.Descendants("{http://www.exchangenetwork.net/schema/wqx/3}WQXElementRowColumn").First(ID2 => ID2.Attribute("colname").Value == ValueString).Attribute("value"),
+                                   SampFracReq = lv1.Descendants("{http://www.exchangenetwork.net/schema/wqx/3}WQXElementRowColumn").First(Text2 => Text2.Attribute("colname").Value == "SampleFractionRequired").Attribute("value"),
+                                   PickList = lv1.Descendants("{http://www.exchangenetwork.net/schema/wqx/3}WQXElementRowColumn").First(Text2 => Text2.Attribute("colname").Value == "PickList").Attribute("value")
                                };
 
                     foreach (var lv1 in lv1s)
@@ -278,13 +300,13 @@ namespace OpenEnvironment
                 // ***************** CUSTOM PARSING for ANALYTICAL METHOD **************************************
                 else if (CustomParseName == "AnalMethod")
                 {
-                    var lv1s = from lv1 in xdoc.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}WQXElementRow")
+                    var lv1s = from lv1 in xdoc.Descendants("{http://www.exchangenetwork.net/schema/wqx/3}WQXElementRow")
                                select new
                                {
-                                   ID = lv1.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}WQXElementRowColumn").First(ID2 => ID2.Attribute("colname").Value == "ID").Attribute("value"),
-                                   Name = lv1.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}WQXElementRowColumn").First(Text2 => Text2.Attribute("colname").Value == "Name").Attribute("value"),
-                                   CTX = lv1.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}WQXElementRowColumn").First(CTX2 => CTX2.Attribute("colname").Value == "ContextCode").Attribute("value"),
-                                   Desc = lv1.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}WQXElementRowColumn").First(Desc2 => Desc2.Attribute("colname").Value == "Description").Attribute("value"),
+                                   ID = lv1.Descendants("{http://www.exchangenetwork.net/schema/wqx/3}WQXElementRowColumn").First(ID2 => ID2.Attribute("colname").Value == "ID").Attribute("value"),
+                                   Name = lv1.Descendants("{http://www.exchangenetwork.net/schema/wqx/3}WQXElementRowColumn").First(Text2 => Text2.Attribute("colname").Value == "Name").Attribute("value"),
+                                   CTX = lv1.Descendants("{http://www.exchangenetwork.net/schema/wqx/3}WQXElementRowColumn").First(CTX2 => CTX2.Attribute("colname").Value == "ContextCode").Attribute("value"),
+                                   Desc = lv1.Descendants("{http://www.exchangenetwork.net/schema/wqx/3}WQXElementRowColumn").First(Desc2 => Desc2.Attribute("colname").Value == "Description").Attribute("value"),
                                };
 
                     foreach (var lv1 in lv1s)

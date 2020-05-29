@@ -8,9 +8,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("Open Waters")]
 [assembly: AssemblyDescription("Open source water quality data management system")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("open-environment.org")]
+[assembly: AssemblyCompany("Open Environment Software")]
 [assembly: AssemblyProduct("Open Waters")]
-[assembly: AssemblyCopyright("Copyright ©  2012-2016")]
+[assembly: AssemblyCopyright("Copyright ©  2012-2020")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -31,5 +31,5 @@ using System.Runtime.InteropServices;
 //
 // You can specify all the values or you can default the Revision and Build Numbers 
 // by using the '*' as shown below:
-[assembly: AssemblyVersion("1.9.8.*")]
-[assembly: AssemblyFileVersion("1.9.8.0")]
+[assembly: AssemblyVersion("1.9.9.*")]
+[assembly: AssemblyFileVersion("1.9.9.0")]

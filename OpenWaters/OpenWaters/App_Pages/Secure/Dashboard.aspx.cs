@@ -30,7 +30,9 @@ namespace OpenEnvironment
                 {
                     string orgID = Session["OrgID"].ToString();
                     pnlOrgSpecific.Visible = true;
-                    lblOrgName.Text = db_WQX.GetWQX_ORGANIZATION_ByID(orgID).ORG_FORMAL_NAME;
+                    T_WQX_ORGANIZATION _org = db_WQX.GetWQX_ORGANIZATION_ByID(orgID);
+                    if (_org != null)
+                        lblOrgName.Text = _org.ORG_FORMAL_NAME;
                     lblProject2.Text = db_WQX.GetWQX_PROJECT(true, orgID, false).Count.ToString();
                     lblSamp.Text = db_WQX.GetWQX_ACTIVITY(true, orgID, null, null, null, null, false, null).Count().ToString();
                     lblSampPend2.Text = db_WQX.GetWQX_ACTIVITY(true, orgID, null, null, null, null, true, null).Count().ToString();
@@ -207,7 +209,7 @@ namespace OpenEnvironment
         private void DisplayPendingUsersGrid()
         {
 
-            string thisOrg = HttpContext.Current.User.IsInRole("ADMINS") ? null : Session["OrgID"].ToString();
+            string thisOrg = HttpContext.Current.User.IsInRole("ADMINS") ? null : Session["OrgID"]?.ToString();
 
             grdPendingUsers.DataSource = db_WQX.GetT_OE_USERSPending(thisOrg);
             grdPendingUsers.DataBind();

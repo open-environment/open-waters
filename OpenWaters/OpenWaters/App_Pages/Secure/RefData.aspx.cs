@@ -168,7 +168,7 @@ namespace OpenEnvironment
 
         protected void grdAnalMethod_RowDataBound(object sender, System.Web.UI.WebControls.GridViewRowEventArgs e)
         {
-            if (e.Row.RowType == DataControlRowType.DataRow)
+            if (e.Row.RowType == DataControlRowType.DataRow && Session["OrgID"] != null)
             {
                 if (e.Row.Cells[2].Text != Session["OrgID"].ToString())
                 {

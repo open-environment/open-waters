@@ -171,7 +171,7 @@
           <Property Name="SETTING_VALUE" Type="varchar" MaxLength="200" />
           <Property Name="ENCRYPT_IND" Type="bit" />
           <Property Name="SETTING_VALUE_SALT" Type="varchar" MaxLength="100" />
-          <Property Name="MODIFY_USERID" Type="varchar" MaxLength="25" />
+          <Property Name="MODIFY_USERID" Type="varchar" MaxLength="200" />
           <Property Name="MODIFY_DT" Type="datetime2" Precision="0" />
         </EntityType>
         <EntityType Name="T_OE_APP_TASKS">
@@ -183,7 +183,7 @@
           <Property Name="TASK_DESC" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="TASK_STATUS" Type="varchar" MaxLength="10" Nullable="false" />
           <Property Name="TASK_FREQ_MS" Type="int" Nullable="false" />
-          <Property Name="MODIFY_USERID" Type="varchar" MaxLength="25" />
+          <Property Name="MODIFY_USERID" Type="varchar" MaxLength="200" />
           <Property Name="MODIFY_DT" Type="datetime2" Precision="0" />
         </EntityType>
         <EntityType Name="T_OE_ROLES">
@@ -193,9 +193,9 @@
           <Property Name="ROLE_IDX" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ROLE_NAME" Type="varchar" MaxLength="25" Nullable="false" />
           <Property Name="ROLE_DESC" Type="varchar" MaxLength="100" Nullable="false" />
-          <Property Name="CREATE_USERID" Type="varchar" MaxLength="25" />
+          <Property Name="CREATE_USERID" Type="varchar" MaxLength="200" />
           <Property Name="CREATE_DT" Type="datetime2" Precision="0" />
-          <Property Name="MODIFY_USERID" Type="varchar" MaxLength="25" />
+          <Property Name="MODIFY_USERID" Type="varchar" MaxLength="200" />
           <Property Name="MODIFY_DT" Type="datetime2" Precision="0" />
         </EntityType>
         <EntityType Name="T_OE_SYS_LOG">
@@ -215,7 +215,7 @@
           <Property Name="USER_ROLE_IDX" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="USER_IDX" Type="int" Nullable="false" />
           <Property Name="ROLE_IDX" Type="int" Nullable="false" />
-          <Property Name="CREATE_USERID" Type="varchar" MaxLength="25" />
+          <Property Name="CREATE_USERID" Type="varchar" MaxLength="200" />
           <Property Name="CREATE_DT" Type="datetime2" Precision="0" />
         </EntityType>
         <EntityType Name="T_OE_USERS">
@@ -223,7 +223,7 @@
             <PropertyRef Name="USER_IDX" />
           </Key>
           <Property Name="USER_IDX" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="USER_ID" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="USER_ID" Type="varchar" MaxLength="200" />
           <Property Name="PWD_HASH" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="PWD_SALT" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="FNAME" Type="varchar" MaxLength="40" Nullable="false" />
@@ -236,9 +236,9 @@
           <Property Name="PHONE_EXT" Type="varchar" MaxLength="4" />
           <Property Name="DEFAULT_ORG_ID" Type="varchar" MaxLength="30" />
           <Property Name="ACT_IND" Type="bit" Nullable="false" />
-          <Property Name="CREATE_USERID" Type="varchar" MaxLength="25" />
+          <Property Name="CREATE_USERID" Type="varchar" MaxLength="200" />
           <Property Name="CREATE_DT" Type="datetime2" Precision="0" />
-          <Property Name="MODIFY_USERID" Type="varchar" MaxLength="25" />
+          <Property Name="MODIFY_USERID" Type="varchar" MaxLength="200" />
           <Property Name="MODIFY_DT" Type="datetime2" Precision="0" />
         </EntityType>
         <EntityType Name="T_WQX_ACTIVITY">
@@ -297,9 +297,9 @@
           <Property Name="WQX_UPDATE_DT" Type="datetime" />
           <Property Name="ACT_IND" Type="bit" />
           <Property Name="CREATE_DT" Type="datetime" />
-          <Property Name="CREATE_USERID" Type="varchar" MaxLength="25" />
+          <Property Name="CREATE_USERID" Type="varchar" MaxLength="200" />
           <Property Name="UPDATE_DT" Type="datetime" />
-          <Property Name="UPDATE_USERID" Type="varchar" MaxLength="25" />
+          <Property Name="UPDATE_USERID" Type="varchar" MaxLength="200" />
           <Property Name="SAMP_COLL_METHOD_IDX" Type="int" />
           <Property Name="SAMP_PREP_IDX" Type="int" />
           <Property Name="TEMP_SAMPLE_IDX" Type="int" />
@@ -332,9 +332,9 @@
           <Property Name="WQX_UPDATE_DT" Type="datetime" />
           <Property Name="ACT_IND" Type="bit" />
           <Property Name="CREATE_DT" Type="datetime" />
-          <Property Name="CREATE_USERID" Type="varchar" MaxLength="25" />
+          <Property Name="CREATE_USERID" Type="varchar" MaxLength="200" />
           <Property Name="UPDATE_DT" Type="datetime" />
-          <Property Name="UPDATE_USERID" Type="varchar" MaxLength="25" />
+          <Property Name="UPDATE_USERID" Type="varchar" MaxLength="200" />
         </EntityType>
         <EntityType Name="T_WQX_BIO_HABITAT_INDEX">
           <Key>
@@ -363,9 +363,9 @@
           <Property Name="WQX_UPDATE_DT" Type="datetime" />
           <Property Name="ACT_IND" Type="bit" />
           <Property Name="CREATE_DT" Type="datetime" />
-          <Property Name="CREATE_USERID" Type="varchar" MaxLength="25" />
+          <Property Name="CREATE_USERID" Type="varchar" MaxLength="200" />
           <Property Name="UPDATE_DT" Type="datetime" />
-          <Property Name="UPDATE_USERID" Type="varchar" MaxLength="25" />
+          <Property Name="UPDATE_USERID" Type="varchar" MaxLength="200" />
         </EntityType>
         <EntityType Name="T_WQX_IMPORT_LOG">
           <Key>
@@ -379,7 +379,7 @@
           <Property Name="IMPORT_STATUS" Type="varchar" MaxLength="15" />
           <Property Name="IMPORT_FILE" Type="varbinary(max)" />
           <Property Name="CREATE_DT" Type="datetime" />
-          <Property Name="CREATE_USERID" Type="varchar" MaxLength="25" />
+          <Property Name="CREATE_USERID" Type="varchar" MaxLength="200" />
           <Property Name="IMPORT_PROGRESS" Type="varchar" MaxLength="10" />
           <Property Name="IMPORT_PROGRESS_MSG" Type="varchar" MaxLength="1000" />
         </EntityType>
@@ -388,7 +388,7 @@
             <PropertyRef Name="TEMP_ACTIVITY_METRIC_IDX" />
           </Key>
           <Property Name="TEMP_ACTIVITY_METRIC_IDX" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="USER_ID" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="USER_ID" Type="varchar" MaxLength="200" />
           <Property Name="ORG_ID" Type="varchar" MaxLength="30" Nullable="false" />
           <Property Name="ACTIVITY_IDX" Type="int" />
           <Property Name="ACTIVITY_ID" Type="varchar" MaxLength="35" />
@@ -410,7 +410,7 @@
             <PropertyRef Name="TEMP_BIO_HABITAT_INDEX_IDX" />
           </Key>
           <Property Name="TEMP_BIO_HABITAT_INDEX_IDX" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="USER_ID" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="USER_ID" Type="varchar" MaxLength="200" />
           <Property Name="ORG_ID" Type="varchar" MaxLength="30" Nullable="false" />
           <Property Name="MONLOC_IDX" Type="int" />
           <Property Name="INDEX_ID" Type="varchar" MaxLength="35" />
@@ -430,7 +430,7 @@
             <PropertyRef Name="TEMP_MONLOC_IDX" />
           </Key>
           <Property Name="TEMP_MONLOC_IDX" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="USER_ID" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="USER_ID" Type="varchar" MaxLength="200" />
           <Property Name="MONLOC_IDX" Type="int" />
           <Property Name="ORG_ID" Type="varchar" MaxLength="30" />
           <Property Name="MONLOC_ID" Type="varchar" MaxLength="35" />
@@ -468,7 +468,7 @@
             <PropertyRef Name="TEMP_PROJECT_IDX" />
           </Key>
           <Property Name="TEMP_PROJECT_IDX" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="USER_ID" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="USER_ID" Type="varchar" MaxLength="200" />
           <Property Name="PROJECT_IDX" Type="int" />
           <Property Name="ORG_ID" Type="varchar" MaxLength="30" />
           <Property Name="PROJECT_ID" Type="varchar" MaxLength="35" Nullable="false" />
@@ -562,7 +562,7 @@
             <PropertyRef Name="TEMP_SAMPLE_IDX" />
           </Key>
           <Property Name="TEMP_SAMPLE_IDX" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="USER_ID" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="USER_ID" Type="varchar" MaxLength="200" />
           <Property Name="ORG_ID" Type="varchar" MaxLength="30" />
           <Property Name="PROJECT_IDX" Type="int" />
           <Property Name="PROJECT_ID" Type="varchar" MaxLength="35" />
@@ -632,7 +632,7 @@
           <Property Name="TYPE_CD" Type="varchar" MaxLength="5" Nullable="false" />
           <Property Name="TEMPLATE_NAME" Type="varchar" MaxLength="150" Nullable="false" />
           <Property Name="CREATE_DT" Type="datetime" />
-          <Property Name="CREATE_USERID" Type="varchar" MaxLength="25" />
+          <Property Name="CREATE_USERID" Type="varchar" MaxLength="200" />
         </EntityType>
         <EntityType Name="T_WQX_IMPORT_TEMPLATE_DTL">
           <Key>
@@ -645,7 +645,7 @@
           <Property Name="CHAR_NAME" Type="varchar" MaxLength="120" />
           <Property Name="CHAR_DEFAULT_UNIT" Type="varchar" MaxLength="12" />
           <Property Name="CREATE_DT" Type="datetime" />
-          <Property Name="CREATE_USERID" Type="varchar" MaxLength="25" />
+          <Property Name="CREATE_USERID" Type="varchar" MaxLength="200" />
           <Property Name="CHAR_DEFAULT_SAMP_FRACTION" Type="varchar" MaxLength="25" />
         </EntityType>
         <EntityType Name="T_WQX_IMPORT_TRANSLATE">
@@ -658,7 +658,7 @@
           <Property Name="DATA_FROM" Type="varchar" MaxLength="150" Nullable="false" />
           <Property Name="DATA_TO" Type="varchar" MaxLength="150" />
           <Property Name="CREATE_DT" Type="datetime" />
-          <Property Name="CREATE_USERID" Type="varchar" MaxLength="25" />
+          <Property Name="CREATE_USERID" Type="varchar" MaxLength="200" />
         </EntityType>
         <EntityType Name="T_WQX_MONLOC">
           <Key>
@@ -699,9 +699,9 @@
           <Property Name="IMPORT_MONLOC_ID" Type="varchar" MaxLength="35" />
           <Property Name="ACT_IND" Type="bit" />
           <Property Name="CREATE_DT" Type="datetime" />
-          <Property Name="CREATE_USERID" Type="varchar" MaxLength="25" />
+          <Property Name="CREATE_USERID" Type="varchar" MaxLength="200" />
           <Property Name="UPDATE_DT" Type="datetime" />
-          <Property Name="UPDATE_USERID" Type="varchar" MaxLength="25" />
+          <Property Name="UPDATE_USERID" Type="varchar" MaxLength="200" />
         </EntityType>
         <EntityType Name="T_WQX_ORG_ADDRESS">
           <Key>
@@ -718,9 +718,9 @@
           <Property Name="COUNTRY_CD" Type="varchar" MaxLength="2" />
           <Property Name="COUNTY_CD" Type="varchar" MaxLength="3" />
           <Property Name="CREATE_DT" Type="datetime" />
-          <Property Name="CREATE_USERID" Type="varchar" MaxLength="25" />
+          <Property Name="CREATE_USERID" Type="varchar" MaxLength="200" />
           <Property Name="UPDATE_DT" Type="datetime" />
-          <Property Name="UPDATE_USERID" Type="varchar" MaxLength="25" />
+          <Property Name="UPDATE_USERID" Type="varchar" MaxLength="200" />
         </EntityType>
         <EntityType Name="T_WQX_ORGANIZATION">
           <Key>
@@ -741,9 +741,9 @@
           <Property Name="CDX_SUBMIT_IND" Type="bit" />
           <Property Name="DEFAULT_TIMEZONE" Type="varchar" MaxLength="20" />
           <Property Name="CREATE_DT" Type="datetime" />
-          <Property Name="CREATE_USERID" Type="varchar" MaxLength="25" />
+          <Property Name="CREATE_USERID" Type="varchar" MaxLength="200" />
           <Property Name="UPDATE_DT" Type="datetime" />
-          <Property Name="UPDATE_USERID" Type="varchar" MaxLength="25" />
+          <Property Name="UPDATE_USERID" Type="varchar" MaxLength="200" />
           <Property Name="MAILING_ADDRESS" Type="varchar" MaxLength="30" />
           <Property Name="MAILING_ADDRESS2" Type="varchar" MaxLength="30" />
           <Property Name="MAILING_ADD_CITY" Type="varchar" MaxLength="25" />
@@ -767,9 +767,9 @@
           <Property Name="WQX_UPDATE_DT" Type="datetime" />
           <Property Name="ACT_IND" Type="bit" />
           <Property Name="CREATE_DT" Type="datetime" />
-          <Property Name="CREATE_USERID" Type="varchar" MaxLength="25" />
+          <Property Name="CREATE_USERID" Type="varchar" MaxLength="200" />
           <Property Name="UPDATE_DT" Type="datetime" />
-          <Property Name="UPDATE_USERID" Type="varchar" MaxLength="25" />
+          <Property Name="UPDATE_USERID" Type="varchar" MaxLength="200" />
         </EntityType>
         <EntityType Name="T_WQX_REF_ANAL_METHOD">
           <Key>
@@ -794,9 +794,9 @@
           <Property Name="UPPER_BOUND" Type="decimal" Precision="18" Scale="0" />
           <Property Name="ACT_IND" Type="bit" />
           <Property Name="CREATE_DT" Type="datetime" />
-          <Property Name="CREATE_USERID" Type="varchar" MaxLength="25" />
+          <Property Name="CREATE_USERID" Type="varchar" MaxLength="200" />
           <Property Name="UPDATE_DT" Type="datetime" />
-          <Property Name="UPDATE_USERID" Type="varchar" MaxLength="25" />
+          <Property Name="UPDATE_USERID" Type="varchar" MaxLength="200" />
         </EntityType>
         <EntityType Name="T_WQX_REF_CHAR_ORG">
           <Key>
@@ -805,7 +805,7 @@
           </Key>
           <Property Name="CHAR_NAME" Type="varchar" MaxLength="120" Nullable="false" />
           <Property Name="ORG_ID" Type="varchar" MaxLength="30" Nullable="false" />
-          <Property Name="CREATE_USERID" Type="varchar" MaxLength="25" />
+          <Property Name="CREATE_USERID" Type="varchar" MaxLength="200" />
           <Property Name="CREATE_DT" Type="datetime2" Precision="0" />
           <Property Name="DEFAULT_DETECT_LIMIT" Type="varchar" MaxLength="12" />
           <Property Name="DEFAULT_UNIT" Type="varchar" MaxLength="12" />
@@ -875,9 +875,9 @@
           <Property Name="LAB_ACCRED_AUTHORITY" Type="varchar" MaxLength="20" />
           <Property Name="ACT_IND" Type="bit" />
           <Property Name="CREATE_DT" Type="datetime" />
-          <Property Name="CREATE_USERID" Type="varchar" MaxLength="25" />
+          <Property Name="CREATE_USERID" Type="varchar" MaxLength="200" />
           <Property Name="UPDATE_DT" Type="datetime" />
-          <Property Name="UPDATE_USERID" Type="varchar" MaxLength="25" />
+          <Property Name="UPDATE_USERID" Type="varchar" MaxLength="200" />
           <Property Name="ORG_ID" Type="varchar" MaxLength="120" Nullable="false" />
         </EntityType>
         <EntityType Name="T_WQX_REF_SAMP_COL_METHOD">
@@ -911,7 +911,7 @@
           </Key>
           <Property Name="BIO_SUBJECT_TAXONOMY" Type="varchar" MaxLength="120" Nullable="false" />
           <Property Name="ORG_ID" Type="varchar" MaxLength="30" Nullable="false" />
-          <Property Name="CREATE_USERID" Type="varchar" MaxLength="25" />
+          <Property Name="CREATE_USERID" Type="varchar" MaxLength="200" />
           <Property Name="CREATE_DT" Type="datetime2" Precision="0" />
         </EntityType>
         <EntityType Name="T_WQX_RESULT">
@@ -1009,7 +1009,7 @@
           <Property Name="USER_IDX" Type="int" Nullable="false" />
           <Property Name="ORG_ID" Type="varchar" MaxLength="30" Nullable="false" />
           <Property Name="ROLE_CD" Type="varchar" MaxLength="2" />
-          <Property Name="CREATE_USERID" Type="varchar" MaxLength="25" />
+          <Property Name="CREATE_USERID" Type="varchar" MaxLength="200" />
           <Property Name="CREATE_DT" Type="datetime2" Precision="0" />
         </EntityType>
         <!--Errors Found During Generation:
@@ -2133,7 +2133,7 @@ FROM [dbo].[V_WQX_TRANSACTION_LOG] AS [V_WQX_TRANSACTION_LOG]</DefiningQuery>
           <Property Type="String" Name="SETTING_VALUE" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Type="Boolean" Name="ENCRYPT_IND" />
           <Property Type="String" Name="SETTING_VALUE_SALT" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Type="String" Name="MODIFY_USERID" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="MODIFY_USERID" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Type="DateTime" Name="MODIFY_DT" Precision="0" />
           <Property Name="SETTING_DESC" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
         </EntityType>
@@ -2146,7 +2146,7 @@ FROM [dbo].[V_WQX_TRANSACTION_LOG] AS [V_WQX_TRANSACTION_LOG]</DefiningQuery>
           <Property Type="String" Name="TASK_DESC" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Type="String" Name="TASK_STATUS" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Type="Int32" Name="TASK_FREQ_MS" Nullable="false" />
-          <Property Type="String" Name="MODIFY_USERID" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="MODIFY_USERID" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Type="DateTime" Name="MODIFY_DT" Precision="0" />
         </EntityType>
         <EntityType Name="T_OE_ROLES">
@@ -2156,9 +2156,9 @@ FROM [dbo].[V_WQX_TRANSACTION_LOG] AS [V_WQX_TRANSACTION_LOG]</DefiningQuery>
           <Property Type="Int32" Name="ROLE_IDX" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Type="String" Name="ROLE_NAME" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
           <Property Type="String" Name="ROLE_DESC" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Type="String" Name="CREATE_USERID" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CREATE_USERID" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Type="DateTime" Name="CREATE_DT" Precision="0" />
-          <Property Type="String" Name="MODIFY_USERID" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="MODIFY_USERID" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Type="DateTime" Name="MODIFY_DT" Precision="0" />
           <NavigationProperty Name="T_OE_USER_ROLES" Relationship="OpenEnvironmentModel.FK__T_OE_USER__ROLE___07F6335A" FromRole="T_OE_ROLES" ToRole="T_OE_USER_ROLES" />
         </EntityType>
@@ -2169,7 +2169,7 @@ FROM [dbo].[V_WQX_TRANSACTION_LOG] AS [V_WQX_TRANSACTION_LOG]</DefiningQuery>
           <Property Type="Int32" Name="USER_ROLE_IDX" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Type="Int32" Name="USER_IDX" Nullable="false" />
           <Property Type="Int32" Name="ROLE_IDX" Nullable="false" />
-          <Property Type="String" Name="CREATE_USERID" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CREATE_USERID" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Type="DateTime" Name="CREATE_DT" Precision="0" />
           <NavigationProperty Name="T_OE_ROLES" Relationship="OpenEnvironmentModel.FK__T_OE_USER__ROLE___07F6335A" FromRole="T_OE_USER_ROLES" ToRole="T_OE_ROLES" />
           <NavigationProperty Name="T_OE_USERS" Relationship="OpenEnvironmentModel.FK__T_OE_USER__USER___08EA5793" FromRole="T_OE_USER_ROLES" ToRole="T_OE_USERS" />
@@ -2179,7 +2179,7 @@ FROM [dbo].[V_WQX_TRANSACTION_LOG] AS [V_WQX_TRANSACTION_LOG]</DefiningQuery>
             <PropertyRef Name="USER_IDX" />
           </Key>
           <Property Type="Int32" Name="USER_IDX" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
-          <Property Type="String" Name="USER_ID" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="USER_ID" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Type="String" Name="PWD_HASH" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Type="String" Name="PWD_SALT" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Type="String" Name="FNAME" Nullable="false" MaxLength="40" FixedLength="false" Unicode="false" />
@@ -2191,9 +2191,9 @@ FROM [dbo].[V_WQX_TRANSACTION_LOG] AS [V_WQX_TRANSACTION_LOG]</DefiningQuery>
           <Property Type="String" Name="PHONE" MaxLength="12" FixedLength="false" Unicode="false" />
           <Property Type="String" Name="PHONE_EXT" MaxLength="4" FixedLength="false" Unicode="false" />
           <Property Type="Boolean" Name="ACT_IND" Nullable="false" />
-          <Property Type="String" Name="CREATE_USERID" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CREATE_USERID" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Type="DateTime" Name="CREATE_DT" Precision="0" />
-          <Property Type="String" Name="MODIFY_USERID" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="MODIFY_USERID" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Type="DateTime" Name="MODIFY_DT" Precision="0" />
           <NavigationProperty Name="T_OE_USER_ROLES" Relationship="OpenEnvironmentModel.FK__T_OE_USER__USER___08EA5793" FromRole="T_OE_USERS" ToRole="T_OE_USER_ROLES" />
           <Property Type="String" Name="DEFAULT_ORG_ID" MaxLength="30" FixedLength="false" Unicode="false" />
@@ -2226,9 +2226,9 @@ FROM [dbo].[V_WQX_TRANSACTION_LOG] AS [V_WQX_TRANSACTION_LOG]</DefiningQuery>
           <Property Type="DateTime" Name="WQX_UPDATE_DT" Precision="3" />
           <Property Type="Boolean" Name="ACT_IND" />
           <Property Type="DateTime" Name="CREATE_DT" Precision="3" />
-          <Property Type="String" Name="CREATE_USERID" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CREATE_USERID" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Type="DateTime" Name="UPDATE_DT" Precision="3" />
-          <Property Type="String" Name="UPDATE_USERID" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="UPDATE_USERID" MaxLength="200" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="T_WQX_BIO_HABITAT_INDEX" Relationship="OpenEnvironmentModel.FK__T_WQX_ACT__BIO_H__239E4DCF" FromRole="T_WQX_ACTIVITY_METRIC" ToRole="T_WQX_BIO_HABITAT_INDEX" />
           <NavigationProperty Name="T_WQX_ACTIVITY" Relationship="OpenEnvironmentModel.FK__T_WQX_ACT__ACTIV__44FF419A" FromRole="T_WQX_ACTIVITY_METRIC" ToRole="T_WQX_ACTIVITY" />
         </EntityType>
@@ -2259,9 +2259,9 @@ FROM [dbo].[V_WQX_TRANSACTION_LOG] AS [V_WQX_TRANSACTION_LOG]</DefiningQuery>
           <Property Type="DateTime" Name="WQX_UPDATE_DT" Precision="3" />
           <Property Type="Boolean" Name="ACT_IND" />
           <Property Type="DateTime" Name="CREATE_DT" Precision="3" />
-          <Property Type="String" Name="CREATE_USERID" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CREATE_USERID" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Type="DateTime" Name="UPDATE_DT" Precision="3" />
-          <Property Type="String" Name="UPDATE_USERID" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="UPDATE_USERID" MaxLength="200" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="T_WQX_ACTIVITY_METRIC" Relationship="OpenEnvironmentModel.FK__T_WQX_ACT__BIO_H__239E4DCF" FromRole="T_WQX_BIO_HABITAT_INDEX" ToRole="T_WQX_ACTIVITY_METRIC" />
           <NavigationProperty Name="T_WQX_MONLOC" Relationship="OpenEnvironmentModel.FK__T_WQX_BIO__MONLO__1ED998B2" FromRole="T_WQX_BIO_HABITAT_INDEX" ToRole="T_WQX_MONLOC" />
           <NavigationProperty Name="T_WQX_ORGANIZATION" Relationship="OpenEnvironmentModel.FK__T_WQX_BIO__ORG_I__34C8D9D1" FromRole="T_WQX_BIO_HABITAT_INDEX" ToRole="T_WQX_ORGANIZATION" />
@@ -2305,9 +2305,9 @@ FROM [dbo].[V_WQX_TRANSACTION_LOG] AS [V_WQX_TRANSACTION_LOG]</DefiningQuery>
           <Property Type="String" Name="IMPORT_MONLOC_ID" MaxLength="35" FixedLength="false" Unicode="false" />
           <Property Type="Boolean" Name="ACT_IND" />
           <Property Type="DateTime" Name="CREATE_DT" Precision="3" />
-          <Property Type="String" Name="CREATE_USERID" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CREATE_USERID" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Type="DateTime" Name="UPDATE_DT" Precision="3" />
-          <Property Type="String" Name="UPDATE_USERID" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="UPDATE_USERID" MaxLength="200" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="T_WQX_BIO_HABITAT_INDEX" Relationship="OpenEnvironmentModel.FK__T_WQX_BIO__MONLO__1ED998B2" FromRole="T_WQX_MONLOC" ToRole="T_WQX_BIO_HABITAT_INDEX" />
           <NavigationProperty Name="T_WQX_ORGANIZATION" Relationship="OpenEnvironmentModel.FK__T_WQX_MON__ORG_I__2C3393D0" FromRole="T_WQX_MONLOC" ToRole="T_WQX_ORGANIZATION" />
           <NavigationProperty Name="T_WQX_ACTIVITY" Relationship="OpenEnvironmentModel.FK__T_WQX_ACT__MONLO__3D5E1FD2" FromRole="T_WQX_MONLOC" ToRole="T_WQX_ACTIVITY" />
@@ -2328,9 +2328,9 @@ FROM [dbo].[V_WQX_TRANSACTION_LOG] AS [V_WQX_TRANSACTION_LOG]</DefiningQuery>
           <Property Type="String" Name="COUNTRY_CD" MaxLength="2" FixedLength="false" Unicode="false" />
           <Property Type="String" Name="COUNTY_CD" MaxLength="3" FixedLength="false" Unicode="false" />
           <Property Type="DateTime" Name="CREATE_DT" Precision="3" />
-          <Property Type="String" Name="CREATE_USERID" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CREATE_USERID" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Type="DateTime" Name="UPDATE_DT" Precision="3" />
-          <Property Type="String" Name="UPDATE_USERID" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="UPDATE_USERID" MaxLength="200" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="T_WQX_ORGANIZATION" Relationship="OpenEnvironmentModel.FK__T_WQX_ORG__ORG_I__22AA2996" FromRole="T_WQX_ORG_ADDRESS" ToRole="T_WQX_ORGANIZATION" />
         </EntityType>
         <EntityType Name="T_WQX_PROJECT">
@@ -2350,9 +2350,9 @@ FROM [dbo].[V_WQX_TRANSACTION_LOG] AS [V_WQX_TRANSACTION_LOG]</DefiningQuery>
           <Property Type="DateTime" Name="WQX_UPDATE_DT" Precision="3" />
           <Property Type="Boolean" Name="ACT_IND" />
           <Property Type="DateTime" Name="CREATE_DT" Precision="3" />
-          <Property Type="String" Name="CREATE_USERID" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CREATE_USERID" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Type="DateTime" Name="UPDATE_DT" Precision="3" />
-          <Property Type="String" Name="UPDATE_USERID" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="UPDATE_USERID" MaxLength="200" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="T_WQX_ORGANIZATION" Relationship="OpenEnvironmentModel.FK__T_WQX_PRO__ORG_I__29572725" FromRole="T_WQX_PROJECT" ToRole="T_WQX_ORGANIZATION" />
           <NavigationProperty Name="T_WQX_ACTIVITY" Relationship="OpenEnvironmentModel.FK__T_WQX_ACT__PROJE__3C69FB99" FromRole="T_WQX_PROJECT" ToRole="T_WQX_ACTIVITY" />
         </EntityType>
@@ -2456,9 +2456,9 @@ FROM [dbo].[V_WQX_TRANSACTION_LOG] AS [V_WQX_TRANSACTION_LOG]</DefiningQuery>
           <Property Type="Decimal" Name="UPPER_BOUND" Precision="18" Scale="0" />
           <Property Type="Boolean" Name="ACT_IND" />
           <Property Type="DateTime" Name="CREATE_DT" Precision="3" />
-          <Property Type="String" Name="CREATE_USERID" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CREATE_USERID" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Type="DateTime" Name="UPDATE_DT" Precision="3" />
-          <Property Type="String" Name="UPDATE_USERID" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="UPDATE_USERID" MaxLength="200" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="T_WQX_REF_CHARACTERISTIC" Relationship="OpenEnvironmentModel.FK__T_WQX_REF__CHAR___46E78A0C" FromRole="T_WQX_REF_CHAR_LIMITS" ToRole="T_WQX_REF_CHARACTERISTIC" />
         </EntityType>
         <Association Name="FK__T_WQX_REF__CHAR___46E78A0C">
@@ -2518,7 +2518,7 @@ FROM [dbo].[V_WQX_TRANSACTION_LOG] AS [V_WQX_TRANSACTION_LOG]</DefiningQuery>
           <Property Type="Int32" Name="USER_IDX" Nullable="false" />
           <Property Type="String" Name="ORG_ID" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Type="String" Name="ROLE_CD" MaxLength="2" FixedLength="false" Unicode="false" />
-          <Property Type="String" Name="CREATE_USERID" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CREATE_USERID" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Type="DateTime" Name="CREATE_DT" Precision="0" />
           <NavigationProperty Name="T_OE_USERS" Relationship="OpenEnvironmentModel.FK__T_WQX_USE__USER___0E6E26BF" FromRole="T_WQX_USER_ORGS" ToRole="T_OE_USERS" />
           <NavigationProperty Name="T_WQX_ORGANIZATION" Relationship="OpenEnvironmentModel.FK__T_WQX_USE__ORG_I__25869641" FromRole="T_WQX_USER_ORGS" ToRole="T_WQX_ORGANIZATION" />
@@ -2544,7 +2544,7 @@ FROM [dbo].[V_WQX_TRANSACTION_LOG] AS [V_WQX_TRANSACTION_LOG]</DefiningQuery>
           <Property Name="TYPE_CD" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
           <Property Name="TEMPLATE_NAME" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
           <Property Name="CREATE_DT" Type="DateTime" Precision="3" />
-          <Property Name="CREATE_USERID" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="CREATE_USERID" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="T_WQX_IMPORT_TEMPLATE_DTL" Relationship="OpenEnvironmentModel.FK__T_WQX_IMP__TEMPL__66603565" FromRole="T_WQX_IMPORT_TEMPLATE" ToRole="T_WQX_IMPORT_TEMPLATE_DTL" />
           <NavigationProperty Name="T_WQX_ORGANIZATION" Relationship="OpenEnvironmentModel.FK__T_WQX_IMP__ORG_I__4F7CD00D" FromRole="T_WQX_IMPORT_TEMPLATE" ToRole="T_WQX_ORGANIZATION" />
         </EntityType>
@@ -2559,7 +2559,7 @@ FROM [dbo].[V_WQX_TRANSACTION_LOG] AS [V_WQX_TRANSACTION_LOG]</DefiningQuery>
           <Property Name="CHAR_NAME" Type="String" MaxLength="120" FixedLength="false" Unicode="false" />
           <Property Name="CHAR_DEFAULT_UNIT" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
           <Property Name="CREATE_DT" Type="DateTime" Precision="3" />
-          <Property Name="CREATE_USERID" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="CREATE_USERID" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="T_WQX_IMPORT_TEMPLATE" Relationship="OpenEnvironmentModel.FK__T_WQX_IMP__TEMPL__66603565" FromRole="T_WQX_IMPORT_TEMPLATE_DTL" ToRole="T_WQX_IMPORT_TEMPLATE" />
           <Property Name="CHAR_DEFAULT_SAMP_FRACTION" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
         </EntityType>
@@ -2582,7 +2582,7 @@ FROM [dbo].[V_WQX_TRANSACTION_LOG] AS [V_WQX_TRANSACTION_LOG]</DefiningQuery>
             <PropertyRef Name="TEMP_SAMPLE_IDX" />
           </Key>
           <Property Name="TEMP_SAMPLE_IDX" Type="Int32" Nullable="false" a:StoreGeneratedPattern="Identity" xmlns:a="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
-          <Property Name="USER_ID" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="USER_ID" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="ORG_ID" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="PROJECT_IDX" Type="Int32" />
           <Property Name="PROJECT_ID" Type="String" MaxLength="35" FixedLength="false" Unicode="false" />
@@ -2649,7 +2649,7 @@ FROM [dbo].[V_WQX_TRANSACTION_LOG] AS [V_WQX_TRANSACTION_LOG]</DefiningQuery>
             <PropertyRef Name="TEMP_MONLOC_IDX" />
           </Key>
           <Property Name="TEMP_MONLOC_IDX" Type="Int32" Nullable="false" a:StoreGeneratedPattern="Identity" xmlns:a="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
-          <Property Name="USER_ID" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="USER_ID" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="MONLOC_IDX" Type="Int32" />
           <Property Name="ORG_ID" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="MONLOC_ID" Type="String" MaxLength="35" FixedLength="false" Unicode="false" />
@@ -2699,9 +2699,9 @@ FROM [dbo].[V_WQX_TRANSACTION_LOG] AS [V_WQX_TRANSACTION_LOG]</DefiningQuery>
           <Property Name="CDX_SUBMITTER_PWD_HASH" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="CDX_SUBMITTER_PWD_SALT" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="CREATE_DT" Type="DateTime" Precision="3" />
-          <Property Name="CREATE_USERID" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="CREATE_USERID" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="UPDATE_DT" Type="DateTime" Precision="3" />
-          <Property Name="UPDATE_USERID" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="UPDATE_USERID" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="CDX_SUBMIT_IND" Type="Boolean" />
           <NavigationProperty Name="T_WQX_BIO_HABITAT_INDEX" Relationship="OpenEnvironmentModel.FK__T_WQX_BIO__ORG_I__34C8D9D1" FromRole="T_WQX_ORGANIZATION" ToRole="T_WQX_BIO_HABITAT_INDEX" />
           <NavigationProperty Name="T_WQX_IMPORT_TEMPLATE" Relationship="OpenEnvironmentModel.FK__T_WQX_IMP__ORG_I__4F7CD00D" FromRole="T_WQX_ORGANIZATION" ToRole="T_WQX_IMPORT_TEMPLATE" />
@@ -2854,7 +2854,7 @@ FROM [dbo].[V_WQX_TRANSACTION_LOG] AS [V_WQX_TRANSACTION_LOG]</DefiningQuery>
             <PropertyRef Name="TEMP_PROJECT_IDX" />
           </Key>
           <Property Name="TEMP_PROJECT_IDX" Type="Int32" Nullable="false" a:StoreGeneratedPattern="Identity" xmlns:a="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
-          <Property Name="USER_ID" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="USER_ID" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="PROJECT_IDX" Type="Int32" />
           <Property Name="ORG_ID" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="PROJECT_ID" Type="String" Nullable="false" MaxLength="35" FixedLength="false" Unicode="false" />
@@ -2987,9 +2987,9 @@ FROM [dbo].[V_WQX_TRANSACTION_LOG] AS [V_WQX_TRANSACTION_LOG]</DefiningQuery>
           <Property Name="WQX_UPDATE_DT" Type="DateTime" Precision="3" />
           <Property Name="ACT_IND" Type="Boolean" />
           <Property Name="CREATE_DT" Type="DateTime" Precision="3" />
-          <Property Name="CREATE_USERID" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="CREATE_USERID" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="UPDATE_DT" Type="DateTime" Precision="3" />
-          <Property Name="UPDATE_USERID" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="UPDATE_USERID" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="SAMP_COLL_METHOD_IDX" Type="Int32" />
           <Property Name="SAMP_PREP_IDX" Type="Int32" />
           <NavigationProperty Name="T_WQX_ACTIVITY_METRIC" Relationship="OpenEnvironmentModel.FK__T_WQX_ACT__ACTIV__44FF419A" FromRole="T_WQX_ACTIVITY" ToRole="T_WQX_ACTIVITY_METRIC" />
@@ -3165,7 +3165,7 @@ FROM [dbo].[V_WQX_TRANSACTION_LOG] AS [V_WQX_TRANSACTION_LOG]</DefiningQuery>
           <Property Name="IMPORT_STATUS" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
           <Property Name="IMPORT_FILE" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="CREATE_DT" Type="DateTime" Precision="3" />
-          <Property Name="CREATE_USERID" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="CREATE_USERID" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="IMPORT_PROGRESS" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="IMPORT_PROGRESS_MSG" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="T_WQX_ORGANIZATION" Relationship="OpenEnvironmentModel.FK__T_WQX_IMP__ORG_I__534D60F1" FromRole="T_WQX_IMPORT_LOG" ToRole="T_WQX_ORGANIZATION" />
@@ -3194,9 +3194,9 @@ FROM [dbo].[V_WQX_TRANSACTION_LOG] AS [V_WQX_TRANSACTION_LOG]</DefiningQuery>
           <Property Name="LAB_ACCRED_AUTHORITY" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="ACT_IND" Type="Boolean" />
           <Property Name="CREATE_DT" Type="DateTime" Precision="3" />
-          <Property Name="CREATE_USERID" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="CREATE_USERID" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="UPDATE_DT" Type="DateTime" Precision="3" />
-          <Property Name="UPDATE_USERID" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="UPDATE_USERID" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="ORG_ID" Type="String" Nullable="false" MaxLength="120" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="T_WQX_RESULT" Relationship="OpenEnvironmentModel.FK__T_WQX_RES__LAB_I__2A164134" FromRole="T_WQX_REF_LAB" ToRole="T_WQX_RESULT" />
         </EntityType>
@@ -3221,7 +3221,7 @@ FROM [dbo].[V_WQX_TRANSACTION_LOG] AS [V_WQX_TRANSACTION_LOG]</DefiningQuery>
           </Key>
           <Property Name="BIO_SUBJECT_TAXONOMY" Type="String" Nullable="false" MaxLength="120" FixedLength="false" Unicode="false" />
           <Property Name="ORG_ID" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
-          <Property Name="CREATE_USERID" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="CREATE_USERID" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="CREATE_DT" Type="DateTime" Precision="0" />
           <NavigationProperty Name="T_WQX_ORGANIZATION" Relationship="OpenEnvironmentModel.FK__T_WQX_REF__ORG_I__756D6ECB" FromRole="T_WQX_REF_TAXA_ORG" ToRole="T_WQX_ORGANIZATION" />
         </EntityType>
@@ -3246,7 +3246,7 @@ FROM [dbo].[V_WQX_TRANSACTION_LOG] AS [V_WQX_TRANSACTION_LOG]</DefiningQuery>
           </Key>
           <Property Name="CHAR_NAME" Type="String" Nullable="false" MaxLength="120" FixedLength="false" Unicode="false" />
           <Property Name="ORG_ID" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
-          <Property Name="CREATE_USERID" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="CREATE_USERID" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="CREATE_DT" Type="DateTime" Precision="0" />
           <Property Name="DEFAULT_DETECT_LIMIT" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
           <Property Name="DEFAULT_UNIT" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
@@ -3416,7 +3416,7 @@ FROM [dbo].[V_WQX_TRANSACTION_LOG] AS [V_WQX_TRANSACTION_LOG]</DefiningQuery>
           <Property Name="DATA_FROM" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
           <Property Name="DATA_TO" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
           <Property Name="CREATE_DT" Type="DateTime" Precision="3" />
-          <Property Name="CREATE_USERID" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="CREATE_USERID" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="T_WQX_ORGANIZATION" Relationship="OpenEnvironmentModel.FK__T_WQX_IMP__ORG_I__44952D46" FromRole="T_WQX_IMPORT_TRANSLATE" ToRole="T_WQX_ORGANIZATION" />
         </EntityType>
         <Association Name="FK__T_WQX_IMP__ORG_I__44952D46">
@@ -3754,7 +3754,7 @@ FROM [dbo].[V_WQX_TRANSACTION_LOG] AS [V_WQX_TRANSACTION_LOG]</DefiningQuery>
             <PropertyRef Name="TEMP_ACTIVITY_METRIC_IDX" />
           </Key>
           <Property Name="TEMP_ACTIVITY_METRIC_IDX" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="USER_ID" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="USER_ID" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="ORG_ID" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="ACTIVITY_IDX" Type="Int32" />
           <Property Name="METRIC_TYPE_ID" Type="String" Nullable="false" MaxLength="35" FixedLength="false" Unicode="false" />
@@ -3776,7 +3776,7 @@ FROM [dbo].[V_WQX_TRANSACTION_LOG] AS [V_WQX_TRANSACTION_LOG]</DefiningQuery>
             <PropertyRef Name="TEMP_BIO_HABITAT_INDEX_IDX" />
           </Key>
           <Property Name="TEMP_BIO_HABITAT_INDEX_IDX" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="USER_ID" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="USER_ID" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="ORG_ID" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="MONLOC_IDX" Type="Int32" />
           <Property Name="INDEX_ID" Type="String" MaxLength="35" FixedLength="false" Unicode="false" />

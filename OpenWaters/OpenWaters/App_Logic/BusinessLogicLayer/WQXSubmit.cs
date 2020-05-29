@@ -442,270 +442,281 @@ namespace OpenEnvironment.App_Logic.BusinessLogicLayer
 
         public static bool ImportActivity(string OrgID, int? ImportID, string UserID)
         {
-            //*******UPDATE IMPORT LOG TO SIGNIFY THAT IMPORT HAS BEGUN
-            db_Ref.InsertUpdateWQX_IMPORT_LOG(ImportID, null, null, null, 0, "Processing", "1", "Import started", null, "SYSTEM");
-
-            //*******AUTHENTICATE TO EPA***********************************
-            CDXCredentials cred = WQXSubmit.GetCDXSubmitCredentials2(OrgID);
-            string token = WQXSubmit.AuthHelper(cred.userID, cred.credential, "Password", "default", cred.NodeURL);
-            db_Ref.InsertUpdateWQX_IMPORT_LOG(ImportID, null, null, null, 0, "Processing", "2", "Authenticated to EPA", null, "SYSTEM");
-
-            //*******SOLICIT*****************************************
-            if (token.Length > 0)
+            try
             {
-                List<net.epacdxnode.test.ParameterType> pars = new List<net.epacdxnode.test.ParameterType>();
+                //*******UPDATE IMPORT LOG TO SIGNIFY THAT IMPORT HAS BEGUN
+                db_Ref.InsertUpdateWQX_IMPORT_LOG(ImportID, null, null, null, 0, "Processing", "1", "Import started", null, "SYSTEM");
 
-                net.epacdxnode.test.ParameterType p = new net.epacdxnode.test.ParameterType();
-                p.parameterName = "organizationIdentifier";
-                p.Value = OrgID;
-                pars.Add(p);
+                //*******AUTHENTICATE TO EPA***********************************
+                CDXCredentials cred = WQXSubmit.GetCDXSubmitCredentials2(OrgID);
+                string token = WQXSubmit.AuthHelper(cred.userID, cred.credential, "Password", "default", cred.NodeURL);
+                db_Ref.InsertUpdateWQX_IMPORT_LOG(ImportID, null, null, null, 0, "Processing", "2", "Authenticated to EPA", null, "SYSTEM");
 
-                net.epacdxnode.test.StatusResponseType solResp = WQXSubmit.SolicitHelper(cred.NodeURL, token, "WQX", "WQX.GetResultByParameters_v2.1", null, null, pars);
-                if (solResp == null)
+                //*******SOLICIT*****************************************
+                if (token.Length > 0)
                 {
-                    db_Ref.InsertUpdateWQX_IMPORT_LOG(ImportID, null, null, null, 0, "Failed", "100", "Failed - retrieving data from EPA timed out", null, "SYSTEM");
-                    return false;
-                }
-                db_Ref.InsertUpdateWQX_IMPORT_LOG(ImportID, null, null, null, 0, "Processing", "5", "Request for data from EPA complete - awaiting response.", null, "SYSTEM");
+                    List<net.epacdxnode.test.ParameterType> pars = new List<net.epacdxnode.test.ParameterType>();
 
+                    net.epacdxnode.test.ParameterType p = new net.epacdxnode.test.ParameterType();
+                    p.parameterName = "organizationIdentifier";
+                    p.Value = OrgID;
+                    pars.Add(p);
 
-                //*******GET STATUS********************************************************************************************************
-                string status = "";
-                int i = 0;
-                do
-                {
-                    System.Threading.Thread.Sleep(15000);
-                    StatusResponseType gsResp = WQXSubmit.GetStatusHelper(cred.NodeURL, token, solResp.transactionId);
-                    status = gsResp.status.ToString();
-                    i += 1;
-                    //exit if waiting too long
-                    if (i > 90)
+                    net.epacdxnode.test.StatusResponseType solResp = WQXSubmit.SolicitHelper(cred.NodeURL, token, "WQX", "WQX.GetResultByParameters_v2.1", null, null, pars);
+                    if (solResp == null)
                     {
-                        db_Ref.InsertUpdateWQX_IMPORT_LOG(ImportID, null, null, null, 0, "Failed", "100", "Failed - EPA has taken too long to process your request. Operation has been cancelled.", null, "SYSTEM");
+                        db_Ref.InsertUpdateWQX_IMPORT_LOG(ImportID, null, null, null, 0, "Failed", "100", "Failed - retrieving data from EPA timed out", null, "SYSTEM");
                         return false;
                     }
-                } while (status != "Failed" && status != "Completed");
+                    db_Ref.InsertUpdateWQX_IMPORT_LOG(ImportID, null, null, null, 0, "Processing", "5", "Request for data from EPA complete - awaiting response.", null, "SYSTEM");
 
-                //update status of record
-                if (status == "Completed")
-                {
-                    db_Ref.InsertUpdateWQX_IMPORT_LOG(ImportID, null, null, null, 0, "Processing", "10", "Data retrieved from EPA.", null, "SYSTEM");
 
-                    //GET PATH TO PLACE WHERE IMPORT FILE WILL BE STORED
-                    string svcPath = db_Ref.GetT_OE_APP_SETTING("Task App Path");
-                    if (svcPath.Length == 0)
-                        db_Ref.InsertUpdateWQX_IMPORT_LOG(ImportID, null, null, null, 0, "Failed", "100", "Failed - Administrator must configure Open Waters task application path.", null, "SYSTEM");
-
-                    //*******DOWNLOAD RESULTS.XML FROM EPA ****************************************************************************
-                    NodeDocumentType[] dlResp = WQXSubmit.DownloadHelper(cred.NodeURL, token, "WQX", solResp.transactionId);
-                    foreach (NodeDocumentType ndt in dlResp)
+                    //*******GET STATUS********************************************************************************************************
+                    string status = "";
+                    int i = 0;
+                    do
                     {
-                        //DELETE PREVIOUS FILES IF EXISTING
-                        if (File.Exists(svcPath + "/Results.xml"))
-                            File.Delete(svcPath + "/Results.xml");
-
-                        using (System.IO.Stream stream = new System.IO.MemoryStream(dlResp[0].documentContent.Value))
+                        System.Threading.Thread.Sleep(15000);
+                        StatusResponseType gsResp = WQXSubmit.GetStatusHelper(cred.NodeURL, token, solResp.transactionId);
+                        status = gsResp.status.ToString();
+                        i += 1;
+                        //exit if waiting too long
+                        if (i > 90)
                         {
-                            using (var zip = ZipFile.Read(stream))
+                            db_Ref.InsertUpdateWQX_IMPORT_LOG(ImportID, null, null, null, 0, "Failed", "100", "Failed - EPA has taken too long to process your request. Operation has been cancelled.", null, "SYSTEM");
+                            return false;
+                        }
+                    } while (status != "Failed" && status != "Completed");
+
+                    //update status of record
+                    if (status == "Completed")
+                    {
+                        db_Ref.InsertUpdateWQX_IMPORT_LOG(ImportID, null, null, null, 0, "Processing", "10", "Data retrieved from EPA.", null, "SYSTEM");
+
+                        //GET PATH TO PLACE WHERE IMPORT FILE WILL BE STORED
+                        string svcPath = db_Ref.GetT_OE_APP_SETTING("Task App Path");
+                        if (svcPath.Length == 0)
+                            db_Ref.InsertUpdateWQX_IMPORT_LOG(ImportID, null, null, null, 0, "Failed", "100", "Failed - Administrator must configure Open Waters task application path.", null, "SYSTEM");
+
+                        //*******DOWNLOAD RESULTS.XML FROM EPA ****************************************************************************
+                        NodeDocumentType[] dlResp = WQXSubmit.DownloadHelper(cred.NodeURL, token, "WQX", solResp.transactionId);
+                        foreach (NodeDocumentType ndt in dlResp)
+                        {
+                            //DELETE PREVIOUS FILES IF EXISTING
+                            if (File.Exists(svcPath + "/Results.xml"))
+                                File.Delete(svcPath + "/Results.xml");
+
+                            using (System.IO.Stream stream = new System.IO.MemoryStream(dlResp[0].documentContent.Value))
                             {
-                                foreach (var entry in zip)
-                                    entry.Extract(svcPath);
+                                using (var zip = ZipFile.Read(stream))
+                                {
+                                    foreach (var entry in zip)
+                                        entry.Extract(svcPath);
+                                }
                             }
                         }
+
+                        XDocument xdoc = XDocument.Load(svcPath + "/Results.xml");
+
+                        var activities = (from activity
+                                              in xdoc.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}Activity")
+                                          select new
+                                          {
+                                              ID = (string)activity.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}ActivityDescription").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}ActivityIdentifier") ?? String.Empty,
+                                              ActivityTypeVal = (string)activity.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}ActivityDescription").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}ActivityTypeCode") ?? String.Empty,
+                                              ActivityMediaVal = (string)activity.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}ActivityDescription").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}ActivityMediaName") ?? String.Empty,
+                                              ActivitySubMediaVal = (string)activity.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}ActivityDescription").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}ActivityMediaSubDivisionName") ?? String.Empty,
+                                              StartDate = (string)activity.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}ActivityDescription").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}ActivityStartDate") ?? String.Empty,
+                                              StartTime = activity.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}ActivityStartTime").FirstOrDefault() != null ? (string)activity.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}ActivityStartTime").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}Time") ?? String.Empty : "",
+                                              StartTimeZone = activity.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}ActivityStartTime").FirstOrDefault() != null ? (string)activity.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}ActivityStartTime").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}TimeZoneCode") ?? String.Empty : "",
+                                              EndDate = (string)activity.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}ActivityDescription").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}ActivityEndDate") ?? String.Empty,
+                                              EndTime = activity.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}ActivityEndTime").FirstOrDefault() != null ? (string)activity.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}ActivityEndTime").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}Time") ?? String.Empty : "",
+                                              RelDepthName = (string)activity.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}ActivityDescription").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}ActivityRelativeDepthName") ?? String.Empty,
+                                              ActDepth = activity.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}ActivityDepthHeightMeasure").FirstOrDefault() != null ? (string)activity.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}ActivityDepthHeightMeasure").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}MeasureValue") ?? String.Empty : "",
+                                              ActDepthUnit = activity.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}ActivityDepthHeightMeasure").FirstOrDefault() != null ? (string)activity.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}ActivityDepthHeightMeasure").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}MeasureUnitCode") ?? String.Empty : "",
+                                              ActTopDepth = activity.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}ActivityTopDepthHeightMeasure").FirstOrDefault() != null ? (string)activity.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}ActivityTopDepthHeightMeasure").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}MeasureValue") ?? String.Empty : "",
+                                              ActTopDepthUnit = activity.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}ActivityTopDepthHeightMeasure").FirstOrDefault() != null ? (string)activity.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}ActivityTopDepthHeightMeasure").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}MeasureUnitCode") ?? String.Empty : "",
+                                              ActBotDepth = activity.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}ActivityBottomDepthHeightMeasure").FirstOrDefault() != null ? (string)activity.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}ActivityBottomDepthHeightMeasure").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}MeasureValue") ?? String.Empty : "",
+                                              ActBotDepthUnit = activity.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}ActivityBottomDepthHeightMeasure").FirstOrDefault() != null ? (string)activity.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}ActivityBottomDepthHeightMeasure").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}MeasureUnitCode") ?? String.Empty : "",
+                                              ActivityDepthAltitudeReferencePointText = (string)activity.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}ActivityDescription").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}ActivityDepthAltitudeReferencePointText") ?? String.Empty,
+                                              ProjectIdentifier = (string)activity.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}ActivityDescription").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}ProjectIdentifier") ?? String.Empty,
+                                              MonitoringLocationIdentifier = (string)activity.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}ActivityDescription").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}MonitoringLocationIdentifier") ?? String.Empty,
+                                              ActivityCommentText = (string)activity.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}ActivityDescription").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}ActivityCommentText") ?? String.Empty,
+                                              //BIO
+                                              AssemblageSampledName = activity.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}BiologicalActivityDescription").FirstOrDefault() != null ? (string)activity.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}BiologicalActivityDescription").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}AssemblageSampledName") ?? String.Empty : "",
+                                              CollectionDuration = activity.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}CollectionDuration").FirstOrDefault() != null ? (string)activity.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}CollectionDuration").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}MeasureValue") ?? String.Empty : "",
+                                              CollectionDurationUnit = activity.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}CollectionDuration").FirstOrDefault() != null ? (string)activity.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}CollectionDuration").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}MeasureUnitCode") ?? String.Empty : "",
+                                              SamplingComponentName = activity.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}BiologicalHabitatCollectionInformation").FirstOrDefault() != null ? (string)activity.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}BiologicalHabitatCollectionInformation").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}SamplingComponentName") ?? String.Empty : "",
+                                              SamplingComponentPlaceInSeriesNumeric = activity.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}BiologicalHabitatCollectionInformation").FirstOrDefault() != null ? (string)activity.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}BiologicalHabitatCollectionInformation").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}SamplingComponentPlaceInSeriesNumeric") ?? String.Empty : "",
+                                              ReachLengthMeasure = activity.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}ReachLengthMeasure").FirstOrDefault() != null ? (string)activity.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}ReachLengthMeasure").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}MeasureValue") ?? String.Empty : "",
+                                              ReachLengthMeasureUnit = activity.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}ReachLengthMeasure").FirstOrDefault() != null ? (string)activity.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}ReachLengthMeasure").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}MeasureUnitCode") ?? String.Empty : "",
+                                              ReachWidthMeasure = activity.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}ReachWidthMeasure").FirstOrDefault() != null ? (string)activity.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}ReachLengthMeasure").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}MeasureValue") ?? String.Empty : "",
+                                              ReachWidthMeasureUnit = activity.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}ReachWidthMeasure").FirstOrDefault() != null ? (string)activity.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}ReachLengthMeasure").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}MeasureUnitCode") ?? String.Empty : "",
+                                              PassCount = activity.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}BiologicalHabitatCollectionInformation").FirstOrDefault() != null ? (string)activity.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}BiologicalHabitatCollectionInformation").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}PassCount") ?? String.Empty : "",
+                                              NetTypeName = activity.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}NetInformation").FirstOrDefault() != null ? (string)activity.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}NetInformation").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}NetTypeName") ?? String.Empty : "",
+                                              NetSurfaceAreaMeasure = activity.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}NetSurfaceAreaMeasure").FirstOrDefault() != null ? (string)activity.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}NetSurfaceAreaMeasure").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}MeasureValue") ?? String.Empty : "",
+                                              NetSurfaceAreaMeasureUnit = activity.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}NetSurfaceAreaMeasure").FirstOrDefault() != null ? (string)activity.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}NetSurfaceAreaMeasure").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}MeasureUnitCode") ?? String.Empty : "",
+                                              NetMeshSizeMeasure = activity.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}NetMeshSizeMeasure").FirstOrDefault() != null ? (string)activity.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}NetMeshSizeMeasure").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}MeasureValue") ?? String.Empty : "",
+                                              NetMeshSizeMeasureUnit = activity.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}NetMeshSizeMeasure").FirstOrDefault() != null ? (string)activity.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}NetMeshSizeMeasure").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}MeasureUnitCode") ?? String.Empty : "",
+                                              BoatSpeedMeasure = activity.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}BoatSpeedMeasure").FirstOrDefault() != null ? (string)activity.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}BoatSpeedMeasure").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}MeasureValue") ?? String.Empty : "",
+                                              BoatSpeedMeasureUnit = activity.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}BoatSpeedMeasure").FirstOrDefault() != null ? (string)activity.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}BoatSpeedMeasure").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}MeasureUnitCode") ?? String.Empty : "",
+                                              CurrentSpeedMeasure = activity.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}CurrentSpeedMeasure").FirstOrDefault() != null ? (string)activity.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}CurrentSpeedMeasure").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}MeasureValue") ?? String.Empty : "",
+                                              CurrentSpeedMeasureUnit = activity.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}CurrentSpeedMeasure").FirstOrDefault() != null ? (string)activity.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}CurrentSpeedMeasure").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}MeasureUnitCode") ?? String.Empty : "",
+                                              ToxicityTestType = activity.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}BiologicalActivityDescription").FirstOrDefault() != null ? (string)activity.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}BiologicalActivityDescription").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}ToxicityTestType") ?? String.Empty : "",
+                                              //SAMPLING
+                                              SampleCollectionMethodID = activity.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}SampleCollectionMethod").FirstOrDefault() != null ? (string)activity.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}SampleCollectionMethod").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}MethodIdentifier") ?? String.Empty : "",
+                                              SampleCollectionMethodContext = activity.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}SampleCollectionMethod").FirstOrDefault() != null ? (string)activity.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}SampleCollectionMethod").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}MethodIdentifierContext") ?? String.Empty : "",
+                                              SampleCollectionMethodName = activity.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}SampleCollectionMethod").FirstOrDefault() != null ? (string)activity.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}SampleCollectionMethod").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}MethodName") ?? String.Empty : "",
+                                              SampleCollectionEquipmentName = activity.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}SampleDescription").FirstOrDefault() != null ? (string)activity.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}SampleDescription").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}SampleCollectionEquipmentName") ?? String.Empty : "",
+                                              SampleCollectionEquipmentComment = activity.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}SampleDescription").FirstOrDefault() != null ? (string)activity.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}SampleDescription").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}SampleCollectionEquipmentCommentText") ?? String.Empty : "",
+                                              SamplePrepMethodID = activity.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}SamplePreparationMethod").FirstOrDefault() != null ? (string)activity.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}SamplePreparationMethod").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}MethodIdentifier") ?? String.Empty : "",
+                                              SamplePrepMethodContext = activity.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}SamplePreparationMethod").FirstOrDefault() != null ? (string)activity.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}SamplePreparationMethod").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}MethodIdentifierContext") ?? String.Empty : "",
+                                              SamplePrepMethodName = activity.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}SamplePreparationMethod").FirstOrDefault() != null ? (string)activity.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}SamplePreparationMethod").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}MethodName") ?? String.Empty : "",
+
+                                          });
+
+                        //loop through retrieved data and insert into temp table
+                        foreach (var activity in activities)
+                        {
+                            DateTime? startDate = string.IsNullOrEmpty(activity.StartDate) ? null : (activity.StartDate + " " + activity.StartTime).ConvertOrDefault<DateTime?>();
+                            DateTime? endDate = string.IsNullOrEmpty(activity.EndDate) ? null : (activity.EndDate + " " + activity.EndTime).ConvertOrDefault<DateTime?>();
+
+                            int TempImportSampID = db_WQX.InsertOrUpdateWQX_IMPORT_TEMP_SAMPLE(null, UserID, OrgID, null, activity.ProjectIdentifier, null, activity.MonitoringLocationIdentifier,
+                                null, activity.ID, activity.ActivityTypeVal, activity.ActivityMediaVal, activity.ActivitySubMediaVal, startDate, endDate, activity.StartTimeZone,
+                                activity.RelDepthName, activity.ActDepth, activity.ActDepthUnit, activity.ActTopDepth, activity.ActTopDepthUnit, activity.ActBotDepth, activity.ActBotDepthUnit,
+                                activity.ActivityDepthAltitudeReferencePointText, activity.ActivityCommentText, activity.AssemblageSampledName, activity.CollectionDuration,
+                                activity.CollectionDurationUnit, activity.SamplingComponentName, activity.SamplingComponentPlaceInSeriesNumeric.ConvertOrDefault<int?>(),
+                                activity.ReachLengthMeasure, activity.ReachLengthMeasureUnit, activity.ReachWidthMeasure, activity.ReachWidthMeasureUnit,
+                                activity.PassCount.ConvertOrDefault<int?>(), activity.NetTypeName, activity.NetSurfaceAreaMeasure, activity.NetSurfaceAreaMeasureUnit, activity.NetMeshSizeMeasure,
+                                activity.NetMeshSizeMeasureUnit, activity.BoatSpeedMeasure, activity.BoatSpeedMeasureUnit, activity.CurrentSpeedMeasure, activity.CurrentSpeedMeasureUnit,
+                                activity.ToxicityTestType, null, activity.SampleCollectionMethodID,
+                                activity.SampleCollectionMethodContext, activity.SampleCollectionMethodName, activity.SampleCollectionEquipmentName, activity.SampleCollectionEquipmentComment,
+                                null, activity.SamplePrepMethodID, activity.SamplePrepMethodContext, activity.SamplePrepMethodName, null, null, null, null, null, "P", "", true, true);
+
+                            if (TempImportSampID > 0)
+                            {
+                                //*****************************************************************************************************
+                                //import results
+                                //*****************************************************************************************************
+                                var results = (from result in xdoc.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}Result")
+                                               where result.Parent.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}ActivityIdentifier").FirstOrDefault().Value == activity.ID
+                                               select new
+                                               {
+                                                   LoggerLine = (string)result.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}ResultDescription").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}DataLoggerLineName") ?? String.Empty,
+                                                   ResultDetectionConditionText = (string)result.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}ResultDescription").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}ResultDetectionConditionText") ?? String.Empty,
+                                                   CharName = (string)result.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}ResultDescription").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}CharacteristicName") ?? String.Empty,
+                                                   MethodSpec = (string)result.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}ResultDescription").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}MethodSpeciationName") ?? String.Empty,
+                                                   SampFrac = (string)result.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}ResultDescription").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}ResultSampleFractionText") ?? String.Empty,
+                                                   MsrVal = result.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}ResultMeasure").FirstOrDefault() != null ? (string)result.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}ResultMeasure").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}ResultMeasureValue") ?? String.Empty : "",
+                                                   MsrValUnit = result.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}ResultMeasure").FirstOrDefault() != null ? (string)result.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}ResultMeasure").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}MeasureUnitCode") ?? String.Empty : "",
+                                                   MsrQualCode = result.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}ResultMeasure").FirstOrDefault() != null ? (string)result.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}ResultMeasure").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}MeasureQualifierCode") ?? String.Empty : "",
+                                                   ResultStatusIdentifier = (string)result.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}ResultDescription").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}ResultStatusIdentifier") ?? String.Empty,
+                                                   StatisticalBaseCode = (string)result.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}ResultDescription").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}StatisticalBaseCode") ?? String.Empty,
+                                                   ResultValueTypeName = (string)result.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}ResultDescription").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}ResultValueTypeName") ?? String.Empty,
+                                                   ResultWeightBasisText = (string)result.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}ResultDescription").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}ResultWeightBasisText") ?? String.Empty,
+                                                   ResultTimeBasisText = (string)result.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}ResultDescription").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}ResultTimeBasisText") ?? String.Empty,
+                                                   ResultTemperatureBasisText = (string)result.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}ResultDescription").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}ResultTemperatureBasisText") ?? String.Empty,
+                                                   ResultParticleSizeBasisText = (string)result.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}ResultDescription").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}ResultParticleSizeBasisText") ?? String.Empty,
+
+                                                   PrecisionVal = result.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}DataQuality").FirstOrDefault() != null ? (string)result.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}DataQuality").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}PrecisionValue") ?? String.Empty : "",
+                                                   BiasVal = result.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}DataQuality").FirstOrDefault() != null ? (string)result.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}DataQuality").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}BiasValue") ?? String.Empty : "",
+                                                   ConfidenceIntervalValue = result.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}DataQuality").FirstOrDefault() != null ? (string)result.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}DataQuality").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}ConfidenceIntervalValue") ?? String.Empty : "",
+                                                   UpperConfidenceLimitValue = result.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}DataQuality").FirstOrDefault() != null ? (string)result.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}DataQuality").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}UpperConfidenceLimitValue") ?? String.Empty : "",
+                                                   LowerConfidenceLimitValue = result.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}DataQuality").FirstOrDefault() != null ? (string)result.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}DataQuality").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}LowerConfidenceLimitValue") ?? String.Empty : "",
+                                                   ResultCommentText = (string)result.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}ResultDescription").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}ResultCommentText") ?? String.Empty,
+                                                   //BIOLOGICAL
+                                                   BiologicalIntentName = result.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}BiologicalResultDescription").FirstOrDefault() != null ? (string)result.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}BiologicalResultDescription").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}BiologicalIntentName") ?? String.Empty : String.Empty,
+                                                   BiologicalIndividualIdentifier = result.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}BiologicalResultDescription").FirstOrDefault() != null ? (string)result.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}BiologicalResultDescription").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}BiologicalIndividualIdentifier") ?? String.Empty : String.Empty,
+                                                   SubjectTaxonomicName = result.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}BiologicalResultDescription").FirstOrDefault() != null ? (string)result.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}BiologicalResultDescription").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}SubjectTaxonomicName") ?? String.Empty : String.Empty,
+                                                   UnidentifiedSpeciesIdentifier = result.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}BiologicalResultDescription").FirstOrDefault() != null ? (string)result.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}BiologicalResultDescription").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}UnidentifiedSpeciesIdentifier") ?? String.Empty : String.Empty,
+                                                   SampleTissueAnatomyName = result.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}BiologicalResultDescription").FirstOrDefault() != null ? (string)result.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}BiologicalResultDescription").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}SampleTissueAnatomyName") ?? String.Empty : String.Empty,
+
+                                                   FrequencyClassDescriptorCode = result.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}FrequencyClassInformation").FirstOrDefault() != null ? (string)result.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}FrequencyClassInformation").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}FrequencyClassDescriptorCode") ?? String.Empty : String.Empty,
+                                                   FrequencyClassDescriptorUnit = result.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}FrequencyClassInformation").FirstOrDefault() != null ? (string)result.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}FrequencyClassInformation").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}FrequencyClassDescriptorUnitCode") ?? String.Empty : String.Empty,
+                                                   FrequencyClassDescriptorLower = result.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}FrequencyClassInformation").FirstOrDefault() != null ? (string)result.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}FrequencyClassInformation").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}LowerClassBoundValue") ?? String.Empty : String.Empty,
+                                                   FrequencyClassDescriptorUpper = result.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}FrequencyClassInformation").FirstOrDefault() != null ? (string)result.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}FrequencyClassInformation").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}UpperClassBoundValue") ?? String.Empty : String.Empty,
+
+                                                   //LABORATORY ANALYSIS
+                                                   ResultAnalyticalMethodID = result.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}ResultAnalyticalMethod").FirstOrDefault() != null ? (string)result.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}ResultAnalyticalMethod").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}MethodIdentifier") ?? String.Empty : String.Empty,
+                                                   ResultAnalyticalMethodCTX = result.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}ResultAnalyticalMethod").FirstOrDefault() != null ? (string)result.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}ResultAnalyticalMethod").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}MethodIdentifierContext") ?? String.Empty : String.Empty,
+                                                   ResultAnalyticalMethodName = result.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}ResultAnalyticalMethod").FirstOrDefault() != null ? (string)result.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}ResultAnalyticalMethod").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}MethodName") ?? String.Empty : String.Empty,
+                                                   LaboratoryName = result.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}ResultLabInformation").FirstOrDefault() != null ? (string)result.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}ResultLabInformation").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}LaboratoryName") ?? String.Empty : String.Empty,
+                                                   AnalysisStartDate = result.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}ResultLabInformation").FirstOrDefault() != null ? (string)result.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}ResultLabInformation").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}AnalysisStartDate") ?? String.Empty : String.Empty,
+                                                   AnalysisEndDate = result.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}ResultLabInformation").FirstOrDefault() != null ? (string)result.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}ResultLabInformation").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}AnalysisEndDate") ?? String.Empty : String.Empty,
+                                                   ResultLaboratoryCommentCode = result.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}ResultLabInformation").FirstOrDefault() != null ? (string)result.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}ResultLabInformation").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}ResultLaboratoryCommentCode") ?? String.Empty : String.Empty,
+
+                                                   MethodDetectionLevel = result.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}ResultDetectionQuantitationLimit").FirstOrDefault() != null ? (string)result.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}ResultDetectionQuantitationLimit").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}DetectionQuantitationLimitTypeName") ?? String.Empty : String.Empty,
+                                                   MethodDetectionLevel2 = result.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}ResultDetectionQuantitationLimit").FirstOrDefault(ID2 => ID2.Element("{http://www.exchangenetwork.net/schema/wqx/2}DetectionQuantitationLimitTypeName").Value == "Method Detection Level") != null ?
+                                                       ((string)result.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}ResultDetectionQuantitationLimit").FirstOrDefault(ID3 => ID3.Element("{http://www.exchangenetwork.net/schema/wqx/2}DetectionQuantitationLimitTypeName").Value == "Method Detection Level").Descendants("{http://www.exchangenetwork.net/schema/wqx/2}MeasureValue").FirstOrDefault() ?? String.Empty)
+                                                       : String.Empty,
+
+                                                   LabReportingLevel = result.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}ResultDetectionQuantitationLimit").FirstOrDefault(ID2 => ID2.Element("{http://www.exchangenetwork.net/schema/wqx/2}DetectionQuantitationLimitTypeName").Value == "Laboratory Reporting Level") != null ?
+                                                        ((string)result.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}ResultDetectionQuantitationLimit").FirstOrDefault(ID3 => ID3.Element("{http://www.exchangenetwork.net/schema/wqx/2}DetectionQuantitationLimitTypeName").Value == "Laboratory Reporting Level").Descendants("{http://www.exchangenetwork.net/schema/wqx/2}MeasureValue").FirstOrDefault() ?? String.Empty)
+                                                        : String.Empty,
+                                                   PQL = result.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}ResultDetectionQuantitationLimit").FirstOrDefault(ID2 => ID2.Element("{http://www.exchangenetwork.net/schema/wqx/2}DetectionQuantitationLimitTypeName").Value == "Practical Quantitation Limit") != null ?
+                                                        ((string)result.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}ResultDetectionQuantitationLimit").FirstOrDefault(ID3 => ID3.Element("{http://www.exchangenetwork.net/schema/wqx/2}DetectionQuantitationLimitTypeName").Value == "Practical Quantitation Limit").Descendants("{http://www.exchangenetwork.net/schema/wqx/2}MeasureValue").FirstOrDefault() ?? String.Empty)
+                                                        : String.Empty,
+                                                   UpperQuantLimit = result.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}ResultDetectionQuantitationLimit").FirstOrDefault(ID2 => ID2.Element("{http://www.exchangenetwork.net/schema/wqx/2}DetectionQuantitationLimitTypeName").Value == "Upper Quantitation Limit") != null ?
+                                                        ((string)result.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}ResultDetectionQuantitationLimit").FirstOrDefault(ID3 => ID3.Element("{http://www.exchangenetwork.net/schema/wqx/2}DetectionQuantitationLimitTypeName").Value == "Upper Quantitation Limit").Descendants("{http://www.exchangenetwork.net/schema/wqx/2}MeasureValue").FirstOrDefault() ?? String.Empty)
+                                                        : String.Empty,
+                                                   LowerQuantLimit = result.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}ResultDetectionQuantitationLimit").FirstOrDefault(ID2 => ID2.Element("{http://www.exchangenetwork.net/schema/wqx/2}DetectionQuantitationLimitTypeName").Value == "Lower Quantitation Limit") != null ?
+                                                        ((string)result.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}ResultDetectionQuantitationLimit").FirstOrDefault(ID3 => ID3.Element("{http://www.exchangenetwork.net/schema/wqx/2}DetectionQuantitationLimitTypeName").Value == "Lower Quantitation Limit").Descendants("{http://www.exchangenetwork.net/schema/wqx/2}MeasureValue").FirstOrDefault() ?? String.Empty)
+                                                        : String.Empty,
+
+                                                   SampPrepMethodID = result.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}LabSamplePreparationMethod").FirstOrDefault() != null ? (string)result.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}LabSamplePreparationMethod").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}MethodIdentifier") ?? String.Empty : String.Empty,
+                                                   SampPrepMethodCTX = result.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}LabSamplePreparationMethod").FirstOrDefault() != null ? (string)result.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}LabSamplePreparationMethod").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}MethodIdentifierContext") ?? String.Empty : String.Empty,
+                                                   SampPrepStartDate = result.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}LabSamplePreparation").FirstOrDefault() != null ? (string)result.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}LabSamplePreparation").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}PreparationStartDate") ?? String.Empty : String.Empty,
+                                                   SampPrepEndDate = result.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}LabSamplePreparation").FirstOrDefault() != null ? (string)result.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}LabSamplePreparation").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}PreparationEndDate") ?? String.Empty : String.Empty,
+
+                                                   ActID = (string)result.Parent.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}ActivityIdentifier").FirstOrDefault()
+                                               });
+
+                                if (results != null)
+                                {
+                                    foreach (var result in results)
+                                    {
+                                        db_WQX.InsertOrUpdateWQX_IMPORT_TEMP_RESULT(null, TempImportSampID, null, result.LoggerLine, result.ResultDetectionConditionText, result.CharName, result.MethodSpec,
+                                            result.SampFrac, result.MsrVal, result.MsrValUnit, result.MsrQualCode, result.ResultStatusIdentifier, result.StatisticalBaseCode,
+                                            result.ResultValueTypeName, result.ResultWeightBasisText, result.ResultTimeBasisText, result.ResultTemperatureBasisText,
+                                            result.ResultParticleSizeBasisText, result.PrecisionVal, result.BiasVal, result.ConfidenceIntervalValue, result.UpperConfidenceLimitValue,
+                                            result.LowerConfidenceLimitValue, result.ResultCommentText, null, null, null, result.BiologicalIntentName, result.BiologicalIndividualIdentifier,
+                                            result.SubjectTaxonomicName, result.UnidentifiedSpeciesIdentifier, result.SampleTissueAnatomyName, null, null, null,
+                                            null, null, null, null, null, null, null, null, null, result.FrequencyClassDescriptorCode, result.FrequencyClassDescriptorUnit, result.FrequencyClassDescriptorUpper,
+                                            result.FrequencyClassDescriptorLower, null, result.ResultAnalyticalMethodID, result.ResultAnalyticalMethodCTX,
+                                            result.ResultAnalyticalMethodName, null, result.LaboratoryName,
+                                            result.AnalysisStartDate.ConvertOrDefault<DateTime?>(), result.AnalysisEndDate.ConvertOrDefault<DateTime?>(),
+                                            null, result.ResultLaboratoryCommentCode, result.MethodDetectionLevel2,
+                                            result.LabReportingLevel, result.PQL, result.LowerQuantLimit, result.UpperQuantLimit, null, null, result.SampPrepMethodID, result.SampPrepMethodCTX,
+                                            result.SampPrepStartDate.ConvertOrDefault<DateTime?>(), result.SampPrepEndDate.ConvertOrDefault<DateTime?>(), null,
+                                            "P", "", true, OrgID, true);
+                                    }
+                                }   //************* END RESULTS LOOPING  *********************************************************
+                            }
+                        }    //***************** END ACTIVITY LOOPING *****************************************************
+
+
+                        db_Ref.InsertUpdateWQX_IMPORT_LOG(ImportID, null, null, null, 0, "Success", "100", "Import complete.", null, "SYSTEM");
+                        return true;
+
                     }
 
-                    XDocument xdoc = XDocument.Load(svcPath + "/Results.xml");
-
-                    var activities = (from activity
-                                          in xdoc.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}Activity")
-                                      select new
-                                      {
-                                          ID = (string)activity.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}ActivityDescription").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}ActivityIdentifier") ?? String.Empty,
-                                          ActivityTypeVal = (string)activity.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}ActivityDescription").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}ActivityTypeCode") ?? String.Empty,
-                                          ActivityMediaVal = (string)activity.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}ActivityDescription").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}ActivityMediaName") ?? String.Empty,
-                                          ActivitySubMediaVal = (string)activity.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}ActivityDescription").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}ActivityMediaSubDivisionName") ?? String.Empty,
-                                          StartDate = (string)activity.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}ActivityDescription").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}ActivityStartDate") ?? String.Empty,
-                                          StartTime = activity.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}ActivityStartTime").FirstOrDefault() != null ? (string)activity.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}ActivityStartTime").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}Time") ?? String.Empty : "",
-                                          StartTimeZone = activity.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}ActivityStartTime").FirstOrDefault() != null ? (string)activity.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}ActivityStartTime").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}TimeZoneCode") ?? String.Empty : "",
-                                          EndDate = (string)activity.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}ActivityDescription").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}ActivityEndDate") ?? String.Empty,
-                                          EndTime = activity.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}ActivityEndTime").FirstOrDefault() != null ? (string)activity.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}ActivityEndTime").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}Time") ?? String.Empty : "",
-                                          RelDepthName = (string)activity.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}ActivityDescription").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}ActivityRelativeDepthName") ?? String.Empty,
-                                          ActDepth = activity.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}ActivityDepthHeightMeasure").FirstOrDefault() != null ? (string)activity.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}ActivityDepthHeightMeasure").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}MeasureValue") ?? String.Empty : "",
-                                          ActDepthUnit = activity.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}ActivityDepthHeightMeasure").FirstOrDefault() != null ? (string)activity.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}ActivityDepthHeightMeasure").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}MeasureUnitCode") ?? String.Empty : "",
-                                          ActTopDepth = activity.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}ActivityTopDepthHeightMeasure").FirstOrDefault() != null ? (string)activity.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}ActivityTopDepthHeightMeasure").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}MeasureValue") ?? String.Empty : "",
-                                          ActTopDepthUnit = activity.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}ActivityTopDepthHeightMeasure").FirstOrDefault() != null ? (string)activity.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}ActivityTopDepthHeightMeasure").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}MeasureUnitCode") ?? String.Empty : "",
-                                          ActBotDepth = activity.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}ActivityBottomDepthHeightMeasure").FirstOrDefault() != null ? (string)activity.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}ActivityBottomDepthHeightMeasure").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}MeasureValue") ?? String.Empty : "",
-                                          ActBotDepthUnit = activity.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}ActivityBottomDepthHeightMeasure").FirstOrDefault() != null ? (string)activity.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}ActivityBottomDepthHeightMeasure").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}MeasureUnitCode") ?? String.Empty : "",
-                                          ActivityDepthAltitudeReferencePointText = (string)activity.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}ActivityDescription").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}ActivityDepthAltitudeReferencePointText") ?? String.Empty,
-                                          ProjectIdentifier = (string)activity.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}ActivityDescription").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}ProjectIdentifier") ?? String.Empty,
-                                          MonitoringLocationIdentifier = (string)activity.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}ActivityDescription").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}MonitoringLocationIdentifier") ?? String.Empty,
-                                          ActivityCommentText = (string)activity.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}ActivityDescription").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}ActivityCommentText") ?? String.Empty,
-                                          //BIO
-                                          AssemblageSampledName = activity.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}BiologicalActivityDescription").FirstOrDefault() != null ? (string)activity.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}BiologicalActivityDescription").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}AssemblageSampledName") ?? String.Empty : "",
-                                          CollectionDuration = activity.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}CollectionDuration").FirstOrDefault() != null ? (string)activity.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}CollectionDuration").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}MeasureValue") ?? String.Empty : "",
-                                          CollectionDurationUnit = activity.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}CollectionDuration").FirstOrDefault() != null ? (string)activity.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}CollectionDuration").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}MeasureUnitCode") ?? String.Empty : "",
-                                          SamplingComponentName = activity.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}BiologicalHabitatCollectionInformation").FirstOrDefault() != null ? (string)activity.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}BiologicalHabitatCollectionInformation").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}SamplingComponentName") ?? String.Empty : "",
-                                          SamplingComponentPlaceInSeriesNumeric = activity.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}BiologicalHabitatCollectionInformation").FirstOrDefault() != null ? (string)activity.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}BiologicalHabitatCollectionInformation").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}SamplingComponentPlaceInSeriesNumeric") ?? String.Empty : "",
-                                          ReachLengthMeasure = activity.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}ReachLengthMeasure").FirstOrDefault() != null ? (string)activity.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}ReachLengthMeasure").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}MeasureValue") ?? String.Empty : "",
-                                          ReachLengthMeasureUnit = activity.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}ReachLengthMeasure").FirstOrDefault() != null ? (string)activity.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}ReachLengthMeasure").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}MeasureUnitCode") ?? String.Empty : "",
-                                          ReachWidthMeasure = activity.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}ReachWidthMeasure").FirstOrDefault() != null ? (string)activity.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}ReachLengthMeasure").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}MeasureValue") ?? String.Empty : "",
-                                          ReachWidthMeasureUnit = activity.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}ReachWidthMeasure").FirstOrDefault() != null ? (string)activity.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}ReachLengthMeasure").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}MeasureUnitCode") ?? String.Empty : "",
-                                          PassCount = activity.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}BiologicalHabitatCollectionInformation").FirstOrDefault() != null ? (string)activity.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}BiologicalHabitatCollectionInformation").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}PassCount") ?? String.Empty : "",
-                                          NetTypeName = activity.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}NetInformation").FirstOrDefault() != null ? (string)activity.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}NetInformation").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}NetTypeName") ?? String.Empty : "",
-                                          NetSurfaceAreaMeasure = activity.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}NetSurfaceAreaMeasure").FirstOrDefault() != null ? (string)activity.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}NetSurfaceAreaMeasure").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}MeasureValue") ?? String.Empty : "",
-                                          NetSurfaceAreaMeasureUnit = activity.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}NetSurfaceAreaMeasure").FirstOrDefault() != null ? (string)activity.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}NetSurfaceAreaMeasure").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}MeasureUnitCode") ?? String.Empty : "",
-                                          NetMeshSizeMeasure = activity.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}NetMeshSizeMeasure").FirstOrDefault() != null ? (string)activity.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}NetMeshSizeMeasure").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}MeasureValue") ?? String.Empty : "",
-                                          NetMeshSizeMeasureUnit = activity.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}NetMeshSizeMeasure").FirstOrDefault() != null ? (string)activity.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}NetMeshSizeMeasure").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}MeasureUnitCode") ?? String.Empty : "",
-                                          BoatSpeedMeasure = activity.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}BoatSpeedMeasure").FirstOrDefault() != null ? (string)activity.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}BoatSpeedMeasure").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}MeasureValue") ?? String.Empty : "",
-                                          BoatSpeedMeasureUnit = activity.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}BoatSpeedMeasure").FirstOrDefault() != null ? (string)activity.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}BoatSpeedMeasure").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}MeasureUnitCode") ?? String.Empty : "",
-                                          CurrentSpeedMeasure = activity.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}CurrentSpeedMeasure").FirstOrDefault() != null ? (string)activity.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}CurrentSpeedMeasure").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}MeasureValue") ?? String.Empty : "",
-                                          CurrentSpeedMeasureUnit = activity.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}CurrentSpeedMeasure").FirstOrDefault() != null ? (string)activity.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}CurrentSpeedMeasure").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}MeasureUnitCode") ?? String.Empty : "",
-                                          ToxicityTestType = activity.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}BiologicalActivityDescription").FirstOrDefault() != null ? (string)activity.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}BiologicalActivityDescription").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}ToxicityTestType") ?? String.Empty : "",
-                                          //SAMPLING
-                                          SampleCollectionMethodID = activity.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}SampleCollectionMethod").FirstOrDefault() != null ? (string)activity.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}SampleCollectionMethod").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}MethodIdentifier") ?? String.Empty : "",
-                                          SampleCollectionMethodContext = activity.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}SampleCollectionMethod").FirstOrDefault() != null ? (string)activity.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}SampleCollectionMethod").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}MethodIdentifierContext") ?? String.Empty : "",
-                                          SampleCollectionMethodName = activity.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}SampleCollectionMethod").FirstOrDefault() != null ? (string)activity.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}SampleCollectionMethod").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}MethodName") ?? String.Empty : "",
-                                          SampleCollectionEquipmentName = activity.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}SampleDescription").FirstOrDefault() != null ? (string)activity.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}SampleDescription").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}SampleCollectionEquipmentName") ?? String.Empty : "",
-                                          SampleCollectionEquipmentComment = activity.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}SampleDescription").FirstOrDefault() != null ? (string)activity.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}SampleDescription").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}SampleCollectionEquipmentCommentText") ?? String.Empty : "",
-                                          SamplePrepMethodID = activity.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}SamplePreparationMethod").FirstOrDefault() != null ? (string)activity.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}SamplePreparationMethod").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}MethodIdentifier") ?? String.Empty : "",
-                                          SamplePrepMethodContext = activity.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}SamplePreparationMethod").FirstOrDefault() != null ? (string)activity.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}SamplePreparationMethod").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}MethodIdentifierContext") ?? String.Empty : "",
-                                          SamplePrepMethodName = activity.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}SamplePreparationMethod").FirstOrDefault() != null ? (string)activity.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}SamplePreparationMethod").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}MethodName") ?? String.Empty : "",
-
-                                      });
-
-                    //loop through retrieved data and insert into temp table
-                    foreach (var activity in activities)
-                    {
-                        DateTime? startDate = string.IsNullOrEmpty(activity.StartDate) ? null : (activity.StartDate + " " + activity.StartTime).ConvertOrDefault<DateTime?>();
-                        DateTime? endDate = string.IsNullOrEmpty(activity.EndDate) ? null : (activity.EndDate + " " + activity.EndTime).ConvertOrDefault<DateTime?>();
-
-                        int TempImportSampID = db_WQX.InsertOrUpdateWQX_IMPORT_TEMP_SAMPLE(null, UserID, OrgID, null, activity.ProjectIdentifier, null, activity.MonitoringLocationIdentifier,
-                            null, activity.ID, activity.ActivityTypeVal, activity.ActivityMediaVal, activity.ActivitySubMediaVal, startDate, endDate, activity.StartTimeZone,
-                            activity.RelDepthName, activity.ActDepth, activity.ActDepthUnit, activity.ActTopDepth, activity.ActTopDepthUnit, activity.ActBotDepth, activity.ActBotDepthUnit, 
-                            activity.ActivityDepthAltitudeReferencePointText, activity.ActivityCommentText, activity.AssemblageSampledName, activity.CollectionDuration, 
-                            activity.CollectionDurationUnit, activity.SamplingComponentName, activity.SamplingComponentPlaceInSeriesNumeric.ConvertOrDefault<int?>(),
-                            activity.ReachLengthMeasure, activity.ReachLengthMeasureUnit, activity.ReachWidthMeasure, activity.ReachWidthMeasureUnit, 
-                            activity.PassCount.ConvertOrDefault<int?>(), activity.NetTypeName, activity.NetSurfaceAreaMeasure, activity.NetSurfaceAreaMeasureUnit, activity.NetMeshSizeMeasure,
-                            activity.NetMeshSizeMeasureUnit, activity.BoatSpeedMeasure, activity.BoatSpeedMeasureUnit, activity.CurrentSpeedMeasure, activity.CurrentSpeedMeasureUnit,
-                            activity.ToxicityTestType, null, activity.SampleCollectionMethodID,
-                            activity.SampleCollectionMethodContext, activity.SampleCollectionMethodName, activity.SampleCollectionEquipmentName, activity.SampleCollectionEquipmentComment,
-                            null, activity.SamplePrepMethodID, activity.SamplePrepMethodContext, activity.SamplePrepMethodName, null, null, null, null, null, "P", "", true, true);
-
-                        if (TempImportSampID > 0)
-                        {
-                            //*****************************************************************************************************
-                            //import results
-                            //*****************************************************************************************************
-                            var results = (from result in xdoc.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}Result")
-                                           where result.Parent.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}ActivityIdentifier").FirstOrDefault().Value == activity.ID
-                                           select new
-                                           {
-                                               LoggerLine = (string)result.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}ResultDescription").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}DataLoggerLineName") ?? String.Empty,
-                                               ResultDetectionConditionText = (string)result.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}ResultDescription").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}ResultDetectionConditionText") ?? String.Empty,
-                                               CharName = (string)result.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}ResultDescription").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}CharacteristicName") ?? String.Empty,
-                                               MethodSpec = (string)result.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}ResultDescription").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}MethodSpeciationName") ?? String.Empty,
-                                               SampFrac = (string)result.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}ResultDescription").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}ResultSampleFractionText") ?? String.Empty,
-                                               MsrVal = result.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}ResultMeasure").FirstOrDefault() != null ? (string)result.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}ResultMeasure").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}ResultMeasureValue") ?? String.Empty : "",
-                                               MsrValUnit = result.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}ResultMeasure").FirstOrDefault() != null ? (string)result.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}ResultMeasure").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}MeasureUnitCode") ?? String.Empty : "",
-                                               MsrQualCode = result.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}ResultMeasure").FirstOrDefault() != null ? (string)result.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}ResultMeasure").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}MeasureQualifierCode") ?? String.Empty : "",
-                                               ResultStatusIdentifier = (string)result.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}ResultDescription").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}ResultStatusIdentifier") ?? String.Empty,
-                                               StatisticalBaseCode = (string)result.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}ResultDescription").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}StatisticalBaseCode") ?? String.Empty,
-                                               ResultValueTypeName = (string)result.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}ResultDescription").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}ResultValueTypeName") ?? String.Empty,
-                                               ResultWeightBasisText = (string)result.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}ResultDescription").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}ResultWeightBasisText") ?? String.Empty,
-                                               ResultTimeBasisText = (string)result.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}ResultDescription").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}ResultTimeBasisText") ?? String.Empty,
-                                               ResultTemperatureBasisText = (string)result.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}ResultDescription").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}ResultTemperatureBasisText") ?? String.Empty,
-                                               ResultParticleSizeBasisText = (string)result.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}ResultDescription").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}ResultParticleSizeBasisText") ?? String.Empty,
-
-                                               PrecisionVal = result.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}DataQuality").FirstOrDefault() != null ? (string)result.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}DataQuality").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}PrecisionValue") ?? String.Empty : "",
-                                               BiasVal = result.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}DataQuality").FirstOrDefault() != null ? (string)result.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}DataQuality").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}BiasValue") ?? String.Empty : "",
-                                               ConfidenceIntervalValue = result.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}DataQuality").FirstOrDefault() != null ? (string)result.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}DataQuality").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}ConfidenceIntervalValue") ?? String.Empty : "",
-                                               UpperConfidenceLimitValue = result.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}DataQuality").FirstOrDefault() != null ? (string)result.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}DataQuality").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}UpperConfidenceLimitValue") ?? String.Empty : "",
-                                               LowerConfidenceLimitValue = result.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}DataQuality").FirstOrDefault() != null ? (string)result.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}DataQuality").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}LowerConfidenceLimitValue") ?? String.Empty : "",
-                                               ResultCommentText = (string)result.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}ResultDescription").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}ResultCommentText") ?? String.Empty,
-                                               //BIOLOGICAL
-                                               BiologicalIntentName = result.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}BiologicalResultDescription").FirstOrDefault() != null ?  (string)result.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}BiologicalResultDescription").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}BiologicalIntentName") ?? String.Empty : String.Empty,
-                                               BiologicalIndividualIdentifier = result.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}BiologicalResultDescription").FirstOrDefault() != null ?  (string)result.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}BiologicalResultDescription").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}BiologicalIndividualIdentifier") ?? String.Empty : String.Empty,
-                                               SubjectTaxonomicName = result.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}BiologicalResultDescription").FirstOrDefault() != null ?  (string)result.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}BiologicalResultDescription").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}SubjectTaxonomicName") ?? String.Empty : String.Empty,
-                                               UnidentifiedSpeciesIdentifier = result.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}BiologicalResultDescription").FirstOrDefault() != null ?  (string)result.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}BiologicalResultDescription").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}UnidentifiedSpeciesIdentifier") ?? String.Empty : String.Empty,
-                                               SampleTissueAnatomyName = result.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}BiologicalResultDescription").FirstOrDefault() != null ? (string)result.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}BiologicalResultDescription").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}SampleTissueAnatomyName") ?? String.Empty : String.Empty,
-
-                                               FrequencyClassDescriptorCode = result.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}FrequencyClassInformation").FirstOrDefault() != null ? (string)result.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}FrequencyClassInformation").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}FrequencyClassDescriptorCode") ?? String.Empty : String.Empty,
-                                               FrequencyClassDescriptorUnit = result.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}FrequencyClassInformation").FirstOrDefault() != null ? (string)result.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}FrequencyClassInformation").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}FrequencyClassDescriptorUnitCode") ?? String.Empty : String.Empty,
-                                               FrequencyClassDescriptorLower = result.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}FrequencyClassInformation").FirstOrDefault() != null ? (string)result.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}FrequencyClassInformation").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}LowerClassBoundValue") ?? String.Empty : String.Empty,
-                                               FrequencyClassDescriptorUpper = result.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}FrequencyClassInformation").FirstOrDefault() != null ? (string)result.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}FrequencyClassInformation").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}UpperClassBoundValue") ?? String.Empty : String.Empty,
-
-                                               //LABORATORY ANALYSIS
-                                               ResultAnalyticalMethodID = result.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}ResultAnalyticalMethod").FirstOrDefault() != null ?  (string)result.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}ResultAnalyticalMethod").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}MethodIdentifier") ?? String.Empty : String.Empty,
-                                               ResultAnalyticalMethodCTX = result.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}ResultAnalyticalMethod").FirstOrDefault() != null ?   (string)result.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}ResultAnalyticalMethod").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}MethodIdentifierContext") ?? String.Empty : String.Empty,
-                                               ResultAnalyticalMethodName = result.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}ResultAnalyticalMethod").FirstOrDefault() != null ?  (string)result.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}ResultAnalyticalMethod").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}MethodName") ?? String.Empty : String.Empty,
-                                               LaboratoryName =  result.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}ResultLabInformation").FirstOrDefault() != null ? (string)result.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}ResultLabInformation").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}LaboratoryName") ?? String.Empty : String.Empty,
-                                               AnalysisStartDate = result.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}ResultLabInformation").FirstOrDefault() != null ? (string)result.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}ResultLabInformation").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}AnalysisStartDate") ?? String.Empty : String.Empty,
-                                               AnalysisEndDate = result.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}ResultLabInformation").FirstOrDefault() != null ? (string)result.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}ResultLabInformation").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}AnalysisEndDate") ?? String.Empty : String.Empty,
-                                               ResultLaboratoryCommentCode = result.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}ResultLabInformation").FirstOrDefault() != null ? (string)result.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}ResultLabInformation").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}ResultLaboratoryCommentCode") ?? String.Empty : String.Empty,
-
-                                               MethodDetectionLevel = result.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}ResultDetectionQuantitationLimit").FirstOrDefault() != null ? (string)result.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}ResultDetectionQuantitationLimit").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}DetectionQuantitationLimitTypeName") ?? String.Empty : String.Empty,
-                                               MethodDetectionLevel2 = result.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}ResultDetectionQuantitationLimit").FirstOrDefault(ID2 => ID2.Element("{http://www.exchangenetwork.net/schema/wqx/2}DetectionQuantitationLimitTypeName").Value == "Method Detection Level") != null ?
-                                                   ((string)result.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}ResultDetectionQuantitationLimit").FirstOrDefault(ID3 => ID3.Element("{http://www.exchangenetwork.net/schema/wqx/2}DetectionQuantitationLimitTypeName").Value == "Method Detection Level").Descendants("{http://www.exchangenetwork.net/schema/wqx/2}MeasureValue").FirstOrDefault() ?? String.Empty) 
-                                                   : String.Empty,
-
-                                               LabReportingLevel = result.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}ResultDetectionQuantitationLimit").FirstOrDefault(ID2 => ID2.Element("{http://www.exchangenetwork.net/schema/wqx/2}DetectionQuantitationLimitTypeName").Value == "Laboratory Reporting Level") != null ?
-                                                    ((string)result.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}ResultDetectionQuantitationLimit").FirstOrDefault(ID3 => ID3.Element("{http://www.exchangenetwork.net/schema/wqx/2}DetectionQuantitationLimitTypeName").Value == "Laboratory Reporting Level").Descendants("{http://www.exchangenetwork.net/schema/wqx/2}MeasureValue").FirstOrDefault() ?? String.Empty)
-                                                    : String.Empty,
-                                               PQL = result.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}ResultDetectionQuantitationLimit").FirstOrDefault(ID2 => ID2.Element("{http://www.exchangenetwork.net/schema/wqx/2}DetectionQuantitationLimitTypeName").Value == "Practical Quantitation Limit") != null ?
-                                                    ((string)result.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}ResultDetectionQuantitationLimit").FirstOrDefault(ID3 => ID3.Element("{http://www.exchangenetwork.net/schema/wqx/2}DetectionQuantitationLimitTypeName").Value == "Practical Quantitation Limit").Descendants("{http://www.exchangenetwork.net/schema/wqx/2}MeasureValue").FirstOrDefault() ?? String.Empty)
-                                                    : String.Empty,
-                                               UpperQuantLimit = result.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}ResultDetectionQuantitationLimit").FirstOrDefault(ID2 => ID2.Element("{http://www.exchangenetwork.net/schema/wqx/2}DetectionQuantitationLimitTypeName").Value == "Upper Quantitation Limit") != null ?
-                                                    ((string)result.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}ResultDetectionQuantitationLimit").FirstOrDefault(ID3 => ID3.Element("{http://www.exchangenetwork.net/schema/wqx/2}DetectionQuantitationLimitTypeName").Value == "Upper Quantitation Limit").Descendants("{http://www.exchangenetwork.net/schema/wqx/2}MeasureValue").FirstOrDefault() ?? String.Empty)
-                                                    : String.Empty,
-                                               LowerQuantLimit = result.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}ResultDetectionQuantitationLimit").FirstOrDefault(ID2 => ID2.Element("{http://www.exchangenetwork.net/schema/wqx/2}DetectionQuantitationLimitTypeName").Value == "Lower Quantitation Limit") != null ?
-                                                    ((string)result.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}ResultDetectionQuantitationLimit").FirstOrDefault(ID3 => ID3.Element("{http://www.exchangenetwork.net/schema/wqx/2}DetectionQuantitationLimitTypeName").Value == "Lower Quantitation Limit").Descendants("{http://www.exchangenetwork.net/schema/wqx/2}MeasureValue").FirstOrDefault() ?? String.Empty)
-                                                    : String.Empty,
-
-                                               SampPrepMethodID = result.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}LabSamplePreparationMethod").FirstOrDefault() != null ? (string)result.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}LabSamplePreparationMethod").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}MethodIdentifier") ?? String.Empty : String.Empty,
-                                               SampPrepMethodCTX = result.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}LabSamplePreparationMethod").FirstOrDefault() != null ? (string)result.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}LabSamplePreparationMethod").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}MethodIdentifierContext") ?? String.Empty : String.Empty,
-                                               SampPrepStartDate = result.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}LabSamplePreparation").FirstOrDefault() != null ? (string)result.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}LabSamplePreparation").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}PreparationStartDate") ?? String.Empty : String.Empty,
-                                               SampPrepEndDate = result.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}LabSamplePreparation").FirstOrDefault() != null ? (string)result.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}LabSamplePreparation").FirstOrDefault().Element("{http://www.exchangenetwork.net/schema/wqx/2}PreparationEndDate") ?? String.Empty : String.Empty,
-
-                                               ActID = (string)result.Parent.Descendants("{http://www.exchangenetwork.net/schema/wqx/2}ActivityIdentifier").FirstOrDefault()
-                                           });
-
-                            if (results != null)
-                            {
-                                foreach (var result in results)
-                                {
-                                    db_WQX.InsertOrUpdateWQX_IMPORT_TEMP_RESULT(null, TempImportSampID, null, result.LoggerLine, result.ResultDetectionConditionText, result.CharName, result.MethodSpec,
-                                        result.SampFrac, result.MsrVal, result.MsrValUnit, result.MsrQualCode, result.ResultStatusIdentifier, result.StatisticalBaseCode,
-                                        result.ResultValueTypeName, result.ResultWeightBasisText, result.ResultTimeBasisText, result.ResultTemperatureBasisText,
-                                        result.ResultParticleSizeBasisText, result.PrecisionVal, result.BiasVal, result.ConfidenceIntervalValue, result.UpperConfidenceLimitValue,
-                                        result.LowerConfidenceLimitValue, result.ResultCommentText, null, null, null, result.BiologicalIntentName, result.BiologicalIndividualIdentifier, 
-                                        result.SubjectTaxonomicName, result.UnidentifiedSpeciesIdentifier, result.SampleTissueAnatomyName, null, null, null,
-                                        null, null, null, null, null, null, null, null, null, result.FrequencyClassDescriptorCode, result.FrequencyClassDescriptorUnit, result.FrequencyClassDescriptorUpper, 
-                                        result.FrequencyClassDescriptorLower, null, result.ResultAnalyticalMethodID, result.ResultAnalyticalMethodCTX, 
-                                        result.ResultAnalyticalMethodName, null, result.LaboratoryName, 
-                                        result.AnalysisStartDate.ConvertOrDefault<DateTime?>(), result.AnalysisEndDate.ConvertOrDefault<DateTime?>(),
-                                        null, result.ResultLaboratoryCommentCode, result.MethodDetectionLevel2,
-                                        result.LabReportingLevel, result.PQL, result.LowerQuantLimit, result.UpperQuantLimit, null, null, result.SampPrepMethodID, result.SampPrepMethodCTX,
-                                        result.SampPrepStartDate.ConvertOrDefault<DateTime?>(), result.SampPrepEndDate.ConvertOrDefault<DateTime?>(), null,
-                                        "P", "", true, OrgID, true);
-                                }
-                            }   //************* END RESULTS LOOPING  *********************************************************
-                        }
-                    }    //***************** END ACTIVITY LOOPING *****************************************************
-
-
-                    db_Ref.InsertUpdateWQX_IMPORT_LOG(ImportID, null, null, null, 0, "Success", "100", "Import complete.", null, "SYSTEM");
-                    return true;
+                    //IF GOT THIS FAR, THEN IT FAILED
+                    db_Ref.InsertUpdateWQX_IMPORT_LOG(ImportID, null, null, null, 0, "Failed", "100", "Unable to retrieve data from EPA.", null, "SYSTEM");
+                    return false;
 
                 }
-
-                //IF GOT THIS FAR, THEN IT FAILED
-                db_Ref.InsertUpdateWQX_IMPORT_LOG(ImportID, null, null, null, 0, "Failed", "100", "Unable to retrieve data from EPA.", null, "SYSTEM");
-                return false;
-
+                else
+                {
+                    db_Ref.InsertUpdateWQX_IMPORT_LOG(ImportID, null, null, null, 0, "Failed", "100", "Unable to authenticate to EPA-WQX server.", null, "SYSTEM");
+                    return false;
+                }
             }
-            else
+            catch (Exception ex)
             {
-                db_Ref.InsertUpdateWQX_IMPORT_LOG(ImportID, null, null, null, 0, "Failed", "100", "Unable to authenticate to EPA-WQX server.", null, "SYSTEM");
+                Exception realerror = ex;
+                while (realerror.InnerException != null)
+                    realerror = realerror.InnerException;
+                db_Ref.InsertT_OE_SYS_LOG("ERROR", realerror.Message ?? "");
                 return false;
             }
         }

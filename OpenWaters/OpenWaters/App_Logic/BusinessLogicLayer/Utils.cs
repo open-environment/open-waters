@@ -91,8 +91,8 @@ namespace OpenEnvironment.App_Logic.BusinessLogicLayer
                 //************** REROUTE TO SENDGRID HELPER IF SENDGRID ENABLED ******
                 if (mailServer == "smtp.sendgrid.net")
                 {
-                    SendGridHelper.SendGridEmail(from, to, cc, bcc, subj, body, smtpUser, smtpUserPwd);
-                    return true;
+                    bool SuccID = SendGridHelper.SendEmailUsingSendGrid(from, to, cc, bcc, subj, body, smtpUserPwd).GetAwaiter().GetResult();
+                    return SuccID;
                 }
 
 
