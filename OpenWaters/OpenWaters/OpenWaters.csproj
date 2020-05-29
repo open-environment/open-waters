@@ -130,7 +130,6 @@
     <Content Include="App_Pages\Secure\WQXImportMetric.aspx" />
     <Content Include="App_Pages\Secure\WQXOrgData.aspx" />
     <Content Include="App_Pages\Secure\SetOrg.aspx" />
-    <None Include="App_Data\SeminoleData.sql" />
     <Content Include="App_Data\DatabasePatch_v1.8.sql" />
     <Content Include="App_Data\DatabasePatch_v1.7.sql" />
     <Content Include="App_Data\DatabasePatch_v1.9.sql" />
@@ -175,7 +174,6 @@
     <Content Include="App_Pages\Secure\WQXOrgNew.aspx" />
     <Content Include="App_Pages\Secure\AdmDataSynch.aspx" />
     <Content Include="App_Pages\Secure\Help.aspx" />
-    <None Include="App_Data\CreekData.sql" />
     <Content Include="App_Images\0.png" />
     <Content Include="App_Images\grd_alt.png" />
     <Content Include="App_Images\grd_head.png" />
