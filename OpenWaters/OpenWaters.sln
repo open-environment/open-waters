@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25123.0
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.1209
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenWaters", "OpenWaters\OpenWaters.csproj", "{8F34E29C-B9D1-44F7-BC6C-EABDE6871B75}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenWatersSvc", "OpenWatersSvc\OpenWatersSvc.csproj", "{B259D0DA-E39C-4AD7-A628-433AC32CAB8A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,8 +17,15 @@ Global
 		{8F34E29C-B9D1-44F7-BC6C-EABDE6871B75}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8F34E29C-B9D1-44F7-BC6C-EABDE6871B75}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8F34E29C-B9D1-44F7-BC6C-EABDE6871B75}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B259D0DA-E39C-4AD7-A628-433AC32CAB8A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B259D0DA-E39C-4AD7-A628-433AC32CAB8A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B259D0DA-E39C-4AD7-A628-433AC32CAB8A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B259D0DA-E39C-4AD7-A628-433AC32CAB8A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F201E8CE-2802-41E6-B9DF-3D70D3CDB32E}
 	EndGlobalSection
 EndGlobal

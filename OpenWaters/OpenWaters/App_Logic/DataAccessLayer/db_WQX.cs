@@ -1358,6 +1358,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
                 }
                 catch (Exception ex)
                 {
+                    db_Ref.InsertT_OE_SYS_LOG("ERROR", "Error getting list of orgs to send to WQX");
                     throw ex;
                 }
             }

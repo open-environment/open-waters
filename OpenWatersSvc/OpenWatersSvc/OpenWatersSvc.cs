@@ -19,7 +19,13 @@ namespace OpenWatersSvc
         {
             this.ServiceName = "Open Waters Service";
             this.EventLog.Log = "Application";
-            
+
+            //conduct database connectivity and assembly reference test
+            //string _dbtest = db_Ref.GetT_OE_APP_SETTING_test("Log Level");
+            //EventLog.WriteEntry(_dbtest);
+            //WQXSubmit.WQX_MasterAllOrgs();
+
+
             // These Flags set whether or not to handle that specific
             //  type of event. Set to true if you need it, false otherwise.
             this.CanHandlePowerEvent = true;
@@ -57,7 +63,12 @@ namespace OpenWatersSvc
             EventLog.WriteEntry("Open Waters Service starting.");
 
             try
-            { 
+            {
+                //for db connectivity testing only
+                //string _dbtest = db_Ref.GetT_OE_APP_SETTING_test("Log Level");
+                //EventLog.WriteEntry(_dbtest);
+
+
                 //Reset the Open Waters service status so it will run again (in case it failed previously)
                 int SuccID = db_Ref.UpdateT_OE_APP_TASKS("WQXSubmit", "STOPPED", null, "TASK");
                 if (SuccID > 0)
@@ -84,9 +95,11 @@ namespace OpenWatersSvc
         {
             try
             {
+
                 //submitting any pending data to EPA
                 WQXSubmit.WQX_MasterAllOrgs();
-                //EventLog.WriteEntry("Submission attempt completed");
+
+                EventLog.WriteEntry("Submission attempt completed");
 
                 //importing activity data from EPA
                 WQXSubmit.ImportActivityMaster();
