@@ -746,6 +746,7 @@
     <Content Include="App_Docs\SampCT_ImportTemplate.xlsx" />
     <Content Include="App_Docs\Samp_ImportTemplate.xlsx" />
     <Content Include="App_Docs\SampBio_ImportTemplate.xlsx" />
+    <Content Include="App_Data\DatabasePatch_v1.99b.sql" />
     <None Include="packages.config" />
     <None Include="Properties\PublishProfiles\Profile1.pubxml" />
     <None Include="Properties\Settings.settings">

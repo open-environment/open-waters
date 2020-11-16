@@ -4381,6 +4381,10 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
                     if (db_Ref.GetT_WQX_REF_CHARACTERISTIC_SampFracReqCheck(a.CHAR_NAME) == true && string.IsNullOrEmpty(a.RESULT_SAMP_FRACTION)) { a.IMPORT_STATUS_CD = "F"; a.IMPORT_STATUS_DESC += "Sample Fraction must be reported."; }
 
 
+                    //Method speciation
+                    if (db_Ref.GetT_WQX_REF_CHARACTERISTIC_MethodSpeciationReqCheck(a.CHAR_NAME) == true && string.IsNullOrEmpty(a.METHOD_SPECIATION_NAME)) { a.IMPORT_STATUS_CD = "F"; a.IMPORT_STATUS_DESC += "Method Speciation must be reported for this characteristic."; }
+
+
                     //Result Status handling
                     if (string.IsNullOrEmpty(a.RESULT_STATUS) && !string.IsNullOrEmpty(a.CHAR_NAME))
                     {

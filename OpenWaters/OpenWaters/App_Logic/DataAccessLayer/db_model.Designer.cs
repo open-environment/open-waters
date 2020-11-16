@@ -20222,6 +20222,30 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
         private global::System.String _PICK_LIST;
         partial void OnPICK_LISTChanging(global::System.String value);
         partial void OnPICK_LISTChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String METHOD_SPEC_REQ
+        {
+            get
+            {
+                return _METHOD_SPEC_REQ;
+            }
+            set
+            {
+                OnMETHOD_SPEC_REQChanging(value);
+                ReportPropertyChanging("METHOD_SPEC_REQ");
+                _METHOD_SPEC_REQ = StructuralObject.SetValidValue(value, true, "METHOD_SPEC_REQ");
+                ReportPropertyChanged("METHOD_SPEC_REQ");
+                OnMETHOD_SPEC_REQChanged();
+            }
+        }
+        private global::System.String _METHOD_SPEC_REQ;
+        partial void OnMETHOD_SPEC_REQChanging(global::System.String value);
+        partial void OnMETHOD_SPEC_REQChanged();
 
         #endregion
 

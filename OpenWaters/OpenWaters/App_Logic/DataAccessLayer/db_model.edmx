@@ -828,6 +828,7 @@
           <Property Name="UPDATE_DT" Type="datetime" />
           <Property Name="SAMP_FRAC_REQ" Type="varchar" MaxLength="1" />
           <Property Name="PICK_LIST" Type="varchar" MaxLength="1" />
+          <Property Name="METHOD_SPEC_REQ" Type="varchar" MaxLength="1" />
         </EntityType>
         <EntityType Name="T_WQX_REF_COUNTY">
           <Key>
@@ -2444,6 +2445,7 @@ FROM [dbo].[V_WQX_TRANSACTION_LOG] AS [V_WQX_TRANSACTION_LOG]</DefiningQuery>
           <NavigationProperty Name="T_WQX_REF_CHAR_ORG" Relationship="OpenEnvironmentModel.FK__T_WQX_REF__CHAR___4E88ABD4" FromRole="T_WQX_REF_CHARACTERISTIC" ToRole="T_WQX_REF_CHAR_ORG" />
           <Property Name="SAMP_FRAC_REQ" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
           <Property Name="PICK_LIST" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="METHOD_SPEC_REQ" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="T_WQX_REF_CHAR_LIMITS">
           <Key>
@@ -4050,6 +4052,7 @@ FROM [dbo].[V_WQX_TRANSACTION_LOG] AS [V_WQX_TRANSACTION_LOG]</DefiningQuery>
           <EntitySetMapping Name="T_WQX_REF_CHARACTERISTIC">
             <EntityTypeMapping TypeName="OpenEnvironmentModel.T_WQX_REF_CHARACTERISTIC">
               <MappingFragment StoreEntitySet="T_WQX_REF_CHARACTERISTIC">
+                <ScalarProperty Name="METHOD_SPEC_REQ" ColumnName="METHOD_SPEC_REQ" />
                 <ScalarProperty Name="PICK_LIST" ColumnName="PICK_LIST" />
                 <ScalarProperty Name="SAMP_FRAC_REQ" ColumnName="SAMP_FRAC_REQ" />
                 <ScalarProperty Name="UPDATE_DT" ColumnName="UPDATE_DT" />

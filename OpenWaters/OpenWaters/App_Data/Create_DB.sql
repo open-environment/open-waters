@@ -1524,6 +1524,7 @@ BEGIN
 	            11/24/2014 DOUG TIMMS, added support to submit for single organization within multi-organization database; split into 2 stored procs for performance
 				3/26/2015 DOUG TIMMS, added sample collection and bio fields, expanded detection limit handling
 				6/6/2015 DOUG TIMMS, handle situation where ResultStatus or Value Type is empty string
+				10/6/2020 DOUG TIMMS, fix some null in XML
 	*/
 	SET NOCOUNT ON;
 
@@ -1705,8 +1706,8 @@ BEGIN
 			   case when T_WQX_ACTIVITY.SAMP_COLL_METHOD_IDX is not null then SCL.SAMP_COLL_METHOD_ID else null end as "SampleDescription/SampleCollectionMethod/MethodIdentifier", 
 			   case when T_WQX_ACTIVITY.SAMP_COLL_METHOD_IDX is not null then SCL.SAMP_COLL_METHOD_CTX else null end as "SampleDescription/SampleCollectionMethod/MethodIdentifierContext", 
 			   case when T_WQX_ACTIVITY.SAMP_COLL_METHOD_IDX is not null then SCL.SAMP_COLL_METHOD_NAME else null end as "SampleDescription/SampleCollectionMethod/MethodName", 
-               rtrim(SAMP_COLL_EQUIP) AS "SampleDescription/SampleCollectionEquipmentName",
-               rtrim(SAMP_COLL_EQUIP_COMMENT) AS "SampleDescription/SampleCollectionEquipmentCommentText",
+               case when nullif(T_WQX_ACTIVITY.SAMP_COLL_EQUIP,'') is not null then rtrim(SAMP_COLL_EQUIP) else null end AS "SampleDescription/SampleCollectionEquipmentName",
+               case when nullif(T_WQX_ACTIVITY.SAMP_COLL_EQUIP,'') is not null then rtrim(SAMP_COLL_EQUIP_COMMENT) else null end AS "SampleDescription/SampleCollectionEquipmentCommentText",
 
 					--RESULT
     				(SELECT rtrim(DATA_LOGGER_LINE) AS "ResultDescription/DataLoggerLineName",
@@ -1916,7 +1917,7 @@ GO
 
 
 CREATE PROCEDURE [dbo].[ImportActivityFromTemp]
-  @UserID varchar(25),
+  @UserID varchar(250),
   @WQXInd varchar(1),
   @ActivityReplaceInd varchar(1)
 AS
@@ -1926,6 +1927,7 @@ BEGIN
 	CHANGE LOG: 3/14/2015 DOUG TIMMS, OPEN-ENVIRONMENT.ORG
 	5/2/2015 DOUG TIMMS: added ability to update matching activity
 	2/3/2016 DOUG TIMMS: fix bug 
+	9/30/2020 DOUG TIMMS: update user parameter length
 
 	@ActivityReplaceInd: "R": delete existing activity and replace with new one (*recommended*)
 						 "U": update existing activity (appending results if found)  (*not recommended)						 

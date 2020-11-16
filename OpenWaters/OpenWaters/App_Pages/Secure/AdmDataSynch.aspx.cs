@@ -288,13 +288,13 @@ namespace OpenEnvironment
                                {
                                    ID = lv1.Descendants("{http://www.exchangenetwork.net/schema/wqx/3}WQXElementRowColumn").First(ID2 => ID2.Attribute("colname").Value == ValueString).Attribute("value"),
                                    SampFracReq = lv1.Descendants("{http://www.exchangenetwork.net/schema/wqx/3}WQXElementRowColumn").First(Text2 => Text2.Attribute("colname").Value == "SampleFractionRequired").Attribute("value"),
+                                   MethodSpeciationRequired = lv1.Descendants("{http://www.exchangenetwork.net/schema/wqx/3}WQXElementRowColumn").First(Text2 => Text2.Attribute("colname").Value == "MethodSpeciationRequired").Attribute("value"),
                                    PickList = lv1.Descendants("{http://www.exchangenetwork.net/schema/wqx/3}WQXElementRowColumn").First(Text2 => Text2.Attribute("colname").Value == "PickList").Attribute("value")
                                };
 
                     foreach (var lv1 in lv1s)
-                    {
-                        db_Ref.InsertOrUpdateT_WQX_REF_CHARACTERISTIC(lv1.ID.Value, null, null, null, true, lv1.SampFracReq.Value, lv1.PickList.Value);
-                    }
+                        db_Ref.InsertOrUpdateT_WQX_REF_CHARACTERISTIC(lv1.ID.Value, null, null, null, true, lv1.SampFracReq.Value, lv1.PickList.Value, lv1.MethodSpeciationRequired.Value);
+
                 }
 
                 // ***************** CUSTOM PARSING for ANALYTICAL METHOD **************************************

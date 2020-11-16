@@ -502,8 +502,8 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
 
 
         //******************REF CHARACTERISTIC****************************************
-        public static int InsertOrUpdateT_WQX_REF_CHARACTERISTIC(global::System.String cHAR_NAME, global::System.Decimal? dETECT_LIMIT, global::System.String dEFAULT_UNIT, global::System.Boolean? uSED_IND,
-            global::System.Boolean aCT_IND, global::System.String sAMP_FRAC_REQ, global::System.String pICK_LIST)
+        public static int InsertOrUpdateT_WQX_REF_CHARACTERISTIC(string cHAR_NAME, decimal? dETECT_LIMIT, string dEFAULT_UNIT, bool? uSED_IND, bool aCT_IND, 
+            string sAMP_FRAC_REQ, string pICK_LIST, string mETH_SPEC_REQ)
         {
             using (OpenEnvironmentEntities ctx = new OpenEnvironmentEntities())
             {
@@ -527,6 +527,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
                     if (uSED_IND != null) a.USED_IND = uSED_IND;
                     if (sAMP_FRAC_REQ != null) a.SAMP_FRAC_REQ = sAMP_FRAC_REQ;
                     if (pICK_LIST != null) a.PICK_LIST = pICK_LIST;
+                    if (mETH_SPEC_REQ != null) a.PICK_LIST = mETH_SPEC_REQ;
 
                     a.UPDATE_DT = System.DateTime.Now;
                     a.ACT_IND = true;
@@ -628,6 +629,31 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
                 }
             }
         }
+
+        public static bool GetT_WQX_REF_CHARACTERISTIC_MethodSpeciationReqCheck(string CharName)
+        {
+            using (OpenEnvironmentEntities ctx = new OpenEnvironmentEntities())
+            {
+                try
+                {
+                    string Req = (from a in ctx.T_WQX_REF_CHARACTERISTIC
+                                       where (a.ACT_IND == true)
+                                       && a.CHAR_NAME == CharName
+                                       select a).FirstOrDefault().METHOD_SPEC_REQ;
+
+                    if (Req == "Y")
+                        return true;
+                    else
+                        return false;
+
+                }
+                catch (Exception ex)
+                {
+                    return false;
+                }
+            }
+        }
+
 
         public static List<T_WQX_REF_CHARACTERISTIC> GetT_WQX_REF_CHARACTERISTIC_ByOrg(string OrgID, Boolean RBPInd)
         {
