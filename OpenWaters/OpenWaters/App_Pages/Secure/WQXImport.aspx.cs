@@ -250,12 +250,11 @@ namespace OpenEnvironment.App_Pages.Secure
                     }
 
                     ActivityTypeVal = GetFieldValue(ActivityTypeCol, parts);
-                    ActivityMediaVal = GetFieldValue(ActivityMediaCol, parts);
+                    ActivityMediaVal = GetFieldValue(ActivityMediaCol, parts) ?? "Water";
                     ActivitySubMediaVal = GetFieldValue(ActivitySubMediaCol, parts);
                     ActivityDepthVal = GetFieldValue(ActivityDepthCol, parts);
-                    if (ActivityDepthVal != null)
-                        if (ActivityDepthVal.Length > 0)
-                            ActivityDepthUnitVal = ActivityDepthCol.CHAR_DEFAULT_UNIT;
+                    if (ActivityDepthVal != null && ActivityDepthVal.Length > 0)
+                        ActivityDepthUnitVal = ActivityDepthCol.CHAR_DEFAULT_UNIT;
 
                     //activity start date 
                     if (ActivityStartDateCol == null)
@@ -310,7 +309,8 @@ namespace OpenEnvironment.App_Pages.Secure
 
                         if (!string.IsNullOrEmpty(resultVal))
                         {
-                            int TempImportResultID = db_WQX.InsertOrUpdateWQX_IMPORT_TEMP_RESULT(null, TempImportSampID, null, null, null, character.CHAR_NAME, null,
+                            int TempImportResultID = db_WQX.InsertOrUpdateWQX_IMPORT_TEMP_RESULT(null, TempImportSampID, null, null, null, character.CHAR_NAME, 
+                                (string.IsNullOrEmpty(character.CHAR_DEFAULT_SPECIATION) ? null : character.CHAR_DEFAULT_SPECIATION),
                             (string.IsNullOrEmpty(character.CHAR_DEFAULT_SAMP_FRACTION) ? null : character.CHAR_DEFAULT_SAMP_FRACTION), resultVal,
                             character.CHAR_DEFAULT_UNIT, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null,
                             null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null,

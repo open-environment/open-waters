@@ -216,6 +216,10 @@
                 <span class="fldLbl">Sample Fraction:</span>
                 <asp:DropDownList ID="ddlSampFraction" runat="server" CssClass="fldTxt" style="width:300px"></asp:DropDownList>
             </div>
+            <div class="row charRelated">
+                <span class="fldLbl">Method Speciation:</span>
+                <asp:DropDownList ID="ddlSpeciation" runat="server" CssClass="fldTxt" style="width:300px"></asp:DropDownList>
+            </div>
             <div class="btnRibbon">
                 <asp:Button ID="btnAddColumn" runat="server" Text="Save" CssClass="btn" OnClick="btnAddColumn_Click" />
                 <asp:Button ID="btnCloseCol" runat="server" Text="Cancel" CssClass="btn" />

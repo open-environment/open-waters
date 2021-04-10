@@ -267,7 +267,7 @@
             <div><h2 style="display:inline;">Results</h2> (click row to edit)</div> 
             <asp:Label ID="lblMsgDtl" runat="server" CssClass="failureNotification"></asp:Label>
             <asp:GridView ID="grdResults" runat="server" GridLines="None" CssClass="grd" PagerStyle-CssClass="pgr" AutoGenerateColumns="False" AlternatingRowStyle-CssClass="alt" 
-                DataKeyNames="RESULT_IDX, CHAR_NAME, RESULT_MSR_UNIT, ANALYTIC_METHOD_IDX, RESULT_SAMP_FRACTION, RESULT_VALUE_TYPE, RESULT_STATUS, BIO_INTENT_NAME, FREQ_CLASS_CODE"
+                DataKeyNames="RESULT_IDX, CHAR_NAME, METHOD_SPECIATION_NAME, RESULT_MSR_UNIT, ANALYTIC_METHOD_IDX, RESULT_SAMP_FRACTION, RESULT_VALUE_TYPE, RESULT_STATUS, BIO_INTENT_NAME, FREQ_CLASS_CODE"
                 OnRowCommand="grdResults_RowCommand" OnRowEditing="grdResults_RowEditing" OnRowUpdating="grdResults_RowUpdating" OnRowDeleting="grdResults_RowDeleting" 
                 ShowFooter="true" OnRowDataBound="grdResults_RowDataBound">
                 <Columns>
@@ -283,6 +283,18 @@
                             <asp:DropDownList ID="ddlNewChar" AutoPostBack="true" OnSelectedIndexChanged="ddlNewChar_SelectedIndexChanged" CssClass="grdCtrl" Width="98%" runat="server" />
                         </FooterTemplate>
                     </asp:TemplateField>
+                    <asp:TemplateField HeaderText="Speciation" SortExpression="METHOD_SPECIATION_NAME">
+                        <EditItemTemplate>
+                            <asp:DropDownList ID="ddlSpeciationName" CssClass="grdCtrl" Width="98%" runat="server" />
+                        </EditItemTemplate>
+                        <ItemTemplate>
+                            <asp:Label ID="lblSpeciationName" runat="server" Text='<%# Eval("METHOD_SPECIATION_NAME") %>'></asp:Label>
+                        </ItemTemplate>
+                        <FooterTemplate>
+                            <asp:DropDownList ID="ddlNewSpeciationName" AutoPostBack="true" CssClass="grdCtrl" Width="98%" runat="server" />
+                        </FooterTemplate>
+                    </asp:TemplateField>
+
                     <asp:TemplateField HeaderText="Taxonomy" SortExpression="BIO_SUBJECT_TAXONOMY">
                         <EditItemTemplate>
                             <asp:DropDownList ID="ddlTaxa" CssClass="grdCtrl" Width="98%" runat="server" />

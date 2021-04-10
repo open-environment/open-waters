@@ -1214,14 +1214,11 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
 
         }
 
-        public static int InsertOrUpdateT_WQX_RESULT(global::System.Int32? rESULT_IDX, global::System.Int32 aCTIVITY_IDX, global::System.String rESULT_DETECT_CONDITION,            
-            global::System.String cHAR_NAME, global::System.String rESULT_SAMP_FRACTION, global::System.String rESULT_MSR, global::System.String rESULT_MSR_UNIT,
-            global::System.String rESULT_STATUS, global::System.String rESULT_VALUE_TYPE, global::System.String rESULT_COMMENT, 
-            global::System.String bIO_INTENT_NAME, global::System.String bIO_INDIVIDUAL_ID, global::System.String bIO_TAXONOMY, global::System.String bIO_SAMPLE_TISSUE_ANATOMY,
-            global::System.Int32? aNALYTIC_METHOD_IDX, int? lAB_IDX, DateTime? lAB_ANALYSIS_START_DT, global::System.String dETECTION_LIMIT, global::System.String pQL,
-            global::System.String lOWER_QUANT_LIMIT, global::System.String uPPER_QUANT_LIMIT, int? lAB_SAMP_PREP_IDX, DateTime? lAB_SAMP_PREP_START_DT, string dILUTION_FACTOR, 
-            string fREQ_CLASS_CODE, string fREQ_CLASS_UNIT,
-            String cREATE_USER = "system")
+        public static int InsertOrUpdateT_WQX_RESULT(int? rESULT_IDX, int aCTIVITY_IDX, string rESULT_DETECT_CONDITION, string cHAR_NAME, string rESULT_SAMP_FRACTION, string rESULT_MSR, 
+            string rESULT_MSR_UNIT, string rESULT_STATUS, string rESULT_VALUE_TYPE, string rESULT_COMMENT, string bIO_INTENT_NAME, string bIO_INDIVIDUAL_ID, string bIO_TAXONOMY, 
+            string bIO_SAMPLE_TISSUE_ANATOMY, int? aNALYTIC_METHOD_IDX, int? lAB_IDX, DateTime? lAB_ANALYSIS_START_DT, string dETECTION_LIMIT, string pQL,
+            string lOWER_QUANT_LIMIT, string uPPER_QUANT_LIMIT, int? lAB_SAMP_PREP_IDX, DateTime? lAB_SAMP_PREP_START_DT, string dILUTION_FACTOR, string fREQ_CLASS_CODE, string fREQ_CLASS_UNIT, 
+            string mETH_SPECIATION, string cREATE_USER = "system")
         {
             using (OpenEnvironmentEntities ctx = new OpenEnvironmentEntities())
             {
@@ -1270,6 +1267,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
                     if (fREQ_CLASS_UNIT != null) a.FREQ_CLASS_UNIT = fREQ_CLASS_UNIT;
                     //set freq class unit to count if not provided
                     if (fREQ_CLASS_UNIT == null && fREQ_CLASS_CODE != null) fREQ_CLASS_UNIT = "count";
+                    if (mETH_SPECIATION != null) a.METHOD_SPECIATION_NAME = mETH_SPECIATION;
 
                     if (insInd) //insert case
                         ctx.AddToT_WQX_RESULT(a);
@@ -2044,7 +2042,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
         }
 
         public static int InsertOrUpdateWQX_IMPORT_TEMPLATE_DTL(global::System.Int32? tEMPLATE_DTL_ID, global::System.Int32? tEMPLATE_ID, global::System.Int32? cOL_NUM, global::System.String fIELD_MAP,
-            string cHAR_NAME, string cHAR_DEFAULT_UNIT, String cREATE_USER = "system", string cHAR_DEFAULT_SAMP_FRACTION = null)
+            string cHAR_NAME, string cHAR_DEFAULT_UNIT, String cREATE_USER = "system", string cHAR_DEFAULT_SAMP_FRACTION = null, string cHAR_DEFAULT_SPECIATION = null)
         {
             using (OpenEnvironmentEntities ctx = new OpenEnvironmentEntities())
             {
@@ -2070,6 +2068,7 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
                     if (cHAR_NAME != null) a.CHAR_NAME = cHAR_NAME;
                     if (cHAR_DEFAULT_UNIT != null) a.CHAR_DEFAULT_UNIT = cHAR_DEFAULT_UNIT;
                     if (cHAR_DEFAULT_SAMP_FRACTION != null) a.CHAR_DEFAULT_SAMP_FRACTION = cHAR_DEFAULT_SAMP_FRACTION;
+                    if (cHAR_DEFAULT_SPECIATION != null) a.CHAR_DEFAULT_SPECIATION = cHAR_DEFAULT_SPECIATION;
 
                     if (insInd) //insert case
                     {
@@ -3887,10 +3886,17 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
                         if (db_Ref.GetT_WQX_REF_CHARACTERISTIC_ExistCheck(cHAR_NAME.Trim()) == false) { sTATUS_CD = "F"; sTATUS_DESC += "Characteristic Name not valid. "; }
                     }
 
+
+                    //Method speciation
                     if (!string.IsNullOrEmpty(mETHOD_SPECIATION_NAME))
                     {
                         a.METHOD_SPECIATION_NAME = mETHOD_SPECIATION_NAME.Trim().SubStringPlus(0, 20);
                         if (db_Ref.GetT_WQX_REF_DATA_ByKey("MethodSpeciation", mETHOD_SPECIATION_NAME.Trim()) == false) { sTATUS_CD = "F"; sTATUS_DESC += "Method Speciation not valid. "; }
+                    }
+                    else
+                    {
+                        if (db_Ref.GetT_WQX_REF_CHARACTERISTIC_MethodSpeciationReqCheck(a.CHAR_NAME) == true) { sTATUS_CD = "F"; sTATUS_DESC += "Method Speciation must be reported for this characteristic."; }
+
                     }
 
                     if (!string.IsNullOrEmpty(rESULT_SAMP_FRACTION))

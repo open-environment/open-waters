@@ -135,6 +135,7 @@
                 </asp:TemplateField>
                 <asp:BoundField DataField="CHAR_NAME" HeaderText="Characteristic" SortExpression="CHAR_NAME" ControlStyle-Width="98%" ReadOnly="true" />
                 <asp:BoundField DataField="SAMP_FRAC_REQ" HeaderText="Samp Fraction Required" SortExpression="SAMP_FRAC_REQ" ReadOnly="true" />
+                <asp:BoundField DataField="METHOD_SPEC_REQ" HeaderText="Method Speciation Req" SortExpression="METHOD_SPEC_REQ" ReadOnly="true" />
                 <asp:BoundField DataField="UPDATE_DT" HeaderText="Last Updated" SortExpression="UPDATE_DT" ReadOnly="true" />
             </Columns>
         </asp:GridView>

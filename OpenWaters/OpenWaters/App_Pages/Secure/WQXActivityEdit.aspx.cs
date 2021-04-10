@@ -165,9 +165,9 @@ namespace OpenEnvironment
                 grdResults.Columns[grdResults.Columns.Count-1].Visible = btnSave.Visible;
                
                 //taxon counts display 
-                grdResults.Columns[2].Visible = ddlEntryType.SelectedValue == "T";
-                grdResults.Columns[14].Visible = ddlEntryType.SelectedValue == "T";
+                grdResults.Columns[3].Visible = ddlEntryType.SelectedValue == "T";
                 grdResults.Columns[15].Visible = ddlEntryType.SelectedValue == "T";
+                grdResults.Columns[16].Visible = ddlEntryType.SelectedValue == "T";
 
 
                 grdResults.ShowFooter = true;
@@ -217,7 +217,9 @@ namespace OpenEnvironment
 
             int ActID = Session["ActivityIDX"].ConvertOrDefault<int>();
 
+
             DropDownList ddlChar = (DropDownList)grdResults.Rows[e.RowIndex].FindControl("ddlChar");
+            DropDownList ddlSpeciationName = (DropDownList)grdResults.Rows[e.RowIndex].FindControl("ddlSpeciationName"); //added 2021
             DropDownList ddlTaxa = (DropDownList)grdResults.Rows[e.RowIndex].FindControl("ddlTaxa");
             TextBox txtResultVal = (TextBox)grdResults.Rows[e.RowIndex].FindControl("txtResultVal");
             DropDownList ddlUnit = (DropDownList)grdResults.Rows[e.RowIndex].FindControl("ddlUnit");
@@ -226,12 +228,10 @@ namespace OpenEnvironment
             TextBox txtPQL = (TextBox)grdResults.Rows[e.RowIndex].FindControl("txtPQL");
             TextBox txtLowerQuantLimit = (TextBox)grdResults.Rows[e.RowIndex].FindControl("txtLowerQuantLimit");
             TextBox txtUpperQuantLimit = (TextBox)grdResults.Rows[e.RowIndex].FindControl("txtUpperQuantLimit");
-    
             DropDownList ddlSampFraction = (DropDownList)grdResults.Rows[e.RowIndex].FindControl("ddlSampFraction");
             DropDownList ddlResultValueType = (DropDownList)grdResults.Rows[e.RowIndex].FindControl("ddlResultValueType");
             DropDownList ddlResultStatus = (DropDownList)grdResults.Rows[e.RowIndex].FindControl("ddlResultStatus");
             TextBox txtAnalysisDate = (TextBox)grdResults.Rows[e.RowIndex].FindControl("txtAnalysisDate");
-
             DropDownList ddlBioIntent = (DropDownList)grdResults.Rows[e.RowIndex].FindControl("ddlBioIntent");
             DropDownList ddlFreqClass = (DropDownList)grdResults.Rows[e.RowIndex].FindControl("ddlFreqClass");
 
@@ -265,7 +265,7 @@ namespace OpenEnvironment
                 ddlResultStatus.SelectedValue, ddlResultValueType.SelectedValue, txtComment.Text, null, null, ddlTaxa.SelectedValue, null, 
                 ddlAnalMethod.SelectedValue.ConvertOrDefault<int?>(), ddlLabName.SelectedValue.ConvertOrDefault<int?>(), txtAnalysisDate.Text.ConvertOrDefault<DateTime?>(), txtDetectLimit.Text, txtPQL.Text,
                 txtLowerQuantLimit.Text, txtUpperQuantLimit.Text, ddlPrepMethod.SelectedValue.ConvertOrDefault<int?>(), txtPrepStartDate.Text.ConvertOrDefault<DateTime?>(), txtDilution.Text, 
-                ddlFreqClass.SelectedValue, null, User.Identity.Name);
+                ddlFreqClass.SelectedValue, null, ddlSpeciationName.SelectedValue, User.Identity.Name);
 
             if (SuccID > 0)
             {
@@ -289,6 +289,7 @@ namespace OpenEnvironment
 
                 int ActID = Session["ActivityIDX"].ConvertOrDefault<int>();
                 DropDownList ddlNewChar = (DropDownList)grdResults.FooterRow.FindControl("ddlNewChar");
+                DropDownList ddlNewSpeciationName = (DropDownList)grdResults.FooterRow.FindControl("ddlNewSpeciationName"); //added 2021
                 DropDownList ddlNewTaxa = (DropDownList)grdResults.FooterRow.FindControl("ddlNewTaxa");
                 TextBox txtNewResultVal = (TextBox)grdResults.FooterRow.FindControl("txtNewResultVal");
                 DropDownList ddlNewUnit = (DropDownList)grdResults.FooterRow.FindControl("ddlNewUnit");
@@ -334,7 +335,8 @@ namespace OpenEnvironment
                 db_WQX.InsertOrUpdateT_WQX_RESULT(null, ActID, null, ddlNewChar.SelectedValue, ddlNewSampFraction.SelectedValue,
                     txtNewResultVal.Text, ddlNewUnit.SelectedValue, ddlNewResultStatus.SelectedValue, ddlNewResultValueType.SelectedValue, txtNewComment.Text,  
                     ddlNewBioIntent.SelectedValue, null, ddlNewTaxa.SelectedValue, null, ddlNewAnalMethod.SelectedValue.ConvertOrDefault<int?>(), null, txtNewAnalysisDate.Text.ConvertOrDefault<DateTime?>(), 
-                    txtNewDetectLimit.Text, txtNewPQL.Text, txtNewLowerQuantLimit.Text, txtNewUpperQuantLimit.Text, null, null, null, ddlNewFreqClass.SelectedValue, null, User.Identity.Name);
+                    txtNewDetectLimit.Text, txtNewPQL.Text, txtNewLowerQuantLimit.Text, txtNewUpperQuantLimit.Text, null, null, null, ddlNewFreqClass.SelectedValue, null, ddlNewSpeciationName.SelectedValue,
+                    User.Identity.Name);
 
                 //also update activity to set to "U" so it will be flagged for submission to EPA
                 db_WQX.UpdateWQX_ACTIVITY_WQXStatus(ActID, "U", chkActInd.Checked, chkWQXInd.Checked);
@@ -377,28 +379,33 @@ namespace OpenEnvironment
                     PopulateDropDown((DropDownList)e.Row.FindControl("ddlTaxa"), dsTaxa, grdResults.DataKeys[e.Row.RowIndex].Values[1].ToStringNullSafe(), "VALUE", "TEXT");
                 }
 
+                //Method Speciation
+                dsRefData.SelectParameters["tABLE"].DefaultValue = "MethodSpeciation";
+                PopulateDropDown((DropDownList)e.Row.FindControl("ddlSpeciationName"), dsRefData, grdResults.DataKeys[e.Row.RowIndex].Values[2].ToStringNullSafe(), "VALUE", "VALUE");
+
                 //Unit
                 dsRefData.SelectParameters["tABLE"].DefaultValue = "MeasureUnit";
-                PopulateDropDown((DropDownList)e.Row.FindControl("ddlUnit"), dsRefData, grdResults.DataKeys[e.Row.RowIndex].Values[2].ToStringNullSafe(), "VALUE", "VALUE");
+                PopulateDropDown((DropDownList)e.Row.FindControl("ddlUnit"), dsRefData, grdResults.DataKeys[e.Row.RowIndex].Values[3].ToStringNullSafe(), "VALUE", "VALUE");
 
                 //Anal Method
                 col = GetColumnIndexByName(grdResults, "Analytical Method");
                 if (grdResults.Columns[col].Visible)
                 {
-                    PopulateDropDown((DropDownList)e.Row.FindControl("ddlAnalMethod"), dsAnalMethod, grdResults.DataKeys[e.Row.RowIndex].Values[3].ToStringNullSafe(), "ANALYTIC_METHOD_IDX", "AnalMethodDisplayName");
+                    PopulateDropDown((DropDownList)e.Row.FindControl("ddlAnalMethod"), dsAnalMethod, grdResults.DataKeys[e.Row.RowIndex].Values[4].ToStringNullSafe(), "ANALYTIC_METHOD_IDX", "AnalMethodDisplayName");
                 }
 
                 //Samp Fraction
                 dsRefData.SelectParameters["tABLE"].DefaultValue = "ResultSampleFraction";
-                PopulateDropDown((DropDownList)e.Row.FindControl("ddlSampFraction"), dsRefData, grdResults.DataKeys[e.Row.RowIndex].Values[4].ToStringNullSafe(), "VALUE", "VALUE");
+                PopulateDropDown((DropDownList)e.Row.FindControl("ddlSampFraction"), dsRefData, grdResults.DataKeys[e.Row.RowIndex].Values[5].ToStringNullSafe(), "VALUE", "VALUE");
+
 
                 //value type
                 dsRefData.SelectParameters["tABLE"].DefaultValue = "ResultValueType";
-                PopulateDropDown((DropDownList)e.Row.FindControl("ddlResultValueType"), dsRefData, grdResults.DataKeys[e.Row.RowIndex].Values[5].ToStringNullSafe(), "VALUE", "VALUE");
+                PopulateDropDown((DropDownList)e.Row.FindControl("ddlResultValueType"), dsRefData, grdResults.DataKeys[e.Row.RowIndex].Values[6].ToStringNullSafe(), "VALUE", "VALUE");
 
                 //result status
                 dsRefData.SelectParameters["tABLE"].DefaultValue = "ResultStatus";
-                PopulateDropDown((DropDownList)e.Row.FindControl("ddlResultStatus"), dsRefData, grdResults.DataKeys[e.Row.RowIndex].Values[6].ToStringNullSafe(), "VALUE", "VALUE");
+                PopulateDropDown((DropDownList)e.Row.FindControl("ddlResultStatus"), dsRefData, grdResults.DataKeys[e.Row.RowIndex].Values[7].ToStringNullSafe(), "VALUE", "VALUE");
 
                 
                 //Bio Intent
@@ -406,7 +413,7 @@ namespace OpenEnvironment
                 if (grdResults.Columns[col].Visible)
                 {
                     dsRefData.SelectParameters["tABLE"].DefaultValue = "BiologicalIntent";
-                    PopulateDropDown((DropDownList)e.Row.FindControl("ddlBioIntent"), dsRefData, grdResults.DataKeys[e.Row.RowIndex].Values[7].ToStringNullSafe(), "VALUE", "VALUE");
+                    PopulateDropDown((DropDownList)e.Row.FindControl("ddlBioIntent"), dsRefData, grdResults.DataKeys[e.Row.RowIndex].Values[8].ToStringNullSafe(), "VALUE", "VALUE");
                 }
 
 
@@ -415,7 +422,7 @@ namespace OpenEnvironment
                 if (grdResults.Columns[col].Visible)
                 {
                     dsRefData.SelectParameters["tABLE"].DefaultValue = "FrequencyClassDescriptor";
-                    PopulateDropDown((DropDownList)e.Row.FindControl("ddlFreqClass"), dsRefData, grdResults.DataKeys[e.Row.RowIndex].Values[8].ToStringNullSafe(), "VALUE", "VALUE");
+                    PopulateDropDown((DropDownList)e.Row.FindControl("ddlFreqClass"), dsRefData, grdResults.DataKeys[e.Row.RowIndex].Values[9].ToStringNullSafe(), "VALUE", "VALUE");
                 }
 
 
@@ -433,6 +440,10 @@ namespace OpenEnvironment
                 {
                     PopulateDropDown((DropDownList)e.Row.FindControl("ddlNewTaxa"), dsTaxa, null, "VALUE", "TEXT");
                 }
+
+                //Method Speciation
+                dsRefData.SelectParameters["tABLE"].DefaultValue = "MethodSpeciation";
+                PopulateDropDown((DropDownList)e.Row.FindControl("ddlNewSpeciationName"), dsRefData, null, "VALUE", "VALUE");
 
                 //Unit
                 dsRefData.SelectParameters["tABLE"].DefaultValue = "MeasureUnit";

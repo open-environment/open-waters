@@ -15917,6 +15917,30 @@ namespace OpenEnvironment.App_Logic.DataAccessLayer
         private global::System.String _CHAR_DEFAULT_SAMP_FRACTION;
         partial void OnCHAR_DEFAULT_SAMP_FRACTIONChanging(global::System.String value);
         partial void OnCHAR_DEFAULT_SAMP_FRACTIONChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String CHAR_DEFAULT_SPECIATION
+        {
+            get
+            {
+                return _CHAR_DEFAULT_SPECIATION;
+            }
+            set
+            {
+                OnCHAR_DEFAULT_SPECIATIONChanging(value);
+                ReportPropertyChanging("CHAR_DEFAULT_SPECIATION");
+                _CHAR_DEFAULT_SPECIATION = StructuralObject.SetValidValue(value, true, "CHAR_DEFAULT_SPECIATION");
+                ReportPropertyChanged("CHAR_DEFAULT_SPECIATION");
+                OnCHAR_DEFAULT_SPECIATIONChanged();
+            }
+        }
+        private global::System.String _CHAR_DEFAULT_SPECIATION;
+        partial void OnCHAR_DEFAULT_SPECIATIONChanging(global::System.String value);
+        partial void OnCHAR_DEFAULT_SPECIATIONChanged();
 
         #endregion
 
