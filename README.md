@@ -38,6 +38,8 @@ Open Waters is web-based water quality data management software that helps peopl
 
 
 ## Change Log
+* **4/8/2021 - Version 1.9.9(c):**
+    * Improved support for Method Speciation, including default Method Speciation on crosstab (custom template) data import, reference data display
 * **5/27/2020 - Version 1.9.9(b):**
     * Pulling reference data from EPA - user can now set EPA reference data API URL in Global Settings 
     * Pulling reference data from EPA - updated to WQX v3 XML schema
